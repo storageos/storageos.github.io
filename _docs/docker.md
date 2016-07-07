@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: bare
+title: Docker
 ---
 
 # StorageOS Docker Volume Plugin

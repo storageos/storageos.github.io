@@ -1073,3 +1073,77 @@ footer{
 		margin: 15px 0;
 	}
 }
+
+
+/* TEMP */
+.clear {
+	clear: both;
+}
+a.active, a:hover, .active a {
+	color: #b5e61e;
+}
+#docTitles {
+    position: relative;
+    float: left;
+    padding: 0 20px;
+    left: 0;
+    width: 350px;
+    z-index: auto;
+}
+#docTitles > .main-title {
+    color: #303030;
+    position: relative;
+    padding: 7.5px 10px 7.5px 18px;
+ 	font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    cursor: pointer;
+}
+#docTitles .clickable.active {
+    background-color: #f7f7f7;
+    border-left: 3px solid #b5e61e;
+    margin-left: -3px;
+    color: #b5e61e;
+}
+#docContents {
+    width: calc(100% - 400px);
+    position: relative;
+    float: right;
+}
+#content {
+    padding: 50px 50px 20px 20px;
+    clear: both;
+}
+.guide-list .title {
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.guide-list > ul {
+	padding-left: 20px;
+}
+.section-list > ul {
+	padding-left: 10px;
+}
+.guide-list ul li {
+	list-style: none;
+}
+.guide-list ul li a {
+	padding: 7.5px 10px 7.5px 20px;
+	display: block;
+}
+.guide-list .guide-link.title:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 0px;
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent #b5e61e;
+    transform: rotate(0deg);
+    transition: 0.3s;
+}
+.guide-list .guide-link.title.on:before {
+    transform: rotate(90deg);
+}

@@ -53,6 +53,12 @@ layout: default
 			e.preventDefault();
 			var href = jQuery(this).attr('href');
 			jQuery('#docContents').load(href);
+
+			var width = jQuery(window).width();
+			if (width < 1025) {
+				toggleTitlesMenu();
+			}
+			
 			return false;
 		});
 

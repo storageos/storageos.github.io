@@ -152,10 +152,6 @@ ul.top-bar-links li a.none-button {
     padding-right: 15px;
     font-weight: 700;
 }
-#primary-menu .navbar .container-fluid,
-#primary-menu .navbar .container-fluid .navbar-collapse {
-	padding-right: 0;
-}
 #primary-menu .navbar-default {
 	background: transparent;
     border: none;
@@ -838,6 +834,13 @@ footer{
 	padding: 10px;
 }
 /**************************** DOCUMENTATION SPECIFIC ****************************/
+#primary-menu {
+	top: 0;
+}
+#primary-menu .navbar-toggle .icon-bar {
+    margin: 4px auto;
+    background: #fff;
+}
 #primary-menu .navbar-nav .btn-link {
     padding-top: 14px;
 }
@@ -847,6 +850,16 @@ footer{
 #primary-menu .navbar-default .navbar-nav>li>a:focus,
 #primary-menu .navbar-default .navbar-nav>li>a:active {
 	border-color: transparent;
+}
+#primary-menu .navbar-toggle {
+    width: 100%;
+    margin-right: 0;
+}
+#primary-menu .navbar-default .navbar-toggle:focus,
+#primary-menu .navbar-default .navbar-toggle:hover,
+#primary-menu .navbar-toggle {
+    background-color: #b5e61e;
+    border: none;
 }
 a.active, a:hover, .active a {
 	color: #b5e61e;
@@ -985,7 +998,11 @@ a.active, a:hover, .active a {
 	    display: none;
 	}
 }
-
+@media (max-width: 1025px) {
+	#primary-menu li a {
+		text-align: left;
+	}
+}
 /**************************** RESPONSIVE ****************************/
 @media (min-width: 1366px) {
 	.container {

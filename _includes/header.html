@@ -10,29 +10,35 @@
 				<ul class="top-bar-links">
 					<li>
 						<img src="{{ site.baseurl }}/images/support.png" role="presentation" />
-						<a href="#" class="none-button" onClick={this.goToSupport}>Support</a>
+						<a href="http://support.storageos.com/" class="none-button" onClick={this.goToSupport}>Support</a>
 					</li>
 					<li>
 						<img src="{{ site.baseurl }}/images/talk-to-us.png" role="presentation" />
 						<a href="http://storageos.com/contact/" class="none-button">Talk to us</a>
 					</li>
 					<li class="divider"></li>
-					<li><a class="btn style-1" href="#">Login</a></li>
-					<li class="header-account-profile-wrapper"><a class="btn style-2" href="#">Get Started</a></li>
+					<li><a class="btn style-1" href="http://support.storageos.com/">Login</a></li>
+					<li class="header-account-profile-wrapper"><a class="btn style-2" href="https://my.storageos.com/auth/create-account">Get Started</a></li>
 				</ul>
 
 			</div>
 			<div id="primary-menu" class="row">
 				<nav class="navbar navbar-default">
 					<div class="container-fluid">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
+						<div class="col-xs-6">
+							<a class="flyout-button" onclick="toggleTitlesMenu()"></a>
 						</div>
+						<div class="col-xs-6">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+						</div>
+						<div class="clear"></div>
 						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">

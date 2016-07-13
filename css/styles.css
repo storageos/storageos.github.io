@@ -837,6 +837,9 @@ footer{
 #primary-menu {
 	top: 0;
 }
+ul.top-bar-links{
+	font-size: 0;
+}
 #primary-menu .navbar-toggle .icon-bar {
     margin: 4px auto;
     background: #fff;
@@ -854,6 +857,7 @@ footer{
 #primary-menu .navbar-toggle {
     width: 100%;
     margin-right: 0;
+    border-radius: 0;
 }
 #primary-menu .navbar-default .navbar-toggle:focus,
 #primary-menu .navbar-default .navbar-toggle:hover,
@@ -934,20 +938,22 @@ a.active, a:hover, .active a {
 .guide-list .guide-link.title.on:before {
     transform: rotate(90deg);
 }
-#content .flyout-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+#primary-menu .flyout-button {
+    position: relative;
+    display: block;
+    width: 100%;
     transition: 0.3s;
-    z-index: 99999;
-    padding: 10px 15px 10px 50px;
+	padding: 20px 10px;
     background-color: #5A645B;
     color: #FFF;
     cursor: pointer;
     background-image: url(/images/menu-icon.png);
-    background-position: 15px;
+    /*background-position: 15px;*/
+    background-position: center;
     background-repeat: no-repeat;
     background-size: 25px 15px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 #docTitles.open {
     padding: 50px 20px;
@@ -991,7 +997,7 @@ a.active, a:hover, .active a {
 	    width: 350px;
 	    z-index: auto;
 	}
-	#content .flyout-button {
+	#primary-menu .flyout-button {
 		display: none;
 	}
 	#docTitles .push-menu-close-button {

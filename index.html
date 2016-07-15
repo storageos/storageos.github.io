@@ -24,6 +24,7 @@ layout: default
 	          	{% endfor %}
 	        </ul>
 	        <button class="push-menu-close-button" onclick="toggleTitlesMenu()"></button>
+
 	    </div>
 
 	    <div id="docContents">
@@ -38,6 +39,7 @@ layout: default
 
 
 <script type="text/javascript">
+
 	jQuery(document).ready(function () {
 		jQuery('a.guide-link').click(function(e) {
 			jQuery(this).toggleClass('on');
@@ -49,16 +51,16 @@ layout: default
 		});
 
 		jQuery('a.section-link').click(function(e) {
-			e.preventDefault();
+			//e.preventDefault();
 			var href = jQuery(this).attr('href');
-			jQuery('#docContents').load(href);
+			//jQuery('#docContents').load(href);
 
 			var width = jQuery(window).width();
 			if (width < 1025) {
 				toggleTitlesMenu();
 			}
 
-			return false;
+			//return false;
 		});
 
 	});

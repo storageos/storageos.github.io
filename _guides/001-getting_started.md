@@ -5,17 +5,17 @@ anchor: getting_started
 
 sections:
   -
-    title: Getting Started with Collaboration
+    title: What is Kubernetes?
     description: This section introduces you to GitHub and the collaboration features we will use throughout the class.
-    module: docker
+    module: whatisk8s
   -
-    title: Creating Your First Pull Request
+    title: Downloading or Building Kubernetes
     description: In this section you will learn about the GitHub flow and create your first pull request.
-    module: docker
+    module: troubleshooting
   -
-    title: Using the GitHub Desktop Application
+    title: Hello World Walkthrough
     description: In this section you will learn how to clone the repository to your desktop and work locally to make changes.
-    module: docker
+    module: reference
   -
     title: Managing Projects on GitHub
     description: In this section you will learn about the project management features in GitHub.

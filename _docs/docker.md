@@ -1,6 +1,5 @@
 ---
-layout: bare
-title: Docker
+layout: guide
 ---
 
 # StorageOS Docker Volume Plugin

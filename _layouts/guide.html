@@ -1,0 +1,52 @@
+---
+layout: default
+---
+<em>branch_paul</em>
+<div id="content">
+	
+	<div class="guides">
+      	
+      	{% include guide-menu.html %}
+
+	    <div id="docContents">
+	    	{{content}}
+	    </div>
+    	<div class="clear"></div>
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+/*
+	jQuery(document).ready(function () {
+		jQuery('a.guide-link').click(function(e) {
+			jQuery(this).toggleClass('on');
+		});
+
+		jQuery('.clickable').click(function() {
+			jQuery('.clickable').removeClass('active');
+			jQuery(this).addClass('active');
+		});
+
+		jQuery('a.section-link').click(function(e) {
+			//e.preventDefault();
+			var href = jQuery(this).attr('href');
+			//jQuery('#docContents').load(href);
+
+			var width = jQuery(window).width();
+			if (width < 1025) {
+				toggleTitlesMenu();
+			}
+
+			//return false;
+		});
+
+	});
+
+	function toggleTitlesMenu() {
+		jQuery('#docTitles').toggleClass('open');
+	}
+*/
+</script>

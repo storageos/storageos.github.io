@@ -1,0 +1,24 @@
+---
+layout: default
+title: Getting Started
+anchor: getting_started
+
+sections:
+  -
+    title: What is Kubernetes?
+    description: This section introduces you to GitHub and the collaboration features we will use throughout the class.
+    module: whatisk8s
+  -
+    title: Downloading or Building Kubernetes
+    description: In this section you will learn about the GitHub flow and create your first pull request.
+    module: troubleshooting
+  -
+    title: Hello World Walkthrough
+    description: In this section you will learn how to clone the repository to your desktop and work locally to make changes.
+    module: reference
+  -
+    title: Managing Projects on GitHub
+    description: In this section you will learn about the project management features in GitHub.
+    module: docker
+
+---

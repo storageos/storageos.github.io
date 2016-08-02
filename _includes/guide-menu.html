@@ -1,0 +1,20 @@
+<div id="docTitles" class="guide-list">
+    <div class="main-title clickable active"><a class="" href="javascript:void(0);">Guides</a></div>
+    <ul>
+    	{% for guide in site.guides %}
+    	<li>
+        	<a class="guide-link title" href="javascript:void(0);" data-toggle="collapse" data-target="#{{ guide.anchor }}">{{ guide.title }}</a>
+        	<div id="{{ guide.anchor }}" class="guide-child collapse">
+        		<div class="section-list">
+            		<ul>
+            			{% for section in guide.sections %}
+            			<li><a class="section-link clickable title" href="{{ site.baseurl }}/docs/{{ section.module }}.html">{{ section.title }}</a></li>
+            			{% endfor %}
+            		</ul>
+        		</div>
+        	</div>
+      	</li>
+      	{% endfor %}
+    </ul>
+    <button class="push-menu-close-button" onclick="toggleTitlesMenu()"></button>
+</div>

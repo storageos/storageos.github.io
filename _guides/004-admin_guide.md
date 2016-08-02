@@ -1,17 +1,13 @@
 ---
 layout: default
-title: Getting Started
-anchor: getting_started
+title: Adminstation Guide
+anchor: admin_guide
 
 sections:
   -
     title: What is StorageOS?
     description: This section introduces you to StorageOS.
     module: whatisstorageos
-  -
-    title: Deployment Options
-    description: In this section you will learn about the GitHub flow and create your first pull request.
-    module: troubleshooting    
   -
     title: Downloading or Building Kubernetes
     description: In this section you will learn about the GitHub flow and create your first pull request.

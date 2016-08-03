@@ -5,8 +5,113 @@ anchor: reference/api
 ---
 
 # API reference
+---
+
+## Volumes API
+---
+
+### Create volumes
+
+Create new volume.
+
+* URL: `/v1/volumes`
+* Method: `POST`
+* Request body:
+
+{% highlight json %}
+{
+    "name": "test volume", 
+    "pool": "default", 
+    "size": 10, 
+    "tags": ["replication"],
+    "quantity": 1}
+{% endhighlight %}
+
+* Response status code:
+    - Success (volume creation started): `201`
+    - Volume with this name already exists: `409`
+    - Request error (can be various reason, i.e. pool not found): `400`
+
+| Field        | Type        | Required | Description  |
+| ------------ |:-----------:| :-------:|-------------:|
+| name         | `string     | true     | Volume name  |
+| pool         | `string`    | true     | Pool name that this volume belongs to |
+| size         | `int`       | true     | Volume size in gigabytes |
+| tags         | `[]string`  | false    | Array of tags, can be any existing tags |    
+| description  | `string`    | false    | Description |
+    
+
+### Get all volumes
+
+Returns all volumes
+
+
+* URL: `/v1/volumes`
+* Method: `GET`
+* Response status code:
+    - Success: `200`
+* Response body:
+
+{% highlight json %}
+[
+    {
+    "id":"5ef30469-feba-f1dd-7448-2dd83d9f9a31",
+    "replica":false,
+    "master_volume":"",
+    "replica_volumes":null,
+    "replica_inodes":null,
+    "created_by":"storageos",
+    "datacentre":"",
+    "tenant":"",
+    "name":"volx_17",
+    "status":"active",
+    "status_message":"",
+    "health":"",
+    "pool":"9d9f136c-53b5-e0d3-af09-dfe3919dcc69",
+    "description":"",
+    "size":10,
+    "inode":28107,
+    "volume_groups":[],
+    "tags":["filesystem"],
+    "controller":"12667c44-2bc1-f501-aa59-5041b262db39",
+    "master_controller":"12667c44-2bc1-f501-aa59-5041b262db39",
+    "replica_controllers":null,
+    "virtual_controllers":["a628d7f2-8091-f4ff-d94b-ea3439d5db33","e1a16173-8099-ffff-39f4-ee7d0e138780"]
+    },
+    {"id":"b98a027b-1172-482e-de20-abf6aa360395",
+    "replica":false,
+    "master_volume":"",
+    "replica_volumes":null,
+    "replica_inodes":null,
+    "created_by":"storageos",
+    "datacentre":"",
+    "tenant":"",
+    "name":"vol-dev-mysql",
+    "status":"failed",
+    "status_message":"",
+    "health":"",
+    "pool":"9d9f136c-53b5-e0d3-af09-dfe3919dcc69",
+    "description":"",
+    "size":10,
+    "inode":3546,
+    "volume_groups":[],
+    "tags":["filesystem"],
+    "controller":"",
+    "master_controller":"",
+    "replica_controllers":null,
+    "virtual_controllers":null
+    }
+]
+{% endhighlight %}
+
+### Get volume details
+
+### Delete volume
+
+Deletes specified volume
 
 ## Tags API
+---
 
 Tags (or Labels) are used to customize volumes, controllers, pools and pretty much any other object that is inside StorageOS. 
 

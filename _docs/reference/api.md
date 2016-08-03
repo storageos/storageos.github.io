@@ -5,10 +5,12 @@ anchor: reference/api
 ---
 
 # API reference
+
+StorageOS Control plane API is accessible either through port 80 or 8000. 
+
 ---
 
-## Volumes API
----
+# Volumes API
 
 ### Create volumes
 
@@ -32,14 +34,16 @@ Create new volume.
     - Volume with this name already exists: `409`
     - Request error (can be various reason, i.e. pool not found): `400`
 
+
 | Field        | Type        | Required | Description  |
 | ------------ |:-----------:| :-------:|-------------:|
-| name         | `string     | true     | Volume name  |
+| name         | `string`    | true     | Volume name  |
 | pool         | `string`    | true     | Pool name that this volume belongs to |
 | size         | `int`       | true     | Volume size in gigabytes |
 | tags         | `[]string`  | false    | Array of tags, can be any existing tags |    
 | description  | `string`    | false    | Description |
-    
+
+---
 
 ### Get all volumes
 
@@ -104,14 +108,58 @@ Returns all volumes
 ]
 {% endhighlight %}
 
+---
+
 ### Get volume details
+
+* URL: `/v1/volumes/{id}`
+* Method: `GET`
+* Response status code:
+    - Success: `200`
+* Response body:
+
+{% highlight json %}
+{
+"id":"5ef30469-feba-f1dd-7448-2dd83d9f9a31",
+"replica":false,
+"master_volume":"",
+"replica_volumes":null,
+"replica_inodes":null,
+"created_by":"storageos",
+"datacentre":"",
+"tenant":"",
+"name":"volx_17",
+"status":"active",
+"status_message":"",
+"health":"",
+"pool":"9d9f136c-53b5-e0d3-af09-dfe3919dcc69",
+"description":"",
+"size":10,
+"inode":28107,
+"volume_groups":[],
+"tags":["filesystem"],
+"controller":"12667c44-2bc1-f501-aa59-5041b262db39",
+"master_controller":"12667c44-2bc1-f501-aa59-5041b262db39",
+"replica_controllers":null,
+"virtual_controllers":["a628d7f2-8091-f4ff-d94b-ea3439d5db33","e1a16173-8099-ffff-39f4-ee7d0e138780"]
+}
+{% endhighlight %}
+
+---
 
 ### Delete volume
 
 Deletes specified volume
 
-## Tags API
+* URL: `/v1/volumes/{id}`
+* Method: `DELETE`
+* Response status code:
+    - Success: `200`
+    - Volume does not exist: `404`
+
 ---
+
+## Tags API
 
 Tags (or Labels) are used to customize volumes, controllers, pools and pretty much any other object that is inside StorageOS. 
 
@@ -135,6 +183,8 @@ Create new tag.
     - Created: `201`
     - Conflict (tag with the same name already exists): `409`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
+
+---
 
 ### Get all tags
 
@@ -180,6 +230,8 @@ Return all tags under all tag types
 }]
 {% endhighlight %}
 
+---
+
 ### Get tag type's tags
 
 Return all tags that belong to specified tag type
@@ -218,6 +270,8 @@ Return all tags that belong to specified tag type
 }]
 {% endhighlight %}
 
+---
+
 ### Tag details
 
 Returns tag details
@@ -237,6 +291,8 @@ Returns tag details
 }
 {% endhighlight %}
 
+---
+
 ### Update tag
 
 * URL: `/v1/tag/{tagtype}/{id}`
@@ -255,6 +311,8 @@ Returns tag details
     - Success: `200`
     - Bad request: `400`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
+
+---
 
 ### Delete tag
 

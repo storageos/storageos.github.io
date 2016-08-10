@@ -868,6 +868,9 @@ ul.top-bar-links{
 a.active, a:hover, .active a {
 	color: #b5e61e;
 }
+.main-title a {
+	display: block;
+}
 #docTitles {
     position: fixed;
     background-color: white;

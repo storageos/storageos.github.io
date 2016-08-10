@@ -1,7 +1,8 @@
 ---
 layout: guide
 title: What is StorageOS?
-anchor: reference/api
+anchor: reference
+module: reference/api
 ---
 
 # API reference

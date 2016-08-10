@@ -1,7 +1,8 @@
 ---
 layout: guide
 title: Command line reference
-anchor: reference/cli
+anchor: reference
+module: reference/cli
 ---
 
 # Command line reference

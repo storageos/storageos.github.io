@@ -1,0 +1,4 @@
+FROM       jekyll/builder:pages
+ENV        DAPPER_SOURCE /srv/jekyll
+ENV        DAPPER_OUTPUT /
+ENTRYPOINT ["jekyll"]

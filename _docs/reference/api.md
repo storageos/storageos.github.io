@@ -1,13 +1,13 @@
 ---
 layout: guide
-title: What is StorageOS?
+title: API Reference
 anchor: reference
 module: reference/api
 ---
 
 # API reference
 
-StorageOS Control plane API is accessible either through port 80 or 8000. 
+StorageOS Control plane API is accessible either through port 80 or 8000.
 
 ---
 
@@ -23,9 +23,9 @@ Create new volume.
 
 {% highlight json %}
 {
-    "name": "test volume", 
-    "pool": "default", 
-    "size": 10, 
+    "name": "test volume",
+    "pool": "default",
+    "size": 10,
     "tags": ["replication"],
     "quantity": 1}
 {% endhighlight %}
@@ -162,7 +162,7 @@ Deletes specified volume
 
 ## Tags API
 
-Tags (or Labels) are used to customize volumes, controllers, pools and pretty much any other object that is inside StorageOS. 
+Tags (or Labels) are used to customize volumes, controllers, pools and pretty much any other object that is inside StorageOS.
 
 ### Create tag
 
@@ -174,7 +174,7 @@ Create new tag.
 
 {% highlight json %}
 {
-"name": "dev", 
+"name": "dev",
 "type": "tag_type_name",
 "description": ""
 }
@@ -302,7 +302,7 @@ Returns tag details
 
 {% highlight json %}
 {
-"name": "new1", 
+"name": "new1",
 "type": "second_tagtype",
 "description": "new description for this tag"
 }

@@ -1,6 +1,8 @@
 ---
 layout: guide
 title: What is StorageOS?
+anchor: overview
+module: overview/whatisstorageos
 ---
 
 # What is StorageOS?

@@ -8,6 +8,8 @@ You will need the following software installed:
 - docker (https://www.docker.com/products/overview)
 - git (https://git-scm.com/downloads)
 - text editor (https://atom.io recommended, with following packages: language-markdown, markdown-preview-plus)
+- Dapper (http://github.com/rancher/dapper)
+
 
 ## Staging the site locally (from scratch setup)
 

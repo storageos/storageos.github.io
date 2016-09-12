@@ -1,34 +1,52 @@
 ## Instructions for Contributing to the StorageOS documentation
 
+These instructions work on Mac, Windows and Linux.
+
+All steps are run from a terminal console.
+
+You will need the following software installed:
+- docker (https://www.docker.com/products/overview)
+- git (https://git-scm.com/downloads)
+- text editor (https://atom.io recommended, with following packages: language-markdown, markdown-preview-plus)
+
 ## Staging the site locally (from scratch setup)
+
+Make sure Docker is running (download and install from https://www.docker.com/products/overview).
 
 The below commands to setup your environment for running GitHub pages locally. Then, any edits you make will be viewable
 on a lightweight webserver that runs on your local machine.
 
-This will typically be the fastest way (by far) to iterate on docs changes and see them staged, once you get this set up, but it does involve several install steps that take awhile to complete, and makes system-wide modifications.
+This will typically be the fastest way (by far) to iterate on docs changes and see them staged.
 
-Install Ruby 2.2 or higher. If you're on a Mac, follow [these instructions](https://gorails.com/setup/osx/). If you're on Linux, run these commands:
+Clone this repository:
 
-    apt-get install software-properties-common
-    apt-add-repository ppa:brightbox/ruby-ng
-    apt-get install ruby2.2
-    apt-get install ruby2.2-dev
+  git clone ssh://git@code.storageos.net:7999/pub/docs.git
 
-Install the GitHub Pages package, which includes Jekyll:
+Run a local copy:
 
-	gem install github-pages
-
-Clone our site:
-
-	git clone https://github.com/storageos/storageos.github.io.git
-
-Make any changes you want. Then, to see your changes locally:
-
-	cd storageos.github.io
-	jekyll serve
+	make serve
 
 Your copy of the site will then be viewable at: [http://localhost:4000](http://localhost:4000)
 (or wherever Jekyll tells you).
 
-The above instructions work on Mac and Linux.
-[These instructions](https://martinbuberl.com/blog/setup-jekyll-on-windows-and-host-it-on-github-pages/) are for Windows users.
+You may edit the files while the server is running, and pages will update whenever they are saved.
+
+## Publish to docs.storageos.com (password-protected)
+
+The password-protected documentation site currently runs on the downloads server (Ubuntu running on DigitalOcean).  This site is used by closed-beta users.
+
+To update the site, run:
+
+  make publish
+
+## Publish to GitHub Pages (not password-protected)
+
+:warning: This is not currently in use, as we do not wish to publish documentation until we have patents in place.
+
+Add git remote:
+
+  git remote add public git@github.com:storageos/storageos.github.io.git
+
+Push changes:
+
+  git push public master

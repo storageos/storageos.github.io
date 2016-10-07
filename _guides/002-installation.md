@@ -1,20 +1,24 @@
 ---
 layout: default
-title: Installation
+title: Installing StorageOS
 anchor: install
 
 sections:
   -
-    title: ISO image installation
-    description: In this section you will learn how to clone the repository to your desktop and work locally to make changes.
-    module: install/iso
+    title: Installation Prerequisites
+    description: This section describes the deployment options and installation prerequisites for  this beta version of StorageOS.
+    module: install/isoPreqs
   -
-    title: Vagrant installation
-    description: Sets up a single or 3-node cluster for testing.
-    module: install/vagrant
+    title: Downloading the ISO image
+    description: This section describes how to download the ISO image from the StorageOS download site.
+    module: install/ISOdownloadImage
   -
-    title: Docker installation
-    description: In this section you will learn about the GitHub flow and create your first pull request.
-    module: install/docker
+    title: Creating a Boot Partition
+    description: This section describes how to configure the boot partition.
+    module: install/CreateBootPart
+  -
+    title: Installing StorageOS
+    description: This section describes how to start up the VMs created in the previous section, install the Linux OS, set up the StorageOS cluster, and verifty the installation.
+    module: install/InstallingStorageOS
 
 ---

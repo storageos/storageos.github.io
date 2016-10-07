@@ -11,30 +11,29 @@ There are multiple deployment options to suit different environments.
 
 ## Number of Controllers
 
-StorageOS can be deployed as a single-node or as multiple-node cluster.
+You can deploy StorageOS as a single-node or as multiple-node cluster:
 
-In a single-node deployment, most HA functionality (e.g. failover, replication) will not be available.
+* In a single-node deployment, most HA functionality (e.g. failover, replication) is not available.
 
-Multiple-node clusters will synchronous support volume replication and automatic failover on node or volume failure.
+* Multiple-node clusters synchronize support volume replication and automatic failover upon node or volume failure.
 
-We do not yet have recommendations on the practical maximum cluster members, but are very interested to hear from the community what works well (and what doesn't).  The design does not impose any constraints, i.e. maximum number, or odd number.
+We do not yet have recommendations on the practical maximum cluster members, but are very interested in hearing from you about what works well (and what does not) in your environment. The design does not impose any constraints (i.e., maximum number, or odd number).
 
-:warning: In the ISO-based deployment, Consul is bundled to store configuration data.  Consul requires an odd number of nodes, so we recommend that ISO-based clusters have 3, 5 or 7 nodes.
+:warning: In the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, so we recommend that ISO-based clusters have 3, 5, or 7 nodes.
 
 ## Hyper-converged, Dedicated, or Mixed-mode
 
 
 
 ## Deployment Method
+StorageOS offers the following deployment options:
+1. ISO-based single node client/server (using ISO to deploy both the control plane and data plane in one VM or physical machine with Docker and dependencies integrated in a single Ubuntu image.
+2. ISO-based multi-node HA server with a client running on each server and containers deployed on the same node as StorageOS for lowest latency.
+3. ISO-based multi-node HA server with a remote client container installation (to integrate with an existing Docker environment running on VMWare)
+4. Container-based installation into existing an Docker environment (available for GA).
+4. Automated Kubernetes-driven installation for an existing Kubernetes environment (available for GA).
+5. Vagrant-based developer edition for VirtualBox.
 
-1. ISO Based Single node Client/Server (using ISO to deploy both Control Plane and Data Plane in one VM or Physical machine with Docker and dependencies integrated in a single Ubuntu image.
-2. ISO Based Multi-Node HA server with client running on each server and containers deployed on the same node as StorageOS for lowest latency.
-3. ISO Based Multi-Node HA server with remote client container install (to integrate with an existing Docker Environment running on VMWare)
-Container based install into existing Docker Environment (available for GA).
-4. Automated Kubernetes driven install for existing Kubernetes environment (available for GA) .
-5. Vagrant based developer edition for VirtualBox.
+This documentation covers deployment types 1 through 3. Live cluster expansion is a manual process that StorageOS will assist with today. We will automated that process for GA. The easiest ways to test StorageOS is to use option 1 or 2 because the entire process is fully automated. If you want to test option 3, refer to the __*StorageOS Stand Alone Client Installation Guide*__. To test the Vagrant installation, contact StorageOS for assistance.
 
-This documentation covers deployment types 1-3. Live cluster expansion is a manual process that StorageOS will assist with today, but this will be automated for GA. The easiest ways to test StorageOS are options 1 or 2 as the entire process is fully automated. If you want to test option 3, please see StorageOS Stand Alone Client Installation Guide. If you want to test the Vagrant install, please contact StorageOS.
-
-
-Please note, this is a Beta version of the software, so should NOT be used for production under any circumstances. Any data stored on this storage array should assumed to be non-essential test data only and may be lost. We are testing a zero downtime, data-in-place upgrade processes now, and this feature will be ready for GA. Until this is ready, assume upgrades may require re-deployment of the product and backup and restore of data.
+**Note**: This is a Beta version of the software. Do NOT, under any circumstances, use this version for production. You should assume that any data stored on this storage array is non-essential test data and may be lost at any time. We are testing a zero downtime, data-in-place upgrade processes now, and this feature will be ready for GA. Until this is ready, assume upgrades may require that you redeploy the product restore data.

@@ -7,43 +7,32 @@ module: overview/architecture
 
 # Architecture Overview
 
-# Deployment Types
+## Deployment types
 
-A StorageOS deployment consists of one or more controllers, and optionally some clients.
+A StorageOS deployment consists of one or more controllers, and one or more optional clients.
 
-**Controllers** take storage capacity from raw disks (local or attached), or remote (e.g. S3-based object stores), adds it to a distributed capacity pool, and then uses the capacity from the pool to present virtual block devices to clients.
+ - Controllers take storage capacity from raw disks (local or attached), or remote (e.g., S3-based object stores), adds it to a distributed capacity pool, and then uses the capacity from the pool to present virtual block devices to clients. Controllers run both the **control plane** and the **data plane** components.
 
-Controllers run both the **control plane** and the **data plane** components.
+ - Clients consume the virtual block devices.  The Docker daemon running on a client interacts with the Docker plugin to present storage to the local containers.
 
-**Clients** consume the virtual block devices.  The Docker daemon running on a client interacts with the Docker plugin to manage presentation of storage to local containers.
+Controllers and Clients can run on separate servers or on the same server in a hyper-converged deployment. You can make storage available to containers running on the controllers or on clients, but you can only add storage capacity (e.g. raw disks, cloud volumes) to controllers.
 
-Controllers and Clients can run on separate servers or on the same server in a hyper-converged deployment.
+## Components
+Controllers run both the control plane and the data plane components, and clients run only the Docker plugin and a subset of the data plane. All components are bundled within the same container and are selected using different runtime parameters.
 
-Storage can be made available to containers running on the controllers or on clients, but storage capacity (e.g. raw disks, cloud volumes), can only be added to controllers.
+### Data plane
+The data plane processes all data access requests, and pools backend storage for presentation to clients. Because the data plane changes infrequently and all restarts interrupt service, it starts as a separate container process.
 
-# Components
+### Control plane
+The control plane configures and schedules activity.   
 
-Controllers run both the control plane and the data plane components, and clients run only the Docker plugin and a subset of the data plane.
-
-All components are bundled within the same container and are selected using different runtime parameters.
-
-## Data Plane
-
-The data plane processes all data access requests and pools backend storage for presentation to clients.  
-
-Because the data plane changes infrequently and any restarts will interrupt service, it is started as a separate container process.
-
-## Control Plane
-
-The control plane is responsible for configuration and scheduling.  
-
-The API handles direct requests or from the Docker plugin, the Web UI or the CLI, and communicates with other nodes in the cluster to take the appropriate action.  It is also responsible for storing state, monitoring health and acting on state changes.  
+The API handles direct requests or requests from the Docker plugin, the Web UI, or the CLI and communicates with other nodes in the cluster to take the appropriate action. It also stores state, monitors health, and takes action on state changes.  
 
 Controller nodes communicate state changes with each other using an embedded message bus (NATS).
 
-Configuration state is stored in an distributed Key/Value store (Currently Consul, with Etcd support coming).  The StorageOS ISO installs Consul on each controller, which requires that ISO-based clusters have an odd number of members (1, 3 or 5 controllers recommended).  This restriction is lifted when an external KV Store is used instead.
+Configuration state is stored in an distributed Key/Value store (currently Consul, with Etcd support coming).  The StorageOS ISO installs Consul on each controller, which requires that ISO-based clusters have an odd number of members (1, 3 or 5 controllers recommended).  This restriction is lifted when an external KV Store is used instead.
 
-A rules engine acts on state changes and a scheduler determines best placement.
+A rules engine acts on state changes and a scheduler determines the best placement.
 
 ## Client
 

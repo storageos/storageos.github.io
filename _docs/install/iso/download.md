@@ -2,7 +2,7 @@
 layout: guide
 title: Downloading the ISO image
 anchor: install
-module: install/download
+module: install/iso/download
 ---
 
 # Downloading the ISO image

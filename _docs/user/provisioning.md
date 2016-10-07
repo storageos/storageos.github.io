@@ -1,7 +1,9 @@
 ---
 layout: guide
 title: Provisioning storage
-anchor: user/provisioning
+anchor: user
+module: user/provisioning
+
 ---
 
 # Provisioning storage

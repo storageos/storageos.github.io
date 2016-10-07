@@ -1,5 +1,8 @@
 ---
 layout: guide
+title: Docker integration
+anchor: admin
+module: admin/docker
 ---
 
 # StorageOS Docker Volume Plugin

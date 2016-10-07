@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Administation Guide
-anchor: admin_guide
+anchor: admin
 
 sections:
 -

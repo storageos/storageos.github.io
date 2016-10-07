@@ -1,7 +1,8 @@
 ---
 layout: guide
 title: Configuring the environment
-anchor: user/Configuring
+anchor: user
+module: user/configuring
 ---
 
 # Configuring your storage environment

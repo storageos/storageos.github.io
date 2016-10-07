@@ -1,7 +1,8 @@
 ---
 layout: guide
 title: Web administration console
-anchor: user/webui
+anchor: user
+module: user/webui
 ---
 
 # Web administration console

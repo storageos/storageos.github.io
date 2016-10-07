@@ -2,7 +2,7 @@
 layout: guide
 title: Installation Prerequisites
 anchor: install
-module: install/isoPrereqs
+module: install/iso/prerequisites
 ---
 
 # Installation Prerequisites

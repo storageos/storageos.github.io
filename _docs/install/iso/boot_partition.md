@@ -2,7 +2,7 @@
 layout: guide
 title: Creating the Boot Partition
 anchor: install
-module: install/vagrant
+module: install/iso/boot_partition
 ---
 
 # Creating a Boot Partition

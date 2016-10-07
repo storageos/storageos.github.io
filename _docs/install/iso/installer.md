@@ -2,7 +2,7 @@
 layout: guide
 title: Installing StorageOS
 anchor: install
-module: install/InstallingStorageOS
+module: install/iso/installer
 ---
 
 # Installing StorageOS

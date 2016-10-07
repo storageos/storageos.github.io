@@ -15,10 +15,6 @@ sections:
   -
     title: Deployment Options
     description: Learn about the various ways to deploy StorageOS.
-    module: overview/deployment    
-  -
-    title: Hello World Walkthrough
-    description: See how easy it is to provision a container using StorageOS persistent storage.
-    module: overview/helloworld
+    module: overview/deployment
 
 ---

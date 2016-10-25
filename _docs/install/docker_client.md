@@ -58,6 +58,8 @@ There are a few manual steps that must be run on the host before the StorageOS c
   MountFlags=shared
   ```
 
+  Note that you will probably need to create the `/etc/systemd/system/docker.service.d` directory.
+
   Then reload `systemd` config and restart docker:
 
   ```

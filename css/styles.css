@@ -40,6 +40,10 @@ a:hover, a:focus {
 p {
 	font-size: 17px;
 }
+ul, ol {
+	font-size: 17px;
+}
+
 .columns.left {
 	float: left !important;
 }

@@ -344,6 +344,13 @@ ul.top-bar-links li a.none-button {
 	margin-bottom: 25px;
 }
 
+a:link {
+	 text-decoration: underline;
+}
+.guide-list a:link {
+	 text-decoration: none;
+}
+
 /* FORMS */
 input.form-control {
 	border-radius: 0;

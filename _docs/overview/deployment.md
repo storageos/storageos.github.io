@@ -1,15 +1,47 @@
 ---
 layout: guide
-title: Deployment Options
+title: Installation Requirements
 anchor: overview
 module: overview/deployment
 ---
 
-# Deployment Options
+# Installation Requirements
 
-There are multiple deployment options to suit different environments.
+There are a number of requirements that need to be met based on your environment and testing scope.
 
-## Number of Controllers
+## Before you Start
+Before you start, please read this section before moving to the Installation Guide section as it may save you time in the end!
+
+StorageOS is a Linux only installation, however depending on your testing scope, StroageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
+
+Recommendations on the practical maximum cluster members have yet to be published.  We are however interested in hearing from you on what works (and what doesn’t) in your environment.  The design does not for example impose constraints such as maximum, or odd number of nodes.
+
+## Beta Release
+Note: For the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, we therefore stipulate ISO-based clusters have 3, 5, or 7 nodes.
+
+For this Beta release we have two installation options (1) an Ubuntu Linux ISO image and (2) a Vagrant Ubuntu Linux image.  Either method can be used with your choice of Operating System (OS).
+
+- If you are planning to explore StorageOS on Linux server infrastructure in VMs or on bare metal, the ISO image installation will be your preferred choice.
+
+- If you are planning to explore StorageOS on a desktop or notebook, Vagrant will give you the added convenience of managing the StorageOS machine image acquisition and setup for you.
+
+- **&#x270F; Note**: For secure, firewalled enterprise environments, acquiring the necessary Vagrant images may fail depending on your security policies – in this case consider the ISO install.
+
+## VirtualBox
+For either installation method, you’ll need to install VirtualBox for the OS you’ll be hosting this from.  At the time of writing, VirtualBox is available for Windows, Linux, macOS, and Solaris hosts.  If you don’t already have this installed, VirtualBox is freely available as Open Source software and can be obtained from [VirtualBox](https://www.virtualbox.org) under the terms of the GNU General Public License V2.
+
+All the necessary documentation required to get you up and running with VirtualBox is available from their website.
+If you are planning to use the ISO install method, you can proceed to the next section.
+
+## Vagrant
+At the time of writing, Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments.  Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be any simpler.
+
+Vagrant is freely available as Open Source software and can be obtained from [Vagrant](http://vagrantup.com) under the terms of the MIT License.
+
+All the necessary documentation required to get you up and running with Vagrant is available from the website.
+
+
+<!--- ## Number of Controllers
 
 You can deploy StorageOS as a single-node or as multiple-node cluster:
 
@@ -36,4 +68,4 @@ StorageOS offers the following deployment options:
 
 This documentation covers deployment types 1 through 3. Live cluster expansion is a manual process that StorageOS will assist with today. We will automated that process for GA. The easiest ways to test StorageOS is to use option 1 or 2 because the entire process is fully automated. If you want to test option 3, refer to the __*StorageOS Stand Alone Client Installation Guide*__. To test the Vagrant installation, contact StorageOS for assistance.
 
-**Note**: This is a Beta version of the software. Do NOT, under any circumstances, use this version for production. You should assume that any data stored on this storage array is non-essential test data and may be lost at any time. We are testing a zero downtime, data-in-place upgrade processes now, and this feature will be ready for GA. Until this is ready, assume upgrades may require that you redeploy the product restore data.
+**Note**: This is a Beta version of the software. Do NOT, under any circumstances, use this version for production. You should assume that any data stored on this storage array is non-essential test data and may be lost at any time. We are testing a zero downtime, data-in-place upgrade processes now, and this feature will be ready for GA. Until this is ready, assume upgrades may require that you redeploy the product restore data. --->

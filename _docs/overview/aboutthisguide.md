@@ -15,6 +15,10 @@ No previous experience with working with Docker or containers is necessary but a
 ## Purpose of this document
 By the end of this document you should have a good understanding of how StorageOS works, the problems it can solve for your business and be better positioned for making you next storage infrastructure choice.
 
+This StorageOS Beta enables users explore our software prior to General Availability (GA) release.  Any feedback on software problems and usability will help improve our product and allows us to track issues and fix them.
+
+As public Beta software, StorageOS has yet to be released commercially and may contain imperfections causing the software not to perform as well as GA release software.  We therefore recommend you only install this on non-production, non-business critical infrastructure or devices.
+
 ## Structure
 This guide is structured to get you quickly setup and running with StorageOS and Docker so you can focus on exploring the product features and how these work.
 

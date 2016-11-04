@@ -26,7 +26,7 @@ $ sudo /usr/local/bin/storageos-docker-plugin server
 
 ## Configuration
 
-There are two configuration steps.  
+There are two configuration steps.
 
 ### Docker
 
@@ -112,7 +112,7 @@ There should also be a corresponding volume in `/storageos`
 
 ## Troubleshooting
 
-There are few relevant logs to tail when troubleshooting.  
+There are few relevant logs to tail when troubleshooting.
 
 #### Plugin
 

@@ -17,7 +17,7 @@ sections:
     description: Understand the StorageOS components.
     module: overview/architecture
   -
-    title: Deployment Options
+    title: Installation Requirements
     description: Learn about the various ways to deploy StorageOS.
     module: overview/deployment
 

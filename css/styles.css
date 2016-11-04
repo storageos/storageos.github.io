@@ -40,6 +40,10 @@ a:hover, a:focus {
 p {
 	font-size: 17px;
 }
+ul, ol {
+	font-size: 17px;
+}
+
 .columns.left {
 	float: left !important;
 }
@@ -342,6 +346,13 @@ ul.top-bar-links li a.none-button {
 }
 .main-content-wrapper p {
 	margin-bottom: 25px;
+}
+
+a:link {
+	 text-decoration: underline;
+}
+.guide-list a:link {
+	 text-decoration: none;
 }
 
 /* FORMS */

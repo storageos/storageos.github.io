@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: Docker Installation
+title: Confirming Installation
 anchor: install
-module: install/docker
+module: install/confirm
 ---
 
-# Docker Installation
+# Confirming Installation
 
 StorageOS Control plane API is accessible either through port 80 or 8000.
 

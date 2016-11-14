@@ -5,7 +5,7 @@ anchor: overview
 module: overview/whatisstorageos
 ---
 
-# What is StorageOS?
+# II. What is StorageOS?
 
 StorageOS is an enterprise class Software Defined Storage (SDS) solution optimised for, but not limited to, container-based workloads.  StorageOS works by leveraging the available storage in servers, virtual machines and cloud instances, aggregating and presenting this back as scalable, fully featured software defined enterprise storage.  In doing so, StorageOS ensures data is made portable, persistent, and stored securely and efficiently.
 
@@ -15,7 +15,7 @@ StorageOS has been built using modern tools and design methodologies to meet the
 
 StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-based infrastructure.  It is designed from the ground up for automation.  Management is simple using an easy to use API, CLI and Web-based UI.  It is available as a free developer tier and pay-as-you-go for beyond 1TB capacities and enterprise features.
 
-## Why use containers?
+## A. Why use containers?
 Containerisation or Microservices are arguably the next big wave of disruption in technology infrastructure since VMware and virtualisation.
 
 A container comprises an entire runtime environment for an application with all its dependencies in a single package.  By containerising applications, a hosting platform and its dependencies will not run the risk of interfering with application dependencies.
@@ -26,7 +26,7 @@ Being highly portable, containers can be deployed to a variety of public and pri
 
 
 
-## How does StorageOS add value?
+## B. How does StorageOS add value?
 
 StorageOS helps developers move from **host-centric** infrastructure to a more abstracted **container-centric** infrastructure, providing the storage features required to take full advantage of the benefits inherent to containers.
 

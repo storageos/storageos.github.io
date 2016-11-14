@@ -5,15 +5,21 @@ anchor: install
 module: install/vagrant
 ---
 
-# Vagrant Installation
+# IV Vagrant Installation
 
 To begin the Vagrant installation you will need to your base directory as discussed at the end of the previous section.  So for a developer you might want to use ~/storageos.
 
-## Setting up the Vagrant Environmnet
+As well as having Vagrant installed, you will also need to have VirtualBox installed which was covered in the previous sections.
 
-Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`.
+## A. Setting up the Vagrant Environmnet
 
-It is also recommended you add the line `"pull = false"` as shown below to surpress verbose messages during the initialisation.
+Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.
+
+### i) Modifying the Vagrantfile
+
+* To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`.
+
+* It is also recommended you add the line `"pull = false"` as shown below to surpress verbose messages during the initialisation.
 
 ```ruby
 # Set to 1 for single, or 3 or 5 for HA
@@ -29,7 +35,7 @@ $leader_ip = $node_ips[0]
 
 pull = false
 ```
-## Initialise the Cluster
+## B. Initialise the Cluster
 
 From the base storageos folder initialise the StorageOS Vagrant cluster:
 
@@ -54,7 +60,7 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
-## Checking the Installation
+## C. Checking the Installation
 
 Based on the default Vagrantfile paramaters you will see 8 vdi volumes allocated to each node:
 
@@ -99,7 +105,7 @@ Connection to 127.0.0.1 closed.
 StorageOS:storageos julian$
 ```
 
-## Troubleshooting the Installation
+## D. Troubleshooting the Installation
 
 With the Vagrant build sometimes StorageOS doesn't start properly or start at all.  On occasions consul may not have started either.  In this case it will be necessary to check the running status of the containers on each of your newly provisioned StorageOS Vagrant host.
 

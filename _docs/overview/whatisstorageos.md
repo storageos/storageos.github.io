@@ -13,7 +13,7 @@ Importantly, StorageOS provides access to persistent data from within containers
 
 StorageOS has been built using modern tools and design methodologies to meet the demands of modern infrastructure and workflows allowing application owners to seamlessly provision and manage their data around rapid development cycles.
 
-StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-based infrastructure.  It is designed from the ground up for automation.  Management is simple using an easy to use API, CLI and Web-based UI.  It is available as a free developer tier and pay-as-you-go for beyond 1TB capacities and enterprise features.
+StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-based infrastructure.  It is designed from the ground up for automation.  Management is simple using an easy to use API, CLI and Web-based UI.  It is available as a free developer tier and pay-as-you-go for beyond 1TB capacities and for enterprise features.
 
 ## A. Why use containers?
 Containerisation or Microservices are arguably the next big wave of disruption in technology infrastructure since VMware and virtualisation.
@@ -32,6 +32,22 @@ StorageOS helps developers move from **host-centric** infrastructure to a more a
 
 StorageOS satisfies a number of common needs of applications running in production, including:
 
+- Replication
+- High Availability
+- Performance
+- Thin provisioning
+- De-duplication
+- Compression
+- Encryption
+- Business rules
+- Resource labelling
+- Resource monitoring
+- Identity and authorisation
+
+This provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
+
+
+<!---
 - [replication](/docs/user-guide/pods/) (guarantees data one or more nodes for resilience)
 - [high availability](/docs/user-guide/volumes/)
 - [performance](/docs/user-guide/secrets/)
@@ -47,3 +63,4 @@ StorageOS satisfies a number of common needs of applications running in producti
 This provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
 
 For more details, see the [user guide](/docs/user-guide/).
+--->

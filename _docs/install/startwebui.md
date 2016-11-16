@@ -15,11 +15,12 @@ To verify that your installation:
 
 1. Open a browser and enter the IP address of your VM. You connect to StorageOS, as shown below:
 
- ![image](/images/docs/isoinstall/VerifyInstall.png)
+    <img src="/images/docs/iso/weblogin.png" width="640">
+
 
 2. Enter the username __storageos__ and password __storageos__. The StorageOS Dashboard is displayed:
 
-  ![image](/images/docs/isoinstall/VerifyInstall2.png)
+    <img src="/images/docs/iso/webui.png" width="640">
 
 3. Click __Configuration__, then __Controllers__. You can see the three installed StorageOS controllers and their capacity, with one of the three nodes as a scheduler (the Scheduler column is __true__ for that node) :
 

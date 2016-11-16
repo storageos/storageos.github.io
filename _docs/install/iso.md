@@ -214,22 +214,87 @@ These instructions direct you to select the options that work best with the beta
 
     <img src="/images/docs/iso/27-isocluster.png" width="640">
 
-26. Confirm or modify the IP address of the new cluster.
+26. Confirm or modify the IP address of the new cluster
 
     If this is the first node of your cluster, please ensure you note down this IP address as the subsequent nodes in the cluster will need this when you set them up next
 
     <img src="/images/docs/iso/28-isocluster.png" width="640"> <!--- reduce image size to 640 pixels --->
 
+27. If this is a member node you will also be asked to enter the IP address of the StorageOS cluster leader
+
+    <img src="/images/docs/iso/28a-isoleaderip.png" width="640"> <!--- reduce image size to 640 pixels --->
+
+
 ### vii) Completing your Installation
 
-27. At this point the installation should be complete - select **Continue to restart the VM
+28. At this point the installation should be complete - select **Continue** to restart the VM
 
     <img src="/images/docs/iso/29-isocomplete.png" width="647">
 
     <img src="/images/docs/iso/30-isosigterm.png" width="647">
 
-28. On startup you will be presented with an MOTD on the console - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
+
+29. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
 
     <img src="/images/docs/iso/31-isoconsole.png" width="640"> <!--- reduce image size to 640 pixels --->
 
-    You should now have successfully completed the StorageOS cluster setup.
+### viii.) Confirm SSH has been installed and Docker containers are running
+
+To connect to an ISO install StorageOS node, simply ssh from the terminal.  When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
+
+```text
+StorageOS:storageos julian$ ssh -l storageos storageos-3
+The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
+ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.1.5.173' (ECDSA) to the list of known hosts.
+storageos@10.1.5.173's password:
+Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com/
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+```
+### ix.) Confirm Docker containers are running
+
+Running the `docker ps` command will display what is currently running on the node.
+
+```text
+storageos@storageos-01:~$ docker ps -a
+CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
+4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
+3419a5cd1947  quay.io/storageos/storageos:beta   "/bin/storageos boots"   12 days ago    Exited (0) 12 days ago                                                                                                                  storageos_cli_run_1
+1ae8a05b15db  quay.io/storageos/storageos:beta   "/bin/storageos contr"   12 days ago    Up 3 minutes            0.0.0.0:4222->4222/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8222->8222/tcp, 0.0.0.0:80->8000/tcp                    storageos_control_1
+3dd074c85fbd  quay.io/storageos/influxdb:beta    "influxd --config /et"   12 days ago    Up 3 minutes            2003/tcp, 4242/tcp, 8083/tcp, 8088/tcp, 25826/tcp, 8086/udp, 0.0.0.0:8086->8086/tcp, 0.0.0.0:25826->25826/udp   storageos_influxdb_1
+87e86b1b434e  quay.io/storageos/storageos:beta   "/bin/storageos datap"   12 days ago    Up 4 minutes                                                                                                                            storageos_data_1
+```
+
+You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
+
+```text
+root@storageos-03:~# storageos status
+        Name                      Command               State                                                       Ports
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp
+storageos_data_1       /bin/storageos dataplane         Up
+storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp
+root@storageos-03:~#
+```
+
+To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
+
+```text
+storageos@storageos-01:~$ logout
+Connection to 10.1.5.171 closed.
+storageos:~ julian$
+```
+
+You should now have successfully completed the StorageOS cluster setup.

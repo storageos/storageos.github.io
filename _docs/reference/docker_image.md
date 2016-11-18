@@ -1,8 +1,10 @@
 ---
 layout: guide
 title: Docker image reference
-anchor: reference/api
+anchor: reference
+module: reference/docker_image
 ---
+
 
 # Docker image reference
 

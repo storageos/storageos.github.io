@@ -5,11 +5,11 @@ anchor: install
 module: install/troubleshoot
 ---
 
-# VI. Troubleshooting Guide
+# VI. <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
-With the Vagrant build sometimes StorageOS doesn't start properly or start at all.  On occasions consul may not have started either.
+In this section we have tried to identidy any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
 
-It is also possible that you may encounter problems with the ISO build as well though this install is much less prone to issues.
+It is also possible that you may encounter problems with the ISO build as well though this install is much less prone to problems with our Beta release.
 
 ## A. Connecting to your StorageOS node
 
@@ -140,7 +140,7 @@ CONTAINER ID  IMAGE          COMMAND                 CREATED         STATUS     
 53fb97d39903  consul:v0.6.4  "docker-entrypoint.sh"  59 minutes ago  Up 59 minutes           consul
 ```
 
-### ii.) Restart the StorageOS dataplane and controlplane
+### ii.) Start the StorageOS dataplane and controlplane
 
 In this example Vagrant has failed to start StorageOS properly and it will be necessary to get the dataplane and controlplane restarted.
 
@@ -167,7 +167,21 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### iii.) Reinstall the Storage Docker image
+### iii.) Restart the StorageOS dataplance and controlplane
+
+Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reasin only one of the services has been restored to a healthy state, run the command for a second time.
+
+```
+vagrant@storageos-3:~$ docker ps -a
+CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                     PORTS                                                                                                           NAMES
+a21949a6db32        quay.io/storageos/controlplane:alpha   "/bin/storageos boots"   3 minutes ago       Exited (0) 3 minutes ago                                                                                                                   storageos_cli_run_1
+7d919f007f0b        consul:v0.6.4                          "docker-entrypoint.sh"   3 minutes ago       Up 3 minutes                                                                                                                               consul
+273354a47790        quay.io/storageos/controlplane:alpha   "/bin/storageos serve"   11 minutes ago      Up 3 minutes (unhealthy)   0.0.0.0:4222->4222/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8222->8222/tcp, 0.0.0.0:80->8000/tcp                    storageos_control_1
+d7d3137a78ce        quay.io/storageos/influxdb:alpha       "influxd --config /et"   11 minutes ago      Up 3 minutes               2003/tcp, 4242/tcp, 8083/tcp, 8088/tcp, 25826/tcp, 8086/udp, 0.0.0.0:8086->8086/tcp, 0.0.0.0:25826->25826/udp   storageos_influxdb_1
+fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   4 hours ago         Up 3 minutes (unhealthy)                                                                                                                   storageos_data_1
+```
+
+### iv.) Reinstall the StorageOS Docker image
 
 Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again
 
@@ -236,9 +250,9 @@ c7e04f9f7972        quay.io/storageos/controlplane:alpha   "/bin/storageos serve
 53fb97d39903        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up About an hour                                                                                                                         consul
 ```
 
-### iv.) StorageOS still doesn't restart
+### v.) StorageOS still doesn't restart
 
-Another issue that miing arise is recieving the following error after unsuccessfully restarting the StrageOS container.
+Another issue that may arise is receiving the following error after unsuccessfully restarting the StrageOS container.
 
 ```text
 ERROR: failed to register layer: rename /var/lib/docker/image/aufs/layerdb/tmp/layer-176027139 /var/lib/docker/image/aufs/layerdb/sha256/b3aef0b33ad82176867819248a8d54e06233ecd62c7147a8c864060dd6d904d9: directory not empty
@@ -267,7 +281,7 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### iv.) Restarting consul
+### vi.) Restarting consul
 
 On occasions it is possible consul may have stalled on startup and needs to be restarted.
 
@@ -292,6 +306,24 @@ ba641cbc2e36: Pull complete
 048b29acd8e7: Pull complete
 Digest: sha256:4a6a91f7981d2c78b8746075859a2ff5ae938bae5da3b9b5637714fc7810fbb2
 Status: Downloaded newer image for consul:latest
+```
+
+If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should reolve this problem.
+
+```text
+vagrant@storageos-1:~$ docker pull consul
+Using default tag: latest
+latest: Pulling from library/consul
+3690ec4760f9: Downloading [=====>                                             ]   256 kB/2.313 MB
+ba641cbc2e36: Download complete
+2a0885c9cb15: Downloading [=>                                                 ] 290.7 kB/9.182 MB
+8baed0bc57fe: Waiting
+048b29acd8e7: Waiting
+error pulling image configuration: Get https://dseasb33srnrn.cloudfront.net/registry-v2/docker/registry/v2/blobs/sha256/40/40d2b6c205a626671dcadf5dd342884a95fde30731c6011bfd4c586637d62c0b/data?Expires=1479385136&Signature=b8xit2KaqDCxVKBEKBnAL7X-erGEkACDPMYELPNuYGoneysX7B0~cpV80FRvvVjeKbiew0sTOyyGZDERI0B4jCjQ5B7DJciwGI7MfqMV~mlw8tiywNp902revkNDmOTkpq7roz8Gp6WSVevZEH2mN3hPDh5Lw6vBSRpn-kzAC-Q_&Key-Pair-Id=APKAJECH5M7VWIS5YZ6Q: read tcp 10.0.2.15:37838->54.230.11.194:443: read: connection reset by peer
+
+vagrant@storageos-1:~$ logout
+Connection to 127.0.0.1 closed.
+storageos:storageos julian$ vagrant reload
 ```
 
 Finally `consul` will need to be started

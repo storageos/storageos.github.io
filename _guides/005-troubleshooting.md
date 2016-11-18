@@ -12,5 +12,4 @@ sections:
   title: System log
   description: View the system logs.
   module: troubleshooting/logs
-
 ---

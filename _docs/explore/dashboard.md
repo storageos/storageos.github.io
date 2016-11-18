@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Understanding the Dashboard
-anchor: user
-module: user/dashboard
+anchor: explore
+module: explore/dashboard
 ---
 
 # Understanding the Dashboard

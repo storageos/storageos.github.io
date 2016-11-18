@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Docker integration
-anchor: admin
-module: admin/docker
+anchor: reference
+module: reference/docker
 ---
 
 # StorageOS Docker Volume Plugin
@@ -34,7 +34,7 @@ Firstly, the Docker daemon needs to know to look for the plugin.  It checks for 
 
 Create `/etc/docker/plugins/storageos.json` with contents:
 
-```
+```javascript
 {
   "Name": "storageos",
   "Addr": "http://localhost:5705/"

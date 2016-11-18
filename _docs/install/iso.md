@@ -35,7 +35,8 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 9. Click ![Create](/images/docs/iso/vbcreate.png) to proceed to the next step of configuring the virtual disk
 10. A resulting dialogue box will appear
 
-    <img src="/images/docs/iso/vbcreate1.png" width="640">
+    ![screenshot](/images/docs/iso/vbcreate1.png)
+
 
 >**&#x270F; Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
 >
@@ -48,7 +49,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 3. Under **Storage on physical hard drive** select **Dynamically allocated**
 4. Click ![Create](/images/docs/iso/vbcreate.png) to create you VM image
 
-    <img src="/images/docs/iso/vbcreate2.png" width="640">
+    ![screenshot](/images/docs/iso/vbcreate2.png)
 
 ### iii) Configure Disk Settings
 
@@ -76,7 +77,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 5. Confirm that an adapter is present next to the **Name:** lable
 6. Finish by clicking ![image](/images/docs/iso/ok.png)
 
-    <img src="/images/docs/iso/vbnet.png" width="640">
+    ![screenshot](/images/docs/iso/vbnet.png)
 
 >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
 
@@ -91,7 +92,7 @@ These instructions direct you to select the options that work best with the beta
 
 1. Begin by starting up VirtualBox and selecting the first VM you created in the previous section.
 
-    <img src="/images/docs/iso/vms.png" width="640">
+    ![screenshot](/images/docs/iso/vms.png)
 
 1.  Select your preferred language
 
@@ -107,23 +108,23 @@ These instructions direct you to select the options that work best with the beta
 
     To do this use the **Tab** key to move across the options, use the **Space Bar** to select an option and use the **Enter** key to accept an option.
 
-    <img src="/images/docs/iso/0-isomenu.png" width="640">
+    ![screenshot](/images/docs/iso/0-isomenu.png)
 
 2. Select your preferred language
 
-    <img src="/images/docs/iso/3-isolang.png" width="640">
+    ![screenshot](/images/docs/iso/3-isolang.png)
 
 3. Select your location
 
-    <img src="/images/docs/iso/4-isotime.png" width="640">
+    ![screenshot](/images/docs/iso/4-isotime.png)
 
 4. Select **No** to manually setup your keyboard
 
-    <img src="/images/docs/iso/5-isokybd.png" width="640">
+    ![screenshot](/images/docs/iso/5-isokybd.png)
 
 5. Select the country that matches your keyboard
 
-    <img src="/images/docs/iso/6-isokybd.png" width="640">
+    ![screenshot](/images/docs/iso/6-isokybd.png)
 
 6. Select the country layout that matches your keyboard
 
@@ -133,110 +134,110 @@ These instructions direct you to select the options that work best with the beta
 
 7. Enter a hostame for the system - for example you can use the format **storageos-<##>** for each of your VMs as they increment
 
-    <img src="/images/docs/iso/9-isonet.png" width="640">
+    ![screenshot](/images/docs/iso/9-isonet.png)
 
 8. Setup the user name you will use to login and administer each of your you nodes - the same name for all nodes is recommended.
 
-   <img src="/images/docs/iso/10-isousers.png" width="640">
+   ![screenshot](/images/docs/iso/10-isousers.png)
 
 9. Enter a name - for example, the same name as what you just entered earlier.
 
-   <img src="/images/docs/iso/11-isousers.png" width="640">
+   ![screenshot](/images/docs/iso/11-isousers.png)
 
 10. Enter the password - again, the same password for all nodes is recommended.
 
-    <img src="/images/docs/iso/12-isousers.png" width="640">
+    ![screenshot](/images/docs/iso/12-isousers.png)
 
 11. Re-enter the password
 
-    <img src="/images/docs/iso/13-isousers.png" width="640">
+    ![screenshot](/images/docs/iso/13-isousers.png)
 
 12. Select **No** to not encrypt your home directory
 
-    <img src="/images/docs/iso/14-isousers.png" width="640">
+    ![screenshot](/images/docs/iso/14-isousers.png)
 
 13. Select **Yes** to accept the suggested time zone or if this is incorrect follow the options to set this correctly
 
-    <img src="/images/docs/iso/15-isoclock.png" width="640">
+    ![screenshot](/images/docs/iso/15-isoclock.png)
 
 ### iv) Disk Partition Setup
 
 14. For the disk partition setup, select the default option, **Guided - use entire disk and set up LVM**
 
-    <img src="/images/docs/iso/16-isopart.png" width="640">
+    ![screenshot](/images/docs/iso/16-isopart.png)
 
 15. Select the default disk device to partition
 
-    <img src="/images/docs/iso/17-isopart.png" width="640">
+    ![screenshot](/images/docs/iso/17-isopart.png)
 
 16. Accept **Yes** to write the changes and configure the Logical Volume Manager
 
-    <img src="/images/docs/iso/18-isopart.png" width="640">
+    ![screenshot](/images/docs/iso/18-isopart.png)
 
 17. Accept the default, maximum available size for your partition - this should be in the region of 16GB
 
-    <img src="/images/docs/iso/19-isopart.png" width="647">
+    ![screenshot](/images/docs/iso/19-isopart.png)
 
 18. Select **Yes** to accept the changes to be writtin to disk
 
-    <img src="/images/docs/iso/20-isopart.png" width="640">
+    ![screenshot](/images/docs/iso/20-isopart.png)
 
 ### v) Configuring Updates and Packages
 
-19. If you use a proxy server to access the internet, please entere it now, otherwise leave this black and contuinue
+19. If you use a proxy server to access the internet, please enter it now, otherwise leave this blank and continue
 
-    <img src="/images/docs/iso/21-isopack.png" width="647">
+    ![screenshot](/images/docs/iso/21-isopack.png)
 
 20. We will not be using automatic updates for this Beta build so please select the default "No automatic updates"
 
-    <img src="/images/docs/iso/22-isoupd.png" width="640">
+    ![screenshot](/images/docs/iso/22-isoupd.png)
 
 21. The only package we require for StorageOS is the **OpenSSH Server** - please select this option and continue
 
-    <img src="/images/docs/iso/23-isosw.png" width="640">
+    ![screenshot](/images/docs/iso/23-isosw.png)
 
 ### vi) GRUB and StorageOS Cluster Stetup
 
 22. Select **Yes** to install the GRUB boot loader to the MBR
 
-    <img src="/images/docs/iso/24-isogrub.png" width="647">
+    ![screenshot](/images/docs/iso/24-isogrub.png)
 
 23. If this is the first node of your cluster select **Yes**
 
-    <img src="/images/docs/iso/25-isocluster.png" width="640">
+    ![screenshot](/images/docs/iso/25-isocluster.png)
 
 24. If ths is not the first node of your cluster, select **No**
 
-    <img src="/images/docs/iso/26-isocluster.png" width="640">
+    ![screenshot](/images/docs/iso/26-isocluster.png)
 
 25. Select the number of nodes you wish to setup in the cluster
 >**&#x270F; Note**: The number of nodes available are odd - this is a restriction of consul
 
-    <img src="/images/docs/iso/27-isocluster.png" width="640">
+    ![screenshot](/images/docs/iso/27-isocluster.png)
 
 26. Confirm or modify the IP address of the new cluster
 
     If this is the first node of your cluster, please ensure you note down this IP address as the subsequent nodes in the cluster will need this when you set them up next
 
-    <img src="/images/docs/iso/28-isocluster.png" width="640"> <!--- reduce image size to 640 pixels --->
+    ![screenshot](/images/docs/iso/28-isocluster.png) <!--- reduce image size to 640 pixels --->
 
 27. If this is a member node you will also be asked to enter the IP address of the StorageOS cluster leader
 
-    <img src="/images/docs/iso/28a-isoleaderip.png" width="640"> <!--- reduce image size to 640 pixels --->
+    ![screenshot](/images/docs/iso/28a-isoleaderip.png) <!--- reduce image size to 640 pixels --->
 
 
 ### vii) Completing your Installation
 
 28. At this point the installation should be complete - select **Continue** to restart the VM
 
-    <img src="/images/docs/iso/29-isocomplete.png" width="647">
+    ![screenshot](/images/docs/iso/29-isocomplete.png)
 
-    <img src="/images/docs/iso/30-isosigterm.png" width="647">
+    ![screenshot](/images/docs/iso/30-isosigterm.png)
 
 
 29. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
 
-    <img src="/images/docs/iso/31-isoconsole.png" width="640"> <!--- reduce image size to 640 pixels --->
+    ![screenshot](/images/docs/iso/31-isoconsole.png) <!--- reduce image size to 640 pixels --->
 
 ### viii.) Confirm SSH has been installed and Docker containers are running
 

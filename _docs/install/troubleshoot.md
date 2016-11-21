@@ -183,72 +183,71 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
 
 ### Reinstall the StorageOS Docker image
 
-Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again
+1.  Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again
 
-```text
-root@storageos-3:~# storageos start
-Pulling data (quay.io/storageos/controlplane:alpha)...
-alpha: Pulling from storageos/controlplane
-f794c1176293: Pull complete
-3e5338dad32b: Pull complete
-314b32cad781: Pull complete
-Digest: sha256:b73de9eb789f47f0d8205ea8afa3ec910d6f240eff439563f8051e3a84e5af15
-Status: Downloaded newer image for quay.io/storageos/controlplane:alpha
-Creating storageos_data_1
-Pulling influxdb (quay.io/storageos/influxdb:alpha)...
-ERROR: read tcp 10.0.2.15:54794->54.235.104.1:443: read: connection reset by peer
-root@storageos-3:~# storageos start
-Pulling influxdb (quay.io/storageos/influxdb:alpha)...
-ERROR: read tcp 10.0.2.15:56546->54.243.130.124:443: read: connection reset by peer
-```
+    ```text
+    root@storageos-3:~# storageos start
+    Pulling data (quay.io/storageos/controlplane:alpha)...
+    alpha: Pulling from storageos/controlplane
+    f794c1176293: Pull complete
+    3e5338dad32b: Pull complete
+    314b32cad781: Pull complete
+    Digest: sha256:b73de9eb789f47f0d8205ea8afa3ec910d6f240eff439563f8051e3a84e5af15
+    Status: Downloaded newer image for quay.io/storageos/controlplane:alpha
+    Creating storageos_data_1
+    Pulling influxdb (quay.io/storageos/influxdb:alpha)...
+    ERROR: read tcp 10.0.2.15:54794->54.235.104.1:443: read: connection reset by peer
+    root@storageos-3:~# storageos start
+    Pulling influxdb (quay.io/storageos/influxdb:alpha)...
+    ERROR: read tcp 10.0.2.15:56546->54.243.130.124:443: read: connection reset by peer
+    ```
 
-Stop and remove StorageOS
+2.  Stop and remove StorageOS
 
-```text
-root@storageos-3:~# docker ps -a
-CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                      PORTS               NAMES
-59bd3226d150        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   35 seconds ago      Up 34 seconds (unhealthy)                       storageos_data_1
-01640ec9b15e        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up 7 minutes                                    consul
-root@storageos-3:~# docker stop 59bd3226d150
-59bd3226d150
-root@storageos-3:~# docker rm 59bd3226d150
-59bd3226d150
-```
+    ```text
+    root@storageos-3:~# docker ps -a
+    CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                      PORTS               NAMES
+    59bd3226d150        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   35 seconds ago      Up 34 seconds (unhealthy)                       storageos_data_1
+    01640ec9b15e        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up 7 minutes                                    consul
+    root@storageos-3:~# docker stop 59bd3226d150
+    59bd3226d150
+    root@storageos-3:~# docker rm 59bd3226d150
+    59bd3226d150
+    ```
 
-Remove StorageOS image
+3.  Remove StorageOS image
 
-```text
-root@storageos-3:~# docker images
-REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
-consul                           v0.6.4              b0971c9ec426        3 weeks ago         32.44 MB
-quay.io/storageos/controlplane   alpha               659de31e983d        7 weeks ago         41.17 MB
+    ```text
+    root@storageos-3:~# docker images
+    REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+    consul                           v0.6.4              b0971c9ec426        3 weeks ago         32.44 MB
+    quay.io/storageos/controlplane   alpha               659de31e983d        7 weeks ago         41.17 MB
 
-root@storageos-3:~# docker rmi 659de31e983d
-Untagged: quay.io/storageos/controlplane:alpha
-Untagged: quay.io/storageos/controlplane@sha256:b73de9eb789f47f0d8205ea8afa3ec910d6f240eff439563f8051e3a84e5af15
-Deleted: sha256:659de31e983d0e7772975d8f2c341f0803aa37bd28a2cb890404fd8c43d531fd
-Deleted: sha256:ce9b1b8e6c20bd44c29e55a6b632b20476dff6e3b66cbea67089757cdac5e3e9
-Deleted: sha256:e85b28522ccfb439cb81a2cad693f5d6f63f3ab20b8616fdb90c81da1dce93fb
-Deleted: sha256:e8c82ee2e9341d06e1afc4ace4347cab6753edcba60a928d46cfae5a73e6359d
-```
+    root@storageos-3:~# docker rmi 659de31e983d
+    Untagged: quay.io/storageos/controlplane:alpha
+    Untagged: quay.io/storageos/controlplane@sha256:b73de9eb789f47f0d8205ea8afa3ec910d6f240eff439563f8051e3a84e5af15
+    Deleted: sha256:659de31e983d0e7772975d8f2c341f0803aa37bd28a2cb890404fd8c43d531fd
+    Deleted: sha256:ce9b1b8e6c20bd44c29e55a6b632b20476dff6e3b66cbea67089757cdac5e3e9
+    Deleted: sha256:e85b28522ccfb439cb81a2cad693f5d6f63f3ab20b8616fdb90c81da1dce93fb
+    Deleted: sha256:e8c82ee2e9341d06e1afc4ace4347cab6753edcba60a928d46cfae5a73e6359d
+    ```
 
-Restart StorageOS container
+4.  Restart StorageOS container
 
-```text
-root@storageos-3:~# storageos start
-```
+    ```text
+    root@storageos-3:~# storageos start
+    ```
 
+5.  Confirm status of the StorageOS container
 
-Confirm status of the StorageOS container
-
-```text
-root@storageos-2:~# docker ps -a
-CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                   PORTS                                                                                                           NAMES
-c7e04f9f7972        quay.io/storageos/controlplane:alpha   "/bin/storageos serve"   9 minutes ago       Up 9 minutes (healthy)   0.0.0.0:4222->4222/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8222->8222/tcp, 0.0.0.0:80->8000/tcp                    storageos_control_1
-5c28f3cfae0e        quay.io/storageos/influxdb:alpha       "influxd --config /et"   9 minutes ago       Up 9 minutes             2003/tcp, 4242/tcp, 8083/tcp, 8088/tcp, 25826/tcp, 8086/udp, 0.0.0.0:8086->8086/tcp, 0.0.0.0:25826->25826/udp   storageos_influxdb_1
-28e5108cf8dd        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   9 minutes ago       Up 9 minutes (healthy)                                                                                                                   storageos_data_1
-53fb97d39903        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up About an hour                                                                                                                         consul
-```
+    ```text
+    root@storageos-2:~# docker ps -a
+    CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                   PORTS                                                                                                           NAMES
+    c7e04f9f7972        quay.io/storageos/controlplane:alpha   "/bin/storageos serve"   9 minutes ago       Up 9 minutes (healthy)   0.0.0.0:4222->4222/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8222->8222/tcp, 0.0.0.0:80->8000/tcp                    storageos_control_1
+    5c28f3cfae0e        quay.io/storageos/influxdb:alpha       "influxd --config /et"   9 minutes ago       Up 9 minutes             2003/tcp, 4242/tcp, 8083/tcp, 8088/tcp, 25826/tcp, 8086/udp, 0.0.0.0:8086->8086/tcp, 0.0.0.0:25826->25826/udp   storageos_influxdb_1
+    28e5108cf8dd        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   9 minutes ago       Up 9 minutes (healthy)                                                                                                                   storageos_data_1
+    53fb97d39903        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up About an hour                                                                                                                         consul
+    ```
 
 ### StorageOS still doesn't restart
 

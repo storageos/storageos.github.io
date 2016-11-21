@@ -28,7 +28,7 @@ For this Beta release we have two installation options (1) an Ubuntu Linux ISO i
 >**&#x270F; Note**: For the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, we therefore stipulate ISO-based clusters have 3, 5, or 7 nodes.
 
 ## <a name="VirtualBox"></a> VirtualBox
-For either installation method, you’ll need to install VirtualBox for the OS you’ll be hosting this from.  At the time of writing, VirtualBox is available for Windows, Linux, macOS, and Solaris hosts.  If you don’t already have this installed, VirtualBox is freely available as Open Source software and can be obtained from [**VirtualBox**](https://www.virtualbox.org) under the terms of the GNU General Public License V2.
+For either installation method, you’ll need to install VirtualBox for the OS you’ll be hosting this from.  At the time of writing, VirtualBox is available for Windows, Linux, macOS, and Solaris hosts.  If you don’t already have this installed, VirtualBox is freely available as Open Source software and can be obtained from [VirtualBox](https://www.virtualbox.org) under the terms of the GNU General Public License V2.
 
 All the necessary documentation required to get you up and running with VirtualBox is available from their website.
 If you are planning to use the ISO install method, you can proceed to the next section.
@@ -36,7 +36,7 @@ If you are planning to use the ISO install method, you can proceed to the next s
 ## <a name="Vagrant"></a> Vagrant
 At the time of writing, Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments.  Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be any simpler.
 
-Vagrant is freely available as Open Source software and can be obtained from [**Vagrant**](http://vagrantup.com) under the terms of the MIT License.
+Vagrant is freely available as Open Source software and can be obtained from [Vagrant](http://vagrantup.com) under the terms of the MIT License.
 
 All the necessary documentation required to get you up and running with Vagrant is available from the website.
 

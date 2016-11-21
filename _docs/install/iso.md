@@ -13,7 +13,7 @@ There are three parts to completing the ISO image install of StorageOS:
 2. Installing StorageOS and Ubuntu Server from ISO media for each VirtualBox cluster node in your cluster
 3. Confirming the setup has completed successfully - this also coveres the Vagrant install and is covered in the next section
 
-You should already have the ISO downloaded from the previous section [**Downloading the StorageOS media**](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
+You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
 
 ## Creating VMs with VirtualBox
 

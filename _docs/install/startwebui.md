@@ -13,9 +13,9 @@ For the ISO build this will be any of the three IP addresses you configured that
 
 For Vagrant, you will need to connect to one of the following IP addresses accessible over the VirtualBox NAT interface:
 
-1. [**10.245.103.2**](http://10.245.103.2)
-2. [**10.245.103.3**](http://10.245.103.3)
-3. [**10.245.103.4**](http://10.245.103.4)
+1. [10.245.103.2](http://10.245.103.2)
+2. [10.245.103.3](http://10.245.103.3)
+3. [10.245.103.4](http://10.245.103.4)
 
 
 ## Verifying the Installation

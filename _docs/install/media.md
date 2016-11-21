@@ -13,8 +13,8 @@ The required media for your installation will have either been provided to you d
 ## <a name="Downloading"></a> Downloading the StorageOS media
 The StorageOS ISO or Vagrant image can be downloaded from one of the following locations to a temporary folder:
 
-  - &#x1F4BF; [**ISO Media**](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
-  - &#x1F4E6; [**Vagrant Media**](https://downloads.storageos.com/images/storageos-vagrant.zip)
+  - &#x1F4BF; [ISO Media](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
+  - &#x1F4E6; [Vagrant Media](https://downloads.storageos.com/images/storageos-vagrant.zip)
 
 
 You must specify the following username and password to download the image.

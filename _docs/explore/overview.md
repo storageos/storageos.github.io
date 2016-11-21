@@ -15,7 +15,7 @@ There are three interfaces into StorageOS.
 
 ## StorageOS CLI
 
-The StorageOS CLI can be run by directly calling the `storageos` command line utility  or calling its alias, `s`.  Some of the CLI features have been introduced in the installation [**Troubleshooting Guide**](../install/troubleshoot.html#Troubleshooting Guide) already.
+The StorageOS CLI can be run by directly calling the `storageos` command line utility  or calling its alias, `s`.  Some of the CLI features have been introduced in the installation [Troubleshooting Guide](../install/troubleshoot.html#Troubleshooting Guide) already.
 
 ```bash
 vagrant@storageos-3:~$ storageos
@@ -55,4 +55,4 @@ Available commands are:
 
 ## StorageOS UI
 
-A brief overview on launching and accessing the Web UI has been covered in the previous [**Confirming Installation**](../install/startwebui.html#Confirming Installation) section already.
+A brief overview on launching and accessing the Web UI has been covered in the previous [Confirming Installation](../install/startwebui.html#Confirming Installation) section already.

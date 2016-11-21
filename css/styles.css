@@ -216,10 +216,6 @@ ul.top-bar-links li a.none-button {
 	width: 66.66666667%;
 	float: right;
 }
-img[alt="screenshot"] {
-  max-width:  640px;
-  display: block;
-}
 /* LEFT */
 
 .cirle-wrapper {
@@ -931,6 +927,33 @@ a.active, a:hover, .active a {
     position: relative;
     float: right;
 }
+#docContents img[alt="screenshot"] {
+  max-width:  640px;
+  display: block;
+}
+#docContents table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#docContents table thead tr th {
+  padding: 5px;
+  font-size: 0.9em;
+  color: #666666;
+  border-bottom: 1px solid #999999;
+}
+#docContents table tbody tr:last-child td {
+  border-bottom: none;
+}
+#docContents table tbody tr.offset {
+  background-color: #f0f0f0;
+}
+#docContents table tbody tr td {
+  padding: 6px;
+  font-size: 0.9em;
+  border-bottom: 1px solid #cccccc;
+  vertical-align: top;
+  line-height: 1.3em;
+}
 #content {
     padding: 50px 50px 20px 20px;
     clear: both;
@@ -1033,6 +1056,9 @@ span.icon-bars {
     margin-right: 10px;
     margin-top: -5px;
 }
+
+
+
 @media screen and (min-width: 1025px) {
 	#docContents {
 	    width: calc(100% - 400px);

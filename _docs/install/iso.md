@@ -5,7 +5,7 @@ anchor: install
 module: install/iso
 ---
 
-# III. ISO Installation
+# ISO Installation
 
 There are three parts to completing the ISO image install of StorageOS:
 
@@ -15,11 +15,11 @@ There are three parts to completing the ISO image install of StorageOS:
 
 You should already have the ISO downloaded from the previous section [**Downloading the StorageOS media**](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
 
-## A. Creating VMs with VirtualBox
+## Creating VMs with VirtualBox
 
 Before you can begin the ISO image install, you will need to create a **minimum of 3** StorageOS cluster nodes by repeating the steps below.  You can create as many as you like providing you choose an odd number of nodes.
 
-### i) Create Initial VM
+### Create Initial VM
 
 1. Launch Oracle VirtualBox
 2. Select **New**
@@ -42,7 +42,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 >
 >**&#x270F; Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
 
-### ii) Configure Virtual Disk
+### Configure Virtual Disk
 
 1. Set the File size to **16 GB**, this is the minimum size necessary if you wish to create StorageOS volumes later.
 2. Under **Hard disk file type** select the **VDI (Virtual Disk Image)** radio box
@@ -51,7 +51,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
     ![screenshot](/images/docs/iso/vbcreate2.png)
 
-### iii) Configure Disk Settings
+### Configure Disk Settings
 
 1. With your newly created VM selected, click from the **Settings** button on the VirtualBox main menu to configure **Storage**
 
@@ -65,7 +65,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
     <img src="/images/docs/iso/vbiso.png" width="870">
 
-### iv) Configure Network Settings
+### Configure Network Settings
 
 1. Click on the **Settings** button again from the VirtualBox main menu to configure **Network**
 
@@ -81,11 +81,11 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
 
-## B. Installing StorageOS and Ubuntu Server from ISO Media
+## Installing StorageOS and Ubuntu Server from ISO Media
 
 You are now ready to boot each of your VMs and install StorageOS into Ubuntu Server
 
-### i) Starting up your VMS
+### Starting up your VMS
 Follow the steps below for each VM to install StorageOS with Ubuntu Server.  The first VM will be the designated as the master node so ensure this VM completes first before completing the remaining member nodes.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
@@ -102,7 +102,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![image](/images/docs/iso/2-isostorageos.png)
 
-### ii) Setting the Language and Keyboard
+### Setting the Language and Keyboard
 
 1. For the next set of menu selections you will be presented with, you will need to use your keyboard to select and navigate the appropriate options.
 
@@ -130,7 +130,7 @@ These instructions direct you to select the options that work best with the beta
 
     <img src="/images/docs/iso/7-isokybd.png" width="540">
 
-### iii) Configuring Host Settings
+### Configuring Host Settings
 
 7. Enter a hostame for the system - for example you can use the format **storageos-<##>** for each of your VMs as they increment
 
@@ -160,7 +160,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/15-isoclock.png)
 
-### iv) Disk Partition Setup
+### Disk Partition Setup
 
 14. For the disk partition setup, select the default option, **Guided - use entire disk and set up LVM**
 
@@ -182,7 +182,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/20-isopart.png)
 
-### v) Configuring Updates and Packages
+### Configuring Updates and Packages
 
 19. If you use a proxy server to access the internet, please enter it now, otherwise leave this blank and continue
 
@@ -196,7 +196,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/23-isosw.png)
 
-### vi) GRUB and StorageOS Cluster Stetup
+### GRUB and StorageOS Cluster Stetup
 
 22. Select **Yes** to install the GRUB boot loader to the MBR
 
@@ -226,7 +226,7 @@ These instructions direct you to select the options that work best with the beta
     ![screenshot](/images/docs/iso/28a-isoleaderip.png) <!--- reduce image size to 640 pixels --->
 
 
-### vii) Completing your Installation
+### Completing your Installation
 
 28. At this point the installation should be complete - select **Continue** to restart the VM
 
@@ -239,7 +239,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/31-isoconsole.png) <!--- reduce image size to 640 pixels --->
 
-### viii.) Confirm SSH has been installed and Docker containers are running
+### Confirm SSH has been installed and Docker containers are running
 
 To connect to an ISO install StorageOS node, simply ssh from the terminal.  When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
@@ -264,7 +264,7 @@ applicable law.
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 ```
-### ix.) Confirm Docker containers are running
+### Confirm Docker containers are running
 
 Running the `docker ps` command will display what is currently running on the node.
 

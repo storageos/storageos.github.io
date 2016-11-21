@@ -5,17 +5,17 @@ anchor: install
 module: install/vagrant
 ---
 
-# IV Vagrant Installation
+# Vagrant Installation
 
 To begin the Vagrant installation you will need to your base directory as discussed at the end of the previous section.  So for a developer you might want to use ~/storageos.
 
 As well as having Vagrant installed, you will also need to have VirtualBox installed which was covered in the previous sections.
 
-## A. Setting up the Vagrant Environmnet
+## Setting up the Vagrant Environmnet
 
 Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.
 
-### i) Modifying the Vagrantfile
+### Modifying the Vagrantfile
 
 * To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`.
 
@@ -35,7 +35,7 @@ $leader_ip = $node_ips[0]
 
 pull = false
 ```
-## B. Initialise the Cluster
+## Initialise the Cluster
 
 From the base storageos folder initialise the StorageOS Vagrant cluster:
 
@@ -60,9 +60,9 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
-## C. Confirming the installation
+## Confirming the installation
 
-### i.) Confirm VDI disks have been created
+### Confirm VDI disks have been created
 
 Based on the default Vagrantfile paramaters you will see 8 vdi volumes allocated to each node tarting at 0:
 
@@ -78,7 +78,7 @@ storageos-1-disk6.vdi	storageos-2-disk6.vdi	storageos-3-disk6.vdi
 storageos-1-disk7.vdi	storageos-2-disk7.vdi	storageos-3-disk7.vdi
 ```
 
-### ii.) Confirm SSH has been installed and Docker containers are running
+### Confirm SSH has been installed and Docker containers are running
 
 To remote shell into the cluster you should use the `vagrant ssh` command and sepcify the node you wish to connect in the case of a multi-node cluster setup:
 

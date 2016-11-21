@@ -5,17 +5,17 @@ anchor: install
 module: install/troubleshoot
 ---
 
-# VI. <a name="Troubleshooting Guide"></a> Troubleshooting Guide
+# <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
 In this section we have tried to identidy any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
 
 It is also possible that you may encounter problems with the ISO build as well though this install is much less prone to problems with our Beta release.
 
-## A. Connecting to your StorageOS node
+## Connecting to your StorageOS node
 
 To check the running status of the containers on each of your newly provisioned StorageOS hosts you will need to use a secure shell client such as a terminal window or PuTTY if you are using windows.
 
-### i.) Connect to an ISO install StorageOS node
+### Connect to an ISO install StorageOS node
 
 To connect to an ISO install StorageOS node simply ssh from the terminal.
 
@@ -29,7 +29,7 @@ Last login: Tue Nov 15 17:40:31 2016 from 10.1.5.170
 storageos@storageos-01:~$
 ```
 
-### ii.) Connect to a Vagrant install StorageOS node
+### Connect to a Vagrant install StorageOS node
 
 To connect to a Vagrant install StorageOS node simply use `vagrant ssh` from the vagrant machine folder where you started your Vagrant cluster from.
 
@@ -44,7 +44,7 @@ vagrant@storageos-1:~$
 ```
 
 
-## B. Elevate your privileges
+## Elevate your privileges
 
 Once connected, you will want to elevate your privilege level to run most of the commands discussed below:
 
@@ -54,7 +54,7 @@ storageos@storageos-03:~$ sudo -i
 root@storageos-03:~#
 ```
 
-## C. Confirming and restarting the Docker service
+## Confirming and restarting the Docker service
 
 More often than not, if you think there is a problem, its most likely going to be related to your Docker containers but before you check these you should check the status of Docker first.
 
@@ -75,7 +75,7 @@ root@storageos-03:~# docker ps -a
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 ```
 
-## D. Docker service will not restart
+## Docker service will not restart
 
 If you are unable to restart the Docker service with `service docker start` you may have recieved a more serious error:
 
@@ -86,7 +86,7 @@ root@storageos-1:~# service docker status | grep Active
 
 At this point we strongly suggest you stop troubleshooting and rebuild as it will likely save you a lot of time.
 
-###  i.) Vagrant VM romoval
+###  Vagrant VM romoval
 
 For Vagrant use the `vagrant destroy` command from the working Vagrant build directory that the cluster resides in and remove all the Vagrant instances as these can be quickly re-established:
 
@@ -101,7 +101,7 @@ storageos:storageos julian$ vagrant destroy
 storageos:storageos julian$
 ```
 
-###  ii.) ISO VM romoval
+###  ISO VM romoval
 
 For the ISO install you should delete the VM that is not working.  Do not attempt to re-install the ISO over the existing VMI.
 
@@ -114,13 +114,13 @@ For the ISO install you should delete the VM that is not working.  Do not attemp
     <img src="/images/docs/iso/vbremoveall.png" width="400">
 
 
-## E. Docker container state
+## Docker container state
 
 To check the running state of your Docker containers log into each of the recently build machines and confirm the running status of your Docker containers using the `docker ps -a` command.
 
-### i.)Establishing general system health
+### Establishing general system health
 
-#### **Healthy System**
+**Healthy System**
 
 ```text
 storageos@storageos-02:~$ docker ps -a
@@ -132,7 +132,7 @@ CONTAINER ID  IMAGE                              COMMAND                  CREATE
 87e86b1b434e  quay.io/storageos/storageos:beta   "/bin/storageos datap"   12 days ago    Up 4 minutes                                                                                                                            storageos_data_1
 ```
 
-#### **Not-so Healthy System**
+**Not-so Healthy System**
 
 ```text
 vagrant@storageos-2:~$ docker ps -a
@@ -140,7 +140,7 @@ CONTAINER ID  IMAGE          COMMAND                 CREATED         STATUS     
 53fb97d39903  consul:v0.6.4  "docker-entrypoint.sh"  59 minutes ago  Up 59 minutes           consul
 ```
 
-### ii.) Start the StorageOS dataplane and controlplane
+### Start the StorageOS dataplane and controlplane
 
 In this example Vagrant has failed to start StorageOS properly and it will be necessary to get the dataplane and controlplane restarted.
 
@@ -167,7 +167,7 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### iii.) Restart the StorageOS dataplance and controlplane
+### Restart the StorageOS dataplance and controlplane
 
 Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reasin only one of the services has been restored to a healthy state, run the command for a second time.
 
@@ -181,7 +181,7 @@ d7d3137a78ce        quay.io/storageos/influxdb:alpha       "influxd --config /et
 fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   4 hours ago         Up 3 minutes (unhealthy)                                                                                                                   storageos_data_1
 ```
 
-### iv.) Reinstall the StorageOS Docker image
+### Reinstall the StorageOS Docker image
 
 Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again
 
@@ -250,7 +250,7 @@ c7e04f9f7972        quay.io/storageos/controlplane:alpha   "/bin/storageos serve
 53fb97d39903        consul:v0.6.4                          "docker-entrypoint.sh"   About an hour ago   Up About an hour                                                                                                                         consul
 ```
 
-### v.) StorageOS still doesn't restart
+### StorageOS still doesn't restart
 
 Another issue that may arise is receiving the following error after unsuccessfully restarting the StrageOS container.
 
@@ -281,7 +281,7 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### vi.) Restarting consul
+### Restarting consul
 
 On occasions it is possible consul may have stalled on startup and needs to be restarted.
 

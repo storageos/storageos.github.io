@@ -5,18 +5,18 @@ anchor: overview
 module: overview/deployment
 ---
 
-# IV. Installation Requirements
+# Installation Requirements
 
 There are a number of requirements that need to be met based on your environment and testing scope.
 
-## A. Before you Start
+## Before you Start
 Before you start, please read this section before moving to the Installation Guide section as it may save you time in the end!
 
 StorageOS is a Linux only installation, however depending on your testing scope, StroageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
 
 Recommendations on the practical maximum cluster members have yet to be published.  We are however interested in hearing from you on what works (and what doesn’t) in your environment.  The design does not for example impose constraints such as maximum, or odd number of nodes.
 
-## B. Beta Release
+## Beta Release
 For this Beta release we have two installation options (1) an Ubuntu Linux ISO image and (2) a Vagrant Ubuntu Linux image.  Either method can be used with your choice of Operating System (OS).
 
 - If you are planning to explore StorageOS on Linux server infrastructure in VMs or on bare metal, the ISO image installation will be your preferred choice.
@@ -27,13 +27,13 @@ For this Beta release we have two installation options (1) an Ubuntu Linux ISO i
 >
 >**&#x270F; Note**: For the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, we therefore stipulate ISO-based clusters have 3, 5, or 7 nodes.
 
-## C. <a name="VirtualBox"></a> VirtualBox
+## <a name="VirtualBox"></a> VirtualBox
 For either installation method, you’ll need to install VirtualBox for the OS you’ll be hosting this from.  At the time of writing, VirtualBox is available for Windows, Linux, macOS, and Solaris hosts.  If you don’t already have this installed, VirtualBox is freely available as Open Source software and can be obtained from [**VirtualBox**](https://www.virtualbox.org) under the terms of the GNU General Public License V2.
 
 All the necessary documentation required to get you up and running with VirtualBox is available from their website.
 If you are planning to use the ISO install method, you can proceed to the next section.
 
-## D. <a name="Vagrant"></a> Vagrant
+## <a name="Vagrant"></a> Vagrant
 At the time of writing, Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments.  Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be any simpler.
 
 Vagrant is freely available as Open Source software and can be obtained from [**Vagrant**](http://vagrantup.com) under the terms of the MIT License.

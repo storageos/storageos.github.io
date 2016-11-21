@@ -5,7 +5,7 @@ anchor: explore
 module: explore/demo
 ---
 
-# II. Persistent Storage Demonstration
+# Persistent Storage Demonstration
 
 In this exercise we will demonstrate how StorageOS can provide persistent storage to Docker containers.  The YouTube video below plays through the steps we will run through in this section that follows below.
 
@@ -15,7 +15,7 @@ In this exercise we will demonstrate how StorageOS can provide persistent storag
 
 You will need access to the internet to pull down a container for this demonstration, a web browser and a terminal connection to one of your StorageOS nodes to complete this exercise.
 
-## A. Connect to a StorageOS node
+## Connect to a StorageOS node
 
 To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
 
@@ -41,7 +41,7 @@ vagrant@storageos-3:~$ docker ps -a | grep crasher
 >
 >**&#x270F; Note**: For the ISO based installation, use the IP address you configured and append this with the port number `8081`.
 
-## B. Open the Crasher container application
+## Open the Crasher container application
 
 Lets open the Crasher container application in a new browser window using the IP and port number as noted above.
 
@@ -60,7 +60,7 @@ Now return back to the browser window and refresh the contents.  You should see 
 
 <img src="/images/docs/explore/crasher15.png" width="640">
 
-## C. Remove provisioned volume
+## Remove provisioned volume
 
 Now let us clean-up the container and clean-up the provisioned volume.
 
@@ -87,7 +87,7 @@ And to delete the volume, simply click on the &#x1F5D1; icon.
 
 <img src="/images/docs/explore/volumes.png" width="640">
 
-## D. Remove Crasher container
+## Remove Crasher container
 
 The Crasher application container can be removed using the `docker` command from your terminal window.
 

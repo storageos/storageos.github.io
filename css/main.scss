@@ -72,6 +72,14 @@ $on-laptop:        800px;
   width: 100%;
 }
 
+.highlighter-rouge {
+	background: #F0F0F0;
+  color: #5a645b;
+}
+.highlighter-rouge .highlight {
+	background: #F0F0F0;
+}
+
 @media (max-width: 1025px){
   #primary-menu{
     position: relative;

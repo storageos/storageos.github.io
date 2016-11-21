@@ -13,14 +13,30 @@ body {
 	font-family: 'SourceSansPro', sans-serif;
 }
 h1, h2, h3, h4, h5, h6, p, li, a, span {
-	color: #5a645b;
 	line-height: 1.6;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
+	color: #2251A0;
 }
+p, li, a, span {
+	color: #5a645b;
+}
+
 a.btn, button.btn {
 	font-weight: 700;
+}
+h1{
+	font-family: 'SourceSansPro-Light', sans-serif;
+	font-size: 36px;
+}
+h2{
+	font-family: 'SourceSansPro-Regular', sans-serif;
+	font-size: 30px;
+}
+h3{
+	font-family: 'SourceSansPro-Semibold', sans-serif;
+	font-size: 19px;
 }
 h4{
 	font-size: 17px;
@@ -200,7 +216,7 @@ ul.top-bar-links li a.none-button {
 	width: 66.66666667%;
 	float: right;
 }
-img[alt="screenshot"] { 
+img[alt="screenshot"] {
   max-width:  640px;
   display: block;
 }

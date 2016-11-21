@@ -5,7 +5,7 @@ anchor: explore
 module: explore/overview
 ---
 
-# I. Brief Introduction
+# Brief Introduction
 
 There are three interfaces into StorageOS.
 
@@ -13,7 +13,7 @@ There are three interfaces into StorageOS.
 2. The CLI, which is run from the hosting OS and provides some basic troubleshooting and diagnostic tools
 3. The Web UI, which you can attach to using any StorageOS node IP address
 
-## A. StorageOS CLI
+## StorageOS CLI
 
 The StorageOS CLI can be run by directly calling the `storageos` command line utility  or calling its alias, `s`.  Some of the CLI features have been introduced in the installation [**Troubleshooting Guide**](../install/troubleshoot.html#Troubleshooting Guide) already.
 
@@ -53,6 +53,6 @@ Available commands are:
     volume          Manages volumes
 ```
 
-## B. StorageOS UI
+## StorageOS UI
 
 A brief overview on launching and accessing the Web UI has been covered in the previous [**Confirming Installation**](../install/startwebui.html#Confirming Installation) section already.

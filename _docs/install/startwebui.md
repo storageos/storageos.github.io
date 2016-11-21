@@ -5,7 +5,7 @@ anchor: install
 module: install/confirm
 ---
 
-# V. <a name="Confirming Installation"></a> Confirming Installation
+# <a name="Confirming Installation"></a> Confirming Installation
 
 A simple litmus test to confirm that the installation has completed successfully is to launch the Web UI from your browser.
 
@@ -18,7 +18,7 @@ For Vagrant, you will need to connect to one of the following IP addresses acces
 3. [**10.245.103.4**](http://10.245.103.4)
 
 
-## A. Verifying the Installation
+## Verifying the Installation
 
 To verify that your installation:
 

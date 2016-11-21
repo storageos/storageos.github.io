@@ -17,7 +17,7 @@ You will need access to the internet to pull down a container for this demonstra
 
 ## A. Connect to a StorageOS node
 
-To get started you will need to be connected to a StorageOS node to load a container for this demonstration using `docker run` command.
+To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
 
 ```text
 vagrant@storageos-3:~$ docker run -it -d -v crasher-data:/data --volume-driver=storageos -p 8081:8081 karolisr/crasher
@@ -83,7 +83,7 @@ vagrant@storageos-3:~$ storageos cli volume delete -id=c3711ff5-404e-f494-7b90-7
 
 You can view the 10GB crasher-data volume from the Web UI by navigating to **Provisioning**, **Volumes**.
 
-To delete the volume, click on the &#x1F5D1; icon.
+And to delete the volume, simply click on the &#x1F5D1; icon.
 
 <img src="/images/docs/explore/volumes.png" width="640">
 

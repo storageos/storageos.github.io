@@ -264,6 +264,7 @@ applicable law.
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 ```
+
 ### Confirm Docker containers are running
 
 Running the `docker ps` command will display what is currently running on the node.

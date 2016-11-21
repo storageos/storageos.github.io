@@ -35,6 +35,7 @@ $leader_ip = $node_ips[0]
 
 pull = false
 ```
+
 ## Initialise the Cluster
 
 From the base storageos folder initialise the StorageOS Vagrant cluster:
@@ -60,6 +61,7 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
+
 ## Confirming the installation
 
 ### Confirm VDI disks have been created

@@ -5,12 +5,12 @@ anchor: install
 module: install/media
 ---
 
-# Obtaining the Installation Media
+# II. Obtaining the Installation Media
 Depending on your choice of installation, ISO or Vagrant, you need to have completed the installation of the prerequisite components covered earlier in this guide.
 
 The required media for your installation will have either been provided to you directly by us on a USB flash drive or, alternatively it can be downloaded directly from our web site.
 
-## <a name="Downloading"></a> Downloading the StorageOS media
+## A. <a name="Downloading"></a> Downloading the StorageOS media
 The StorageOS ISO or Vagrant image can be downloaded from one of the following locations to a temporary folder:
 
   - &#x1F4BF; [**ISO Media**](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)

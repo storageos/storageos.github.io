@@ -24,5 +24,8 @@ sections:
     title: Starting up the Web UI
     description: This section describes how to cstart the Web UI for the first time.
     module: install/startwebui
-
+  -
+    title: Troubleshooting Guide
+    description: This section describes how to troubleshoot known issues and resolve them.
+    module: install/troubleshoot
 ---

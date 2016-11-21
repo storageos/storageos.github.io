@@ -368,13 +368,6 @@ img[alt="screenshot"] {
 	margin-bottom: 25px;
 }
 
-a:link {
-	 text-decoration: underline;
-}
-.guide-list a:link {
-	 text-decoration: none;
-}
-
 /* FORMS */
 input.form-control {
 	border-radius: 0;
@@ -896,12 +889,16 @@ ul.top-bar-links{
     background-color: #b5e61e;
     border: none;
 }
+a:link {
+	color: #2251A0;
+}
 a.active, a:hover, .active a {
 	color: #b5e61e;
 }
 .main-title a {
 	display: block;
 }
+
 #docTitles {
     position: fixed;
     background-color: white;

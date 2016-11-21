@@ -17,19 +17,19 @@ There are three interfaces into StorageOS.
 
 The StorageOS CLI can be run by directly calling the `storageos` command line utility  or calling its alias, `s`.  Some of the CLI features have been introduced in the installation [**Troubleshooting Guide**](../install/troubleshoot.html#Troubleshooting Guide) already.
 
-```text
+```bash
 vagrant@storageos-3:~$ storageos
 Usage: /etc/init.d/storageos {start|stop|restart|reload|update|status|logs|cli|bootstrap|test}
 ```
 --or--
-```text
+```bash
 vagrant@storageos-3:~$ s
 Usage: /etc/init.d/storageos {start|stop|restart|reload|update|status|logs|cli|bootstrap|test}
 ```
 
 To access the CLI functions you need to run `storageos cli`
 
-```text
+```bash
 vagrant@storageos-3:~$ storageos cli
 usage: storageos [--version] [--help] <command> [<args>]
 

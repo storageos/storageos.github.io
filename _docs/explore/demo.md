@@ -19,7 +19,7 @@ You will need access to the internet to pull down a container for this demonstra
 
 To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker run -it -d -v crasher-data:/data --volume-driver=storageos -p 8081:8081 karolisr/crasher
 Unable to find image 'karolisr/crasher:latest' locally
 latest: Pulling from karolisr/crasher
@@ -32,7 +32,7 @@ Status: Downloaded newer image for karolisr/crasher:latest
 
 Confirm the container installed and is running.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker ps -a | grep crasher
 2e26c041aff8  karolisr/crasher  "/bin/crasher"  About a minute ago  Up About a minute  0.0.0.0:8081->8081/tcp  stoic_franklin
 ```
@@ -51,7 +51,7 @@ Click on the <img src="/images/docs/explore/count1.png" height="22"> button to i
 
 Now go back to the terminal window and use the 'docker restart' command to restart the Crasher container - you will need to use the container ID that was outputted by the `docker ps -a` command you used previously.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker restart 2e26c041aff8
 2e26c041aff8
 ```
@@ -66,7 +66,7 @@ Now let us clean-up the container and clean-up the provisioned volume.
 
 You can list out the 10GB crasher-data volume using the `storageos` CLI.
 
-```text
+```bash
 vagrant@storageos-3:~$ storageos cli volume list
 ID                                    NAME          DESCRIPTION  SIZE  DC
 c3711ff5-404e-f494-7b90-7314bd0995a2  crasher-data               10
@@ -74,7 +74,7 @@ c3711ff5-404e-f494-7b90-7314bd0995a2  crasher-data               10
 
 To delete the volume you can use the `storageos` CLI.
 
-```text
+```bash
 vagrant@storageos-3:~$ storageos cli volume delete -id=c3711ff5-404e-f494-7b90-7314bd0995a2
 ==> Deleted volume: c3711ff5-404e-f494-7b90-7314bd0995a2
 ```
@@ -93,7 +93,7 @@ The Crasher application container can be removed using the `docker` command from
 
 Get the container ID and stop the container.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker ps -a | grep crasher
 2e26c041aff8        karolisr/crasher                       "/bin/crasher"           2 hours ago         Up About an hour            0.0.0.0:8081->8081/tcp                                                                                          stoic_franklin
 vagrant@storageos-3:~$ docker stop 2e26c041aff8
@@ -102,14 +102,14 @@ vagrant@storageos-3:~$ docker stop 2e26c041aff8
 
 Remove the container.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker rm 2e26c041aff8
 2e26c041aff8
 ```
 
 Get the Docker image ID and delete the image and dependencies.
 
-```text
+```bash
 vagrant@storageos-3:~$ docker images | grep crasher
 karolisr/crasher                 latest              6ec99f1d2819        7 weeks ago         8.442 MB
 vagrant@storageos-3:~$ docker rmi 6ec99f1d2819

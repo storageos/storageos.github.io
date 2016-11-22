@@ -2,10 +2,10 @@
 layout: guide
 title: Confirming Installation
 anchor: install
-module: install/confirm
+module: install/startwebui
 ---
 
-# <a name="Confirming Installation"></a> Confirming Installation
+# Confirming Installation
 
 A simple litmus test to confirm that the installation has completed successfully is to launch the Web UI from your browser.
 

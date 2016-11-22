@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
 	color: #2251A0;
 }
-p, li, a, span {
+p, li, a {
 	/*color: #5a645b;*/
 	color: #242424;
 	font-size: 20px;

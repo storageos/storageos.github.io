@@ -83,6 +83,9 @@ b,strong {
 .highlighter-rouge .highlight {
 	background: $grey-color-light;
 }
+.highlight .s1 {
+  color: inherit;
+}
 blockquote {
     font-size: 16px;
     border-left: 4px solid #2251a0;

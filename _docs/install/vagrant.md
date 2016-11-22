@@ -35,11 +35,12 @@ $leader_ip = $node_ips[0]
 
 pull = false
 ```
+
 ## Initialise the Cluster
 
 From the base storageos folder initialise the StorageOS Vagrant cluster:
 
-```text
+```bash
 StorageOS:storageos julian$ vagrant up
 Cloning/pulling updates from StorageOS source repositories...
 Note: set SKIP_PULL=true environment variable to skip updates
@@ -48,7 +49,7 @@ Cloning src/dkr/build branch 'develop': Cloning into 'src/dkr/build'...
 ```
 After a couple of minutes the installation should be complete - check the Vagrant cluster node status using the `vagrant status` command:
 
-```text
+```bash
 StorageOS:storageos julian$ vagrant status
 Current machine states:
 
@@ -60,13 +61,14 @@ This environment represents multiple VMs. The VMs are all listed
 above with their current state. For more information about a specific
 VM, run `vagrant status NAME`.
 ```
+
 ## Confirming the installation
 
 ### Confirm VDI disks have been created
 
 Based on the default Vagrantfile paramaters you will see 8 vdi volumes allocated to each node tarting at 0:
 
-```text
+```bash
 StorageOS:storageos julian$ ls *.vdi
 storageos-1-disk0.vdi	storageos-2-disk0.vdi	storageos-3-disk0.vdi
 storageos-1-disk1.vdi	storageos-2-disk1.vdi	storageos-3-disk1.vdi
@@ -82,7 +84,7 @@ storageos-1-disk7.vdi	storageos-2-disk7.vdi	storageos-3-disk7.vdi
 
 To remote shell into the cluster you should use the `vagrant ssh` command and sepcify the node you wish to connect in the case of a multi-node cluster setup:
 
-```text
+```bash
 StorageOS:storageos julian$ vagrant ssh storageos-1
 Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
@@ -94,7 +96,7 @@ vagrant@storageos-1:~$
 
 Running the `docker ps` command will display what is currently running on the node:
 
-```text
+```bash
 vagrant@storageos-1:~$ docker ps -a
 storageos@storageos-02:~$ docker ps -a
 CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
@@ -107,7 +109,7 @@ CONTAINER ID  IMAGE                              COMMAND                  CREATE
 
 You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
 
-```text
+```bash
 root@storageos-03:~# storageos status
         Name                      Command               State                                                       Ports
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -119,7 +121,7 @@ root@storageos-03:~#
 
 To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
 
-```text
+```bash
 vagrant@storageos-1:~$ logout
 Connection to 127.0.0.1 closed.
 StorageOS:storageos julian$
@@ -127,7 +129,7 @@ StorageOS:storageos julian$
 
 To shutdown your Vagrant VM cluster use the `vagrant halt` command.
 
-```text
+```bash
 storageos:storageos julian$ vagrant halt
 ==> storageos-3: Attempting graceful shutdown of VM...
 ==> storageos-2: Attempting graceful shutdown of VM...

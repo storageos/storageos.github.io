@@ -1,6 +1,11 @@
 /*@import 'fonts/fonts.css';*/
 
 /* GENERAL */
+* {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
 .container{
 	width: 100% !important;
 	max-width: 1230px;
@@ -10,17 +15,42 @@ html, body {
     height: 100%;
 }
 body {
-	font-family: 'SourceSansPro', sans-serif;
+	font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 h1, h2, h3, h4, h5, h6, p, li, a, span {
-	color: #5a645b;
-	line-height: 1.6;
+	line-height: 1.5em;
+	letter-spacing: 0.02rem;
 }
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
+	color: #2251A0;
 }
+p, li, a {
+	/*color: #5a645b;*/
+	color: #242424;
+	font-size: 20px;
+	font-weight: 300;
+	margin: 0 0 18px;
+}
+
 a.btn, button.btn {
 	font-weight: 700;
+}
+h1{
+	font-family: 'SourceSansPro-Light', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 36px;
+	text-transform: uppercase;
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+	border-bottom: 1px solid #eeeeee
+}
+h2{
+	font-family: 'SourceSansPro-Regular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 30px;
+}
+h3{
+	font-family: 'SourceSansPro-Semibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 19px;
 }
 h4{
 	font-size: 17px;
@@ -37,11 +67,8 @@ hr {
 a:hover, a:focus {
 	text-decoration: none;
 }
-p {
-	font-size: 17px;
-}
 ul, ol {
-	font-size: 17px;
+	font-size: 20px;
 }
 
 .columns.left {
@@ -200,10 +227,6 @@ ul.top-bar-links li a.none-button {
 	width: 66.66666667%;
 	float: right;
 }
-img[alt="screenshot"] { 
-  max-width:  640px;
-  display: block;
-}
 /* LEFT */
 
 .cirle-wrapper {
@@ -352,13 +375,6 @@ img[alt="screenshot"] {
 	margin-bottom: 25px;
 }
 
-a:link {
-	 text-decoration: underline;
-}
-.guide-list a:link {
-	 text-decoration: none;
-}
-
 /* FORMS */
 input.form-control {
 	border-radius: 0;
@@ -456,6 +472,10 @@ footer{
 	list-style: none;
 	margin: 0;
 }
+#footer-1 p, a {
+	font-size: 16px;
+	font-weight: 600;
+}
 #footer-1 ul li a{
 	color: #FFF;
 }
@@ -470,6 +490,7 @@ footer{
 }
 #footer-1 ul li{
 	padding: 10px;
+	margin: 0;
 	border-bottom: 1px solid #7C847C;
 }
 #footer-1 ul li:last-child{
@@ -880,19 +901,22 @@ ul.top-bar-links{
     background-color: #b5e61e;
     border: none;
 }
+a:link {
+	color: #2251A0;
+}
 a.active, a:hover, .active a {
 	color: #b5e61e;
 }
 .main-title a {
 	display: block;
 }
+
 #docTitles {
     position: fixed;
     background-color: white;
     top: 0;
     left: 0;
     width: 0;
-    height: 100vh;
     overflow: hidden;
     padding: 50px 0;
     z-index: 999999;
@@ -902,7 +926,7 @@ a.active, a:hover, .active a {
     color: #303030;
     position: relative;
     padding: 7.5px 10px 7.5px 18px;
- 	font-size: 1.5em;
+ 		font-size: 1.5em;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;
@@ -919,8 +943,35 @@ a.active, a:hover, .active a {
     position: relative;
     float: right;
 }
+#docContents img[alt="screenshot"] {
+  max-width:  640px;
+  display: block;
+}
+#docContents table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+#docContents table thead tr th {
+  padding: 5px;
+  font-size: 0.9em;
+  color: #666666;
+  border-bottom: 1px solid #999999;
+}
+#docContents table tbody tr:last-child td {
+  border-bottom: none;
+}
+#docContents table tbody tr.offset {
+  background-color: #f0f0f0;
+}
+#docContents table tbody tr td {
+  padding: 6px;
+  font-size: 0.9em;
+  border-bottom: 1px solid #cccccc;
+  vertical-align: top;
+  line-height: 1.3em;
+}
 #content {
-    padding: 50px 50px 20px 20px;
+    padding: 0px 50px 20px 20px;
     clear: both;
     position: relative;
 }
@@ -1021,6 +1072,9 @@ span.icon-bars {
     margin-right: 10px;
     margin-top: -5px;
 }
+
+
+
 @media screen and (min-width: 1025px) {
 	#docContents {
 	    width: calc(100% - 400px);

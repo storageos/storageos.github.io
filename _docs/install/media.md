@@ -13,16 +13,9 @@ The required media for your installation will have either been provided to you d
 ## <a name="Downloading"></a> Downloading the StorageOS media
 The StorageOS ISO or Vagrant image can be downloaded from one of the following locations to a temporary folder:
 
-  - &#x1F4BF; [**ISO Media**](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
-  - &#x1F4E6; [**Vagrant Media**](https://downloads.storageos.com/images/storageos-vagrant.zip)
+  - &#x1F4BF; [ISO Media](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
+  - &#x1F4E6; [Vagrant Media](https://downloads.storageos.com/images/storageos-vagrant.zip)
 
+>**&#x26A0;** During the closed beta period, a password is required to download the installation media.  Please contact [support@storageos.com](mailto:support@storageos.com) for details.
 
-You must specify the following username and password to download the image.
-
- - Username: **download**
-
- - Password: __roh6kei7Oig2__
-
->**&#x26A0; Warning**: Do not give out the username/password to anyone who has not signed our NDA as you will be breaking the terms you agreed to.
-
-Once downloaded the Vagrant package should be unpacked into a base folder, for example, ~/storageos, where you will have at least 30GB of avaialble space to bring up a 3-node cluster, and more if you want to make this bigger.
+Once downloaded the Vagrant package should be unpacked into a base folder, for example, `~/storageos`, where you will have at least 30GB of available space to bring up a 3-node cluster, and more if you want to make this bigger.

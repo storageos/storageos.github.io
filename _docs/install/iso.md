@@ -13,7 +13,7 @@ There are three parts to completing the ISO image install of StorageOS:
 2. Installing StorageOS and Ubuntu Server from ISO media for each VirtualBox cluster node in your cluster
 3. Confirming the setup has completed successfully - this also coveres the Vagrant install and is covered in the next section
 
-You should already have the ISO downloaded from the previous section [**Downloading the StorageOS media**](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
+You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
 
 ## Creating VMs with VirtualBox
 
@@ -243,7 +243,7 @@ These instructions direct you to select the options that work best with the beta
 
 To connect to an ISO install StorageOS node, simply ssh from the terminal.  When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
-```text
+```bash
 StorageOS:storageos julian$ ssh -l storageos storageos-3
 The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
 ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
@@ -264,11 +264,12 @@ applicable law.
 To run a command as administrator (user "root"), use "sudo <command>".
 See "man sudo_root" for details.
 ```
+
 ### Confirm Docker containers are running
 
 Running the `docker ps` command will display what is currently running on the node.
 
-```text
+```bash
 storageos@storageos-01:~$ docker ps -a
 CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
 4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
@@ -280,7 +281,7 @@ CONTAINER ID  IMAGE                              COMMAND                  CREATE
 
 You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
 
-```text
+```bash
 root@storageos-03:~# storageos status
         Name                      Command               State                                                       Ports
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -292,7 +293,7 @@ root@storageos-03:~#
 
 To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
 
-```text
+```bash
 storageos@storageos-01:~$ logout
 Connection to 10.1.5.171 closed.
 storageos:~ julian$

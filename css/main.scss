@@ -20,7 +20,7 @@ $background-color: #fdfdfd;
 $brand-color:      #5a645b;
 
 $grey-color:       #828282;
-$grey-color-light: lighten($grey-color, 40%);
+$grey-color-light: #f7f7f7;
 $grey-color-dark:  darken($grey-color, 25%);
 
 // Width of the content area
@@ -70,6 +70,28 @@ $on-laptop:        800px;
 
 #primary-menu div.dropdown{
   width: 100%;
+}
+
+b,strong {
+  font-weight: 600;
+}
+
+.highlighter-rouge {
+	background: $grey-color-light;
+  color: #5a645b;
+}
+.highlighter-rouge .highlight {
+	background: $grey-color-light;
+}
+.highlight .s1 {
+  color: inherit;
+}
+blockquote {
+    font-size: 16px;
+    border-left: 4px solid #2251a0;
+    padding: 6px;
+    background-color: $grey-color-light;
+    color: black !important;
 }
 
 @media (max-width: 1025px){

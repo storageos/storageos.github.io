@@ -944,7 +944,7 @@ a.active, a:hover, .active a {
     float: right;
 }
 #docContents img[alt="screenshot"] {
-  max-width:  640px;
+  max-width:  760px;
   display: block;
 }
 #docContents table {

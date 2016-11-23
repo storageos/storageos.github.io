@@ -15,6 +15,8 @@ StorageOS has been built using modern tools and design methodologies to meet the
 
 StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-based infrastructure.  It is designed from the ground up for automation.  Management is simple using an easy to use API, CLI and Web-based UI.  It is available as a free developer tier and pay-as-you-go for beyond 1TB capacities and for enterprise features.
 
+![image](/images/docs/started/storageosinfra.png)
+
 ## Why use containers?
 Containerisation or Microservices are arguably the next big wave of disruption in technology infrastructure since VMware and virtualisation.
 
@@ -24,7 +26,7 @@ Compared to virtualisation, containers are quick to deploy and teardown.  Additi
 
 Being highly portable, containers can be deployed to a variety of public and private cloud infrastructures accelerating test and development cycles and as such, are well suited to Continuous Integration, Continuous Delivery (CI-CD) environments.
 
-
+![image](/images/docs/started/containers.png)
 
 ## How does StorageOS add value?
 

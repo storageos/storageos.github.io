@@ -16,4 +16,5 @@ build:
 
 publish: build
 	(cd ./_site && \
-	rsync -avP . $(PUBLISH_URL))
+	chmod -R g+w . && \
+	rsync -avP --omit-dir-times . $(PUBLISH_URL))

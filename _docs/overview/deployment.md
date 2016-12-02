@@ -23,9 +23,9 @@ For this Beta release we have two installation options (1) an Ubuntu Linux ISO i
 
 - If you are planning to explore StorageOS on a desktop or notebook, Vagrant will give you the added convenience of managing the StorageOS machine image acquisition and setup for you.
 
->**&#x270F; Note**: For secure, firewalled enterprise environments, acquiring the necessary Vagrant images may fail depending on your security policies – in this case consider the ISO install.
->
->**&#x270F; Note**: For the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, we therefore stipulate ISO-based clusters have 3, 5, or 7 nodes.
+    >**&#x270F; Note**: For secure, firewalled enterprise environments, acquiring the necessary Vagrant images may fail depending on your security policies – in this case consider the ISO install.
+    >
+    >**&#x270F; Note**: For the ISO-based deployment, Consul is bundled to store configuration data. Consul requires an odd number of nodes, we therefore stipulate ISO-based clusters have 3, 5, or 7 nodes.
 
 ## <a name="VirtualBox"></a> VirtualBox
 For either installation method, you’ll need to install VirtualBox for the OS you’ll be hosting this from.  At the time of writing, VirtualBox is available for Windows, Linux, macOS, and Solaris hosts.  If you don’t already have this installed, VirtualBox is freely available as Open Source software and can be obtained from [VirtualBox](https://www.virtualbox.org) under the terms of the GNU General Public License V2.

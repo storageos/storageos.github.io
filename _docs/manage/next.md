@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Web administration console
-anchor: explore
-module: explore/webui
+anchor: manage
+module: manage/next
 ---
 
 # Web administration console

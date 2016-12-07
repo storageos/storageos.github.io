@@ -1,11 +1,11 @@
 ---
 layout: guide
 title: Understanding the Dashboard
-anchor: explore
-module: explore/dashboard
+anchor: manage
+module: manage/dashboard
 ---
 
 # Understanding the Dashboard
 
 
-![image](/images/docs/user/Dashboard.png)
+![screenshot](/images/docs/explore/dashboard.png)

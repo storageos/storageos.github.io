@@ -13,7 +13,7 @@ In this exercise we will demonstrate how StorageOS can provide persistent storag
     src="https://www.youtube.com/embed/jrWRoILSyjQ?version=3&vq=hd720" frameborder="0" allowfullscreen>
 </iframe>
 
-You will need access to the internet to pull down a container for this demonstration, a web browser and a terminal connection to one of your StorageOS nodes to complete this exercise.
+You will need access to the internet to pull down a container for this demonstration, a web browser and a terminal connection to your StorageOS nodes to complete this exercise.
 
 ## Connect to a StorageOS node
 
@@ -98,7 +98,7 @@ You will need access to the internet to pull down a container for this demonstra
 
     And to delete the volume, simply click on the &#x1F5D1; icon.
 
-    ![screenshot](/images/docs/explore/volumes.png)
+    <a name="Volumes"></a>[<img src="/images/docs/explore/volumes.png" width="760">](./volumespng.html)
 
 ## Remove Crasher container
 

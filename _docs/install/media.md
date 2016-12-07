@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: StorageOS Image Media
+title: Obtaining the StorageOS Media
 anchor: install
 module: install/media
 ---
 
-# Obtaining the Installation Media
+# Obtaining the StorageOS Media
 Depending on your choice of installation, ISO or Vagrant, you need to have completed the installation of the prerequisite components covered earlier in this guide.
 
 The required media for your installation will have either been provided to you directly by us on a USB flash drive or, alternatively it can be downloaded directly from our web site.

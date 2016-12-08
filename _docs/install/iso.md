@@ -38,9 +38,9 @@ Before you can begin the ISO image install, you will need to create a **minimum 
     ![screenshot](/images/docs/iso/vbcreate1.png)
 
 
->**&#x270F; Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
->
->**&#x270F; Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
+   >**&#x270F; Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
+   >
+   >**&#x270F; Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
 
 ### Configure Virtual Disk
 
@@ -74,12 +74,37 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 2. From the resulting dialogue box, select **Network**
 3. Select **Adapter 1**
 4. Next to the **Attached to:** label use the drop-down list to select **Bridged Adapter**
-5. Confirm that an adapter is present next to the **Name:** lable
+5. Confirm that an adapter is present next to the **Name:** label
+
+   >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
+   >
+   >**&#x270F; Note**: If you are configuring Static DHCP addresses for each of your nodes, these can be located under the advanced properties of the Network configuration dialogue you have open above.
+
 6. Finish by clicking ![image](/images/docs/iso/ok.png)
 
-    ![screenshot](/images/docs/iso/vbnet.png)
+    ![screenshot](/images/docs/iso/macaddress.png)
 
-    >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
+## VMware ESX Virtual Machine Creation
+
+Should you wish to test StorageOS using ESX instead of VirtualBox, you can create a virtual machine with the following settings ESX settings:
+
+* USB or disk space on a data store to mount the ISO install image
+* ESX 5.5 or higher
+* HA Enabled
+* As stated previously, an odd number of nodes in the cluster
+* Storage presented to all nodes of the ESX cluster for HA and VMotion to work based on VMware’s requirements (SAN, VSAN, iSCSI, etc.)
+* Anti-affinity configured to prevent StorageOS controllers from running on the same ESX host
+
+1. Ensure you add a smaller disk for a boot partition it will be used for the StorageOS ISO image installation:
+
+    ![screenshot](/images/docs/iso/esxbootpart.png)
+
+2. You may wish to configure Hard disk 1 as thin provisioned in ESX to conserve space. This volume can be any size you want (10GB is required for StorageOS volumes plus 40MB for StorageOS container).
+
+   >**&#x270F; Note**: You may configure 3 or more VM's from the StorageOS ISO install as you want to test so long as it is an odd number.
+   >
+   >**&#x270F; Note**: You can also create an ESX template to simplify the install if you wish.
+
 
 ## Installing StorageOS and Ubuntu Server from ISO Media
 
@@ -94,7 +119,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/vms.png)
 
-1.  Select your preferred language
+2.  Select your preferred language
 
     ![image](/images/docs/iso/1-isolang.png)
 
@@ -132,110 +157,113 @@ These instructions direct you to select the options that work best with the beta
 
 ### Configuring Host Settings
 
-7. Enter a hostame for the system - for example you can use the format **storageos-<##>** for each of your VMs as they increment
+1. Enter a hostame for the system - for example you can use the format **storageos-<##>** for each of your VMs as they increment
 
     ![screenshot](/images/docs/iso/9-isonet.png)
 
-8. Setup the user name you will use to login and administer each of your you nodes - the same name for all nodes is recommended.
+2. Setup the user name you will use to login and administer each of your you nodes - the same name for all nodes is recommended.
 
    ![screenshot](/images/docs/iso/10-isousers.png)
 
-9. Enter a name - for example, the same name as what you just entered earlier.
+3. Enter a name - for example, the same name as what you just entered earlier.
 
    ![screenshot](/images/docs/iso/11-isousers.png)
 
-10. Enter the password - again, the same password for all nodes is recommended.
+4. Enter the password - again, the same password for all nodes is recommended.
 
     ![screenshot](/images/docs/iso/12-isousers.png)
 
-11. Re-enter the password
+5. Re-enter the password
 
     ![screenshot](/images/docs/iso/13-isousers.png)
 
-12. Select **No** to not encrypt your home directory
+6. Select **No** to not encrypt your home directory
 
     ![screenshot](/images/docs/iso/14-isousers.png)
 
-13. Select **Yes** to accept the suggested time zone or if this is incorrect follow the options to set this correctly
+7. Select **Yes** to accept the suggested time zone or if this is incorrect follow the options to set this correctly
 
     ![screenshot](/images/docs/iso/15-isoclock.png)
 
 ### Disk Partition Setup
 
-14. For the disk partition setup, select the default option, **Guided - use entire disk and set up LVM**
+1. For the disk partition setup, select the default option, **Guided - use entire disk and set up LVM**
 
     ![screenshot](/images/docs/iso/16-isopart.png)
 
-15. Select the default disk device to partition
+2. Select the default disk device to partition
 
     ![screenshot](/images/docs/iso/17-isopart.png)
 
-16. Accept **Yes** to write the changes and configure the Logical Volume Manager
+3. Accept **Yes** to write the changes and configure the Logical Volume Manager
 
     ![screenshot](/images/docs/iso/18-isopart.png)
 
-17. Accept the default, maximum available size for your partition - this should be in the region of 16GB
+4. Accept the default, maximum available size for your partition - this should be in the region of 16GB
 
     ![screenshot](/images/docs/iso/19-isopart.png)
 
-18. Select **Yes** to accept the changes to be writtin to disk
+5. Select **Yes** to accept the changes to be writtin to disk
 
     ![screenshot](/images/docs/iso/20-isopart.png)
 
 ### Configuring Updates and Packages
 
-19. If you use a proxy server to access the internet, please enter it now, otherwise leave this blank and continue
+1. If you use a proxy server to access the internet, please enter it now, otherwise leave this blank and continue
 
     ![screenshot](/images/docs/iso/21-isopack.png)
 
-20. We will not be using automatic updates for this Beta build so please select the default "No automatic updates"
+2. We will not be using automatic updates for this Beta build so please select the default "No automatic updates"
 
     ![screenshot](/images/docs/iso/22-isoupd.png)
 
-21. The only package we require for StorageOS is the **OpenSSH Server** - please select this option and continue
+3. The only package we require for StorageOS is the **OpenSSH Server** - please select this option and continue
 
     ![screenshot](/images/docs/iso/23-isosw.png)
 
 ### GRUB and StorageOS Cluster Stetup
 
-22. Select **Yes** to install the GRUB boot loader to the MBR
+1. Select **Yes** to install the GRUB boot loader to the MBR
 
     ![screenshot](/images/docs/iso/24-isogrub.png)
 
-23. If this is the first node of your cluster select **Yes**
+2. If this is the first node of your cluster select **Yes**
 
     ![screenshot](/images/docs/iso/25-isocluster.png)
 
-24. If ths is not the first node of your cluster, select **No**
+3. If ths is not the first node of your cluster, select **No**
 
     ![screenshot](/images/docs/iso/26-isocluster.png)
 
-25. Select the number of nodes you wish to setup in the cluster
->**&#x270F; Note**: The number of nodes available are odd - this is a restriction of consul
+4. Select the number of nodes you wish to setup in the cluster
+   >**&#x270F; Note**: The number of nodes available are odd - this is a restriction of consul
 
     ![screenshot](/images/docs/iso/27-isocluster.png)
 
-26. Confirm or modify the IP address of the new cluster
+5. If this is a member node you will also be asked to enter the IP address of the StorageOS cluster leader or accept the assigned DHCP address.
+
+   ![screenshot](/images/docs/iso/28a-isoleaderip.png)
+
+   >**&#x270F; Note**: This needs to be an address you have assigned or one that has been assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
+
+6. Confirm the IP address of the new cluster
 
     If this is the first node of your cluster, please ensure you note down this IP address as the subsequent nodes in the cluster will need this when you set them up next
 
-    ![screenshot](/images/docs/iso/28-isocluster.png) <!--- reduce image size to 640 pixels --->
+    ![screenshot](/images/docs/iso/28-isocluster.png)
 
-27. If this is a member node you will also be asked to enter the IP address of the StorageOS cluster leader
-
-    ![screenshot](/images/docs/iso/28a-isoleaderip.png) <!--- reduce image size to 640 pixels --->
-
+   >**&#x270F; Note**: As noted above.
 
 ### Completing your Installation
 
-28. At this point the installation should be complete - select **Continue** to restart the VM
+1. At this point the installation should be complete - select **Continue** to restart the VM
 
     ![screenshot](/images/docs/iso/29-isocomplete.png)
 
     ![screenshot](/images/docs/iso/30-isosigterm.png)
 
 
-29. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
+2. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
 
     ![screenshot](/images/docs/iso/31-isoconsole.png) <!--- reduce image size to 640 pixels --->
 
@@ -244,7 +272,7 @@ These instructions direct you to select the options that work best with the beta
 1.  To connect to an ISO install StorageOS node, simply ssh from the terminal.  When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
     ```bash
-    StorageOS:storageos julian$ ssh -l storageos storageos-3
+    StorageOS:storageos julian$ ssh -l storageos storageos-03
     The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
     ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
     Are you sure you want to continue connecting (yes/no)? yes

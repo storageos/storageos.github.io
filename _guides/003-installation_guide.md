@@ -5,19 +5,19 @@ anchor: install
 
 sections:
   -
-    title: Before you begin
-    description: This section circles back to meeting the prerequisites.
-    module: install/before
+    title: Installation Requirements
+    description: Learn about the various ways to deploy StorageOS.
+    module: install/deployment
   -
-    title: StorageOS image media
+    title: Obtaining the StorageOS Media
     description: This section covers obtaining the appropriate Storage OS media for install.
     module: install/media
   -
-    title: Installation from ISO image
+    title: Installation from ISO Image
     description: This section covers the ISO-based installation of StorageOS.
     module: install/iso
   -
-    title: Installation from Vagrant image
+    title: Installation from Vagrant Image
     description: This section covers the Vagrant-based installation of StorageOS
     module: install/vagrant
   -

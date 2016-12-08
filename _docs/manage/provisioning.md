@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Provisioning storage
-anchor: explore
-module: explore/provisioning
+anchor: manage
+module: manage/provisioning
 
 ---
 

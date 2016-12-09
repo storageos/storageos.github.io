@@ -45,7 +45,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 ### Configure Virtual Disk
 
 1. Set the File size to **16 GB**, this is the minimum size necessary if you wish to create StorageOS volumes later.
-2. Under **Hard disk file type** select the **VDI (Virtual Disk Image)** radio box
+2. Under **Hard disk file type** select the **VDI (VirtualBox Disk Image)** radio box
 3. Under **Storage on physical hard drive** select **Dynamically allocated**
 4. Click ![Create](/images/docs/iso/vbcreate.png) to create you VM image
 
@@ -236,23 +236,26 @@ These instructions direct you to select the options that work best with the beta
     ![screenshot](/images/docs/iso/26-isocluster.png)
 
 4. Select the number of nodes you wish to setup in the cluster
+
    >**&#x270F; Note**: The number of nodes available are odd - this is a restriction of consul
 
     ![screenshot](/images/docs/iso/27-isocluster.png)
 
-5. If this is a member node you will also be asked to enter the IP address of the StorageOS cluster leader or accept the assigned DHCP address.
-
-   ![screenshot](/images/docs/iso/28a-isoleaderip.png)
-
-   >**&#x270F; Note**: This needs to be an address you have assigned or one that has been assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
-
-6. Confirm the IP address of the new cluster
-
-    If this is the first node of your cluster, please ensure you note down this IP address as the subsequent nodes in the cluster will need this when you set them up next
+5. If this is the first node in the cluster accept the automatically assigned DHCP address and **note down the IP address** as the subsequent nodes in the cluster will need this when you set them up next
 
     ![screenshot](/images/docs/iso/28-isocluster.png)
 
-   >**&#x270F; Note**: As noted above.
+    If however this is a member node, you will be asked to manually enter the IP address of the StorageOS cluster leader
+
+    ![screenshot](/images/docs/iso/28a-isoleaderip.png)
+
+    >**&#x270F; Note**: This needs to be an address you have assigned as a Static DHCP or one that has been automatically assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
+
+6. If this is a member node, after entering the StorageOS cluster leader IP address you will subsequently  be asked to confirm the assigned IP address for the new node
+
+    ![screenshot](/images/docs/iso/28-isocluster1.png)
+
+    >**&#x270F; Note**: As noted above.
 
 ### Completing your Installation
 

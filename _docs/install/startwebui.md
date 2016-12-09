@@ -24,6 +24,8 @@ To verify that your installation:
 
 1. Open a browser and enter the IP address of one of the StorageOS nodes.  For both the ISO build enter the StorageOS user name and password you configured during the installation phase.  For the Vagrant build this will be storageos, storageos.
 
+   >**&#x270F; Note**: If you just started up the cluster it takes about a minute or so for the services to come on line before the StorageOS log in screen appears in your browser window.
+
     ![screenshot](/images/docs/iso/weblogin.png)
 
 2. Click **Configuration**, then **Controllers**. You will see the StorageOS nodes you built and their capacity, with one of the three nodes as a scheduler (the Scheduler column is **true** for that node).  Providing everything installed and configured correctly, the **System Status** in the left hand column should be set to **OK** and green.

@@ -8,4 +8,4 @@ module: manage/dashboard
 # Understanding the Dashboard
 
 
-![screenshot](/images/docs/explore/dashboard.png)
+![screenshot](/images/docs/manage/dashboard.png)

@@ -7,7 +7,7 @@ module: install/troubleshoot
 
 # <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
-In this section we have tried to identidy any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
+In this section we have tried to identify any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
 
 It is also possible that you may encounter problems with the ISO build as well though this install is much less prone to problems with our Beta release.
 

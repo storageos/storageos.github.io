@@ -10,11 +10,11 @@ module: manage/configuring
 This section explores how you can configure and provision your storage using labels, rules and auto-naming templates.
 
 ## Overview of Labels
-From the Labels link, you can manage how you label your storage using color and text descriptions identifying and classifying your system, storage, nodes, and features in a way that makes sense to you.
+Located under Configuration &#x27A1; Labels, here you can manage how you label your storage using color and text descriptions identifying and classifying your system, storage, nodes, and features in a way that makes sense to you.
 
 Labels also let you implement naming standards for all volumes created in an environment. Essentially, this feature allows you to apply naming constructs for all your managed objects based on the default label types but also using your own user-defined labels.  These constructs allow you to build volume names from multiple labels.
 
-StorageOS labels aply to all Configuration and Provisioning objcts and fall under two categories:
+StorageOS labels apply to all Configuration and Provisioning objcts and fall under two categories:
 
 ### 1. Built-in Labels
 There are two *Types* of Built-in label:
@@ -125,14 +125,50 @@ When you create a new volume, rules will be automatically enforced providing the
 
    >**&#x270F; Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
 
-
 ## Auto-naming
+
+Another option in the *Volume Management* window is the ability to automatically name volumes based on their properties based on  auto-naming template rules that have been pre-defined.
+
+1. To create a new template, go to Configuration &#x27A1; Auto-naming &#x27A1; ![image](/images/docs/manage/newtemplatebtn.png)
+2. Select *Volume* from the *Type* drop-down
+3. Drag the labels you want to use for your template into the *Template* box
+4. Set the counter digits for the volume name enumeration, for example 2 digits will give you 1 - 99
+5. Enter a description
+6. Save the template
+
+   ![image](/images/docs/manage/autoname.png)
+
+7. You should now see the new template with the *Type* you gave it set in order of priority for interpretation.  The &#x2B06; and &#x2B07; arrows can be used to move your template further up or down the list.
+
+   ![image](/images/docs/manage/autoname1.png)
+
+8. Now you are ready to auto-name a volume by selecting the labels in order as you defined them in your template earlier.
+9. Click on the ![image](/images/docs/manage/createbtn.png) button to complete
+
+   ![image](/images/docs/manage/newvolume3.png)
+
+9. Now you can vew your new volume with the labels applied to it and the features inherited throught them, namely the replication feature which we earlier, configured above.
+
+   ![screenshot](/images/docs/manage/newvolume4.png)
 
 ## Controllers
 
+To view the Controllers window, select Configuration &#x27A1; Controllers.  This will provide you with a summary on the nodes participating in the cluster, their availabe capacity, their role and state of health.
+
+![screenshot](/images/docs/manage/controllers.png)
+
 ## Drivers
 
+To view the Drivers window, select Configuration &#x27A1; Drivers.  This will provide you with a summary on the nodes participating in the clusterand the name and type of the *Driver* they are using.
+
+![screenshot](/images/docs/manage/drivers.png)
+
+
 ## Caches
+
+To view the Caches window, select Configuration &#x27A1; Caches.  The cache configuration is a global option across all Data Plane nodes
+
+![screenshot](/images/docs/manage/caches.png)
 
 ## Diagnostics
 
@@ -144,4 +180,4 @@ When you create a new volume, rules will be automatically enforced providing the
 
 ## Pools
 
-## Contauners
+## Containers

@@ -19,32 +19,15 @@ Before you launch Vagrant for the first time and build out the cluster, you will
 
 1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`.
 
-2.  It is also recommended you add the line `"pull = false"` as shown below to surpress verbose messages during the initialisation.
-
-    ```ruby
-    # Set to 1 for single, or 3 or 5 for HA
-    $channel = (ENV['STORAGEOS_CHANNEL'] || "alpha")
-    $num_node = (ENV['STORAGEOS_NODES'] || 3).to_i
-    $num_client = (ENV['STORAGEOS_CLIENTS'] || 0).to_i
-    $num_disk = (ENV['STORAGEOS_DISKS'] || 8).to_i
-    $node_ip_base = (ENV['STORAGEOS_IP_BASE'] || "10.245.10") + "#{$num_node}" + "."
-    $client_ip_base = (ENV['STORAGEOS_CLIENT_IP_BASE'] || "10.245.20") + "#{$num_client}" + "."
-    $node_ips = $num_node.times.collect { |n| $node_ip_base + "#{n+2}" }
-    $client_ips = $num_client.times.collect { |n| $client_ip_base + "#{n+2}" }
-    $leader_ip = $node_ips[0]
-
-    pull = false
-    ```
-
 ## Initialise the Cluster
 
 1.  From the base storageos folder initialise the StorageOS Vagrant cluster:
 
     ```bash
     StorageOS:storageos julian$ vagrant up
-    Cloning/pulling updates from StorageOS source repositories...
-    Note: set SKIP_PULL=true environment variable to skip updates
-    Cloning src/dkr/build branch 'develop': Cloning into 'src/dkr/build'...
+    Bringing machine 'storageos-1' up with 'virtualbox' provider...
+    Bringing machine 'storageos-2' up with 'virtualbox' provider...
+    Bringing machine 'storageos-3' up with 'virtualbox' provider...
     ...
     ```
 2.  After a couple of minutes the installation should be complete - check the Vagrant cluster node status using the `vagrant status` command:

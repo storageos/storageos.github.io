@@ -66,8 +66,8 @@ StorageOS Beta can be installed onto x86 server, desktop or laptop environemnts.
 
 There are essentially two options for installing StorageOS
 
-1. Vagrant, this is by fat the simplist choice to get you up and running quickly wich is dependant on VirtualBoxand
-2. ISO, this is an automated Ubuntu install which requires bare-metal or a hypervisor.  We would recommend the VirtualBox hyoervisor  for the Beta as this has been more extensively tested and requires no additional third-party licensing.
+1. Vagrant, this is by far the simplist choice to get you up and running quickly which is dependant on VirtualBoxand
+2. ISO, this is an automated Ubuntu install which requires bare-metal or a hypervisor.  We would recommend the VirtualBox hypervisor  for the Beta as this has been more extensively tested and requires no additional third party licensing.
 
 ### <a name="Vagrant"></a> Vagrant
 At the time of writing, Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments.  Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be simpler.

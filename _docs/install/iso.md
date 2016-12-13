@@ -227,7 +227,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/24-isogrub.png)
 
-2. If this is the first node of your cluster select **Yes**
+2. If this is the first node of your cluster, select **Yes**
 
     ![screenshot](/images/docs/iso/25-isocluster.png)
 

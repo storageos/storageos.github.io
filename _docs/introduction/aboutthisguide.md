@@ -22,7 +22,7 @@ As public Beta software, StorageOS has yet to be released commercially and may c
 ## Structure
 This guide is structured to get you quickly setup and running with StorageOS and Docker so you can focus on exploring the product features and how these work.
 
-This document has been specifically written to cover the Beta release of StorageOS and will initially cover the basics of the product so expect to see more soon!
+This document has been specifically written to cover the Beta release of StorageOS and will initially cover the basics of the product -- so expect to see more soon!
 
 <!---This guide is structured into the following sections: *to be revised as sections are changed*
 1.	Getting Started: what is StorageOS and what problems does it solve for you

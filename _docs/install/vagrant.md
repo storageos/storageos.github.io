@@ -11,7 +11,7 @@ To begin the Vagrant installation you will need to your base directory as discus
 
 As well as having Vagrant installed, you will also need to have VirtualBox installed which was covered in the previous sections.
 
-## Setting up the Vagrant Environmnet
+## Setting up the Vagrant Environment
 
 Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.
 

@@ -12,7 +12,7 @@ There are a number of requirements that need to be met based on your environment
 ## Before you Start
 Before you start, please read this section before moving to the Installation Guide section as it may save you time in the end!
 
-StorageOS is a Linux only installation, however depending on your testing scope, StroageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
+StorageOS is a Linux-only installation, however depending on your testing scope, StorageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
 
 Recommendations on the practical maximum cluster members have yet to be published.  We are however interested in hearing from you on what works (and what doesn’t) in your environment.  The design does not for example impose constraints such as maximum, or odd number of nodes.
 

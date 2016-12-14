@@ -251,7 +251,7 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
 
 ### StorageOS still doesn't restart
 
-Another issue that may arise is receiving the following error after unsuccessfully restarting the StrageOS container.
+Another issue that may arise is receiving the following error after unsuccessfully restarting the StorageOS container.
 
 ```bash
 ERROR: failed to register layer: rename /var/lib/docker/image/aufs/layerdb/tmp/layer-176027139 /var/lib/docker/image/aufs/layerdb/sha256/b3aef0b33ad82176867819248a8d54e06233ecd62c7147a8c864060dd6d904d9: directory not empty

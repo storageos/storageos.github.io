@@ -307,7 +307,7 @@ Digest: sha256:4a6a91f7981d2c78b8746075859a2ff5ae938bae5da3b9b5637714fc7810fbb2
 Status: Downloaded newer image for consul:latest
 ```
 
-If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should reolve this problem.
+If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should resolve this problem.
 
 ```bash
 vagrant@storageos-1:~$ docker pull consul

@@ -15,9 +15,11 @@ In this exercise we will demonstrate how StorageOS can provide persistent storag
 
 You will need access to the internet to pull down a container for this demonstration, a web browser and a terminal connection to your StorageOS nodes to complete this exercise.
 
+---
+
 ## Connect to a StorageOS node
 
-1.  To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
+1.  To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command. 
 
     ```bash
     vagrant@storageos-1:~$ docker run -it -d -v crasher-data:/data --volume-driver=storageos -p 8081:8081 karolisr/crasher
@@ -43,7 +45,7 @@ You will need access to the internet to pull down a container for this demonstra
 
 ## Open the Crasher container application
 
-1.  Lets open the Crasher container application in a new browser window using the IP and port number as noted above.
+1.  Let's open the Crasher container application in a new browser window using the IP and port number as noted above.
 
     ![screenshot](/images/docs/explore/crasher1.png)
 
@@ -75,7 +77,7 @@ You will need access to the internet to pull down a container for this demonstra
 
 ## Remove provisioned volume
 
-1.  Now let us clean-up the container and clean-up the provisioned volume.
+1.  Now let's clean-up the container and clean-up the provisioned volume.
 
     You can list out the 10GB crasher-data volume using the `storageos` CLI.
 
@@ -108,7 +110,7 @@ You will need access to the internet to pull down a container for this demonstra
 
     ```bash
     vagrant@storageos-3:~$ docker ps -a | grep crasher
-    2e26c041aff8        karolisr/crasher                       "/bin/crasher"           2 hours ago         Up About an hour            0.0.0.0:8081->8081/tcp                                                                                          stoic_franklin
+    2e26c041aff8   karolisr/crasher   "/bin/crasher"   2 hours ago  Up About an hour   0.0.0.0:8081->8081/tcp   stoic_franklin
     vagrant@storageos-3:~$ docker stop 2e26c041aff8
     2e26c041aff8
     ```

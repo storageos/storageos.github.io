@@ -39,8 +39,8 @@ Port I/O is curently not reporting against any datapoints.  The default measurme
 
 ### Customising Views
 
-While provision has been built in for changing the graphical views much of this functionality is still under development but has been exposed.  If you click on the grapgh name at the top a context menu will appear.
+While provision has been built in for changing the graphical views much of this functionality is still under development but has been exposed.  If you click on the graph name at the top a context menu will appear.
 
 ![image](/images/docs/manage/contextmenu.png)
 
-Using the &#x2795; and &#x2796; symbols you can shrink and enlarge the graphs. The *vVew* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.
+Using the &#x2795; and &#x2796; symbols you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.

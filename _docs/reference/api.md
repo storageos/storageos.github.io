@@ -11,7 +11,7 @@ StorageOS Control plane API is accessible either through port 80 or 8000.
 
 ---
 
-# Volumes API
+## Volumes API
 
 ### Create volumes
 
@@ -36,13 +36,13 @@ Create new volume.
     - Request error (can be various reason, i.e. pool not found): `400`
 
 
-| Field        | Type        | Required | Description  |
-| ------------ |:-----------:| :-------:|-------------:|
-| name         | `string`    | true     | Volume name  |
-| pool         | `string`    | true     | Pool name that this volume belongs to |
-| size         | `int`       | true     | Volume size in gigabytes |
-| tags         | `[]string`  | false    | Array of tags, can be any existing tags |    
-| description  | `string`    | false    | Description |
+   | Field        | Type        | Required | Description  |
+   | ------------ |:-----------:| :-------:|-------------:|
+   | name         | `string`    | true     | Volume name  |
+   | pool         | `string`    | true     | Pool name that this volume belongs to |
+   | size         | `int`       | true     | Volume size in gigabytes |
+   | tags         | `[]string`  | false    | Array of tags, can be any existing tags |    
+   | description  | `string`    | false    | Description |
 
 ---
 

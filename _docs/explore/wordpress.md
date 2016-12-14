@@ -54,7 +54,7 @@ The first step in this exercise is to get Docker Swarm set up and running on you
         10.245.103.2:2377
     ```
 
-4.  Logon to other 2 nodes and join swarm cluster on each
+4.  Log on to other 2 nodes and join swarm cluster on each
 
     node 2:
 
@@ -95,7 +95,7 @@ All 3 nodes should be Active and with the status of Leader or Reachable
     d6j6qds580gocl2t7evdxtd7n
     ```
 
-2.  Setup Percona fork of MySQL server using wp network overlay
+2.  Setup the Percona fork of MySQL server using wp network overlay
 
     ```bash
     vagrant@storageos-1:~$ docker service create --name db --network wp --publish 3306:3306 \
@@ -105,7 +105,7 @@ All 3 nodes should be Active and with the status of Leader or Reachable
     a91p715zxsepb360q6bearu20
     ```
 
-3.  Setup WordPress server using wp network overlay and publich to default port 80 on public facing IPs of swarm nodes
+3.  Setup WordPress server using wp network overlay and publish to default port 80 on public facing IPs of swarm nodes
 
     ```bash
     vagrant@storageos-1:~$ docker service create --name wp --network wp --publish 82:82 --mode \

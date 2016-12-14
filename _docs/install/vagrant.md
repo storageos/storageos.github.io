@@ -11,29 +11,16 @@ To begin the Vagrant installation you will need to your base directory as discus
 
 As well as having Vagrant installed, you will also need to have VirtualBox installed which was covered in the previous sections.
 
-## Setting up the Vagrant Environmnet
+## Setting up the Vagrant Environment
 
 Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.
 
 ### Modifying the Vagrantfile
 
-1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`.
+1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1` or simply set an environment variable from your terminal window:
 
-2.  It is also recommended you add the line `"pull = false"` as shown below to surpress verbose messages during the initialisation.
-
-    ```ruby
-    # Set to 1 for single, or 3 or 5 for HA
-    $channel = (ENV['STORAGEOS_CHANNEL'] || "alpha")
-    $num_node = (ENV['STORAGEOS_NODES'] || 3).to_i
-    $num_client = (ENV['STORAGEOS_CLIENTS'] || 0).to_i
-    $num_disk = (ENV['STORAGEOS_DISKS'] || 8).to_i
-    $node_ip_base = (ENV['STORAGEOS_IP_BASE'] || "10.245.10") + "#{$num_node}" + "."
-    $client_ip_base = (ENV['STORAGEOS_CLIENT_IP_BASE'] || "10.245.20") + "#{$num_client}" + "."
-    $node_ips = $num_node.times.collect { |n| $node_ip_base + "#{n+2}" }
-    $client_ips = $num_client.times.collect { |n| $client_ip_base + "#{n+2}" }
-    $leader_ip = $node_ips[0]
-
-    pull = false
+    ```bash
+    STORAGEOS_NODES=1
     ```
 
 ## Initialise the Cluster
@@ -42,9 +29,14 @@ Before you launch Vagrant for the first time and build out the cluster, you will
 
     ```bash
     StorageOS:storageos julian$ vagrant up
-    Cloning/pulling updates from StorageOS source repositories...
-    Note: set SKIP_PULL=true environment variable to skip updates
-    Cloning src/dkr/build branch 'develop': Cloning into 'src/dkr/build'...
+    Bringing machine 'storageos-1' up with 'virtualbox' provider...
+    Bringing machine 'storageos-2' up with 'virtualbox' provider...
+    Bringing machine 'storageos-3' up with 'virtualbox' provider...
+    ==> storageos-1: Importing base box 'storageos'...
+    ==> storageos-1: Matching MAC address for NAT networking...
+    ==> storageos-1: Setting the name of the VM: storageos_storageos-1_1481631778343_72155
+    ==> storageos-1: Clearing any previously set network interfaces...
+    ==> storageos-1: Preparing network interfaces based on configuration...
     ...
     ```
 2.  After a couple of minutes the installation should be complete - check the Vagrant cluster node status using the `vagrant status` command:
@@ -71,27 +63,20 @@ Before you launch Vagrant for the first time and build out the cluster, you will
     ```bash
     StorageOS:storageos julian$ ls *.vdi
     storageos-1-disk0.vdi	storageos-2-disk0.vdi	storageos-3-disk0.vdi
-    storageos-1-disk1.vdi	storageos-2-disk1.vdi	storageos-3-disk1.vdi
-    storageos-1-disk2.vdi	storageos-2-disk2.vdi	storageos-3-disk2.vdi
-    storageos-1-disk3.vdi	storageos-2-disk3.vdi	storageos-3-disk3.vdi
-    storageos-1-disk4.vdi	storageos-2-disk4.vdi	storageos-3-disk4.vdi
-    storageos-1-disk5.vdi	storageos-2-disk5.vdi	storageos-3-disk5.vdi
-    storageos-1-disk6.vdi	storageos-2-disk6.vdi	storageos-3-disk6.vdi
-    storageos-1-disk7.vdi	storageos-2-disk7.vdi	storageos-3-disk7.vdi
     ```
 
 ### Confirm SSH has been installed and Docker containers are running
 
-1.  To remote shell into the cluster you should use the `vagrant ssh` command and sepcify the node you wish to connect in the case of a multi-node cluster setup:
+1.  To remote shell into the cluster you should use the `vagrant ssh` command and specify the node you wish to connect in the case of a multi-node cluster setup:
 
     ```bash
     StorageOS:storageos julian$ vagrant ssh storageos-1
     Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
-     * Documentation:  https://help.ubuntu.com
-     * Management:     https://landscape.canonical.com
-     * Support:        https://ubuntu.com/advantage
-    vagrant@storageos-1:~$
+    * Documentation:  https://help.ubuntu.com
+    * Management:     https://landscape.canonical.com
+    * Support:        https://ubuntu.com/advantage
+    Last login: Tue Dec 13 12:27:42 2016 from 10.0.2.2
     ```
 
 2.  Running the `docker ps` command will display what is currently running on the node:
@@ -107,16 +92,15 @@ Before you launch Vagrant for the first time and build out the cluster, you will
     87e86b1b434e  quay.io/storageos/storageos:beta   "/bin/storageos datap"   12 days ago    Up 4 minutes                                                                                                                            storageos_data_1
     ```
 
-3.  You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
+3.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
 
     ```bash
     root@storageos-03:~# storageos status
-            Name                      Command               State                                                       Ports
-    -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp
-    storageos_data_1       /bin/storageos dataplane         Up
-    storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp
-    root@storageos-03:~#
+    Name                      Command               State                                                            Ports                                                           
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:13700->13700/tcp, 0.0.0.0:13700->13700/udp, 0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp 
+    storageos_data_1       /bin/storageos dataplane         Up                                                                                                                               
+    storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp     
     ```
 
 4.  To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:

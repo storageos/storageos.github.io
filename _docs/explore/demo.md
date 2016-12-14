@@ -7,7 +7,7 @@ module: explore/demo
 
 # Persistent Storage Demonstration
 
-In this exercise we will demonstrate how StorageOS can provide persistent storage to Docker containers.  The YouTube video below plays through the steps we will run through in this section that follows below.
+In this exercise we will demonstrate how StorageOS can provide persistent storage to Docker containers.  The following YouTube video plays through the steps that we will run through in the section that follows below.
 
 <iframe width="760" height="570"
     src="https://www.youtube.com/embed/jrWRoILSyjQ?version=3&vq=hd720" frameborder="0" allowfullscreen>
@@ -19,7 +19,7 @@ You will need access to the internet to pull down a container for this demonstra
 
 ## Connect to a StorageOS node
 
-1.  To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command. 
+1.  To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
 
     ```bash
     vagrant@storageos-1:~$ docker run -it -d -v crasher-data:/data --volume-driver=storageos -p 8081:8081 karolisr/crasher

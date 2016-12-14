@@ -77,7 +77,7 @@ Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 ## Docker service will not restart
 
-If you are unable to restart the Docker service with `service docker start` you may have recieved a more serious error:
+If you are unable to restart the Docker service with `service docker start` you may have received a more serious error:
 
 ```bash
 root@storageos-1:~# service docker status | grep Active

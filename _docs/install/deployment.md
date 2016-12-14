@@ -12,7 +12,7 @@ There are a number of requirements that need to be met based on your environment
 ## Before you Start
 Before you start, please read this section before moving to the Installation Guide section as it may save you time in the end!
 
-StorageOS is a Linux only installation, however depending on your testing scope, StroageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
+StorageOS is a Linux-only installation, however depending on your testing scope, StorageOS can be installed onto macOS, Windows and Linux environments test environments using VirtualBox.
 
 Recommendations on the practical maximum cluster members have yet to be published.  We are however interested in hearing from you on what works (and what doesn’t) in your environment.  The design does not for example impose constraints such as maximum, or odd number of nodes.
 
@@ -66,8 +66,8 @@ StorageOS Beta can be installed onto x86 server, desktop or laptop environemnts.
 
 There are essentially two options for installing StorageOS
 
-1. Vagrant, this is by fat the simplist choice to get you up and running quickly wich is dependant on VirtualBoxand
-2. ISO, this is an automated Ubuntu install which requires bare-metal or a hypervisor.  We would recommend the VirtualBox hyoervisor  for the Beta as this has been more extensively tested and requires no additional third party licensing.
+1. Vagrant, this is by far the simplist choice to get you up and running quickly which is dependant on VirtualBoxand
+2. ISO, this is an automated Ubuntu install which requires bare-metal or a hypervisor.  We would recommend the VirtualBox hypervisor  for the Beta as this has been more extensively tested and requires no additional third party licensing.
 
 ### <a name="Vagrant"></a> Vagrant
 At the time of writing, Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments.  Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be simpler.

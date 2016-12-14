@@ -158,52 +158,123 @@ Another option in the *Volume Management* window is the ability to automatically
 
 9. Now you can vew your new volume with the labels applied to it and the features inherited through them, namely the replication feature which we earlier, configured above.
 
-   ![screenshot](/images/docs/manage/newvolume4.png)
+   ![image](/images/docs/manage/newvolume4.png)
 
 ---
 
 ## Controllers
 
-To view the Controllers window, select Configuration &#x27A1; Controllers.  This will provide you with a summary on the nodes participating in the cluster, their available capacity, their role and state of health.
+To view the Controllers window, select Configuration &#x27A1; Controllers.  
 
-![screenshot](/images/docs/manage/controllers.png)
+* This window provides you with a summary on the nodes participating in the cluster, their available capacity, their role and state of health.
+
+  ![image](/images/docs/manage/controllers.png)
 
 ---
 
 ## Drivers
 
-To view the Drivers window, select Configuration &#x27A1; Drivers.  This will provide you with a summary on the nodes participating in the cluster and the name and type of the *Driver* they are using.
+To view the Drivers window, select Configuration &#x27A1; Drivers.  
 
-![screenshot](/images/docs/manage/drivers.png)
+* This window provides you with a summary on the nodes participating in the cluster and the name and type of the *Driver* they are using.
+
+  ![image](/images/docs/manage/drivers.png)
 
 ---
 
 ## Caches
 
-To view the Caches window, select Configuration &#x27A1; Caches.  The cache configuration is a global option across all Data Plane nodes
+To view the Caches window, select Configuration &#x27A1; Caches.  
 
-![screenshot](/images/docs/manage/caches.png)
+* The cache configuration is a global option across all Data Plane nodes.
+
+  ![image](/images/docs/manage/caches.png)
 
 ---
 
 ## Diagnostics
 
+To view the Diagnostics window, select Configuration &#x27A1; Diagnostics.  
+
+* From this window you can create diagnostics bundles for a node you are experiencing issues with or for the entire cluster to post back to StorageOS for extended support.  
+
+  ![image](/images/docs/manage/diagnostics.png)
+
+   >**&#x270F; Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
+
 ---
 
 ## Backups
+
+To access the Configuration Backup and Restore window, select Configuration &#x27A1; Backups.  
+
+* To manage backup and restore of the control plane configuration, click on the ![image](/images/docs/manage/backupbtn.png) and ![image](/images/docs/manage/restorebtn.png) buttons to initiate a backup or restore.
+
+  ![image](/images/docs/manage/backups.png)
+
+   >**&#x270F; Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
+   >
+   >**&#x270F; Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
 
 ---
 
 ## License
 
+To access the License Management window, select Configuration &#x27A1; License.
+
+1. To enter a new license key click on the ![image](/images/docs/manage/licensekeybtn.png) button
+
+   ![image](/images/docs/manage/license.png)
+
+2. Enter the license key *Name* and click on the ![image](/images/docs/manage/savebtn.png) button
+
+   ![image](/images/docs/manage/license1.png)
+
+   >**&#x270F; Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
+
 ---
 
 ## Clients
+
+To access the Client Management window, select Provisioning &#x27A1; Clients.
+
+1. From here you can configure labels for StorageOS nodes and filter the list of nodes in the cluster using labels that have been applied.  For example you may have nodes participating in a performance storage pool configured with SSDs.
+
+2. To configure a label select the ![image](/images/docs/manage/editbtn.png) button, select the labels you want to apply and then accept the changes by clicking on the &#x2714; button.
+
+   ![image](/images/docs/manage/clients.png)
+
+3. Clicking on the ![image](/images/docs/manage/deletebtn.png) button will delete the StorageOS node.
+
+   ![image](/images/docs/manage/deleteclient.png)
 
 ---
 
 ## Pools
 
+The Storage Pools window can be found under Provisioning &#x27A1; Pools.
+
+1. The top half of the Storage Pools window allows you to view the overall status of the global pool and capacity across all nodes in the cluster and create new Storage Pools.
+2. For example, to create a new *Storage Pool* click on the ![image](/images/docs/manage/newpoolbtn.png) button
+
+   ![image](/images/docs/manage/pools.png)
+
+3. Select the StorageOS nodes you want to participate in the pool
+4. Provide it with a *Name* and *Description*
+5. Select the *Controllers*
+6. Add any *Labels*  you want to associate with the new pool
+7. Click on the ![image](/images/docs/manage/savebtn.png) button to complete
+
+   ![image](/images/docs/manage/newpool.png)
+
+   >**&#x270F; Note**: Consider whether you want to allocate nodes to more than one storage pool - typically nodes will join one pool as in the case of disk type for example or if you want to dedicate replicated storage to a specific set of nodes in the cluster.
+
+The second half of the window allows you to make configuration changes to existing *Storage Pools*.
+
+1. To edit an existing *Storage Pool*
+
+
 ---
+
 
 ## Containers

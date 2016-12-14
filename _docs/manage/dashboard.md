@@ -35,7 +35,9 @@ Currently the only exposed counters are average read and write disk I/O operatio
 
 ### Network
 
-Port I/O is curently not reporting against any datapoints.  The default measurment used is bits per second.
+Port I/O presently reports against network-in and network-out in bits per second (bps).  As with the other graphs you can filter out the inbound and outbound data transfer views by clicking on the datapoint you are interested in.
+
+![image](/images/docs/manage/portio.png)
 
 ### Customising Views
 

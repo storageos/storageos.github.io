@@ -22,7 +22,7 @@ Containerisation or Microservices are arguably the next big wave of disruption i
 
 A container comprises an entire runtime environment for an application with all its dependencies in a single package.  By containerising applications, a hosting platform and its dependencies will not run the risk of interfering with application dependencies.
 
-Compared to virtualisation, containers are quick to deploy and teardown.  Additionally, containers are lightweight allowing more (applications) to be hosted on the same server than would be possible using VMs and at the same time, removing the management overhead of maintaining multiple Operating Systems (OSs) on a single server.
+Compared to virtualisation, containers are quick to deploy and tear-down.  Additionally, containers are lightweight allowing more (applications) to be hosted on the same server than would be possible using VMs and at the same time, removing the management overhead of maintaining multiple Operating Systems (OSs) on a single server.
 
 Being highly portable, containers can be deployed to a variety of public and private cloud infrastructures accelerating test and development cycles and as such, are well suited to Continuous Integration, Continuous Delivery (CI-CD) environments.
 
@@ -42,7 +42,7 @@ StorageOS satisfies a number of common needs of applications running in producti
 - Compression
 - Encryption
 - Business rules
-- Resource labelling
+- Resource labeling
 - Resource monitoring
 - Identity and authorisation
 
@@ -58,7 +58,7 @@ This provides the simplicity and programmability of modern cloud and container-b
 - [compression](/docs/user-guide/horizontal-pod-autoscaling/)
 - [encryption](/docs/user-guide/connecting-applications/)
 - [business rules](/docs/user-guide/services/)
-- [resource labelling](/docs/user-guide/update-demo/)
+- [resource labeling](/docs/user-guide/update-demo/)
 - [resource monitoring](/docs/user-guide/monitoring/)
 - [identity and authorization](/docs/admin/authorization/)
 

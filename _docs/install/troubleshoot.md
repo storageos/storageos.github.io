@@ -167,7 +167,7 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### Restart the StorageOS dataplance and controlplane
+### Restart the StorageOS dataplane and controlplane
 
 Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reasin only one of the services has been restored to a healthy state, run the command for a second time.
 

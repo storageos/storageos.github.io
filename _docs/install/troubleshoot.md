@@ -257,7 +257,7 @@ Another issue that may arise is receiving the following error after unsuccessful
 ERROR: failed to register layer: rename /var/lib/docker/image/aufs/layerdb/tmp/layer-176027139 /var/lib/docker/image/aufs/layerdb/sha256/b3aef0b33ad82176867819248a8d54e06233ecd62c7147a8c864060dd6d904d9: directory not empty
 ```
 
-To resolve this problem simply delerte the sha256 directory.
+To resolve this problem simply delete the sha256 directory.
 
 ```bash
 root@storageos-03:~# rm -rf /var/lib/docker/image/aufs/layerdb/sha256/

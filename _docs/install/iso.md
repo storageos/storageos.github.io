@@ -226,9 +226,10 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/23-isosw.png)
 
-### GRUB and StorageOS Cluster Stetup
+### GRUB and StorageOS Cluster Setup
 
-1. Select **Yes** to install the GRUB boot loader to the MBR
+1. Select **Yes** to install the GRUB boot loader to the MBR. (Though unlikely, this may appear differently or not
+at all on some systems, depending on the hardware.)
 
     ![screenshot](/images/docs/iso/24-isogrub.png)
 

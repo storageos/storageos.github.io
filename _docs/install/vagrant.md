@@ -126,5 +126,4 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     storageos:storageos julian$
     ```
 
-
-You should now have successfully completed the StorageOS cluster setup.
+This completes the StorageOS cluster setup.

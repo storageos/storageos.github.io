@@ -241,9 +241,13 @@ at all on some systems, depending on the hardware.)
 
     ![screenshot](/images/docs/iso/26-isocluster.png)
 
-1. Select the number of nodes you wish to setup in the cluster
+1. Select the number of nodes you wish to setup in the cluster.
 
-   >**&#x270F; Note**: The number of nodes available are odd - this is a restriction of consul
+   >**&#x270F; Note**: Do not be tempted to 'over provision' the number of nodes! The cluster will not start until
+   the number of nodes you specify are running. It is possible add nodes later if desired.
+
+   >**&#x270F; Note**: Only odd numbers of nodes are shown - this is to allow Consul to properly protect against
+  'split brain' if the network should become partitioned.
 
     ![screenshot](/images/docs/iso/27-isocluster.png)
 

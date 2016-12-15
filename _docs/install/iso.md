@@ -255,6 +255,9 @@ at all on some systems, depending on the hardware.)
 
     ![screenshot](/images/docs/iso/28-isocluster.png)
 
+    >**&#x270F; Note**: If you provisioned your node with multiple IP addresses, make sure you specify the address on an interface
+    that the other cluster nodes will be able to contact, or the cluster will be unable to start.
+
     If however this is a member node, you will be asked to manually enter the IP address of the StorageOS cluster leader
 
     ![screenshot](/images/docs/iso/28a-isoleaderip.png)

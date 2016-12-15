@@ -56,7 +56,7 @@ root@storageos-03:~#
 
 ## Confirming and restarting the Docker service
 
-More often than not, if you think there is a problem, its most likely going to be related to your Docker containers but before you check these you should check the status of Docker first.
+More often than not, if you think there is a problem, it's most likely going to be related to your Docker containers but before you check these you should check the status of Docker first.
 
 One easy way to do this is to look at the status of the Docker service - you will quickly know if there is a problem and you can attempt to restart the docker service with 'service docker start'
 

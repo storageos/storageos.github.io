@@ -77,7 +77,7 @@ Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 ## Docker service will not restart
 
-If you are unable to restart the Docker service with `service docker start` you may have recieved a more serious error:
+If you are unable to restart the Docker service with `service docker start` you may have received a more serious error:
 
 ```bash
 root@storageos-1:~# service docker status | grep Active
@@ -167,9 +167,9 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### Restart the StorageOS dataplance and controlplane
+### Restart the StorageOS dataplane and controlplane
 
-Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reasin only one of the services has been restored to a healthy state, run the command for a second time.
+Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reason only one of the services has been restored to a healthy state, run the command for a second time.
 
 ```
 vagrant@storageos-3:~$ docker ps -a
@@ -251,13 +251,13 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
 
 ### StorageOS still doesn't restart
 
-Another issue that may arise is receiving the following error after unsuccessfully restarting the StrageOS container.
+Another issue that may arise is receiving the following error after unsuccessfully restarting the StorageOS container.
 
 ```bash
 ERROR: failed to register layer: rename /var/lib/docker/image/aufs/layerdb/tmp/layer-176027139 /var/lib/docker/image/aufs/layerdb/sha256/b3aef0b33ad82176867819248a8d54e06233ecd62c7147a8c864060dd6d904d9: directory not empty
 ```
 
-To resolve this problem simply delerte the sha256 directory.
+To resolve this problem simply delete the sha256 directory.
 
 ```bash
 root@storageos-03:~# rm -rf /var/lib/docker/image/aufs/layerdb/sha256/
@@ -307,7 +307,7 @@ Digest: sha256:4a6a91f7981d2c78b8746075859a2ff5ae938bae5da3b9b5637714fc7810fbb2
 Status: Downloaded newer image for consul:latest
 ```
 
-If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should reolve this problem.
+If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should resolve this problem.
 
 ```bash
 vagrant@storageos-1:~$ docker pull consul

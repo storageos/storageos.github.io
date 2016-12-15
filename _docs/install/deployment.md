@@ -12,7 +12,12 @@ Please read this section before moving to the Installation Guide section. It may
 
 StorageOS runs on Linux. StorageOS runs well in VMs and can be installed onto macOS, Windows and Linux environments using VirtualBox or VMware.
 
-We are still gathering data in order to make specific recommendations for virtual or physical hardware, and for the number of nodes for particular sets of requirements. We are therefore interested in hearing from you on what works (and what doesn’t) in your environment. The design of StorageOS does not impose constraints such as maximum, or odd number of nodes. However the ISO install will install Consul, which _does_ mandate an odd number of nodes for server installations.
+We are still determining our recommended specifications for virtual or physical hardware, and for the suggested
+numbers of nodes for common use cases. We are interested in hearing about users' experience of what does and doesn't works
+in their environments.
+
+The design of StorageOS does not impose arbitrary constraints on the number of nodes. Note, however,
+that the ISO install will install Consul, which _does_ mandate an odd number of nodes for server installations.
 
 ## Beta Release
 For this Beta release we have two installation options, an Ubuntu-derived Linux ISO image, and a Vagrant box for VirtualBox and VMware desktop.  Either method can be used with your choice of host OS.
@@ -21,31 +26,34 @@ For this Beta release we have two installation options, an Ubuntu-derived Linux 
 
 - If you are planning to run StorageOS on a desktop or notebook, Vagrant will manage the StorageOS machine image acquisition and setup for you.
 
-    >**&#x270F; Note**: Your site security policies may prohibit the download of the Vagrant box from a workstation. In this case consider the ISO install. You will need some way to download and use either the box or the ISO image.
-    >
-    >**&#x270F; Note**: For the ISO-based deployment, configuration data are stored in a node-local Consul installation that the ISO installer provides. For correct operation, Consul requires an odd number of nodes. For a practical deployment we specify that clusters installed using the ISO image have 3, 5, or 7 nodes. Other combinations are possible but will require additional work.
+>**&#x270F; Note**: Your site security policies may prohibit the download of the Vagrant box from a workstation. In this case consider the ISO install. You will need some way to download and use either the box or the ISO image.
+
+>**&#x270F; Note**: For the ISO-based deployment, configuration data are stored in a node-local Consul installation that the ISO installer provides. For correct operation, Consul requires an odd number of nodes. For a practical deployment we specify that clusters installed using the ISO image have 3, 5, or 7 nodes. Other combinations are possible but will require additional work.
 
 ## System Requirements
 
-StorageOS Beta can be installed onto x86_64 server, desktop or laptop environments.  For a virtual machine-based deployment, only one piece of x86 hardware is required.
+StorageOS Beta can be installed onto x86_64 server, desktop or laptop environments.  For a virtual machine-based deployment, at least one x86_64-capable hypervisor system is required.
 
 ### Hardware Requirements
 
-1. Below are a set of minimum and recommended requirements for a VM installlation.
+1. Below are minimum and recommended requirements for a VM installlation.
 
    | Component       | Minimum         | Recommended     |
    |:--------------- |----------------:| ---------------:|
    | CPU             |  2 Virtual CPUs |  Dedicated Cores|
    | Memory per VM   |    1,536GB      |        4,096GB  |
    | Disk Storage    |    50GB         |          100GB+ |
-   | NIC             |               - |               - |
+   | Virtual NIC     |               - |               - |
 
-Baremetal deployments will typically exceed the VM requirements by a large margin. We have no specific requirements above the VM specification, but clearly
+Any reasonable baremetal system will exceed the VM requirements by a large margin. We have no specific requirements above the VM specification, but clearly
 faster hardware, particularly with fast disks (ideally SSDs) and fast NICs will give better performance.
 
-    >**&#x270F; Note**: The disk storage is thinly provisioned, so volumes can be specified that exceed the amount of actual storage.  However, if you plan to work with creating volumes and generating data we have recommended you have at least 50GB available for setting up your enviroment.
+>**&#x270F; Note**: The disk storage is thinly provisioned, so volumes can be specified that exceed the amount of actual storage.  However, if you plan to
+    work with creating volumes and generating data we have recommended you have at least 50GB available for setting up your enviroment.
 
-    >**&#x270F; Note**: For the ISO build, ideally a static DHCP address should be assigned to each node otherwise accept the DHCP address that appears during the Ubuntu setup process.  The MAC address can be obtained under the Advanced section of the Network properties for each VM under VirtualBox.
+>**&#x270F; Note**: For the ISO build, ideally a static DHCP address should be assigned to each node otherwise accept the DHCP address that appears during
+    the Ubuntu setup process.  The MAC address can be obtained under the Advanced section of the Network properties for each VM under VirtualBox, or
+    from inside the VM's OS using `ip addr`.
 
 ### Network Requirements
 
@@ -67,13 +75,11 @@ The following TCP ports need to be open between the StorageOS controllers, Docke
 
 There are currently two options for installing StorageOS
 
-- **Vagrant**: This is by far the simplest choice to get you up and running quickly. VirtualBox and VMware Fusion/Workstation are supported.
+- **Vagrant**: This is the simplest choice to get you up and running quickly. Vagrant boxes for VirtualBox and VMware Fusion/Workstation are provided.
 - **ISO image**: This is a custom Linux distribution based on Ubuntu 16.04 LTS. We recommend the VirtualBox hypervisor for the Beta as this has been more extensively tested and requires no additional third party licensing.
 
 ### <a name="Vagrant"></a> Vagrant
-Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments. Once you have Vagrant installed on your system, getting StorageOS up and running couldn’t be simpler.
-
-Vagrant is  Open Source software and can be obtained from the Hashicorp [Vagrant website](http://vagrantup.com) under the terms of the MIT License.
+Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments. It is Open Source and can be obtained from the Hashicorp [Vagrant web site](http://vagrantup.com) under the terms of the MIT License.
 
 All the necessary documentation required to get you up and running with Vagrant is available from the site.
 
@@ -91,7 +97,7 @@ Please Contact StorageOS for help with VMware Workstation installations if you a
 Our software is built and tested using VirtualBox, and that is currently the best-tested deployment. VMware desktop and ESX have also been tested.
 
 ### <a name="VirtualBox"></a> VirtualBox
-VirtualBox is available for Windows, Linux, macOS, and Solaris hosts. VirtualBox is freely available as Open Source software and can be obtained from the Oracle [VirtualBox web site](http://virtualbox.org), under the terms of the GNU General Public License V2.
+VirtualBox is available for Windows, Linux, macOS, and Solaris hosts. It is Open Source and can be obtained from the Oracle [VirtualBox web site](http://virtualbox.org), under the terms of the GNU General Public License V2.
 
 All the necessary documentation required to get you up and running with VirtualBox is available from the site.
 

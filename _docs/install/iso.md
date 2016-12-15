@@ -289,7 +289,7 @@ Connect to the StorageOS node using `ssh`.
 
 When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
-    ```bash
+    ```
     StorageOS:storageos julian$ ssh -l storageos storageos-03
     The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
     ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
@@ -317,7 +317,7 @@ Perform these steps on each node.
 
 1.  Running the `docker ps` command will display what is currently running on the node.
 
-    ```bash
+    ```
     storageos@storageos-01:~$ docker ps -a
     CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
     4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
@@ -329,7 +329,7 @@ Perform these steps on each node.
 
 1.  You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
 
-    ```bash
+    ```
     root@storageos-03:~# storageos status
             Name                      Command               State                                                       Ports
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -341,7 +341,7 @@ Perform these steps on each node.
 
 1.  To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
 
-    ```bash
+    ```
     storageos@storageos-01:~$ logout
     Connection to 10.1.5.171 closed.
     storageos:~ julian$

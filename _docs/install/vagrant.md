@@ -19,7 +19,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  To configure the cluster size and number of clients, edit the definitions at the top of the file.  For example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`. Alternatively, this can be set as an environment variable, which might be useful for automation.
 
-    ```bash
+    ```
     STORAGEOS_NODES=1
     ```
 
@@ -27,7 +27,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  From the base storageos folder initialise the StorageOS Vagrant cluster:
 
-    ```bash
+    ```
     StorageOS:storageos julian$ vagrant up
     Bringing machine 'storageos-1' up with 'virtualbox' provider...
     Bringing machine 'storageos-2' up with 'virtualbox' provider...
@@ -46,7 +46,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
 
-    ```bash
+    ```
     StorageOS:storageos julian$ vagrant status
     Current machine states:
 
@@ -65,7 +65,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  For VirtualBox, based on the `Vagrantfile` parameters you will see one or more VDI volumes allocated to each node:
 
-    ```bash
+    ```
     StorageOS:storageos julian$ ls *.vdi
     storageos-1-disk0.vdi	storageos-2-disk0.vdi	storageos-3-disk0.vdi
     ```
@@ -74,7 +74,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  To remote shell into the cluster you should use the `vagrant ssh` command and specify the node you wish to connect in the case of a multi-node cluster setup:
 
-    ```bash
+    ```
     StorageOS:storageos julian$ vagrant ssh storageos-1
     Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
@@ -86,7 +86,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  Running the `docker ps` command will display what is currently running on the node:
 
-    ```bash
+    ```
     vagrant@storageos-1:~$ docker ps -a
     storageos@storageos-02:~$ docker ps -a
     CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
@@ -99,7 +99,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
 
-    ```bash
+    ```
     root@storageos-03:~# storageos status
     Name                      Command               State                                                            Ports
     ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  To disconnect your session, hit `CTRL+D` to return back to your original shell prompt:
 
-    ```bash
+    ```
     vagrant@storageos-1:~$ logout
     Connection to 127.0.0.1 closed.
     StorageOS:storageos julian$
@@ -118,7 +118,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 1.  To shut down your Vagrant VM cluster use the `vagrant halt` command.
 
-    ```bash
+    ```
     storageos:storageos julian$ vagrant halt
     ==> storageos-3: Attempting graceful shutdown of VM...
     ==> storageos-2: Attempting graceful shutdown of VM...

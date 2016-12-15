@@ -101,7 +101,8 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 
 1. You may wish to configure Hard disk 1 as thin provisioned in ESX to conserve space. This volume can be any size you want (10GB is required for StorageOS volumes plus 40MB for StorageOS container).
 
-   >**&#x270F; Note**: You may configure 3 or more VM's from the StorageOS ISO install as you want to test so long as it is an odd number.
+   >**&#x270F; Note**: You may configure 3, 5 or 7 nodes from the StorageOS ISO install as desired. More nodes are possible with manual configuration,
+   but there must always be an odd number of nodes or Consul will not operate correctly.
    >
    >**&#x270F; Note**: You can also create an ESX template to simplify the install if you wish.
 

@@ -7,17 +7,17 @@ module: install/vagrant
 
 # Vagrant Installation
 
-To begin the Vagrant installation you will need to have the StorageOS Vagrantfile installed into your base directory as discussed at the end of the previous section.  So for a developer you might want to choose ~/storageos as your location.
+You will need the StorageOS Vagrantfile in the base directory created [earlier](deployment.html). We'll use `~/storageos` here.
 
-As well as having the Vagrant software installed, you will also need to have the VirtualBox software installed which was covered in the previous sections.
+As well as having the Vagrant software installed, you will also need to have VirtualBox (or VMware Fusion/Workstation) installed.
 
 ## Setting up the Vagrant Environment
 
-Before you launch Vagrant for the first time to build out your cluster, you will want to view the Vagrantfile file in your base directory.
+Before you launch Vagrant for the first time to build out your cluster, you will want to view the `Vagrantfile` file in your base directory.
 
 ### Viewing or modifying the Vagrantfile
 
-1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1` or simply set an environment variable from your terminal window:
+1.  To configure the cluster size and number of clients, edit the definitions at the top of the file.  For example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1`. Alternatively, this can be set as an environment variable, which might be useful for automation.
 
     ```bash
     STORAGEOS_NODES=1
@@ -35,7 +35,16 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     ...
     ```
 
-2.  After a couple of minutes the installation should be complete - check the Vagrant cluster node status using the `vagrant status` command:
+    To change to the VMware provider, use `vagrant up --provider=vmware_fusion` or `vagrant up --provider=vmware_workstation`, depending
+    on your setup. You'll need to have the VMware Fusion or VMware Workstation vagrant plugin installed and licensed first; see the
+    [HashiCorp VMware](https://www.vagrantup.com/vmware/) integration page for details.
+
+    You only need to specify the provider at `vagrant up` time. After this, it will automatically use the provider you specified.
+
+    If you want to change provider, either use a different base directory (recommended), or clear down your installation
+    (save your data first!) with `vagrant destroy`.
+
+1.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
 
     ```bash
     StorageOS:storageos julian$ vagrant status
@@ -52,9 +61,9 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 ## Confirming the installation
 
-### Confirm VDI disks have been created
+### Confirm VDI disks have been created (VirtualBox)
 
-1.  Based on the default Vagrantfile paramaters you will see 8 vdi volumes allocated to each node tarting at 0:
+1.  For VirtualBox, based on the `Vagrantfile` parameters you will see one or more VDI volumes allocated to each node:
 
     ```bash
     StorageOS:storageos julian$ ls *.vdi
@@ -75,7 +84,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     Last login: Tue Dec 13 12:27:42 2016 from 10.0.2.2
     ```
 
-2.  Running the `docker ps` command will display what is currently running on the node:
+1.  Running the `docker ps` command will display what is currently running on the node:
 
     ```bash
     vagrant@storageos-1:~$ docker ps -a
@@ -88,18 +97,18 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     87e86b1b434e  quay.io/storageos/storageos:beta   "/bin/storageos datap"   12 days ago    Up 4 minutes                                                                                                                            storageos_data_1
     ```
 
-3.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
+1.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
 
     ```bash
     root@storageos-03:~# storageos status
-    Name                      Command               State                                                            Ports                                                           
+    Name                      Command               State                                                            Ports
     ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:13700->13700/tcp, 0.0.0.0:13700->13700/udp, 0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp 
-    storageos_data_1       /bin/storageos dataplane         Up                                                                                                                               
-    storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp     
+    storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:13700->13700/tcp, 0.0.0.0:13700->13700/udp, 0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp
+    storageos_data_1       /bin/storageos dataplane         Up
+    storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp
     ```
 
-4.  To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
+1.  To disconnect your session, hit `CTRL+D` to return back to your original shell prompt:
 
     ```bash
     vagrant@storageos-1:~$ logout
@@ -107,7 +116,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     StorageOS:storageos julian$
     ```
 
-5.  To shutdown your Vagrant VM cluster use the `vagrant halt` command.
+1.  To shutdown your Vagrant VM cluster use the `vagrant halt` command.
 
     ```bash
     storageos:storageos julian$ vagrant halt

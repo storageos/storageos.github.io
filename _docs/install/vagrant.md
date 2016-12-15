@@ -7,15 +7,15 @@ module: install/vagrant
 
 # Vagrant Installation
 
-To begin the Vagrant installation you will need to your base directory as discussed at the end of the previous section.  So for a developer you might want to use ~/storageos.
+To begin the Vagrant installation you will need to have the StorageOS Vagrantfile installed into your base directory as discussed at the end of the previous section.  So for a developer you might want to choose ~/storageos as your location.
 
-As well as having Vagrant installed, you will also need to have VirtualBox installed which was covered in the previous sections.
+As well as having the Vagrant software installed, you will also need to have the VirtualBox software installed which was covered in the previous sections.
 
 ## Setting up the Vagrant Environment
 
-Before you launch Vagrant for the first time and build out the cluster, you will want to edit the file names Vagrantfile in the base directory.
+Before you launch Vagrant for the first time to build out your cluster, you will want to view the Vagrantfile file in your base directory.
 
-### Modifying the Vagrantfile
+### Viewing or modifying the Vagrantfile
 
 1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1` or simply set an environment variable from your terminal window:
 
@@ -32,6 +32,7 @@ Before you launch Vagrant for the first time and build out the cluster, you will
     Bringing machine 'storageos-1' up with 'virtualbox' provider...
     Bringing machine 'storageos-2' up with 'virtualbox' provider...
     Bringing machine 'storageos-3' up with 'virtualbox' provider...
+    ...
     ```
 
 2.  After a couple of minutes the installation should be complete - check the Vagrant cluster node status using the `vagrant status` command:

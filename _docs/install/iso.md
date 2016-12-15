@@ -285,7 +285,9 @@ at all on some systems, depending on the hardware.)
 
 ### Confirm SSH has been installed and Docker containers are running
 
-1.  To connect to an ISO install StorageOS node, simply ssh from the terminal.  When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
+Connect to the StorageOS node using `ssh`.
+
+When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
     ```bash
     StorageOS:storageos julian$ ssh -l storageos storageos-03

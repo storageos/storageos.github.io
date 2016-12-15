@@ -7,8 +7,8 @@ module: install/troubleshoot
 
 # <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
-Here are some troubleshooting guidelines based on our internal testing. We will add more tips
-as we get customer feedback.
+Here are some troubleshooting guidelines based on our internal testing and on
+customer feedback.
 
 ## Connecting to your StorageOS node
 

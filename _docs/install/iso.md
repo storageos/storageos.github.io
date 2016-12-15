@@ -313,6 +313,8 @@ When you connect for the first time you will be asked to accept the ECDSA key fr
 
 ### Confirm Docker containers are running
 
+Perform these steps on each node.
+
 1.  Running the `docker ps` command will display what is currently running on the node.
 
     ```bash

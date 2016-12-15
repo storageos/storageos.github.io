@@ -116,7 +116,7 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     StorageOS:storageos julian$
     ```
 
-1.  To shutdown your Vagrant VM cluster use the `vagrant halt` command.
+1.  To shut down your Vagrant VM cluster use the `vagrant halt` command.
 
     ```bash
     storageos:storageos julian$ vagrant halt

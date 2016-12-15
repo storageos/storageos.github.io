@@ -9,7 +9,7 @@ module: install/iso
 
 There are three parts to completing the ISO image install of StorageOS:
 
-1. Creating VMs with VirtualBox for each StorageOS cluster node
+1. Creating VMs with VirtualBox or ESX for each StorageOS cluster node
 1. Installing StorageOS and Ubuntu Server from ISO media for each VirtualBox cluster node in your cluster
 1. Confirming the setup has completed successfully - this also covers the Vagrant install and is covered in the next section
 
@@ -21,7 +21,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 ### Create Initial VM
 
-1. Launch Oracle VirtualBox
+1. Launch VirtualBox
 1. Select **New**
 
    <img src="/images/docs/iso/vbnew.png">

@@ -6,16 +6,18 @@ module: install/media
 ---
 
 # Obtaining the StorageOS Media
-Depending on your choice of installation, ISO or Vagrant, you need to have completed the installation of the prerequisite components covered earlier in this guide.
+Please make sure you have read the [Installation Requirements](deployment.html) document before proceeding.
 
-The required media for your installation will have either been provided to you directly by us on a USB flash drive or, alternatively it can be downloaded directly from our web site.
+The required media for your installation may have been provided by us on a USB flash drive. It can also be downloaded directly from our web site.
 
 ## <a name="Downloading"></a> Downloading the StorageOS media
-The StorageOS ISO or Vagrantfile can be downloaded from one of the following locations to a temporary folder:
+The StorageOS ISO or Vagrantfile can be downloaded from one of the following locations:
 
   - &#x1F4BF; [ISO Media](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
   - &#x1F4E6; [Vagrantfile](./Vagrantfile)
 
->**&#x26A0;** During the closed beta period, a password is required to download the installation media.  Please contact [support@storageos.com](mailto:support@storageos.com) should you require further details.
+>**&#x26A0;** During the closed beta period, a password is required to download the installation media.  Please contact [support@storageos.com](mailto:support@storageos.com) if you don't have a suitable username and password.
 
-Once downloaded, the Vagrantfile installer should be moved to a base folder, for example, `~/storageos`, where you will have at least 30GB of available space to bring up a 3-node cluster or more depending on your storage provisioning 'mileage'.
+Once downloaded, the Vagrantfile installer should be moved to a base folder, for example, `~/storageos`. Make sure that your base folder
+has enough free space to install three nodes with the amount of storage you require. We recommend at the very least 30GB of free space
+for a three-node cluster. If you intend to use many large volumes, more space will of course be required.

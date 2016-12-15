@@ -24,7 +24,7 @@ To verify that your installation:
 
 1. Open a browser and enter the IP address of one of the StorageOS nodes.  For both the ISO build enter the StorageOS user name and password you configured during the installation phase.  For the Vagrant build this will be storageos, storageos.
 
-   >**&#x270F; Note**: If you just started up the cluster it takes about a minute or so for the services to come on line before the StorageOS log in screen appears in your browser window.
+   >**&#x270F; Note**: If you just started up the cluster it takes about a minute or so for the services to come on line before the StorageOS login screen appears in your browser window.
 
     ![screenshot](/images/docs/iso/weblogin.png)
 

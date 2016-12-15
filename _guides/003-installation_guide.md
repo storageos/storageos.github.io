@@ -17,7 +17,7 @@ sections:
     description: This section covers the ISO-based installation of StorageOS.
     module: install/iso
   -
-    title: Installation from Vagrant Image
+    title: Installation from Vagrant box
     description: This section covers the Vagrant-based installation of StorageOS
     module: install/vagrant
   -

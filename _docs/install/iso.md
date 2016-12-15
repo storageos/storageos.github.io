@@ -272,7 +272,7 @@ at all on some systems, depending on the hardware.)
 
 ### Completing your Installation
 
-1. At this point the installation should be complete - select **Continue** to restart the VM
+1. At this point the installation is complete - select **Continue** to restart the VM
 
     ![screenshot](/images/docs/iso/29-isocomplete.png)
 
@@ -343,4 +343,4 @@ at all on some systems, depending on the hardware.)
     storageos:~ julian$
     ```
 
-You should now have successfully completed the StorageOS cluster setup.
+This completes the StorageOS cluster setup.

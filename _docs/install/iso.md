@@ -109,10 +109,14 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 
 ## Installing StorageOS and Ubuntu Server from ISO Media
 
-You are now ready to boot each of your VMs and install StorageOS into Ubuntu Server
+You are now ready to boot each of your VMs and install StorageOS.
 
 ### Starting up your VMS
-Follow the steps below for each VM to install StorageOS with Ubuntu Server.  The first VM will be the designated as the master node so ensure this VM completes first before completing the remaining member nodes.
+Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node,
+so ensure this VM completes first before completing the remaining member nodes.
+
+Note that the master node is not 'special'; it is simply a convenience during installation. Once the install is complete and the
+Consul cluster is started, all server nodes are equivalent.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
 

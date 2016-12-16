@@ -7,19 +7,16 @@ module: install/troubleshoot
 
 # <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
-In this section we have tried to identify any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
-
-It is also possible that you may encounter problems with the ISO build as well though this install is much less prone to problems with our Beta release.
+Here are some troubleshooting guidelines based on our internal testing and on
+customer feedback.
 
 ## Connecting to your StorageOS node
 
-To check the running status of the containers on each of your newly provisioned StorageOS hosts you will need to use a secure shell client such as a terminal window or PuTTY if you are using windows.
-
 ### Connect to an ISO install StorageOS node
 
-To connect to an ISO install StorageOS node simply ssh from the terminal.
+Connect to a node via its VM console, or (preferably) via `ssh`:
 
-```bash
+```
 storageos:~ julian$ ssh -l storageos 10.1.5.171
 storageos@10.1.5.171's password:
 Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
@@ -31,9 +28,9 @@ storageos@storageos-01:~$
 
 ### Connect to a Vagrant install StorageOS node
 
-To connect to a Vagrant install StorageOS node simply use `vagrant ssh` from the vagrant machine folder where you started your Vagrant cluster from.
+To connect to a Vagrant install StorageOS node, do `vagrant ssh` from the base directory.
 
-```bash
+```
 storageos:storageos julian$ vagrant ssh storageos-1
 Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
@@ -44,11 +41,11 @@ vagrant@storageos-1:~$
 ```
 
 
-## Elevate your privileges
+## Become `root`
 
-Once connected, you will want to elevate your privilege level to run most of the commands discussed below:
+Most commands will need `root` permissions.
 
-```bash
+```
 storageos@storageos-03:~$ sudo -i
 [sudo] password for storageos:
 root@storageos-03:~#
@@ -56,11 +53,9 @@ root@storageos-03:~#
 
 ## Confirming and restarting the Docker service
 
-More often than not, if you think there is a problem, it's most likely going to be related to your Docker containers but before you check these you should check the status of Docker first.
+Check the status of Docker first.
 
-One easy way to do this is to look at the status of the Docker service - you will quickly know if there is a problem and you can attempt to restart the docker service with 'service docker start'
-
-```bash
+```
 root@storageos-1:~# service docker status | grep Active
    Active: inactive (dead) since Wed 2016-11-16 14:17:32 UTC; 50s ago
 root@storageos-1:~# service docker start
@@ -70,7 +65,7 @@ root@storageos-1:~# service docker status | grep Active
 
 Also, simply running a docker command should provide sufficient feedback on its running state.
 
-```bash
+```
 root@storageos-03:~# docker ps -a
 Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 ```
@@ -79,40 +74,12 @@ Cannot connect to the Docker daemon. Is the docker daemon running on this host?
 
 If you are unable to restart the Docker service with `service docker start` you may have received a more serious error:
 
-```bash
+```
 root@storageos-1:~# service docker status | grep Active
    Active: failed (Result: exit-code) since Wed 2016-11-16 11:42:03 GMT; 9min ago
 ```
 
 At this point we strongly suggest you stop troubleshooting and rebuild as it will likely save you a lot of time.
-
-###  Vagrant VM romoval
-
-For Vagrant use the `vagrant destroy` command from the working Vagrant build directory that the cluster resides in and remove all the Vagrant instances as these can be quickly re-established:
-
-```bash
-storageos:storageos julian$ vagrant destroy
-    storageos-3: Are you sure you want to destroy the 'storageos-3' VM? [y/N] y
-==> storageos-3: Destroying VM and associated drives...
-    storageos-2: Are you sure you want to destroy the 'storageos-2' VM? [y/N] y
-==> storageos-2: Destroying VM and associated drives...
-    storageos-1: Are you sure you want to destroy the 'storageos-1' VM? [y/N] y
-==> storageos-1: Destroying VM and associated drives...
-storageos:storageos julian$
-```
-
-###  ISO VM romoval
-
-For the ISO install you should delete the VM that is not working.  Do not attempt to re-install the ISO over the existing VMI.
-
-1. From the VirtualBox application, right-click on the VirtualBox VM you want to delete and select **remove**.
-
-    <img src="/images/docs/iso/vbremove.png" width="360">
-
-2. A dialogue box will appear asking if you want to remove the following virtual machines.  Accept by clicking on the ![Create](/images/docs/iso/vbdeleteall.png) button to completely remove the VM for a fresh install.
-
-    <img src="/images/docs/iso/vbremoveall.png" width="400">
-
 
 ## Docker container state
 
@@ -122,7 +89,7 @@ To check the running state of your Docker containers log into each of the recent
 
 **Healthy System**
 
-```bash
+```
 storageos@storageos-02:~$ docker ps -a
 CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
 4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
@@ -134,7 +101,7 @@ CONTAINER ID  IMAGE                              COMMAND                  CREATE
 
 **Not-so Healthy System**
 
-```bash
+```
 vagrant@storageos-2:~$ docker ps -a
 CONTAINER ID  IMAGE          COMMAND                 CREATED         STATUS         PORTS    NAMES
 53fb97d39903  consul:v0.6.4  "docker-entrypoint.sh"  59 minutes ago  Up 59 minutes           consul
@@ -142,9 +109,9 @@ CONTAINER ID  IMAGE          COMMAND                 CREATED         STATUS     
 
 ### Start the StorageOS dataplane and controlplane
 
-In this example Vagrant has failed to start StorageOS properly and it will be necessary to get the dataplane and controlplane restarted.
+In this example Vagrant has failed to start StorageOS properly. Restart the dataplane and controlplane.
 
-```bash
+```
 root@storageos-3:~# storageos start
 Pulling data (quay.io/storageos/controlplane:alpha)...
 alpha: Pulling from storageos/controlplane
@@ -167,9 +134,10 @@ Creating storageos_influxdb_1
 Creating storageos_control_1
 ```
 
-### Restart the StorageOS dataplane and controlplane
+### Restart the StorageOS dataplane and controlplane containers
 
-Another problem that may occur is when the dataplane and/or controlplane are in an unhealthy state.  In this case running `storageos restart` should resolve the issue.  If for any reason only one of the services has been restored to a healthy state, run the command for a second time.
+It is possible for the dataplane and/or controlplane to get into a broken state. In this case running `storageos restart`
+should resolve the issue.  If for any reason only one of the services has been restored to a healthy state, run the command for a second time.
 
 ```
 vagrant@storageos-3:~$ docker ps -a
@@ -183,9 +151,9 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
 
 ### Reinstall the StorageOS Docker image
 
-1.  Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again
+Sometimes StorageOS still won't start and it will be necessary to remove the StorageOS Docker image and start again.
 
-    ```bash
+    ```
     root@storageos-3:~# storageos start
     Pulling data (quay.io/storageos/controlplane:alpha)...
     alpha: Pulling from storageos/controlplane
@@ -202,9 +170,9 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
     ERROR: read tcp 10.0.2.15:56546->54.243.130.124:443: read: connection reset by peer
     ```
 
-2.  Stop and remove StorageOS
+1.  Stop and remove StorageOS
 
-    ```bash
+    ```
     root@storageos-3:~# docker ps -a
     CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                      PORTS               NAMES
     59bd3226d150        quay.io/storageos/controlplane:alpha   "/bin/storageos datap"   35 seconds ago      Up 34 seconds (unhealthy)                       storageos_data_1
@@ -215,9 +183,9 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
     59bd3226d150
     ```
 
-3.  Remove StorageOS image
+1.  Remove StorageOS image
 
-    ```bash
+    ```
     root@storageos-3:~# docker images
     REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
     consul                           v0.6.4              b0971c9ec426        3 weeks ago         32.44 MB
@@ -232,15 +200,15 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
     Deleted: sha256:e8c82ee2e9341d06e1afc4ace4347cab6753edcba60a928d46cfae5a73e6359d
     ```
 
-4.  Restart StorageOS container
+1.  Restart StorageOS container
 
-    ```bash
+    ```
     root@storageos-3:~# storageos start
     ```
 
-5.  Confirm status of the StorageOS container
+1.  Confirm status of the StorageOS container
 
-    ```bash
+    ```
     root@storageos-2:~# docker ps -a
     CONTAINER ID        IMAGE                                  COMMAND                  CREATED             STATUS                   PORTS                                                                                                           NAMES
     c7e04f9f7972        quay.io/storageos/controlplane:alpha   "/bin/storageos serve"   9 minutes ago       Up 9 minutes (healthy)   0.0.0.0:4222->4222/tcp, 0.0.0.0:8000->8000/tcp, 0.0.0.0:8222->8222/tcp, 0.0.0.0:80->8000/tcp                    storageos_control_1
@@ -251,21 +219,21 @@ fe9f938ea612        quay.io/storageos/controlplane:alpha   "/bin/storageos datap
 
 ### StorageOS still doesn't restart
 
-Another issue that may arise is receiving the following error after unsuccessfully restarting the StorageOS container.
+You may see the following error after unsuccessfully restarting the StorageOS container.
 
-```bash
+```
 ERROR: failed to register layer: rename /var/lib/docker/image/aufs/layerdb/tmp/layer-176027139 /var/lib/docker/image/aufs/layerdb/sha256/b3aef0b33ad82176867819248a8d54e06233ecd62c7147a8c864060dd6d904d9: directory not empty
 ```
 
 To resolve this problem simply delete the sha256 directory.
 
-```bash
+```
 root@storageos-03:~# rm -rf /var/lib/docker/image/aufs/layerdb/sha256/
 ```
 
 Then restart the StorageOS container.
 
-```bash
+```
 root@storageos-03:~# storageos start
 Pulling influxdb (quay.io/storageos/influxdb:beta)...
 beta: Pulling from storageos/influxdb
@@ -284,7 +252,7 @@ Creating storageos_control_1
 
 On occasions it is possible consul may have stalled on startup and needs to be restarted.
 
-```bash
+```
 vagrant@storageos-3:~$ docker restart consul
 consul
 vagrant@storageos-3:~$ docker ps -a
@@ -294,7 +262,7 @@ CONTAINER ID  IMAGE          COMMAND                 CREATED            STATUS  
 
 If however consul has failed to install it will need to be installed.
 
-```bash
+```
 root@storageos-03:~# docker pull consul
 Using default tag: latest
 latest: Pulling from library/consul
@@ -307,9 +275,9 @@ Digest: sha256:4a6a91f7981d2c78b8746075859a2ff5ae938bae5da3b9b5637714fc7810fbb2
 Status: Downloaded newer image for consul:latest
 ```
 
-If consul still doesn't install with ```docker pull consul``` then a `vagrant reload` should resolve this problem.
+If consul still doesn't start with ```docker pull consul``` then a `vagrant reload` should resolve this problem.
 
-```bash
+```
 vagrant@storageos-1:~$ docker pull consul
 Using default tag: latest
 latest: Pulling from library/consul
@@ -327,6 +295,6 @@ storageos:storageos julian$ vagrant reload
 
 Finally `consul` will need to be started
 
-```bash
+```
 root@storageos-03:~# systemctl start consul
 ```

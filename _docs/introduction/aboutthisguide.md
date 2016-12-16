@@ -5,7 +5,7 @@ anchor: introduction
 module: introduction/aboutthisguide
 ---
 
-# About this Guide
+# <a name="top"></a> About this Guide
 
 ## Audience
 This guide has been written for Storage Admins, DevOps, Solutions Architects, Engineers and Techies who want to evaluate StorageOS, understand how it works and how it integrates with the Docker and Container ecosystem.
@@ -24,11 +24,5 @@ This guide is structured to get you quickly setup and running with StorageOS and
 
 This document has been specifically written to cover the Beta release of StorageOS and will initially cover the basics of the product -- so expect to see more soon!
 
-<!---This guide is structured into the following sections: *to be revised as sections are changed*
-1.	Getting Started: what is StorageOS and what problems does it solve for you
-2.	Architectural Overview: Break down of the architectural components StorageOS comprises, how they join together and the infrastructure use cases that are supported.
-3.	Installation Requirements: What you’ll need to get started for you chosen deployment method
-4.	Installation Guide: Guides you through the installation process for your chosen deployment method
-5.	Exercises: These are here to help you get up to speed with StorageOS and familiarise yourself with the features and why they matter
-6.	GUI and Administration: This section is concerned with introducing you to the GUI and how its organised – you should already have become familiar with this in the previous section.
-7. --->
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

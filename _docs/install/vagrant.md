@@ -5,7 +5,7 @@ anchor: install
 module: install/vagrant
 ---
 
-# Vagrant Installation
+# <a name="top"></a> Vagrant Installation
 
 To begin the Vagrant installation you will need to have the StorageOS Vagrantfile installed into your base directory as discussed at the end of the previous section.  So for a developer you might want to choose ~/storageos as your location.
 
@@ -17,10 +17,17 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 ### Viewing or modifying the Vagrantfile
 
-1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example, if you want a single-node cluster, change the `3` on the `STORAGEOS_NODES` line to `1` or simply set an environment variable from your terminal window:
+1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example:
+    * You want to run a single-node cluster by  changing the `3` on the `STORAGEOS_NODES` line to `1`
+    * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
+    * You want to manage down memory resources by changing `2048` on the `STORAGEOS_MEMORY` line to `1536`
+  
+    ...or simply set an environment variable from your terminal window:
 
     ```bash
     STORAGEOS_NODES=1
+    STORAGEOS_CPU=1
+    STORAGEOS_MEMORY=1536
     ```
 
 ## Initialise the Cluster
@@ -119,3 +126,5 @@ Before you launch Vagrant for the first time to build out your cluster, you will
 
 
 You should now have successfully completed the StorageOS cluster setup.
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

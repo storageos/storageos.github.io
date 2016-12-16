@@ -5,7 +5,7 @@ anchor: install
 module: install/troubleshoot
 ---
 
-# <a name="Troubleshooting Guide"></a> Troubleshooting Guide
+# <a name="top"></a> <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
 In this section we have tried to identify any potential problems you might encounter and come up with some workarounds. More often than not the issues you may encounter will be related to the Vagrant build where on occasion StorageOS doesn't start properly or consul does not start for one reason or another.
 
@@ -330,3 +330,5 @@ Finally `consul` will need to be started
 ```bash
 root@storageos-03:~# systemctl start consul
 ```
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

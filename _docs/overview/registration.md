@@ -5,4 +5,6 @@ anchor: overview
 module: overview/registration
 ---
 
-# Portal Registration
+# <a name="top"> </a> Portal Registration
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

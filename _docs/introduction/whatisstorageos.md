@@ -5,7 +5,7 @@ anchor: introduction
 module: introduction/whatisstorageos
 ---
 
-# What is StorageOS?
+# <a name="top"></a> What is StorageOS?
 
 StorageOS is an enterprise class Software Defined Storage (SDS) solution optimised for, but not limited to, container-based workloads.  StorageOS works by leveraging the available storage in servers, virtual machines and cloud instances, aggregating and presenting this back as scalable, fully featured software defined enterprise storage.  In doing so, StorageOS ensures data is made portable, persistent, and stored securely and efficiently.
 
@@ -30,39 +30,42 @@ Being highly portable, containers can be deployed to a variety of public and pri
 
 ## How does StorageOS add value?
 
-StorageOS helps developers move from **host-centric** infrastructure to a more abstracted **container-centric** infrastructure, providing the storage features required to take full advantage of the benefits inherent to containers.
+StorageOS helps developers move from *host-centric* infrastructure to a more abstracted *container-centric* infrastructure, providing the storage features required to take full advantage of the benefits inherent to containers.
 
-StorageOS satisfies a number of common needs of applications running in production, including:
+StorageOS satisfies a number of common features for applications running in production, including:
 
-- Replication
-- High Availability
-- Performance
-- Thin provisioning
-- De-duplication
-- Compression
-- Encryption
-- Business rules
-- Resource labeling
-- Resource monitoring
-- Identity and authorisation
+| Feature                         |   Developer  | Professional |  |Feature                          |   Developer  | Professional |
+|:--------------------------------|:------------:|:------------:|:-|:--------------------------------|:------------:|:------------:|
+| **Data Reduction**              |              |              |  | **Data Protection**             |              |              |
+|   ▪︎ Compression                 |   &#x2714;   |   &#x2714;   |  |   ▪︎ Erasure Coding              |   &#x2714;   |   &#x2714;   |
+|   ▪︎ De-duplication              |   &#x2714;   |   &#x2714;   |  |   ▪︎ Advanced Erasure Coding     |   &#x2716;   |   &#x2714;   |
+| **Data Run-Time Management**    |              |              |  |   ▪︎ In-Cluster Replicas         |   &#x2716;   |   &#x2714;   |
+|   ▪︎ Resizing, Thin Provisioning |   &#x2714;   |   &#x2714;   |  | **Acceleration**                |              |              |
+|   ▪︎ Snapshots                   |   &#x2716;   |   &#x2714;   |  |   ▪︎ SSD Optimized               |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Cloning                     |   &#x2716;   |   &#x2714;   |  |   ▪︎ Run alongside container     |   &#x2714;   |   &#x2714;   |
+| **Front-end Connectivity**      |              |              |  |   ▪︎ Auto-configuration          |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Native connectivity         |   &#x2714;   |   &#x2714;   |  |   ▪︎ Caching                     |   &#x2716;   |   &#x2714;   |
+|   ▪︎ iSCSI                       |   &#x2714;   |   &#x2714;   |  |   ▪︎ Scale-Out                   |   &#x2716;   |   &#x2714;   |
+| **Supported Platforms**         |              |              |  | **Management**                  |              |              |
+|   ▪︎ Linux containers            |   &#x2714;   |   &#x2714;   |  |   ▪︎ Restful API                 |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Bare metal                  |   &#x2714;   |   &#x2714;   |  |   ▪︎ Local User Authentication   |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Hypervisors                 |   &#x2714;   |   &#x2714;   |  |   ▪︎ Terminal CLI                |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Cloud providers             |   &#x2714;   |   &#x2714;   |  |   ▪︎ GUI                         |   &#x2714;   |   &#x2714;   |
+| **Distribution**                |              |              |  |   ▪︎ Dashboards                  |   &#x2714;   |   &#x2714;   |
+|   ▪︎ ISO Image                   |   &#x2714;   |   &#x2714;   |  |   ▪︎ Role Based Management       |   &#x2716;   |   &#x2714;   |
+|   ▪︎ OVA                         |   &#x2714;   |   &#x2714;   |  |   ▪︎ QoS                         |   &#x2716;   |   &#x2714;   |
+|   ▪︎ Native Container            |   &#x2714;   |   &#x2714;   |  | **Business Rules**              |              |              |
+|   ▪︎ AWS AMI                     |   &#x2714;   |   &#x2714;   |  |   ▪︎ Tagged-Rules Management     |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Azure Marketplace           |   &#x2714;   |   &#x2714;   |  |   ▪︎ Tag-Based Placement Engine  |   &#x2716;   |   &#x2714;   |
+| **High Availability**           |              |              |  |   ▪︎ Tag-Based Policy Engine     |   &#x2716;   |   &#x2714;   |
+|   ▪︎ Persistent Container Storage|   &#x2714;   |   &#x2714;   |  |   ▪︎ Reporting                   |   &#x2716;   |   &#x2714;   |
+|   ▪︎ Volume HA                   |   &#x2716;   |   &#x2714;   |  | **Technology Integration**      |              |              |
+| **Data Security**               |              |              |  |   ▪︎ Docker                      |   &#x2714;   |   &#x2714;   |
+|   ▪︎ Volume Encryption           |   &#x2716;   |   &#x2714;   |  |   ▪︎ rkt                         |   &#x2714;   |   &#x2714;   |
+|                                 |              |              |  |   ▪︎ Swarm                       |   &#x2716;   |   &#x2714;   |
+|                                 |              |              |  |   ▪︎ Kubernetes                  |   &#x2716;   |   &#x2714;   |
+|                                 |              |              |  |                                 |              |              | 
 
 This provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
 
-
-<!---
-- [replication](/docs/user-guide/pods/) (guarantees data one or more nodes for resilience)
-- [high availability](/docs/user-guide/volumes/)
-- [performance](/docs/user-guide/secrets/)
-- [thin-provisioning](/docs/user-guide/production-pods/#liveness-and-readiness-probes-aka-health-checks)
-- [de-duplication](/docs/user-guide/replication-controller/)
-- [compression](/docs/user-guide/horizontal-pod-autoscaling/)
-- [encryption](/docs/user-guide/connecting-applications/)
-- [business rules](/docs/user-guide/services/)
-- [resource labeling](/docs/user-guide/update-demo/)
-- [resource monitoring](/docs/user-guide/monitoring/)
-- [identity and authorization](/docs/admin/authorization/)
-
-This provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
-
-For more details, see the [user guide](/docs/user-guide/).
---->
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

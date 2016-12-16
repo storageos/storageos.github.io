@@ -289,27 +289,27 @@ Connect to the StorageOS node using `ssh`.
 
 When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
-    ```bash
-    StorageOS:storageos julian$ ssh -l storageos storageos-03
-    The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
-    ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
-    Are you sure you want to continue connecting (yes/no)? yes
-    Warning: Permanently added '10.1.5.173' (ECDSA) to the list of known hosts.
-    storageos@10.1.5.173's password:
-    Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
+```
+StorageOS:storageos julian$ ssh -l storageos storageos-03
+The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
+ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '10.1.5.173' (ECDSA) to the list of known hosts.
+storageos@10.1.5.173's password:
+Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
-      * Documentation:  https://help.ubuntu.com/
+  * Documentation:  https://help.ubuntu.com/
 
-    The programs included with the Ubuntu system are free software;
-    the exact distribution terms for each program are described in the
-    individual files in /usr/share/doc/*/copyright.
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
 
-    Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-    applicable law.
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
 
-    To run a command as administrator (user "root"), use "sudo <command>".
-    See "man sudo_root" for details.
-    ```
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+```
 
 ### Confirm Docker containers are running
 
@@ -317,7 +317,7 @@ Perform these steps on each node.
 
 1.  Running the `docker ps` command will display what is currently running on the node.
 
-    ```bash
+    ```
     storageos@storageos-01:~$ docker ps -a
     CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
     4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
@@ -329,7 +329,7 @@ Perform these steps on each node.
 
 1.  You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
 
-    ```bash
+    ```
     root@storageos-03:~# storageos status
             Name                      Command               State                                                       Ports
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -341,7 +341,7 @@ Perform these steps on each node.
 
 1.  To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
 
-    ```bash
+    ```
     storageos@storageos-01:~$ logout
     Connection to 10.1.5.171 closed.
     storageos:~ julian$

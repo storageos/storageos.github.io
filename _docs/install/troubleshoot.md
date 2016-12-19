@@ -5,7 +5,7 @@ anchor: install
 module: install/troubleshoot
 ---
 
-# <a name="Troubleshooting Guide"></a> Troubleshooting Guide
+# <a name="top"></a> <a name="Troubleshooting Guide"></a> Troubleshooting Guide
 
 Here are some troubleshooting guidelines based on our internal testing and on
 customer feedback.
@@ -298,3 +298,5 @@ Finally `consul` will need to be started
 ```
 root@storageos-03:~# systemctl start consul
 ```
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

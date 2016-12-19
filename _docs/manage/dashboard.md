@@ -5,7 +5,7 @@ anchor: manage
 module: manage/dashboard
 ---
 
-# Understanding the Dashboard
+# <a name="top"></a> Understanding the Dashboard
 
 The dashboard serves as a home screen where you can review a summary of:
 
@@ -46,3 +46,5 @@ While provision has been built in for changing the graphical views much of this 
 ![image](/images/docs/manage/contextmenu.png)
 
 Using the &#x2795; and &#x2796; symbols you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

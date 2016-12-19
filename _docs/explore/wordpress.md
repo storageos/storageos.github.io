@@ -5,7 +5,7 @@ anchor: explore
 module: explore/wordpress
 ---
 
-# WordPress Cluster Demo
+# <a name="top"></a> WordPress Cluster Demo
 
 This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying, persistent storage.
 
@@ -121,3 +121,5 @@ All 3 nodes should be Active and with the status of Leader or Reachable
     vagrant@storageos-1:~$ docker node update --availability drain storageos-1
     vagrant@storageos-1:~$ docker node update --availability active storageos-1
     ```
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

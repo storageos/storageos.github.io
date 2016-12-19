@@ -5,4 +5,6 @@ anchor: overview
 module: overview/support
 ---
 
-# Support
+# <a name="top"></a> Support
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

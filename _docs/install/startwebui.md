@@ -5,7 +5,7 @@ anchor: install
 module: install/startwebui
 ---
 
-# Confirming Installation
+# <a name="top"></a> Confirming Installation
 
 You can check that the installation has completed successfully by launching the Web UI.
 
@@ -58,3 +58,5 @@ To verify that your installation:
     <a name="WebUI"></a>[<img src="/images/docs/iso/webui.png" width="760">](./webuipng.html)
 
  You have completed the installation process.
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

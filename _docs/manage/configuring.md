@@ -5,7 +5,7 @@ anchor: manage
 module: manage/configuring
 ---
 
-# Configuration and Provisioning
+# <a name="top"></a> Configuration and Provisioning
 
 This section explores how you can configure and provision your storage using labels, rules and auto-naming templates.
 
@@ -34,7 +34,7 @@ There are three *Types* of pre-configured user defined labels.  You are however 
 
 Once you have created a new label *Type*, you can add new label *Names* beneath it and assign a *Value* and *Description* to each new name.  The label *Type* will of course be inherited from the parent in this case.
 
----
+
 
 ## Creating a User-Defined Label Type
 
@@ -54,7 +54,7 @@ Let's try this from the *Label Management* window shown above:
 
    ![image](/images/docs/manage/delete.png)
 
----
+
 
 ## Creating a User-Defined Label Name
 
@@ -72,7 +72,7 @@ Now we have created out label type, we are ready to create label names beneath t
 4. Use the edit ![image](/images/docs/manage/editbtn.png) button to make changes to the department name label
 5. Use the delete ![image](/images/docs/manage/deletebtn.png) button to remove the department name label
 
----
+
 
 ## Creating Rules
 
@@ -107,7 +107,7 @@ Let's create a new Built-in ![image](/images/docs/manage/featurebtn.png) Label T
 
 8. Now we have our rule, lets apply the ![image](/images/docs/manage/prodbtn.png) *Label Name* to a volume and see what happens.  Before we can do this however, we need to create a volume to apply the rule to.
 
----
+
 
 ## Creating Volumes and Applying Rules
 
@@ -120,7 +120,7 @@ When you create a new volume, rules will be automatically enforced providing the
 2. Provide a volume name, for example *vol-prod*
 3. Give it a description, *Production volume*
 4. Set a size, for example *1GB*
-5. 5. Leave *Pool* and *Quantity* at their default values (not illustrated)
+5. Leave *Pool* and *Quantity* at their default values (not illustrated)
 5. And now add the ![image](/images/docs/manage/prodbtn.png) label we configured
 
    ![screenshot](/images/docs/manage/newvolume1.png)
@@ -132,7 +132,7 @@ When you create a new volume, rules will be automatically enforced providing the
 
    >**&#x270F; Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
 
----
+
 
 ## Auto-naming
 
@@ -160,7 +160,7 @@ Another option in the *Volume Management* window is the ability to automatically
 
    ![image](/images/docs/manage/newvolume4.png)
 
----
+
 
 ## Controllers
 
@@ -168,9 +168,9 @@ To view the Controllers window, select Configuration &#x27A1; Controllers.
 
 * This window provides you with a summary on the nodes participating in the cluster, their available capacity, their role and state of health.
 
-  ![image](/images/docs/manage/controllers.png)
+  ![screenshot](/images/docs/manage/controllers.png)
 
----
+
 
 ## Drivers
 
@@ -180,7 +180,7 @@ To view the Drivers window, select Configuration &#x27A1; Drivers.
 
   ![image](/images/docs/manage/drivers.png)
 
----
+
 
 ## Caches
 
@@ -190,7 +190,7 @@ To view the Caches window, select Configuration &#x27A1; Caches.
 
   ![image](/images/docs/manage/caches.png)
 
----
+
 
 ## Diagnostics
 
@@ -202,7 +202,7 @@ To view the Diagnostics window, select Configuration &#x27A1; Diagnostics.
 
    >**&#x270F; Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
 
----
+
 
 ## Backups
 
@@ -213,10 +213,10 @@ To access the Configuration Backup and Restore window, select Configuration &#x2
   ![image](/images/docs/manage/backups.png)
 
    >**&#x270F; Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
-   >
+   
    >**&#x270F; Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
 
----
+
 
 ## License
 
@@ -232,7 +232,7 @@ To access the License Management window, select Configuration &#x27A1; License.
 
    >**&#x270F; Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
 
----
+
 
 ## Clients
 
@@ -248,33 +248,27 @@ To access the Client Management window, select Provisioning &#x27A1; Clients.
 
    ![image](/images/docs/manage/deleteclient.png)
 
----
+
 
 ## Pools
 
 The Storage Pools window can be found under Provisioning &#x27A1; Pools.
 
 1. The top half of the Storage Pools window allows you to view the overall status of the global pool and capacity across all nodes in the cluster and create new Storage Pools.
-2. For example, to create a new *Storage Pool* click on the ![image](/images/docs/manage/newpoolbtn.png) button
+2. The bottom half displays the deafult stoage pool and the member nodes.
 
    ![image](/images/docs/manage/pools.png)
 
-3. Select the StorageOS nodes you want to participate in the pool
-4. Provide it with a *Name* and *Description*
-5. Select the *Controllers*
-6. Add any *Labels*  you want to associate with the new pool
-7. Click on the ![image](/images/docs/manage/savebtn.png) button to complete
-
-   ![image](/images/docs/manage/newpool.png)
-
-   >**&#x270F; Note**: Consider whether you want to allocate nodes to more than one storage pool - typically nodes will join one pool as in the case of disk type for example or if you want to dedicate replicated storage to a specific set of nodes in the cluster.
-
-The second half of the window allows you to make configuration changes to existing *Storage Pools*.
-
-1. To edit an existing *Storage Pool*
-
-
----
 
 
 ## Containers
+
+The Containers window can be accessed under Provisioning &#x27A1; Containers.
+
+1. Essentially, in the context of Docker, this window provides you with the output of `docker ps` and `docker ps -a` 
+2. From this window you can filter by column by typing your filter into the *Filter containers* box
+3. You can also change the view for running, stopped and all (`-a`) images.
+
+   ![screenshot](/images/docs/manage/containers.png)
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

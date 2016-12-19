@@ -5,7 +5,7 @@ anchor: reference
 module: reference/cli
 ---
 
-# Command line reference
+# <a name="top"></a> Command line reference
 
 The command line interface (CLI) can be run with Docker.
 
@@ -51,3 +51,5 @@ ID                                    NAME                       DESCRIPTION  SI
 d4815b79-1d92-b5e8-fad0-d91d8df8ee18  redis50                                 10
 f5316c79-de20-ba87-4727-a708bd0f53e4  crasher01                               10
 ```
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

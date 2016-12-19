@@ -5,4 +5,6 @@ anchor: troubleshooting
 module: troubleshooting/audit
 ---
 
-# Audit logs
+# <a name="top"></a> Audit logs
+
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

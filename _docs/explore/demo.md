@@ -5,7 +5,7 @@ anchor: explore
 module: explore/demo
 ---
 
-# Persistent Storage Demonstration
+# <a name="top"></a> Persistent Storage Demonstration
 
 In this exercise we will demonstrate how StorageOS can provide persistent storage to Docker containers.  The following YouTube video plays through the steps that we will run through in the section that follows below.
 
@@ -134,3 +134,4 @@ You will need access to the internet to pull down a container for this demonstra
     Deleted: sha256:673f3909c8494367736aac791b205d68ac7b190480396fe43864d42eab2f92b0
     Deleted: sha256:8ac8bfaff55af948c796026ee867448c5b5b5d9dd3549f4006d9759b25d4a893
     ```
+<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

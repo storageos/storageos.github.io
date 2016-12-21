@@ -115,9 +115,6 @@ You are now ready to boot each of your VMs and install StorageOS.
 Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node,
 so ensure this VM completes first before completing the remaining member nodes.
 
-Note that the master node is not 'special'; it is simply a convenience during installation. Once the install is complete and the
-Consul cluster is started, all server nodes are equivalent.
-
 These instructions direct you to select the options that work best with the beta release of StorageOS.
 
 1. Begin by starting up VirtualBox and selecting the first VM you created in the previous section.
@@ -347,7 +344,6 @@ Perform these steps on each node.
     storageos:~ julian$
     ```
 
-This completes the StorageOS cluster setup.  
+This completes the StorageOS cluster setup.
 
 <div style="text-align: right"> <a href="iso.html#Back to top"> Back to top </a> </div>
-

@@ -15,19 +15,28 @@ As well as having the Vagrant software installed, you will also need to have Vir
 
 Before you launch Vagrant for the first time to build out your cluster, you will want to view the `Vagrantfile` file in your base directory.
 
+You run Vagrant from a command line. This is any shell window for UNIX or macOS, and a Command Prompt or Powershell for Windows.
+We recommend Powershell.
+
 ### Viewing or modifying the Vagrantfile
 
 1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example:
     * You want to run a single-node cluster by  changing the `3` on the `STORAGEOS_NODES` line to `1`
     * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
     * You want to manage down memory resources by changing `2048` on the `STORAGEOS_MEMORY` line to `1536`
-  
-    ...or simply set an environment variable from your terminal window:
+
+    These can also be set via environment variables. For UNIX:
 
     ```
-    STORAGEOS_NODES=1
-    STORAGEOS_CPU=1
-    STORAGEOS_MEMORY=1536
+    export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
+    ```
+
+    For Powershell:
+
+    ```
+    $env:STORAGEOS_NODES=1
+    $env:STORAGEOS_CPU=1
+    $env:STORAGEOS_MEMORY=1536
     ```
 
 ## Initialise the Cluster
@@ -78,6 +87,20 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     ```
 
 ### Confirm SSH has been installed and Docker containers are running
+
+>**&#x270F; Note**: There are additional steps to set up SSH for Windows. Your Windows machine
+> may already have an SSH client installed. We've had good results using
+> [Git for Windows](https://git-scm.com/download/win).
+> In any case, you need an executable
+> SSH program in your `PATH` for `vagrant ssh` to work.
+
+> Set the path in Windows 10
+> by right-clicking on the Start icon and selecting 'System', then select 'Advanced system settings'
+> then 'Environment variables'. Under 'user variables', edit 'Path', and add the
+> path to your SSH.
+> For Git for Windows installed with defaults, the path was `C:\Program Files\git\usr\bin`.
+> Open a new Powershell or Command Prompt and type `ssh`. If you get an error, the `PATH` isn't
+> right or SSH isn't working properly.
 
 1.  To remote shell into the cluster you should use the `vagrant ssh` command and specify the node you wish to connect in the case of a multi-node cluster setup:
 

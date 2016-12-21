@@ -13,34 +13,13 @@ If you have configured DNS for your nodes, you can browse to them by name. Other
 
 For the ISO build, this will be any of the nodes' IP addreses as found in your VM configuration or on the node's console.
 
-For Vagrant, you will need to connect to any one of the nodes' IP addresses. For the default VirtualBox installation the
-addresses will most likely be the following:
+For Vagrant, you will need to connect to *any* of the nodes' IP addresses. Unless you've made site-local changes to
+the `Vagrantfile`, the addresses will be:
 
 ```
 10.205.103.2
 10.205.103.3
 10.205.103.4
-```
-
-You can always get a list of the Vagrant IP addresses with
-
-```
-$ vagrant ssh-config | egrep HostName | awk '{print $2}'
-172.16.121.137
-172.16.121.140
-172.16.121.141
-$
-```
-
-A slightly nicer way of getting a node's address is available via a vagrant plugin:
-
-```
-$ vagrant plugin install vagrant-address
-Installing the 'vagrant-address' plugin. This can take a few minutes...
-Fetching: vagrant-address-0.3.1.gem (100%)
-Installed the plugin 'vagrant-address (0.3.1)'!
-$ vagrant address storageos-1
-172.16.121.137
 ```
 
 ## Verifying the Installation

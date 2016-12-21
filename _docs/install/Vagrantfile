@@ -75,6 +75,8 @@ Vagrant.configure(2) do |config|
       # Use faster paravirtualized networking
       v.customize ["modifyvm", :id, "--nictype1", "virtio"]
       v.customize ["modifyvm", :id, "--nictype2", "virtio"]
+      # https://github.com/mitchellh/vagrant/issues/7648
+      v.customize ['modifyvm', :id, '--cableconnected1', 'on']
 
       port = 0
       $num_disk.times do |n|

@@ -66,6 +66,6 @@ StorageOS satisfies a number of common features for applications running in prod
 |                                 |              |              |  |   ▪︎ Kubernetes                  |   &#x2716;   |   &#x2714;   |
 |                                 |              |              |  |                                 |              |              | 
 
-This provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
+StorageOS effectively provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
 
 <div style="text-align: right"> <a href="#top"> Back to top </a> </div>

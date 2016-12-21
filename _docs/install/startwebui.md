@@ -7,41 +7,16 @@ module: install/startwebui
 
 # <a name="top"></a> Confirming Installation
 
-You can check that the installation has completed successfully by launching the Web UI.
+A simple test to confirm that the installation has completed successfully is to launch the Web UI from your browser.
 
-If you have configured DNS for your nodes, you can browse to them by name. Otherwise, you'll need to browse to a node's IP address.
+For the ISO build this will be any of the three IP addresses you configured that show up on each node's MOTD banner.
 
-For the ISO build, this will be any of the nodes' IP addreses as found in your VM configuration or on the node's console.
+For Vagrant, you will need to connect to one of the following IP addresses accessible over the VirtualBox NAT interface:
 
-For Vagrant, you will need to connect to any one of the nodes' IP addresses. For the default VirtualBox installation the
-addresses will most likely be the following:
+1. [10.205.103.2](http://10.205.103.2)
+2. [10.205.103.3](http://10.205.103.3)
+3. [10.205.103.4](http://10.205.103.4)
 
-```
-10.205.103.2
-10.205.103.3
-10.205.103.4
-```
-
-You can always get a list of the Vagrant IP addresses with
-
-```
-$ vagrant ssh-config | egrep HostName | awk '{print $2}'
-172.16.121.137
-172.16.121.140
-172.16.121.141
-$
-```
-
-A slightly nicer way of getting a node's address is available via a vagrant plugin:
-
-```
-$ vagrant plugin install vagrant-address
-Installing the 'vagrant-address' plugin. This can take a few minutes...
-Fetching: vagrant-address-0.3.1.gem (100%)
-Installed the plugin 'vagrant-address (0.3.1)'!
-$ vagrant address storageos-1
-172.16.121.137
-```
 
 ## Verifying the Installation
 
@@ -53,10 +28,10 @@ To verify that your installation:
 
     ![screenshot](/images/docs/iso/weblogin.png)
 
-1. Click **Configuration**, then **Controllers**. You will see the StorageOS nodes you built and their capacity, with one of the three nodes as a scheduler (the Scheduler column is **true** for that node).  Providing everything installed and configured correctly, the **System Status** in the left hand column should be set to **OK** and green.
+1. Click *Configuration*, then *Controllers*. You will see the StorageOS nodes you built and their capacity, with one of the three nodes as a scheduler (the Scheduler column is *true* for that node).  Providing everything installed and configured correctly, the *System Status* in the left hand column should be set to *OK* and green.
 
     <a name="WebUI"></a>[<img src="/images/docs/iso/webui.png" width="760">](./webuipng.html)
 
- You have completed the installation process.
+You have completed the installation process.
 
 <div style="text-align: right"> <a href="#top"> Back to top </a> </div>

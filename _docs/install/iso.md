@@ -15,7 +15,7 @@ There are three parts to completing the ISO image install of StorageOS:
 
 >**&#x270F; Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
 
->**&#x270F; Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system. 
+>**&#x270F; Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system.
 
 ## Creating VMs with VirtualBox
 
@@ -41,7 +41,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 
 >**&#x270F; Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
-   
+
 >**&#x270F; Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
 
 ### Configure Virtual Disk
@@ -78,7 +78,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 4. Confirm that an adapter is present next to the **Name:** label
 
    >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
-   
+
    >**&#x270F; Note**: If you are configuring Static DHCP addresses for each of your nodes, these can be located under the advanced properties of the Network configuration dialogue you have open above.
 
 5. Finish by clicking ![image](/images/docs/iso/ok.png)
@@ -125,7 +125,7 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 
    >**&#x270F; Note**: You may configure 3, 5 or 7 nodes from the StorageOS ISO install as desired. More nodes are possible with manual configuration,
    but there must always be an odd number of nodes or Consul will not operate correctly.
-   
+
    >**&#x270F; Note**: You can also create an ESX template to simplify the install if you wish.
 
 
@@ -135,8 +135,6 @@ You are now ready to boot each of your VMs and install StorageOS.
 
 ### Starting up your VMS
 Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node, so ensure this VM completes first before completing the remaining member nodes.
-
-Note that the master node is not 'special'; it is simply a convenience during installation. Once the install is complete and the Consul cluster is started, all server nodes are equivalent.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
 
@@ -365,7 +363,6 @@ Perform these steps on each node.
     storageos:~ julian$
     ```
 
-This completes the StorageOS cluster setup.  
+This completes the StorageOS cluster setup.
 
 <div style="text-align: right"> <a href="iso.html#Back to top"> Back to top </a> </div>
-

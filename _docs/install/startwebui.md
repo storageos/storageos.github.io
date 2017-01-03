@@ -13,10 +13,14 @@ For the ISO build this will be any of the three IP addresses you configured that
 
 For Vagrant, you will need to connect to one of the following IP addresses accessible over the VirtualBox NAT interface:
 
-1. [10.205.103.2](http://10.205.103.2)
-2. [10.205.103.3](http://10.205.103.3)
-3. [10.205.103.4](http://10.205.103.4)
+For Vagrant, you will need to connect to *any* of the nodes' IP addresses. Unless you've made site-local changes to
+the `Vagrantfile`, the addresses will be:
 
+```
+10.205.103.2
+10.205.103.3
+10.205.103.4
+```
 
 ## Verifying the Installation
 
@@ -33,4 +37,3 @@ To verify that your installation:
     <a name="WebUI"></a>[<img src="/images/docs/iso/webui.png" width="760">](./webuipng.html)
 
 You have completed the installation process.
-

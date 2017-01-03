@@ -20,6 +20,7 @@ We recommend Powershell.
 
 ### Viewing or modifying the Vagrantfile
 
+
 1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example:
     * You want to run a single-node cluster by  changing the `3` on the `STORAGEOS_NODES` line to `1`
     * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
@@ -51,12 +52,13 @@ We recommend Powershell.
     ...
     ```
 
-    >**&#x270F; Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
-    > <br> <img src="/images/docs/iso/appleicon.png" width="25"> `vagrant up --provider=vmware_fusion`
-    > <br> <img src="/images/docs/iso/windowsicon.png" width="25"> `vagrant up --provider=vmware_workstation`
+    >**Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
+    >
+    > {% icon fa-apple fa-border %} `vagrant up --provider=vmware_fusion`
+    >
+    > {% icon fa-windows fa-border %} `vagrant up --provider=vmware_workstation`
 
-    >**&#x270F; Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the HashiCorp [<img src="/images/docs/iso/vagranticon1.png" height="18">](https://www.vagrantup.com/vmware/) integration page for details
-
+    >**Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the [HashiCorp Vagrant VMware](https://www.vagrantup.com/vmware/) documentation for details
 
 2.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
 
@@ -155,5 +157,3 @@ We recommend Powershell.
     ```
 
 This completes the StorageOS cluster setup.
-
-

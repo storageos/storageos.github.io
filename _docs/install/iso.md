@@ -87,9 +87,9 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 ### Clone a VirtualBox VM
 
-Once you have created your first VM in VirtualBox, and before you have powered it up and initialised it, you can create clone copies.  This is a quicker and more consistent method of creating multiple VMs with the same configuration paramaters.
+Once you have created your first VM in VirtualBox, and before you have powered it up and initialised it, you can create clone copies.  This is a quicker and more consistent method of creating multiple VMs with the same configuration parameters.
 
-1. Right click on your StorageOS-01 VM you just created and select *Clone* from the contect menu
+1. Right click on your StorageOS-01 VM you just created and select *Clone* from the context menu
 
     ![image](/images/docs/iso/clone.png)
 
@@ -112,7 +112,7 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
    * USB or disk space on a data store to mount the ISO install image
    * ESX 5.5 or higher is installed
    * HA is enabled
-   * As stated previously, an odd number of nodes should be cretaed for your cluster
+   * As stated previously, an odd number of nodes should be created for your cluster
    * Storage presented to all nodes of the ESX cluster for HA and VMotion to work based on VMware’s requirements (SAN, VSAN, iSCSI, etc.)
    * Anti-affinity configured to prevent StorageOS controllers from running on the same ESX host
 
@@ -228,7 +228,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/19-isopart.png)
 
-5. Select *Yes* to accept the changes to be writtin to disk
+5. Select *Yes* to accept the changes to be written to disk
 
     ![screenshot](/images/docs/iso/20-isopart.png)
 

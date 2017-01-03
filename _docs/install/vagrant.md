@@ -21,8 +21,8 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     * You want to run a single-node cluster, change the value `3` for `STORAGEOS_NODES` to `1`
     * You want to manage down CPU resources, change the value `2` for `STORAGEOS_CPU` to `1`
     * You want to manage down memory resources, change the value `2048` for `STORAGEOS_MEMORY` to `1536` or `1024`
-  
-    ...or simply set an environment variable from your terminal window:
+
+    ... or simply set an environment variable from your terminal window:
 
     ```
     STORAGEOS_NODES=1
@@ -43,10 +43,12 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     ```
 
     >**Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
-    > <br> <img src="/images/docs/iso/appleicon.png" width="25"> `vagrant up --provider=vmware_fusion`
-    > <br> <img src="/images/docs/iso/windowsicon.png" width="25"> `vagrant up --provider=vmware_workstation`
-    
-    >**Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the HashiCorp [<img src="/images/docs/iso/vagranticon1.png" height="18">](https://www.vagrantup.com/vmware/) integration page for details
+    >
+    > {% icon fa-apple fa-border %} `vagrant up --provider=vmware_fusion`
+    >
+    > {% icon fa-windows fa-border %} `vagrant up --provider=vmware_workstation`
+
+    >**Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the [HashiCorp Vagrant VMware](https://www.vagrantup.com/vmware/) documentation for details
 
 
 2.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
@@ -132,5 +134,3 @@ Before you launch Vagrant for the first time to build out your cluster, you will
     ```
 
 This completes the StorageOS cluster setup.
-
-

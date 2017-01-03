@@ -75,22 +75,14 @@ There are currently two options for installing StorageOS
 1. **Vagrant**: This is the simplest choice to get you up and running quickly. Vagrant boxes for VirtualBox and VMware Fusion/Workstation are provided.
 2. **ISO image**: This is a custom Linux distribution based on Ubuntu 16.04 LTS. We recommend the VirtualBox hypervisor for the Beta as this has been more extensively tested and requires no additional third party licensing.
 
-### <a name="Vagrant"></a> Vagrant
-Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments and is Open Source software.  This can be obtained from the Hashicorp web site under the terms of the MIT License.
-
-Click on the image below to download the software.
-
-[<img src="/images/docs/install/vagrant.png" width="300">](http://vagrantup.com)
-
-
-All the necessary documentation required to get you up and running with Vagrant is available from the site.
+### Vagrant
+Vagrant is available for macOS, Windows, Debian Linux and CentOS Linux environments and is Open Source software.  The software and documentation can be obtained from the [Hashicorp Vagrant](http://vagrantup.com) web site.
 
 ### ISO image
 
 The ISO image is a customised Ubuntu Server 16.04 LTS distribution that preinstalls and configures a base StorageOS installation.
 
-It is installable anywhere that an Ubuntu Server 16.04 LTS can be installed. It has received the most testing on VirtualBox and VMware desktop VMs,
-and on bare metal installations.
+It is installable anywhere that an Ubuntu Server 16.04 LTS can be installed. It has received the most testing on VirtualBox and VMware desktop VMs, and on bare metal installations.
 
 Please Contact StorageOS for help with VMware Workstation installations if you are have problems with the installation.
 
@@ -99,16 +91,8 @@ Please Contact StorageOS for help with VMware Workstation installations if you a
 
 Our software is built and tested using VirtualBox, and that is currently the best-tested deployment. VMware desktop and ESX have also been tested.
 
-### <a name="VirtualBox"></a> VirtualBox
-VirtualBox is available for Windows, Linux, macOS, and Solaris hosts and is Open Source software.  This can can be obtained from the Oracle VirtualBox web site under the terms of the GNU General Public License V2.  
-
-Click on the image below to download the software.
-
-[<img src="/images/docs/install/virtualbox.png" width="300">](http://virtualbox.org)
-
-All the necessary documentation required to get you up and running with VirtualBox is available from the site.
+### VirtualBox
+VirtualBox is available for Windows, Linux, macOS, and Solaris hosts and is Open Source software.  The software and documentation can can be obtained from the [Oracle VirtualBox web site](http://virtualbox.org).  
 
 ### VMware ESX
 The StorageOS ISO image can also be installed onto VMware ESX machines.  You can request additional support directly from StorageOS should you require further assistance with this process. We do not support the VMware plug-in for the Beta Vagrant build at this time however.
-
-

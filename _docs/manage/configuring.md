@@ -111,7 +111,7 @@ Let's create a new Built-in ![image](/images/docs/manage/featurebtn.png) Label T
 
 ## Creating Volumes and Applying Rules
 
-When you create a new volume, rules will be automatically enforced providing these have been configured for a given *Label Name* as we have configured previously
+When you create a new volume, rules will be automatically enforced providing these have been configured for a given *Label Name* as we have set up previously
 
 1. To create a new volume, go to Provisioning &#x27A1; Volumes &#x27A1; ![image](/images/docs/manage/newvolumebtn.png)
 
@@ -130,7 +130,7 @@ When you create a new volume, rules will be automatically enforced providing the
 
    ![screenshot](/images/docs/manage/newvolume2.png)
 
-   >**&#x270F; Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
+>**&#x270F; Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
 
 
 
@@ -200,7 +200,7 @@ To view the Diagnostics window, select Configuration &#x27A1; Diagnostics.
 
   ![image](/images/docs/manage/diagnostics.png)
 
-   >**&#x270F; Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
+>**&#x270F; Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
 
 
 
@@ -212,9 +212,9 @@ To access the Configuration Backup and Restore window, select Configuration &#x2
 
   ![image](/images/docs/manage/backups.png)
 
-   >**&#x270F; Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
+>**&#x270F; Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
    
-   >**&#x270F; Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
+>**&#x270F; Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
 
 
 
@@ -230,7 +230,7 @@ To access the License Management window, select Configuration &#x27A1; License.
 
    ![image](/images/docs/manage/license1.png)
 
-   >**&#x270F; Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
+>**&#x270F; Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
 
 
 

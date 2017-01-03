@@ -15,8 +15,6 @@ In this exercise we will demonstrate how StorageOS can provide persistent storag
 
 You will need access to the internet to pull down a container for this demonstration, a web browser and a terminal connection to your StorageOS nodes to complete this exercise.
 
----
-
 ## Connect to a StorageOS node
 
 1.  To get started you will need to be connected to a StorageOS node and load a container for this demonstration using the `docker run` command.
@@ -39,9 +37,9 @@ You will need access to the internet to pull down a container for this demonstra
     2e26c041aff8  karolisr/crasher  "/bin/crasher"  About a minute ago  Up About a minute  0.0.0.0:8081->8081/tcp  stoic_franklin
     ```
 
-    >**&#x270F; Note**: We are using port 8081 for this container, so for our Vagrant based installation on node 1 we will use `10.245.103.2:8081` to connect to our demonstration application container.
-    >
-    >**&#x270F; Note**: For the ISO based installation, use the IP address you configured and append this with the port number `8081`.
+>**&#x270F; Note**: We are using port 8081 for this container, so for our Vagrant based installation on node 1 we will use `10.205.103.2:8081` to connect to our demonstration application container.
+    
+>**&#x270F; Note**: For the ISO based installation, use the IP address you configured and append this with the port number `8081`.
 
 ## Open the Crasher container application
 
@@ -98,7 +96,7 @@ You will need access to the internet to pull down a container for this demonstra
 
     You can view the 10GB crasher-data volume from the Web UI by navigating to **Provisioning**, **Volumes**.
 
-    And to delete the volume, simply click on the &#x1F5D1; icon.
+    And to delete the volume, simply click on the  ![image](/images/docs/explore/deletebtn.png) icon.
 
     <a name="Volumes"></a>[<img src="/images/docs/explore/volumes.png" width="760">](./volumespng.html)
 

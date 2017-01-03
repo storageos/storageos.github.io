@@ -41,9 +41,9 @@ vagrant@storageos-1:~$
 ```
 
 
-## Become `root`
+## Elevate your privileges
 
-Most commands will need `root` permissions.
+Most commands will need `root` privileges to run most of the commands discussed below
 
 ```
 storageos@storageos-03:~$ sudo -i

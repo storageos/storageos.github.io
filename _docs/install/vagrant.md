@@ -20,7 +20,6 @@ We recommend Powershell.
 
 ### Viewing or modifying the Vagrantfile
 
-
 1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example:
     * You want to run a single-node cluster by  changing the `3` on the `STORAGEOS_NODES` line to `1`
     * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
@@ -88,7 +87,7 @@ We recommend Powershell.
 
 ### Confirm SSH has been installed and Docker containers are running
 
->**&#x270F; Note**: There are additional steps to set up SSH for Windows. Your Windows machine
+>**Note**: There are additional steps to set up SSH for Windows. Your Windows machine
 > may already have an SSH client installed. We've had good results using
 > [Git for Windows](https://git-scm.com/download/win).
 > In any case, you need an executable

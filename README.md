@@ -62,3 +62,42 @@ The site will be automatically published whenever pull requests are merged into 
 ## Publish to GitHub Pages (not password-protected)
 
 :warning: This is not currently in use, as we do not wish to publish documentation until we have patents in place.
+
+## Best Practices
+
+"Say what you mean, simply and directly." - [Brian Kernighan](https://en.wikipedia.org/wiki/The_Elements_of_Programming_Style)
+
+### Minimal Viable Documentation
+
+From [Google Documentation Best Practices](https://github.com/google/styleguide/blob/gh-pages/docguide/best_practices.md):
+
+A small set of fresh and accurate docs are better than a sprawling, loose assembly of "documentation" in various states of disrepair.
+
+Write short and useful documents. Cut out everything unnecessary, while also making a habit of continually massaging and improving every doc to suit your changing needs. Docs work best when they are alive but frequently trimmed, like a bonsai tree.
+
+### Avoid HTML in markdown
+
+HTML should not be included in Markdown unless the team agrees there is appropriate need and no better alternative.  Ask
+on the Slack channel for other suggestions or agreement to proceed before adding HTML.
+
+### Use classes for images
+
+Create a CSS class if you need non-default styling of an image.  Instead of:
+
+```
+<br> <img src="/images/docs/iso/appleicon.png" width="25">
+```
+
+Use:
+```
+[logo](/images/docs/iso/applicon.png)
+```
+
+### Use icons sparingly
+
+Icons and other visual cues should only be used when they don't detract from the content.
+Where icons do make sense, try to use icons from [Font Awesome](http://fontawesome.io/icons/), which can be used as follows:
+
+```
+{% icon fa-apple %}
+```

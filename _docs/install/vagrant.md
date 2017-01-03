@@ -51,16 +51,14 @@ We recommend Powershell.
     ...
     ```
 
-    To change to the VMware provider, use `vagrant up --provider=vmware_fusion` or `vagrant up --provider=vmware_workstation`, depending
-    on your setup. You'll need to have the VMware Fusion or VMware Workstation vagrant plugin installed and licensed first; see the
-    [HashiCorp VMware](https://www.vagrantup.com/vmware/) integration page for details.
+    >**&#x270F; Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
+    > <br> <img src="/images/docs/iso/appleicon.png" width="25"> `vagrant up --provider=vmware_fusion`
+    > <br> <img src="/images/docs/iso/windowsicon.png" width="25"> `vagrant up --provider=vmware_workstation`
 
-    You only need to specify the provider at `vagrant up` time. After this, it will automatically use the provider you specified.
+    >**&#x270F; Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the HashiCorp [<img src="/images/docs/iso/vagranticon1.png" height="18">](https://www.vagrantup.com/vmware/) integration page for details
 
-    If you want to change provider, either use a different base directory (recommended), or clear down your installation
-    (save your data first!) with `vagrant destroy`.
 
-1.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
+2.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
 
     ```
     StorageOS:storageos julian$ vagrant status
@@ -114,7 +112,7 @@ We recommend Powershell.
     Last login: Tue Dec 13 12:27:42 2016 from 10.0.2.2
     ```
 
-1.  Running the `docker ps` command will display what is currently running on the node:
+2.  Running the `docker ps` command will display what is currently running on the node:
 
     ```
     vagrant@storageos-1:~$ docker ps -a
@@ -127,7 +125,7 @@ We recommend Powershell.
     87e86b1b434e  quay.io/storageos/storageos:beta   "/bin/storageos datap"   12 days ago    Up 4 minutes                                                                                                                            storageos_data_1
     ```
 
-1.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
+3.  You can also use the `storageos` command to gather the status of the *dataplane*, *controlplane* and the Web UI metrics collection containers
 
     ```
     root@storageos-03:~# storageos status
@@ -138,7 +136,7 @@ We recommend Powershell.
     storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp
     ```
 
-1.  To disconnect your session, hit `CTRL+D` to return back to your original shell prompt:
+4.  To disconnect your session, hit `CTRL+D` to return back to your original shell prompt:
 
     ```
     vagrant@storageos-1:~$ logout
@@ -146,7 +144,7 @@ We recommend Powershell.
     StorageOS:storageos julian$
     ```
 
-1.  To shut down your Vagrant VM cluster use the `vagrant halt` command.
+5.  To shut down your Vagrant VM cluster use the `vagrant halt` command.
 
     ```
     storageos:storageos julian$ vagrant halt

@@ -16,7 +16,7 @@ The StorageOS ISO or Vagrantfile can be downloaded from one of the following loc
   * &#x1F4BF; [ISO Media](https://downloads.storageos.com/images/storageos-ubuntu-16.04-amd64.iso)
   * &#x1F4E6; [Vagrantfile](./Vagrantfile)
 
->**&#x26A0;** During the closed beta period, a password is required to download the installation media.  Please contact [support@storageos.com](mailto:support@storageos.com) if you don't have a suitable username and password.
+>**&#x26A0;** During the closed beta period, a password is required to download the installation media.  Please contact [support@storageos.com](mailto:support@storageos.com) if you don't have a working username and password.
 
 Once downloaded, the Vagrantfile installer should be moved to a base folder, for example, `~/storageos`. Make sure that your base folder
 has enough free space to install three nodes with the amount of storage you require. We recommend at the very least 30GB of free space

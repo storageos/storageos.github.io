@@ -5,7 +5,7 @@ anchor: reference
 module: reference/docker
 ---
 
-# <a name="top"></a> StorageOS Docker Volume Plugin
+# StorageOS Docker Volume Plugin
 
 ## Installation
 
@@ -136,4 +136,4 @@ $ storageos logs control
 $ sudo journalctl -u dataplane -f
 ```
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

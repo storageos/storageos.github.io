@@ -5,7 +5,7 @@ anchor: explore
 module: explore/demo
 ---
 
-# <a name="top"></a> Persistent Storage Demonstration
+# Persistent Storage Demonstration
 
 In this exercise we will demonstrate how StorageOS can provide persistent storage to Docker containers.  The following YouTube video plays through the steps that we will run through in the section that follows below.
 
@@ -38,7 +38,7 @@ You will need access to the internet to pull down a container for this demonstra
     ```
 
 >**&#x270F; Note**: We are using port 8081 for this container, so for our Vagrant based installation on node 1 we will use `10.205.103.2:8081` to connect to our demonstration application container.
-    
+
 >**&#x270F; Note**: For the ISO based installation, use the IP address you configured and append this with the port number `8081`.
 
 ## Open the Crasher container application
@@ -132,4 +132,3 @@ You will need access to the internet to pull down a container for this demonstra
     Deleted: sha256:673f3909c8494367736aac791b205d68ac7b190480396fe43864d42eab2f92b0
     Deleted: sha256:8ac8bfaff55af948c796026ee867448c5b5b5d9dd3549f4006d9759b25d4a893
     ```
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

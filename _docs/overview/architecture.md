@@ -5,7 +5,7 @@ anchor: overview
 module: overview/architecture
 ---
 
-# <a name="top"></a> Architecture Overview
+# Architecture Overview
 
 A StorageOS cluster comprises three or more controllers, and one or more optional clients where:
 
@@ -24,4 +24,4 @@ The control plane is responsible for monitoring health and scheduling.  It does 
 
 The control plane is also responsible for maintaining state and does this over an embedded message bus (NATS) where configuration state is maintained in a distributed Key/Value store.  A rules engine acts on state changes and a scheduler determines the best placement.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

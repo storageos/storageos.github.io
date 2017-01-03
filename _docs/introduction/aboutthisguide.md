@@ -5,7 +5,7 @@ anchor: introduction
 module: introduction/aboutthisguide
 ---
 
-# <a name="top"></a> About this Guide
+# About this Guide
 
 ## Audience
 This guide has been written for Storage Admins, DevOps, Solutions Architects, Engineers and Techies who want to evaluate StorageOS, understand how it works and how it integrates with the Docker and Container ecosystem.
@@ -24,5 +24,5 @@ This guide is structured to get you quickly setup and running with StorageOS and
 
 This document has been specifically written to cover the Beta release of StorageOS and will initially cover the basics of the product -- so expect to see more soon!
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+
 

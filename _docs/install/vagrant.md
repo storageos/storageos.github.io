@@ -24,10 +24,20 @@ Before you launch Vagrant for the first time to build out your cluster, you will
   
     ...or simply set an environment variable from your terminal window:
 
+    <img src="/images/docs/iso/macterm.png" width="25"> From macOS or Linux
+
     ```
     STORAGEOS_NODES=1
     STORAGEOS_CPU=1
     STORAGEOS_MEMORY=1536
+    ```
+
+    <img src="/images/docs/iso/winterm.png" width="25"> From Windows
+    
+    ```
+    set STORAGEOS_NODES=1
+    set STORAGEOS_CPU=1
+    set STORAGEOS_MEMORY=1536
     ```
 
 ## Initialise the Cluster

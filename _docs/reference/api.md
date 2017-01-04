@@ -9,11 +9,10 @@ module: reference/api
 
 StorageOS Control plane API is accessible either through port 80 or 8000.
 
----
 
 ## Volumes API
 
-### Create volumes
+### Create Volumes
 
 Create new volume.
 
@@ -44,9 +43,8 @@ Create new volume.
    | tags         | `[]string`  | false    | Array of tags, can be any existing tags |    
    | description  | `string`    | false    | Description |
 
----
 
-### Get all volumes
+### Get all Volumes
 
 Returns all volumes
 
@@ -109,9 +107,8 @@ Returns all volumes
 ]
 {% endhighlight %}
 
----
 
-### Get volume details
+### Get Volume Details
 
 * URL: `/v1/volumes/{id}`
 * Method: `GET`
@@ -146,9 +143,8 @@ Returns all volumes
 }
 {% endhighlight %}
 
----
 
-### Delete volume
+### Delete Volume
 
 Deletes specified volume
 
@@ -158,13 +154,12 @@ Deletes specified volume
     - Success: `200`
     - Volume does not exist: `404`
 
----
 
 ## Tags API
 
 Tags (or Labels) are used to customize volumes, controllers, pools and pretty much any other object that is inside StorageOS.
 
-### Create tag
+### Create Tag
 
 Create new tag.
 
@@ -185,9 +180,8 @@ Create new tag.
     - Conflict (tag with the same name already exists): `409`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
 
----
 
-### Get all tags
+### Get all Tags
 
 Return all tags under all tag types
 
@@ -231,9 +225,8 @@ Return all tags under all tag types
 }]
 {% endhighlight %}
 
----
 
-### Get tag type's tags
+### Get Tag Type's Tags
 
 Return all tags that belong to specified tag type
 
@@ -271,9 +264,8 @@ Return all tags that belong to specified tag type
 }]
 {% endhighlight %}
 
----
 
-### Tag details
+### Tag Details
 
 Returns tag details
 
@@ -292,9 +284,8 @@ Returns tag details
 }
 {% endhighlight %}
 
----
 
-### Update tag
+### Update Tag
 
 * URL: `/v1/tag/{tagtype}/{id}`
 * Method: `PUT`
@@ -313,9 +304,8 @@ Returns tag details
     - Bad request: `400`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
 
----
 
-### Delete tag
+### Delete Tag
 
 * URL: `/v1/tag/{tagtype}/{id}`
 * Method: `DELETE`

@@ -25,18 +25,28 @@ We recommend Powershell.
     * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
     * You want to manage down memory resources by changing `2048` on the `STORAGEOS_MEMORY` line to `1536`
 
-    These can also be set via environment variables. For UNIX:
+    These can also be set via environment variables.
+
+    {% icon fa-apple fa-border %} {% icon fa-linux fa-border %} From most macOS or Linux shells:
 
     ```
     export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
     ```
 
-    For Powershell:
+    {% icon fa-windows fa-border %} From Windows Powershell:
 
     ```
     $env:STORAGEOS_NODES=1
     $env:STORAGEOS_CPU=1
     $env:STORAGEOS_MEMORY=1536
+    ```
+
+    {% icon fa-windows fa-border %} From the Windows Command Prompt:
+
+    ```
+    set STORAGEOS_NODES=1
+    set STORAGEOS_CPU=1
+    set STORAGEOS_MEMORY=1536
     ```
 
 ## Initialise the Cluster
@@ -93,7 +103,7 @@ We recommend Powershell.
 > In any case, you need an executable
 > SSH program in your `PATH` for `vagrant ssh` to work.
 
-> Set the path in Windows 10
+> **Note**: Set the path in Windows 10
 > by right-clicking on the Start icon and selecting 'System', then select 'Advanced system settings'
 > then 'Environment variables'. Under 'user variables', edit 'Path', and add the
 > path to your SSH.

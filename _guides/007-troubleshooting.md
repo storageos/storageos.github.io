@@ -5,11 +5,11 @@ anchor: troubleshooting
 
 sections:
 -
-  title: Audit log
+  title: Audit Log
   description: Use the audit log to identify issues.
   module: troubleshooting/audit
 -
-  title: System log
+  title: System Log
   description: View the system logs.
   module: troubleshooting/logs
 ---

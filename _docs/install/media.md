@@ -5,7 +5,7 @@ anchor: install
 module: install/media
 ---
 
-# <a name="top"></a> Obtaining the StorageOS Media
+# Obtaining the StorageOS Media
 Please make sure you have read the [Installation Requirements](deployment.html) document before proceeding.
 
 The required media for your installation may have been provided by us on a USB flash drive. It can also be downloaded directly from our web site.
@@ -22,4 +22,4 @@ Once downloaded, the Vagrantfile installer should be moved to a base folder, for
 has enough free space to install three nodes with the amount of storage you require. We recommend at the very least 30GB of free space
 for a three-node cluster. If you intend to use many large volumes, more space will of course be required.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

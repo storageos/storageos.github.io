@@ -5,7 +5,7 @@ anchor: introduction
 module: introduction/whatisstorageos
 ---
 
-# <a name="top"></a> What is StorageOS?
+# What is StorageOS?
 
 StorageOS is an enterprise class Software Defined Storage (SDS) solution optimised for, but not limited to, container-based workloads.  StorageOS works by leveraging the available storage in servers, virtual machines and cloud instances, aggregating and presenting this back as scalable, fully featured software defined enterprise storage.  In doing so, StorageOS ensures data is made portable, persistent, and stored securely and efficiently.
 
@@ -68,4 +68,4 @@ StorageOS satisfies a number of common features for applications running in prod
 
 StorageOS effectively provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

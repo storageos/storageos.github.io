@@ -5,7 +5,7 @@ anchor: manage
 module: manage/configuring
 ---
 
-# <a name="top"></a> Configuration and Provisioning
+# Configuration and Provisioning
 
 This section explores how you can configure and provision your storage using labels, rules and auto-naming templates.
 
@@ -43,7 +43,7 @@ Let's try this from the *Label Management* window shown above:
 1. Select the ![image](/images/docs/manage/newlabeltypebtn.png) button to create a new label type
 2. Provide a *label type name*, for example 'department'
 
-   >**&#x270F; Note**: As soon as you start entering the new label type it will also appear in the menu on the left.
+   >**Note**: As soon as you start entering the new label type it will also appear in the menu on the left.
 
 3. Provide an optional *Description*, for example 'Department name'
 4. Click the ![image](/images/docs/manage/savebtn.png) button
@@ -130,7 +130,7 @@ When you create a new volume, rules will be automatically enforced providing the
 
    ![screenshot](/images/docs/manage/newvolume2.png)
 
->**&#x270F; Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
+>**Note**: The ![image](/images/docs/manage/replicationbtn.png) feature *Label Name* has been applied to the new replication rule and is now inherited by the ![image](/images/docs/manage/prodbtn.png) *Label Name*
 
 
 
@@ -200,7 +200,7 @@ To view the Diagnostics window, select Configuration &#x27A1; Diagnostics.
 
   ![image](/images/docs/manage/diagnostics.png)
 
->**&#x270F; Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
+>**Note**: Please be aware that the cluster diagnostics bundle size may vary depending on the number of nodes and amount of available log data.
 
 
 
@@ -212,9 +212,9 @@ To access the Configuration Backup and Restore window, select Configuration &#x2
 
   ![image](/images/docs/manage/backups.png)
 
->**&#x270F; Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
+>**Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
    
->**&#x270F; Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
+>**Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
 
 
 
@@ -230,7 +230,7 @@ To access the License Management window, select Configuration &#x27A1; License.
 
    ![image](/images/docs/manage/license1.png)
 
->**&#x270F; Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
+>**Note**: For more information on licensing please refer to the Licensing section under *Getting Started*
 
 
 
@@ -271,4 +271,3 @@ The Containers window can be accessed under Provisioning &#x27A1; Containers.
 
    ![screenshot](/images/docs/manage/containers.png)
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

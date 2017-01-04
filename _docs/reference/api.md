@@ -5,7 +5,7 @@ anchor: reference
 module: reference/api
 ---
 
-# <a name="top"></a> API reference
+# API reference
 
 StorageOS Control plane API is accessible either through port 80 or 8000.
 
@@ -313,4 +313,3 @@ Returns tag details
     - Success: `200`
     - Tag does not exist: `404`
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

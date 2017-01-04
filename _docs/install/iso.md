@@ -5,7 +5,7 @@ anchor: install
 module: install/iso
 ---
 
-# <a name="Back to top"></a> ISO Installation
+# ISO Installation
 
 There are three parts to completing the ISO image install of StorageOS:
 
@@ -13,9 +13,9 @@ There are three parts to completing the ISO image install of StorageOS:
 2. Installing StorageOS and Ubuntu Server from ISO media for each virtual cluster node in your cluster
 3. Confirming the setup has completed successfully - covered in the next section for both the ISO and Vagrant install
 
->**&#x270F; Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
+>**Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
 
->**&#x270F; Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system. 
+>**Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system.
 
 ## Creating VMs with VirtualBox
 
@@ -40,9 +40,9 @@ Before you can begin the ISO image install, you will need to create a **minimum 
     ![screenshot](/images/docs/iso/vbcreate1.png)
 
 
->**&#x270F; Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
-   
->**&#x270F; Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
+>**Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
+
+>**Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
 
 ### Configure Virtual Disk
 
@@ -77,9 +77,9 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 3. Next to the **Attached to:** label use the drop-down list to select **Bridged Adapter**
 4. Confirm that an adapter is present next to the **Name:** label
 
-   >**&#x270F; Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
-   
-   >**&#x270F; Note**: If you are configuring Static DHCP addresses for each of your nodes, these can be located under the advanced properties of the Network configuration dialogue you have open above.
+   >**Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
+
+   >**Note**: If you are configuring Static DHCP addresses for each of your nodes, these can be located under the advanced properties of the Network configuration dialogue you have open above.
 
 5. Finish by clicking ![image](/images/docs/iso/ok.png)
 
@@ -87,9 +87,9 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 ### Clone a VirtualBox VM
 
-Once you have created your first VM in VirtualBox, and before you have powered it up and initialised it, you can create clone copies.  This is a quicker and more consistent method of creating multiple VMs with the same configuration paramaters.
+Once you have created your first VM in VirtualBox, and before you have powered it up and initialised it, you can create clone copies.  This is a quicker and more consistent method of creating multiple VMs with the same configuration parameters.
 
-1. Right click on your StorageOS-01 VM you just created and select *Clone* from the contect menu
+1. Right click on your StorageOS-01 VM you just created and select *Clone* from the context menu
 
     ![image](/images/docs/iso/clone.png)
 
@@ -112,7 +112,7 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
    * USB or disk space on a data store to mount the ISO install image
    * ESX 5.5 or higher is installed
    * HA is enabled
-   * As stated previously, an odd number of nodes should be cretaed for your cluster
+   * As stated previously, an odd number of nodes should be created for your cluster
    * Storage presented to all nodes of the ESX cluster for HA and VMotion to work based on VMware’s requirements (SAN, VSAN, iSCSI, etc.)
    * Anti-affinity configured to prevent StorageOS controllers from running on the same ESX host
 
@@ -123,10 +123,10 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 
 3. You may wish to configure Hard disk 1 as thin provisioned in ESX to conserve space. This volume can be any size you want (10GB is required for StorageOS volumes plus 40MB for StorageOS container).
 
-   >**&#x270F; Note**: You may configure 3, 5 or 7 nodes from the StorageOS ISO install as desired. More nodes are possible with manual configuration,
+   >**Note**: You may configure 3, 5 or 7 nodes from the StorageOS ISO install as desired. More nodes are possible with manual configuration,
    but there must always be an odd number of nodes or Consul will not operate correctly.
-   
-   >**&#x270F; Note**: You can also create an ESX template to simplify the install if you wish.
+
+   >**Note**: You can also create an ESX template to simplify the install if you wish.
 
 
 ## Installing StorageOS and Ubuntu Server from ISO Media
@@ -135,8 +135,6 @@ You are now ready to boot each of your VMs and install StorageOS.
 
 ### Starting up your VMS
 Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node, so ensure this VM completes first before completing the remaining member nodes.
-
-Note that the master node is not 'special'; it is simply a convenience during installation. Once the install is complete and the Consul cluster is started, all server nodes are equivalent.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
 
@@ -228,7 +226,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/19-isopart.png)
 
-5. Select *Yes* to accept the changes to be writtin to disk
+5. Select *Yes* to accept the changes to be written to disk
 
     ![screenshot](/images/docs/iso/20-isopart.png)
 
@@ -263,9 +261,9 @@ at all on some systems, depending on the hardware.)
 
 4. Select the number of nodes you wish to setup in the cluster.
 
-   >**&#x270F; Note**: Do not be tempted to 'over provision' the number of nodes! The cluster will not start until the number of nodes you specify are running. It is possible add nodes later if desired.
+   >**Note**: Do not be tempted to 'over provision' the number of nodes! The cluster will not start until the number of nodes you specify are running. It is possible add nodes later if desired.
 
-   >**&#x270F; Note**: Only odd numbers of nodes are shown - this is to allow Consul to properly protect against 'split brain' if the network should become partitioned.
+   >**Note**: Only odd numbers of nodes are shown - this is to allow Consul to properly protect against 'split brain' if the network should become partitioned.
 
     ![screenshot](/images/docs/iso/27-isocluster.png)
 
@@ -273,20 +271,20 @@ at all on some systems, depending on the hardware.)
 
     ![screenshot](/images/docs/iso/28-isocluster.png)
 
-    >**&#x270F; Note**: If you provisioned your node with multiple IP addresses, make sure you specify the address on an interface
+    >**Note**: If you provisioned your node with multiple IP addresses, make sure you specify the address on an interface
     that the other cluster nodes will be able to contact, or the cluster will be unable to start.
 
     If however this is a member node, you will be asked to manually enter the IP address of the StorageOS cluster leader
 
     ![screenshot](/images/docs/iso/28a-isoleaderip.png)
 
-    >**&#x270F; Note**: This needs to be an address you have assigned as a Static DHCP or one that has been automatically assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
+    >**Note**: This needs to be an address you have assigned as a Static DHCP or one that has been automatically assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
 
 6. If this is a member node, after entering the StorageOS cluster leader IP address you will subsequently  be asked to confirm the assigned IP address for the new node
 
     ![screenshot](/images/docs/iso/28-isocluster1.png)
 
-    >**&#x270F; Note**: As noted above.
+    >**Note**: As noted above.
 
 ### Completing your Installation
 
@@ -366,6 +364,3 @@ Perform these steps on each node.
     ```
 
 This completes the StorageOS cluster setup.  
-
-<div style="text-align: right"> <a href="iso.html#Back to top"> Back to top </a> </div>
-

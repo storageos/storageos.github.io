@@ -6,7 +6,7 @@ module: manage/performance
 
 ---
 
-# <a name="top"></a> Performance and Auditing
+# Performance and Auditing
 
 The performance and auditing UI features are coming soon but not currently available for this Beta release.
 
@@ -29,4 +29,4 @@ The Events window is accessible from Audit &#x27A1; Events
 
    ![image](/images/docs/manage/auditevents.png)
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

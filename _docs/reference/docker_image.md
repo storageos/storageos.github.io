@@ -6,7 +6,7 @@ module: reference/docker_image
 ---
 
 
-# <a name="top"></a> Docker image reference
+# Docker image reference
 
 There is a single StorageOS Docker image that provides multiple functions:
 
@@ -23,4 +23,4 @@ To run the StorageOS control plane, specify the `server` parameter:
 docker run
 ```
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

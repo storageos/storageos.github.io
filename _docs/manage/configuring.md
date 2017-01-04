@@ -5,7 +5,7 @@ anchor: manage
 module: manage/configuring
 ---
 
-# <a name="top"></a> Configuration and Provisioning
+# Configuration and Provisioning
 
 This section explores how you can configure and provision your storage using labels, rules and auto-naming templates.
 
@@ -271,4 +271,3 @@ The Containers window can be accessed under Provisioning &#x27A1; Containers.
 
    ![screenshot](/images/docs/manage/containers.png)
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

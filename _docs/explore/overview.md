@@ -5,7 +5,7 @@ anchor: explore
 module: explore/overview
 ---
 
-# <a name="top"></a> Brief Introduction
+# Brief Introduction
 
 There are three interfaces into StorageOS.
 
@@ -57,4 +57,3 @@ There are three interfaces into StorageOS.
 
 A brief overview on launching and accessing the Web UI has been covered in the previous [Confirming Installation](../install/startwebui.html#Confirming Installation) section already.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>

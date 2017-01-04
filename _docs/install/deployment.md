@@ -5,7 +5,7 @@ anchor: install
 module: install/deployment
 ---
 
-# <a name="top"></a> Installation Requirements
+# Installation Requirements
 
 ## Before you Start
 Please read this section before moving to the Installation Guide section. It may save you time!
@@ -111,4 +111,4 @@ All the necessary documentation required to get you up and running with VirtualB
 ### VMware ESX
 The StorageOS ISO image can also be installed onto VMware ESX machines.  You can request additional support directly from StorageOS should you require further assistance with this process. We do not support the VMware plug-in for the Beta Vagrant build at this time however.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

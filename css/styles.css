@@ -465,6 +465,9 @@ input:-ms-input-placeholder {
 footer{
 	background-color: #5A645A;
 }
+#toTop {
+	text-align: right;
+}
 #footer{
 	padding: 20px 0 10px;
 }

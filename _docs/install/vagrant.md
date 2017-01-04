@@ -5,7 +5,7 @@ anchor: install
 module: install/vagrant
 ---
 
-# <a name="top"></a> Vagrant Installation
+# Vagrant Installation
 
 You will need the StorageOS Vagrantfile in the base directory created [earlier](deployment.html). We'll use `~/storageos` here.
 
@@ -156,4 +156,4 @@ We recommend Powershell.
 
 This completes the StorageOS cluster setup.
 
-<div style="text-align: right"> <a href="#top"> Back to top </a> </div>
+

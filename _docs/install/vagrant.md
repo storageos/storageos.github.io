@@ -51,12 +51,13 @@ We recommend Powershell.
     ...
     ```
 
-    >**&#x270F; Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
-    > <br> <img src="/images/docs/iso/appleicon.png" width="25"> `vagrant up --provider=vmware_fusion`
-    > <br> <img src="/images/docs/iso/windowsicon.png" width="25"> `vagrant up --provider=vmware_workstation`
+    >**Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
+    >
+    > {% icon fa-apple fa-border %} `vagrant up --provider=vmware_fusion`
+    >
+    > {% icon fa-windows fa-border %} `vagrant up --provider=vmware_workstation`
 
-    >**&#x270F; Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the HashiCorp [<img src="/images/docs/iso/vagranticon1.png" height="18">](https://www.vagrantup.com/vmware/) integration page for details
-
+    >**Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the [HashiCorp Vagrant VMware](https://www.vagrantup.com/vmware/) documentation for details
 
 2.  After a couple of minutes the installation will complete - check the Vagrant cluster node status using the `vagrant status` command:
 
@@ -86,7 +87,7 @@ We recommend Powershell.
 
 ### Confirm SSH has been installed and Docker containers are running
 
->**&#x270F; Note**: There are additional steps to set up SSH for Windows. Your Windows machine
+>**Note**: There are additional steps to set up SSH for Windows. Your Windows machine
 > may already have an SSH client installed. We've had good results using
 > [Git for Windows](https://git-scm.com/download/win).
 > In any case, you need an executable
@@ -155,5 +156,3 @@ We recommend Powershell.
     ```
 
 This completes the StorageOS cluster setup.
-
-

@@ -7,47 +7,50 @@ module: install/vagrant
 
 # Vagrant Installation
 
-You will need the StorageOS Vagrantfile in the base directory created [earlier](deployment.html). We'll use `~/storageos` here.
-
-As well as having the Vagrant software installed, you will also need to have VirtualBox (or VMware Fusion/Workstation) installed.
+As well as having the Vagrant software installed, you will also need to have VirtualBox or VMware Fusion/Workstation installed.  See the [deployment](deployment.html) section for more details.
 
 ## Setting up the Vagrant Environment
 
-Before you launch Vagrant for the first time to build out your cluster, you will want to view the `Vagrantfile` file in your base directory.
+Copy the `Vagrantfile` downloaded from [https://storageos.com/download](https://storageos.com/download) into a new base directory.  We'll use `~/storageos` throughout the documentation.
 
-You run Vagrant from a command line. This is any shell window for UNIX or macOS, and a Command Prompt or Powershell for Windows.
-We recommend Powershell.
+You run Vagrant from a command line. This is any shell window for Linux or macOS, and a Command Prompt or Powershell (recommended) for Windows.
 
 ### Viewing or modifying the Vagrantfile
 
-1.  To configure the cluster size and number of clients, the relevant lines can be found at the top of the file.  So for example:
-    * You want to run a single-node cluster by  changing the `3` on the `STORAGEOS_NODES` line to `1`
-    * You want to manage down CPU resources by changing the `2` on the `STORAGEOS_CPU` line to `1`
-    * You want to manage down memory resources by changing `2048` on the `STORAGEOS_MEMORY` line to `1536`
+Before you launch Vagrant for the first time to build out your cluster, you may want to change the default settings.  
 
-    These can also be set via environment variables.
+You may do this by editing the `Vagrantfile` file in your base directory, or by setting environment variables.  The examples below show methods for:
+* Running a single-node cluster by setting `STORAGEOS_NODES` to `1` (default `3`)
+* Managing down CPU resources by setting `STORAGEOS_CPU` to `1` (default `2`)
+* Managing down memory resources by setting `STORAGEOS_MEMORY` to `1536` (default `2048`)
 
-    {% icon fa-apple fa-border %} {% icon fa-linux fa-border %} From most macOS or Linux shells:
+#### Vagrantfile {% icon fa-apple fa-border %} {% icon fa-linux fa-border %} {% icon fa-windows fa-border %}
+Edit the `Vagrantfile` using a text editor. The relevant lines can be found at the top of the file.
+* Change the `3` on the `STORAGEOS_NODES` line to `1`
+* Change the `2` on the `STORAGEOS_CPU` line to `1`
+* Change the `2048` on the `STORAGEOS_MEMORY` line to `1536`
 
-    ```
-    export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
-    ```
+#### Environment variables: macOS and Linux {% icon fa-apple fa-border %} {% icon fa-linux fa-border %}
 
-    {% icon fa-windows fa-border %} From Windows Powershell:
+```
+export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
+```
 
-    ```
-    $env:STORAGEOS_NODES=1
-    $env:STORAGEOS_CPU=1
-    $env:STORAGEOS_MEMORY=1536
-    ```
+#### Environment variables: Windows Powershell {% icon fa-windows fa-border %}
 
-    {% icon fa-windows fa-border %} From the Windows Command Prompt:
+```
+$env:STORAGEOS_NODES=1
+$env:STORAGEOS_CPU=1
+$env:STORAGEOS_MEMORY=1536
+```
 
-    ```
-    set STORAGEOS_NODES=1
-    set STORAGEOS_CPU=1
-    set STORAGEOS_MEMORY=1536
-    ```
+#### Environment variables: Windows Command Prompt {% icon fa-windows fa-border %}
+
+```
+set STORAGEOS_NODES=1
+set STORAGEOS_CPU=1
+set STORAGEOS_MEMORY=1536
+```
 
 ## Initialise the Cluster
 

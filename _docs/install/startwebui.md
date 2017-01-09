@@ -24,15 +24,15 @@ the `Vagrantfile`, the addresses will be:
 
 ## Verifying the Installation
 
-To verify that your installation:
+To perform a basic check to verify that your installation was successful:
 
-1. Open a browser and browse to the name (if registered in DNS) or IP address of one of the StorageOS nodes, at http://ip-or-name/.  For both the ISO build enter the StorageOS user name and password you configured during the installation phase.  For the Vagrant build this will be storageos, storageos.
+1. Open a browser and browse to the name (if registered in DNS) or IP address of one of the StorageOS nodes, at http://ip-or-name/. For both the ISO build enter the StorageOS user name and password you configured during the installation phase. For the Vagrant build this will be storageos, storageos.
 
    >**Note**: If you just started up the cluster it takes about a minute or so for the services to come on line before the StorageOS login screen appears in your browser window.
 
     ![screenshot](/images/docs/iso/weblogin.png)
 
-1. Click *Configuration*, then *Controllers*. You will see the StorageOS nodes you built and their capacity, with one of the three nodes as a scheduler (the Scheduler column is *true* for that node).  Providing everything installed and configured correctly, the *System Status* in the left hand column should be set to *OK* and green.
+1. Click *Configuration*, then *Controllers*. You will see the StorageOS nodes you built and their capacity, with one of the three nodes as a scheduler (the Scheduler column is *true* for that node). Providing everything installed and configured correctly, the *System Status* in the left hand column should be set to *OK* and green.
 
     <a name="WebUI"></a>[<img src="/images/docs/iso/webui.png" width="760">](./webuipng.html)
 

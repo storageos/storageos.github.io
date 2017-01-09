@@ -88,7 +88,8 @@ b,strong {
 }
 blockquote {
     font-size: 16px;
-    border-left: 4px solid #2251a0;
+    /*border-left: 4px solid #2251a0;*/
+    border-left: 4px solid #336699; 
     padding: 6px;
     background-color: $grey-color-light;
     color: black !important;

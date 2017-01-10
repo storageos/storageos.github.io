@@ -32,17 +32,18 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 4. Enter a **name** for your VM (for example **StorageOS-01** for the first node)
 5. For Type, select **Linux**
 6. For Version, select **Ubuntu (64-bit)**
-7. Type in **4096** for the memory allocation (see note below)
+
+   >**Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
+
+7. Type in **4096** for the memory allocation
+
+   >**Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; however, 4096MB is the optimal size.
+
 8. Select the **Create a virtual hard disk now** radio button
 9. Click ![Create](/images/docs/iso/vbcreate.png) to proceed to the next step of configuring the virtual disk
 10. A resulting dialogue box will appear
 
     ![screenshot](/images/docs/iso/vbcreate1.png)
-
-
->**Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
-
->**Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; 4096MB however is the optimal size.
 
 ### Configure Virtual Disk
 

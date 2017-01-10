@@ -7,9 +7,9 @@ sections:
 -
   title: Audit Log
   description: Use the audit log to identify issues.
-  module: troubleshooting/audit
+  module: 7-troubleshooting/audit
 -
   title: System Log
   description: View the system logs.
-  module: troubleshooting/logs
+  module: 7-troubleshooting/logs
 ---

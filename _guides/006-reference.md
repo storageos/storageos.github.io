@@ -7,17 +7,17 @@ sections:
   -
     title: Command Line Reference
     description: Describes the command line tools
-    module: reference/cli
+    module: 6-reference/cli
   -
     title: API Reference
     description: Describes the HTTP API
-    module: reference/api
+    module: 6-reference/api
   -
     title: Docker Integration
     description: How to configure Docker
-    module: reference/docker
+    module: 6-reference/docker
   -
     title: Docker Image Reference
     description: This section contains reference information about the StorageOS docker image.
-    module: reference/docker_image
+    module: 6-reference/docker_image
 ---

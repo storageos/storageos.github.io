@@ -5,11 +5,11 @@ anchor: introduction
 
 sections:
   -
-    title: About this Guide
+    title: What is StorageOS
     description: This section introduces you to the documentation.
-    module: introduction/aboutthisguide
+    module: 1-introduction/whatisstorageos
   -
-    title: What is StorageOS?
-    description: This section introduces you to StorageOS.
-    module: introduction/whatisstorageos
+    title: Architectire Overview
+    description: Understand the StorageOS components.
+    module: 1-introduction/architecture
 ---

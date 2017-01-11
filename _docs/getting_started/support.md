@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Support
-anchor: overview
-module: overview/support
+anchor: getting_started
+module: getting_started/support
 ---
 
 # Getting Support
@@ -19,11 +19,11 @@ StorageOS provides a support site that allows you to:
 To access our support site and start a discussion or report an issue:
 
 1. Click the *Support* option towards the top of the browser window to display the Support page.
-2. Click the <img src="/images/docs/overview/startnewtopic.png" height="21"> button 
+2. Click the ![image](/images/docs/overview/startnewtopic.png) button 
 
    ![screenshot](/images/docs/overview/support1.png)
 
-3. The *SorageOS Support* page will appear to *Post a new topic* - enter a title for your topic
+3. The *StorageOS Support* page will appear to *Post a new topic* - enter a title for your topic
 4. Enter a message in the *Message* window
 
    >**Note:** You can use the formatting attributes to help emphasise your message
@@ -34,7 +34,7 @@ To access our support site and start a discussion or report an issue:
 
 6. Attach any files you think will be helpful in the *Attach files*
 7. Complete the CAPTCHA&trade; to validate you are not a robot
-8. Click the <img src="/images/docs/overview/save.png" height="21"> button to submit
+8. Click the ![image](/images/docs/overview/save.png) button to submit
 
    ![screenshot](/images/docs/overview/support2b.png)
 
@@ -42,14 +42,14 @@ To access our support site and start a discussion or report an issue:
 
 To report a problem that you are having with StorageOS or any of its features, you can create a ticket to alert the Support team and follow it to resolution.
 
-1. Return to the Support page and click on the <img src="/images/docs/overview/newticket.png" height="21"> button
+1. Return to the Support page and click on the ![image](/images/docs/overview/newticket.png) button
 2. In the *Subject* field, enter a subject that best summarises the issue you are experiencing
 3. In the *Description* field, clearly describe your issue
 4. If you think it will help, attach a screen capture of the error message or action preventing you from completing your task
    * Take your screen capture using a screen capture tool and save it to your computer
    * From the StorageOS Support/Submit a ticket screen, click, *Attach a file*
    * Browse to the screen capture file you created earlier, and click *Open*
-5. Click on the <img src="/images/docs/overview/submit.png" height="21"> button to submit your ticket
+5. Click on the ![image](/images/docs/overview/submit.png) button to submit your ticket
 
    ![screenshot](/images/docs/overview/support2c.png)
 

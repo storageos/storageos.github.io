@@ -240,7 +240,7 @@ To access the Client Management window, select Provisioning {% icon fa-arrow-rig
 
 1. From here you can configure labels for StorageOS nodes and filter the list of nodes in the cluster using labels that have been applied.  For example you may have nodes participating in a performance storage pool configured with SSDs.
 
-2. To configure a label select the ![image](/images/docs/manage/editbtn.png) button, select the labels you want to apply and then accept the changes by clicking on the &#x2714; button.
+2. To configure a label select the ![image](/images/docs/manage/editbtn.png) button, select the labels you want to apply and then accept the changes by clicking on the {% icon fa-check %} icon.
 
    ![image](/images/docs/manage/clients.png)
 

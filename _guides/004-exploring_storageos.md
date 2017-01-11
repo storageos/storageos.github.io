@@ -14,6 +14,6 @@ sections:
     module: explore/demo
   -
     title: WordPress Demo
-    description: Setting up a Word Press cluster with persistanet storage.
+    description: Setting up a Word Press cluster with persistent storage.
     module: explore/wordpress
 ---

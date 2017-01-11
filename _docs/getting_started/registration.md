@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: Licensing
-anchor: overview
-module: overview/licensing
+title: Registration
+anchor: getting_started
+module: getting_started/registration
 ---
 
-# Licensing
+# Registration
 
 In this section we will explore the following topics:
 
@@ -26,13 +26,13 @@ Before you can access support, purchase a license or set up billing, you need to
 ### Create your Account
 To create a StorageOS account
 
-1.	Navigate to the StorageOS home page URL at http://storageos.com in a new browser window and click the <img src="/images/docs/overview/getstarted.png" height="21"> button to begin
+1.	Open a new browser session and navigate to the StorageOS home page URL at [storageos.com](http://storageos.com) and click the ![image](/images/docs/overview/getstarted.png) button to begin
 
     ![screenshot](/images/docs/overview/licensing1.png)
 
 2. This will take you to the my.storageos.com web portal where you can register and create an account
 3. From here you have the choice of creating a StorageOS sign in or alternatively, you can use GitHub, LinkedIn or Google providers to manage your sign in	
-4. To create a StorageOS sign in, enter your email address and create a new password and click the <img src="/images/docs/overview/signup.png" height="21"> button to proceed to the next step
+4. To create a StorageOS sign in, enter your email address and create a new password and click the ![image](/images/docs/overview/signup.png) button to proceed to the next step
 
    ![screenshot](/images/docs/overview/licensing2.png)
 
@@ -40,7 +40,7 @@ To create a StorageOS account
 
 
 ### Verify your Email Address
-1. After clicking the <img src="/images/docs/overview/signup.png" height="21"> button, you will need to check your email for a message from *StorageOS Customer Success* with a link to activate your new account
+1. After clicking the ![image](/images/docs/overview/signup.png) button, you will need to check your email for a message from *StorageOS Customer Success* with a link to activate your new account
 
    ![screenshot](/images/docs/overview/licensing3.png)
 
@@ -48,11 +48,11 @@ To create a StorageOS account
 
    > **Note:**  Do not reply to this email as the account is not monitored - for support, go to http://support.storageos.com/.
 
-2. Click on the email link to take you to the StorageOS confirmation page and then click the <img src="/images/docs/overview/toportal.png" height="21"> button
+2. Click on the email link to take you to the StorageOS confirmation page and then click the ![image](/images/docs/overview/toportal.png) button
 
    ![screenshot](/images/docs/overview/licensing4.png)
 
-3. Enter the login information that you just configured, click on the <img src="/images/docs/overview/login.png" height="21"> button 
+3. Enter the login information that you just configured, click on the ![image](/images/docs/overview/login.png) button 
 
    ![screenshot](/images/docs/overview/licensing4a.png)
 
@@ -66,7 +66,7 @@ To set up your StorageOS account
    * Enter the country where your phone numbers are located and enter the phone numbers for each
    * Complete the remaining address fields
 
-2. Click the <img src="/images/docs/overview/save.png" height="21"> button
+2. Click the ![image](/images/docs/overview/save.png) button
 
     ![screenshot](/images/docs/overview/licensing4b.png)
 
@@ -88,47 +88,26 @@ At this point you need to refer to the the Installation Guide for further guidan
 
 ## Licensing your Product
 
-Once you have completed the software installation you will need to install a valid license key based on the license type you have chosen
+Once you have completed the software installation you will be able to install a valid license key based on the license type you have chosen
 
 1.	Connect to any StorageOS cluster node using a web browser and go to Configuration {% icon fa-arrow-right %} License and copy the Cluster UUID onto the clipboard
 
+
     ![screenshot](/images/docs/overview/license.png)
 
-2. From the StorageOS portal, you'll need to *Create a New Array*; to do this you need to select the Arrays menu
+2. Log back into the StorageOS portal page where you will presented with the previous page you used to download StorageOS and towards the bottom there will now be a section for you to register your array.  Complete the *Array Friendly NAme* and *UUID* entries on the page and click on the *Get License* button
 
-    ![screenshot](/images/docs/overview/licensing6a.png)
+    ![screenshot](/images/docs/overview/license01a.png)
 
-3. This will bring up a new page where you can add a new array by clicking on the New Array button
+3. You should now see your array has been refistered and you can obtain the license key either by clicking on the *View License* button or by clicking on the *Send to Email* button
 
-    ![screenshot](/images/docs/overview/licensing7a.png)
+    ![screenshot](/images/docs/overview/licensing02.png)
 
-4. The next page will prompt you to enter a unique array name - click the <img src="/images/docs/overview/save.png" height="21"> button to continue
+4. Copy the license key to your clip board
 
-    ![screenshot](/images/docs/overview/licensing7b.png)
+    ![screenshot](/images/docs/overview/licensing03.png)
 
-5. Click on the edit icon to the right of the Array UUID field and paste the Array UUID from your clipboard
-
-6. Select a license option
-
-7. Check the Terms and Conditions check box
-
-8. Cick on the <img src="/images/docs/overview/save.png" height="21"> button to complete - a confirmation email should arrive in your mailbox
-
-    ![screenshot](/images/docs/overview/licensing7c.png)
-
-9. On the next page click on the Edit Array button towards the bottom of the window 
-
-    ![screenshot](/images/docs/overview/licensing7d.png)
-
-10. A Generate License Serial No. button should appear to the top left of the page, after clicking on this, two more buttons will be revealed, View License Serial No. and Sent to Email - choose one of these to obtain your license key.
-
-    ![image](/images/docs/overview/licensing7e.png)
-
-11. Copy the key to you clipboard
-
-    ![image](/images/docs/overview/licensing7f.png)
-
-4.	To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StroageOS documentation for further details under the License heading.
+5. To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StroageOS documentation under the License heading.
 
 You can now request and purchase additional storage.
 
@@ -136,7 +115,7 @@ You can now request and purchase additional storage.
 
 Now that you have registered your storage array and have your license (through email), your billing and payment information are asset up in your MyStorage account, you can purchase Storage from StorageOS through the MyStorageOS portal.
 
-You can purchase one of three license types through the licensing portal
+You can set up one of three license types through the licensing portal as well as purchase capacity and support
 
 * Evaluation (Eval License)
 * Professional (Pro License)

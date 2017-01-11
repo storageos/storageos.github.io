@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: About this Guide
-anchor: introduction
-module: introduction/aboutthisguide
+anchor: getting_started
+module: getting_started/aboutthisguide
 ---
 
 # About this Guide

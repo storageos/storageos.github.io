@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: Architecture Overview
-anchor: overview
-module: overview/architecture
+anchor: introduction
+module: introduction/architecture
 ---
 
 # Architecture Overview

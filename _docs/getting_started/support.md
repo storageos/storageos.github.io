@@ -23,7 +23,7 @@ To access our support site and start a discussion or report an issue:
 
    ![screenshot](/images/docs/overview/support1.png)
 
-3. The *SorageOS Support* page will appear to *Post a new topic* - enter a title for your topic
+3. The *StorageOS Support* page will appear to *Post a new topic* - enter a title for your topic
 4. Enter a message in the *Message* window
 
    >**Note:** You can use the formatting attributes to help emphasise your message

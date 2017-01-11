@@ -23,13 +23,15 @@ h1, h2, h3, h4, h5, h6, p, li, a, span {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
-	color: #2251A0;
+	/*color: #2251A0;*/
+	color: #336699;
 }
 p, li, a {
 	/*color: #5a645b;*/
-	color: #242424;
+	/*color: #242424;*/
+	color: #666666;
 	font-size: 20px;
-	font-weight: 300;
+	font-weight: 360;
 	margin: 0 0 18px;
 }
 
@@ -38,28 +40,28 @@ a.btn, button.btn {
 }
 h1{
 	font-family: 'SourceSansPro-Light', "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 36px;
-	text-transform: uppercase;
+	font-size: 56px;
+	text-transform: initial;
 	padding-bottom: 24px;
 	margin-bottom: 24px;
 	border-bottom: 1px solid #eeeeee
 }
 h2{
 	font-family: 'SourceSansPro-Regular', "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 30px;
+	font-size: 42px;
 }
 h3{
 	font-family: 'SourceSansPro-Semibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 19px;
+	font-size: 28px;
 }
 h4{
-	font-size: 17px;
+	font-size: 19px;
 }
 h5 {
-	font-size: 15px;
+	font-size: 17px;
 }
 h6 {
-	font-size: 13px;
+	font-size: 15px;
 }
 hr {
 	border-color: #5a645b;
@@ -905,7 +907,8 @@ ul.top-bar-links{
     border: none;
 }
 a:link {
-	color: #2251A0;
+	/*color: #2251A0;*/
+	color: #336699;
 }
 a.active, a:hover, .active a {
 	color: #b5e61e;

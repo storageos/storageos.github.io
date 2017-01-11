@@ -26,7 +26,7 @@ Before you can access support, purchase a license or set up billing, you need to
 ### Create your Account
 To create a StorageOS account
 
-1.	Open a new browser session and navigate to the StorageOS home page URL at <a href="http://storageos.com" target="_blank">storageos.com</a> and click the ![image](/images/docs/overview/getstarted.png) button to begin
+1.	Open a new browser session and navigate to the StorageOS home page URL at [storageos.com](http://storageos.com) and click the ![image](/images/docs/overview/getstarted.png) button to begin
 
     ![screenshot](/images/docs/overview/licensing1.png)
 

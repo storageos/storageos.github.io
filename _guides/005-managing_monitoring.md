@@ -7,14 +7,14 @@ sections:
   -
     title: Reviewing the Dashboard
     description: How to understand the Dashboard panel.
-    module: 5-manage/dashboard
+    module: manage/dashboard
   -
     title: Configuration & Provisioning
     description: Configuring lables and rules.
-    module: 5-manage/configuring
+    module: manage/configuring
   -
     title: Performance & Audit
     description: Perfromance and auditing.
-    module: 5-manage/performance
+    module: manage/performance
 
 ---

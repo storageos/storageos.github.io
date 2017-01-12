@@ -23,27 +23,31 @@ To access our support site and start a discussion or report an issue:
 
    ![screenshot](/images/docs/overview/support1.png)
 
-3. The *StorageOS Support* page will appear to *Post a new topic* - enter a title for your topic
-4. Enter a message in the *Message* window
+3. The *StorageOS Support* page will appear to *Post a new topic* - you must complete the mandatory fields denoted with a red {% icon fa-asterisk %}
+4. Enter your topic title
+5. Enter your message in the *Message* window
 
    >**Note:** You can use the formatting attributes to help emphasise your message
 
-5. Choose the forum in which you wish to place your post by selecting the *Post topic in* drop-down
+6. Choose the forum in which you wish to place your post by selecting the *Post topic in* drop-down
 
    ![screenshot](/images/docs/overview/support2a.png)
 
-6. Attach any files you think will be helpful in the *Attach files*
-7. Complete the CAPTCHA&trade; to validate you are not a robot
-8. Click the ![image](/images/docs/overview/save.png) button to submit
+7. Attach any optional files you think will be helpful in the *Attach files*
+8. Complete the CAPTCHA&trade; to validate you are not a robot
+9. Click the ![image](/images/docs/overview/save.png) button to submit
 
    ![screenshot](/images/docs/overview/support2b.png)
 
 ## Submitting a New Ticket
 
-To report a problem that you are having with StorageOS or any of its features, you can create a ticket to alert the Support team and follow it to resolution.
+To report a problem you have with StorageOS or with any of its features, you can create a ticket to alert the Support team and follow it to resolution
 
 1. Return to the Support page and click on the ![image](/images/docs/overview/newticket.png) button
-2. In the *Subject* field, enter a subject that best summarises the issue you are experiencing
+
+   ![screenshot](/images/docs/overview/support1a.png)
+
+2. A new page will appear - in the *Subject* field, enter a subject that best summarises the issue you are experiencing
 3. In the *Description* field, clearly describe your issue
 4. If you think it will help, attach a screen capture of the error message or action preventing you from completing your task
    * Take your screen capture using a screen capture tool and save it to your computer
@@ -63,13 +67,13 @@ To report a problem that you are having with StorageOS or any of its features, y
 
 ## Confirming the Status of a Ticket
 
-If you submitted a ticket earlier and wish to see the latest status, you can do this through the StorageOS Support site:
+If you submitted a ticket earlier and wish to see the latest status, you can do this through the StorageOS Support site
 
-1. Either navigate to the URL provided in you email confirmation or click *TICKETS* at the top of the support web page to see a list of tickets that you have opened
+1. Either navigate to the URL provided in your email confirmation or click on the *TICKETS* menu item at the top of the support web page to see a list of tickets  you have opened
 
    ![screenshot](/images/docs/overview/support2f.png)
 
-2. Click on the ticket of interest to view the ticket details - this will take you to the Tickets List page illustrated above
+2. Click on the ticket of interest to view the ticket details - this will take you to the *Tickets list* page illustrated above
 
    ![screenshot](/images/docs/overview/support2g.png)
 

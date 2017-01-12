@@ -23,12 +23,9 @@ h1, h2, h3, h4, h5, h6, p, li, a, span {
 }
 h1, h2, h3, h4, h5, h6 {
 	margin-top: 0;
-	/*color: #2251A0;*/
 	color: #336699;
 }
 p, li, a {
-	/*color: #5a645b;*/
-	/*color: #242424;*/
 	color: #666666;
 	font-size: 20px;
 	font-weight: 360;
@@ -907,7 +904,6 @@ ul.top-bar-links{
     border: none;
 }
 a:link {
-	/*color: #2251A0;*/
 	color: #336699;
 }
 a.active, a:hover, .active a {

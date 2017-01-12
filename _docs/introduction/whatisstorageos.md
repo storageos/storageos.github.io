@@ -17,7 +17,7 @@ StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-base
 
 ![image](/images/docs/started/storageosinfra.png)
 
-## Why use containers?
+## Why use Containers?
 Containerisation or Microservices are arguably the next big wave of disruption in technology infrastructure since VMware and virtualisation.
 
 A container comprises an entire runtime environment for an application with all its dependencies in a single package.  By containerising applications, a hosting platform and its dependencies will not run the risk of interfering with application dependencies.
@@ -28,7 +28,7 @@ Being highly portable, containers can be deployed to a variety of public and pri
 
 ![image](/images/docs/started/containers.png)
 
-## How does StorageOS add value?
+## How does StorageOS add Value?
 
 StorageOS helps developers move from *host-centric* infrastructure to a more abstracted *container-centric* infrastructure, providing the storage features required to take full advantage of the benefits inherent to containers.
 

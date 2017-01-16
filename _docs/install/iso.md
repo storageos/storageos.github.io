@@ -13,7 +13,7 @@ There are three parts to completing the ISO image install of StorageOS:
 2. Installing StorageOS and Ubuntu Server from ISO media for each virtual cluster node in your cluster
 3. Confirming the setup has completed successfully - covered in the next section for both the ISO and Vagrant install
 
->**Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html#Downloading) and should be ready to setup your VirtualBox environment.
+>**Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html) and should be ready to setup your VirtualBox environment.
 
 >**Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system.
 
@@ -24,45 +24,42 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 ### Create Initial VM
 
 1. Launch VirtualBox
-2. Select **New**
+2. Select *New*
 
-   <img src="/images/docs/iso/vbnew.png">
+   ![image](/images/docs/iso/vbnew.png)
 
 3. Select ![Expert Mode](/images/docs/iso/vbexpert.png)
-4. Enter a **name** for your VM (for example **StorageOS-01** for the first node)
-5. For Type, select **Linux**
-6. For Version, select **Ubuntu (64-bit)**
+4. Enter a *name* for your VM (for example *StorageOS-01* for the first node)
+5. For *Type*, select *Linux*
+6. For *Version*, select *Ubuntu (64-bit)*
 
    >**Note**: If the 64-bit options from the Version drop-down menu are unavailable you you may need to enable Virtualization Extensions for your system.
 
-7. Type in **4096** for the memory allocation
-
-   >**Note**: If you do not have sufficient memory in your test environment you can select less, for example 1536MB; however, 4096MB is the optimal size.
-
-8. Select the **Create a virtual hard disk now** radio button
-9. Click ![Create](/images/docs/iso/vbcreate.png) to proceed to the next step of configuring the virtual disk
+7. Type in *4096* for the memory allocation - if you do not have sufficient memory in your test environment you can select less, for example 1536MB; however, 4096MB is the optimal size.
+8. Select the *Create a virtual hard disk now* radio button
+9. Click ![Create](/images/docs/iso/vbcreate.png) to proceed to the next step for configuring the virtual disk
 10. A resulting dialogue box will appear
 
     ![screenshot](/images/docs/iso/vbcreate1.png)
 
 ### Configure Virtual Disk
 
-1. Set the File size to **16 GB**, this is the minimum size necessary if you wish to create StorageOS volumes later.
-2. Under **Hard disk file type** select the **VDI (VirtualBox Disk Image)** radio box
-3. Under **Storage on physical hard drive** select **Dynamically allocated**
+1. Set the *File size* to *16 GB*, this is the minimum size necessary if you wish to create StorageOS volumes later
+2. Under *Hard disk file type* select the *VDI (VirtualBox Disk Image)* radio box
+3. Under *Storage on physical hard drive* select *Dynamically allocated*
 4. Click ![Create](/images/docs/iso/vbcreate.png) to create you VM image
 
     ![screenshot](/images/docs/iso/vbcreate2.png)
 
 ### Configure Disk Settings
 
-1. With your newly created VM selected, click from the **Settings** button on the VirtualBox main menu to configure **Storage**
+1. With your newly created VM selected, click from the *Settings* button on the VirtualBox main menu to configure *Storage*
 
     ![image](/images/docs/iso/vbsettings.png)
 
-2. From the resulting dialogue box, select **Storage**
-3. Under **Storage Tree**, select **&#x1F4BF; Empty**
-4. Under **Attributes** select the &#x1F4BF; icon next to **IDE Secondary Master** and then **Choose Virtual Optical Disk File...**
+2. From the resulting dialogue box, select *Storage*
+3. Under *Storage Tree*, select *&#x1F4BF; Empty*
+4. Under *Attributes* select the &#x1F4BF; icon next to *IDE Secondary Master* and then *Choose Virtual Optical Disk File...*
 5. Browse to the location where you saved the StorageOS ISO image earlier and select it
 6. Finish by clicking ![image](/images/docs/iso/ok.png)
 
@@ -70,17 +67,17 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 ### Configure Network Settings
 
-1. Click on the **Settings** button again from the VirtualBox main menu to configure **Network**
+1. Click on the *Settings* button again from the VirtualBox main menu to configure *Network*
 
     ![image](/images/docs/iso/vbsettings.png)
 
-2. Select **Adapter 1**
-3. Next to the **Attached to:** label use the drop-down list to select **Bridged Adapter**
-4. Confirm that an adapter is present next to the **Name:** label
+2. Select *Adapter 1*
+3. Next to the *Attached to:* label use the drop-down list to select *Bridged Adapter*
+4. Confirm that an adapter is present next to the *Name:* label
 
-   >**Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented & untested.
+   >**Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented and untested.
 
-   >**Note**: If you are configuring Static DHCP addresses for each of your nodes, these can be located under the advanced properties of the Network configuration dialogue you have open above.
+   >**Note**: If you are configuring Static DHCP addresses for each of your nodes, the MAC address to configure these with is located under the advanced properties of the Network configuration dialogue you have open.
 
 5. Finish by clicking ![image](/images/docs/iso/ok.png)
 
@@ -90,7 +87,7 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
 Once you have created your first VM in VirtualBox, and before you have powered it up and initialised it, you can create clone copies.  This is a quicker and more consistent method of creating multiple VMs with the same configuration parameters.
 
-1. Right click on your StorageOS-01 VM you just created and select *Clone* from the context menu
+1. Right click on your *StorageOS-01* VM you just created and select *Clone* from the context menu
 
     ![image](/images/docs/iso/clone.png)
 
@@ -135,7 +132,7 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 You are now ready to boot each of your VMs and install StorageOS.
 
 ### Starting up your VMS
-Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node, so ensure this VM completes first before completing the remaining member nodes.
+Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node so ensure this VM completes first before completing the remaining member nodes.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
 
@@ -155,7 +152,7 @@ These instructions direct you to select the options that work best with the beta
 
 1. For the next set of menu selections you will be presented with, you will need to use your keyboard to select and navigate the appropriate options.
 
-    To do this use the **Tab** key to move across the options, use the **Space Bar** to select an option and use the **Enter** key to accept an option.
+    To do this use the *Tab* key to move across the options, use the *Space Bar* to select an option and use the *Enter* key to accept an option.
 
     ![screenshot](/images/docs/iso/0-isomenu.png)
 
@@ -185,15 +182,15 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/9-isonet.png)
 
-2. Setup the user name you will use to login and administer each of your you nodes - the same name for all nodes is recommended.
+2. Setup the user name you will use to login and administer each of your you nodes - the same name for all nodes is recommended
 
    ![screenshot](/images/docs/iso/10-isousers.png)
 
-3. Enter a name - for example, the same name as what you just entered earlier.
+3. Enter a name - for example, the same name you just entered earlier
 
    ![screenshot](/images/docs/iso/11-isousers.png)
 
-4. Enter the password - again, the same password for all nodes is recommended.
+4. Enter the password - again, the same password for all nodes is recommended
 
     ![screenshot](/images/docs/iso/12-isousers.png)
 
@@ -237,7 +234,7 @@ These instructions direct you to select the options that work best with the beta
 
     ![screenshot](/images/docs/iso/21-isopack.png)
 
-2. We will not be using automatic updates for this Beta build so please select the default "No automatic updates"
+2. We will not be using automatic updates for this Beta build so please select the default *No automatic updates*
 
     ![screenshot](/images/docs/iso/22-isoupd.png)
 
@@ -248,7 +245,7 @@ These instructions direct you to select the options that work best with the beta
 ### GRUB and StorageOS Cluster Setup
 
 1. Select *Yes* to install the GRUB boot loader to the MBR. (Though unlikely, this may appear differently or not
-at all on some systems, depending on the hardware.)
+at all on some systems, depending on the hardware).
 
     ![screenshot](/images/docs/iso/24-isogrub.png)
 
@@ -262,7 +259,7 @@ at all on some systems, depending on the hardware.)
 
 4. Select the number of nodes you wish to setup in the cluster.
 
-   >**Note**: Do not be tempted to 'over provision' the number of nodes! The cluster will not start until the number of nodes you specify are running. It is possible add nodes later if desired.
+   >**Note**: Do not be tempted to 'over provision' the number of nodes! The cluster will not start until the number of nodes you specify are running. It is possible to add nodes later if desired.
 
    >**Note**: Only odd numbers of nodes are shown - this is to allow Consul to properly protect against 'split brain' if the network should become partitioned.
 
@@ -270,20 +267,19 @@ at all on some systems, depending on the hardware.)
 
 5. If this is the first node in the cluster accept the automatically assigned DHCP address and **note down the IP address** as the subsequent nodes in the cluster will need this when you set them up next
 
-    ![screenshot](/images/docs/iso/28-isocluster.png)
+   ![screenshot](/images/docs/iso/28-isocluster.png)
 
-    >**Note**: If you provisioned your node with multiple IP addresses, make sure you specify the address on an interface
-    that the other cluster nodes will be able to contact, or the cluster will be unable to start.
+   >**Note**: If you provisioned your node with multiple IP addresses, make sure you specify the address on an interface that the other cluster nodes will be able to contact, or the cluster will be unable to start.
 
-    If however this is a member node, you will be asked to manually enter the IP address of the StorageOS cluster leader
+   If however this is a member node, you will be asked to manually enter the IP address of the StorageOS cluster leader
 
-    ![screenshot](/images/docs/iso/28a-isoleaderip.png)
+   ![screenshot](/images/docs/iso/28a-isoleaderip.png)
 
-    >**Note**: This needs to be an address you have assigned as a Static DHCP or one that has been automatically assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
+   >**Note**: This needs to be an address you have assigned as a Static DHCP or one that has been automatically assigned for you by DHCP.  If a DHCP address appears in the IP address field, this is the address you need to accept before you can continue.
 
 6. If this is a member node, after entering the StorageOS cluster leader IP address you will subsequently  be asked to confirm the assigned IP address for the new node
 
-    ![screenshot](/images/docs/iso/28-isocluster1.png)
+   ![screenshot](/images/docs/iso/28-isocluster1.png)
 
     >**Note**: As noted above.
 
@@ -291,42 +287,42 @@ at all on some systems, depending on the hardware.)
 
 1. At this point the installation is complete - select *Continue* to restart the VM
 
-    ![screenshot](/images/docs/iso/29-isocomplete.png)
+   ![screenshot](/images/docs/iso/29-isocomplete.png)
 
-    ![screenshot](/images/docs/iso/30-isosigterm.png)
+   ![screenshot](/images/docs/iso/30-isosigterm.png)
 
 
-2. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the give VMs cluster nodes you have completed.
+2. On startup you will be presented with an MOTD on the console for each VM - note the IP address displayed for each console.  You will need this to access the Web GUI from any of the given VM cluster nodes you have completed.
 
-    ![screenshot](/images/docs/iso/31-isoconsole.png) <!--- reduce image size to 640 pixels --->
+   ![screenshot](/images/docs/iso/31-isoconsole.png) <!--- reduce image size to 640 pixels --->
 
 ### Confirm SSH has been installed and Docker containers are running
 
-Connect to the StorageOS node using `ssh`.
+Connect to the StorageOS node using `ssh`
 
-When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
+* When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
-```
-StorageOS:storageos julian$ ssh -l storageos storageos-03
-The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
-ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
-Are you sure you want to continue connecting (yes/no)? yes
-Warning: Permanently added '10.1.5.173' (ECDSA) to the list of known hosts.
-storageos@10.1.5.173's password:
-Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
+  ```
+  StorageOS:storageos julian$ ssh -l storageos storageos-03
+  The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
+  ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
+  Are you sure you want to continue connecting (yes/no)? yes
+  Warning: Permanently added '10.1.5.173' (ECDSA) to the list of known hosts.
+  storageos@10.1.5.173's password:
+  Welcome to Ubuntu 16.04 LTS (GNU/Linux 4.4.0-21-generic x86_64)
 
   * Documentation:  https://help.ubuntu.com/
 
-The programs included with the Ubuntu system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
+  The programs included with the Ubuntu system are free software;
+  the exact distribution terms for each program are described in the
+  individual files in /usr/share/doc/*/copyright.
 
-Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
-applicable law.
+  Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+  applicable law.
 
-To run a command as administrator (user "root"), use "sudo <command>".
-See "man sudo_root" for details.
-```
+  To run a command as administrator (user "root"), use "sudo <command>".
+  See "man sudo_root" for details.
+  ```
 
 ### Confirm Docker containers are running
 

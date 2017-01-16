@@ -18,34 +18,34 @@ StorageOS provides a support site that allows you to:
 
 To access our support site and start a discussion or report an issue:
 
-1. Click the *Support* option towards the top of the browser window to display the Support page.
+1. Click the *Support* option towards the top of the browser window to display the Support page
 2. Click the ![image](/images/docs/overview/startnewtopic.png) button 
 
-   ![screenshot](/images/docs/overview/support1.png)
+   ![screenshot](/images/docs/overview/support-01.png)
 
-3. The *StorageOS Support* page will appear to *Post a new topic* - you must complete the mandatory fields denoted with a red {% icon fa-asterisk %}
+3. A *Post a new topic* page will open - you must complete the mandatory fields denoted with a red {% icon fa-asterisk %}
 4. Enter your topic title
 5. Enter your message in the *Message* window
 
-   >**Note:** You can use the formatting attributes to help emphasise your message
+   >**Note:** You can use the formatting attributes to help emphasise and clarify your message
 
-6. Choose the forum in which you wish to place your post by selecting the *Post topic in* drop-down
+6. Choose the forum in which you wish to place your post by selecting the *Post topic in* {% icon fa-caret-down%} drop-down
 
-   ![screenshot](/images/docs/overview/support2a.png)
+   ![screenshot](/images/docs/overview/support-02.png)
 
 7. Attach any optional files you think will be helpful in the *Attach files*
 8. Complete the CAPTCHA&trade; to validate you are not a robot
 9. Click the ![image](/images/docs/overview/save.png) button to submit
 
-   ![screenshot](/images/docs/overview/support2b.png)
+   ![screenshot](/images/docs/overview/support-03.png)
 
 ## Submitting a New Ticket
 
-To report a problem you have with StorageOS or with any of its features, you can create a ticket to alert the Support team and follow it to resolution
+To report a problem you have with StorageOS or with any of its features, you can create a ticket to alert the Support Team and follow it to resolution
 
 1. Return to the Support page and click on the ![image](/images/docs/overview/newticket.png) button
 
-   ![screenshot](/images/docs/overview/support1a.png)
+   ![screenshot](/images/docs/overview/support-04.png)
 
 2. A new page will appear - in the *Subject* field, enter a subject that best summarises the issue you are experiencing
 3. In the *Description* field, clearly describe your issue
@@ -55,15 +55,15 @@ To report a problem you have with StorageOS or with any of its features, you can
    * Browse to the screen capture file you created earlier, and click *Open*
 5. Click on the ![image](/images/docs/overview/submit.png) button to submit your ticket
 
-   ![screenshot](/images/docs/overview/support2c.png)
+   ![screenshot](/images/docs/overview/support-05.png)
 
-4. Your issue will be submitted to StorageOS, and the status *Being Processed* will appear in the right panel
+6. Your issue will be submitted to StorageOS and the status *Being Processed* will appear in the right panel
 
-   ![screenshot](/images/docs/overview/support2d.png)
+   ![screenshot](/images/docs/overview/support-06.png)
 
-5. You should also receive an email with a link to your ticket to review the latest status
+7. You should also receive an email with a link to your ticket to review the latest status
 
-   ![image](/images/docs/overview/support2e1.png)
+   ![image](/images/docs/overview/support-07.png)
 
 ## Confirming the Status of a Ticket
 
@@ -71,12 +71,12 @@ If you submitted a ticket earlier and wish to see the latest status, you can do 
 
 1. Either navigate to the URL provided in your email confirmation or click on the *TICKETS* menu item at the top of the support web page to see a list of tickets  you have opened
 
-   ![screenshot](/images/docs/overview/support2f.png)
+   ![screenshot](/images/docs/overview/support-08.png)
 
 2. Click on the ticket of interest to view the ticket details - this will take you to the *Tickets list* page illustrated above
 
-   ![screenshot](/images/docs/overview/support2g.png)
+   ![screenshot](/images/docs/overview/support-09.png)
 
 3. From here you can update your ticket in the *Click here to reply to this ticket box* or use the icon menu towards the top of the page to (1) reply, (2) close the ticket or (3) add people to the conversation.
 
-   ![screenshot](/images/docs/overview/support2h.png)
+   ![screenshot](/images/docs/overview/support-10.png)

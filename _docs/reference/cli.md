@@ -5,7 +5,7 @@ anchor: reference
 module: reference/cli
 ---
 
-# Command line reference
+# Command Line Reference
 
 The command line interface (CLI) can be run with Docker.
 
@@ -37,11 +37,11 @@ Available commands are:
 
 ## Environment
 
-**STORAGEOS_USER**: The username to authenticate to the API with.
+`STORAGEOS_USER`: The username to authenticate to the API with.
 
-**STORAGEOS_PASSWORD**: The password to authenticate to the API with.
+`STORAGEOS_PASSWORD`: The password to authenticate to the API with.
 
-**STORAGEOS_API_ADDR**: The ip address and port of the API endpoint.  Defaults to `localhost:8000`.
+`STORAGEOS_API_ADDR`: The ip address and port of the API endpoint.  Defaults to `localhost:8000`.
 
 ```
 # docker run -e STORAGEOS_API_ADDR=10.245.103.2:8000 -e STORAGEOS_USER=storageos -e STORAGEOS_PASSWORD=storageos quay.io/storageos/storageos:alpha volume list

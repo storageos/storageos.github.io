@@ -9,7 +9,7 @@ sections:
     description: Learn about the various ways to deploy StorageOS.
     module: install/deployment
   -
-    title: Obtaining the StorageOS Media
+    title: Getting the StorageOS Media
     description: This section covers obtaining the appropriate Storage OS media for install.
     module: install/media
   -

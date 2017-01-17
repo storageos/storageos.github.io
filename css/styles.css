@@ -52,13 +52,14 @@ h3{
 	font-size: 28px;
 }
 h4{
-	font-size: 19px;
+	font-family: 'SourceSansPro-Semibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 20px;
 }
 h5 {
-	font-size: 17px;
+	font-size: 18px;
 }
 h6 {
-	font-size: 15px;
+	font-size: 16px;
 }
 hr {
 	border-color: #5a645b;
@@ -474,7 +475,7 @@ footer{
 	list-style: none;
 	margin: 0;
 }
-#footer-1 p, a {
+#footer-1 p, #footer-1 a {
 	font-size: 16px;
 	font-weight: 600;
 }
@@ -906,6 +907,9 @@ ul.top-bar-links{
 a:link {
 	color: #336699;
 }
+a:visited {
+     color: #336699 ;
+}
 a.active, a:hover, .active a {
 	color: #b5e61e;
 }
@@ -948,6 +952,10 @@ a.active, a:hover, .active a {
 #docContents img[alt="screenshot"] {
   max-width:  760px;
   display: block;
+}
+#docContents img[alt="icon"] {
+  max-width:  25px;
+  display: inline;
 }
 #docContents table {
   border-collapse: collapse;

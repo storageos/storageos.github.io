@@ -15,60 +15,64 @@ Copy the `Vagrantfile` downloaded from [https://storageos.com/download](https://
 
 You run Vagrant from a command line. This is any shell window for Linux or macOS, and a Command Prompt or Powershell (recommended) for Windows.
 
-### Viewing or modifying the Vagrantfile
+### Viewing and Modifying the Vagrantfile
 
-Before you launch Vagrant for the first time to build out your cluster, you may want to change the default settings.  
+Before you launch Vagrant for the first time to build out your cluster, you may want to change some of the default settings. You can do this by either (1) directly editing the `Vagrantfile` in your base directory or by (2) setting environmnt variables.
 
-You may do this by editing the `Vagrantfile` file in your base directory, or by setting environment variables.  The examples below show methods for:
-* Running a single-node cluster by setting `STORAGEOS_NODES` to `1` (default `3`)
-* Managing down CPU resources by setting `STORAGEOS_CPU` to `1` (default `2`)
-* Managing down memory resources by setting `STORAGEOS_MEMORY` to `1536` (default `2048`)
+1.  To configure the cluster size, CPU or amount of allocated memory, locate the relevant lines towards the top of the Vagrantfile:
+    * To run a single-node cluster, change the value `3` for `STORAGEOS_NODES` to `1`
+    * To manage down CPU resources, change the value `2` for `STORAGEOS_CPU` to `1`
+    * To manage down memory resources, change the value `2048` for `STORAGEOS_MEMORY` to `1536` or `1024`
 
-#### Vagrantfile {% icon fa-apple fa-border %} {% icon fa-linux fa-border %} {% icon fa-windows fa-border %}
-Edit the `Vagrantfile` using a text editor. The relevant lines can be found at the top of the file.
-* Change the `3` on the `STORAGEOS_NODES` line to `1`
-* Change the `2` on the `STORAGEOS_CPU` line to `1`
-* Change the `2048` on the `STORAGEOS_MEMORY` line to `1536`
+2. Alternatively you can set the necessary enviroment variables for the OS you are running:
 
-#### Environment variables: macOS and Linux {% icon fa-apple fa-border %} {% icon fa-linux fa-border %}
+   ![icon](/images/docs/iso/macterm.png) For macOS and Linux, set your environment from the terminal window you will run Vagrant commands from:
+    
+   ```
+   STORAGEOS_NODES=1
+   STORAGEOS_CPU=1
+   STORAGEOS_MEMORY=1536
+   ```
 
-```
-export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
-```
+   --or--
 
-#### Environment variables: Windows Powershell {% icon fa-windows fa-border %}
+   ```
+   export STORAGEOS_NODES=1 STORAGEOS_CPU=1 STORAGEOS_MEMORY=1536
+   ```
 
-```
-$env:STORAGEOS_NODES=1
-$env:STORAGEOS_CPU=1
-$env:STORAGEOS_MEMORY=1536
-```
+   ![icon](/images/docs/iso/winterm.png) For Windows, set your environment from the command window you will run Vagrant commands from:
+    
+   ```
+   set STORAGEOS_NODES=1
+   set STORAGEOS_CPU=1
+   set STORAGEOS_MEMORY=1536
+   ```
+--or-- (PowerShell)
 
-#### Environment variables: Windows Command Prompt {% icon fa-windows fa-border %}
+   ```
+   $env:STORAGEOS_NODES=1
+   $env:STORAGEOS_CPU=1
+   $env:STORAGEOS_MEMORY=1536
+   ```
 
-```
-set STORAGEOS_NODES=1
-set STORAGEOS_CPU=1
-set STORAGEOS_MEMORY=1536
-```
 
 ## Initialise the Cluster
 
-1.  From the base storageos folder initialise the StorageOS Vagrant cluster:
+1.  From the base `storageos` folder initialise the StorageOS Vagrant cluster:
 
     ```
     StorageOS:storageos julian$ vagrant up
-    Bringing machine 'storageos-1' up with 'virtualbox' provider...
-    Bringing machine 'storageos-2' up with 'virtualbox' provider...
-    Bringing machine 'storageos-3' up with 'virtualbox' provider...
+    Bringing machine 'storageos-01' up with 'virtualbox' provider...
+    Bringing machine 'storageos-02' up with 'virtualbox' provider...
+    Bringing machine 'storageos-03' up with 'virtualbox' provider...
     ...
     ```
 
     >**Note**: If you want to use the VMware provider instead of VirtualBox you will need to specify the VMware provider for Vagrant to use the first time you bring up your cluster:
     >
-    > {% icon fa-apple fa-border %} `vagrant up --provider=vmware_fusion`
+    > ![icon](/images/docs/iso/appleicon.png) `vagrant up --provider=vmware_fusion`
     >
-    > {% icon fa-windows fa-border %} `vagrant up --provider=vmware_workstation`
+    > ![icon](/images/docs/iso/windowsicon.png) `vagrant up --provider=vmware_workstation`
 
     >**Note**: You'll need to have the VMware Fusion or VMware Workstation vagrant plug-in installed and licensed first - see the [HashiCorp Vagrant VMware](https://www.vagrantup.com/vmware/) documentation for details
 
@@ -78,41 +82,27 @@ set STORAGEOS_MEMORY=1536
     StorageOS:storageos julian$ vagrant status
     Current machine states:
 
-    storageos-1               running (virtualbox)
-    storageos-2               running (virtualbox)
-    storageos-3               running (virtualbox)
+    storageos-01               running (virtualbox)
+    storageos-02               running (virtualbox)
+    storageos-03               running (virtualbox)
 
     This environment represents multiple VMs. The VMs are all listed
     above with their current state. For more information about a specific
     VM, run `vagrant status NAME`.
     ```
 
-## Confirming the installation
+## Confirming the Installation
 
-### Confirm VDI disks have been created (VirtualBox)
+### Confirm VDI Disks have been Created (VirtualBox)
 
 1.  For VirtualBox, based on the `Vagrantfile` parameters you will see one or more VDI volumes allocated to each node:
 
     ```
     StorageOS:storageos julian$ ls *.vdi
-    storageos-1-disk0.vdi	storageos-2-disk0.vdi	storageos-3-disk0.vdi
+    storageos-01-disk0.vdi	storageos-02-disk0.vdi	storageos-03-disk0.vdi
     ```
 
-### Confirm SSH has been installed and Docker containers are running
-
->**Note**: There are additional steps to set up SSH for Windows. Your Windows machine
-> may already have an SSH client installed. We've had good results using
-> [Git for Windows](https://git-scm.com/download/win).
-> In any case, you need an executable
-> SSH program in your `PATH` for `vagrant ssh` to work.
-
-> **Note**: Set the path in Windows 10
-> by right-clicking on the Start icon and selecting 'System', then select 'Advanced system settings'
-> then 'Environment variables'. Under 'user variables', edit 'Path', and add the
-> path to your SSH.
-> For Git for Windows installed with defaults, the path was `C:\Program Files\git\usr\bin`.
-> Open a new Powershell or Command Prompt and type `ssh`. If you get an error, the `PATH` isn't
-> right or SSH isn't working properly.
+### Confirm SSH has been Installed and Docker Containers are Running
 
 1.  To remote shell into the cluster you should use the `vagrant ssh` command and specify the node you wish to connect in the case of a multi-node cluster setup:
 

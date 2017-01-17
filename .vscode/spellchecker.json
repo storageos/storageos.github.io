@@ -1,0 +1,14 @@
+{
+    "language": "en_US",
+    "ignoreWordsList": [
+        "StorageOS"
+    ],
+    "documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "ignoreRegExp": [],
+    "ignoreFileExtensions": [],
+    "checkInterval": 5000
+}

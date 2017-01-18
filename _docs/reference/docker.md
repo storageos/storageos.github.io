@@ -20,7 +20,7 @@ The plugin runs as a standalone server that accepts HTTP requests from the Docke
 
 Make sure `/etc/docker/plugins/storageos.json` is present on the Docker host then start:
 
-```
+```bash
 $ sudo /usr/local/bin/storageos-docker-plugin server
 ```
 
@@ -49,7 +49,7 @@ Config may be changed with command-line flags or with a config file.
 
 Running the plugin with `help` gives more info:
 
-```
+```bash
 $ /usr/local/bin/storageos-docker-plugin help
 
 StorageOS volume driver for Docker, providing persistent storage to
@@ -74,7 +74,7 @@ Use "storageos-docker-plugin [command] --help" for more information about a comm
 
 [Dapper](https://github.com/rancher/dapper) is used for compiling the plugin in a known environment.  A simple Makefile initiates the build:
 
-```
+```bash
 $ make build
 ```
 
@@ -84,19 +84,19 @@ This produces a statically-linked linux binary named `storageos-docker-plugin` i
 
 Try to start a container with a volume using the StorageOS plugin:
 
-```
+```bash
 $ sudo docker run -d --name redis-test -v dev-docker-redis01:/data --volume-driver=storageos redis redis-server --appendonly yes
 ```
 
 Or, try to pre-provision a volume:
 
-```
+```bash
 $ sudo docker volume create --name dev-docker-redis01 --driver storageos --opt size=20
 ```
 
 If successful, you should see the volume with `docker volume ls`:
 
-```
+```bash
 # docker volume ls
 DRIVER              VOLUME NAME
 storageos           dev-docker-redis01
@@ -104,7 +104,7 @@ storageos           dev-docker-redis01
 
 Benchmark:
 
-```
+```bash
 $ sudo docker run -it --rm --link redis-test:redis clue/redis-benchmark
 ```
 
@@ -120,19 +120,19 @@ Currently this is just the standard output from the process.
 
 #### Docker
 
-```
+```bash
 $ sudo journalctl -u docker -f
 ```
 
 #### Control plane
 
-```
+```bash
 $ storageos logs control
 ```
 
 #### Data plane
 
-```
+```bash
 $ sudo journalctl -u dataplane -f
 ```
 

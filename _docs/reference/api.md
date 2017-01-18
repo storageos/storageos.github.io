@@ -9,7 +9,6 @@ module: reference/api
 
 StorageOS Control plane API is accessible either through port 80 or 8000.
 
-
 ## Volumes API
 
 ### Create Volumes
@@ -47,7 +46,6 @@ Create new volume:
 ### Get all Volumes
 
 Returns all volumes
-
 
 * URL: `/v1/volumes`
 * Method: `GET`
@@ -107,7 +105,6 @@ Returns all volumes
   ]
   ```
 
-
 ### Get Volume Details
 
 * URL: `/v1/volumes/{id}`
@@ -143,7 +140,6 @@ Returns all volumes
   }
   ```
 
-
 ### Delete Volume
 
 Deletes specified volume:
@@ -153,7 +149,6 @@ Deletes specified volume:
 * Response status code:
     - Success: `200`
     - Volume does not exist: `404`
-
 
 ## Tags API
 
@@ -179,7 +174,6 @@ Create new tag:
     - Created: `201`
     - Conflict (tag with the same name already exists): `409`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
-
 
 ### Get all Tags
 
@@ -263,7 +257,6 @@ Return all tags that belong to specified tag type:
   }]
   ```
 
-
 ### Tag Details
 
 Returns tag details:
@@ -283,7 +276,6 @@ Returns tag details:
   }
   ```
 
-
 ### Update Tag
 
 * URL: `/v1/tag/{tagtype}/{id}`
@@ -302,7 +294,6 @@ Returns tag details:
     - Success: `200`
     - Bad request: `400`
 * Response body (tag UUID): `46178ad4-a8d6-7db7-8ffb-a8809f9341f8`
-
 
 ### Delete Tag
 

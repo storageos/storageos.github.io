@@ -11,7 +11,7 @@ The command line interface (CLI) can be run with Docker.
 
 ## Example Usage
 
-```
+```bash
 # docker run quay.io/storageos/storageos:beta
 usage: storageos [--version] [--help] <command> [<args>]
 
@@ -43,7 +43,7 @@ Available commands are:
 
 `STORAGEOS_API_ADDR`: The ip address and port of the API endpoint.  Defaults to `localhost:8000`.
 
-```
+```bash
 # docker run -e STORAGEOS_API_ADDR=10.245.103.2:8000 -e STORAGEOS_USER=storageos -e STORAGEOS_PASSWORD=storageos quay.io/storageos/storageos:alpha volume list
 ID                                    NAME                       DESCRIPTION  SIZE  DC
 7822ede0-d8c8-4c04-eea1-4ecbfb792777  vol-london-mysql-prod                   10

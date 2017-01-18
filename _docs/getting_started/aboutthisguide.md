@@ -12,7 +12,7 @@ This guide has been written for Storage Admins, DevOps, Solutions Architects, En
 
 No previous experience with working with Docker or containers is necessary but an overview of container technology and how it works will be useful.
 
-## Purpose of this document
+## Purpose of this Document
 By the end of this document you should have a good understanding of how StorageOS works, the problems it can solve for your business and be better positioned for making you next storage infrastructure choice.
 
 This StorageOS Beta enables users to explore our software prior to General Availability (GA) release.  Any feedback on software problems and usability will help improve our product and allows us to track issues and fix them.

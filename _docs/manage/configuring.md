@@ -10,6 +10,7 @@ module: manage/configuring
 This section explores how you can configure and provision your storage using labels, rules and auto-naming templates.
 
 ## Overview of Labels
+
 Located under Configuration {% icon fa-arrow-right %} Labels, here you can manage how you label your storage using color and text descriptions identifying and classifying your system, storage, nodes, and features in a way that makes sense to you.
 
 Labels also let you implement naming standards for all volumes created in an environment. Essentially, this feature allows you to apply naming constructs for all your managed objects based on the default label types but also using your own user-defined labels.  These constructs allow you to build volume names from multiple labels.
@@ -17,6 +18,7 @@ Labels also let you implement naming standards for all volumes created in an env
 StorageOS labels apply to all Configuration and Provisioning objects and fall under two categories:
 
 ### 1. Built-in Labels
+
 There are two *Types* of Built-in label:
 1. Feature (native StorageOS features)
 2. Driver (native StorageOS drivers)
@@ -24,6 +26,7 @@ There are two *Types* of Built-in label:
 StorageOS features can be auto-assigned to volumes using the built-in feature *Labels* and applied using business rules (discussed later in this section). These rules are evaluated by the *Scheduler* and executed by the *Rules Engine* effectively managing data policy and placement.
 
 ### 2. User-Defined Labels
+
 There are three *Types* of pre-configured user defined labels.  You are however free to add as many custom *Label Types* as you wish such as Department or Performance using the *NEW LABEL TYPE* control:
 
 1. Application

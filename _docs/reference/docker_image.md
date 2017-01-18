@@ -19,7 +19,7 @@ There is a single StorageOS Docker image that provides multiple functions:
 
 To run the StorageOS control plane, specify the `server` parameter:
 
-```
+```bash
 docker run
 ```
 

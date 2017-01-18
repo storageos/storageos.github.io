@@ -15,7 +15,7 @@ There are three parts to completing the ISO image install of StorageOS:
 
 >**Note**: You should already have the ISO downloaded from the previous section [Downloading the StorageOS media](../install/media.html) and should be ready to setup your VirtualBox environment.
 
->**Note**: The VirtualBox screen shots below have been taken from macOS.  If you are setting up VirtualBox VMs on a different platform, the rendering of these screens will differ based on your installed operating system.
+>**Note**: The VirtualBox screen captures below have been taken from macOS - the rendering of these may vary slightly depending on your installed operating system.
 
 ## Creating VMs with VirtualBox
 
@@ -77,11 +77,11 @@ Before you can begin the ISO image install, you will need to create a **minimum 
 
    >**Note**: NAT will not work with iSCSI. It may be possible to setup NAT on another interface but port forwarding to the other services will also need to be setup. This is currently undocumented and untested.
 
-   >**Note**: If you are configuring Static DHCP addresses for each of your nodes, the MAC address to configure these with is located under the advanced properties of the Network configuration dialogue you have open.
-
-5. Finish by clicking ![image](/images/docs/iso/ok.png)
+5. If you are configuring Static DHCP addresses for each of your nodes, enable the *Advanced* options drop-down and make a note of the address located next to *MAC Address:*
 
     ![screenshot](/images/docs/iso/macaddress.png)
+
+6. Finish by clicking the ![image](/images/docs/iso/ok.png) button
 
 ### Clone a VirtualBox VM
 
@@ -132,6 +132,7 @@ Should you wish to test StorageOS using ESX instead of VirtualBox, you can creat
 You are now ready to boot each of your VMs and install StorageOS.
 
 ### Starting up your VMS
+
 Follow the steps below for each VM to install StorageOS with Ubuntu Server. The first VM will be the designated as the master node so ensure this VM completes first before completing the remaining member nodes.
 
 These instructions direct you to select the options that work best with the beta release of StorageOS.
@@ -303,7 +304,7 @@ Connect to the StorageOS node using `ssh`
 * When you connect for the first time you will be asked to accept the ECDSA key from the remote host.  Type `yes` to accept.
 
   ```
-  StorageOS:storageos julian$ ssh -l storageos storageos-03
+  $ ssh -l storageos storageos-03
   The authenticity of host '10.1.5.173 (10.1.5.173)' can't be established.
   ECDSA key fingerprint is SHA256:tCd0ShYOm8xM14travkzSizv75UsIPOdXOD8YIg84S8.
   Are you sure you want to continue connecting (yes/no)? yes
@@ -331,7 +332,7 @@ Perform these steps on each node.
 1.  Running the `docker ps` command will display what is currently running on the node.
 
     ```
-    storageos@storageos-01:~$ docker ps -a
+    $ docker ps -a
     CONTAINER ID  IMAGE                              COMMAND                  CREATED        STATUS                  PORTS                                                                                                           NAMES
     4dff1fa7eec2  consul:latest                      "docker-entrypoint.sh"   4 minutes ago  Up 3 minutes                                                                                                                            consul
     3419a5cd1947  quay.io/storageos/storageos:beta   "/bin/storageos boots"   12 days ago    Exited (0) 12 days ago                                                                                                                  storageos_cli_run_1
@@ -343,21 +344,19 @@ Perform these steps on each node.
 2.  You can also use the `storageos` command to gather the status of the dataplane, controlplane and the Web UI metrics collection containers
 
     ```
-    root@storageos-03:~# storageos status
+    $ storageos status
             Name                      Command               State                                                       Ports
     -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     storageos_control_1    /bin/storageos controlplane      Up      0.0.0.0:4222->4222/tcp, 0.0.0.0:80->8000/tcp, 0.0.0.0:8222->8222/tcp
     storageos_data_1       /bin/storageos dataplane         Up
     storageos_influxdb_1   influxd --config /etc/infl ...   Up      2003/tcp, 25826/tcp, 0.0.0.0:25826->25826/udp, 4242/tcp, 8083/tcp, 0.0.0.0:8086->8086/tcp, 8086/udp, 8088/tcp
-    root@storageos-03:~#
     ```
 
 3.  To disconnect your session simply type `Ctrl + D` to return back to your original shell prompt:
 
     ```
-    storageos@storageos-01:~$ logout
+    $ logout
     Connection to 10.1.5.171 closed.
-    storageos:~ julian$
     ```
 
 This completes the StorageOS cluster setup.  

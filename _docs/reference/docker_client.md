@@ -27,7 +27,7 @@ There are a few manual steps that must be run on the host before the StorageOS c
 
    `/storageos` needs to exist and be shared.  This directory contains the filesystems that are mounted into Docker containers, as well as the raw volumes and the configuration state.
 
-   ```
+   ```bash
    mkdir /storageos
    mount -o bind /storageos /storageos
    mount --make-shared /storageos
@@ -53,7 +53,7 @@ There are a few manual steps that must be run on the host before the StorageOS c
 
    On Linux distributions with `systemd`, add `/etc/systemd/system/docker.service.d/storageos-mount.conf` with contents:
 
-   ```
+   ```json
    [Service]
    MountFlags=shared
    ```
@@ -62,7 +62,7 @@ There are a few manual steps that must be run on the host before the StorageOS c
 
    Then reload `systemd` config and restart docker:
 
-   ```
+   ```bash
    systemctl daemon-reload
    systemctl restart docker
    ```
@@ -75,13 +75,13 @@ There are a few manual steps that must be run on the host before the StorageOS c
 
    Depending on your distribution, you should be able to set with the command:
 
-   ```
+   ```bash
    sysctl -w fs.inotify.max_user_instances=8192
    ```
 
    And then to set so that the limit is increased after reboots, create `/etc/sysctl.d/10-inotify.conf` with contents:
 
-   ```
+   ```json
    fs.inotify.max_user_instances = 8192
    ```
 
@@ -91,7 +91,7 @@ There are a few manual steps that must be run on the host before the StorageOS c
 
 The client can be configured using flags or environment variables.  All flags have equivalent environment variables (designated in ALL_CAPS).
 
-`--api-addr` / `STORAGEOS_API_ADDR`: <ip address:port> of a running StorageOS cluster node.  On startup, the client will discover the remaining cluster nodes and setup a HA failover group that includes all controller nodes.  Defaults to `127.0.0.1:8000`.
+`--api-addr` / `STORAGEOS_API_ADDR`: &lt;ip address:port&gt; of a running StorageOS cluster node.  On startup, the client will discover the remaining cluster nodes and setup a HA failover group that includes all controller nodes. Defaults to `127.0.0.1:8000`
 
 `--user` / `STORAGEOS_USER`: Username to authenticate to the StorageOS cluster with.  Defaults to `storageos`.
 
@@ -101,7 +101,7 @@ The client can be configured using flags or environment variables.  All flags ha
 
 ### Docker Run
 
-```
+```bash
 $ docker run \
   -e HOSTNAME \
   -e STORAGEOS_API_ADDR=10.245.103.2 \
@@ -117,7 +117,7 @@ $ docker run \
 
 ### Docker-compose
 
-```
+```yml
 version: '2'
 services:
  storageos:

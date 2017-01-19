@@ -23,6 +23,7 @@ The top line items, (1) Pools, (2) Volumes and (3) Rules serve as shortcuts to v
 The three performance metrics charts on the second tier of the screen expose real-time data for CPU, Disk and Network object counters.
 
 ### CPU
+
 Currently the only exposed CPU counters are average CPU percentage utilisation and the default graph breaks these down into short, mid and long term.  You can filter these out by simply clicking on the datapoint you are interested in.
 
 ![image](/images/docs/manage/cpu.png)
@@ -45,6 +46,6 @@ While provision has been built in for changing the graphical views much of this 
 
 ![image](/images/docs/manage/contextmenu.png)
 
-Using the {% icon fa-plus %} and {% icon fa-minus %} icons you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.
+Using the {% icon fa-minus %} and {% icon fa-plus %} icons you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.
 
 

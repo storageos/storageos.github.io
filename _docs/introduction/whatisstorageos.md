@@ -18,6 +18,7 @@ StorageOS can be deployed to bare-metal, virtual machines, cloud, or Docker-base
 ![image](/images/docs/started/storageosinfra.png)
 
 ## Why use Containers?
+
 Containerisation or Microservices are arguably the next big wave of disruption in technology infrastructure since VMware and virtualisation.
 
 A container comprises an entire runtime environment for an application with all its dependencies in a single package.  By containerising applications, a hosting platform and its dependencies will not run the risk of interfering with application dependencies.
@@ -34,37 +35,37 @@ StorageOS helps developers move from *host-centric* infrastructure to a more abs
 
 StorageOS satisfies a number of common features for applications running in production, including:
 
-| Feature                         |   Developer  | Professional |  |Feature                          |   Developer  | Professional |
-|:--------------------------------|:------------:|:------------:|:-|:--------------------------------|:------------:|:------------:|
-| **Data Reduction**              |              |              |  | **Data Protection**             |              |              |
-|   ▪︎ Compression                 |   &#x2714;   |   &#x2714;   |  |   ▪︎ Erasure Coding              |   &#x2714;   |   &#x2714;   |
-|   ▪︎ De-duplication              |   &#x2714;   |   &#x2714;   |  |   ▪︎ Advanced Erasure Coding     |   &#x2716;   |   &#x2714;   |
-| **Data Run-Time Management**    |              |              |  |   ▪︎ In-Cluster Replicas         |   &#x2716;   |   &#x2714;   |
-|   ▪︎ Resizing, Thin Provisioning |   &#x2714;   |   &#x2714;   |  | **Acceleration**                |              |              |
-|   ▪︎ Snapshots                   |   &#x2716;   |   &#x2714;   |  |   ▪︎ SSD Optimized               |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Cloning                     |   &#x2716;   |   &#x2714;   |  |   ▪︎ Run alongside container     |   &#x2714;   |   &#x2714;   |
-| **Front-end Connectivity**      |              |              |  |   ▪︎ Auto-configuration          |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Native connectivity         |   &#x2714;   |   &#x2714;   |  |   ▪︎ Caching                     |   &#x2716;   |   &#x2714;   |
-|   ▪︎ iSCSI                       |   &#x2714;   |   &#x2714;   |  |   ▪︎ Scale-Out                   |   &#x2716;   |   &#x2714;   |
-| **Supported Platforms**         |              |              |  | **Management**                  |              |              |
-|   ▪︎ Linux containers            |   &#x2714;   |   &#x2714;   |  |   ▪︎ Restful API                 |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Bare metal                  |   &#x2714;   |   &#x2714;   |  |   ▪︎ Local User Authentication   |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Hypervisors                 |   &#x2714;   |   &#x2714;   |  |   ▪︎ Terminal CLI                |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Cloud providers             |   &#x2714;   |   &#x2714;   |  |   ▪︎ GUI                         |   &#x2714;   |   &#x2714;   |
-| **Distribution**                |              |              |  |   ▪︎ Dashboards                  |   &#x2714;   |   &#x2714;   |
-|   ▪︎ ISO Image                   |   &#x2714;   |   &#x2714;   |  |   ▪︎ Role Based Management       |   &#x2716;   |   &#x2714;   |
-|   ▪︎ OVA                         |   &#x2714;   |   &#x2714;   |  |   ▪︎ QoS                         |   &#x2716;   |   &#x2714;   |
-|   ▪︎ Native Container            |   &#x2714;   |   &#x2714;   |  | **Business Rules**              |              |              |
-|   ▪︎ AWS AMI                     |   &#x2714;   |   &#x2714;   |  |   ▪︎ Tagged-Rules Management     |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Azure Marketplace           |   &#x2714;   |   &#x2714;   |  |   ▪︎ Tag-Based Placement Engine  |   &#x2716;   |   &#x2714;   |
-| **High Availability**           |              |              |  |   ▪︎ Tag-Based Policy Engine     |   &#x2716;   |   &#x2714;   |
-|   ▪︎ Persistent Container Storage|   &#x2714;   |   &#x2714;   |  |   ▪︎ Reporting                   |   &#x2716;   |   &#x2714;   |
-|   ▪︎ Volume HA                   |   &#x2716;   |   &#x2714;   |  | **Technology Integration**      |              |              |
-| **Data Security**               |              |              |  |   ▪︎ Docker                      |   &#x2714;   |   &#x2714;   |
-|   ▪︎ Volume Encryption           |   &#x2716;   |   &#x2714;   |  |   ▪︎ rkt                         |   &#x2714;   |   &#x2714;   |
-|                                 |              |              |  |   ▪︎ Swarm                       |   &#x2716;   |   &#x2714;   |
-|                                 |              |              |  |   ▪︎ Kubernetes                  |   &#x2716;   |   &#x2714;   |
-|                                 |              |              |  |                                 |              |              | 
+| Feature                         |      Developer      |    Professional     |  |Feature                          |      Developer      |    Professional     |
+|:--------------------------------|:-------------------:|:-------------------:|:-|:--------------------------------|:-------------------:|:-------------------:|
+| **Data Reduction**              |                     |                     |  | **Data Protection**             |                     |                     |
+|   ▪︎ Compression                 | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Erasure Coding              | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ De-duplication              | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Advanced Erasure Coding     | {% icon fa-times %} | {% icon fa-check %} |
+| **Data Run-Time Management**    |                     |                     |  |   ▪︎ In-Cluster Replicas         | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ Resizing, Thin Provisioning | {% icon fa-check %} | {% icon fa-check %} |  | **Acceleration**                |                     |                     |
+|   ▪︎ Snapshots                   | {% icon fa-times %} | {% icon fa-check %} |  |   ▪︎ SSD Optimized               | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Cloning                     | {% icon fa-times %} | {% icon fa-check %} |  |   ▪︎ Run alongside container     | {% icon fa-check %} | {% icon fa-check %} |
+| **Front-end Connectivity**      |                     |                     |  |   ▪︎ Auto-configuration          | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Native connectivity         | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Caching                     | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ iSCSI                       | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Scale-Out                   | {% icon fa-times %} | {% icon fa-check %} |
+| **Supported Platforms**         |                     |                     |  | **Management**                  |                     |                     |
+|   ▪︎ Linux containers            | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Restful API                 | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Bare metal                  | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Local User Authentication   | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Hypervisors                 | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Terminal CLI                | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Cloud providers             | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ GUI                         | {% icon fa-check %} | {% icon fa-check %} |
+| **Distribution**                |                     |                     |  |   ▪︎ Dashboards                  | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ ISO Image                   | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Role Based Management       | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ OVA                         | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ QoS                         | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ Native Container            | {% icon fa-check %} | {% icon fa-check %} |  | **Business Rules**              |                     |                     |
+|   ▪︎ AWS AMI                     | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Tagged-Rules Management     | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Azure Marketplace           | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Tag-Based Placement Engine  | {% icon fa-times %} | {% icon fa-check %} |
+| **High Availability**           |                     |                     |  |   ▪︎ Tag-Based Policy Engine     | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ Persistent Container Storage| {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Reporting                   | {% icon fa-times %} | {% icon fa-check %} |
+|   ▪︎ Volume HA                   | {% icon fa-times %} | {% icon fa-check %} |  | **Technology Integration**      |                     |                     |
+| **Data Security**               |                     |                     |  |   ▪︎ Docker                      | {% icon fa-check %} | {% icon fa-check %} |
+|   ▪︎ Volume Encryption           | {% icon fa-times %} | {% icon fa-check %} |  |   ▪︎ rkt                         | {% icon fa-check %} | {% icon fa-check %} |
+|                                 |                     |                     |  |   ▪︎ Swarm                       | {% icon fa-times %} | {% icon fa-check %} |
+|                                 |                     |                     |  |   ▪︎ Kubernetes                  | {% icon fa-times %} | {% icon fa-check %} |
+|                                 |                     |                     |  |                                 |                     |                     | 
 
 StorageOS effectively provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
 

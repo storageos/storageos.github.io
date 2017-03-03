@@ -8,15 +8,21 @@ module: explore/mongodb
 
 # ![image](/images/docs/explore/mongologo.png) MongoDB with StorageOS
 
+MongoDB (from humongous) is an open source database that falls into the NoSQL database category.  Instead of using tables and rows it is built on collections and documents.  
+
+## MongoDB and StorageOS
+
 There are several benefits with deploying MongoDB instances as Docker application containers with StorageOS, namely:
 
 * Create easy to maintain, configurable MongoDB instances
 * Instant, stateless MongoDB application containers on demand
 * Persistent, highly available storage to mount stateful database data
 
-For this example we are going to demonstrate setting up a MongoDB container using the StorageOS volume driver plugin using the latest MongoDB container image.  For the latest details on configuring and linking this image please visit the  [Mongo Docker Hub Repository](https://hub.docker.com/_/mongo/ "MongoDB Repository").
+MongoDB fits well into use cases where you need to store large volumes of data with little or no structure.  It fits well into cloud environments where you need to load and distribute a high volume of data across commodity servers. Mongo fits well into a CI/CD environments too using its dynamic schemas allowing you to combine changes quickly into your application. 
 
-There are a number of ways to get MongoDB started but for this exercise lets step through the process.
+There are a number of ways to get started with MongoDB and containers but for this exercise lets step through the process.
+
+For this example we are going to demonstrate setting up a MongoDB container using the StorageOS volume driver plugin using the latest MongoDB container image.  For the latest details on configuring and linking this image please visit the  [Mongo Docker Hub Repository](https://hub.docker.com/_/mongo/ "MongoDB Repository").
 
 ## Create a MongoDB Data and Config Volume
 

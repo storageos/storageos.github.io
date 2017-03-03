@@ -8,7 +8,7 @@ module: explore/vnext
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft vNext with StorageOS
 
-Microsoft's vNext SQL Server release represents a major update to their long established SQL platform.  Probably one of the most significant features of vNext is its availability on both the Windows and Linux platforms as well as being available as a container to run on popular Linux distributions and Windows.
+ Microsoft's vNext SQL Server release represents a major update to their long established SQL platform.  Probably one of the most significant features of vNext is its availability on both the Windows and Linux platforms as well as being available as a container to run on popular Linux distributions and Windows.
 
 ## Linux Support
 
@@ -56,6 +56,8 @@ More information on vNext is available on the [Microsoft SQL Server for Linux](h
    ```
 
 ## Install MS SQL Tools on Ubuntu
+
+Sqlcmd is part of the SQL Server command-line tools, which are not installed automatically with SQL Server on Linux and not present in the container image.
 
 1. Install MS SQL Server Xenial CLI Package
 
@@ -144,9 +146,9 @@ More information on vNext is available on the [Microsoft SQL Server for Linux](h
 
 1. Start up a new application container
 
-```
-$ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 --name mssql -v mssql:/var/opt/mssqldata --volume-driver=storageos -d microsoft/mssql-server-linux
-```
+   ```
+   $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 --name mssql -v mssql:/var/opt/mssqldata --volume-driver=storageos -d microsoft/mssql-server-linux
+   ```
 
 ## Open Database to Read and Write Rows
 

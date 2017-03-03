@@ -20,7 +20,7 @@ There are a number of ways to get MongoDB started but for this exercise lets ste
 
 ## Create a MongoDB Data and Config Volume
 
-1. The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  ```/data/db``` and ```/data/configdb``` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
+1. The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
 
 2. Lets create a new 2GB volume called *mongodbdata* and a 1GB volume called *mongoconf* from the *default* Storage volume pool using either the StorageOS CLI  or the Docker CLI and give it a description of *mongodb*.  
 
@@ -61,9 +61,9 @@ There are a number of ways to get MongoDB started but for this exercise lets ste
 
    >**Note**: WiredTiger is now the default storage driver and MongoDB therfore expects an XFS filesystem.  Until we add support for this as a volume parameter you will see a warning in the log files
    
-   >**Note**: This MongoDB container image includes ```EXPOSE 27017``` making the default MongoDB TCP port automatically available to linked containers
+   >**Note**: This MongoDB container image includes `EXPOSE 27017` making the default MongoDB TCP port automatically available to linked containers
    
-   >**Note**: Mongo logs are not sent to ```/var/log/mongodb``` and instead go stdout and will be available via ```docker logs <container-name>``` command
+   >**Note**: Mongo logs are not sent to `/var/log/mongodb` and instead go stdout and will be available via `docker logs <container-name>` command
 
    ```
    $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb --volume-driver=storageos mongo

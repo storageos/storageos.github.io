@@ -32,8 +32,10 @@ There are a number of ways to get MongoDB started but for this exercise lets ste
    --or we can use the Docker CLI to create the volumes--
 
    ```
-   docker volume create -d storageos --name mongodata --opt size=2 --opt pool=default --opt description=mongodb
-   docker volume create -d storageos --name mongoconf --opt size=1 --opt pool=default --opt description=mongodb
+   $ docker volume create -d storageos --name mongodata --opt size=2 --opt pool=default \
+        --opt description=mongodb
+   $ docker volume create -d storageos --name mongoconf --opt size=1 --opt pool=default \
+        --opt description=mongodb
    ```
 
 2. Result from the StorageOS CLI
@@ -59,14 +61,13 @@ There are a number of ways to get MongoDB started but for this exercise lets ste
 
 1. To get the latest MongoDB container image up and running simply use the  Docker command below - if you need to specify a specific version, append the image name with a version tag, e.g. mongo:&lt;version&gt;
 
-   >**Note**: WiredTiger is now the default storage driver and MongoDB therfore expects an XFS filesystem.  Until we add support for this as a volume parameter you will see a warning in the log files
-   
    >**Note**: This MongoDB container image includes `EXPOSE 27017` making the default MongoDB TCP port automatically available to linked containers
    
-   >**Note**: Mongo logs are not sent to `/var/log/mongodb` and instead go stdout and will be available via `docker logs <container-name>` command
+   >**Note**: Mongo logs go stdout and will be available via the `docker logs <container-name>` command
 
    ```
-   $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb --volume-driver=storageos mongo
+   $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb \
+        --volume-driver=storageos mongo
    ```
 
 ## Configure an Admin User
@@ -82,7 +83,8 @@ Before we demonstrate MongoDB we need to set up an initial admin user.
 2. Create StorageOS admin user
 
    ```
-   > db.createUser({ user: 'storageos', pwd: 'storageos', roles: [{ role: "userAdminAnyDatabase", db: "admin" }] });
+   > db.createUser({ user: 'storageos', pwd: 'storageos', roles: \
+        [{ role: "userAdminAnyDatabase", db: "admin" }] });
    ```
 
 3. The following result tells us we were able to successfully create the new StorageOS user
@@ -108,7 +110,8 @@ Before we demonstrate MongoDB we need to set up an initial admin user.
 5. Connect externally to the database
 
    ```
-   $ docker run -it --rm --link mongo-dev:mongo mongo mongo -u storageos -p storageos --authenticationDatabase admin mongo-dev/test-db
+   $ docker run -it --rm --link mongo-dev:mongo mongo mongo -u storageos -p storageos \
+        --authenticationDatabase admin mongo-dev/test-db
    ```
 
 6. Populate some data to a test data collection
@@ -162,7 +165,8 @@ Before we demonstrate MongoDB we need to set up an initial admin user.
 3. Log into another node and start a new MongoDB container instance and bind to our StorageOS volumes mongodata and mongoconf
 
    ```
-   $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb --volume-driver=storageos mongo
+   $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb \
+        --volume-driver=storageos mongo
    ```
 
 4. Verify running status of container
@@ -178,7 +182,8 @@ Before we demonstrate MongoDB we need to set up an initial admin user.
 5. Attach to existing database using previously used credentials
 
    ```
-   docker run -it --rm --link mongo-dev:mongo mongo mongo -u storageos -p storageos --authenticationDatabase admin mongo-dev/test-db
+   $ docker run -it --rm --link mongo-dev:mongo mongo mongo -u storageos -p storageos \
+        --authenticationDatabase admin mongo-dev/test-db
    ```
 
 6. Query the data we previously wrote and verify we can read from the database

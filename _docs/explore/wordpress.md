@@ -5,7 +5,7 @@ anchor: explore
 module: explore/wordpress
 ---
 
-# WordPress Cluster Demo
+# ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo
 
 This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying, persistent storage.
 

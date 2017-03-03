@@ -19,7 +19,7 @@ For Ubuntu, the Docker container requires Xenial 16.04, it will not to run on ol
 
 Microsoft claim SQL Server vNext represents a major step towards making SQL Server a platform that gives you choices of development languages, data types, on-premises and in the cloud, and across operating systems by bringing the power of SQL Server to Linux, Linux-based Docker containers, and Windows.
 
-Combined with StorageOS you get a consistent platform to run you databases with prersistent storage, replication, encryption and a host of other features.
+Combined with StorageOS you get a consistent platform to run your databases with persistent storage, replication, encryption and a host of other features.
 
 ## More Information
 
@@ -30,7 +30,9 @@ More information on vNext is available on the [Microsoft SQL Server for Linux](h
 1. To get the latest MS SQL Server Linux container running, follow the command below:
 
    ```
-   $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 --name mssqldata -v mssql:/var/opt/mssql --volume-driver=storageos -d microsoft/mssql-server-linux
+   $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
+        --name mssqldata -v mssql:/var/opt/mssql --volume-driver=storageos \
+        -d microsoft/mssql-server-linux
    ```
 
 2. Confirm the volume was created successfully
@@ -147,7 +149,9 @@ Sqlcmd is part of the SQL Server command-line tools, which are not installed aut
 1. Start up a new application container
 
    ```
-   $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 --name mssql -v mssql:/var/opt/mssqldata --volume-driver=storageos -d microsoft/mssql-server-linux
+   $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
+        --name mssql -v mssql:/var/opt/mssqldata --volume-driver=storageos \
+        -d microsoft/mssql-server-linux
    ```
 
 ## Open Database to Read and Write Rows

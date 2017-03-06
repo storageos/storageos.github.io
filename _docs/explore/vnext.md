@@ -6,24 +6,17 @@ module: explore/vnext
 ---
 
 
-# ![image](/images/docs/explore/mssqllogo.png) Microsoft vNext with StorageOS
+# ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2016 with StorageOS
 
- Microsoft's vNext SQL Server release represents a major update to their long established SQL platform.  Probably one of the most significant features of vNext is its availability on both the Windows and Linux platforms as well as being available as a container to run on popular Linux distributions and Windows.
+ Microsoft's latest SQL Server release represents a major update with availability for Linux platform support as well support to run as a  container.
 
 ## Linux Support
 
 For Ubuntu, the Docker container requires Xenial 16.04, it will not to run on older distributions however it will run on the StorageOS  Vagrant and ISO builds which are Xenial 16.04 based.
 
-
-## Features
-
-Microsoft claim SQL Server vNext represents a major step towards making SQL Server a platform that gives you choices of development languages, data types, on-premises and in the cloud, and across operating systems by bringing the power of SQL Server to Linux, Linux-based Docker containers, and Windows.
-
-Combined with StorageOS you get a consistent platform to run your databases with persistent storage, replication, encryption and a host of other features.
-
 ## More Information
 
-More information on vNext is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linuxy") web page.
+More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linuxy") web page.
 
 ## Install MS SQL Server with StorageOS
 

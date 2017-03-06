@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Microsoft vNext with StorageOS
+title: Microsoft SQL Server with StorageOS
 anchor: explore
 module: explore/mssql
 ---

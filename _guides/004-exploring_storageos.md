@@ -17,7 +17,7 @@ sections:
     description: Setting up a Word Press cluster with persistent storage.
     module: explore/wordpress
   -
-    title: Microsoft vNext with StorageOS
+    title: Microsoft SQL Server with StorageOS
     description: Setting MS SQL with persistent storage.
     module: explore/mssql
   -

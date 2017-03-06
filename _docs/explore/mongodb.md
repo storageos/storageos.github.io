@@ -28,7 +28,7 @@ For this example we are going to demonstrate setting up a MongoDB container usin
 
 1. The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
 
-2. Lets create a new 2GB volume called *mongodbdata* and a 1GB volume called *mongoconf* from the *default* Storage volume pool using either the StorageOS CLI  or the Docker CLI and give it a description of *mongodb*.  
+2. Lets create a new 2GB volume called *mongodata* and a 1GB volume called *mongoconf* from the *default* Storage volume pool using either the StorageOS CLI  or the Docker CLI and give it a description of *mongodb*.  
 
    ```
    storageos cli volume create -name=mongodata -size=2 -pool=default -description=mongodb

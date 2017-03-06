@@ -18,6 +18,8 @@ For Ubuntu, the Docker container requires Xenial 16.04, it will not to run on ol
 
 More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linuxy") web page.
 
+Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the *Installation Guide* for further details.
+
 ## Install MS SQL Server with StorageOS
 
 1. To get the latest MS SQL Server Linux container running, follow the command below:

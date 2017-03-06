@@ -22,6 +22,8 @@ MongoDB fits well into use cases where you need to store large volumes of data w
 
 For this example we are going to demonstrate setting up a MongoDB container using the StorageOS volume driver plugin using the latest MongoDB container image.  For the latest details on configuring and linking this image please visit the  [Mongo Docker Hub Repository](https://hub.docker.com/_/mongo/ "MongoDB Repository").
 
+Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the *Installation Guide* for further details.
+
 ## Create a MongoDB Data and Config Volume
 
 1. The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.

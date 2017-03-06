@@ -19,7 +19,7 @@ sections:
   -
     title: Microsoft vNext with StorageOS
     description: Setting MS SQL with persistent storage.
-    module: explore/vnext
+    module: explore/mssql
   -
     title: MongoDB with StorageOS
     description: Setting up MongoDB with persistent storage.

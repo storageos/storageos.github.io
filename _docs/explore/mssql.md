@@ -2,17 +2,17 @@
 layout: guide
 title: Microsoft vNext with StorageOS
 anchor: explore
-module: explore/vnext
+module: explore/mssql
 ---
 
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2016 with StorageOS
 
- Microsoft's latest SQL Server release represents a major update with availability for Linux platform support as well support to run as a  container.
+ Microsoft's latest SQL Server release represents a major update with availability for Linux platform support as well support to run as a container.
 
 ## Linux Support
 
-For Ubuntu, the Docker container requires Xenial 16.04, it will not to run on older distributions however it will run on the StorageOS  Vagrant and ISO builds which are Xenial 16.04 based.
+For Ubuntu, the Docker container requires Xenial 16.04, it will not run on older distributions however it will run on the StorageOS  Vagrant and ISO builds which are Xenial 16.04 based.
 
 ## More Information
 
@@ -22,7 +22,7 @@ Before you start, please ensure you have StorageOS installed and ready on a Linu
 
 ## Install MS SQL Server with StorageOS
 
-1. To get the latest MS SQL Server Linux container running, follow the command below:
+1. Get the latest MS SQL Server Linux container up and running
 
    ```
    $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \

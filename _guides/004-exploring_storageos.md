@@ -24,4 +24,8 @@ sections:
     title: MongoDB with StorageOS
     description: Setting up MongoDB with persistent storage.
     module: explore/mongodb
+  -
+    title: MySQL with StorageOS
+    description: Setting up MySQL with persistent storage.
+    module: explore/mysql
 ---

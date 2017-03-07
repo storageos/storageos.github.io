@@ -20,8 +20,6 @@ There are several benefits with deploying MySQL with StorageOS:
 
 For this example we will demonstrate how to use the StorageOS volume driver plugin with the latest MySQL container image.  
 
-For details on configuring and linking this container image please visit the  [MySQL Docker Hub Repository](https://hub.docker.com/_/mysql/ "MySQL Repository").
-
 Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the *Installation Guide* for further details.
 
 ## Configuration
@@ -247,3 +245,7 @@ Let's use the `docker exec` command to run SLQ commands from inside the containe
    mysql> quit;
    root@771452bc98c2:/# exit
    ```
+
+## Further Reading
+
+For more details on configuring and linking this container image please visit the  [MySQL Docker Hub Repository](https://hub.docker.com/_/mysql/ "MySQL Repository").

@@ -8,15 +8,17 @@ module: explore/postgres
 
 # ![image](/images/docs/explore/postgresqllogo.png) PostgreSQL with StorageOS
 
-PostgreSQL, or simpley "Postgres", is an open source object-relational database management system (ORDBMS). 
+PostgreSQL, or simply "Postgres", is an open source object-relational database management system (ORDBMS). 
 
-Postgres is deployed across a wide variety of platforms with a mix of  workloads ranging from small, single-node use cases to large Internet-facing with many concurrent users.
+Postgres is deployed across a wide variety of platforms with a mix of workloads ranging from small, single-node use cases to large Internet-facing with many concurrent users.
 
 For this exercise we will demonstrate how easily you can get Postgres up and running with StorageOS. <!--- and then explore some of the perfromance characteristics using the built-in Postgres benchmark tool PgBench --->
 
+Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the *Installation Guide* for further details.
+
 ## Configuration
 
-Therea are a number of optional paramaters that can be passed as environment variables - these are documented in more detail on the [Postgres Docker Hub Repository](https://hub.docker.com/_/postgres/ "Postgres Repository").
+There are a number of optional paramaters that can be passed as environment variables - these are documented in more detail on the [Postgres Docker Hub Repository](https://hub.docker.com/_/postgres/ "Postgres Repository").
 
 The StorageOS volume will appear to Postgres as a file system mountpoint and as a result the database will fail to initialise as the data directory will not appear empty because a lost+found directory will be present from the root.  
 
@@ -27,10 +29,10 @@ Different SQL databases manage the lost+found directory in different ways.  For 
 
 ## Create a Postgres Data Volume
 
-1. The most efective way to create a volume is using the StorageOS CLI - for this example we'll create a 2GB volume called *pgdata* from the *default* StorageOS volume pool.  
+1. The most effective way to create a volume is using the StorageOS CLI - for this example we'll create a 2GB volume called *pgdata* from the *default* StorageOS volume pool.  
 
    ```
-   $ storageos cli volume create -name=pgdata -size=2 -pool=default -description=mysql
+   $ storageos cli volume create -name=pgdata -size=2 -pool=default -description=postgres
    ```
 
 2. Result from the StorageOS CLI

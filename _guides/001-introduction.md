@@ -9,7 +9,7 @@ sections:
     description: This section introduces you to the documentation.
     module: introduction/whatisstorageos
   -
-    title: Architectire Overview
+    title: Architecture Overview
     description: Understand the StorageOS components.
     module: introduction/architecture
 ---

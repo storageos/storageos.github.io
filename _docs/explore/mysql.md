@@ -69,7 +69,7 @@ Alternatively, configuration options can be passed as flags to mysqld. This will
 1. To get the latest working MySQL container image up and running use the following Docker command.
 
    ```
-   docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos /
+   docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos \
       -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found
    ```
 
@@ -182,7 +182,8 @@ Let's use the `docker exec` command to run SLQ commands from inside the containe
 3. Log into another node and start a new MySQL container instance and mount the same StorageOS mysqldata volume we created earlier
 
    ```
-   $ docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found
+   $ docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos \
+        -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found
    ```
 
 4. Connect to the MySQL database

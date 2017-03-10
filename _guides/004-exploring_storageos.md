@@ -28,4 +28,8 @@ sections:
     title: MySQL with StorageOS
     description: Setting up MySQL with persistent storage.
     module: explore/mysql
+  -
+    title: PostgreSQL with StorageOS
+    description: Setting up PostgreSQL with persistent storage.
+    module: explore/postgres
 ---

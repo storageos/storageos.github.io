@@ -5,7 +5,7 @@ anchor: reference
 
 sections:
   -
-    title: Command Line Reference
+    title: Command Line Interface (storageos)
     description: Describes the command line tools
     module: reference/cli
   -

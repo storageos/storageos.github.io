@@ -7,49 +7,48 @@ module: reference/cli
 
 # Command Line Reference
 
-The command line interface (CLI) can be run with Docker.
+## Overview
 
-## Example Usage
+The `storageos` command line interface is used to manage cluster-wide configuration. `storageos` is designed to be familiar to Docker CLI users.
 
-```bash
-# docker run quay.io/storageos/storageos:beta
-usage: storageos [--version] [--help] <command> [<args>]
-
-Available commands are:
-    batch           Enables batch updates
-    bootstrap       Loads inital data
-    client          Runs a StorageOS client for mounting remote StorageOS volumes
-    controller      Reports on controller status
-    dataplane       Starts dataplane
-    event           Manages events
-    health          Checks StorageOS node health and returns status
-    host            Manages clients
-    pool            Manages storage pools
-    presentation    Manages presentation groups
-    scan            Scans for hardware changes
-    server          Runs a StorageOS server
-    tag             Manages tags
-    tagtype         Manages tag types
-    template        Manages auto-naming templates
-    version         Prints the StorageOS version
-    volume          Manages volumes
-```
-
-## Environment
-
-`STORAGEOS_USER`: The username to authenticate to the API with.
-
-`STORAGEOS_PASSWORD`: The password to authenticate to the API with.
-
-`STORAGEOS_API_ADDR`: The ip address and port of the API endpoint.  Defaults to `localhost:8000`.
+## Usage
 
 ```bash
-# docker run -e STORAGEOS_API_ADDR=10.245.103.2:8000 -e STORAGEOS_USER=storageos -e STORAGEOS_PASSWORD=storageos quay.io/storageos/storageos:alpha volume list
-ID                                    NAME                       DESCRIPTION  SIZE  DC
-7822ede0-d8c8-4c04-eea1-4ecbfb792777  vol-london-mysql-prod                   10
-92b987fd-8c6b-2f82-b704-d2f1d6190db0  vol-london-mysql-prod_rep               10
-d4815b79-1d92-b5e8-fad0-d91d8df8ee18  redis50                                 10
-f5316c79-de20-ba87-4727-a708bd0f53e4  crasher01                               10
+storageos [OPTIONS] COMMAND [ARG...]
 ```
 
+## Options
 
+```bash
+      --config string      Location of client config files (default "~/.storageos")
+  -D, --debug              Enable debug mode
+      --help               Print usage
+  -H, --host list          Daemon socket(s) to connect to (default [])
+  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
+  -p, --password string    API password
+      --tls                Use TLS; implied by --tlsverify
+      --tlscacert string   Trust certs signed only by this CA (default "~/.storageos/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "~/.storageos/cert.pem")
+      --tlskey string      Path to TLS key file (default "~/.storageos/key.pem")
+      --tlsverify          Use TLS and verify the remote
+  -u, --username string    API username
+  -v, --version            Print version information and quit
+
+Management Commands:
+  namespace   Manage namespaces
+  pool        Manage capacity pools
+  rule        Manage rules
+  system      Manage StorageOS
+  volume      Manage volumes
+
+Commands:
+  version     Show the StorageOS version information
+```
+
+## Environment variables
+
+The following environment variables are supported by `storageos`. Any flags set in the command line override their corresponding environment variables.
+
+* `STORAGEOS_USERNAME` Username for API authenticatation, equivalent of -u.
+* `STORAGEOS_PASSWORD` Password for API authenticatation, equivalent of -p.
+* `STORAGEOS_HOST` ip_address:port to connect to, equivalent of -H.

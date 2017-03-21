@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: Command line reference
+title: Command line interface
 anchor: reference
 module: reference/cli
 ---
 
-# Command Line Reference
+# Command Line Interface
 
 ## Overview
 
@@ -47,8 +47,8 @@ Commands:
 
 ## Environment variables
 
-The following environment variables are supported by `storageos`. Any flags set in the command line override their corresponding environment variables.
+`storageos` supports the following environment variables. Any flags set in the command line override their corresponding environment variables.
 
-* `STORAGEOS_USERNAME` Username for API authenticatation, equivalent of -u.
-* `STORAGEOS_PASSWORD` Password for API authenticatation, equivalent of -p.
+* `STORAGEOS_USERNAME` Username for API authentication, equivalent of -u.
+* `STORAGEOS_PASSWORD` Password for API authentication, equivalent of -p.
 * `STORAGEOS_HOST` ip_address:port to connect to, equivalent of -H.

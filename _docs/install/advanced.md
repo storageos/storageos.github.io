@@ -73,7 +73,8 @@ $ docker run -d --name dataplane \
 	storageos/storages dataplane
 ```
 
-Environment variables (described below) be added to tune configuration.
+Environment variables (see [Configuration Reference](../reference/configuration.html))
+can be added to tune configuration.
 
 ### Docker Compose
 
@@ -124,7 +125,8 @@ services:
       - "8999:8999"
 ```
 
-Environment variables (see [Configuration Reference](../reference/configuration.html)) can be added to tune configuration.
+Environment variables (see [Configuration Reference](../reference/configuration.html))
+can be added to tune configuration.
 
 Start the containers with:
 

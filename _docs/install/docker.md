@@ -5,9 +5,9 @@ anchor: install
 module: install/docker
 ---
 
-# Docker Plugin Installation (Docker Engine 1.13+)
+# Docker Managed Plugin (Docker Engine 1.13+)
 
-Use Docker Managed Plugins to install StorageOS.
+Use the StorageOS managed plugin to install StorageOS on Docker Engine 1.13+
 
 ## Quick Start
 

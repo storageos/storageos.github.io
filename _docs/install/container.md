@@ -5,9 +5,10 @@ anchor: install
 module: install/container
 ---
 
-# Docker Legacy (Docker Engine 1.10 - 1.12)
+# Docker Application Container (Docker Engine 1.10 - 1.12)
 
-Install StorageOS as a container when Docker managed plugins aren't available.
+Install StorageOS as an application container when Docker managed plugins aren't
+available.
 
 ## Quick Start
 
@@ -23,7 +24,7 @@ $ docker run -d --name storageos \
 	--device /dev/fuse \
 	-v /var/lib/storageos:/var/lib/storageos:rshared \
 	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/storages server
+	storageos/node server
 ```
 
 ## Overview
@@ -74,7 +75,7 @@ $ docker run -d --name storageos \
 	--device /dev/fuse \
 	-v /var/lib/storageos:/var/lib/storageos:rshared \
 	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/storages server
+	storageos/node server
 ```
 
 If the KV store is not local, supply the IP address of the Consul service using
@@ -91,7 +92,7 @@ $ docker run -d --name storageos \
 	--device /dev/fuse \
 	-v /var/lib/storageos:/var/lib/storageos:rshared \
 	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/storages server
+	storageos/node server
 $ docker plugin install storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 

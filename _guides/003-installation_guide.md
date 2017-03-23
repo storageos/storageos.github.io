@@ -13,7 +13,7 @@ sections:
     description: Docker managed plugin install for Docker Engine 1.13+
     module: install/docker
   -
-    title: Docker (legacy)
+    title: Docker (1.10 - 1.12)
     description: Docker container install for Docker Engine 1.10 - 1.12
     module: install/container
   -

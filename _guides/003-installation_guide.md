@@ -25,6 +25,10 @@ sections:
     description: Kubernetes configuration
     module: install/kubernetes
   -
+    title: Consul
+    description: Consul Key/Value Store
+    module: install/consul    
+  -
     title: Troubleshooting Guide
     description: This section describes how to troubleshoot known issues and resolve them.
     module: install/troubleshoot

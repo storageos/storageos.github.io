@@ -9,21 +9,25 @@ sections:
     description: Learn about the various ways to deploy StorageOS.
     module: install/deployment
   -
-    title: Getting the StorageOS Media
-    description: This section covers obtaining the appropriate Storage OS media for install.
-    module: install/media
+    title: Docker
+    description: Docker managed plugin install for Docker Engine 1.13+
+    module: install/docker
   -
-    title: Installation from ISO Image
-    description: This section covers the ISO-based installation of StorageOS.
-    module: install/iso
+    title: Docker (1.10 - 1.12)
+    description: Docker container install for Docker Engine 1.10 - 1.12
+    module: install/container
   -
-    title: Installation using Vagrant
-    description: This section covers the Vagrant-based installation of StorageOS
-    module: install/vagrant
+    title: Docker (advanced)
+    description: Alternative deployment methods.
+    module: install/advanced
   -
-    title: Starting up the Web UI
-    description: This section describes how to cstart the Web UI for the first time.
-    module: install/startwebui
+    title: Kubernetes
+    description: Kubernetes configuration
+    module: install/kubernetes
+  -
+    title: Consul
+    description: Consul Key/Value Store
+    module: install/consul    
   -
     title: Troubleshooting Guide
     description: This section describes how to troubleshoot known issues and resolve them.

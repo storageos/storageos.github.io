@@ -13,6 +13,10 @@ sections:
     description: Describes the HTTP API
     module: reference/api
   -
+    title: Configuration
+    description: Configuration reference
+    module: reference/configuration    
+  -
     title: Docker Client Installation
     description: How to configure Docker Client
     module: reference/docker_client

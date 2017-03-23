@@ -5,7 +5,7 @@ anchor: install
 module: install/docker
 ---
 
-# Docker Installation (Docker Engine 1.13+)
+# Docker Plugin Installation (Docker Engine 1.13+)
 
 Use Docker Managed Plugins to install StorageOS.
 
@@ -13,7 +13,7 @@ Use Docker Managed Plugins to install StorageOS.
 
 ```bash
 $ sudo mkdir /var/lib/storageos
-$ sudo docker plugin install storageos/docker
+$ sudo docker plugin install storageos/plugin
 ```
 
 ## Overview
@@ -41,8 +41,8 @@ $ sudo mkdir /var/lib/storageos
 If Consul is running locally, install the plugin using the defaults:
 
 ```bash
-$ docker plugin install --alias storageos storageos/docker
-Plugin "storageos/docker" is requesting the following privileges:
+$ docker plugin install --alias storageos storageos/plugin
+Plugin "storageos/plugin" is requesting the following privileges:
  - network: [host]
  - mount: [/var/lib/storageos]
  - mount: [/dev]
@@ -62,7 +62,7 @@ If the KV store is not local, supply the IP address of the Consul service using
 the `KV_ADDR` parameter:
 
 ```bash
-$ docker plugin install --alias storageos storageos/docker KV_ADDR=127.0.0.1:8500
+$ docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
 Alternatively, to setup a single test StorageOS instance, you can use the
@@ -70,7 +70,7 @@ built-in BoltDB.  Note that each StorageOS node will be isolated, so features
 such as replication and volume failover will not be available.
 
 ```bash
-$ docker plugin install --alias storageos storageos/docker KV_BACKEND=boltdb
+$ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
 Other configuration parameters (see [Configuration Reference](../reference/configuration.html))

@@ -92,7 +92,7 @@ $ docker run -d --name storageos \
 	-v /var/lib/storageos:/var/lib/storageos:rshared \
 	-v /run/docker/plugins:/run/docker/plugins \
 	storageos/storages server
-$ docker plugin install storageos/docker KV_ADDR=127.0.0.1:8500
+$ docker plugin install storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
 Alternatively, to setup a single test StorageOS instance, you can use the

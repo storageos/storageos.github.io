@@ -1,27 +1,21 @@
 ---
 layout: default
 ---
-<div id="content">
-
-  <div class="guides">
-    {% assign anchor = page.anchor %}
-    {% assign title = page.module %}
-    {% include guide-menu.html %}
-
-    <div id="docContents">
-      <a name="top"></a>
-      {{ content }}
-      <div id="toTop">
-        <a href="#top">Back to top</a>
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="guides col-sm-3 col-lg-2">
+      {% assign anchor = page.anchor %}
+      {% assign title = page.module %}
+      {% include guide-menu.html %}
     </div>
-    <div class="clear"></div>
+    <div class="content col-sm-9 col-lg-10">
+      {{ content }}
+    </div>
   </div>
-
 </div>
 
 <script type="text/javascript">
   function toggleTitlesMenu() {
-    jQuery('#docTitles').toggleClass('open');
+    jQuery('#side-menu').toggleClass('open');
   }
 </script>

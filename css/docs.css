@@ -1,0 +1,32 @@
+.guide-list .title {
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.guide-list > ul {
+	padding-left: 20px;
+}
+.section-list > ul {
+	padding-left: 10px;
+}
+.guide-list ul li {
+	list-style: none;
+}
+.guide-list ul li a {
+	padding: 7.5px 10px 7.5px 20px;
+	display: block;
+}
+.guide-list .guide-link.title:before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 0px;
+    border-style: solid;
+    border-width: 5px 0 5px 8px;
+    border-color: transparent transparent transparent #b5e61e;
+    transform: rotate(0deg);
+    transition: 0.3s;
+}
+.guide-list .guide-link.title.on:before {
+    transform: rotate(90deg);
+}

@@ -1,89 +1,28 @@
 <header id="header">
-	<div id="main-header" class="container">
-		<div class="col-lg-4 col-md-4">
-			<div class="logo">
-				<a href="http://storageos.com"><img src="{{ site.baseurl }}/images/logo.png" role="presentation" /></a>
-			</div>
-		</div>
-		<div class="col-lg-8 col-md-8">
-			<div class="row">
-				<ul class="top-bar-links">
-					<li>
-						<img src="{{ site.baseurl }}/images/support.png" role="presentation" />
-						<a href="http://support.storageos.com/" class="none-button" onClick={this.goToSupport}>Support</a>
-					</li>
-					<li>
-						<img src="{{ site.baseurl }}/images/talk-to-us.png" role="presentation" />
-						<a href="http://storageos.com/contact/" class="none-button">Talk to us</a>
-					</li>
-					<li class="divider"></li>
-					<li><a class="btn style-1" href="http://support.storageos.com/">Login</a></li>
-					<li class="header-account-profile-wrapper"><a class="btn style-2" href="https://my.storageos.com/auth/create-account">Get Started</a></li>
-				</ul>
-
-			</div>
-			<div id="primary-menu" class="row">
-				<nav class="navbar navbar-default">
-					<div class="container-fluid">
-						<div class="col-xs-6">
-							<a class="flyout-button" onclick="toggleTitlesMenu()"><img src="{{ site.baseurl }}/images/menu-icon.png" role="presentation" /><span class="menu-text">Guides</span></a>
-						</div>
-						<div class="col-xs-6">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-									<span class="sr-only">Toggle navigation</span>
-									<span class="icon-bars">
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</span>
-									<span class="menu-text">Main Menu</span>
-								</button>
-							</div>
-						</div>
-						<div class="clear"></div>
-						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-							<ul class="nav navbar-nav navbar-right">
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Why StorageOS<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="http://storageos.com/why-storageos/">Why StorageOS?</a></li>
-										<li><a href="http://storageos.com/use-cases/">Use Cases</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="http://storageos.com/features/">Features</a>
-								</li>
-								<li>
-									<a href="http://storageos.com/pricing/">Pricing</a>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Resources<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="http://storageos.com/demo/">Demo</a></li>
-										<li><a href="http://storageos.com/faq/">FAQ</a></li>
-									</ul>
-								</li>
-								<li>
-									<a href="http://storageos.com/blogs/">Blogs</a>
-								</li>
-								<li class="dropdown">
-									<a href="#" class="dropdown-toggle btn btn-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Company<span class="caret"></span></a>
-									<ul class="dropdown-menu">
-										<li><a href="http://storageos.com/company/">About Us</a></li>
-										<li><a href="http://storageos.com/careers/">Careers</a></li>
-										<li><a href="http://storageos.com/investor-relations/">Investor Relations</a></li>
-										<li><a href="http://storageos.com/category/news/">News</a></li>
-										<li><a href="http://storageos.com/partners/">Partners</a></li>
-										<li><a href="http://storageos.com/team/">Team</a></li>
-										<li><a href="http://storageos.com/events/">Events</a></li>
-									</ul>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
-	</div>
+	<div class="container">
+		<!-- Static navbar -->
+		<nav class="navbar">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"><img src="{{ site.baseurl }}/images/logo.png" alt=""></a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#">Product</a></li>
+						<li><a href="#">Pricing</a></li>
+						<li><a href="#">Get Started</a></li>
+						<li><a href="#">Docs</a></li>
+						<li><a href="#">Company</a></li>
+						<li><a href="#">Blog</a></li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div><!--/.container-fluid -->
+		</nav>
+	</div> <!-- /container -->
 </header>

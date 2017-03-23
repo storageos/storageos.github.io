@@ -87,7 +87,7 @@ Write the compose file (below) to a file, e.g. `/etc/storageos/docker-compose.ym
 version: '2'
 services:
   control:
-    image: storageos/storageos:beta
+    image: storageos/node:beta
     command: "controlplane"
     restart: always
     environment:
@@ -106,7 +106,7 @@ services:
       - "/var/lib/storageos:/var/lib/storageos:rshared"
       - "/run/docker/plugins:/run/docker/plugins"
   data:
-    image: storageos/storageos:beta
+    image: storageos/node:beta
     command: "dataplane"
     restart: always
     env_file: /etc/default/storageos

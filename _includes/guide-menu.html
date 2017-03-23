@@ -1,7 +1,4 @@
-<div id="docTitles" class="guide-list">
-    <div class="main-title clickable {% if page.url == '/' %}active{% endif %}">
-        <a class="" href="/">Guides</a>
-    </div>
+<div id="side-menu" class="guide-list col-sm-4">
     <ul>
         {% for guide in site.guides %}
         <li>
@@ -18,5 +15,4 @@
         </li>
         {% endfor %}
     </ul>
-    <button class="push-menu-close-button" onclick="toggleTitlesMenu()"></button>
 </div>

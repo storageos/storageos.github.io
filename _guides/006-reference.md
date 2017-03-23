@@ -15,17 +15,14 @@ sections:
   -
     title: Configuration
     description: Configuration reference
-    module: reference/configuration    
+    module: reference/configuration
   -
-    title: Docker Client Installation
-    description: How to configure Docker Client
-    module: reference/docker_client
+    title: Release notes
+    description: StorageOS release notes
+    module: reference/release_notes
   -
-    title: Docker Integration
-    description: How to configure Docker
-    module: reference/docker
-  -
-    title: Docker Image Reference
-    description: This section contains reference information about the StorageOS docker image.
-    module: reference/docker_image
+    title: Glossary
+    description: Common terms and definitions
+    module: reference/glossary
+
 ---

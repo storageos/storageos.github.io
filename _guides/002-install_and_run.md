@@ -1,13 +1,9 @@
 ---
 layout: default
-title: Installation Guide
+title: Install and run
 anchor: install
 
 sections:
-  -
-    title: Installation Requirements
-    description: Learn about the various ways to deploy StorageOS.
-    module: install/deployment
   -
     title: Docker
     description: Docker managed plugin install for Docker Engine 1.13+
@@ -27,9 +23,5 @@ sections:
   -
     title: Consul
     description: Consul Key/Value Store
-    module: install/consul    
-  -
-    title: Troubleshooting Guide
-    description: This section describes how to troubleshoot known issues and resolve them.
-    module: install/troubleshoot
+    module: install/consul
 ---

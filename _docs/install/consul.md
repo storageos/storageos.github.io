@@ -5,7 +5,7 @@ anchor: install
 module: install/consul
 ---
 
-# Consul Kev/Value Store
+# Consul Key/Value Store
 
 StorageOS requires access to a Key/Value store to persist cluster configuration
 and for distributed locking.

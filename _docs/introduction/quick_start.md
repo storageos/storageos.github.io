@@ -16,7 +16,7 @@ $ vagrant up
 $ vagrant ssh
 ```
 
-* Install the latest Docker engine following Step 1 from https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04.
+* Install the latest Docker engine following Step 1 from [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04).
 
 * Install StorageOS.
 ```bash
@@ -24,7 +24,7 @@ $ sudo mkdir /var/lib/storageos
 $ sudo docker plugin install storageos/plugin KV_BACKEND=boltdb
 ```
 
-* StorageOS is now running and provisioning a 10GB volume at xxxx. To confirm, run
+* That's it - StorageOS is now running and provisioning a 10GB volume at xxxx. To confirm, run
 ```bash
 $ storageos volume list
 ```

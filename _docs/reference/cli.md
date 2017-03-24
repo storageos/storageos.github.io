@@ -52,3 +52,50 @@ Commands:
 * `STORAGEOS_USERNAME` Username for API authentication, equivalent of -u.
 * `STORAGEOS_PASSWORD` Password for API authentication, equivalent of -p.
 * `STORAGEOS_HOST` ip_address:port to connect to, equivalent of -H.
+
+## Commands
+
+Run `storageos COMMAND COMMAND --help` to see flags.
+
+```bash
+Usage:	storageos namespace COMMAND
+
+Commands:
+  create      Create a namespace
+  inspect     Display detailed information on one or more namespaces
+  ls          List namespaces
+  rm          Remove one or more namespaces
+  update      Update a namespace
+```
+
+```bash
+Usage:	storageos pool COMMAND
+
+Commands:
+  create      Create a capacity pool
+  inspect     Display detailed information on one or more capacity pools
+  ls          List capacity pools
+  rm          Remove one or more capacity pools
+```
+
+```bash
+Usage:	storageos rule COMMAND
+
+Commands:
+  create      Create a rule
+  inspect     Display detailed information on one or more rules
+  ls          List rules
+  rm          Remove one or more rules
+  update      Update a rule
+```
+
+```bash
+Usage:	storageos volume COMMAND
+
+Commands:
+  create      Create a volume
+  inspect     Display detailed information on one or more volumes
+  ls          List volumes
+  rm          Remove one or more volumes
+  update      Update a volume
+```

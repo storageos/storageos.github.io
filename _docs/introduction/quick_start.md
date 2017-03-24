@@ -22,3 +22,8 @@ $ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 Note that replication and failover are not available on a single node install.
 
 ## Explore the CLI
+
+```bash
+$ storagos --help
+$ storageos volume list
+```

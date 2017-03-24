@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Reference Guide
+title: Reference
 anchor: reference
 
 sections:

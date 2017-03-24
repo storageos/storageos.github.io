@@ -9,7 +9,7 @@ module: introduction/overview
 
 StorageOS enables persistent storage for containers. It allows developers to build stateful containerized apps.
 
-StorageOS is available from the Docker Hub as a volume plugin (for Docker 1.13+) or as a container image (for Docker 1.10-1.12).
+StorageOS is available from the Docker Hub as a volume plugin (for Docker 1.13+) or as a container image (Docker 1.10-1.12) for 64-bit Linux only.
 
 ## Popular tasks
 

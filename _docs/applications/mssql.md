@@ -12,7 +12,7 @@ module: applications/mssql
 
 ## Linux Support
 
-For Ubuntu, the Docker container requires Xenial 16.04, it will not run on older distributions however it will run on the StorageOS  Vagrant and ISO builds which are Xenial 16.04 based.
+For Ubuntu, the Docker container requires Xenial 16.04.
 
 ## More Information
 

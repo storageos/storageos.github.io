@@ -27,7 +27,7 @@ Before you launch Vagrant for the first time to build out your cluster, you may 
 2. Alternatively you can set the necessary enviroment variables for the OS you are running:
 
    ![icon](/images/docs/iso/macterm.png) For macOS and Linux, set your environment from the terminal window you will run Vagrant commands from:
-    
+
    ```bash
    STORAGEOS_NODES=1
    STORAGEOS_CPU=1
@@ -41,7 +41,7 @@ Before you launch Vagrant for the first time to build out your cluster, you may 
    ```
 
    ![icon](/images/docs/iso/winterm.png) For Windows, set your environment from the command window you will run Vagrant commands from:
-    
+
    ```doscon
    set STORAGEOS_NODES=1
    set STORAGEOS_CPU=1

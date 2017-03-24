@@ -21,7 +21,7 @@ $ sudo docker plugin install storageos/plugin
 ## Requirements
 
 The `docker plugin install` method requires Docker 1.13+ or above.  See
-[Docker (legacy)](container.html) for installation instructions for
+[Docker (container)](container.html) for installation instructions for
 Docker 1.10 to 1.12.
 
 ### KV Store

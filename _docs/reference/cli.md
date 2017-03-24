@@ -55,7 +55,7 @@ Commands:
 
 ## Commands
 
-Run `storageos COMMAND COMMAND --help` to see flags.
+Run `storageos COMMAND SUBCOMMAND --help` to see flags.
 
 ```bash
 Usage:	storageos namespace COMMAND

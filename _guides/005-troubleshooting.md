@@ -5,7 +5,11 @@ anchor: troubleshooting
 
 sections:
 -
+  title: Installation
+  description: Installation help
+  module: troubleshooting/installation
+-
   title: Get help
   description: Get help
-  module: troubleshooting/get_help
+  module: troubleshooting/get_help  
 ---

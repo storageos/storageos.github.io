@@ -13,6 +13,7 @@ Use the StorageOS managed plugin to install StorageOS on Docker Engine 1.13+
 
 ```bash
 $ sudo mkdir /var/lib/storageos
+$ sudo modprobe nbd nbds_max=1024
 $ sudo docker plugin install storageos/plugin
 ```
 
@@ -28,13 +29,27 @@ The `docker plugin install` method requires Docker 1.13+ or above.  See
 StorageOS relies on an external key-value store for configuration data and cluster
 management.  See [Consul installation](consul.html) for more details.
 
-### Installation
+## Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
 present on each node where StorageOS runs.  Prior to installation, create it:
 
 ```bash
 $ sudo mkdir /var/lib/storageos
+```
+
+NBD is a default Linux kernel module that allows block devices to be run in
+userspace.  To enable the module and increase the number of allowable devices,
+you must either run:
+
+```bash
+$ sudo nbd nbds_max=1024
+```
+
+Also add the following line to `/etc/modules` so it is loaded on reboot:
+
+```
+nbd nbds_max=1024
 ```
 
 If Consul is running locally, install the plugin using the defaults:

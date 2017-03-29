@@ -14,7 +14,8 @@ available.
 
 ```bash
 $ sudo mkdir /var/lib/storageos
-$ wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo modprobe nbd nbds_max=1024
 $ docker run -d --name storageos \
 	-e HOSTNAME \
 	--net=host \
@@ -61,7 +62,21 @@ contents:
 
 This file instructs Docker to use the volume plugin API listening on the
 specified Unix domain socket.  Note that the socket is only accessible by the
-root user, and it is only present when the StorageOS client container is running.  
+root user, and it is only present when the StorageOS client container is running.
+
+NBD is a default Linux kernel module that allows block devices to be run in
+userspace.  To enable the module and increase the number of allowable devices,
+you must either run:
+
+```bash
+$ sudo nbd nbds_max=1024
+```
+
+Also add the following line to `/etc/modules` so that NBD is loaded on reboot:
+
+```
+nbd nbds_max=1024
+```
 
 If Consul is running locally, install the plugin using the defaults:
 

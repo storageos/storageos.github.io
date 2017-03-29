@@ -40,6 +40,21 @@ most users should use the [managed plugin install](docker.html) method.
 StorageOS relies on an external key-value store for configuration data and cluster
 management.  See [Consul installation](consul.html) for more details.
 
+### Routable IP Address
+
+StorageOS nodes must be able to contact each other over the network.  By default,
+the node's first non-loopback address will be configured as the `ADVERTISE_IP`.
+In some cases (such as with Vagrant installations), this will not be appropriate
+and it will need to be set manually.
+
+Use `ip a` to list available ip addresses, and then configure StorageOS to use a
+specific address by adding `-e ADVERTISE_IP=<ip>` to the StorageOS docker run
+command.
+
+```
+sudo docker plugin install storageos/plugin ADVERTISE_IP=123.123.123.123
+```
+
 ## Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be

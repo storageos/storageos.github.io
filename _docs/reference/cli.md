@@ -257,6 +257,57 @@ $ storageos volume inspect legal/scratch1
 ]
 ```
 
+### rule
+
+Create a new rule in default namespace:
+
+```
+$ storageos rule create --namespace default --selector env=prod --operator == --action add --label storageos.feature.replicas=2 replicator
+default/replicator
+```
+
+List rules:
+
+```
+$ storageos rule ls
+NAMESPACE/NAME        OPERATOR            SELECTOR                       ACTION              LABELS
+default/dev-marker    notin               storageos.feature.replicas=1   add                 env=dev
+default/prod-marker   gt                  storageos.feature.replicas=1   add                 env=prod
+default/replicator    ==                  env=prod                       add                 storageos.feature.replicas=2
+default/uat-marker    lt                  storageos.feature.replicas=2   add                 env=uat
+```
+
+Inspect rule:
+
+```
+$ storageos rule inspect default/replicator
+[
+    {
+        "id": "2490e656-a381-46ca-f349-9a0b61822a2e",
+        "name": "replicator",
+        "namespace": "default",
+        "description": "",
+        "active": true,
+        "weight": 5,
+        "operator": "==",
+        "action": "add",
+        "selectors": {
+            "env": "prod"
+        },
+        "labels": {
+            "storageos.feature.replicas": "2"
+        }
+    }
+]
+```
+
+Delete rule:
+
+```
+$ storageos rule rm default/replicator
+default/replicator
+```
+
 
 ## API Error Codes
 

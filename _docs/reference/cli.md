@@ -5,19 +5,14 @@ anchor: reference
 module: reference/cli
 ---
 
-# StorageOS Command Line
+# Command Line Interface
 
-## storageos Overview
+## Overview
 
-The `storageos` command line interface (CLI) is used to manage StorageOS cluster-wide storage configuration and has been implemented with a familiar Docker and Kuberneres CLI look and feel for taking common command line arguments:
+The `storageos` command line interface (CLI) is used to manage cluster-wide
+configuration. `storageos` is designed to be familiar to Docker CLI users.
 
-`storageos [OPTIONS] COMMAND [SUBCOMMAND] [flag] [ARG...]`
-
-`storageos [ --help | -v | --version ]`
-
-## Syntax
-
-To list available commands, either run `storageos` with no parameters or envoke storageos help with the `--help` option:
+## Usage
 
 ```
 $ storageos
@@ -34,9 +29,9 @@ Options:
   -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
   -p, --password string    API password
       --tls                Use TLS; implied by --tlsverify
-      --tlscacert string   Trust certs signed only by this CA (default "/root/.storageos/ca.pem")
-      --tlscert string     Path to TLS certificate file (default "/root/.storageos/cert.pem")
-      --tlskey string      Path to TLS key file (default "/root/.storageos/key.pem")
+      --tlscacert string   Trust certs signed only by this CA (default "~/.storageos/ca.pem")
+      --tlscert string     Path to TLS certificate file (default "~/.storageos/cert.pem")
+      --tlskey string      Path to TLS key file (default "~/.storageos/key.pem")
       --tlsverify          Use TLS and verify the remote
   -u, --username string    API username
   -v, --version            Print version information and quit
@@ -56,7 +51,9 @@ Run 'storageos COMMAND --help' for more information on a command.
 
 ## Description
 
-To run any storageos command you need API authorization.  This can be achieved directly from the command line using the `-u` and `-p` username and password options.
+Most CLI commands require authentication to the API.  Credentials can be
+supplied by adding the `-u` and `-p` flags.  Initially, the username and password
+are both set to `storageos`.
 
 ```
 $ storageos volume list
@@ -69,66 +66,71 @@ default/test-vol       11 GB                                   active
 
 ### Environment variables
 
-In addition to the username and password flag options, the following environment variables can be exported removing the need to enter the command line options each time.
+In addition to the username and password flag options, the following environment
+variables can be exported removing the need to enter the command line options
+each time.
 
 <!--- the escape characters are used to compensate for no cell padding - these can be removed once the CSS has been updated or the table will be unreadable --->
 
-| Environment Variable | &emsp; Description                     | &emsp; Equivalent to |
-|----------------------|----------------------------------------|---------------------:|
-| `STORAGEOS_USERNAME` | &emsp; Username for API authentication | &emsp; `-u`          |
-| `STORAGEOS_PASSWORD` | &emsp; Password for API authentication | &emsp; `-p`          |
-| `STORAGEOS_HOST`     | &emsp; Daemon socket(s) to connect to  | &emsp; `-H`          |
-|                      |                                        |                      |
+| Environment Variable | Description                     | Equivalent to |
+|----------------------|---------------------------------|--------------:|
+| `STORAGEOS_USERNAME` | Username for API authentication | `-u`          |
+| `STORAGEOS_PASSWORD` | Password for API authentication | `-p`          |
+| `STORAGEOS_HOST`     | <ip address:port> of API server | `-H`          |
+|                      |                                 |               |
 
 <!--- a blank row is required to add a new line; not required before a new heading --->
 
-To set a default username and password, simply export the values for each environment variable
+To set a default username and password export the values for each environment variable
 
 ```bash
 export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 ```
 
-{% icon fa-pencil-square-o %} **Note**: The -u and -p options specified from the command line override the values from the corresponding environment variables
+**Note**: Flags set on the command line override the values from the corresponding
+environment variables
 
-{% icon fa-pencil-square-o %} **Note**: Unless otherise noted, assume username and password environment variables have been exported for the examples that follow
+**Note**: Unless otherwise noted, assume username and password environment
+variables have been exported for the examples that follow
 
 ## Management Commands
 
 Each of the storageos management commands requires a subcommand to run.  
 
-Use `storageos COMMAND SUBCOMMAND --help` to view the available available option flags.
+Use `storageos COMMAND SUBCOMMAND --help` to view the available available option
+flags.
 
 ### Commands
 
 There are five management commands available from the storageos CLI
 
-| Command     | &emsp; Description                                                                        |
+| Command     | Description                                                                        |
 |-------------|-------------------------------------------------------------------------------------------|
-| `namespace` | &emsp; A StorageOS namespace is a class where you organize your StorageOS volumes.        |
-|             | &emsp; By default, volumes will be created in the *default* namespace.                    |
-| `pool`      | &emsp; A StorageOS pool is a collection of storage resources that can be provisioned from.|
-|             | &emsp; By default, volumes will be created from the *default* pool.                       |
-| `rule`      | &emsp; StorageOS *rules* are created using collections of *labels* to define a set of     |
-|             | &emsp; conditions to apply a policy to. There are no default rules defined out of the box.|
-| `system`    | &emsp; StorageOS *system* refers to the running StorageOS process                         |
-| `volume`    | &emsp; StorageOS volumes are created in a defined *namespace* from a defined *pool*.  If no| 
-|             | &emsp; values are provided volumes will be created in the default pool and namespace.     |
+| `namespace` | A StorageOS namespace is a class where you organize your StorageOS volumes.        |
+|             | By default, volumes will be created in the *default* namespace.                    |
+| `pool`      | A StorageOS pool is a collection of storage resources that can be provisioned from.|
+|             | By default, volumes will be created from the *default* pool.                       |
+| `rule`      | StorageOS *rules* are created using collections of *labels* to define a set of     |
+|             | conditions to apply a policy to. There are no default rules defined out of the box.|
+| `system`    | StorageOS *system* refers to the running StorageOS process                         |
+| `volume`    | StorageOS volumes are created in a defined *namespace* from a defined *pool*.  If no|
+|             | values are provided volumes will be created in the default pool and namespace.     |
 
 
 ### Flags and Arguments
 
 For each management subcommand there are several options.  Each option supports a number of flags which are different for each management command.
 
-{% icon fa-pencil-square-o %} **Note**: For a list of subcommand argument flags and their meanings, use `COMMAND SUBCOMMAND flag --help`
+**Note**: For a list of subcommand argument flags and their meanings, use `COMMAND SUBCOMMAND flag --help`
 
-| Flag        | &emsp; Description                   | &emsp; Applies to                                  |
+| Flag        | Description                   | Applies to                                  |
 |-------------|-------------------------------------------------------------------------------------------|
-| `create`    | &emsp; Create object                 | &emsp; `namespece` `pool` `rule` `system` `volume` |
-| `events`    | &emsp; List event information        | &emsp; `system`                                    |
-| `inspect`   | &emsp; Display object properties     | &emsp; `namespece` `pool` `rule` `system` `volume` |
-| `ls`        | &emsp; List object collection        | &emsp; `namespece` `pool` `rule` `system` `volume` |
-| `rm`        | &emsp; Remove object from collection | &emsp; `namespece` `pool` `rule` `system` `volume` |
-| `update`    | &emsp; Update object                 | &emsp; `namespece` `volume`                        |
+| `create`    | Create object                 | `namespece` `pool` `rule` `system` `volume` |
+| `events`    | List event information        | `system`                                    |
+| `inspect`   | Display object properties     | `namespece` `pool` `rule` `system` `volume` |
+| `ls`        | List object collection        | `namespece` `pool` `rule` `system` `volume` |
+| `rm`        | Remove object from collection | `namespece` `pool` `rule` `system` `volume` |
+| `update`    | Update object                 | `namespece` `volume`                        |
 
 
 ## Examples: Common operations
@@ -166,7 +168,10 @@ Remove a namespace
 $ storageos namespace rm legal
 legal
 ```
-{% icon fa-pencil-square-o %} **Note**: Removing a namespace will also remove all (unmounted) volumes contained in it without warning.
+
+**Note**: Removing a namespace will also remove all unmounted volumes contained
+in it without warning.  You must specify the `--force` flag if you wish to
+delete a namespace with mounted volumes.
 
 ### pool
 
@@ -192,42 +197,13 @@ $ storageos pool rm no-ha
 no-ha
 ```
 
-Where did my volume go
-
-```
-$ storageos volume inspect legal/scratch |grep no-ha
-        "pool": "no-ha",
-```
-
-{% icon fa-pencil-square-o %} **Note***: While the pool is deleted, the volume object still remains and maintains its old pool name.
-
-
-### rule
-
-Create a test rule
-
-```
-storageos rule create test
-API error (404): 404 page not found
-```
-
-### system
-
-Get real time events from the server, supports just one flag `events`
-
-```
-storageos system events
-```
--hangs-
-
-
 
 ### volume
 
-Create a new voume and new namespace
+Create a new volume in a new namespace
 
 ```
-$ storageos volume create myvolume -n legal 
+$ storageos volume create myvolume -n legal
 legal/myvolume
 ```
 

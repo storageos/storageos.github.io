@@ -40,7 +40,7 @@ Use `ip a` to list available ip addresses, and then configure StorageOS to use a
 specific address by appending `ADVERTISE_IP=<ip>` to the plugin install command:
 
 ```
-sudo docker plugin install storageos/plugin ADVERTISE_IP=123.123.123.123
+sudo docker plugin install storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
 ```
 
 ## Installation

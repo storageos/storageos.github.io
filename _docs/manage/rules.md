@@ -9,16 +9,107 @@ module: manage/rules
 
 Rules apply custom configuration to volumes based on matched labels.
 
-Rule specific parameters:
+## Overview
 
-* selector - selector is a list of labels that will be used to match against volumes. For example selector can be `env=prod`.
-* operator - comparison operator (!|=|==|in|!=|notin|exists|gt|lt) (default "=="). Operators such as `gt` and `lt` assume that selector and volume label values of that key are digits.
-* action - `add` or `remove` (defaults to `add` for new rules). 
-* label - rule labels are either aded to matched volumes or removed (depends on action).
-* weight - all rules are sorted on weight before executed. It can be used to prioritize some rules over others.
+Rules are used for managing data policy and placement using StorageOS *features* such as replication, QoS and compression.
+
+Rules are created using *labels* and *operators* to evaluate what StorageOS *feature* to apply.  Where multiple rules apply to the same label, a *weight* is used to determine the order of evaluation.
+
+Rules are subsequently applied to volumes based on their matched labels.
+
+```
+$ storageos rule create --help
+
+Usage:	storageos rule create [OPTIONS] [RULE]
+
+Create a rule
+
+Options:
+  -a, --action string        Rule action (add|remove) (default "add")
+      --active               Enable or disable the rule (default true)
+  -d, --description string   Rule description
+      --help                 Print usage
+      --label list           Labels to apply when rule is triggered (default [])
+  -n, --namespace string     Volume namespace
+  -o, --operator string      Comparison operator (!|=|==|in|!=|notin|exists|gt|lt) (default "==")
+  -s, --selector list        key=value selectors to trigger rule (default [])
+  -w, --weight int           Rule weight determines processing order (0-10) (default 5)
+
+```
+
+## Parameters
+
+To create a rule, a number of parameters need to be set from the command line.
+
+### Actions
+
+Available actions are `add` or `remove` (defaults to `add` for new rules).
+
+`-a, --action string        Rule action (add|remove) (default "add")`
+
+### Labels
+
+Labels can be added to *volumes* at creation time or modified at any time.
+
+Similarly, labels can be added to *rules* and modified at any time based on the *action* applied (see below for more information on *actions*).
+
+Each object can have a set of key/value labels defined. Each Key must be unique for a given object.
+
+```json
+"labels": {
+  "key1" : "value1",
+  "key2" : "value2"
+}
+```
+
+### Features
+
+Feature labels are StorageOS features implemented in either the Control Plane or in the Data Plane.  Features are what rules enable to enforce data policy and placement.
+
+| Feature     | Label                         | Value                       |
+|:------------|:------------------------------|-----------------------------|
+| Driver      | storageos.driver              | filesystem (default)        |
+| Replication | storageos.feature.replicas    | integer values 1 - 5        |
+| Compression | storageos.feature.compression | true / false                |
+| QoS         | storageos.feature.throttle    | true / false                |
+| Caching     | storageos.feature.cache       | true / false                |
+
+### Operators
+
+Selector and volume labels can be evaluated using a number of supported operators where the default is `==`.
 
 
-## Create a rule
+| Operator | Type        | Meaning                                                    |
+|:---------|:------------|------------------------------------------------------------|
+| `==`     | Comparison  | equal to                                                   |
+| `!=`     | Comparison  | not equal to                                               |
+| `gt`     | Relational  | numeric greater than                                       |
+| `lt`     | Relational  | numeric less than                                          |
+| `in`     | Conditional | compare a value with a list of values it's in              |
+| `notin`  | Conditional | compare a value with a list of values it's not in          |
+| `exists` | Conditional | true as soon as a match is found - similar to in           |
+| `!`      | Unary       | logical not - if the expression is true, false is returned |
+| `=`      | Assignment  | assigns a value                                            |
+|          |             |                                                            |
+
+`-o, --operator string      Comparison operator (!|=|==|in|!=|notin|exists|gt|lt) (default "==")`
+
+### Selectors
+
+A selector is a list of key/value *labels* used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight) and if requirements match the rule's labels, they are applied to the volume.  This can happen when a volume is created or when a rule is modified.
+
+For example a selector can be `env=prod` or `dept=legal`; essentially the business determines what these can be as they are not built-in.
+
+`-s, --selector list        key=value selectors to trigger rule (default [])`
+
+### Weight
+
+Rules are evaluated starting at the lowest weight.
+
+`-w, --weight int           Rule weight determines processing order (0-10) (default 5)`
+
+
+## Creating a rule
 
 To create a rule that configures 2 replicas for volumes with the label env=prod, run:
 

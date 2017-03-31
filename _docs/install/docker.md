@@ -13,6 +13,7 @@ Use the StorageOS managed plugin to install StorageOS on Docker Engine 1.13+
 
 ```bash
 $ sudo mkdir /var/lib/storageos
+$ sudo modprobe nbd nbds_max=1024
 $ sudo docker plugin install storageos/plugin
 ```
 
@@ -28,13 +29,41 @@ The `docker plugin install` method requires Docker 1.13+ or above.  See
 StorageOS relies on an external key-value store for configuration data and cluster
 management.  See [Consul installation](consul.html) for more details.
 
-### Installation
+### Routable IP Address
+
+StorageOS nodes must be able to contact each other over the network.  By default,
+the node's first non-loopback address will be configured as the `ADVERTISE_IP`.
+In some cases (such as with Vagrant installations), this will not be appropriate
+and it will need to be set manually.
+
+Use `ip a` to list available ip addresses, and then configure StorageOS to use a
+specific address by appending `ADVERTISE_IP=<ip>` to the plugin install command:
+
+```
+sudo docker plugin install storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
+```
+
+## Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
 present on each node where StorageOS runs.  Prior to installation, create it:
 
 ```bash
 $ sudo mkdir /var/lib/storageos
+```
+
+NBD is a default Linux kernel module that allows block devices to be run in
+userspace.  To enable the module and increase the number of allowable devices,
+you must either run:
+
+```bash
+$ sudo nbd nbds_max=1024
+```
+
+Also add the following line to `/etc/modules` so that NBD is loaded on reboot:
+
+```
+nbd nbds_max=1024
 ```
 
 If Consul is running locally, install the plugin using the defaults:

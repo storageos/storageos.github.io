@@ -14,7 +14,8 @@ available.
 
 ```bash
 $ sudo mkdir /var/lib/storageos
-$ wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo modprobe nbd nbds_max=1024
 $ docker run -d --name storageos \
 	-e HOSTNAME \
 	--net=host \
@@ -39,6 +40,21 @@ most users should use the [managed plugin install](docker.html) method.
 StorageOS relies on an external key-value store for configuration data and cluster
 management.  See [Consul installation](consul.html) for more details.
 
+### Routable IP Address
+
+StorageOS nodes must be able to contact each other over the network.  By default,
+the node's first non-loopback address will be configured as the `ADVERTISE_IP`.
+In some cases (such as with Vagrant installations), this will not be appropriate
+and it will need to be set manually.
+
+Use `ip a` to list available ip addresses, and then configure StorageOS to use a
+specific address by adding `-e ADVERTISE_IP=<ip>` to the StorageOS docker run
+command.
+
+```
+sudo docker plugin install storageos/plugin ADVERTISE_IP=123.123.123.123
+```
+
 ## Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
@@ -61,7 +77,21 @@ contents:
 
 This file instructs Docker to use the volume plugin API listening on the
 specified Unix domain socket.  Note that the socket is only accessible by the
-root user, and it is only present when the StorageOS client container is running.  
+root user, and it is only present when the StorageOS client container is running.
+
+NBD is a default Linux kernel module that allows block devices to be run in
+userspace.  To enable the module and increase the number of allowable devices,
+you must either run:
+
+```bash
+$ sudo nbd nbds_max=1024
+```
+
+Also add the following line to `/etc/modules` so that NBD is loaded on reboot:
+
+```
+nbd nbds_max=1024
+```
 
 If Consul is running locally, install the plugin using the defaults:
 

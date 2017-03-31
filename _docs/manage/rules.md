@@ -70,7 +70,6 @@ Feature labels are StorageOS features implemented in either the Control Plane or
 |:------------|:------------------------------|-----------------------------|
 | Driver      | storageos.driver              | filesystem (default)        |
 | Replication | storageos.feature.replicas    | integer values 1 - 5        |
-| Placement   | storageos.hint.master         | node name (default)         |
 | Compression | storageos.feature.compression | true / false                |
 | QoS         | storageos.feature.throttle    | true / false                |
 | Caching     | storageos.feature.cache       | true / false                |

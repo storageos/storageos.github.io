@@ -22,7 +22,7 @@ Usage:	storageos COMMAND
 Converged storage for containers
 
 Options:
-      --config string      Location of client config files (default "/root/.storageos")
+      --config string      Location of client config files (default "~/.storageos")
   -D, --debug              Enable debug mode
       --help               Print usage
   -H, --host list          Daemon socket(s) to connect to (default [])

@@ -11,7 +11,7 @@ Rules apply custom configuration to volumes based on matched labels.
 
 ## Overview
 
-Rules are used for managing data policy and placement using StorageOS *features* such as replication, encryption and compression.
+Rules are used for managing data policy and placement using StorageOS *features* such as replication, QoS and compression.
 
 Rules are created using *labels* and *operators* to evaluate what StorageOS *feature* to apply.  Where multiple rules apply to the same label, a *weight* is used to determine the order of evaluation.
 

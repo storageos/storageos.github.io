@@ -7,6 +7,8 @@ module: manage/rules
 
 # Rules
 
+Rules apply custom configuration to volumes based on matched labels.
+
 ## Overview
 
 Rules are used for managing data policy and placement using StorageOS *features* such as replication, encryption and compression.
@@ -37,7 +39,7 @@ Options:
 
 ## Parameters
 
-Before creating a rule, an explination of the available parameters and how these are used is required.
+To create a rule, a number of parameters need to be set from the command line.
 
 ### Actions
 
@@ -47,9 +49,9 @@ Available actions are `add` or `remove` (defaults to `add` for new rules).
 
 ### Labels
 
-Labels can be attached to *volumes* at creation time and subsequently added or removed at any time.
+Labels can be added to *volumes* at creation time or modified at any time.
 
-Similarly, labels can be attached to *rules* and subsequently modified based on the *action* applied (see below for more information on *actions*).
+Similarly, labels can be added to *rules* and modified at any time based on the *action* applied (see below for more information on *actions*).
 
 Each object can have a set of key/value labels defined. Each Key must be unique for a given object.
 
@@ -64,14 +66,14 @@ Each object can have a set of key/value labels defined. Each Key must be unique 
 
 Feature labels are StorageOS features implemented in either the Control Plane or in the Data Plane.  Features are what rules enable to enforce data policy and placement.
 
-| Feature     | Label                         | Value                       | Implementation |
-|:------------|:------------------------------|----------------------------------------------|
-| Driver      | storageos.driver              | filesystem (default)        | Control Plane  |
-| Replication | storageos.feature.replicas    | integer values 1 - 5        | Control Plane  |
-| Scheduler   | storageos.hint.master         | current scheduler (default) | Control Plane  |
-| Compression | storageos.feature.compression | true / false                | Data Plane     |
-| QoS         | storageos.feature.throttle    | true / false                | Data Plane     |
-| Caching     | storageos.feature.cache       | true / false                | Data Plane     |
+| Feature     | Label                         | Value                       |
+|:------------|:------------------------------|-----------------------------|
+| Driver      | storageos.driver              | filesystem (default)        |
+| Replication | storageos.feature.replicas    | integer values 1 - 5        |
+| Scheduler   | storageos.hint.master         | current scheduler (default) |
+| Compression | storageos.feature.compression | true / false                |
+| QoS         | storageos.feature.throttle    | true / false                |
+| Caching     | storageos.feature.cache       | true / false                |
 
 ### Operators
 
@@ -95,7 +97,7 @@ Selector and volume labels can be evaluated using a number of supported operator
 
 ### Selectors
 
-A selector is a list of key/value *labels* used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight) and if requirements match the rule's labels are subsequently applied to the volume.  This can happen when a volume is created or when a rule is modified.
+A selector is a list of key/value *labels* used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight) and if requirements match the rule's labels, they are applied to the volume.  This can happen when a volume is created or when a rule is modified.
 
 For example a selector can be `env=prod` or `dept=legal`; essentially the business determines what these can be as they are not built-in.
 
@@ -103,7 +105,7 @@ For example a selector can be `env=prod` or `dept=legal`; essentially the busine
 
 ### Weight
 
-All rules are evaluated on weight before execution in order to set a priority level over others.
+Rules are evaluated starting at the lowest weight.
 
 `-w, --weight int           Rule weight determines processing order (0-10) (default 5)`
 

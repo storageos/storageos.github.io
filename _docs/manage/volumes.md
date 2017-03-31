@@ -29,11 +29,11 @@ StorageOS uses labels to control certain features. All labels are optional.
 
 Available labels:
 
-* storageos.driver=filesystem - will default to `filesystem` driver.
-* storageos.feature.replicas=2 - number of desired replicas. Currently it's advised to set replica count to 1.
-* storageos.feature.compression=true - network compression, depending on data type might greatly increase throughput.
-* storageos.feature.throttle=true - optional label to reduce volume's performance. 
-* storageos.feature.cache=true - enable caching for volume.
+* `storageos.driver=filesystem` - will default to `filesystem` driver.
+* `storageos.feature.replicas=2` - number of desired replicas. Currently it's advised to set replica count to 1. Maximum number of replicas is 5.
+* `storageos.feature.compression=true` - network compression, depending on data type might greatly increase throughput.
+* `storageos.feature.throttle=true` - optional label to reduce volume's performance. 
+* `storageos.feature.cache=true` - enable caching for volume.
 
 Note: it is advised to avoid using label keys that starts with `storageos.` to avoid clashing with system labels. 
 

@@ -7,4 +7,6 @@ module: troubleshooting/get_help
 
 # Get help
 
-support.storageos.com
+The fastest way to get help is on our [public slack channel](https://slack.storageos.com).
+
+You can also [contact our support team](https://support.storageos.com/support/tickets/new), or see other ways to get in touch at the [support site](https://support.storageos.com).

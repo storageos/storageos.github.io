@@ -9,29 +9,35 @@ module: introduction/quick_start
 
 The fastest and easiest way is to get up and running with StorageOS is to run a local install ie. on a single node. StorageOS needs 64-bit Linux to run.
 
-* Windows or MacOS users: first install VirtualBox and [Vagrant 1.9.1](http://vagrantup.com/downloads.html), then create an Ubuntu box and ssh into it:
+* Windows or MacOS users: first install VirtualBox and [Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box and ssh into it:
 ```bash
-$ vagrant init ubuntu/xenial64
+$ vagrant init bento/ubuntu-16.04
 $ vagrant up
 $ vagrant ssh
 ```
 
 * Install the latest Docker engine following Step 1 from [this guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-16-04).
 
-* Install StorageOS.
+* Install StorageOS
 ```bash
 $ sudo mkdir /var/lib/storageos
-$ sudo docker plugin install storageos/plugin KV_BACKEND=boltdb
+$ sudo docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
-* That's it - StorageOS is now running and provisioning a 10GB volume at xxxx. To confirm, run
+* Create a volume and mount it.
+```bash
+$ sudo docker run -it --rm --name test01 --volume-driver storageos -v test01:/data alpine ash -i
+/ # echo hello > /data/myfile
+/ # exit
+```
+
+* That's it - StorageOS is now running and has provisioned a 10GB volume to `/data` in the container. To confirm, run
 ```bash
 $ storageos volume list
 ```
 
-* Exit the SSH session and remove the Vagrant box, if using.
+* To remove the Vagrant box:
 ```bash
-$ exit
 $ vagrant destroy
 ```
 

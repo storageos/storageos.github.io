@@ -24,6 +24,8 @@ $ sudo mkdir /var/lib/storageos
 $ sudo docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
+ The alias flag allows you to specify `--volume-driver storageos` when starting containers and ensures that volumes are not affected by upgrades to the plugin.
+
 * Create a volume and mount it.
 ```bash
 $ sudo docker run -it --rm --name test01 --volume-driver storageos -v test01:/data alpine ash -i

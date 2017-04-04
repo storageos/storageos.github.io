@@ -49,53 +49,31 @@ Commands:
 Run 'storageos COMMAND --help' for more information on a command.
 ```
 
-## Description
+### Authentication
 
-Most CLI commands require authentication to the API.  Credentials can be
-supplied by adding the `-u` and `-p` flags.  Initially, the username and password
-are both set to `storageos`.
-
-```
-$ storageos volume list
-API error (401): Unauthorized
-
-$ storageos -u storageos -p storageos volume list
-NAMESPACE/NAME         SIZE                MOUNTED BY          STATUS
-default/test-vol       11 GB                                   active
-```
-
-### Environment variables
-
-In addition to the username and password flag options, the following environment
-variables can be exported removing the need to enter the command line options
-each time.
-
-<!--- the escape characters are used to compensate for no cell padding - these can be removed once the CSS has been updated or the table will be unreadable --->
-
-| Environment Variable | Description                     | Equivalent to |
-|----------------------|---------------------------------|--------------:|
-| `STORAGEOS_USERNAME` | Username for API authentication | `-u`          |
-| `STORAGEOS_PASSWORD` | Password for API authentication | `-p`          |
-| `STORAGEOS_HOST`     | <ip address:port> of API server | `-H`          |
-|                      |                                 |               |
-
-<!--- a blank row is required to add a new line; not required before a new heading --->
-
-To set a default username and password export the values for each environment variable
+If you see `API error (401): Unauthorized`, you need to provide the correct credentials via environment variables. The default installation creates a single user with username `storageos` and password `storageos`.
 
 ```bash
 export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 ```
 
-**Note**: Flags set on the command line override the values from the corresponding
-environment variables
+Set `STORAGEOS_HOST` for remote authentication:
 
-**Note**: Unless otherwise noted, assume username and password environment
-variables have been exported for the examples that follow
+```bash
+export STORAGEOS_HOST=<ip address:port>
+```
+
+Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
+
+```
+$ storageos -u storageos -p storageos volume list
+NAMESPACE/NAME         SIZE                MOUNTED BY          STATUS
+default/test-vol       11 GB                                   active
+```
 
 ## Management Commands
 
-Each of the storageos management commands requires a subcommand to run.  
+Each of the storageos management commands requires a subcommand to run.
 
 Use `storageos COMMAND SUBCOMMAND --help` to view the available available option
 flags.
@@ -307,12 +285,3 @@ Delete rule:
 $ storageos rule rm default/replicator
 default/replicator
 ```
-
-
-## API Error Codes
-
-API error (401): \<error_string\> e.g. Unauthorized
-
-API error (404): \<error_string\> e.g. 404 page not found
-
-API error (500): \<error_string\> e.g. Internal Server Error \| namespace name is not valid

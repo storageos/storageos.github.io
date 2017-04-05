@@ -36,10 +36,15 @@ $ sudo docker run -it --rm --name test01 --volume-driver storageos -v test01:/da
 / # exit
 ```
 
+4. Download the CLI from github.
+```bash
+curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+chmod +x storageos
+```
+
 4. That's it - StorageOS is now running. Confirm that StorageOS has provisioned a 10GB volume to `/data` in the container:
 ```bash
-TODO(get CLI)
-$ storageos volume list
+$ ./storageos volume list
 ```
 
 5. Clean up the Vagrant box.

@@ -84,7 +84,7 @@ userspace.  To enable the module and increase the number of allowable devices,
 you must either run:
 
 ```bash
-$ sudo nbd nbds_max=1024
+$ sudo modprobe nbd nbds_max=1024
 ```
 
 Also add the following line to `/etc/modules` so that NBD is loaded on reboot:

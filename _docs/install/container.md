@@ -51,6 +51,7 @@ Use `ip a` to list available ip addresses, and then configure StorageOS to use a
 specific address by adding `-e ADVERTISE_IP=<ip>` to the StorageOS docker run
 command.
 
+TODO - change to container install
 ```
 sudo docker plugin install storageos/plugin ADVERTISE_IP=123.123.123.123
 ```

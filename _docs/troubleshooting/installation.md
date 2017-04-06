@@ -9,7 +9,7 @@ module: troubleshooting/installation
 
 ### Docker Managed Plugin
 
-#### /var/lib/storageos must exist prior to plugin installation
+`/var/lib/storageos: no such file or directory`
 
 ```
 $ sudo docker plugin install --alias storageos storageos/plugin
@@ -28,7 +28,7 @@ Status: Downloaded newer image for storageos/plugin:latest
 Error response from daemon: rpc error: code = 2 desc = oci runtime error: container_linux.go:247: starting container process caused "process_linux.go:359: container init caused \"rootfs_linux.go:54: mounting \\\"/var/lib/storageos\\\" to rootfs \\\"/var/lib/docker/plugins/aa6af64266a9bb5576d6d18bcd7fe2d193f643f03de2fb7be55ad3aa91865f07/rootfs\\\" at \\\"/var/lib/storageos\\\" caused \\\"stat /var/lib/storageos: no such file or directory\\\"\""
 ```
 
-Solution:  Run `mkdir /var/lib/storageos` prior to installing the plugin:
+Cause: `/var/lib/storageos` must exist prior to plugin installation. Run `mkdir /var/lib/storageos` prior to installing the plugin:
 
 ```
 $ sudo mkdir /var/lib/storageos

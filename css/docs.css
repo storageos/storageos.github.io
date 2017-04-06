@@ -43,7 +43,7 @@ code {
   font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
   padding: 2px 4px;
   font-size: 0.8em;
-  color: black;
+  color: #333;
   background-color: white;
 }
 
@@ -74,4 +74,8 @@ li {
 
 pre code {
   font-size: 1.3em;
+}
+
+p a {
+  font-weight: 300;
 }

@@ -12,7 +12,6 @@ Use the StorageOS managed plugin to install StorageOS on Docker Engine 1.13+
 ## Quick Start
 
 ```bash
-$ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
 $ sudo docker plugin install storageos/plugin
 ```
@@ -44,13 +43,6 @@ sudo docker plugin install storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
 ```
 
 ## Installation
-
-StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
-present on each node where StorageOS runs.  Prior to installation, create it:
-
-```bash
-$ sudo mkdir /var/lib/storageos
-```
 
 NBD is a default Linux kernel module that allows block devices to be run in
 userspace.  To enable the module and increase the number of allowable devices,

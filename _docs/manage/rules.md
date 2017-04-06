@@ -30,8 +30,8 @@ Options:
   -d, --description string   Rule description
       --help                 Print usage
       --label list           Labels to apply when rule is triggered (default [])
-  -n, --namespace string     Volume namespace, i.e. 'tier != frontend' (default "")
-  -s, --selector string      Selector
+  -n, --namespace string     Namespace
+  -s, --selector string      Selector, i.e. 'tier != frontend' (default "")
   -w, --weight int           Rule weight determines processing order (0-10) (default 5)
 
 ```

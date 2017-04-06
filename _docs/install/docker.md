@@ -19,7 +19,7 @@ $ sudo docker plugin install storageos/plugin
 
 ## Overview
 
-## Requirements
+### Requirements
 
 The `docker plugin install` method requires Docker 1.13+ or above.  See
 [Docker (1.0 - 1.12)](container.html) for the container install on previous versions.

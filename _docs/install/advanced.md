@@ -22,7 +22,7 @@ StorageOS currently supports running the Control Plane and Data Plane in
 separate containers.  We expect the Data Plane to stabilise over time and to
 require fewer updates than the Control Plane.
 
-## Requirements
+### Requirements
 
 The split-container installation method works on Docker 1.10+.  It is not
 compatible with Docker managed plugins, which are limited to a single container.
@@ -34,9 +34,7 @@ Docker Compose is recommended.
 StorageOS relies on an external key-value store for configuration data and cluster
 management.  See [Consul installation](consul.html) for more details.
 
-## Installation
-
-### Manual Installation
+## Manual Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
 present on each node where StorageOS runs.  Prior to installation, create it:
@@ -76,7 +74,7 @@ $ docker run -d --name dataplane \
 Environment variables (see [Configuration Reference](../reference/configuration.html))
 can be added to tune configuration.
 
-### Docker Compose
+## Docker Compose
 
 Docker Compose can be used to start separate Control Plane and Data Plane
 containers.

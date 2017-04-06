@@ -30,7 +30,7 @@ $ docker run -d --name storageos \
 
 ## Overview
 
-## Requirements
+### Requirements
 
 The container installation method requires Docker 1.10+.  For Docker 1.13+
 most users should use the [managed plugin install](docker.html) method.

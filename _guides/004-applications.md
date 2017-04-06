@@ -5,23 +5,23 @@ anchor: applications
 
 sections:
   -
-    title: WordPress Demo
+    title: WordPress
     description: Setting up a Word Press cluster with persistent storage.
     module: applications/wordpress
   -
-    title: Microsoft SQL Server with StorageOS
+    title: Microsoft SQL Server
     description: Setting MS SQL with persistent storage.
     module: applications/mssql
   -
-    title: MongoDB with StorageOS
+    title: MongoDB
     description: Setting up MongoDB with persistent storage.
     module: applications/mongodb
   -
-    title: MySQL with StorageOS
+    title: MySQL
     description: Setting up MySQL with persistent storage.
     module: applications/mysql
   -
-    title: PostgreSQL with StorageOS
+    title: PostgreSQL
     description: Setting up PostgreSQL with persistent storage.
     module: applications/postgres
 ---

@@ -30,9 +30,8 @@ Options:
   -d, --description string   Rule description
       --help                 Print usage
       --label list           Labels to apply when rule is triggered (default [])
-  -n, --namespace string     Volume namespace
-  -o, --operator string      Comparison operator (!|=|==|in|!=|notin|exists|gt|lt) (default "==")
-  -s, --selector list        key=value selectors to trigger rule (default [])
+  -n, --namespace string     Volume namespace, i.e. 'tier != frontend' (default "")
+  -s, --selector string      Selector
   -w, --weight int           Rule weight determines processing order (0-10) (default 5)
 
 ```
@@ -74,17 +73,16 @@ Feature labels are StorageOS features implemented in either the Control Plane or
 | QoS         | storageos.feature.throttle    | true / false                |
 | Caching     | storageos.feature.cache       | true / false                |
 
-### Operators
+### Selectors
 
-Selector and volume labels can be evaluated using a number of supported operators where the default is `==`.
-
+Selector and volume labels can be evaluated using a number of supported operators.
 
 | Operator | Type        | Meaning                                                    |
 |:---------|:------------|------------------------------------------------------------|
 | `==`     | Comparison  | equal to                                                   |
 | `!=`     | Comparison  | not equal to                                               |
-| `gt`     | Relational  | numeric greater than                                       |
-| `lt`     | Relational  | numeric less than                                          |
+| `>`      | Relational  | numeric greater than                                       |
+| `<`      | Relational  | numeric less than                                          |
 | `in`     | Conditional | compare a value with a list of values it's in              |
 | `notin`  | Conditional | compare a value with a list of values it's not in          |
 | `exists` | Conditional | true as soon as a match is found - similar to in           |
@@ -92,28 +90,25 @@ Selector and volume labels can be evaluated using a number of supported operator
 | `=`      | Assignment  | assigns a value                                            |
 |          |             |                                                            |
 
-`-o, --operator string      Comparison operator (!|=|==|in|!=|notin|exists|gt|lt) (default "==")`
 
-### Selectors
+A selector is a string that defines conditions and is used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight, ascending order) and if selector requirements match  - rule's labels are applied to the volume.
 
-A selector is a list of key/value *labels* used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight) and if requirements match the rule's labels, they are applied to the volume.  This can happen when a volume is created or when a rule is modified.
+For example a selector can be `env==prod` or `tier!=frontend`; essentially the cluster administrator determines what these can be as they are not built-in.
 
-For example a selector can be `env=prod` or `dept=legal`; essentially the business determines what these can be as they are not built-in.
-
-`-s, --selector list        key=value selectors to trigger rule (default [])`
+`-s, --selector string        key=value selectors to trigger rule (default [])`
 
 ### Weight
 
 Rules are evaluated starting at the lowest weight.
 
-`-w, --weight int           Rule weight determines processing order (0-10) (default 5)`
+`-w, --weight int           Rule weight determines processing order, any integer`
 
 
 ## Creating a rule
 
 To create a rule that configures 2 replicas for volumes with the label env=prod, run:
 
-    storageos rule create --namespace default --selector env=prod --operator == --action add --label storageos.feature.replicas=2 replicator
+    storageos rule create --namespace default --selector env==prod --action add --label storageos.feature.replicas=2 replicator
 
 To view rules, run:
 
@@ -138,18 +133,18 @@ You should see that it has two replicas provisioned and additional labels attach
     },
 ```     
 
-### Using advanced operators
+### Using advanced selector operators
 
 Let's create several rules that instead of adding `storageos.feature.replicas` feature label it would read it's value and based on it would label volumes with `dev/uat/prod` env values.
 
 First, create a rule to label `dev` environments:
 
-    storageos rule create --namespace default --selector storageos.feature.replicas=1 --operator notin --action add --label env=dev dev-marker
+    storageos rule create --namespace default --selector '!storageos.feature.replicas' --action add --label env=dev dev-marker
 
-This rule will be matching volumes that do not have (`notin`) label `storageos.feature.replicas` and will add `env=dev` label.
-Now, create second rule to select volumes that have 1 replica and add `uat` env label to them:
+This rule will be matching volumes that do not have (`!`) label `storageos.feature.replicas` and will add `env=dev` label.
+Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
 
-    storageos rule create --namespace default --selector storageos.feature.replicas=2 --operator lt --action add --label env=uat uat-marker
+    storageos rule create --namespace default --selector 'storageos.feature.replicas<2' --action add --label env=uat uat-marker
 
 Create new volume with 1 replica:
 
@@ -171,7 +166,8 @@ Labels should look like:
 
 Finally, create a rule that will mark volumes as `prod` if they have 2 or more (`gt`) configured replicas:
 
-    storageos rule create --namespace default --selector storageos.feature.replicas=1 --operator gt --action add --weight 10 --label env=prod prod-marker
+    storageos rule create --namespace default --selector 'storageos.feature.replicas>1' --action add --weight 10 --label env=prod prod-marker
+default/prod-marker
 
 Volumes, created with 2 or more replicas should get `env=prod` label.
 
@@ -179,8 +175,8 @@ To list all rules:
 
 ```
 $ storageos rule ls
-NAMESPACE/NAME        OPERATOR            SELECTOR                       ACTION              LABELS
-default/dev-marker    notin               storageos.feature.replicas=1   add                 env=dev
-default/prod-marker   gt                  storageos.feature.replicas=1   add                 env=prod
-default/uat-marker    lt                  storageos.feature.replicas=2   add                 env=uat
+NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
+default/dev-marker    !storageos.feature.replicas    add                 env=dev
+default/prod-marker   storageos.feature.replicas>1   add                 env=prod
+default/uat-marker    storageos.feature.replicas<2   add                 env=uat
 ```

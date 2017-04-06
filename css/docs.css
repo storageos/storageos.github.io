@@ -30,3 +30,52 @@
 .guide-list .guide-link.title.on:before {
     transform: rotate(90deg);
 }
+
+.page-content {
+  padding-top:150px;
+}
+
+.guides {
+  font-weight: bold;
+}
+
+code {
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  padding: 2px 4px;
+  font-size: 0.8em;
+  color: #333;
+  background-color: white;
+}
+
+h1 {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 300;
+  margin: 25px 0 10px;
+}
+
+h3 {
+  font-size: 22px;
+  font-weight: 400;
+  margin: 25px 0 10px;
+}
+
+p {
+  margin-bottom: 0.5em;
+}
+
+li {
+  font-size: 14px;
+}
+
+pre code {
+  font-size: 1.3em;
+}
+
+p a {
+  font-weight: 300;
+}

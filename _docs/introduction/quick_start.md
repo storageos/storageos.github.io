@@ -24,7 +24,6 @@ curl -sSL https://get.docker.com | sh
 ```
 2. Install StorageOS from the Docker hub.
 ```bash
-$ sudo mkdir /var/lib/storageos
 $ sudo docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 **Note**: The alias flag allows you to specify `--volume-driver storageos` when starting containers. KV_BACKEND specifies the built-in key/value store for testing.

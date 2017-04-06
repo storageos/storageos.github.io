@@ -25,7 +25,7 @@ info:
   title: "StorageOS API"
   version: "0.7"
   x-logo:
-    url: "http://storageos.com/wp-content/uploads/2016/06/storage-os-logo.png"
+    url: "http://storageos.wpengine.com/wp-content/uploads/2017/03/cropped-logo-1.png"
   description: |
     The StorageOS API is an HTTP API used for volume management and management of the StorageOS services. It is the API the StorageOS UI, CLI and platform integartions uses to communicate with StorageOS, so everything they can do can do can be done with the API.
 
@@ -54,6 +54,14 @@ tags:
     x-displayName: "Pools"
     description: |
       Create and manage distributed capacity pools.
+  - name: "Rule"
+    x-displayName: "Rules"
+    description: |
+      Create and manage rules.
+  - name: "CapacityStat"
+    x-displayName: "CapacityStats"
+    description: |
+      Create and manage capacity statistics.
 
 definitions:
 
@@ -295,7 +303,7 @@ definitions:
       volumes from.  Typically, each server that makes storage available will be
       added to one or more pools.
 
-      Capacity drivers are also added to the pool to deetermine which backend
+      Capacity drivers are also added to the pool to determine which backend
       storage driver to use.  Currently this is limited to a single type of
       driver per pool, but in the future we will allow multiple, allowing for
       dynamic tiering and snapshots from one driver type to another.

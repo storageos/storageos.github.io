@@ -30,3 +30,7 @@
 .guide-list .guide-link.title.on:before {
     transform: rotate(90deg);
 }
+
+.page-content {
+  padding-top:150px;
+}

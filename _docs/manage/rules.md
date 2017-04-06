@@ -91,7 +91,8 @@ Selector and volume labels can be evaluated using a number of supported operator
 |          |             |                                                            |
 
 
-A selector is a string that defines conditions and is used to trigger a *rule* against a *volume*.  During creation, a volume is evaluated against every rule (sorted by weight, ascending order) and if selector requirements match  - rule's labels are applied to the volume.
+A selector is a string that defines conditions and is used to trigger a *rule* against a *volume*.  
+When a volume is created, each rule is evaluated in ascending weight order. Each matching selector triggers the effect of the rule.
 
 For example a selector can be `env==prod` or `tier!=frontend`; essentially the cluster administrator determines what these can be as they are not built-in.
 

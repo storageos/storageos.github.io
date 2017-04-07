@@ -44,10 +44,10 @@ sudo docker plugin install storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
 
 ## Installation
 
-NBD is a default Linux kernel module that allows block devices to be run in
-userspace. It is not a requirement for StorageOS to run, but improves
-performance significantly. To enable the module and increase the number of
-allowable devices, run:
+NBD (Network Block Device) is a default Linux kernel module that allows block
+devices to be run in userspace. It is not a requirement for StorageOS to run,
+but improves performance significantly. To enable the module and increase the
+number of allowable devices, run:
 
 ```bash
 $ sudo nbd nbds_max=1024

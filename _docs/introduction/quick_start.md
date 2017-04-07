@@ -28,7 +28,7 @@ $ sudo docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltd
 ```
 **Note**: The alias flag allows you to specify `--volume-driver storageos` when starting containers. KV_BACKEND specifies the built-in key/value store for testing.
 
-3. Create a volume and mount it.
+3. That's it - StorageOS is now running. Create a volume and mount it.
 ```bash
 $ sudo docker run -it --rm --name test01 --volume-driver storageos -v test01:/data alpine ash -i
 / # echo hello > /data/myfile
@@ -41,7 +41,7 @@ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos
 chmod +x storageos
 ```
 
-4. That's it - StorageOS is now running. Confirm that StorageOS has provisioned a 10GB volume to `/data` in the container:
+4. Confirm that StorageOS has provisioned a 10GB volume to `/data` in the container:
 ```bash
 $ ./storageos volume list
 ```
@@ -63,6 +63,6 @@ To test high availability, install StorageOS on a three node cluster.
 2. TODO (Docker, Consul set up)
 
 
-### Get a license
+### Stay in touch
 
-To remove the 100GB storage capacity limit on unregistered users, sign up for a free developer license from the [customer portal](http://my.storageos.com).
+Sign up to the [customer portal](http://my.storageos.com) to stay informed about upcoming releases, then join the [StorageOS Slack channel](http://slack.storageos.com).

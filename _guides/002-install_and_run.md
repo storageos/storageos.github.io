@@ -24,4 +24,9 @@ sections:
     title: Consul
     description: Consul Key/Value Store
     module: install/consul
+  -
+    title: Command line interface
+    description: Command line interface
+    module: install/cli
+
 ---

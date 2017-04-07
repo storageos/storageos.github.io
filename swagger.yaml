@@ -337,7 +337,7 @@ definitions:
       volumes from.  Typically, each server that makes storage available will be
       added to one or more pools.
 
-      Capacity drivers are also added to the pool to deetermine which backend
+      Capacity drivers are also added to the pool to determine which backend
       storage driver to use.  Currently this is limited to a single type of
       driver per pool, but in the future we will allow multiple, allowing for
       dynamic tiering and snapshots from one driver type to another.

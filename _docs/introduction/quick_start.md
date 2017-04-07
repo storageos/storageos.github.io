@@ -20,7 +20,7 @@ $ vagrant ssh
 
 1. Install the latest Docker engine.
 ```
-curl -sSL https://get.docker.com | sh
+curl -sSL https://get.docker.com | sudo sh
 ```
 2. Install StorageOS from the Docker hub.
 ```bash

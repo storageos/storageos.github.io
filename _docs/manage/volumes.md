@@ -7,7 +7,7 @@ module: manage/volumes
 
 # Volumes
 
-Volumes are used to store data. 
+Volumes are used to store data.
 
 ## Create a volume
 
@@ -15,27 +15,29 @@ To create a 15GB volume in `default` namespace, run:
 
     storageos volume create --namespace default --size 15 volume-name
 
-## List all volumes    
+## List all volumes
 
 To view volumes, run:
 
     storageos volume ls
-    
-This command will print all volumes from all namespaces. 
 
-### Feature labels
+This command will print all volumes from all namespaces.
 
-StorageOS uses labels to control certain features. All labels are optional.
+## Labels
 
-Available labels:
+Labels are a mechanism for applying metadata to StorageOS objects. You can use them to annotate or organise your volumes in any way that makes sense for your business or app.
 
-* `storageos.driver=filesystem` - will default to `filesystem` driver.
-* `storageos.feature.replicas=2` - number of desired replicas. Currently it's advised to set replica count to 1. Maximum number of replicas is 5.
+A label is a key-value pair that is stored as a string. An object may have multiple labels but each key-value pair must be unique within an object.
+
+You should prefix labels with your organisation domain, such as `example.your-label`. Labels prefixed with `storageos.*` are reserved for internal use.
+
+Applying special labels triggers features:
+
+* `storageos.driver=filesystem` - defaults to `filesystem` driver.
+* `storageos.feature.replicas=2` - number of desired replicas (0-5).
 * `storageos.feature.compression=true` - network compression, depending on data type might greatly increase throughput.
-* `storageos.feature.throttle=true` - optional label to reduce volume's performance. 
+* `storageos.feature.throttle=true` - reduce volume's performance.
 * `storageos.feature.cache=true` - enable caching for volume.
-
-Note: it is advised to avoid using label keys that starts with `storageos.` to avoid clashing with system labels. 
 
 ## Inspecting volume details
 
@@ -43,7 +45,7 @@ To view volume details, such as where it's deployed, labels and health, use `ins
 
     storageos volume inspect default/volume-name
 
-## Removing volumes 
+## Removing volumes
 
 To delete a volume, use `rm` command (all data in this volume will be lost):
 
@@ -51,6 +53,6 @@ To delete a volume, use `rm` command (all data in this volume will be lost):
 
 This command will fail if the volume is mounted, to delete mounted volume, add `--force` flag:
 
-    storageos volume rm --force default/volume-name     
+    storageos volume rm --force default/volume-name
 
 Volumes might not immediately disappeared as data from the disks have to be purged.

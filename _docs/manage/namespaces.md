@@ -7,17 +7,19 @@ module: manage/namespaces
 
 # Namespaces
 
-Namespaces are used to isolate environments and make operations quicker, i.e. cleaning up testing environment volumes & rules with a single `storageos namespace rm` command. 
-Users can have any number of namespaces. 
+Namespaces are used to isolate environments and make operations quicker, eg. cleaning up all volumes and rules within a testing environment with a single `storageos namespace rm` command.
+Users can have any number of namespaces.
+
+*Note*: Docker does not support namespaces on volumes, so use the `default` namespace for Docker containers.
 
 ## Create a namespace
 
-To start creating rules and volumes, at least one namespace is required. 
+To start creating rules and volumes, at least one namespace is required.
 To create a namespace, run:
 
-    storageos namespace create --display-name "My Namespace" my-namespace
+    storageos namespace create my-namespace
 
-flag `--display-name` is optional, it will default to actual namespace name.
+Add the `--display-name` flag to set a display-friendly name.
 
 ## List all namespaces
 
@@ -27,7 +29,7 @@ To view namespaces, run:
 
 ## Removing namespace
 
-Removing a namespace will remove all volumes and rules that belong to that namespace. API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss). 
+Removing a namespace will remove all volumes and rules that belong to that namespace. API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss).
 
 To remove a namespace:
 
@@ -35,4 +37,4 @@ To remove a namespace:
 
 Force remove:
 
-    storageos namespace rm --force my-namespace    
+    storageos namespace rm --force my-namespace

@@ -25,9 +25,9 @@ info:
   title: "StorageOS API"
   version: "0.7"
   x-logo:
-    url: "http://storageos.wpengine.com/wp-content/uploads/2017/03/cropped-logo-1.png"
+    url: "http://storageos.com/wp-content/uploads/2016/06/storage-os-logo.png"
   description: |
-    The StorageOS API is an HTTP API used for volume management and management of the StorageOS services. It is the API the StorageOS UI, CLI and platform integartions uses to communicate with StorageOS, so everything they can do can do can be done with the API.
+    The StorageOS API is an HTTP API used for managing volumes and StorageOS services. It is the API that the StorageOS UI, CLI and platform integrations use to communicate with the StorageOS backend.
 
     # Errors
 
@@ -54,14 +54,6 @@ tags:
     x-displayName: "Pools"
     description: |
       Create and manage distributed capacity pools.
-  - name: "Rule"
-    x-displayName: "Rules"
-    description: |
-      Create and manage rules.
-  - name: "CapacityStat"
-    x-displayName: "CapacityStats"
-    description: |
-      Create and manage capacity statistics.
 
 definitions:
 
@@ -105,7 +97,7 @@ definitions:
   VolumeCreateOptions:
     type: "object"
     description: "Parameters available for creating new volumes."
-    required: [Name, Size]
+    required: [Name]
     properties:
       Name:
         description: "Volume name."
@@ -117,7 +109,7 @@ definitions:
         description: "Volume description."
       Size:
         type: "integer"
-        description: "Size in GB."
+        description: "Size in GB (if 0 or not specified, then defaults to 10 GB)."
         x-nullable: false
       Pool:
         type: "string"
@@ -296,6 +288,48 @@ definitions:
         com.example.some-label: "some-value"
         com.example.some-other-label: "some-other-value"
 
+  PoolCreateOptions:
+    type: "object"
+    description: "Parameters available for creating new pools."
+    required: [Name]
+    properties:
+      Name:
+        description: "Pool name."
+        type: "string"
+        x-nullable: false
+      Description:
+        type: "string"
+        x-nullable: false
+        description: "Pool description."
+      Default:
+        type: "boolean"
+        description: "Default determines whether this pool is the default if a volume is provisioned without a pool specified.  There can only be one default pool."
+        x-nullable: false
+      DefaultDriver:
+        type: "string"
+        x-nullable: false
+        description: "DefaultDriver specifies the storage driver to use by default if there are multiple drivers in the pool and no driver was specified in the provisioning request or assigned by rules.  If no driver was specified and no default set, driver weight is used to determine the default."
+      ControllerNames:
+        type: "array"
+        description: "ControllerNames is a list of controller names that are participating in the storage pool."
+        items:
+          type: "string"
+      DriverNames:
+        type: "array"
+        description: "DriverNames is a list of backend storage drivers that are available in the storage pool."
+        items:
+          type: "string"
+      Active:
+        type: "boolean"
+        x-nullable: false
+        description: "Flag describing whether rule is active."
+        default: false
+      Labels:
+        type: "object"
+        description: "Labels define a list of labels that describe the pool."
+        additionalProperties:
+          type: "string"
+
   Pool:
     type: "object"
     description: |
@@ -303,7 +337,7 @@ definitions:
       volumes from.  Typically, each server that makes storage available will be
       added to one or more pools.
 
-      Capacity drivers are also added to the pool to determine which backend
+      Capacity drivers are also added to the pool to deetermine which backend
       storage driver to use.  Currently this is limited to a single type of
       driver per pool, but in the future we will allow multiple, allowing for
       dynamic tiering and snapshots from one driver type to another.
@@ -346,6 +380,8 @@ definitions:
         description: "DriverNames is a list of backend storage drivers that are available in the storage pool."
         items:
           type: "string"
+      DriverInstances:
+        $ref: "#/definitions/DriverInstances"
       Active:
         type: "boolean"
         x-nullable: false
@@ -435,6 +471,52 @@ definitions:
         description: "ProvisionedCapacityBytes is the object's provisioned capacity in bytes."
         type: "integer"
         readOnly: true
+
+  DriverInstances:
+    type: "object"
+    description: "DriverInstances is used to track instances of each driver."
+    properties:
+      ID:
+        description: "Instance unique ID."
+        type: "string"
+        x-nullable: false
+        readOnly: true
+      Name:
+        description: "Instance name."
+        type: "string"
+        x-nullable: false
+      Description:
+        description: "Instance description."
+        type: "string"
+        x-nullable: false
+      Active:
+        description: "Flag describing whether the template is active."
+        type: "boolean"
+        x-nullable: false
+      Config:
+        description: "Config is JSON struct that is passed directly to the driver.  There is no specific format, and the driver is responsible for validation."
+        type: "object"
+        additionalProperties:
+          type: "string"
+      Labels:
+        description: "Labels define a list of labels that describe the driver instance.  These are inherited from the pool when the driver instance is created."
+        type: "object"
+        additionalProperties:
+          type: "string"
+      ControllerName:
+        description: "ControllerName specifies the controller that this instance is running on."
+        type: "string"
+        x-nullable: false
+      PoolID:
+        description: "PoolID refers to the pool that this driver instance relates to."
+        type: "string"
+        x-nullable: false
+      DriverName:
+        description: "DriverName specifies which capacity driver this is an instance of."
+        type: "string"
+        x-nullable: false
+      CapacityStats:
+        $ref: "#/definitions/CapacityStats"
 
 parameters:
   Name:
@@ -635,7 +717,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
   /namespaces/{namespace}/volumes/{name}/unmount:
     post:
-      summary: "Unmount volume"
+      summary: "Mount volume"
       description: "Updates the mount reference for the volume."
       produces:
         - "application/json"
@@ -645,7 +727,7 @@ paths:
         - $ref: "#/parameters/Namespace"
         - name: "client"
           in: "body"
-          description: "Hostname of the client unmounting the volume"
+          description: "Hostname of the client mounting the volume"
           required: true
           schema:
             type: "string"
@@ -658,6 +740,102 @@ paths:
           description: "Unauthorized"
         407:
           description: "Volume not mounted"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /pools:
+    get:
+      summary: "List pools"
+      description: "List of pools that match the query."
+      produces:
+        - "application/json"
+      tags: ["Pool"]
+      #parameters:
+      #  - $ref: "#/parameters/LabelSelector"
+      #  - $ref: "#/parameters/FieldSelector"
+      #  - $ref: "#/parameters/TimeoutSeconds"
+      #  - $ref: "#/parameters/NamespaceQuery"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pool"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Create pool"
+      description: "Provisions a new pool."
+      produces:
+        - "application/json"
+      tags: ["Pool"]
+      parameters:
+        - name: "PoolCreateOptions"
+          in: "body"
+          schema:
+            $ref: "#/definitions/PoolCreateOptions"
+      responses:
+        201:
+          description: "Pool created successfully"
+          schema:
+            $ref: "#/definitions/Pool"
+        401:
+          description: "Unauthorized"
+        409:
+          description: "Pool with name already exists"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /pools/{name}:
+    get:
+      summary: "Get a pool"
+      description: "Gets a pool by name or ID.  Returns to whole pool object."
+      produces:
+        - "application/json"
+      tags: ["Pool"]
+      parameters:
+        - $ref: "#/parameters/Name"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Pool"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        407:
+          description: "Pool already exists"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      summary: "Delete pool"
+      description: "Deletes a pool."
+      produces:
+        - "application/json"
+      tags: ["Pool"]
+      parameters:
+        - name: "name"
+          in: "path"
+          required: true
+          description: "Pool name or ID."
+          type: "string"
+      responses:
+        200:
+          description: "Success"
+        401:
+          description: "Unauthorized"
+        407:
+          description: "Pool in use"
         500:
           description: "Server error"
           schema:

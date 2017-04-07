@@ -1,9 +1,7 @@
 ---
 layout: guide
-title: StorageOS Documentation
-anchor: introduction
-module: introduction/overview
 ---
+
 
 # StorageOS Documentation
 

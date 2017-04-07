@@ -27,7 +27,7 @@ Labels are a mechanism for applying metadata to StorageOS objects. You can use t
 
 A label is a key-value pair that is stored as a string. An object may have multiple labels but each key-value pair must be unique within an object.
 
-You should prefix labels with your organisation domain, such as `example.your-label`. Labels prefixed with `storageos.*` are reserved for internal use.
+You should prefix labels with your organization domain, such as `example.your-label`. Labels prefixed with `storageos.*` are reserved for internal use.
 
 Applying special labels triggers features:
 

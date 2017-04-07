@@ -17,11 +17,9 @@ To create a 15GB volume in `default` namespace, run:
 
 ## List all volumes
 
-To view volumes, run:
+To view all volumes in all namespaces, run:
 
     storageos volume ls
-
-This command will print all volumes from all namespaces.
 
 ## Labels
 

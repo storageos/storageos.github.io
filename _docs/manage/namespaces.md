@@ -10,7 +10,7 @@ module: manage/namespaces
 Namespaces are used to isolate environments and make operations quicker, eg. cleaning up all volumes and rules within a testing environment with a single `storageos namespace rm` command.
 Users can have any number of namespaces.
 
-*Note*: Docker does not support namespaces on volumes, so use the `default` namespace for Docker containers.
+>**Note**: Docker does not support namespaces on volumes, so you should use the `default` namespace with Docker containers.
 
 ## Create a namespace
 

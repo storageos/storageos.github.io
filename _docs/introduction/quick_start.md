@@ -35,14 +35,10 @@ $ sudo docker run -it --rm --name test01 --volume-driver storageos -v test01:/da
 / # exit
 ```
 
-4. Download the CLI from github.
+4. Download the StorageOS CLI from Github and confirm that StorageOS has provisioned a 10GB volume to `/data` in the container:
 ```bash
-curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
-chmod +x storageos
-```
-
-4. Confirm that StorageOS has provisioned a 10GB volume to `/data` in the container:
-```bash
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ chmod +x storageos
 $ ./storageos volume list
 ```
 

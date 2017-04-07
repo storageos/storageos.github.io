@@ -17,14 +17,12 @@ During beta, 64-bit Linux is required.
 * [Run a SQL database with containers]({{ site.baseurl }}{% link _docs/applications/mysql.md %}) - Deploy MySQL to a StorageOS cluster.
 * [Run a NoSQL database with containers]({{ site.baseurl }}{% link _docs/applications/mongodb.md %}) - Deploy MongoDB to a StorageOS cluster.
 
-## Licensing
-
-Unregistered users are limited to 100GB storage capacity monthly. To remove this limit, sign up for a free developer license from the [customer portal](http://my.storageos.com).
-
 ## Got feedback or just want to chat?
 
 Join us on Slack, or [see other ways](http://support.storageos.com) to get in touch.
 
+<script async defer src="http://slack.storageos.com/slackin.js"></script>
+
 ## Public beta
 
-During beta, StorageOS is freely available for testing and experimentation. To stay informed about new features and production-ready releases, sign up below to our newsletter.
+During beta, StorageOS is freely available for testing and experimentation. To stay informed about new features and production-ready releases, sign up on our [customer portal](http://my.storageos.com).

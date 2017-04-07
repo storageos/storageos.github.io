@@ -81,8 +81,9 @@ specified Unix domain socket.  Note that the socket is only accessible by the
 root user, and it is only present when the StorageOS client container is running.
 
 NBD is a default Linux kernel module that allows block devices to be run in
-userspace.  To enable the module and increase the number of allowable devices,
-you must either run:
+userspace. It is not a requirement for StorageOS to run, but improves
+performance significantly. To enable the module and increase the number of
+allowable devices, run:
 
 ```bash
 $ sudo nbd nbds_max=1024

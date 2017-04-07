@@ -23,7 +23,7 @@ To view all volumes in all namespaces, run:
 
 ## Labels
 
-Labels are a mechanism for applying metadata to StorageOS objects. You can use them to annotate or organise your volumes in any way that makes sense for your business or app.
+Labels are a mechanism for applying metadata to StorageOS objects. You can use them to annotate or organise your volumes in any way that makes sense for your organization or app.
 
 A label is a key-value pair that is stored as a string. An object may have multiple labels but each key-value pair must be unique within an object.
 

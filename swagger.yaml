@@ -474,7 +474,7 @@ definitions:
 
   DriverInstances:
     type: "object"
-    description: "DriverInstances is used to track instances of each driver."
+    description: "DriverInstances shows the internal configuration and state of each driver on all the nodes in the pool. Data within DriverInstances can not be modified directly."
     properties:
       ID:
         description: "Instance unique ID."
@@ -485,36 +485,44 @@ definitions:
         description: "Instance name."
         type: "string"
         x-nullable: false
+        readOnly: true
       Description:
         description: "Instance description."
         type: "string"
         x-nullable: false
+        readOnly: true
       Active:
         description: "Flag describing whether the template is active."
         type: "boolean"
         x-nullable: false
+        readOnly: true
       Config:
         description: "Config is JSON struct that is passed directly to the driver.  There is no specific format, and the driver is responsible for validation."
         type: "object"
+        readOnly: true
         additionalProperties:
           type: "string"
       Labels:
         description: "Labels define a list of labels that describe the driver instance.  These are inherited from the pool when the driver instance is created."
         type: "object"
+        readOnly: true
         additionalProperties:
           type: "string"
       ControllerName:
         description: "ControllerName specifies the controller that this instance is running on."
         type: "string"
         x-nullable: false
+        readOnly: true
       PoolID:
         description: "PoolID refers to the pool that this driver instance relates to."
         type: "string"
         x-nullable: false
+        readOnly: true
       DriverName:
         description: "DriverName specifies which capacity driver this is an instance of."
         type: "string"
         x-nullable: false
+        readOnly: true
       CapacityStats:
         $ref: "#/definitions/CapacityStats"
 

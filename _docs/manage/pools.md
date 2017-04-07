@@ -11,17 +11,17 @@ Pools are used to create collections of storage resources created from StorageOS
 
 ## Overview
 
-Pools are used to organize storage resources into common collections such as class of server, class of storage, location within the datacenter or subnet for example.  Cluster nodes can participate in more than one pool.
+Pools are used to organize storage resources into common collections such as class of server, class of storage, location within the datacenter or subnet.  Cluster nodes can participate in more than one pool.
 
-To provision a volume, a pool must be used as one of the parameters to create one or a volume will be created from the default pool names 'default'.
+To provision a volume, a pool must be used to provision a volume from.  If a pool is not specified the default pool name *default* will be used.
 
 ## Parameters
 
-To take any action on a pool or create a new pool, a number of mandatory and options parameters need to be specified.
+Pool parameters can be used to set characteristics such as backend storage type, participating nodes and whether the pool is activated.
 
 ### Create a new pool
 
-To create a pool, the minimum set of (mandatory) parameters required is a pool name and at least one node name to create the pool from `storageos pool create [OPTIONS] [POOL]`:
+To create a pool, the pool name is mandatory, and you should add at least one node to allocate storage capacity from `storageos pool create [OPTIONS] [POOL]`:
 
 ```
 $ storageos pool create no-ha --controllers storageos-1-59227
@@ -45,7 +45,7 @@ Label metadata:
 
 ### List available pools
 
-To list the newly created pool use `storageos pool ls [OPTIONS]`: 
+To list pools use `storageos pool ls [OPTIONS]`: 
 
 ```
 $ storageos pool inspect no-ha

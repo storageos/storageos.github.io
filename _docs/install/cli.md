@@ -14,8 +14,8 @@ remotely to a StorageOS cluster.
 [View supported platforms](https://github.com/storageos/go-cli/releases)
 
 ```bash
-curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
-chmod +x storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ chmod +x storageos
 ```
 
 Run `./storageos` to see available commands, or read the [the CLI reference]({{ site.baseurl }}{% link _docs/reference/cli.md %}).

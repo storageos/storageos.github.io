@@ -31,7 +31,7 @@ no-ha
 To add a label at time of creation:
 
 ```
-$ storageos pool create production --label env:prod
+$ storageos pool create production --label env=prod
 production
 ```
 
@@ -39,7 +39,7 @@ Label metadata:
 
 ```
 “labels”: {
-           “env:prod”: “”
+           “env”: “prod”
        }
 ```
 
@@ -78,7 +78,9 @@ $ storageos pool inspect no-ha
            “available_capacity_bytes”: 0,
            “provisioned_capacity_bytes”: 0
        },
-       “labels”: {}
+       “labels”: {
+          "env": "prod"
+       }
    }
 ]
 ```

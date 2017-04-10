@@ -125,7 +125,7 @@ $ vagrant ssh s-1
 
 5. Install the StorageOS CLI.
 ```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/latest/storageos_linux_amd64 > storageos
 $ chmod +x storageos
 $ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=127.0.0.1
 $ export PATH=$PATH:.

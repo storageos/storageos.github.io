@@ -13,7 +13,7 @@ Pools are used to create collections of storage resources created from StorageOS
 
 Pools are used to organize storage resources into common collections such as class of server, class of storage, location within the datacenter or subnet.  Cluster nodes can participate in more than one pool.
 
-To provision a volume, a pool must be used to provision a volume from.  If a pool is not specified the default pool name *default* will be used.
+Volumes are provisioned from pools.  If a pool name is not specified when the volume is created, the default pool name (`default`) will be used.
 
 ## Parameters
 
@@ -45,7 +45,7 @@ Label metadata:
 
 ### List available pools
 
-To list pools use `storageos pool ls [OPTIONS]`: 
+To list pools use `storageos pool ls [OPTIONS]`:
 
 ```
 $ storageos pool inspect no-ha
@@ -56,7 +56,7 @@ no-ha                                   storageos-1-59227
 
 ### Inspect a named pool
 
-To inspect the metadata for a given pool (or pools) use `storageos pool inspect [OPTIONS] POOL [POOL...]`: 
+To inspect the metadata for a given pool (or pools) use `storageos pool inspect [OPTIONS] POOL [POOL...]`:
 
 ```
 $ storageos pool inspect no-ha

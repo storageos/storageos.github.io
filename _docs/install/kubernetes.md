@@ -103,7 +103,7 @@ Pods can be created that access volumes directly.
 
 ### Persistent Volumes
 
-1. Create a volume using the StorageOS UI, CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
+1. Create a volume using the StorageOS CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
 1. Create the persistent volume `redis-vol01`.
 
    Example spec:

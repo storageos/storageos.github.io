@@ -42,7 +42,7 @@ These examples assume you have a running Kubernetes cluster with the StorageOS c
 
 Pods can be created that access volumes directly.
 
-1. Create a volume using the StorageOS UI, CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
+1. Create a volume using the StorageOS CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
 1. Create a pod that refers to the new volume.  In this case the volume is named `redis-vol01`.
 
    Example spec:

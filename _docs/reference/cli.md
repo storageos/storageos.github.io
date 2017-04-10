@@ -17,8 +17,8 @@ configuration. `storageos` is designed to be familiar to Docker CLI users.
 [View supported platforms](https://github.com/storageos/go-cli/releases)
 
 ```bash
-curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
-chmod +x storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ chmod +x storageos
 ```
 
 ## Usage

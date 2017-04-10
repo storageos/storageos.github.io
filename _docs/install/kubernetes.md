@@ -42,7 +42,7 @@ These examples assume you have a running Kubernetes cluster with the StorageOS c
 
 Pods can be created that access volumes directly.
 
-1. Create a volume using the StorageOS UI, CLI or API.  Consult the [StorageOS documentation](https://docs.storageos.com) for details.
+1. Create a volume using the StorageOS UI, CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
 1. Create a pod that refers to the new volume.  In this case the volume is named `redis-vol01`.
 
    Example spec:
@@ -87,8 +87,6 @@ Pods can be created that access volumes directly.
            fsType: ext3
    ```
 
-   [Download example](storageos-pod.yaml?raw=true)
-
    Create the pod:
 
    ```bash
@@ -105,7 +103,7 @@ Pods can be created that access volumes directly.
 
 ### Persistent Volumes
 
-1. Create a volume using the StorageOS UI, CLI or API.  Consult the [StorageOS documentation](https://docs.storageos.com) for details.
+1. Create a volume using the StorageOS UI, CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
 1. Create the persistent volume `redis-vol01`.
 
    Example spec:
@@ -131,8 +129,6 @@ Pods can be created that access volumes directly.
        # The filesystem type to create on the volume, if required.
        fsType: ext4
    ```
-
-   [Download example](storageos-pv.yaml?raw=true)
 
    Create the persistent volume:
 
@@ -179,8 +175,6 @@ Pods can be created that access volumes directly.
        requests:
          storage: 5Gi
    ```
-
-   [Download example](storageos-pvc.yaml?raw=true)
 
    Create the persistent volume claim:
 
@@ -236,8 +230,6 @@ Pods can be created that access volumes directly.
            claimName: pvc0001
    ```
 
-   [Download example](storageos-pvcpod.yaml?raw=true)
-
    Create the pod:
 
    ```bash
@@ -281,8 +273,6 @@ StorageOS supports the following storage class parameters:
      description: Kubernetes volume
      fsType: ext4
    ```
-
-   [Download example](storageos-sc.yaml?raw=true)
 
    Create the storage class:
 
@@ -399,8 +389,6 @@ StorageOS supports the following storage class parameters:
            claimName: fast0001
    ```
 
-   [Download example](storageos-sc-pvcpod.yaml?raw=true)
-
    Create the pod:
 
    ```bash
@@ -417,7 +405,7 @@ StorageOS supports the following storage class parameters:
 
 ## API Configuration
 
-The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](../../../docs/user-guide/secrets/).
+The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 To add a secret to provide custom API configuration, you must name the secret `storageos-api`.  Normally you would add the secret in the `default` namespace so it would be available to all namespaces to use.  You may also add it to a specific namespace for only that namespace to use, allowing different namespaces to authenticate to the API with different user accounts.
 

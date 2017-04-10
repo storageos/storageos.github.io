@@ -8,11 +8,18 @@ module: applications/postgres
 
 # ![image](/images/docs/explore/postgresqllogo.png) PostgreSQL with StorageOS
 
-PostgreSQL or "Postgres" is an open source object-relational database management system (ORDBMS).
+PostgreSQL or "Postgres" is an open source object-relational database management
+system (ORDBMS).
 
-Postgres is deployed across a wide variety of platforms with a mix of workloads ranging from small, single-node use cases to large Internet-facing with many concurrent users.
+Postgres is deployed across a wide variety of platforms with a mix of workloads
+ranging from small, single-node use cases to large Internet-facing with many
+concurrent users.
 
-This guide demonstrates running Postgres with StorageOS. <!--- and then explore some of the perfromance characteristics using the built-in Postgres benchmark tool PgBench ---> Before starting, ensure you have StorageOS installed on a cluster (refer to the [quick start cluster install](../introduction/quick_start.html)).
+This guide demonstrates running Postgres with StorageOS. <!--- and then explore
+some of the perfromance characteristics using the built-in Postgres benchmark
+tool PgBench ---> Before starting, ensure you have StorageOS installed on a
+cluster (refer to the [quick start cluster
+install](../introduction/quick_start.html)).
 
 ## Create a Postgres data volume
 
@@ -34,8 +41,12 @@ $ docker run -d --name postgres-dev \
 -e POSTGRES_PASSWORD=storageos postgres
 a9a77832df4e0b220ca6c0184f8e2e2ce933a6cdfa83ba2a2810243c7bf0e53c
 ```
-* The StorageOS volume appears as a file system mount, so we need to mount the `pgdata` volume to the internal container path `/var/lib/postgresql/data`, and set the environment variable `PGDATA` to the `/var/lib/postgresql/data/pgdata` subdirectory. See [Postgres docs](https://hub.docker.com/_/postgres/).
-* The Postgres container image includes `EXPOSE 5432` making the default Postgres TCP port automatically available to linked containers.
+* The StorageOS volume appears as a file system mount, so we need to mount the
+`pgdata` volume to the internal container path `/var/lib/postgresql/data`, and
+set the environment variable `PGDATA` to the `/var/lib/postgresql/data/pgdata`
+subdirectory. See [Postgres docs](https://hub.docker.com/_/postgres/).
+* The Postgres container image includes `EXPOSE 5432` making the default
+Postgres TCP port automatically available to linked containers.
 
 3. Confirm Postgres is up and running.
 ```bash
@@ -116,7 +127,8 @@ exit
 
 ## Persistent storage
 
-This demonstrates recovery of the postgres database from another node after the container has exited.
+This demonstrates recovery of the postgres database from another node after the
+container has exited.
 
 1. Kill the Postgres container.
 ```bash
@@ -127,7 +139,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 a0f7a1d3d753        postgres            "docker-entrypoint.sh"   42 hours ago        Exited (137) 22 seconds ago                       postgres-dev
 ```
 
-2. Log into another node using `exit` and `ssh`. Start a new Postgres container instance and mount the same StorageOS `pgdata` volume.
+2. Log into another node using `exit` and `ssh`. Start a new Postgres container
+instance and mount the same StorageOS `pgdata` volume.
 ```bash
 $ docker run -d --name postgres-dev -v pgdata:/var/lib/postgresql/data --volume-driver=storageos \
      -e POSTGRES_PASSWORD=storageos -e PGDATA=/var/lib/postgresql/data/pgdata postgres
@@ -190,7 +203,12 @@ exit
 <!---
 ## Performance Regression Testing with pgBench
 
-Pgbench 9.0 is a simple tool for running benchmark tests on PostgreSQL. It runs a sequence of SQL commands concurrently using worker threads and calculates an average transaction rate per second loosely based on the old TPC-B benchmark.  This involves five SELECT, UPDATE, and INSERT commands per transaction.
+Pgbench 9.0 is a simple tool for running benchmark tests on PostgreSQL. It runs
+a sequence of SQL commands concurrently using worker threads and calculates an
+average transaction rate per second loosely based on the old TPC-B benchmark.
+This involves five SELECT, UPDATE, and INSERT commands per transaction.
 
->**Note**: Running `pgbench -i` creates four tables `pgbench_accounts`, `pgbench_branches`, `pgbench_history`, and `pgbench_tellers`, destroying any existing tables with these names.
+>**Note**: Running `pgbench -i` creates four tables `pgbench_accounts`,
+`pgbench_branches`, `pgbench_history`, and `pgbench_tellers`, destroying any
+existing tables with these names.
 --->

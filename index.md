@@ -19,7 +19,7 @@ During beta, 64-bit Linux is required.
 
 ## Got feedback or just want to chat?
 
-Join us on Slack, or [see other ways](http://support.storageos.com) to get in touch.
+Join us on [Slack](http://slack.storageos.com), or [see other ways](http://support.storageos.com) to get in touch.
 
 <script async defer src="http://slack.storageos.com/slackin.js"></script>
 

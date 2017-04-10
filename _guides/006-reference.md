@@ -13,6 +13,10 @@ sections:
     description: Describes the HTTP API
     module: reference/api
   -
+    title: Graphical user interface
+    description: Describes the graphical user interface
+    module: reference/gui
+  -
     title: Configuration
     description: Configuration reference
     module: reference/configuration

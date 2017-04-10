@@ -40,8 +40,7 @@ Installed plugin storageos/plugin:0.7.2
 * `--alias storageos storageos/plugin`: Allows you to specify `--volume-driver storageos` when starting containers.
 * `KV_BACKEND`: Use the built-in key/value store for testing.
 
-2. That's it - StorageOS is now running. Confirm that StorageOS installed
-3. successfully.
+2. That's it - StorageOS is now running. Confirm that StorageOS installed successfully.
 ```bash
 $ sudo docker plugin ls
 ID                  NAME                DESCRIPTION                   ENABLED
@@ -89,23 +88,29 @@ $ vagrant destroy
 
 ### Cluster install
 
-To test high availability, install StorageOS on a three node cluster. To try it
-out on a laptop or single machine, install
-[VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
+To test high availability, set up a test StorageOS cluster using a laptop or single machine.
+
+1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
 1.9.3](http://vagrantup.com/downloads.html).
 
-1. Clone this repository, which contains scripts to automate setup.
+2. Clone this repository, which contains scripts to automate setup.
 ```bash
 $ mkdir storageos-cluster
 $ cd storageos-cluster
 $ git clone https://github.com/andrelucas/storageos-alpine.git
 ```
 
-2. Bring up a three-node StorageOS cluster.
+3. Bring up a three-node StorageOS cluster.
 ```bash
 $ vagrant plugin install vagrant-alpine
 $ make up
+Bringing machine 's-1' up with 'virtualbox' provider...
+Bringing machine 's-2' up with 'virtualbox' provider...
+Bringing machine 's-3' up with 'virtualbox' provider...
+[...]
 $ make provision
+vagrant provision --provision-with consul-rv
+[...]
 ```
 This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
 * Alpine Linux
@@ -113,19 +118,33 @@ This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
 * The recommended KV store, Consul.
 * The StorageOS volume plugin.
 
-3. Connect to one of the VMs:
+4. Connect to one of the VMs:
 ```bash
 $ vagrant ssh s-1
 ```
 
-4. Install the StorageOS CLI:
+5. Install the StorageOS CLI.
 ```bash
 $ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
 $ chmod +x storageos
 $ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=127.0.0.1
+$ export PATH=$PATH:.
+```
+* By default StorageOS starts with a single user with username `storageos` and password `storageos`.
+
+Now you are ready to [install an application](../applications/postgres.html) or [manage the cluster](../manage/volumes.html).
+
+To log into other nodes:
+```bash
+$ exit
+$ vagrant ssh s-2
 ```
 
-Now you are ready to install an application, or manage the cluster.
+To clean up:
+```bash
+$ exit
+$ vagrant destroy
+```
 
 ### Stay in touch
 

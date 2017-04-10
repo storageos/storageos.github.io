@@ -1,5 +1,5 @@
 
-# A Swagger 2.0 (a.k.a. OpenAPI) definition of the Engine API.
+# A Swagger 2.0 (a.k.a. OpenAPI) definition of the StorageOS API.
 #
 # This is used for generating API documentation and the types used by the
 # client/server. See api/README.md for more information.

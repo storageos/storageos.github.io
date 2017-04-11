@@ -5,6 +5,14 @@ anchor: install
 
 sections:
   -
+    title: Single node install
+    description: StorageOS node install
+    module: install/nodeinstall
+  -
+    title: Cluster install
+    description: StorageOS cluster install
+    module: install/clusterinstall
+  -
     title: Docker
     description: Docker managed plugin install for Docker Engine 1.13+
     module: install/docker

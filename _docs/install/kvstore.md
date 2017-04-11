@@ -30,8 +30,9 @@ StorageOS. Starting StorageOS without `KV_BACKEND` or `KV_ADDR` set will assume
 Consul is running locally at `127.0.0.1:8500`.
 
 To get a Consul service up and running quickly for testing use the
-[Consul image](https://hub.docker.com/_/consul/) from the Docker Hub. Start the
-Consul container on each node where Consul should run.
+[Consul image](https://hub.docker.com/_/consul/) from the Docker Hub. You will
+need to start the Consul container on any three (or `num_nodes`) nodes in the
+cluster.
 
 ```bash
 $ docker run -d --name consul --net=host consul agent -server \

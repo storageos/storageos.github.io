@@ -3,7 +3,7 @@ layout: guide
 title: MySQL with StorageOS
 anchor: applications
 module: applications/mysql
-# Last checked by cheryl.hung@storageos.com on 2017-04-11
+# Last reviewed by cheryl.hung@storageos.com on 2017-04-11
 ---
 
 

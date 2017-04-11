@@ -7,10 +7,11 @@ module: manage/namespaces
 
 # Namespaces
 
-Namespaces are used to isolate environments and make operations quicker, eg. cleaning up all volumes and rules within a testing environment with a single `storageos namespace rm` command.
-Users can have any number of namespaces.
+Namespaces help different projects or teams share a StorageOS cluster. No namespaces are created by default, and users can have any number of namespaces.
 
->**Note**: Docker does not support namespaces on volumes, so you should use the `default` namespace with Docker containers.
+Namespaces apply to volumes and rules.
+
+>**Note**: Docker does not support namespaces, so `docker volume create` creates volumes in the default namespace.
 
 ## Create a namespace
 

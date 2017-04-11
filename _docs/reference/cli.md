@@ -93,7 +93,7 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 
 Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 
-Read the guides for example usage on each command.
+Read the guides for how to use each command.
 
 * [Create and manage volumes](../manage/volumes.html)
 * [Create and manage rules](../manage/rules.html)

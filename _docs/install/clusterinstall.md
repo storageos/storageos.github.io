@@ -27,13 +27,10 @@ $ git clone https://github.com/andrelucas/storageos-alpine.git
 2. Bring up a three-node StorageOS cluster.
 ```bash
 $ vagrant plugin install vagrant-alpine
-$ make up
+$ make all
 Bringing machine 's-1' up with 'virtualbox' provider...
 Bringing machine 's-2' up with 'virtualbox' provider...
 Bringing machine 's-3' up with 'virtualbox' provider...
-[...]
-$ make provision
-vagrant provision --provision-with consul-rv
 [...]
 ```
 This sets up three virtual machines named `s-1`, `s-2`, `s-3` running

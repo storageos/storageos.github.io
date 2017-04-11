@@ -19,19 +19,19 @@ There are several benefits with deploying MySQL with StorageOS:
 * Instant, stateless MySQL application containers on demand
 * Persistent, highly available storage to mount stateful database data from
 
-This guide demonstrates running MySQL with StorageOS. Before starting, ensure you have StorageOS installed on a
-cluster (refer to the [cluster
-install](../introduction/clusterinstall.html)).
+This guide demonstrates running MySQL in a container with StorageOS. Before
+starting, ensure you have StorageOS installed on a cluster (refer to the
+[cluster install](../install/clusterinstall.html)).
 
 ## Create a MySQL Volume
 
 1. Create a 1GB volume called `mysqldata` in the default namespace.
 ```bash
-$ storageos volume create --namespace default --size=1 mysqldata
-default/mysqldata
-$ storageos volume ls
-NAMESPACE/NAME      SIZE                MOUNTED BY          STATUS
-default/mysqldata   1GB                                     active
+$ docker volume create -d storageos --name mysqldata --opt size=1
+mysqldata
+$ docker volume list
+DRIVER              VOLUME NAME
+storageos:latest    mysqldata
 ```
 
 2. Run a MySQL container using the StorageOS volume driver.

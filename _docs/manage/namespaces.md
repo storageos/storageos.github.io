@@ -16,24 +16,43 @@ Users can have any number of namespaces.
 
 To start creating rules and volumes, at least one namespace is required.
 To create a namespace, run:
-
-    storageos namespace create my-namespace
+```
+$ storageos namespace create legal --description compliance-volumes
+legal
+```
 
 Add the `--display-name` flag to set a display-friendly name.
 
 ## List all namespaces
 
 To view namespaces, run:
+```
+$ storageos namespace ls -q
+default
+legal
+performance
+```
 
-    storageos namespace ls
+Remove `-q` for full details
 
-## Removing namespace
+## Inspect namespaces
 
-Removing a namespace will remove all volumes and rules that belong to that namespace. API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss).
+Check if a namespace has labels applied.
+
+```
+$ storageos namespace inspect legal | grep labels
+        "labels": null,
+```
+
+## Removing a namespace
+
+Removing a namespace will remove all volumes and rules that belong to that namespace. An API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss).
 
 To remove a namespace:
-
-    storageos namespace rm my-namespace
+```
+$ storageos namespace rm legal
+legal
+```
 
 Force remove:
 

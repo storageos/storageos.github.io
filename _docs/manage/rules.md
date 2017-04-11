@@ -136,7 +136,7 @@ You should see that it has two replicas provisioned and additional labels attach
         "storageos.driver": "filesystem",
         "storageos.feature.replicas": "2"
     },
-```     
+```
 
 ### Using advanced operators
 
@@ -166,7 +166,7 @@ Labels should look like:
     "env": "uat",
     "storageos.driver": "filesystem",
     "storageos.feature.replicas": "1"
-},       
+},
 ```
 
 Finally, create a rule that will mark volumes as `prod` if they have 2 or more (`gt`) configured replicas:

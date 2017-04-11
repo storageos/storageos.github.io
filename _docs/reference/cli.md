@@ -150,41 +150,6 @@ Delete rule:
 $ storageos rule rm default/replicator
 default/replicator
 ```
-### namespace
-
-Create a new namespace.
-
-```
-$ storageos namespace create legal --description compliance-volumes
-legal
-```
-
-View namespaces.
-
-```
-$ storageos namespace ls -q
-default
-legal
-performance
-```
-
-Does a namespace have labels applied
-
-```
-$ storageos namespace inspect legal | grep labels
-        "labels": null,
-```
-
-Remove a namespace
-
-```
-$ storageos namespace rm legal
-legal
-```
-
-**Note**: Removing a namespace will also remove all unmounted volumes contained
-in it without warning.  You must specify the `--force` flag if you wish to
-delete a namespace with mounted volumes.
 
 ### pool
 

@@ -21,7 +21,14 @@ To view all volumes in all namespaces, run:
 
     storageos volume ls
 
-## Labels
+Create a new volume in a new namespace.
+```
+$ storageos volume create myvolume -n legal
+legal/myvolume
+```
+
+
+# Labels
 
 Labels are a mechanism for applying metadata to StorageOS objects. You can use them to annotate or organise your volumes in any way that makes sense for your organization or app.
 

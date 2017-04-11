@@ -14,7 +14,7 @@ configuration. `storageos` is designed to be familiar to Docker CLI users.
 
 ## Installation
 
-[View supported platforms](https://github.com/storageos/go-cli/releases)
+On 64-bit Linux [(view other platforms)](https://github.com/storageos/go-cli/releases):
 
 ```bash
 $ curl -sSL https://github.com/storageos/go-cli/releases/download/latest/storageos_linux_amd64 > storageos
@@ -86,10 +86,10 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 
 | Command                                  | Description                                                    | Subcommands                   |
 |------------------------------------------|----------------------------------------------------------------|-------------------------------|
-| [`volume`](../manage/volumes.html)       | StorageOS data volumes                                         | `create inspect ls rm update` |
-| [`rule`](../manage/rules.html)           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
-| [`namespace`](../manage/namespaces.html) | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
-| [`pool`](../manage/pools.html)           | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
+| [volume](../manage/volumes.html)       | StorageOS data volumes                                         | `create inspect ls rm update` |
+| [rule](../manage/rules.html)           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
+| [namespace](../manage/namespaces.html) | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
+| [pool](../manage/pools.html)           | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
 
 Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 

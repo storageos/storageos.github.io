@@ -161,19 +161,19 @@ $ storageos volume inspect legal/scratch1
 Create a new rule in default namespace:
 
 ```
-$ storageos rule create --namespace default --selector env=prod --operator == --action add --label storageos.feature.replicas=2 replicator
+$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
 default/replicator
 ```
 
-List rules:
+List rules:    
 
 ```
 $ storageos rule ls
-NAMESPACE/NAME        OPERATOR            SELECTOR                       ACTION              LABELS
-default/dev-marker    notin               storageos.feature.replicas=1   add                 env=dev
-default/prod-marker   gt                  storageos.feature.replicas=1   add                 env=prod
-default/replicator    ==                  env=prod                       add                 storageos.feature.replicas=2
-default/uat-marker    lt                  storageos.feature.replicas=2   add                 env=uat
+NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
+default/dev-marker    !storageos.feature.replicas    add                 env=dev
+default/prod-marker   storageos.feature.replicas>1   add                 env=prod
+default/replicator    env==prod                      add                 storageos.feature.replicas=2
+default/uat-marker    storageos.feature.replicas<2   add                 env=uat
 ```
 
 Inspect rule:
@@ -182,17 +182,14 @@ Inspect rule:
 $ storageos rule inspect default/replicator
 [
     {
-        "id": "2490e656-a381-46ca-f349-9a0b61822a2e",
+        "id": "9db3252a-bd14-885b-0d0a-b0da1dd2d4a1",
         "name": "replicator",
         "namespace": "default",
         "description": "",
         "active": true,
         "weight": 5,
-        "operator": "==",
         "action": "add",
-        "selectors": {
-            "env": "prod"
-        },
+        "selector": "env==prod",
         "labels": {
             "storageos.feature.replicas": "2"
         }

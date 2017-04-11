@@ -21,9 +21,9 @@ sections:
     description: Kubernetes configuration
     module: install/kubernetes
   -
-    title: Consul
-    description: Consul Key/Value Store
-    module: install/consul
+    title: Key/Value Store
+    description: Key/Value Store
+    module: install/kvstore
   -
     title: Command line interface
     description: Command line interface

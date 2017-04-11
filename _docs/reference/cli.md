@@ -84,12 +84,12 @@ default/test-vol       11 GB                                   active
 
 Each of the storageos management commands requires a subcommand to run. Use `storageos COMMAND --help` to view command flags.
 
-| Command                                  | Description                                                    | Subcommands                   |
-|------------------------------------------|----------------------------------------------------------------|-------------------------------|
-| `volume`       | StorageOS data volumes                                         | `create inspect ls rm update` |
-| `rule`           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
-| `namespace` | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
-| `pool`          | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
+| Command     | Subcommands                   | Description                                                    |
+|-------------|-------------------------------|----------------------------------------------------------------|
+| `volume`    | `create inspect ls rm update` | StorageOS data volumes                                         |
+| `rule`      | `inspect ls rm update`        | Policy enforcement based on labels.                            |
+| `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
+| `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|
 
 Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 
@@ -149,28 +149,4 @@ Delete rule:
 ```
 $ storageos rule rm default/replicator
 default/replicator
-```
-
-### pool
-
-Create a new no-ha pool comprising one node
-```
-$ storageos pool create no-ha --controllers storageos-1-59227
-no-ha
-```
-
-List available pools
-
-```
-$ storageos pool ls
-POOL NAME           DRIVERS             CONTROLLERS                                               AVAIL               TOTAL               STATUS
-default             filesystem          storageos-1-59227, storageos-2-59227, storageos-3-59227   0 B                 0 B                 active
-no-ha                                   storageos-1-59227                                         0 B                 0 B                 active
-```
-
-Delete pool
-
-```
-$ storageos pool rm no-ha
-no-ha
 ```

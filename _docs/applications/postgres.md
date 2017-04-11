@@ -19,8 +19,8 @@ concurrent users.
 This guide demonstrates running Postgres with StorageOS. <!--- and then explore
 some of the perfromance characteristics using the built-in Postgres benchmark
 tool PgBench ---> Before starting, ensure you have StorageOS installed on a
-cluster (refer to the [quick start cluster
-install](../introduction/quick_start.html)).
+cluster (refer to the [cluster
+install](../introduction/clusterinstall.html)).
 
 ## Create a Postgres data volume
 

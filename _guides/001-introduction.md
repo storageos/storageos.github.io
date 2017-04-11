@@ -12,5 +12,4 @@ sections:
     title: Quick start
     description: StorageOS quick start
     module: introduction/quick_start
-
 ---

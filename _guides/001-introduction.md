@@ -5,8 +5,12 @@ anchor: introduction
 
 sections:
   -
+    title: Overview
+    description: StorageOS Overview
+    module: introduction/overview
+  -
     title: Quick start
-    description: 10 minute guide
+    description: StorageOS quick start
     module: introduction/quick_start
 
 ---

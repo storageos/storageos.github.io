@@ -17,8 +17,10 @@ configuration. `storageos` is designed to be familiar to Docker CLI users.
 [View supported platforms](https://github.com/storageos/go-cli/releases)
 
 ```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/latest/storageos_linux_amd64 > storageos
 $ chmod +x storageos
+$ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=127.0.0.1
+$ export PATH=$PATH:.
 ```
 
 ## Usage
@@ -31,18 +33,14 @@ Usage:	storageos COMMAND
 Converged storage for containers
 
 Options:
-      --config string      Location of client config files (default "~/.storageos")
+      --config string      Location of client config files (default "/home/vagrant/.storageos")
   -D, --debug              Enable debug mode
       --help               Print usage
-  -H, --host list          Daemon socket(s) to connect to (default [])
+  -H, --host list          Node endpoint(s) to connect to (will override STORAGEOS_HOST env variable
+                           value) (default [])
   -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
-  -p, --password string    API password
-      --tls                Use TLS; implied by --tlsverify
-      --tlscacert string   Trust certs signed only by this CA (default "~/.storageos/ca.pem")
-      --tlscert string     Path to TLS certificate file (default "~/.storageos/cert.pem")
-      --tlskey string      Path to TLS key file (default "~/.storageos/key.pem")
-      --tlsverify          Use TLS and verify the remote
-  -u, --username string    API username
+  -p, --password string    API password (will override STORAGEOS_PASSWORD env variable value)
+  -u, --username string    API username (will override STORAGEOS_USERNAME env variable value)
   -v, --version            Print version information and quit
 
 Management Commands:
@@ -60,7 +58,9 @@ Run 'storageos COMMAND --help' for more information on a command.
 
 ### Authentication
 
-If you see `API error (401): Unauthorized`, you need to provide the correct credentials via environment variables. The default installation creates a single user with username `storageos` and password `storageos`.
+If you see `API error (401): Unauthorized`, you need to provide the correct
+credentials via environment variables. The default installation creates a single
+user with username `storageos` and password `storageos`.
 
 ```bash
 export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
@@ -82,119 +82,31 @@ default/test-vol       11 GB                                   active
 
 ## Management Commands
 
-Each of the storageos management commands requires a subcommand to run.
+Each of the storageos management commands requires a subcommand to run. Use `storageos COMMAND --help` to view command flags.
 
-Use `storageos COMMAND SUBCOMMAND --help` to view the available available option
-flags.
+| Command                                  | Description                                                    | Subcommands                   |
+|------------------------------------------|----------------------------------------------------------------|-------------------------------|
+| [`volume`](../manage/volumes.html)       | StorageOS data volumes                                         | `create inspect ls rm update` |
+| [`rule`](../manage/rules.html)           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
+| [`namespace`](../manage/namespaces.html) | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
+| [`pool`](../manage/pools.html)           | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
 
-### Commands
+Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 
-There are five management commands available from the storageos CLI
+## Common operations
 
-| Command     | Description                                                                        |
-|-------------|-------------------------------------------------------------------------------------------|
-| `namespace` | A StorageOS namespace is a class where you organize your StorageOS volumes.        |
-|             | By default, volumes will be created in the *default* namespace.                    |
-| `pool`      | A StorageOS pool is a collection of storage resources that can be provisioned from.|
-|             | By default, volumes will be created from the *default* pool.                       |
-| `rule`      | StorageOS *rules* are created using collections of *labels* to define a set of     |
-|             | conditions to apply a policy to. There are no default rules defined out of the box.|
-| `system`    | StorageOS *system* refers to the running StorageOS process                         |
-| `volume`    | StorageOS volumes are created in a defined *namespace* from a defined *pool*.  If no|
-|             | values are provided volumes will be created in the default pool and namespace.     |
-
-
-### Flags and Arguments
-
-For each management subcommand there are several options.  Each option supports a number of flags which are different for each management command.
-
-**Note**: For a list of subcommand argument flags and their meanings, use `COMMAND SUBCOMMAND flag --help`
-
-| Flag        | Description                   | Applies to                                  |
-|-------------|-------------------------------------------------------------------------------------------|
-| `create`    | Create object                 | `namespece` `pool` `rule` `system` `volume` |
-| `events`    | List event information        | `system`                                    |
-| `inspect`   | Display object properties     | `namespece` `pool` `rule` `system` `volume` |
-| `ls`        | List object collection        | `namespece` `pool` `rule` `system` `volume` |
-| `rm`        | Remove object from collection | `namespece` `pool` `rule` `system` `volume` |
-| `update`    | Update object                 | `namespece` `volume`                        |
-
-
-## Examples: Common operations
-
-The following set of examples should help familiarize yourself with running commonly used storageos operations.
-
-### namespace
-
-Create a new namespace
-
-```
-$ storageos namespace create legal --description compliance-volumes
-legal
-```
-
-Output a list of just the namespace names
-
-```
-$ storageos namespace ls -q
-default
-legal
-performance
-```
-
-Does a namespace have labels applied
-
-```
-$ storageos namespace inspect legal | grep labels
-        "labels": null,
-```
-
-Remove a namespace
-
-```
-$ storageos namespace rm legal
-legal
-```
-
-**Note**: Removing a namespace will also remove all unmounted volumes contained
-in it without warning.  You must specify the `--force` flag if you wish to
-delete a namespace with mounted volumes.
-
-### pool
-
-Create a new no-ha pool comprising one node
-```
-$ storageos pool create no-ha --controllers storageos-1-59227
-no-ha
-```
-
-List available pools
-
-```
-$ storageos pool ls
-POOL NAME           DRIVERS             CONTROLLERS                                               AVAIL               TOTAL               STATUS
-default             filesystem          storageos-1-59227, storageos-2-59227, storageos-3-59227   0 B                 0 B                 active
-no-ha                                   storageos-1-59227                                         0 B                 0 B                 active
-```
-
-Delete pool
-
-```
-$ storageos pool rm no-ha
-no-ha
-```
-
+The following set of examples should help familiarize yourself with running commonly used `storageos` operations.
 
 ### volume
 
-Create a new volume in a new namespace
+Create a new volume in a new namespace.
 
 ```
 $ storageos volume create myvolume -n legal
 legal/myvolume
 ```
 
-Is new volume mounted?
+Check if a volume is mounted.
 
 ```
 storageos volume inspect legal/myvolume | grep mounted
@@ -208,7 +120,7 @@ $ storageos volume create scratch1 -p no-ha -s 10 -f xfs -n legal
 legal/scratch1
 ```
 
-Inspect new volume properties
+Inspect volume properties
 
 ```
 $ storageos volume inspect legal/scratch1
@@ -293,4 +205,63 @@ Delete rule:
 ```
 $ storageos rule rm default/replicator
 default/replicator
+```
+### namespace
+
+Create a new namespace.
+
+```
+$ storageos namespace create legal --description compliance-volumes
+legal
+```
+
+View namespaces.
+
+```
+$ storageos namespace ls -q
+default
+legal
+performance
+```
+
+Does a namespace have labels applied
+
+```
+$ storageos namespace inspect legal | grep labels
+        "labels": null,
+```
+
+Remove a namespace
+
+```
+$ storageos namespace rm legal
+legal
+```
+
+**Note**: Removing a namespace will also remove all unmounted volumes contained
+in it without warning.  You must specify the `--force` flag if you wish to
+delete a namespace with mounted volumes.
+
+### pool
+
+Create a new no-ha pool comprising one node
+```
+$ storageos pool create no-ha --controllers storageos-1-59227
+no-ha
+```
+
+List available pools
+
+```
+$ storageos pool ls
+POOL NAME           DRIVERS             CONTROLLERS                                               AVAIL               TOTAL               STATUS
+default             filesystem          storageos-1-59227, storageos-2-59227, storageos-3-59227   0 B                 0 B                 active
+no-ha                                   storageos-1-59227                                         0 B                 0 B                 active
+```
+
+Delete pool
+
+```
+$ storageos pool rm no-ha
+no-ha
 ```

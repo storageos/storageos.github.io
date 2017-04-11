@@ -3,6 +3,7 @@ layout: guide
 title: Quick start
 anchor: introduction
 module: introduction/quick_start
+# Last reviewed by cheryl.hung@storageos.com on 2017-04-10
 ---
 
 # Quick start
@@ -10,8 +11,12 @@ module: introduction/quick_start
 The fastest way to try out StorageOS is to download the plugin from the Docker
 Hub.
 
-During beta, StorageOS requires 64-bit Linux to run. Windows or MacOS users
-should install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box and
+## Single node install
+
+### Prerequisites
+
+During beta, StorageOS requires 64-bit Linux to run. Windows or MacOS users should install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+and [Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box and
 ssh into it:
 
 ```bash
@@ -20,14 +25,16 @@ $ vagrant up
 $ vagrant ssh
 ```
 
-If you don't have Docker installed, get the latest version:
+The quick start guide describes the plugin install for Docker 1.13+. (For Docker
+1.10 to 1.12, see the [container install method](../install/container.html).) To
+install the latest version of Docker:
 ```
 curl -sSL https://get.docker.com | sudo sh
 ```
 
-### Single node install
+### Install StorageOS
 
-1. Install StorageOS from the Docker hub.
+1. Install StorageOS from the Docker Hub.
 ```bash
 $ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_BACKEND=boltdb
 0.7.2: Pulling from storageos/plugin
@@ -38,16 +45,16 @@ Installed plugin storageos/plugin:0.7.2
 ```
 * `--grant-all-permissions`: Remove this to view requested permissions.
 * `--alias storageos storageos/plugin`: Allows you to specify `--volume-driver storageos` when starting containers.
-* `KV_BACKEND`: Use the built-in key/value store for testing.
+* `KV_BACKEND`: Use the built-in key/value store for testing. See [docs](../install/kvstore.html).
 
-2. That's it - StorageOS is now running. Confirm that StorageOS installed successfully.
+2. That's it - StorageOS is now running. Confirm successful installation.
 ```bash
 $ sudo docker plugin ls
 ID                  NAME                DESCRIPTION                   ENABLED
 638e7e013325        storageos:latest    StorageOS plugin for Docker   true
 ```
 
-3. Write data using the StorageOS volume driver.
+3. Write data to a test file using the StorageOS volume driver.
 ```bash
 $ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "echo hello > /data/myfile"
 Unable to find image 'alpine:latest' locally
@@ -86,21 +93,25 @@ $ exit
 $ vagrant destroy
 ```
 
-### Cluster install
+## Cluster install
 
 To test high availability, set up a test StorageOS cluster using a laptop or single machine.
 
-1. Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
+### Prerequisites
+
+Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
 1.9.3](http://vagrantup.com/downloads.html).
 
-2. Clone this repository, which contains scripts to automate setup.
+### Installation
+
+1. Clone this repository, which contains scripts to automate setup.
 ```bash
 $ mkdir storageos-cluster
 $ cd storageos-cluster
 $ git clone https://github.com/andrelucas/storageos-alpine.git
 ```
 
-3. Bring up a three-node StorageOS cluster.
+2. Bring up a three-node StorageOS cluster.
 ```bash
 $ vagrant plugin install vagrant-alpine
 $ make up
@@ -118,14 +129,14 @@ This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
 * The recommended KV store, Consul.
 * The StorageOS volume plugin.
 
-4. Connect to one of the VMs:
+3. Connect to one of the VMs:
 ```bash
 $ vagrant ssh s-1
 ```
 
-5. Install the StorageOS CLI.
+4. Install the StorageOS CLI.
 ```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.1/storageos_linux_amd64 > storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/latest/storageos_linux_amd64 > storageos
 $ chmod +x storageos
 $ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=127.0.0.1
 $ export PATH=$PATH:.
@@ -146,6 +157,6 @@ $ exit
 $ vagrant destroy
 ```
 
-### Stay in touch
+## Stay in touch
 
 Sign up to the [customer portal](http://my.storageos.com) to stay informed about upcoming releases, then join the [StorageOS Slack channel](http://slack.storageos.com).

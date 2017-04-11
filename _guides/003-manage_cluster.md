@@ -9,6 +9,10 @@ sections:
     description: Create and manage volumes
     module: manage/volumes
   -
+    title: Labels
+    description: Using labels
+    module: manage/labels 
+  -
     title: Rules
     description: Create and manage rules
     module: manage/rules

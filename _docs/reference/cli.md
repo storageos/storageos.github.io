@@ -86,75 +86,19 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 
 | Command                                  | Description                                                    | Subcommands                   |
 |------------------------------------------|----------------------------------------------------------------|-------------------------------|
-| [volume](../manage/volumes.html)       | StorageOS data volumes                                         | `create inspect ls rm update` |
-| [rule](../manage/rules.html)           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
-| [namespace](../manage/namespaces.html) | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
-| [pool](../manage/pools.html)           | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
+| `volume`       | StorageOS data volumes                                         | `create inspect ls rm update` |
+| `rule`           | Policy enforcement based on labels.                            | `inspect ls rm update`        |
+| `namespace` | Namespaces help different projects or teams organize volumes.  | `create inspect ls rm update` |
+| `pool`          | A collection of storage resources that can be provisioned from.| `create inspect ls rm`        |
 
 Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 
-## Common operations
+Read the guides for example usage on each command.
 
-The following set of examples should help familiarize yourself with running commonly used `storageos` operations.
-
-### volume
-
-Create a new volume in a new namespace.
-
-```
-$ storageos volume create myvolume -n legal
-legal/myvolume
-```
-
-Check if a volume is mounted.
-
-```
-storageos volume inspect legal/myvolume | grep mounted
-        "mounted": false,
-```
-
-Create a 10GB scratch volume from no-ha pool
-
-```
-$ storageos volume create scratch1 -p no-ha -s 10 -f xfs -n legal
-legal/scratch1
-```
-
-Inspect volume properties
-
-```
-$ storageos volume inspect legal/scratch1
-[
-    {
-        "id": "770620f3-7a93-4b90-8349-4b0d2ae88129",
-        "inode": 0,
-        "name": "scratch1",
-        "size": 10,
-        "pool": "no-ha",
-        "fsType": "xfs",
-        "description": "",
-        "labels": {
-            "storageos.driver": "filesystem"
-        },
-        "namespace": "legal",
-        "master": {
-            "id": "",
-            "inode": 0,
-            "controller": "",
-            "health": "",
-            "status": "",
-            "createdAt": "0001-01-01T00:00:00Z"
-        },
-        "mounted": false,
-        "replicas": null,
-        "health": "",
-        "status": "failed",
-        "statusMessage": "",
-        "createdAt": "0001-01-01T00:00:00Z",
-        "createdBy": ""
-    }
-]
-```
+* [Create and manage volumes](../manage/volumes.html)
+* [Create and manage rules](../manage/rules.html)
+* [Create and manage namespaces](../manage/namespaces.html)
+* [Create and manage pools](../manage/pools.html)
 
 ### rule
 

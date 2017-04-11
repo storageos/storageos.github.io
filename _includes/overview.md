@@ -4,7 +4,7 @@ StorageOS enables persistent storage for containers. It allows developers to bui
 
 StorageOS is available from the Docker Hub as a volume plugin (for Docker 1.13+) or as a container image (Docker 1.10-1.12).
 
-During beta, 64-bit Linux is required.
+The StorageOS container must run on a 64-bit Linux host.
 
 ## Popular tasks
 

@@ -71,17 +71,7 @@ p a {
 }
 
 pre {
-    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    font-size: 14px;
-    margin-top: 10px;
-    border: none;
-}
-code,
-kbd,
-tt,
-var {
-    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-    font-size: 14px;
+  margin-top: 10px;
 }
 
 redoc[spec-url] .menu-header img {

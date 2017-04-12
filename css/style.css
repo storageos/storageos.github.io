@@ -159,7 +159,7 @@ hr {
     box-sizing: content-box;
     height: 0;
 }
-pre {
+/*pre {
     overflow: auto;
 }
 code,
@@ -168,7 +168,7 @@ pre,
 samp {
     font-family: monospace, monospace;
     font-size: 1em;
-}
+}*/
 button,
 input,
 optgroup,
@@ -284,7 +284,7 @@ blockquote {
 address {
     margin: 0 0 1.5em;
 }
-pre {
+/*pre {
     background: #eee;
     font-family: "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
@@ -302,7 +302,7 @@ var {
     font-family: "Helvetica Neue", Helvetica, Arial;
     font-size: 15px;
     font-size: 1.3em;
-}
+}*/
 abbr,
 acronym {
     border-bottom: 1px dotted #666;

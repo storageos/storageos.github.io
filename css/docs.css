@@ -73,6 +73,7 @@ p a {
 pre {
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     font-size: 14px;
+    margin-top: 10px;
     border: none;
 }
 code,

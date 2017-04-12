@@ -8,7 +8,7 @@ module: applications/mongodb
 
 # ![image](/images/docs/explore/mongologo.png) MongoDB with StorageOS
 
-MongoDB is an open source database that falls into the NoSQL database category.  Instead of using tables and rows it is built on collections and documents.
+MongoDB is an open source NoSQL database.  Instead of using tables and rows it is built on collections and documents.
 
 ## MongoDB and StorageOS
 
@@ -18,21 +18,19 @@ There are several benefits with deploying MongoDB instances as Docker applicatio
 * Instant, stateless MongoDB application containers on demand
 * Persistent, highly available storage to mount stateful database data
 
-MongoDB fits well into use cases where you need to store large volumes of data with little or no structure.  It fits well into cloud environments where you need to load and distribute a high volume of data across commodity servers. Mongo fits well into a CI/CD environments too using its dynamic schemas allowing you to combine changes quickly into your application.
-
 This guide demonstrates running MongoDB in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster (refer to the
 [cluster install](../install/clusterinstall.html)).
 
 ## Create a MongoDB Data and Config Volume
 
-The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
+The Dockerfile that builds the standard MongoDB container supports separate  volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
 
 1. Create a 2GB volume called `mongodata` and a 1GB volume called `mongoconf` in the default namespace.
 ```bash
-$ docker volume create -d storageos --name mongodata --opt fstype=xfs --opt size=2 --opt pool=default
+$ docker volume create --driver storageos --opt fstype=xfs --opt size=2 mongodata
 mongodata
-$ docker volume create -d storageos --name mongoconf --opt fstype=xfs --opt size=1 --opt pool=default
+$ docker volume create --driver storageos --opt fstype=xfs --opt size=1 mongoconf
 mongoconf
 $ docker volume list
 DRIVER              VOLUME NAME
@@ -46,7 +44,7 @@ storageos:latest    mongodata
 $ docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb \
      --volume-driver=storageos mongo
 ```
-* Mongo logs go to stdout and are available via `docker logs <container-name>`.
+* Mongo logs will be available via `docker logs <container-name>`.
 * The MongoDB container image includes `EXPOSE 27017` making the default MongoDB TCP port automatically available to linked containers.
 
 3. Connect to the Mongo container and create an admin user called `storageos`.

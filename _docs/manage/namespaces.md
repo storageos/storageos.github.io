@@ -11,7 +11,7 @@ Namespaces help different projects or teams share a StorageOS cluster. No namesp
 
 Namespaces apply to volumes and rules.
 
->**Note**: Docker does not support namespaces, so `docker volume create` creates volumes in the default namespace.
+>**Note**: Docker does not support namespaces, so you should avoid mixing volumes created by `docker volume create` (which does not allow namespacess) with volumes created by `storageos volume create` (which requires a namespace).
 
 ## Create a namespace
 

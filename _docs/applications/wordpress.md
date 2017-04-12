@@ -3,6 +3,7 @@ layout: guide
 title: WordPress Demo
 anchor: applications
 module: applications/wordpress
+# Last reviewed by cheryl.hung@storageos.com on 2017-04-12 - commands work fine but can't connect to WP
 ---
 
 # ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo

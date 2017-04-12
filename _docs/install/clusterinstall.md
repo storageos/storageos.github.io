@@ -3,7 +3,7 @@ layout: guide
 title: Cluster install
 anchor: install
 module: install/cluster install
-# Last reviewed by cheryl.hung@storageos.com on 2017-04-11
+# Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 
 # Cluster install
@@ -23,9 +23,8 @@ $ vagrant plugin install vagrant-alpine
 
 1. Clone this repository, which contains scripts to automate setup.
 ```bash
-$ mkdir storageos-cluster
-$ cd storageos-cluster
 $ git clone https://github.com/andrelucas/storageos-alpine.git
+$ cd storageos-alpine
 ```
 
 2. Bring up a three-node StorageOS cluster.

@@ -1,21 +1,19 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
-
 # Site settings
 title: StorageOS Documentation
 email: info@storageos.com
 description: Guides, tutorials and reference documentation for StorageOS, converged storage for containers.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://docs.storageos.com" # the base hostname & protocol for your site
+baseurl: ""
+url: "https://docs.storageos.com"
 
 exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
 # Build settings
 markdown: kramdown
+kramdown:
+  input: GFM
+  html_to_native: true
+  hard_wrap: false
+  syntax_highlighter: rouge
 
 collections:
   docs:

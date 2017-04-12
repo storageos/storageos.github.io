@@ -28,7 +28,7 @@ starting, ensure you have StorageOS installed on a cluster (refer to the
 
 The Dockerfile that builds the standard MongoDB container image expects 2 volumes to point to  `/data/db` and `/data/configdb` so we need to create two separate persistent volumes for this exercise.  The best way to do this is create the volumes first and then start up the container.
 
-1. Create a 2GB volume called `mongodata` and a 2GB volume called `mongoconf` in the default namespace.
+1. Create a 2GB volume called `mongodata` and a 1GB volume called `mongoconf` in the default namespace.
 ```bash
 $ docker volume create -d storageos --opt size=2 mongodata
 mongodata
@@ -36,6 +36,7 @@ $ docker volume create -d storageos --opt size=1 mongoconf
 mongoconf
 $ docker volume list
 DRIVER              VOLUME NAME
+local               b75672a8fcad3720455c860e5a7ba22391639e1d7668ae66d756ea84381a9926
 storageos:latest    mongoconf
 storageos:latest    mongodata
 ```

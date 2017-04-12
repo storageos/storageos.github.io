@@ -46,16 +46,7 @@ This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
 $ vagrant ssh s-1
 ```
 
-4. Install the StorageOS CLI.
-```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.2/storageos_linux_amd64 > storageos
-$ chmod +x storageos
-$ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=127.0.0.1
-$ export PATH=$PATH:.
-```
-* By default StorageOS starts with a single user with username `storageos` and password `storageos`.
-
-Now you are ready to [install an application](../applications/postgres.html) or [manage the cluster](../manage/volumes.html).
+Now you are ready to [install an application](../applications/postgres.html) or [manage the cluster](../manage/cli.html).
 
 To log into other nodes:
 ```bash

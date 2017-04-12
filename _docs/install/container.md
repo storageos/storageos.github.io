@@ -14,7 +14,7 @@ available.
 
 ```bash
 $ sudo mkdir /var/lib/storageos
-$ sudo wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
 $ sudo modprobe nbd nbds_max=1024
 $ docker run -d --name storageos \
 	-e HOSTNAME \

@@ -25,7 +25,7 @@ info:
   title: "StorageOS API"
   version: "0.7"
   x-logo:
-    url: "http://storageos.wpengine.com/wp-content/uploads/2017/03/cropped-logo-1.png"
+    url: "https://storageos.com/wp-content/themes/storageOS/images/logo.svg"
   description: |
     The StorageOS API is an HTTP API used for managing volumes and StorageOS services. It is the API that the StorageOS UI, CLI and platform integrations use to communicate with the StorageOS backend.
 

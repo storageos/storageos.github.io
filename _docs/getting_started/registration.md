@@ -25,7 +25,7 @@ Before you can access support, purchase a license or set up billing, you need to
 ### Create your Account
 To create a StorageOS account
 
-1. Open a new browser session and navigate to the StorageOS home page URL at [storageos.com](http://storageos.com) and click the ![image](/images/docs/overview/getstarted.png) button to begin
+1. Open a new browser session and navigate to the StorageOS home page URL at [storageos.com](https://storageos.com) and click the ![image](/images/docs/overview/getstarted.png) button to begin
 
    ![screenshot](/images/docs/overview/registration-01.png)
 
@@ -45,7 +45,7 @@ To create a StorageOS account
 
    > **Note:**  If you do not receive the email, check your Junk email folder for a *StorageOS Customer Success* email
 
-   > **Note:**  Do not reply to this email as the account is not monitored - for support, go to http://support.storageos.com/.
+   > **Note:**  Do not reply to this email as the account is not monitored - for support, go to https://support.storageos.com.
 
 2. Click on the email link to take you to the StorageOS confirmation page and then click the ![image](/images/docs/overview/toportal.png) button
 

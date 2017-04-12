@@ -8,12 +8,12 @@ url: "https://docs.storageos.com"
 exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
 # Build settings
-#markdown: kramdown
-#kramdown:
-#  input: GFM
-#  html_to_native: true
-#  hard_wrap: false
-#  syntax_highlighter: rouge
+markdown: kramdown
+kramdown:
+ input: GFM
+ html_to_native: true
+ hard_wrap: false
+ syntax_highlighter: rouge
 
 collections:
   docs:

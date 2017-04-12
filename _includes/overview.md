@@ -20,4 +20,4 @@ Join us on [Slack](http://slack.storageos.com), or [see other ways](http://suppo
 
 ## Public beta
 
-During beta, StorageOS is freely available for testing and experimentation. To stay informed about new features and production-ready releases, sign up on our [customer portal](http://my.storageos.com).
+During beta, StorageOS is freely available for testing and experimentation. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).

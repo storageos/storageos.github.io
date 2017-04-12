@@ -30,9 +30,9 @@ The Dockerfile that builds the standard MongoDB container image expects 2 volume
 
 1. Create a 2GB volume called `mongodata` and a 1GB volume called `mongoconf` in the default namespace.
 ```bash
-$ docker volume create -d storageos --opt size=2 mongodata
+$ docker volume create -d storageos --name mongodata --opt fs=xfs --opt size=2 --opt pool=default
 mongodata
-$ docker volume create -d storageos --opt size=1 mongoconf
+$ docker volume create -d storageos --name mongoconf --opt fs=xfs --opt size=1 --opt pool=default
 mongoconf
 $ docker volume list
 DRIVER              VOLUME NAME

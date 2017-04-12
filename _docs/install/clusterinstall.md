@@ -57,5 +57,5 @@ $ vagrant ssh s-2
 To clean up:
 ```bash
 $ exit
-$ vagrant destroy
+$ make destroy
 ```

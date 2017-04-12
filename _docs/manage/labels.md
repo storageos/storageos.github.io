@@ -22,7 +22,7 @@ Applying special labels triggers features on volumes:
 * `storageos.feature.cache=true` - enable caching for volume.
 
 To check the labels on a volume:
-
+<!-- TODO(CH) add labels -->
 ```
 $ storageos volume inspect legal/scratch1
 [

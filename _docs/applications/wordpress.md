@@ -8,7 +8,7 @@ module: applications/wordpress
 
 # ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo
 
-This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying, persistent storage.
+This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying persistent storage.
 
 
 ## Create a Docker Swarm cluster
@@ -101,8 +101,9 @@ All 3 nodes should be Active and with the status of Leader or Reachable
    ```bash
    $ docker service create --name db --network wp --publish 3306:3306 \
      --replicas 1 -e MYSQL_ROOT_PASSWORD=wordpress -e MYSQL_DATABASE=wordpress -e \
-     MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress --mount type=volume,src=db,\
-     dst=/var/lib/mysql,volume-driver=storageos percona:5.7 --ignore-db-dir=lost+found
+     MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress \
+     --mount type=volume,src=db,dst=/var/lib/mysql,volume-driver=storageos \
+     percona:5.7 --ignore-db-dir=lost+found
    a91p715zxsepb360q6bearu20
    ```
 

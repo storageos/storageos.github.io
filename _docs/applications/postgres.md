@@ -99,7 +99,7 @@ testdb=# CREATE TABLE FRUIT(
 );
 CREATE table
 testdb=# \d
-List of relations
+       List of relations
 Schema | Name  | Type  |  Owner
 --------+-------+-------+----------
 public | fruit | table | postgres

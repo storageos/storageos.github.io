@@ -44,7 +44,7 @@ storageos volume inspect legal/myvolume | grep mounted
 ## Inspecting volume details
 
 To view volume details, such as where it's deployed, labels and health, use `inspect` command and specify both namespace `default` and volume name `volume-name` separated by `/`:
-
+<!-- TODO(CH) add labels -->
 ```
 $ storageos volume inspect legal/scratch1
 [

@@ -39,14 +39,6 @@
   font-weight: bold;
 }
 
-code {
-  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-  padding: 2px 4px;
-  font-size: 0.8em;
-  color: #333;
-  background-color: white;
-}
-
 h1 {
   margin-bottom: 10px;
   font-weight: 500;
@@ -73,10 +65,38 @@ li {
   padding-top: 5px;
 }
 
-pre code {
-  font-size: 1.3em;
-}
-
 p a {
   font-weight: 300;
+}
+
+pre {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
+    border: none;
+}
+code,
+kbd,
+tt,
+var {
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
+}
+
+redoc[spec-url] .menu-header img {
+  display: none;
+}
+
+redoc[spec-url] pre {
+    color: white;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
+    border: none;
+}
+redoc[spec-url] code,
+kbd,
+tt,
+var {
+    color: #333;
+    font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+    font-size: 14px;
 }

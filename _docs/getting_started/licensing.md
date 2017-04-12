@@ -146,7 +146,7 @@ To add a license:
 
 The *Assigning Array* page allows you to define a new array and *Friendly Name* and add purchase options to that array
 
-1. Log into the StroageOS Dashboard as you did earlier in this section to view a summary of your arrays and invoices
+1. Log into the StorageOS Dashboard as you did earlier in this section to view a summary of your arrays and invoices
 2. Click on the ![image](/images/docs/overview/arraydetails.png) button for your unassigned array you wish to set up
 
    ![screenshot](/images/docs/overview/licensing-18.png)

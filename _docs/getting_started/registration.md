@@ -30,7 +30,7 @@ To create a StorageOS account
    ![screenshot](/images/docs/overview/registration-01.png)
 
 2. This will take you to the my.storageos.com web portal where you can register and create an account
-3. From here you have the choice of creating a StorageOS sign in or alternatively, you can use GitHub, LinkedIn or Google providers to manage your sign in	
+3. From here you have the choice of creating a StorageOS sign in or alternatively, you can use GitHub, LinkedIn or Google providers to manage your sign in
 4. To create a StorageOS sign in, enter your email address and create a new password and click the ![image](/images/docs/overview/signup.png) button to proceed to the next step
 
    ![screenshot](/images/docs/overview/registration-02.png)
@@ -51,7 +51,7 @@ To create a StorageOS account
 
    ![screenshot](/images/docs/overview/registration-04.png)
 
-3. Enter the login information that you just configured, click on the ![image](/images/docs/overview/login.png) button 
+3. Enter the login information that you just configured, click on the ![image](/images/docs/overview/login.png) button
 
    ![screenshot](/images/docs/overview/registration-05.png)
 
@@ -73,26 +73,26 @@ To set up your StorageOS account
 
 ## Downloading and Installing StorageOS
 
-Once you’ve created and saved your account details, you’ll be directed to the download page to download and install StorageOS. 
+Once you’ve created and saved your account details, you’ll be directed to the download page to download and install StorageOS.
 
-At this point you need to refer to the the Installation Guide for further guidance on the download option you want to select.  Scroll down to the the Deployment Options heading in the [Installation Requirements](../install/deployment.html) section of the StroageOS documentation for further details.
+At this point you need to refer to the the Installation Guide for further guidance on the download option you want to select.  Scroll down to the the Deployment Options heading in the [Installation Requirements](../install/deployment.html) section of the StorageOS documentation for further details.
 
 1. From the StorageOS portal, read the license agreement and click the agreement check box to accept and proceed
 2. Click on the installation method you wish to install to begin the StorageOS download
 
    ![screenshot](/images/docs/overview/registration-07.png)
 
-3.	Once your download completes you can begin the product installation by following the instructions in the [Installation Guide](../install/deployment.html) before returning to these instructions to license your new array. 
+3.	Once your download completes you can begin the product installation by following the instructions in the [Installation Guide](../install/deployment.html) before returning to these instructions to license your new array.
 
 ## Licensing your Product
 
 Once you have completed the software installation you will be able to install a valid license key based on the license type you have chosen
 
-1. Connect to any StorageOS cluster node using a web browser and go to Configuration {% icon fa-arrow-right %} License and copy the Cluster UUID onto the clipboard
+1. Connect to any StorageOS cluster node using a web browser and go to Configuration > License and copy the Cluster UUID onto the clipboard
 
    ![screenshot](/images/docs/overview/registration-08.png)
 
-2. Log back into the StorageOS portal page where you will presented with the previous page you used to download StorageOS.  Towards the bottom of the page there will be a new section for you to register your array.  Complete the *Array Friendly NAme* and *UUID* entries on the page and click the ![image](/images/docs/overview/getlicense.png) button.
+2. Log back into the StorageOS portal page where you will presented with the previous page you used to download StorageOS.  Towards the bottom of the page there will be a new section for you to register your array.  Complete the *Array Friendly Name* and *UUID* entries on the page and click the ![image](/images/docs/overview/getlicense.png) button.
 
    ![screenshot](/images/docs/overview/registration-09.png)
 
@@ -104,7 +104,7 @@ Once you have completed the software installation you will be able to install a 
 
    ![screenshot](/images/docs/overview/registration-11.png)
 
-5. To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StroageOS documentation under the License heading.
+5. To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StorageOS documentation under the License heading.
 
 You can now request and purchase additional storage.
 
@@ -116,7 +116,7 @@ You can set up one of three license types through the licensing portal as well a
 
 * Evaluation (Eval License)
 * Professional (Pro License)
-* Developer (Dev License) 
+* Developer (Dev License)
 
 1. The following table details each license type
 

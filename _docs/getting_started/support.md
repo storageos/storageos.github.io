@@ -10,7 +10,7 @@ module: getting_started/support
 StorageOS provides a support site that allows you to:
 
 * Search our Knowledge Base for reported issues or solutions
-* Access documentation 
+* Access documentation
 * Read and contribute to community discussions
 * Submit issues or bugs that you encounter while using the product using the *Ticket Tracker*
 
@@ -19,17 +19,17 @@ StorageOS provides a support site that allows you to:
 To access our support site and start a discussion or report an issue:
 
 1. Click the *Support* option towards the top of the browser window to display the Support page
-2. Click the ![image](/images/docs/overview/startnewtopic.png) button 
+2. Click the ![image](/images/docs/overview/startnewtopic.png) button
 
    ![screenshot](/images/docs/overview/support-01.png)
 
-3. A *Post a new topic* page will open - you must complete the mandatory fields denoted with a red {% icon fa-asterisk %}
+3. A *Post a new topic* page will open - you must complete the mandatory fields denoted with a red asterisk.
 4. Enter your topic title
 5. Enter your message in the *Message* window
 
    >**Note:** You can use the formatting attributes to help emphasise and clarify your message
 
-6. Choose the forum in which you wish to place your post by selecting the *Post topic in* {% icon fa-caret-down%} drop-down
+6. Choose the forum in which you wish to place your post by selecting the *Post topic in* drop-down
 
    ![screenshot](/images/docs/overview/support-02.png)
 

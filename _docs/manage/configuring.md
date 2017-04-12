@@ -11,7 +11,7 @@ This section explores how you can configure and provision your storage using lab
 
 ## Overview of Labels
 
-Located under Configuration {% icon fa-arrow-right %} Labels, here you can manage how you label your storage using color and text descriptions identifying and classifying your system, storage, nodes, and features in a way that makes sense to you.
+Located under Configuration > Labels, here you can manage how you label your storage using color and text descriptions identifying and classifying your system, storage, nodes, and features in a way that makes sense to you.
 
 Labels also let you implement naming standards for all volumes created in an environment. Essentially, this feature allows you to apply naming constructs for all your managed objects based on the default label types but also using your own user-defined labels.  These constructs allow you to build volume names from multiple labels.
 
@@ -85,8 +85,8 @@ As introduced earlier in the labels section, *Rules* are evaluated by the *Sched
 
 For example, let's say we want to apply a global policy for replication that applies to all production data.  By default StorageOS has predefined Built-in and User-defined *Label Types* where these *Label Names* can be found under the following locations:
 
-1. Configuration {% icon fa-arrow-right %} Labels {% icon fa-arrow-right %} ![image](/images/docs/manage/featurebtn.png) {% icon fa-arrow-right %} replication
-2. Configuration {% icon fa-arrow-right %} Labels {% icon fa-arrow-right %} ![image](/images/docs/manage/environmentbtn.png) {% icon fa-arrow-right %} production
+1. Configuration > Labels > ![image](/images/docs/manage/featurebtn.png) > replication
+2. Configuration > Labels > ![image](/images/docs/manage/environmentbtn.png) > production
 
 Let's create a new Built-in ![image](/images/docs/manage/featurebtn.png) Label Type rule based on the Label Name *production* under the built-in User-defined label  ![image](/images/docs/manage/environmentbtn.png) which we will apply to a volume later in this section.
 
@@ -116,7 +116,7 @@ Let's create a new Built-in ![image](/images/docs/manage/featurebtn.png) Label T
 
 When you create a new volume, rules will be automatically enforced providing these have been configured for a given *Label Name* as we have set up previously
 
-1. To create a new volume, go to Provisioning {% icon fa-arrow-right %} Volumes {% icon fa-arrow-right %} ![image](/images/docs/manage/newvolumebtn.png)
+1. To create a new volume, go to Provisioning > Volumes > ![image](/images/docs/manage/newvolumebtn.png)
 
    ![screenshot](/images/docs/manage/newvolume.png)
 
@@ -141,7 +141,7 @@ When you create a new volume, rules will be automatically enforced providing the
 
 Another option in the *Volume Management* window is the ability to automatically name volumes based on their properties based on  auto-naming template rules that have been pre-defined.
 
-1. To create a new template, go to Configuration {% icon fa-arrow-right %} Auto-naming {% icon fa-arrow-right %} ![image](/images/docs/manage/newtemplatebtn.png)
+1. To create a new template, go to Configuration > Auto-naming > ![image](/images/docs/manage/newtemplatebtn.png)
 2. Select *Volume* from the *Type* drop-down
 3. Drag the labels you want to use for your template into the *Template* box
 4. Set the counter digits for the volume name enumeration, for example 2 digits will give you 1 - 99
@@ -150,7 +150,7 @@ Another option in the *Volume Management* window is the ability to automatically
 
    ![image](/images/docs/manage/autoname.png)
 
-7. You should now see the new template with the *Type* you gave it set in order of priority for interpretation.  The {% icon fa-arrow-up %} and {% icon fa-arrow-down %} arrows can be used to move your template further up or down the list.
+7. You should now see the new template with the *Type* you gave it set in order of priority for interpretation.  The up and down arrows can be used to move your template further up or down the list.
 
    ![image](/images/docs/manage/autoname1.png)
 
@@ -167,7 +167,7 @@ Another option in the *Volume Management* window is the ability to automatically
 
 ## Controllers
 
-To view the Controllers window, select Configuration {% icon fa-arrow-right %} Controllers.  
+To view the Controllers window, select Configuration > Controllers.  
 
 * This window provides you with a summary on the nodes participating in the cluster, their available capacity, their role and state of health.
 
@@ -177,7 +177,7 @@ To view the Controllers window, select Configuration {% icon fa-arrow-right %} C
 
 ## Drivers
 
-To view the Drivers window, select Configuration {% icon fa-arrow-right %} Drivers.  
+To view the Drivers window, select Configuration > Drivers.  
 
 * This window provides you with a summary on the nodes participating in the cluster and the name and type of the *Driver* they are using.
 
@@ -187,7 +187,7 @@ To view the Drivers window, select Configuration {% icon fa-arrow-right %} Drive
 
 ## Caches
 
-To view the Caches window, select Configuration {% icon fa-arrow-right %} Caches.  
+To view the Caches window, select Configuration > Caches.  
 
 * The cache configuration is a global option across all Data Plane nodes.
 
@@ -197,7 +197,7 @@ To view the Caches window, select Configuration {% icon fa-arrow-right %} Caches
 
 ## Diagnostics
 
-To view the Diagnostics window, select Configuration {% icon fa-arrow-right %} Diagnostics.  
+To view the Diagnostics window, select Configuration > Diagnostics.  
 
 * From this window you can create diagnostics bundles for a node you are experiencing issues with or for the entire cluster to post back to StorageOS for extended support.  
 
@@ -209,21 +209,21 @@ To view the Diagnostics window, select Configuration {% icon fa-arrow-right %} D
 
 ## Backups
 
-To access the Configuration Backup and Restore window, select Configuration {% icon fa-arrow-right %} Backups.  
+To access the Configuration Backup and Restore window, select Configuration > Backups.  
 
 * To manage backup and restore of the control plane configuration, click on the ![image](/images/docs/manage/backupbtn.png) and ![image](/images/docs/manage/restorebtn.png) buttons to initiate a backup or restore.
 
   ![image](/images/docs/manage/backups.png)
 
 >**Note**: Please be aware that during a control plane restoration the current control plane configuration will be overwritten and can not be restored without a backup for that point in time configuration.
-   
+
 >**Note**: Configuration data that is backed up and restored globally applies to the entire cluster.
 
 
 
 ## License
 
-To access the License Management window, select Configuration {% icon fa-arrow-right %} License.
+To access the License Management window, select Configuration > License.
 
 1. To enter a new license key click on the ![image](/images/docs/manage/licensekeybtn.png) button
 
@@ -239,11 +239,11 @@ To access the License Management window, select Configuration {% icon fa-arrow-r
 
 ## Clients
 
-To access the Client Management window, select Provisioning {% icon fa-arrow-right %} Clients.
+To access the Client Management window, select Provisioning > Clients.
 
 1. From here you can configure labels for StorageOS nodes and filter the list of nodes in the cluster using labels that have been applied.  For example you may have nodes participating in a performance storage pool configured with SSDs.
 
-2. To configure a label select the ![image](/images/docs/manage/editbtn.png) button, select the labels you want to apply and then accept the changes by clicking on the {% icon fa-check %} icon.
+2. To configure a label select the ![image](/images/docs/manage/editbtn.png) button, select the labels you want to apply and then accept the changes by clicking on the checkmark icon.
 
    ![image](/images/docs/manage/clients.png)
 
@@ -255,7 +255,7 @@ To access the Client Management window, select Provisioning {% icon fa-arrow-rig
 
 ## Pools
 
-The Storage Pools window can be found under Provisioning {% icon fa-arrow-right %} Pools.
+The Storage Pools window can be found under Provisioning > Pools.
 
 1. The top half of the Storage Pools window allows you to view the overall status of the global pool and capacity across all nodes in the cluster and create new Storage Pools.
 2. The bottom half displays the deafult stoage pool and the member nodes.
@@ -266,11 +266,10 @@ The Storage Pools window can be found under Provisioning {% icon fa-arrow-right 
 
 ## Containers
 
-The Containers window can be accessed under Provisioning {% icon fa-arrow-right %} Containers.
+The Containers window can be accessed under Provisioning > Containers.
 
-1. Essentially, in the context of Docker, this window provides you with the output of `docker ps` and `docker ps -a` 
+1. Essentially, in the context of Docker, this window provides you with the output of `docker ps` and `docker ps -a`
 2. From this window you can filter by column by typing your filter into the *Filter containers* box
 3. You can also change the view for running, stopped and all (`-a`) images.
 
    ![screenshot](/images/docs/manage/containers.png)
-

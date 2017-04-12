@@ -46,6 +46,4 @@ While provision has been built in for changing the graphical views much of this 
 
 ![image](/images/docs/manage/contextmenu.png)
 
-Using the {% icon fa-minus %} and {% icon fa-plus %} icons you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.
-
-
+Using the `-` and `+` icons you can shrink and enlarge the graphs. The *View* property will enlarge the graph across the screen displacing the neighbouring graphs.  To reset the view, select the *Edit* control and then select *Back to dashboard* to return to the default screen.

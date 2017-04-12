@@ -43,7 +43,7 @@ Billing Details can be managed and accessed from the main menu:
 
 Access to your payment details is also managed from the main menu:
 
-1. To set up payment through a credit card, select *PAYMENT METHODS* from the *BILLING* drop-down menu item 
+1. To set up payment through a credit card, select *PAYMENT METHODS* from the *BILLING* drop-down menu item
 2. Enter your name and credit card information into the empty fields as illustrated below
 
    ![screenshot](/images/docs/overview/licensing-03.png)
@@ -58,7 +58,7 @@ In order to configure an array with a Professional license or to add support, yo
 
 1. The wallet ID (located to the top right of the window) is assigned to you when you register an account
 2. To manage you wallet, click on the *MANAGE WALLET* menu item in the top menu area
-3. From here you have access to delegating billing and management as well as adding capacity, licenses and support to your wallet 
+3. From here you have access to delegating billing and management as well as adding capacity, licenses and support to your wallet
 4. Loading your wallet is covered under **Purchasing Capacity** below
 
    ![screenshot](/images/docs/overview/licensing-04.png)
@@ -67,20 +67,20 @@ In order to configure an array with a Professional license or to add support, yo
 
 To purchase capacity, log into the MyStorageOS portal and click on the ![image](/images/docs/overview/buymore.png) button:
 
-1. To select the number of Pro Licenses you wish to purchase, use the {% icon fa-plus %} and {% icon fa-minus %} icons
-2. For more capacity, use the {% icon fa-plus %} and {% icon fa-minus %} icons
+1. To select the number of Pro Licenses you wish to purchase, use the `+` and `-` icons
+2. For more capacity, use the `+` and `-` icons
 3. To purchase support slide the ![image](/images/docs/overview/on.png) button to enable it
 4. Specify if you want to purchase capacity on a monthly, quarterly, annual or triennial basis by choosing the corresponding calendar icon.
-5. Click the ![image](/images/docs/overview/totaltax.png) button to calculate total and tax to sum up your order 
+5. Click the ![image](/images/docs/overview/totaltax.png) button to calculate total and tax to sum up your order
 
-   > **Note:** You may need to update your billing details at this point if you have not done so already. Click on the *Update Billing Details* button at the bottom of the page and follow the instructions 
+   > **Note:** You may need to update your billing details at this point if you have not done so already. Click on the *Update Billing Details* button at the bottom of the page and follow the instructions
 
 6. Your tax and totals are updated. Click the ![image](/images/docs/overview/revieworder.png) button to review your purchase
-   
+
    ![screenshot](/images/docs/overview/licensing-05.png)
 
-7. Ensure your payment details are valid and up to date or you will be unable to continue (see **Setting up your Payment Method** above) 
-8. Agree to the *Terms and Conditions* by clicking the check box, and then click ![image](/images/docs/overview/placeorder.png) or ![image](/images/docs/overview/savequote.png) 
+7. Ensure your payment details are valid and up to date or you will be unable to continue (see **Setting up your Payment Method** above)
+8. Agree to the *Terms and Conditions* by clicking the check box, and then click ![image](/images/docs/overview/placeorder.png) or ![image](/images/docs/overview/savequote.png)
 
    ![screenshot](/images/docs/overview/licensing-06.png)
 
@@ -89,25 +89,25 @@ To purchase capacity, log into the MyStorageOS portal and click on the ![image](
    ![screenshot](/images/docs/overview/licensing-07.png)
 
 10. If you requested a quote select *QUOTES* from the *BILLING* pull-down menu item at the top of the page to review your quote
-    
+
     ![image](/images/docs/overview/licensing-08.png)
 
 11. This will open a new page to view your saved quotes
 
     ![screenshot](/images/docs/overview/licensing-09.png)
 
-## Add an Eval License 
+## Add an Eval License
 
 To add a license:
 
-1. Connect to a StorageOS cluster node using a web browser and go to Configuration {% icon fa-arrow-right %} License and copy the Cluster UUID onto the clipboard as you did in the previous section
+1. Connect to a StorageOS cluster node using a web browser and go to Configuration > License and copy the Cluster UUID onto the clipboard as you did in the previous section
 
 2. Log back into the StorageOS portal page and select the *ARRAYS* menu item
 
    ![screenshot](/images/docs/overview/licensing-10.png)
 
 3. This will bring up a new page where you will need to add a new array by clicking on the ![image](/images/docs/overview/newarray.png) button
- 
+
    ![screenshot](/images/docs/overview/licensing-11.png)
 
 4. The resulting page will prompt you to enter a unique array name - enter a name and click the ![image](/images/docs/overview/save.png) button to continue
@@ -128,7 +128,7 @@ To add a license:
 
    ![image](/images/docs/overview/licensing-14.png)
 
-10. On the next page click on the ![image](/images/docs/overview/editarray.png) button towards the bottom of the window 
+10. On the next page click on the ![image](/images/docs/overview/editarray.png) button towards the bottom of the window
 
     ![screenshot](/images/docs/overview/licensing-15.png)
 
@@ -140,11 +140,11 @@ To add a license:
 
     ![image](/images/docs/overview/licensing-17.png)
 
-13. To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StroageOS documentation for further details under the **License** heading
+13. To install the new license key please refer to the [Configuration & Provisioning](../manage/configuring.html) section of the StorageOS documentation for further details under the **License** heading
 
 ## Assign an Array and add a Pro License
 
-The *Assigning Array* page allows you to define a new array and *Friendly Name* and add purchase options to that array 
+The *Assigning Array* page allows you to define a new array and *Friendly Name* and add purchase options to that array
 
 1. Log into the StroageOS Dashboard as you did earlier in this section to view a summary of your arrays and invoices
 2. Click on the ![image](/images/docs/overview/arraydetails.png) button for your unassigned array you wish to set up
@@ -154,7 +154,7 @@ The *Assigning Array* page allows you to define a new array and *Friendly Name* 
 3. From the next page, click on the ![image](/images/docs/overview/editarray.png) button to make the page editable
 
    ![screenshot](/images/docs/overview/licensing-19.png)
-   
+
    >**Note:** If you want to add a new array instead of managing an existing array, follow the steps above under **Adding a License** to add a new array before proceeding
 
 4. Click on the ![image](/images/docs/overview/editbtn.png) button next to *Array UUID* to edit and enter the UUID of the array you wish to register
@@ -162,7 +162,7 @@ The *Assigning Array* page allows you to define a new array and *Friendly Name* 
    >**Note:** This is covered under **Licensing your Product** in the previous [Registration Section](registration.html)
 
 5. Enable the Pro License residing in your wallet by sliding the ![image](/images/docs/overview/on.png) button
-6. Add the purchased capacity from your wallet using the {% icon fa-plus %} button and assign it to the array
+6. Add the purchased capacity from your wallet using the `+` button and assign it to the array
 7. Click on the ![image](/images/docs/overview/save.png) button to complete
 
    ![screenshot](/images/docs/overview/licensing-20.png)
@@ -178,11 +178,7 @@ If you refer a friend to us and they become a customer, we will give you a free 
    ![image](/images/docs/overview/licensing-21.png)
 
 2. Complete the Name and Email fields
-2. Use the {% icon fa-plus %} to add as many referrals as you like
+2. Use the `+` to add as many referrals as you like
 3. Click on the ![image](/images/docs/overview/referfriends.png) button to submit and complete
 
    ![screenshot](/images/docs/overview/licensing-22.png)
-
-
-
-

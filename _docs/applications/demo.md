@@ -80,7 +80,7 @@ You will need access to the internet to pull down a container for this demonstra
    You can list out the 10GB crasher-data volume using the `storageos` CLI.
 
    ```bash
-   $ storageos cli volume list 
+   $ storageos cli volume list
    ID                                    NAME          DESCRIPTION  SIZE  DC
    c3711ff5-404e-f494-7b90-7314bd0995a2  crasher-data               10
    ```
@@ -94,7 +94,7 @@ You will need access to the internet to pull down a container for this demonstra
 
    --or--
 
-   You can view the 10GB crasher-data volume from the Web UI by navigating to Provisioning {% icon fa-arrow-right %} Volumes.
+   You can view the 10GB crasher-data volume from the Web UI by navigating to Provisioning > Volumes.
 
    And to delete the volume, simply click on the  ![image](/images/docs/explore/deletebtn.png) icon.
 

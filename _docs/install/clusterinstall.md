@@ -13,7 +13,11 @@ To test high availability, set up a three node StorageOS cluster using a laptop 
 ## Prerequisites
 
 Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
-1.9.3](http://vagrantup.com/downloads.html).
+1.9.3](http://vagrantup.com/downloads.html). You will also need the Vagrant plugin for Alpine, a lightweight Linux distribution used for testing:
+
+```bash
+$ vagrant plugin install vagrant-alpine
+```
 
 ## Installation
 
@@ -26,7 +30,6 @@ $ git clone https://github.com/andrelucas/storageos-alpine.git
 
 2. Bring up a three-node StorageOS cluster.
 ```bash
-$ vagrant plugin install vagrant-alpine
 $ make all
 Bringing machine 's-1' up with 'virtualbox' provider...
 Bringing machine 's-2' up with 'virtualbox' provider...

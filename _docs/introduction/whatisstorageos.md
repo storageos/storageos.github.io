@@ -35,8 +35,9 @@ StorageOS helps developers move from *host-centric* infrastructure to a more abs
 
 StorageOS satisfies a number of common features for applications running in production, including:
 
+<!-- |---------------------------------+---------------------+---------------------+--+---------------------------------+---------------------+---------------------|
 | Feature                         |      Developer      |    Professional     |  |Feature                          |      Developer      |    Professional     |
-|:--------------------------------|:-------------------:|:-------------------:|:-|:--------------------------------|:-------------------:|:-------------------:|
+|---------------------------------+---------------------+---------------------+--+---------------------------------+---------------------+---------------------|
 | **Data Reduction**              |                     |                     |  | **Data Protection**             |                     |                     |
 |   ▪︎ Compression                 | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Erasure Coding              | {% icon fa-check %} | {% icon fa-check %} |
 |   ▪︎ De-duplication              | {% icon fa-check %} | {% icon fa-check %} |  |   ▪︎ Advanced Erasure Coding     | {% icon fa-times %} | {% icon fa-check %} |
@@ -65,8 +66,6 @@ StorageOS satisfies a number of common features for applications running in prod
 |   ▪︎ Volume Encryption           | {% icon fa-times %} | {% icon fa-check %} |  |   ▪︎ rkt                         | {% icon fa-check %} | {% icon fa-check %} |
 |                                 |                     |                     |  |   ▪︎ Swarm                       | {% icon fa-times %} | {% icon fa-check %} |
 |                                 |                     |                     |  |   ▪︎ Kubernetes                  | {% icon fa-times %} | {% icon fa-check %} |
-|                                 |                     |                     |  |                                 |                     |                     | 
+|--------------------------------|---------------------|---------------------|--|---------------------------------|---------------------|---------------------| -->
 
 StorageOS effectively provides the simplicity and programmability of modern cloud and container-based environments with the functionality of traditional hardware-based storage arrays.
-
-

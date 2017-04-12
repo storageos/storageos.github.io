@@ -16,21 +16,21 @@ Postgres is deployed across a wide variety of platforms with a mix of workloads
 ranging from small, single-node use cases to large Internet-facing with many
 concurrent users.
 
-This guide demonstrates running Postgres with StorageOS. <!--- and then explore
-some of the perfromance characteristics using the built-in Postgres benchmark
-tool PgBench ---> Before starting, ensure you have StorageOS installed on a
-cluster (refer to the [quick start cluster
-install](../introduction/quick_start.html)).
+This guide demonstrates running Postgres in a container with StorageOS. <!---
+and then explore some of the perfromance characteristics using the built-in
+Postgres benchmark tool PgBench ---> Before starting, ensure you have StorageOS
+installed on a cluster (refer to the [cluster
+install](../install/clusterinstall.html)).
 
 ## Create a Postgres data volume
 
-1. Create a 2GB volume called `pgdata` in the default namespace.
+1. Create a 2GB volume called `pgdata`.
 ```bash
-$ storageos volume create --namespace default --size=2 pgdata
-default/pgdata
-$ storageos volume ls
-NAMESPACE/NAME      SIZE                MOUNTED BY          STATUS
-default/pgdata      2GB                                     active
+$ docker volume create -d storageos --opt --size=2 pgdata
+pgdata
+$ docker volume ls
+DRIVER              VOLUME NAME
+storageos:latest    pgdata
 ```
 
 2. Run a Postgres container using the StorageOS volume driver.
@@ -99,7 +99,7 @@ testdb=# CREATE TABLE FRUIT(
 );
 CREATE table
 testdb=# \d
-List of relations
+       List of relations
 Schema | Name  | Type  |  Owner
 --------+-------+-------+----------
 public | fruit | table | postgres

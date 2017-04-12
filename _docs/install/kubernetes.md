@@ -7,6 +7,11 @@ module: install/kubernetes
 
 # Kubernetes
 
+>**Note**: Full Kubernetes integration has been submitted for inclusion in Kubernetes 1.7.  You can
+track progress at [https://github.com/kubernetes/kubernetes/pull/42156](https://github.com/kubernetes/kubernetes/pull/42156).  Once approved and merged
+into Kubernetes, StorageOS will be available as a storage provider in the base Kubernetes distribution.  Until then,
+you must re-compile Kubernetes if you wish to test StorageOS integration with Kubernetes.
+
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Examples](#examples)
@@ -16,11 +21,6 @@ module: install/kubernetes
   - [Dynamic Provisioning](#dynamic-provisioning)
     - [Storage Class](#storage-class)
 - [API Configuration](#api-configuration)
-
-*NOTE:* Full Kubernetes integration has been submitted for inclusion in Kubernetes 1.7.  You can
-track progress at [https://github.com/kubernetes/kubernetes/pull/42156](https://github.com/kubernetes/kubernetes/pull/42156).  Once approved and merged
-into Kubernetes, StorageOS will be available as a storage provider in the base Kubernetes distribution.  Until then,
-you must re-compile Kubernetes if you wish to test StorageOS integration with Kubernetes.
 
 ## Overview
 

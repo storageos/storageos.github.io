@@ -3,18 +3,19 @@ layout: guide
 title: WordPress Demo
 anchor: applications
 module: applications/wordpress
+# Last reviewed by cheryl.hung@storageos.com on 2017-04-12 - commands work fine but can't connect to WP
 ---
 
 # ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo
 
-This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying, persistent storage.
+This section will focus on creating a WordPress cluster with persistent storage.  Here we will demonstrate draining and activating a node in the cluster without losing access to the underlying persistent storage.
 
 
 ## Create a Docker Swarm cluster
 
 The first step in this exercise is to get Docker Swarm set up and running on your test cluster.
 
-1. Log into the first StroageOS node and confirm the public facing IP address (10.245.103.2 in this example):
+1. Log into the first StorageOS node and confirm the public facing IP address (10.245.103.2 in this example):
 
    ```bash
    $ ifconfig eth1
@@ -99,9 +100,10 @@ All 3 nodes should be Active and with the status of Leader or Reachable
 
    ```bash
    $ docker service create --name db --network wp --publish 3306:3306 \
-   > --replicas 1 -e MYSQL_ROOT_PASSWORD=wordpress -e MYSQL_DATABASE=wordpress -e \
-   > MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress --mount type=volume,src=db,\
-   > dst=/var/lib/mysql,volume-driver=storageos percona:5.7 --ignore-db-dir=lost+found
+     --replicas 1 -e MYSQL_ROOT_PASSWORD=wordpress -e MYSQL_DATABASE=wordpress -e \
+     MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress \
+     --mount type=volume,src=db,dst=/var/lib/mysql,volume-driver=storageos \
+     percona:5.7 --ignore-db-dir=lost+found
    a91p715zxsepb360q6bearu20
    ```
 
@@ -109,7 +111,7 @@ All 3 nodes should be Active and with the status of Leader or Reachable
 
    ```bash
    $ docker service create --name wp --network wp --publish 82:82 --mode \
-   > global -e WORDPRESS_DB_HOST=db:3306 -e WORDPRESS_DB_PASSWORD=wordpress wordpress:latest
+     global -e WORDPRESS_DB_HOST=db:3306 -e WORDPRESS_DB_PASSWORD=wordpress wordpress:latest
    a16nksbhb8sd5kg3ekcpmn3nn
    ```
 

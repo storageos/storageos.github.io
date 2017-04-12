@@ -7,33 +7,53 @@ module: manage/namespaces
 
 # Namespaces
 
-Namespaces are used to isolate environments and make operations quicker, eg. cleaning up all volumes and rules within a testing environment with a single `storageos namespace rm` command.
-Users can have any number of namespaces.
+Namespaces help different projects or teams share a StorageOS cluster. No namespaces are created by default, and users can have any number of namespaces.
 
->**Note**: Docker does not support namespaces on volumes, so you should use the `default` namespace with Docker containers.
+Namespaces apply to volumes and rules.
+
+>**Note**: Docker does not support namespaces, so you should avoid mixing volumes created by `docker volume create` (which does not allow namespacess) with volumes created by `storageos volume create` (which requires a namespace).
 
 ## Create a namespace
 
 To start creating rules and volumes, at least one namespace is required.
 To create a namespace, run:
-
-    storageos namespace create my-namespace
+```
+$ storageos namespace create legal --description compliance-volumes
+legal
+```
 
 Add the `--display-name` flag to set a display-friendly name.
 
 ## List all namespaces
 
 To view namespaces, run:
+```
+$ storageos namespace ls -q
+default
+legal
+performance
+```
 
-    storageos namespace ls
+Remove `-q` for full details
 
-## Removing namespace
+## Inspect namespaces
 
-Removing a namespace will remove all volumes and rules that belong to that namespace. API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss).
+Check if a namespace has labels applied.
+
+```
+$ storageos namespace inspect legal | grep labels
+        "labels": null,
+```
+
+## Removing a namespace
+
+Removing a namespace will remove all volumes and rules that belong to that namespace. An API call or CLI command to remove a namespace will fail if there are mounted volumes (to prevent data loss).
 
 To remove a namespace:
-
-    storageos namespace rm my-namespace
+```
+$ storageos namespace rm legal
+legal
+```
 
 Force remove:
 

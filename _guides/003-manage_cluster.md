@@ -5,9 +5,17 @@ anchor: manage
 
 sections:
   -
+    title: Command line interface
+    description: Command line interface
+    module: manage/cli
+  -
     title: Volumes
     description: Create and manage volumes
     module: manage/volumes
+  -
+    title: Labels
+    description: Using labels
+    module: manage/labels
   -
     title: Rules
     description: Create and manage rules

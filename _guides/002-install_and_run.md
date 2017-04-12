@@ -32,9 +32,4 @@ sections:
     title: Key/Value Store
     description: Key/Value Store
     module: install/kvstore
-  -
-    title: Command line interface
-    description: Command line interface
-    module: install/cli
-
 ---

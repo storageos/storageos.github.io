@@ -15,9 +15,11 @@ and [Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box an
 ssh into it:
 
 ```bash
-$ vagrant init bento/ubuntu-16.04
+$ vagrant init bento/ubuntu-16.04;
 $ vagrant up
 $ vagrant ssh
+[...]
+vagrant@vagrant:~$
 ```
 
 This guide describes the plugin install for Docker 1.13+. (For Docker

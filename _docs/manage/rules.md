@@ -91,7 +91,7 @@ Selector and volume labels can be evaluated using a number of supported operator
 |          |             |                                                            |
 
 
-A selector is a string that defines conditions and is used to trigger a *rule* against a *volume*.  
+A selector is a string that defines conditions and is used to trigger a *rule* against a *volume*.
 When a volume is created, each rule is evaluated in ascending weight order. Each matching selector triggers the effect of the rule.
 
 For example a selector can be `env==prod` or `tier!=frontend`; essentially the cluster administrator determines what these can be as they are not built-in.
@@ -107,13 +107,41 @@ Rules are evaluated starting at the lowest weight.
 
 ## Creating a rule
 
-To create a rule that configures 2 replicas for volumes with the label env=prod, run:
+To create a rule that configures 2 replicas for volumes with the label env=prod:
+```bash
+$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
+default/replicator
+```
 
-    storageos rule create --namespace default --selector env==prod --action add --label storageos.feature.replicas=2 replicator
+View rules:
+```bash
+$ storageos rule ls
+NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
+default/dev-marker    !storageos.feature.replicas    add                 env=dev
+default/prod-marker   storageos.feature.replicas>1   add                 env=prod
+default/replicator    env==prod                      add                 storageos.feature.replicas=2
+default/uat-marker    storageos.feature.replicas<2   add                 env=uat
+```
 
-To view rules, run:
-
-    storageos rule ls
+Inspect a rule:
+```
+$ storageos rule inspect default/replicator
+[
+    {
+        "id": "9db3252a-bd14-885b-0d0a-b0da1dd2d4a1",
+        "name": "replicator",
+        "namespace": "default",
+        "description": "",
+        "active": true,
+        "weight": 5,
+        "action": "add",
+        "selector": "env==prod",
+        "labels": {
+            "storageos.feature.replicas": "2"
+        }
+    }
+]
+```
 
 Then, create a volume:
 
@@ -132,9 +160,15 @@ You should see that it has two replicas provisioned and additional labels attach
         "storageos.driver": "filesystem",
         "storageos.feature.replicas": "2"
     },
-```     
+```
 
-### Using advanced selector operators
+Delete a rule:
+```bash
+$ storageos rule rm default/replicator
+default/replicator
+```
+
+### Using advanced selectors
 
 Let's create several rules that instead of adding `storageos.feature.replicas` feature label it would read it's value and based on it would label volumes with `dev/uat/prod` env values.
 
@@ -162,7 +196,7 @@ Labels should look like:
     "env": "uat",
     "storageos.driver": "filesystem",
     "storageos.feature.replicas": "1"
-},       
+},
 ```
 
 Finally, create a rule that will mark volumes as `prod` if they have 2 or more (`gt`) configured replicas:
@@ -176,8 +210,8 @@ To list all rules:
 
 ```
 $ storageos rule ls
-NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
-default/dev-marker    !storageos.feature.replicas    add                 env=dev
-default/prod-marker   storageos.feature.replicas>1   add                 env=prod
-default/uat-marker    storageos.feature.replicas<2   add                 env=uat
+NAMESPACE/NAME        OPERATOR            SELECTOR                       ACTION              LABELS
+default/dev-marker    notin               storageos.feature.replicas=1   add                 env=dev
+default/prod-marker   gt                  storageos.feature.replicas=1   add                 env=prod
+default/uat-marker    lt                  storageos.feature.replicas=2   add                 env=uat
 ```

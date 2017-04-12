@@ -7,7 +7,7 @@ module: manage/pools
 
 # Pools
 
-Pools are used to create collections of storage resources created from StorageOS cluster nodes.  
+Pools are used to create collections of storage resources created from StorageOS cluster nodes.
 
 ## Overview
 
@@ -21,7 +21,7 @@ Pool parameters can be used to set characteristics such as backend storage type,
 
 ### Create a new pool
 
-To create a pool, the pool name is mandatory, and you should add at least one node to allocate storage capacity from `storageos pool create [OPTIONS] [POOL]`:
+To create a pool, the pool name is mandatory, and you should specify at least one node with `--controllers` to allocate storage capacity from:
 
 ```
 $ storageos pool create no-ha --controllers storageos-1-59227

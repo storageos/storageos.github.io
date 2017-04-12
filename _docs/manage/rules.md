@@ -107,13 +107,41 @@ Rules are evaluated starting at the lowest weight.
 
 ## Creating a rule
 
-To create a rule that configures 2 replicas for volumes with the label env=prod, run:
+To create a rule that configures 2 replicas for volumes with the label env=prod:
+```bash
+$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
+default/replicator
+```
 
-    storageos rule create --namespace default --selector env==prod --action add --label storageos.feature.replicas=2 replicator
+View rules:
+```bash
+$ storageos rule ls
+NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
+default/dev-marker    !storageos.feature.replicas    add                 env=dev
+default/prod-marker   storageos.feature.replicas>1   add                 env=prod
+default/replicator    env==prod                      add                 storageos.feature.replicas=2
+default/uat-marker    storageos.feature.replicas<2   add                 env=uat
+```
 
-To view rules, run:
-
-    storageos rule ls
+Inspect a rule:
+```
+$ storageos rule inspect default/replicator
+[
+    {
+        "id": "9db3252a-bd14-885b-0d0a-b0da1dd2d4a1",
+        "name": "replicator",
+        "namespace": "default",
+        "description": "",
+        "active": true,
+        "weight": 5,
+        "action": "add",
+        "selector": "env==prod",
+        "labels": {
+            "storageos.feature.replicas": "2"
+        }
+    }
+]
+```
 
 Then, create a volume:
 
@@ -134,7 +162,13 @@ You should see that it has two replicas provisioned and additional labels attach
     },
 ```
 
-### Using advanced selector operators
+Delete a rule:
+```bash
+$ storageos rule rm default/replicator
+default/replicator
+```
+
+### Using advanced selectors
 
 Let's create several rules that instead of adding `storageos.feature.replicas` feature label it would read it's value and based on it would label volumes with `dev/uat/prod` env values.
 

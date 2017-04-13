@@ -18,6 +18,10 @@ $ storageos volume create --namespace default --size 15 volume-name
 default/volume-name
 ```
 
+Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character.
+
+The default volume size is 5GB if `size` is not specified.
+
 ## List all volumes
 
 To view all volumes in all namespaces, run:

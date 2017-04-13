@@ -7,52 +7,73 @@ module: manage/labels
 
 # Labels
 
-Labels are a mechanism for applying metadata to StorageOS objects. You can use them to annotate or organise your volumes in any way that makes sense for your organization or app.
+Labels are a mechanism for applying metadata to StorageOS objects. You can use
+them to annotate or organise your volumes in any way that makes sense for your
+organization or app.
 
-A label is a key-value pair that is stored as a string. An object may have multiple labels but each key-value pair must be unique within an object.
+A label is a key-value pair that is stored as a string. An object may have
+multiple labels but each key-value pair must be unique within an object.
 
-You should prefix labels with your organization domain, such as `example.your-label`. Labels prefixed with `storageos.*` are reserved for internal use.
+You should prefix labels with your organization domain, such as
+`example.your-label`. Labels prefixed with `storageos.*` are reserved for
+internal use.
 
-Applying special labels triggers features on volumes:
-
-* `storageos.driver=filesystem` - defaults to `filesystem` driver.
-* `storageos.feature.replicas=2` - number of desired replicas (0-5).
-* `storageos.feature.compression=true` - network compression, depending on data type might greatly increase throughput.
-* `storageos.feature.throttle=true` - reduce volume's performance.
-* `storageos.feature.cache=true` - enable caching for volume.
+To create a volume with labels:
+```bash
+$ storageos volume create --namespace default --label env=prod volume-name
+default/volume-name
+```
 
 To check the labels on a volume:
-<!-- TODO(CH) add labels -->
-```
-$ storageos volume inspect legal/scratch1
+```bash
+$ storageos volume inspect default/volume-name
 [
     {
-        "id": "770620f3-7a93-4b90-8349-4b0d2ae88129",
-        "inode": 0,
-        "name": "scratch1",
-        "size": 10,
-        "pool": "no-ha",
-        "fsType": "xfs",
+        "id": "4f1dc138-7e31-2914-7531-545b66b2af18",
+        "inode": 83150,
+        "name": "volume-name",
+        "size": 5,
+        "pool": "default",
+        "fsType": "",
         "description": "",
         "labels": {
+            "env": "prod",
             "storageos.driver": "filesystem"
         },
-        "namespace": "legal",
+        "namespace": "default",
         "master": {
-            "id": "",
-            "inode": 0,
-            "controller": "",
-            "health": "",
-            "status": "",
-            "createdAt": "0001-01-01T00:00:00Z"
+            "id": "c2589048-a3d5-e2bb-1bf4-ca35a0cf9936",
+            "inode": 258720,
+            "controller": "f23334c1-f886-d403-2a4c-98b81bf2cd92",
+            "health": "healthy",
+            "status": "active",
+            "createdAt": "2017-04-13T16:44:41.349142801Z"
         },
         "mounted": false,
-        "replicas": null,
+        "mountpoint": "",
+        "mountedAt": "0001-01-01T00:00:00Z",
+        "replicas": [],
         "health": "",
-        "status": "failed",
+        "status": "active",
         "statusMessage": "",
-        "createdAt": "0001-01-01T00:00:00Z",
-        "createdBy": ""
+        "createdAt": "2017-04-13T16:44:41.217209996Z",
+        "createdBy": "storageos"
     }
 ]
 ```
+
+# StorageOS feature labels
+
+Applying specific labels triggers compression, replication and other storage
+features on volumes. The following feature labels are supported:
+
+
+| Label                                | Feature     | Behaviour                                                |
+|:-------------------------------------|:------------|:---------------------------------------------------------|
+| `storageos.feature.replicas=2`       | Replication | Number of desired replicas between 0-5.                  |
+| `storageos.feature.compression=true` | Compression | Depending on data type might greatly increase throughput.|
+| `storageos.feature.throttle=true`    | Throttle    | Reduce volume's performance.                             |
+| `storageos.feature.cache=true`       | Caching     | Enable caching for volume.                               |
+
+Feature labels are a powerful and flexible way to control storage features,
+especially when combined with [rules](rules.html).

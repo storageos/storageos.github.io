@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Cluster install
 anchor: install
-module: install/cluster install
+module: install/clusterinstall
 # Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 

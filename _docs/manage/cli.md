@@ -14,13 +14,13 @@ configuration. It is open source and available from [Github](https://github.com/
 
 On Linux:
 ```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.2/storageos_linux_amd64 > storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.4/storageos_linux_amd64 > storageos
 $ chmod +x storageos
 ```
 
 On MacOS:
 ```bash
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.2/storageos_darwin_amd64 > storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.4/storageos_darwin_amd64 > storageos
 $ chmod +x storageos
 ```
 

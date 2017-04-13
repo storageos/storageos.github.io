@@ -17,6 +17,10 @@ sections:
     description: Using labels
     module: manage/labels
   -
+    title: Selectors
+    description: Create and manage selectors
+    module: manage/selectors
+  -
     title: Rules
     description: Create and manage rules
     module: manage/rules

@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Labels
 anchor: manage
 module: manage/labels
+# Last reviewed by cheryl.hung@storageos.com on 2017-04-13
 ---
 
 # Labels
@@ -17,6 +18,23 @@ multiple labels but each key-value pair must be unique within an object.
 You should prefix labels with your organization domain, such as
 `example.your-label`. Labels prefixed with `storageos.*` are reserved for
 internal use.
+
+### StorageOS feature labels
+
+Applying specific labels triggers compression, replication and other storage
+features on volumes. The following feature labels are supported:
+
+| Feature     | Label                           | Value                       |
+|:------------|:--------------------------------|-----------------------------|
+| Caching     | `storageos.feature.cache`       | true / false                |
+| Compression | `storageos.feature.compression` | true / false                |
+| Replication | `storageos.feature.replicas`    | integer values 1 - 5        |
+| QoS         | `storageos.feature.throttle`    | true / false                |
+
+Feature labels are a powerful and flexible way to control storage features,
+especially when combined with [rules](rules.html).
+
+## Using labels with volumes
 
 To create a volume with labels:
 ```bash
@@ -62,19 +80,25 @@ $ storageos volume inspect default/volume-name
 ]
 ```
 
-# StorageOS feature labels
+To add labels to a volume:
+```bash
+$ storageos volume update --label-add env=dev default/volume-name
+default/volume-name
+```
 
-Applying specific labels triggers compression, replication and other storage
-features on volumes. The following feature labels are supported:
+To remove labels from a volume (note that only the key is specified):
+```bash
+$ storageos volume update --label-add env default/volume-name
+default/volume-name
+```
 
+## Using labels with selectors
 
-| Feature     | Label                                | Effect                                                                   |
-|:------------|:-------------------------------------|:-------------------------------------------------------------------------|
-| Caching     | `storageos.feature.cache=true`       | Enable caching for volume.                                               |
-| Compression | `storageos.feature.compression=true` | Depending on your data type, compression may greatly increase throughput.|
-| Replication | `storageos.feature.replicas=2`       | Sets the number of desired replicas between 0-5.                         |
-| Throttle    | `storageos.feature.throttle=true`    | Regulate throughput, reduce volume's performance.                        |
+[Selectors](selectors.html) can be used to filter on labels with the
+`--selector` option. This allows you to quickly search through volumes.
 
-
-Feature labels are a powerful and flexible way to control storage features,
-especially when combined with [rules](rules.html).
+```bash
+$ storageos volume ls --selector=env=dev
+NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
+default/volume-name   5GB                                                         active              0/0
+```

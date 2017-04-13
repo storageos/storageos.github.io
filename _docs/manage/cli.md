@@ -14,7 +14,7 @@ configuration. It is open source and available from [Github](https://github.com/
 
 ```bash
 $ sudo -i
-$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.2/storageos_linux_amd64 > /usr/local/bin/storageos
+$ curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.4/storageos_linux_amd64 > /usr/local/bin/storageos
 $ chmod +x /usr/local/bin/storageos
 $ exit
 ```
@@ -34,7 +34,7 @@ To connect to a remote StorageOS cluster:
 $ export STORAGEOS_HOST=127.0.0.1
 ```
 
-## Related
+## Further reading
 
 * [CLI reference](../reference/cli.html)
 * [Configuration reference](../reference/configuration.html)

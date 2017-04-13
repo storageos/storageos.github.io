@@ -27,7 +27,7 @@ starting, ensure you have StorageOS installed on a cluster (refer to the
 
 1. Create a 1GB volume called `mysqldata` in the default namespace.
 ```bash
-$ docker volume create -d storageos --name mysqldata --opt size=1
+$ docker volume create --driver storageos --opt size=1 mysqldata
 mysqldata
 $ docker volume list
 DRIVER              VOLUME NAME

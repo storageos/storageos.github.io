@@ -86,7 +86,13 @@ pre {
 }
 
 .highlighter-rouge {
-    margin: 15px 0;
+margin: 15px 0;
+}
+
+.header-docs-link {
+  font-size: 24px;
+  font-weight: 600;
+  padding-left: 42px;
 }
 
 code {

@@ -75,6 +75,7 @@ li {
 
 p a {
   font-weight: 300;
+  text-decoration: none;
 }
 
 pre {
@@ -82,7 +83,7 @@ pre {
 }
 
 .content a {
-  text-decoration: underline;
+  color: #55af00;
 }
 
 .highlighter-rouge {

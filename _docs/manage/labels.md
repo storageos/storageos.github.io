@@ -13,7 +13,7 @@ them to annotate or organise your volumes in any way that makes sense for your
 organization or app.
 
 A label is a key-value pair that is stored as a string. An object may have
-multiple labels but each key-value pair must be unique within an object.
+multiple labels but each key must be unique within an object.
 
 You should prefix labels with your organization domain, such as
 `example.your-label`. Labels prefixed with `storageos.*` are reserved for

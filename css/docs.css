@@ -30,6 +30,9 @@
 .guide-list .guide-link.title.on:before {
     transform: rotate(90deg);
 }
+.guide-list .section-link.title.active {
+  color: #b5e61e;
+}
 
 .page-content {
   padding-top:150px;

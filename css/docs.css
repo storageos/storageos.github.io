@@ -86,7 +86,9 @@ pre {
 }
 
 .highlighter-rouge {
-margin: 15px 0;
+  margin: 15px 0;
+  color: #333333;
+  font-size:80%;
 }
 
 .header-docs-link {

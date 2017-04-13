@@ -1,6 +1,6 @@
 ---
 layout: api
-title: API Reference
+title: StorageOS Docs - API Reference
 anchor: reference
 module: reference/api
 ---

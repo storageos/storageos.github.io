@@ -27,7 +27,7 @@ $ git clone https://github.com/andrelucas/storageos-alpine.git
 $ cd storageos-alpine
 ```
 
-2. Bring up a three-node StorageOS cluster.
+2. Bring up a three-node StorageOS cluster. This takes around five minutes.
 ```bash
 $ make all
 Bringing machine 's-1' up with 'virtualbox' provider...

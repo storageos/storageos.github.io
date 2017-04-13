@@ -26,7 +26,7 @@ install](../install/clusterinstall.html)).
 
 1. Create a 2GB volume called `pgdata`.
 ```bash
-$ docker volume create -d storageos --opt --size=2 pgdata
+$ docker volume create --driver storageos --opt --size=2 pgdata
 pgdata
 $ docker volume ls
 DRIVER              VOLUME NAME

@@ -34,7 +34,7 @@ To connect to a remote StorageOS cluster:
 $ export STORAGEOS_HOST=127.0.0.1
 ```
 
-## Related
+## Further reading
 
 * [CLI reference](../reference/cli.html)
 * [Configuration reference](../reference/configuration.html)

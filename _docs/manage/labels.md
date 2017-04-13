@@ -68,12 +68,13 @@ Applying specific labels triggers compression, replication and other storage
 features on volumes. The following feature labels are supported:
 
 
-| Label                                | Feature     | Behaviour                                                |
-|:-------------------------------------|:------------|:---------------------------------------------------------|
-| `storageos.feature.replicas=2`       | Replication | Number of desired replicas between 0-5.                  |
-| `storageos.feature.compression=true` | Compression | Depending on data type might greatly increase throughput.|
-| `storageos.feature.throttle=true`    | Throttle    | Reduce volume's performance.                             |
-| `storageos.feature.cache=true`       | Caching     | Enable caching for volume.                               |
+| Feature     | Label                                | Effect                                                                   |
+|:------------|:-------------------------------------|:-------------------------------------------------------------------------|
+| Caching     | `storageos.feature.cache=true`       | Enable caching for volume.                                               |
+| Compression | `storageos.feature.compression=true` | Depending on your data type, compression may greatly increase throughput.|
+| Replication | `storageos.feature.replicas=2`       | Sets the number of desired replicas between 0-5.                         |
+| Throttle    | `storageos.feature.throttle=true`    | Regulate throughput, reduce volume's performance.                        |
+
 
 Feature labels are a powerful and flexible way to control storage features,
 especially when combined with [rules](rules.html).

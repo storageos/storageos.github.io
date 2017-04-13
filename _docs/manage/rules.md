@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Create and manage rules
+title: StorageOS Docs - Rules
 anchor: manage
 module: manage/rules
 ---

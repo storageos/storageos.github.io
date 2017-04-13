@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: PostgreSQL with StorageOS
+title: StorageOS Docs - PostgreSQL
 anchor: applications
 module: applications/postgres
 # Last checked by cheryl.hung@storageos.com on 2017-04-10

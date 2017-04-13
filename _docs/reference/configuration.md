@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Configuration Reference
+title: StorageOS Docs - Configuration
 anchor: reference
 module: reference/configuration
 ---

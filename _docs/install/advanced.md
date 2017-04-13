@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Docker (advanced)
+title: StorageOS Docs - Docker (advanced)
 anchor: install
 module: install/advanced
 ---

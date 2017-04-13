@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Using labels
+title: StorageOS Docs - Labels
 anchor: manage
 module: manage/labels
 ---

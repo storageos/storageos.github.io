@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Create and manage volumes
+title: StorageOS Docs - Volumes
 anchor: manage
 module: manage/volumes
 ---

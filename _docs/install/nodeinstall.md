@@ -51,7 +51,9 @@ ID                  NAME                DESCRIPTION                   ENABLED
 638e7e013325        storageos:latest    StorageOS plugin for Docker   true
 ```
 
-3. Write data to a test file using the StorageOS volume driver.
+## Test volume plugin.
+
+1. Write data to a test file using the StorageOS volume driver.
 ```bash
 $ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "echo hello > /data/myfile"
 Unable to find image 'alpine:latest' locally
@@ -67,8 +69,8 @@ Status: Downloaded newer image for alpine:latest
 * `alpine sh -c`: Launch a bash shell using Alpine, a lightweight Linux distribution.
 * `echo hello > /data/myfile`: Write some text to `/data/myfile`.
 
-4. Inspect the data volume, then read the contents of `/data/myfile` from a different container.
-```bash
+3. Inspect the data volume.
+``bash
 $ sudo docker volume inspect test01
 [
     {
@@ -80,9 +82,14 @@ $ sudo docker volume inspect test01
         "Scope": "global"
     }
 ]
+```
+4.  Read the contents of `/data/myfile` from a different container.
+```bash
 $ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "cat /data/myfile"
 hello
 ```
+
+## Vagrant clean up
 
 If you are using Vagrant, exit and clean up the Vagrant box.
 ```bash

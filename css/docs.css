@@ -90,10 +90,20 @@ pre {
 }
 
 code {
-    padding: 3px 7px;
-    font-size: 90%;
-    background-color: rgba(12, 81, 118, 0.1);
-    border-radius: 2px;
+  padding: 3px 7px;
+  font-size: 90%;
+  background-color: rgba(12, 81, 118, 0.1);
+  border-radius: 2px;
+}
+
+th {
+  font-weight: bold;
+  background-color: #4f5263;
+  color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #e8eaee;
 }
 
 pre {

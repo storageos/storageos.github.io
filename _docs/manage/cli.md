@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Consul
+title: StorageOS Docs - CLI install
 anchor: manage
 module: manage/cli
 ---

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Kubernetes
+title: StorageOS Docs - Kubernetes
 anchor: install
 module: install/kubernetes
 ---

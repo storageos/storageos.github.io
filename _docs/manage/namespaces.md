@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Create and manage namespaces
+title: StorageOS Docs - Namespaces
 anchor: manage
 module: manage/namespaces
 ---

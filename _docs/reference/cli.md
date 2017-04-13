@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Command line interface
+title: StorageOS Docs - Command line interface
 anchor: reference
 module: reference/cli
 ---

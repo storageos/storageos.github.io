@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Installation
+title: StorageOS Docs - Installation
 anchor: troubleshooting
 module: troubleshooting/installation
 ---

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Microsoft SQL Server with StorageOS
+title: StorageOS Docs - Microsoft SQL Server
 anchor: applications
 module: applications/mssql
 ---

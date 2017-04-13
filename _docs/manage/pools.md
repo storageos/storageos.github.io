@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Create and manage pools
+title: StorageOS Docs - Pools
 anchor: manage
 module: manage/pools
 ---

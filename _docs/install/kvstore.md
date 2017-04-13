@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Key/Value Store
+title: StorageOS Docs - Key/Value Store
 anchor: install
 module: install/kvstore
 ---

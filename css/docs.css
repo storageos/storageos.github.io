@@ -34,6 +34,10 @@
   color: #b5e61e;
 }
 
+.guide-list a {
+  text-decoration: none;
+}
+
 .page-content {
   padding-top:150px;
   margin-bottom: 30px;
@@ -75,6 +79,10 @@ p a {
 
 pre {
   margin-top: 10px;
+}
+
+a {
+  text-decoration: underline;
 }
 
 .highlighter-rouge {

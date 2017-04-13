@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Node install
+title: StorageOS Docs - Node install
 anchor: install
 module: install/nodeinstall
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-10

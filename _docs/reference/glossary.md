@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Glossary of terms
+title: StorageOS Docs - Glossary
 anchor: reference
 module: reference/glossary
 ---

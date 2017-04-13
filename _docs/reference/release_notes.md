@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Release notes
+title: StorageOS Docs - Release notes
 anchor: reference
 module: reference/release_notes
 ---

@@ -56,4 +56,4 @@ $ sudo docker plugin install --grant-all-permissions --alias storageos storageos
 
 ## Other
 
-StorageOS currently does not support other KV stores, such as etcd and zookeeper.
+StorageOS will be adding support for other KV stores such as etcd and/or zookeeper in future releases.

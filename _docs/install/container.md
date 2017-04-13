@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Docker (legacy)
+title: StorageOS Docs - Docker (legacy)
 anchor: install
 module: install/container
 ---

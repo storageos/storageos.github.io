@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Create and manage pools
+title: StorageOS Docs - Pools
 anchor: manage
 module: manage/pools
 ---
@@ -21,7 +21,7 @@ Pool parameters can be used to set characteristics such as backend storage type,
 
 ### Create a new pool
 
-To create a pool, the pool name is mandatory, and you should specify at least one node with `--controllers` to allocate storage capacity from:
+To create a pool, the pool name is mandatory, and you should specify at least one node with `--controllers` (the hostname of a StorageOS node) to allocate storage capacity from:
 
 ```
 $ storageos pool create no-ha --controllers storageos-1-59227

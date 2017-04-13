@@ -31,9 +31,13 @@
     transform: rotate(90deg);
 }
 .guide-list .section-link.title.active {
-  color: #b5e61e;
+  color: #61c202;
 }
-
+/*
+.guide-list a {
+  text-decoration: none;
+}
+*/
 .page-content {
   padding-top:150px;
   margin-bottom: 30px;
@@ -71,21 +75,44 @@ li {
 
 p a {
   font-weight: 300;
+  text-decoration: none;
 }
 
 pre {
   margin-top: 10px;
 }
 
+.content a {
+  color: #55af00;
+}
+
 .highlighter-rouge {
-    margin: 15px 0;
+  margin: 15px 0;
+  color: #333333;
+  font-size:80%;
+}
+
+.header-docs-link {
+  font-size: 24px;
+  font-weight: 600;
+  padding-left: 42px;
 }
 
 code {
-    padding: 3px 7px;
-    font-size: 90%;
-    background-color: rgba(12, 81, 118, 0.1);
-    border-radius: 2px;
+  padding: 3px 7px;
+  font-size: 90%;
+  background-color: rgba(12, 81, 118, 0.1);
+  border-radius: 2px;
+}
+
+th {
+  font-weight: bold;
+  background-color: #4f5263;
+  color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #e8eaee;
 }
 
 pre {

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Get help
+title: StorageOS Docs - Get help
 anchor: troubleshooting
 module: troubleshooting/get_help
 ---

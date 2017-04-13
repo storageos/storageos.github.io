@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Docker
+title: StorageOS Docs - Docker
 anchor: install
 module: install/docker
 ---

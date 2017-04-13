@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: Cluster install
+title: StorageOS Docs - Cluster install
 anchor: install
-module: install/cluster install
+module: install/clusterinstall
 # Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 
@@ -27,7 +27,7 @@ $ git clone https://github.com/andrelucas/storageos-alpine.git
 $ cd storageos-alpine
 ```
 
-2. Bring up a three-node StorageOS cluster.
+2. Bring up a three-node StorageOS cluster. This takes around five minutes.
 ```bash
 $ make all
 Bringing machine 's-1' up with 'virtualbox' provider...

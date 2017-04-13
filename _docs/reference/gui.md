@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Graphical user interface
+title: StorageOS Docs - GUI
 anchor: reference
 module: reference/gui
 ---

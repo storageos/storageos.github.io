@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: PostgreSQL with StorageOS
+title: StorageOS Docs - PostgreSQL
 anchor: applications
 module: applications/postgres
 # Last checked by cheryl.hung@storageos.com on 2017-04-10
@@ -26,7 +26,7 @@ install](../install/clusterinstall.html)).
 
 1. Create a 2GB volume called `pgdata`.
 ```bash
-$ docker volume create -d storageos --opt --size=2 pgdata
+$ docker volume create --driver storageos --opt --size=2 pgdata
 pgdata
 $ docker volume ls
 DRIVER              VOLUME NAME

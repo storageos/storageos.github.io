@@ -11,4 +11,4 @@ serve:
 	$(DAPPER_RUN) serve
 
 build:
-	$(DAPPER_RUN) build
+	$(DAPPER_RUN) build --trace

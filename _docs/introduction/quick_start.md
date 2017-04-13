@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Quick start
+title: StorageOS Docs - Quick start
 anchor: introduction
 module: introduction/quick_start
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-10

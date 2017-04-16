@@ -1,48 +1,32 @@
-# StorageOS Node Container
+# StorageOS Docker Volume Plugin
 
-The StorageOS Node container turns your Docker node into a hyper-converged storage platform. Each Docker host that runs the Node container can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.
-
-_NOTE: For Docker 1.13+ most users should use the [managed plugin install](../plugin) method._
+The StorageOS volume plugin turns your Docker node into a hyper-converged storage platform. Each node that runs the StorageOS plugin can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.
 
 Volumes are available across the cluster so if a container gets moved to another node it still has access to its data. Data can be protected with synchronous replication. Compression, caching, and QoS are enabled by default, and all volumes are thin-provisioned.
 
 No other hardware or software is required, except an optional KV store for multi-node deployments.
 
-During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
-
-Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
+Full documentation is available at <https://docs.storageos.com>.
 
 ## Quick Start
 
 ```bash
-$ sudo mkdir /var/lib/storageos
-$ sudo modprobe nbd nbds_max=1024
-$ wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
-$ docker run -d --name storageos \
-    -e HOSTNAME \
-    --net=host \
-    --pid=host \
-    --privileged \
-    --cap-add SYS_ADMIN \
-    --device /dev/fuse \
-    -v /var/lib/storageos:/var/lib/storageos:rshared \
-    -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+$ docker plugin install --alias storageos store/storageos/plugin KV_BACKEND=boltdb
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
 
 ```bash
 $ docker run --name postgres01 \
-    -e PGDATA=/var/lib/postgresql/data/db \
-    -v postgres01:/var/lib/postgresql/data \
-    --volume-driver=storageos -d postgres
+  -e PGDATA=/var/lib/postgresql/data/db \
+  -v postgres01:/var/lib/postgresql/data \
+  --volume-driver=storageos -d postgres
 ```
 
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-$ sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+$ docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
 ```
 
 ### Next Steps
@@ -50,13 +34,13 @@ $ sudo docker volume create --driver storageos --opt size=20 --opt storageos.fea
 To get the most out of StorageOS, try:
 
 1. Running the CLI to manage volumes, rules, and cluster configuration
-2. Joining more nodes to the cluster
+2. Joining more nodes to the cluster (must use Consul as the KV store)
 
 ## Requirements
 
 ### Docker Version
 
-The container installation method requires Docker 1.10+. For Docker 1.13+ most users should use the [managed plugin install](../plugin) method.
+The `docker plugin install` method requires Docker 1.13.0 or above. Older versions (from Docker 1.10.0 onwards) can use the [node container install](../node) method.
 
 ### Key-value Store
 
@@ -68,22 +52,14 @@ For help setting up Consul, consult the [documentation](https://hub.docker.com/_
 
 ## Installation
 
-The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
-
-### State
-
-StorageOS shares volumes via the `/var/lib/storageos` directory. This must be present on each node where StorageOS runs. Prior to installation, create it:
-
-```bash
-$ sudo mkdir /var/lib/storageos
-```
+The plugin (or node container) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
 ### Network Block Device (NBD)
 
 (Optional) NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+$ modprobe nbd nbds_max=1024
 ```
 
 or add the following line to `/etc/modules`:
@@ -92,40 +68,37 @@ or add the following line to `/etc/modules`:
 nbd nbds_max=1024
 ```
 
-### Docker Plugin Configuration
+### Docker 1.13.0 onwards
 
-Docker needs to be configured to use the StorageOS volume plugin. This is done by writing a configuration file in `/etc/docker/plugins/storageos.json` with contents:
-
-```json
-{
-    "Name": "storageos",
-    "Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
-}
-```
-
-This file instructs Docker to use the volume plugin API listening on the specified Unix domain socket. Note that the socket is only accessible by the root user, and it is only present when the StorageOS client container is running.
-
-### Run the StorageOS node container
-
-Run the node container, supplying the IP address of the Consul service using the `KV_ADDR` environment variable:
+If Consul is running locally, the defaults will work:
 
 ```bash
-$ docker run -d --name storageos \
-    -e HOSTNAME \
-    -e KV_ADDR=127.0.0.1:8500 \
-    --net=host \
-    --pid=host \
-    --privileged \
-    --cap-add SYS_ADMIN \
-    --device /dev/fuse \
-    -v /var/lib/storageos:/var/lib/storageos:rshared \
-    -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+$ docker plugin install --alias storageos store/storageos/plugin
+Plugin "store/storageos/plugin" is requesting the following privileges:
+- network: [host]
+- mount: [/var/lib/storageos]
+- mount: [/dev]
+- device: [/dev/fuse]
+- allow-all-devices: [true]
+- capabilities: [CAP_SYS_ADMIN]
+Do you grant the above permissions? [y/N]
 ```
 
-Alternatively, to setup a single test StorageOS instance, you can use the built-in BoltDB by setting `KV_BACKEND=boltdb`. Note that each StorageOS node will be isolated, so features such as replication and volume failover will not be available.
+If using Consul for the KV store and it is not local, supply the IP address of the Consul service using the `KV_ADDR` parameter:
+
+```bash
+$ docker plugin install --alias storageos store/storageos/plugin KV_ADDR=127.0.0.1:8500
+```
+
+Alternatively, to setup a single test StorageOS instance, you can use the built-in BoltDB. Note that each StorageOS node will be isolated, so features such as replication and volume failover will not be available.
+
+```bash
+$ docker plugin install --alias storageos store/storageos/plugin KV_BACKEND=boltdb
+```
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
+
+**NOTE**: In order to make plugin upgrades easier, install the plugin using `--alias storageos`. This ensures that volumes provisioned with a previous version of the plugin continue to function after the upgrade. By default, Docker ties volumes to the plugin version. Volumes should then be provisioned using the alias e.g. `--volume-driver storageos`.
 
 ## Configuration Parameters
 

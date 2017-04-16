@@ -26,7 +26,11 @@ Install StorageOS:
 $ docker plugin install --alias storageos store/storageos/plugin
 ```
 
-This requires you to have Consul installed and available on the Docker host. For single-node installs, you may use `KV_BACKEND=boltdb` instead.
+This requires you to have Consul installed and available on the Docker host. You may specify a remote consul service by appending `KV_ADDR=<consul_ip:8500>` to the install command, or for single-node installs, you may use `KV_BACKEND=boltdb` instead. For example:
+
+```bash
+$ docker plugin install --alias storageos store/storageos/plugin KV_ADDR=192.168.0.1:8500
+```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>
 
@@ -34,8 +38,14 @@ For more details consult <https://docs.storageos.com/docs/install/docker.html>
 
 You can now run containers backed by StorageOS volumes:
 
-```
+```bash
 $ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "echo hello > /data/myfile"
+```
+
+Or pre-create and manage StorageOS volumes using the `docker volume` command:
+
+```bash
+$ sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
 ```
 
 ## Next Steps

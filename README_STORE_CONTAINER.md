@@ -25,7 +25,7 @@ Install StorageOS:
 ```bash
 $ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
-$ wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
+$ sudo wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
 $ docker run -d --name storageos \
     -e HOSTNAME \
     --net=host \

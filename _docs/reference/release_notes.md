@@ -20,6 +20,10 @@ We recommend always using "tagged" versions of StorageOS rather than "latest", a
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
 
+## 0.7.7
+
+- Fix issue with replication after node failure
+
 ## 0.7.6
 
 - Log formatting improvements

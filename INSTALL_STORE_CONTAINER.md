@@ -1,16 +1,16 @@
 # StorageOS Node Container
 
-The StorageOS Node container turns your Docker node into a hyper-converged storage platform. Each Docker host that runs the Node container can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.
-
-_NOTE: For Docker 1.13+ most users should use the [managed plugin install](../plugin) method._
+The StorageOS node container turns your Docker host into a hyper-converged storage platform. Each node that runs the StorageOS node container can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.
 
 Volumes are available across the cluster so if a container gets moved to another node it still has access to its data. Data can be protected with synchronous replication. Compression, caching, and QoS are enabled by default, and all volumes are thin-provisioned.
 
-No other hardware or software is required, except an optional KV store for multi-node deployments.
+No other hardware or software is required, except an optional KV store.
+
+For Docker 1.13+, a managed plugin is also available.
 
 During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
-Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
+Full documentation is available at <https://docs.storageos.com>.
 
 ## Quick Start
 
@@ -27,7 +27,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    store/storageos/node:0.7.5 server
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -42,7 +42,7 @@ $ docker run --name postgres01 \
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-$ sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+$ docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
 ```
 
 ### Next Steps
@@ -92,7 +92,7 @@ or add the following line to `/etc/modules`:
 nbd nbds_max=1024
 ```
 
-### Docker Plugin Configuration
+### Docker Volume Driver Configuration
 
 Docker needs to be configured to use the StorageOS volume plugin. This is done by writing a configuration file in `/etc/docker/plugins/storageos.json` with contents:
 
@@ -103,7 +103,7 @@ Docker needs to be configured to use the StorageOS volume plugin. This is done b
 }
 ```
 
-This file instructs Docker to use the volume plugin API listening on the specified Unix domain socket. Note that the socket is only accessible by the root user, and it is only present when the StorageOS client container is running.
+This file instructs Docker to use the volume driver API listening on the specified Unix domain socket. Note that the socket is only accessible by the root user, and it is only present when the StorageOS node container is running.
 
 ### Run the StorageOS node container
 
@@ -120,12 +120,12 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    store/storageos/node:0.7.5 server
 ```
 
-Alternatively, to setup a single test StorageOS instance, you can use the built-in BoltDB by setting `KV_BACKEND=boltdb`. Note that each StorageOS node will be isolated, so features such as replication and volume failover will not be available.
+Alternatively, to setup a single test StorageOS instance, you can use the built-in BoltDB by setting `-e KV_BACKEND=boltdb`. Note that each StorageOS node will be isolated, so features such as replication and volume failover will not be available.
 
-Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
+Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the `KV_ADDR` will need to be set if Consul is not running locally on the node.
 
 ## Configuration Parameters
 

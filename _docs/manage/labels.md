@@ -88,7 +88,7 @@ default/volume-name
 
 To remove labels from a volume (note that only the key is specified):
 ```bash
-$ storageos volume update --label-add env default/volume-name
+$ storageos volume update --label-rm env default/volume-name
 default/volume-name
 ```
 

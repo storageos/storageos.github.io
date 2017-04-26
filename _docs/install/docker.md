@@ -26,7 +26,7 @@ The `docker plugin install` method requires Docker 1.13+ or above.  See
 ### KV Store
 
 StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation](consul.html) for more details.
+management.  See [Key/Value Store](kvstore.html) for more details.
 
 ### Routable IP Address
 

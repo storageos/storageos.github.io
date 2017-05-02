@@ -14,21 +14,23 @@ Volumes are used to store data.
 
 Volumes can be created using the StorageOS CLI or API, the Docker CLI, or dynamically.
 
-Volumes used by Docker must be in the `default` namespace. Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. The default volume size is 5GB if `size` is not specified. Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
+Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. By default, volumes are 5GB in size (overridden by `--size`) and formatted using ext4 (overridden by `--fstype=ext2|ext3|ext4|xfs|btrfs`). Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
 
 To create a 15GB volume in the `default` namespace, run:
 
 ### StorageOS CLI
 
 ```bash
-$ storageos volume create --namespace default --size 15 volume-name
+$ storageos volume create --namespace default --size 15 --fstype ext4 volume-name
 default/volume-name
 ```
 
 ### Docker CLI
 
+Volumes used by Docker *must* be in the `default` namespace.
+
 ```bash
-$ docker volume create --driver storageos --opt size=15 volume-name
+$ docker volume create --driver storageos --opt size=15 fstype=ext4 volume-name
 volume-name
 ```
 
@@ -82,8 +84,6 @@ To mount a volume on the current node (into `/mnt`), run:
 ```bash
 $ storageos volume mount default/volume-name /mnt
 ```
-
-
 
 In order for the mount to succeed, StorageOS must be running on the node and the volume must not be mounted anywhere else. When the volume is mounted a lock is placed on the volume to ensure it is not written by multiple concurrent writers as this could lead to data inconsistency.
 

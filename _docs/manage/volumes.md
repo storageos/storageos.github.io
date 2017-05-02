@@ -89,7 +89,7 @@ In order for the mount to succeed, StorageOS must be running on the node and the
 
 If the volume has not yet been formatted, the filesystem type set at creation time or via update will be used. `ext4` will be used by default.
 
-## Unounting volumes
+## Unmounting volumes
 
 To unmount a volume on the current node, run:
 

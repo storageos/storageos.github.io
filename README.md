@@ -23,7 +23,7 @@ This will typically be the fastest way (by far) to iterate on docs changes and s
 Clone this repository:
 
 ```
-git clone git@github.com:storageos/storageos.github.io.git
+git clone https://github.com/storageos/storageos.github.io.git
 ```
 
 Run a local copy:

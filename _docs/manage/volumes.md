@@ -14,7 +14,7 @@ Volumes are used to store data.
 
 Volumes can be created using the StorageOS CLI or API, the Docker CLI, or dynamically.
 
-Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. By default, volumes are 5GB in size (overridden by `--size`) and formatted using ext4 (overridden by `--fstype=ext2|ext3|ext4|xfs|btrfs`). Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
+Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. By default, volumes are 5GB in size (overridden by `--size`) and formatted as ext4 (overridden by `--fstype=ext2|ext3|ext4|xfs|btrfs`). Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
 
 To create a 15GB volume in the `default` namespace, run:
 
@@ -30,7 +30,7 @@ default/volume-name
 Volumes used by Docker *must* be in the `default` namespace.
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 fstype=ext4 volume-name
+$ docker volume create --driver storageos --opt size=15 --opt fstype=ext4 volume-name
 volume-name
 ```
 
@@ -44,7 +44,9 @@ When dynamic provisioning is used it is not possible to specify options at creat
 
 ## Create a replicated volume
 
-To create a replicated volume, specify the number of desired replicas with the `storageos.feature.replicas` label. For example, to create a volume with 3 copies of the data, create with 2 replicas:
+To create a replicated volume, specify the number of desired replicas with the `storageos.feature.replicas` label. See [labels](labels.html) for replication best practices.
+
+To create a volume with 2 replicas (3 copies of the data total), run:
 
 ### StorageOS CLI
 

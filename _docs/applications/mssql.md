@@ -20,7 +20,7 @@ Starting with SQL Server vNext CTP 1.4, the SQL Server command-line tools are in
 
 ## More Information
 
-More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linuxy") web page.
+More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linux") web page.
 
 Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
 

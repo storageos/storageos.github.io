@@ -14,21 +14,23 @@ Volumes are used to store data.
 
 Volumes can be created using the StorageOS CLI or API, the Docker CLI, or dynamically.
 
-Volumes used by Docker must be in the `default` namespace. Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. The default volume size is 5GB if `size` is not specified. Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
+Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. By default, volumes are 5GB in size (overridden by `--size`) and formatted as ext4 (overridden by `--fstype=ext2|ext3|ext4|xfs|btrfs`). Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
 
 To create a 15GB volume in the `default` namespace, run:
 
 ### StorageOS CLI
 
 ```bash
-$ storageos volume create --namespace default --size 15 volume-name
+$ storageos volume create --namespace default --size 15 --fstype ext4 volume-name
 default/volume-name
 ```
 
 ### Docker CLI
 
+Volumes used by Docker *must* be in the `default` namespace.
+
 ```bash
-$ docker volume create --driver storageos --opt size=15 volume-name
+$ docker volume create --driver storageos --opt size=15 --opt fstype=ext4 volume-name
 volume-name
 ```
 
@@ -42,7 +44,9 @@ When dynamic provisioning is used it is not possible to specify options at creat
 
 ## Create a replicated volume
 
-To create a replicated volume, specify the number of desired replicas with the `storageos.feature.replicas` label. For example, to create a volume with 3 copies of the data, create with 2 replicas:
+To create a replicated volume, specify the number of desired replicas with the `storageos.feature.replicas` label. See [labels](labels.html) for replication best practices.
+
+To create a volume with 2 replicas (3 copies of the data total), run:
 
 ### StorageOS CLI
 
@@ -83,13 +87,11 @@ To mount a volume on the current node (into `/mnt`), run:
 $ storageos volume mount default/volume-name /mnt
 ```
 
-
-
 In order for the mount to succeed, StorageOS must be running on the node and the volume must not be mounted anywhere else. When the volume is mounted a lock is placed on the volume to ensure it is not written by multiple concurrent writers as this could lead to data inconsistency.
 
 If the volume has not yet been formatted, the filesystem type set at creation time or via update will be used. `ext4` will be used by default.
 
-## Unounting volumes
+## Unmounting volumes
 
 To unmount a volume on the current node, run:
 

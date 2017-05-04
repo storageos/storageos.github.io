@@ -6,7 +6,7 @@ module: applications/mssql
 ---
 
 
-# ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2016 with StorageOS
+# ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2017 with StorageOS
 
  Microsoft's latest SQL Server release represents a major update with availability for Linux platform support and support to run as a container.
 

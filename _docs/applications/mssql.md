@@ -16,6 +16,8 @@ Microsoft SQL Server for Linux runs with any supported Linux distribution.  The 
 * Minimum of 4 GB of disk space 
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
+Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
+
 ## Install MS SQL Server with StorageOS
 
 1. Startup the latest MS SQL Server container on a StorageOS node with a StorageOS persistent volume:
@@ -156,5 +158,3 @@ Microsoft SQL Server for Linux runs with any supported Linux distribution.  The 
 Starting with SQL Server 2017 CTP 2.0, the SQL Server command-line tools are included in the Docker image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
 
 More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linux") web page.
-
-Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.

@@ -16,14 +16,6 @@ Microsoft SQL Server for Linux runs with any supported Linux distribution.  The 
 * Minimum of 4 GB of disk space 
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
-## More Information
-
-Starting with SQL Server 2017 CTP 2.0, the SQL Server command-line tools are included in the Docker image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
-
-More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linux") web page.
-
-Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
-
 ## Install MS SQL Server with StorageOS
 
 1. Startup the latest MS SQL Server container on a StorageOS node with a StorageOS persistent volume:
@@ -55,9 +47,7 @@ Before you start, ensure you have StorageOS installed and ready on a Linux clust
 
 1. Connect to SQL Server:
 
-   >**Note**: We are using *localhost* in this example - if you are running this from a remote host you will need to specify the target server IP.
-
-   If you have installed the SQL Server tools separately you can use `sqlcmd -S localhost -U SA -P p@ssw0rd` to connect, alternatively use the `docker exec` command to run directly from the container.  The steps that follow apply to both methods of connecting to SQL Server. 
+   If you have installed the SQL Server tools separately you can use `sqlcmd -S <ip_address> -U SA -P p@ssw0rd` to connect from a remote server, alternatively use the `docker exec` command to run directly from the container.  The steps that follow apply to both methods of connecting to SQL Server. 
 
    ``` 
    $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -U SA -P p@ssw0rd 
@@ -128,7 +118,7 @@ Before you start, ensure you have StorageOS installed and ready on a Linux clust
 1. Load Database and List Rows:
 
    ```
-   $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P p@ssw0rd 
+   $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -U SA -P p@ssw0rd 
    1> use testdb
    2> go
    Changed database context to 'testdb'.
@@ -160,3 +150,11 @@ Before you start, ensure you have StorageOS installed and ready on a Linux clust
    (3 rows affected)
    1> quit
    ```
+
+## More Information
+
+Starting with SQL Server 2017 CTP 2.0, the SQL Server command-line tools are included in the Docker image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
+
+More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linux") web page.
+
+Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.

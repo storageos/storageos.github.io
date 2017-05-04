@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Microsoft SQL Server with StorageOS
+title: StorageOS Docs - Microsoft SQL Server
 anchor: applications
 module: applications/mssql
 ---
@@ -12,21 +12,21 @@ module: applications/mssql
 
 ## Linux Support
 
-Microsoft state SQL Server for Linux runs with any supported Linux distribution.  To date we have only tested with Ubuntu 16.04 which we used for this document and Alpine Linux (which did not work).  Additional requirements include:
+Microsoft SQL Server for Linux runs with any supported Linux distribution.  The recommended distribution for testing StorageOS is Ubuntu 16.04.  Additional requirements include:
 * Minimum of 4 GB of disk space 
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
-Starting with SQL Server vNext CTP 1.4, the SQL Server command-line tools are included in the Docker image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
-
 ## More Information
+
+Starting with SQL Server 2017 CTP 2.0, the SQL Server command-line tools are included in the Docker image. If you attach to the image with an interactive command-prompt, you can run the tools locally.
 
 More information on SQL Server for Linux is available on the [Microsoft SQL Server for Linux](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-overview "Microsoft SQL Server for Linux") web page.
 
-Before you start, please ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
+Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
 
 ## Install MS SQL Server with StorageOS
 
-1. Startup the latest MS SQL Server container on a StorageOS node with a StorageOS persistent volume
+1. Startup the latest MS SQL Server container on a StorageOS node with a StorageOS persistent volume:
 
    ```
    $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
@@ -34,7 +34,7 @@ Before you start, please ensure you have StorageOS installed and ready on a Linu
         -d microsoft/mssql-server-linux
    ```
 
-2. Confirm a StorageOS volume was created successfully
+2. Confirm a StorageOS volume was created successfully:
 
    ```
    $ sudo docker volume list
@@ -42,31 +42,25 @@ Before you start, please ensure you have StorageOS installed and ready on a Linu
    storageos           mssqldata
    ```
 
-3. Confirm SQL Server installation status
+3. Confirm SQL Server installation status:
 
    ```
    $ sudo docker logs mssql | more
    ...
-   2017-04-13 09:24:22.28 Server      Dedicated admin connection support was established for listening locally on port 1434.
-   2017-04-13 09:24:22.28 spid17s     SQL Server is now ready for client connections. This is an informational message; no user action is required.
+   2017-05-04 11:05:10.80 Server      Dedicated admin connection support was established for listening locally on port 1434.
+   2017-05-04 11:05:10.80 spid19s     SQL Server is now ready for client connections. This is an informational message; no user action is required.
    ```
-
-## Install SQL Server command-line tools on Linux
-
-Sqlcmd is now included as part of the SQL Server container however command-line tools and can be installed separately.
-
-Depending on your Linux distribution, the installation will vary - for more details please consult the [Microsft's website](https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-setup-tools).
 
 ## Create a Test Database
 
-1. Connect to SQL Server
+1. Connect to SQL Server:
 
    >**Note**: We are using *localhost* in this example - if you are running this from a remote host you will need to specify the target server IP.
 
    If you have installed the SQL Server tools separately you can use `sqlcmd -S localhost -U SA -P p@ssw0rd` to connect, alternatively use the `docker exec` command to run directly from the container.  The steps that follow apply to both methods of connecting to SQL Server. 
 
    ``` 
-   $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P p@ssw0rd 
+   $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -U SA -P p@ssw0rd 
 
    1> SELECT Name from sys.Databases;
    2> go
@@ -105,13 +99,13 @@ Depending on your Linux distribution, the installation will vary - for more deta
 
 ## Fail SQL Server on Hosting Node
 
-1. Kill MS SQL application container
+1. Kill MS SQL application container:
 
    ```
    storageos-1:~$ sudo docker kill mssql
    ```
 
-2. Confirm running state
+2. Confirm running state:
 
    ```
    $ sudo docker ps -a -f name=mssql
@@ -121,7 +115,7 @@ Depending on your Linux distribution, the installation will vary - for more deta
 
 ## Recover MS SQL Database on Second Node
 
-1. Start up a new application container
+1. Start up a new application container:
 
    ```
    $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
@@ -131,7 +125,7 @@ Depending on your Linux distribution, the installation will vary - for more deta
 
 ## Open Database to Read and Write Rows
 
-1. Load Database and List Rows
+1. Load Database and List Rows:
 
    ```
    $ sudo docker exec -it mssql /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P p@ssw0rd 
@@ -148,7 +142,7 @@ Depending on your Linux distribution, the installation will vary - for more deta
    (2 rows affected)
    ```
 
-2. Add a new row
+2. Add a new row:
 
    ```
    1> INSERT INTO inventory VALUES (3, 'apple', 99);

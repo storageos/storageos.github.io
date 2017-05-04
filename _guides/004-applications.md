@@ -13,7 +13,7 @@ sections:
     description: Setting up PostgreSQL with persistent storage.
     module: applications/postgres
   -
-    title: Microsooft SQL
+    title: Microsoft SQL
     description: Setting up Microsoft SQL with persistent storage.
     module: applications/mssql
 ---

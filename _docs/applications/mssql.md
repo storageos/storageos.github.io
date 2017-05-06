@@ -111,7 +111,7 @@ Before you start, ensure you have StorageOS installed and ready on a Linux clust
 
    ```
    $ sudo docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
-        --name mssql -v mssql:/var/opt/mssqldata --volume-driver=storageos \
+        --name mssql -v mssql:/var/opt/mssql --volume-driver=storageos \
         -d microsoft/mssql-server-linux
    ```
 

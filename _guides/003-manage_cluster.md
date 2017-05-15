@@ -32,5 +32,8 @@ sections:
     title: Pools
     description: Create and manage pools
     module: manage/pools
-
+  -
+    title: Node
+    description: View node information
+    module: manage/node
 ---

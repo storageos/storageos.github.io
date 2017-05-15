@@ -22,18 +22,24 @@ Usage:	storageos COMMAND
 Converged storage for containers
 
 Options:
-      --config string      Location of client config files (default "/home/vagrant/.storageos")
+      --config string      Location of client config files (default
+                           "/root/.storageos")
   -D, --debug              Enable debug mode
       --help               Print usage
-  -H, --host list          Node endpoint(s) to connect to (will override STORAGEOS_HOST env variable
-                           value) (default [])
-  -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
-  -p, --password string    API password (will override STORAGEOS_PASSWORD env variable value)
-  -u, --username string    API username (will override STORAGEOS_USERNAME env variable value)
+  -H, --host list          Node endpoint(s) to connect to (will override
+                           STORAGEOS_HOST env variable value) (default [])
+  -l, --log-level string   Set the logging level
+                           ("debug"|"info"|"warn"|"error"|"fatal")
+                           (default "info")
+  -p, --password string    API password (will override STORAGEOS_PASSWORD
+                           env variable value)
+  -u, --username string    API username (will override STORAGEOS_USERNAME
+                           env variable value)
   -v, --version            Print version information and quit
 
 Management Commands:
   namespace   Manage namespaces
+  node        Manage nodes
   pool        Manage capacity pools
   rule        Manage rules
   system      Manage StorageOS
@@ -52,7 +58,8 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 | Command     | Subcommands                   | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
 | `volume`    | `create inspect ls rm update` | StorageOS data volumes                                         |
-| `rule`      | `inspect ls rm update`        | Policy enforcement based on labels.                            |
+| `node`      | `ls inspect`                  | Node diagnostic information.                                   |
+| `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
 | `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|
 
@@ -64,6 +71,7 @@ Read the guides for how to use each command.
 * [Create and manage rules](../manage/rules.html)
 * [Create and manage namespaces](../manage/namespaces.html)
 * [Create and manage pools](../manage/pools.html)
+* [Cluster information](../manage/node.html)
 
 ## Installation
 
@@ -89,6 +97,6 @@ Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
 
 ```
 $ storageos -u storageos -p storageos volume list
-NAMESPACE/NAME         SIZE                MOUNTED BY          STATUS
-default/test-vol       11 GB                                   active
+NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
+default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
 ```

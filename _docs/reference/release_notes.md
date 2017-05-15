@@ -20,6 +20,27 @@ We recommend always using "tagged" versions of StorageOS rather than "latest", a
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
 
+## 0.7.8
+
+New
+- Node statistics reporting
+- Compression (in-transit and at-rest) enabled by default
+
+Improved
+- Refactored startup process
+- Better volume distribution across cluster
+- Relaxed volume naming requirements to support Docker dynamic volumes
+- More instrumentation counters for volume stats
+- Improved data plane error handling and retry logic
+- Replication enhancements
+- Ongoing log-level tuning to reduce noise
+
+Fixed
+- Issue removing metadata on volume destroy
+- Improved compression performance
+- Default volume size now consistent across CLI/API/Docker/Kubernetes
+- KV Store documentation (thanks @wcgcoder)
+
 ## 0.7.7
 
 - Fix issue with replication after node failure

@@ -7,11 +7,7 @@ module: manage/node
 
 # Node
 
-Node shows a per node breakdown of your storage cluster.
-
-## Overview
-
-## Listing node information
+## List node information
 
 To view the state of your cluster run:
 ```bash
@@ -23,10 +19,10 @@ vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false             
 vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
 ```
 
-The output shows a three node StorageOS cluster with three nodes named vol-test-2gb-lon101, vol-test-2gb-lon102 and vol-test-2gb-lon103.
-For each of the nodes, details about their status is shown. Among other information, `SCHEDULER` shows if a node is a scheduler node or not.
-A scheduler node is responsible for the placement of volumes, performing health checks and providing high availability to nodes. 
-The Number of master copies of volumes or replicas is shown under `VOLUMES`.
+The output shows a StorageOS cluster with three nodes named vol-test-2gb-lon101, vol-test-2gb-lon102 and vol-test-2gb-lon103.
+For each of the nodes, details about their status is shown, including:
+`SCHEDULER`: whether the node contains the scheduler, which is responsible for the placement of volumes, performing health checks and providing high availability to nodes. A cluster will have exactly one scheduler node.
+`VOLUMES`: the number of master or replica copies of volumes on this node.
 
 ## Inspect a node:
 

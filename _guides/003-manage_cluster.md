@@ -34,6 +34,6 @@ sections:
     module: manage/pools
   -
     title: Node
-    description: view node information
+    description: View node information
     module: manage/node
 ---

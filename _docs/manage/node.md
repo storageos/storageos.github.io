@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Node diagnostics
+title: StorageOS Docs - Node
 anchor: manage
 module: manage/node
 ---
@@ -13,9 +13,9 @@ Node shows a per node breakdown of your storage cluster.
 
 ## Listing node information
 
-To view the state of your cluster simply run:
+To view the state of your cluster run:
 ```bash
-storageos node ls
+$ storageos node ls
 
 NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
 vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
@@ -23,23 +23,17 @@ vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false             
 vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
 ```
 
-From the output of the command we observe that we have a 3 node StorageOS cluster and the following information:
-- IP addresses of the controller nodes
-- The health of the cluster and uptime
-- Whether the node is a scheduler node or not
-- Number of master copies of volumes or replicas
-- Total capacity in node
-- Percentage of capacity that is in use
-- The version of StorageOS installed
-
+The output shows a three node StorageOS cluster with three nodes named vol-test-2gb-lon101, vol-test-2gb-lon102 and vol-test-2gb-lon103.
+For each of the nodes, details about their status is shown. Among other information, `SCHEDULER` shows if a node is a scheduler node or not.
+A scheduler node is responsible for the placement of volumes, performing health checks and providing high availability to nodes. 
+The Number of master copies of volumes or replicas is shown under `VOLUMES`.
 
 ## Inspect a node:
 
-For a more detailed overview of a node's status you can inspect it, 
-for example, let's inspect node 3
+To view detailed information such as state, port configuration, pool membership, health, version and capacity in JSON format, inspect the node:
 
 ```
-storageos node inspect vol-test-2gb-lon103
+$ storageos node inspect vol-test-2gb-lon103
 [
     {
         "id": "2b59bf5b-53c7-89dd-35c3-0439af6870e0",	 
@@ -102,6 +96,3 @@ storageos node inspect vol-test-2gb-lon103
     }
 ]
 ```
-
-As you can see more detailed information such as state, port configuration, pool
-membership, health, version and capacity are printed in JSON format.

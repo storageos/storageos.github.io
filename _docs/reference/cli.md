@@ -57,8 +57,8 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 
 | Command     | Subcommands                   | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
-| `volume`    | `create inspect ls rm update` | StorageOS data volumes                                         |
-| `node`      | `ls inspect`                  | Node diagnostic information.                                   |
+| `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
+| `node`      | `ls inspect`                  | Node information.                                              |
 | `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
 | `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|

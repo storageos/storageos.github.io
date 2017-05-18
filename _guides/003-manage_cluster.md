@@ -35,5 +35,5 @@ sections:
   -
     title: Node
     description: View node information
-    module: manage/node
+    module: manage/nodes
 ---

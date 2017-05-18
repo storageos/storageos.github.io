@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - Node
+title: StorageOS Docs - Nodes
 anchor: manage
-module: manage/node
+module: manage/nodes
 ---
 
 # Node

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: WordPress Demo
+title: WordPress
 anchor: applications
 module: applications/wordpress
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-12 - commands work fine but can't connect to WP
@@ -43,6 +43,8 @@ The first step in this exercise is to get Docker Swarm set up and running on you
 
    To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
    ```
+   
+   Continue to the next step, do not join a new node as a worker
 
 3. Generate the join command for additional masters:
 
@@ -55,7 +57,7 @@ The first step in this exercise is to get Docker Swarm set up and running on you
        10.245.103.2:2377
    ```
 
-4. Log on to other 2 nodes and join swarm cluster on each
+4. Log on to 2 new nodes and join the Swarm cluster on each
 
    #### node 2:
 
@@ -79,7 +81,7 @@ The first step in this exercise is to get Docker Swarm set up and running on you
 
    ```bash
    $ docker node ls
-   ID                           HOSTNAME     STATUS  AVAILABILITY  MANAGER STATUS
+   ID                           HOSTNAME      STATUS  AVAILABILITY  MANAGER STATUS
    59wro1b3wja3zt36wki8dpqcn *  storageos-01  Ready   Active        Leader
    7v48k86uwk4ef7c04q12j1npa    storageos-03  Ready   Active        Reachable
    ckyz2idmx7m6v18xhyz21i8q9    storageos-02  Ready   Active        Reachable
@@ -99,7 +101,7 @@ All 3 nodes should be Active and with the status of Leader or Reachable
 2. Setup the Percona fork of MySQL server using wp network overlay
 
    ```bash
-   $ docker service create --name db --network wp --publish 3306:3306 \
+   $ docker service create --name db --network wp --publish 3306:3306 --detach=true \
      --replicas 1 -e MYSQL_ROOT_PASSWORD=wordpress -e MYSQL_DATABASE=wordpress -e \
      MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress \
      --mount type=volume,src=db,dst=/var/lib/mysql,volume-driver=storageos \
@@ -110,8 +112,8 @@ All 3 nodes should be Active and with the status of Leader or Reachable
 3. Setup WordPress server using wp network overlay and publish to default port 80 on public facing IPs of swarm nodes
 
    ```bash
-   $ docker service create --name wp --network wp --publish 82:82 --mode \
-     global -e WORDPRESS_DB_HOST=db:3306 -e WORDPRESS_DB_PASSWORD=wordpress wordpress:latest
+   $ docker service create --name wp --network wp --publish 80:80 --mode global --detach=true \
+     -e WORDPRESS_DB_HOST=db:3306 -e WORDPRESS_DB_PASSWORD=wordpress wordpress:latest
    a16nksbhb8sd5kg3ekcpmn3nn
    ```
 

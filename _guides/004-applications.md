@@ -22,6 +22,6 @@ sections:
     module: applications/redis
   -
 #    title: WordPress
-#    description: Setting up a Word Press cluster with persistanet storage.
-#    module: explore/wordpress
+#    description: Setting up a WordPress cluster with persistent storage.
+#    module: applications/wordpress
 ---

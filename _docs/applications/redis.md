@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: Redis with StorageOS
+title: StorageOS Docs - Redis
 anchor: applications
 module: applications/redis
 # Last reviewed by julian.topley@storageos.com on 2017-05-22

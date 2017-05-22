@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: WordPress
+title: StorageOS Docs - WordPress
 anchor: applications
 module: applications/wordpress
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-12 - commands work fine but can't connect to WP

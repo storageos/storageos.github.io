@@ -3,13 +3,13 @@ layout: guide
 title: Redis with StorageOS
 anchor: applications
 module: applications/redis
-# Last reviewed by 
+# Last reviewed by julian.topley@storageos.com on 2017-05-22
 ---
 
 
 # ![image](/images/docs/explore/redislogo.png) Redis with StorageOS
 
-Redis is a popular networked, in-memory, key-value data store with optional durability to disk. The name Redis is derived from 'REmote DIctionary Server'.
+Redis is a popular networked, in-memory, key-value data store with optional durability to disk.
 
 ## Redis and StorageOS
 
@@ -74,7 +74,7 @@ docker run -d --name redis-test -v redis-data:/data --volume-driver=storageos re
 
 ## Link to redis-benchmark Container
 
-1. link redis-benchmark.
+1. Link redis-benchmark.
 
    ```bash
    docker run -it --rm --link redis-test:redis clue/redis-benchmark

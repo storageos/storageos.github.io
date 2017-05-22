@@ -57,7 +57,7 @@ The first step in this exercise is to get Docker Swarm set up and running on you
        10.245.103.2:2377
    ```
 
-4. Log on to 2 new nodes and join the Swarm cluster on each
+4. Log on to two new nodes and join the Swarm cluster on each
 
    #### node 2:
 

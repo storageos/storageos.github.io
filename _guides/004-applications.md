@@ -13,7 +13,15 @@ sections:
     description: Setting up PostgreSQL with persistent storage.
     module: applications/postgres
   -
-    title: Microsoft SQL
+    title: Microsoft SQL Server
     description: Setting up Microsoft SQL with persistent storage.
     module: applications/mssql
+  -
+    title: Redis
+    description: Setting up Redis with persistent storage.
+    module: applications/redis
+  -
+#    title: WordPress
+#    description: Setting up a WordPress cluster with persistent storage.
+#    module: applications/wordpress
 ---

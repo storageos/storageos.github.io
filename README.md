@@ -40,7 +40,7 @@ You may edit the files while the server is running, and pages will update whenev
 ## Contributing
 
 All contributions welcome, from major updates to typos.  If you're unsure, jump into our Slack channel to discuss.
-When done, please submit PR from your fork's master branch to `storageos/storageos.github.io` master branch, make sure to pull the latest from the original repo before committing your contribution.
+When done, please submit a pull request from your fork's master branch to the `storageos/storageos.github.io` master branch and make sure to pull the latest changes from the original repo before committing your contribution.
 
 ## Best Practices
 

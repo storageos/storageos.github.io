@@ -3,7 +3,7 @@ layout: guide
 title: StorageOS Docs - Swarm with Wordpress
 anchor: applications
 module: applications/wordpress
-# Last reviewed by cheryl.hung@storageos.com on 2017-04-12 - commands work fine but can't connect to WP
+# Last reviewed by julian.topley@storageos.com on 2017-05-23 - WP and Swarm working now
 ---
 
 # ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo

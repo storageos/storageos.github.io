@@ -23,7 +23,7 @@ $ vagrant plugin install vagrant-alpine
 
 1. Clone this repository, which contains scripts to automate setup.
 ```bash
-$ git clone https://github.com/andrelucas/storageos-alpine.git
+$ git clone https://github.com/storageos/storageos-alpine.git
 $ cd storageos-alpine
 ```
 

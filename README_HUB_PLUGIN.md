@@ -6,11 +6,13 @@ Volumes are available across the cluster so if a container gets moved to another
 
 No other hardware or software is required, except an optional KV store for multi-node deployments.
 
-During beta, StorageOS is freely available for testing and experimentation. *DO NOT USE FOR PRODUCTION DATA*.  A Developer edition will be free forever.
+During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
-Full documentation is available at <https://docs.storageos.com>.  To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
+Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
 
 ## Quick Start
+
+To install a single StorageOS node for testing:
 
 ```bash
 $ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
@@ -24,6 +26,15 @@ $ docker run --name postgres01 \
    -v postgres01:/var/lib/postgresql/data \
    --volume-driver=storageos -d postgres
 ```
+
+Or pre-create and manage StorageOS volumes using the `docker volume` command:
+
+```bash
+$ docker volume create \
+  --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+```
+
+To install multiple StorageOS nodes in a clustered configuration, see the installation section below.
 
 ### Next Steps
 
@@ -40,9 +51,11 @@ The `docker plugin install` method requires Docker 1.13.0 or above. Older versio
 
 ### Key-value Store
 
-StorageOS relies on an external key-value store for configuration data and cluster management. Consul is required, though support for etcd is being tested and should be available in the future.
+Multi-node StorageOS installations require an external key-value store for configuration data and cluster management. Consul is currently required, though support for etcd is being tested and should be available in the future.
 
-We believe that the KV store is best managed separately from the StorageOS plugin so that the plugin can remain stateless. Most organizations will already be familiar with managing Consul or etcd as they are common components in cloud-native architectures. For single-node testing, BoltDB is embedded and can be used in place of an external KV store.
+We believe that the KV store is best managed separately from the StorageOS plugin so that the plugin can remain stateless. Most organizations will already be familiar with managing Consul or etcd as they are common components in cloud-native architectures.
+
+For single-node testing, BoltDB is embedded and can be used in place of an external KV store by specifying `KV_BACKEND=boltdb` when installing (`consul` is the default).
 
 For help setting up Consul, consult the [documentation](https://hub.docker.com/_/consul/).
 
@@ -64,7 +77,7 @@ or add the following line to `/etc/modules`:
 nbd nbds_max=1024
 ```
 
-### Docker 1.13.0 onwards
+### StorageOS Plugin Installation (Docker 1.13+)
 
 If Consul is running locally, the defaults will work:
 
@@ -87,7 +100,7 @@ If using Consul for the KV store and it is not local, supply the IP address of t
 $ docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
-Alternatively, to setup a single test StorageOS instance, you can use the built-in BoltDB. Note that each StorageOS node will be isolated, so features such as replication and volume failover will not be available.
+Alternatively, to setup a single test StorageOS instance for testing, you can use the built-in BoltDB. Note that each additional StorageOS node will be isolated, so features such as replication and volume failover will not be available.
 
 ```bash
 $ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb

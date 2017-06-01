@@ -48,10 +48,9 @@ $ docker run -d --name consul --net=host consul agent -server \
 Consult the [Consul documentation](https://www.consul.io) for detailed
 installation and best practices.
 
-For teams running their own Consul service, supply the ip address and port
-number of the service using `KV_ADDR`.
+For teams running their own Consul service, supply the host IP address for `ADVERTISE_IP` together with `KV_ADDR` and port for the KV store (default port is 8500).
 ```bash
-$ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_ADDR=<ip>:<port>
+$ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin ADVERTISE_IP=<ip> KV_ADDR=<ip>:<port>
 ```
 
 ## Other

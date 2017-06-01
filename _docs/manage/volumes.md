@@ -12,19 +12,60 @@ Volumes are used to store data.
 
 ## Create a volume
 
-To create a 15GB volume in `default` namespace, run:
+Volumes can be created using the StorageOS CLI or API, the Docker CLI, or dynamically.
+
+Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character. By default, volumes are 5GB in size (overridden by `--size`) and formatted as ext4 (overridden by `--fstype=ext2|ext3|ext4|xfs|btrfs`). Additional behaviours may be specified by adding labels. See [Using labels with volumes](labels.html).
+
+To create a 15GB volume in the `default` namespace, run:
+
+### StorageOS CLI
+
 ```bash
-$ storageos volume create --namespace default --size 15 volume-name
+$ storageos volume create --namespace default --size 15 --fstype ext4 volume-name
 default/volume-name
 ```
 
-Volume names must consist of lower case alphanumeric characters or '-', and must start and end with an alphanumeric character.
+### Docker CLI
 
-The default volume size is 5GB if `size` is not specified.
+Volumes used by Docker *must* be in the `default` namespace.
+
+```bash
+$ docker volume create --driver storageos --opt size=15 --opt fstype=ext4 volume-name
+volume-name
+```
+
+### Docker Dynamic Provisioning
+
+```bash
+$ docker run --volume-driver storageos -v volume-name:/data alpine ash -i
+```
+
+When dynamic provisioning is used it is not possible to specify options at creation time. Size will default to 5GB, but can be dynamically expanded using the CLI or API.
+
+## Create a replicated volume
+
+To create a replicated volume, specify the number of desired replicas with the `storageos.feature.replicas` label. See [labels](labels.html) for replication best practices.
+
+To create a volume with 2 replicas (3 copies of the data total), run:
+
+### StorageOS CLI
+
+```bash
+$ storageos volume create --namespace default --label storageos.feature.replicas=2 volume-name
+```
+
+### Docker CLI
+
+```bash
+$ docker volume create --driver storageos --opt size=15 --opt storageos.feature.replicas=2 volume-name
+volume-name
+```
 
 ## List all volumes
 
 To view all volumes in all namespaces, run:
+
+### StorageOS CLI
 
 ```bash
 storageos volume ls
@@ -32,27 +73,38 @@ NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT        
 default/volume-name   15GB                                                        active              0/0
 ```
 
-Create a new volume in a new namespace.
+### Docker CLI
+
 ```bash
-$ storageos volume create myvolume --namespace legal
-legal/myvolume
+$ docker volume ls
 ```
 
-Create a 10GB scratch volume from an existing pool called `no-ha`, and install the XFS file system. Valid types for `--fstype` are `ext2`, `ext3`, `ext4`, `xfs` and `btrfs`.
+## Mounting volumes
+
+To mount a volume on the current node (into `/mnt`), run:
+
 ```bash
-$ storageos volume create --pool no-ha --size 10 --fstyle xfs --namespace legal scratch1
-legal/scratch1
+$ storageos volume mount default/volume-name /mnt
 ```
 
-Check if a volume is mounted.
+In order for the mount to succeed, StorageOS must be running on the node and the volume must not be mounted anywhere else. When the volume is mounted a lock is placed on the volume to ensure it is not written by multiple concurrent writers as this could lead to data inconsistency.
+
+If the volume has not yet been formatted, the filesystem type set at creation time or via update will be used. `ext4` will be used by default.
+
+## Unmounting volumes
+
+To unmount a volume on the current node, run:
+
 ```bash
-$ storageos volume inspect legal/myvolume | grep mounted
-        "mounted": false,
+$ storageos volume unmount default/volume-name
 ```
+
+The unmount command should be run on the node that has the volume mounted. Unmounting the volume detaches the filesystem from the node and removes the mount lock. In cases where the filesystem was unmounted manually using the Linux `umount` utility, or the node is no longer active, you can specify the `--force` flag to only remove the mount lock.
 
 ## Inspecting volume details
 
 To view volume details, such as where it's deployed and health, use `inspect` command and specify `namespace/volume-name`.
+
 ```bash
 $ storageos volume inspect legal/scratch1
 [
@@ -90,19 +142,21 @@ $ storageos volume inspect legal/scratch1
 ## Removing volumes
 
 To delete a volume, use `rm` command (all data in this volume will be lost):
+
 ```bash
 $ storageos volume rm default/volume-name
 default/volume-name
 ```
 
 This command will fail if the volume is mounted. To delete a mounted volume, add `--force` flag:
+
 ```bash
 $ storageos volume rm --force default/volume-name
 default/volume-name
 ```
 
-Volumes might not immediately disappeared as data from the disks have to be purged.
+Volumes might not be removed immediately as data will be purged in the background.
 
 ## Further reading
 
-* [Using labels with volumes](labels.html)
+- [Using labels with volumes](labels.html)

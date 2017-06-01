@@ -8,6 +8,8 @@ module: introduction/quick_start
 
 # Quick start
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Arhn0X0UQ-s" frameborder="0" allowfullscreen></iframe>
+
 The fastest way to try out StorageOS is to download the plugin from the Docker
 Hub.
 

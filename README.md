@@ -39,7 +39,7 @@ You may edit the files while the server is running, and pages will update whenev
 
 ## Contributing
 
-All contributions welcome, from major updates to typos.  If you're unsure, jump into our Slack channel to discuss.
+All contributions welcome, from major updates to typos.  If you're unsure, jump into our [Slack channel](http://slack.storageos.com/) to discuss.
 
 Please make sure to pull the latest changes from the original repo before committing your contribution.
 

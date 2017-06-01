@@ -69,8 +69,8 @@ Status: Downloaded newer image for alpine:latest
 * `alpine sh -c`: Launch a bash shell using Alpine, a lightweight Linux distribution.
 * `echo hello > /data/myfile`: Write some text to `/data/myfile`.
 
-3. Inspect the data volume.
-``bash
+2. Inspect the data volume.
+```bash
 $ sudo docker volume inspect test01
 [
     {
@@ -83,7 +83,7 @@ $ sudo docker volume inspect test01
     }
 ]
 ```
-4.  Read the contents of `/data/myfile` from a different container.
+3.  Read the contents of `/data/myfile` from a different container.
 ```bash
 $ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "cat /data/myfile"
 hello

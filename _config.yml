@@ -7,6 +7,9 @@ url: "https://docs.storageos.com"
 
 exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
+# Google services
+google_analytics: UA-70625114-1
+
 # Build settings
 incremental: true
 highlighter: rouge

@@ -10,6 +10,7 @@ You will need the following software installed:
 - text editor (https://atom.io recommended, with following packages: language-markdown, markdown-preview-plus)
 - Dapper (http://github.com/rancher/dapper)
 
+If you would like to contribute and earn cash, read the [Guide Bounty Program](http://docs.storageos.com/docs/bounty_program.html).
 
 ## Staging the site locally (from scratch setup)
 
@@ -20,10 +21,10 @@ on a lightweight webserver that runs on your local machine.
 
 This will typically be the fastest way (by far) to iterate on docs changes and see them staged.
 
-Clone this repository:
+Fork the repository on github and clone it:
 
 ```
-git clone git@github.com:storageos/storageos.github.io.git
+git clone https://github.com/fork/storageos.github.io.git
 ```
 
 Run a local copy:
@@ -40,6 +41,10 @@ You may edit the files while the server is running, and pages will update whenev
 ## Contributing
 
 All contributions welcome, from major updates to typos.  If you're unsure, jump into our [Slack channel](http://slack.storageos.com/) to discuss.
+
+Please make sure to pull the latest changes from the original repo before committing your contribution.
+
+When done, please submit a pull request from your fork's master branch to the `storageos/storageos.github.io` master branch.
 
 ## Best Practices
 

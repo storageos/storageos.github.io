@@ -33,11 +33,7 @@
 .guide-list .section-link.title.active {
   color: #61c202;
 }
-/*
-.guide-list a {
-  text-decoration: none;
-}
-*/
+
 .page-content {
   padding-top:150px;
   margin-bottom: 30px;
@@ -147,4 +143,16 @@ var {
     color: #333;
     font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
     font-size: 14px;
+}
+
+.banner {
+  padding-top: 2em;
+  padding-bottom: 0.2em;
+  margin: 0 auto;
+  background-color:#e8eaee;
+  text-align:center;
+}
+
+.banner a {
+  color: #55af00;
 }

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: MongoDB with StorageOS
+title: StorageOS Docs - MongoDB
 anchor: applications
 module: applications/mongodb
 ---

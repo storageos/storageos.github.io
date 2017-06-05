@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: MySQL with StorageOS
+title: StorageOS Docs - MySQL
 anchor: applications
 module: applications/mysql
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-11

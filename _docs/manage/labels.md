@@ -21,15 +21,17 @@ internal use.
 
 ### StorageOS feature labels
 
-Applying specific labels triggers compression, replication and other storage
-features on volumes. The following feature labels are supported:
+Applying specific labels to volumes triggers compression, replication and other
+storage features. No feature labels are present by default.
 
-| Feature     | Label                           | Value                       |
-|:------------|:--------------------------------|-----------------------------|
-| Caching     | `storageos.feature.cache`       | true / false                |
-| Compression | `storageos.feature.compression` | true / false                |
-| Replication | `storageos.feature.replicas`    | integer values 1 - 5        |
-| QoS         | `storageos.feature.throttle`    | true / false                |
+To set supported labels, use `storageos volume create --label storageos.feature.cache=true`:
+
+| Feature     | Label                           | Values         | Description                                              |
+|:------------|:--------------------------------|:---------------|:---------------------------------------------------------|
+| Caching     | `storageos.feature.cache`       | true / false   | Improves read performance at the expense of more memory. |
+| Compression | `storageos.feature.nocompress`  | true / false   | Switches off compression of data at rest and in transit. |
+| Replication | `storageos.feature.replicas`    | integers [0, 5]| Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. |
+| QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
 
 Feature labels are a powerful and flexible way to control storage features,
 especially when combined with [rules](rules.html).
@@ -88,7 +90,7 @@ default/volume-name
 
 To remove labels from a volume (note that only the key is specified):
 ```bash
-$ storageos volume update --label-add env default/volume-name
+$ storageos volume update --label-rm env default/volume-name
 default/volume-name
 ```
 

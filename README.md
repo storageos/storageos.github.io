@@ -10,6 +10,7 @@ You will need the following software installed:
 - text editor (https://atom.io recommended, with following packages: language-markdown, markdown-preview-plus)
 - Dapper (http://github.com/rancher/dapper)
 
+If you would like to contribute and earn cash, read the [Guide Bounty Program](http://docs.storageos.com/docs/bounty_program.html).
 
 ## Staging the site locally (from scratch setup)
 

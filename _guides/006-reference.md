@@ -49,4 +49,8 @@ sections:
     title: Contributing to the docs
     description: How to contribute to the docs
     module: reference/contributing
+  -
+    title: Open Source Attribution 
+    description: StorageOS open source attribution notice
+    module: reference/open_source_attribution
 ---

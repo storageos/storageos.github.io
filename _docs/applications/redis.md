@@ -26,7 +26,7 @@ starting, ensure you have StorageOS installed on a cluster (refer to the
 
 1. Create a 1GB volume called `redis-data` in the default namespace.
 ```bash
-$ docker volume create --driver storageos --opt size=1 mysqldata
+$ docker volume create --driver storageos --opt size=1 redis-data
 redis-data
 $ docker volume list
 DRIVER              VOLUME NAME

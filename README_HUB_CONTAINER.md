@@ -86,7 +86,7 @@ $ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
 ```
 
-**In order for the NBD module to be loaded on reboot:**
+**To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
 ```

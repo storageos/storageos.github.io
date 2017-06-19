@@ -69,7 +69,7 @@ $ modprobe nbd nbds_max=1024
 nbd
 ```
 
-1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
 ```
 options nbd nbds_max=1024
 ```

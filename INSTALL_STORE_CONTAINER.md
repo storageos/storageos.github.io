@@ -86,10 +86,16 @@ $ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
 ```
 
-or add the following line to `/etc/modules`:
+**In order for the NBD module to be loaded on reboot:**
 
+1. Add the following line to `/etc/modules`
 ```
-nbd nbds_max=1024
+nbd
+```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+```
+options nbd nbds_max=1024
 ```
 
 ### Docker Volume Driver Configuration

@@ -53,10 +53,16 @@ number of allowable devices, run:
 $ sudo modprobe nbd nbds_max=1024
 ```
 
-Also add the following line to `/etc/modules` so that NBD is loaded on reboot:
+**To ensure the NBD module is loaded on reboot.**
 
+1. Add the following line to `/etc/modules`
 ```
-nbd nbds_max=1024
+nbd
+```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+```
+options nbd nbds_max=1024
 ```
 
 If Consul is running locally, install the plugin using the defaults:

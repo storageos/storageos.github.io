@@ -71,10 +71,16 @@ The plugin (or node container) should be installed on each Docker node where you
 $ sudo modprobe nbd nbds_max=1024
 ```
 
-or add the following line to `/etc/modules`:
+**To ensure the NBD module is loaded on reboot.**
 
+1. Add the following line to `/etc/modules`
 ```
-nbd nbds_max=1024
+nbd
+```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+```
+options nbd nbds_max=1024
 ```
 
 ### StorageOS Plugin Installation (Docker 1.13+)

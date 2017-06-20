@@ -37,17 +37,14 @@ taken as a go-ahead to publish.
 
 ## Legal
 
-COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer
-for the StorageOS Guides & Tutorials repository and that each form of Work is
-being created by the writer as a “work made for hire” under the United States
-Copyright Act and, at all stages of development, the Work shall be and remain
-the sole and exclusive property of StorageOS. At StorageOS’s sole, absolute and
-unfettered discretion, StorageOS may make any alterations to the Work.
+COPYRIGHT OWNERSHIP. The StorageOS Guides & Tutorials repository is licensed
+under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+(CC BY-NC-SA 4.0) license.
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require StorageOS
 to use the Work, or any part thereof, in connection with StorageOS Guides &
-Tutorials or otherwise. Credit for the Work shall read, “Contributed by writer’s
-name.”
+Tutorials or otherwise. Credit for the Work shall read, “Contributed by *writer’s
+name*.”
 
 PAYMENT. Upon publication of a submission to the StorageOS Guides & Tutorials
 Repository, the writer will be paid the sum of USD $250.00 as an electronic

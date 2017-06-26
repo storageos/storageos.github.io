@@ -5,8 +5,14 @@ anchor: troubleshooting
 module: troubleshooting/get_help
 ---
 
-# Get help
+# Got questions or feedback?
 
-The fastest way to get help is to join our [public slack channel](http://slack.storageos.com).
+We love feedback! Any feedback you give will make StorageOS better for everyone.
 
-You can also [contact our support team](https://support.storageos.com/support/tickets/new), or see other ways to get in touch at the [support site](https://support.storageos.com).
+## Contact us
+
+Developers can [file bugs on Github](https://github.com/storageos/storageos.github.io/pulls) or join our [public slack channel](http://slack.storageos.com).
+
+If you have a StorageOS account, you can [file a support ticket](https://support.storageos.com/support/tickets/new) or check the [StorageOS forums](https://support.storageos.com/support/discussions).
+
+For general help, [tweet us](https://www.twitter.com/storage_os) or [send an email](mailto:support@storageos.com).

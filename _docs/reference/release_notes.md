@@ -20,6 +20,23 @@ We recommend always using "tagged" versions of StorageOS rather than "latest", a
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
 
+## 0.7.10
+
+This release continues our focus on stability and better test coverage across a growing suite of platforms and usage scenarios. 
+
+New
+- Keepalives for replication though firewalls
+
+Improved
+
+- Graceful shutdown internal cleanup
+- User authentication internals made extensible to other auth providers
+- Internal changes to allow different log levels per module
+
+Fixed
+- Removed log entries where events are raised and logged again
+- Consolidated log messages when KV store is not available
+
 ## 0.7.9
 
 New

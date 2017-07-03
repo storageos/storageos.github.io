@@ -725,7 +725,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
   /namespaces/{namespace}/volumes/{name}/unmount:
     post:
-      summary: "Mount volume"
+      summary: "Unmount volume"
       description: "Updates the mount reference for the volume."
       produces:
         - "application/json"
@@ -735,7 +735,7 @@ paths:
         - $ref: "#/parameters/Namespace"
         - name: "client"
           in: "body"
-          description: "Hostname of the client mounting the volume"
+          description: "Hostname of the client unmounting the volume"
           required: true
           schema:
             type: "string"

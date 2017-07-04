@@ -75,11 +75,11 @@ Pods can be created that access volumes directly.
          storageos:
            # This volume must already exist within StorageOS
            volumeName: redis-vol01
-           # Namespace is optional, and specifies the volume scope within
+           # volumeNamespace is optional, and specifies the volume scope within
            # StorageOS.  If no namespace is provided, it will use the namespace
            # of the pod.  Set to `default` or leave blank if you are not using
            # namespaces.
-           namespace: test-storageos
+           volumeNamespace: test-storageos
            # The name of the storageos pool to use.  Will use `default` if not
            # specified, which should be available on most StorageOS clusters.
            pool: default
@@ -122,10 +122,10 @@ Pods can be created that access volumes directly.
      storageos:
        # This volume must already exist within StorageOS
        volumeName: pv0001
-       # Namespace is optional, and specifies the volume scope within
+       # volumeNamespace is optional, and specifies the volume scope within
        # StorageOS.  Set to `default` or leave blank if you are not using
        # namespaces.
-       namespace: default
+       volumeNamespace: default
        # The filesystem type to create on the volume, if required.
        fsType: ext4
    ```
@@ -150,12 +150,12 @@ Pods can be created that access volumes directly.
    Capacity:       5Gi
    Message:
    Source:
-       Type:       StorageOS (a StorageOS Persistent Disk resource)
-       VolumeName: pv0001
-       Namespace:  default
+       Type:            StorageOS (a StorageOS Persistent Disk resource)
+       VolumeName:      pv0001
+       VolumeNamespace: default
        Pool:
-       FSType:     ext4
-       ReadOnly:   false
+       FSType:          ext4
+       ReadOnly:        false
    No events.
    ```
 
@@ -347,12 +347,12 @@ StorageOS supports the following storage class parameters:
    Capacity:        5Gi
    Message:
    Source:
-       Type:        StorageOS (a StorageOS Persistent Disk resource)
-       VolumeName:  pvc-480952e7-f8e0-11e6-af8c-08002736b526
-       Namespace:   default
-       Pool:        default
-       FSType:      ext4
-       ReadOnly:    false
+       Type:            StorageOS (a StorageOS Persistent Disk resource)
+       VolumeName:      pvc-480952e7-f8e0-11e6-af8c-08002736b526
+       VolumeNamespace: default
+       Pool:            default
+       FSType:          ext4
+       ReadOnly:        false
    No events.
    ```
 

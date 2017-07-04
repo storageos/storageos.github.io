@@ -7,8 +7,6 @@ module: install/kubernetes
 
 # Kubernetes
 
->**Note**: Native support for StorageOS volumes has been added in Kubernetes 1.7, which is the minimum requirement.
-
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
 - [Examples](#examples)
@@ -28,6 +26,8 @@ At its core, StorageOS provides block storage.  You may choose the filesystem ty
 ## Prerequisites
 
 The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container](container.html)), that runs outside of Kubernetes control.
+
+Kubernetes 1.7+ is required.
 
 >**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container](container.html).
 

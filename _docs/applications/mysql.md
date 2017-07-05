@@ -21,7 +21,7 @@ There are several benefits with deploying MySQL with StorageOS:
 
 This guide demonstrates running MySQL in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install](../install/clusterinstall.html)).
+[cluster install]({% link _docs/install/clusterinstall.md %}) guide).
 
 ## Create a MySQL Volume
 

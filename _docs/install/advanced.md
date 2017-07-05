@@ -32,7 +32,7 @@ Docker Compose is recommended.
 ### KV Store
 
 StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation](consul.html) for more details.
+management.  See [Consul installation]({% link _docs/install/kvstore.md %}) for more details.
 
 ## Manual Installation
 
@@ -71,7 +71,7 @@ $ docker run -d --name dataplane \
 	storageos/storages dataplane
 ```
 
-Environment variables (see [Configuration Reference](../reference/configuration.html))
+Environment variables (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 can be added to tune configuration.
 
 ## Docker Compose
@@ -123,7 +123,7 @@ services:
       - "8999:8999"
 ```
 
-Environment variables (see [Configuration Reference](../reference/configuration.html))
+Environment variables (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 can be added to tune configuration.
 
 Start the containers with:

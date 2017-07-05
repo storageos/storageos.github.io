@@ -8,12 +8,14 @@ module: install/clusterinstall
 
 # Cluster install
 
-To test high availability, set up a three node StorageOS cluster using a laptop or single machine.
+To test high availability, set up a three node StorageOS cluster using a laptop 
+or single machine.
 
 ## Prerequisites
 
 Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
-1.9.3](http://vagrantup.com/downloads.html). You will also need the Vagrant plugin for Alpine, a lightweight Linux distribution used for testing:
+1.9.3](http://vagrantup.com/downloads.html). You will also need the Vagrant 
+plugin for Alpine, a lightweight Linux distribution used for testing:
 
 ```bash
 $ vagrant plugin install vagrant-alpine
@@ -46,7 +48,8 @@ This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
 $ vagrant ssh s-1
 ```
 
-Now you are ready to [install an application](../applications/postgres.html) or [manage the cluster](../manage/cli.html).
+Now you are ready to [install an application]({% link _docs/applications/postgres.md %}) 
+or [manage the cluster]({% link _docs/manage/cli.md %}).
 
 To log into other nodes:
 ```bash

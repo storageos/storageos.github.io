@@ -33,12 +33,13 @@ $ docker run -d --name storageos \
 ### Requirements
 
 The container installation method requires Docker 1.10+.  For Docker 1.13+
-most users should use the [managed plugin install](docker.html) method.
+most users should use the [managed plugin install]({% link _docs/install/docker.md %}) method.
 
 ### KV Store
 
-StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation](consul.html) for more details.
+StorageOS relies on an external key-value store for configuration data and 
+cluster management.  See [Key/Value store install]({% link _docs/install/kvstore.md %}) 
+for more details.
 
 ### Routable IP Address
 
@@ -139,6 +140,6 @@ built-in BoltDB by setting `KV_BACKEND=boltdb`.  Note that each StorageOS node
 will be isolated, so features such as replication and volume failover will not
 be available.
 
-Other configuration parameters (see [Configuration Reference](../reference/configuration.html))
+Other configuration parameters (see [Configuration Reference]({ link _docs/reference/configuration.md %}))
 may be set in a similar way.  For most environments, only the KV_ADDR will need
 to be set if Consul is not running locally on the node.

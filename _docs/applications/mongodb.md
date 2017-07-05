@@ -20,7 +20,7 @@ There are several benefits with deploying MongoDB instances as Docker applicatio
 
 This guide demonstrates running MongoDB in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install](../install/clusterinstall.html)).
+[cluster install]({% link _docs/install/clusterinstall.md %}) guide).
 
 ## Create a MongoDB Data and Config Volume
 

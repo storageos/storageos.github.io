@@ -20,7 +20,7 @@ This guide demonstrates running Postgres in a container with StorageOS. <!---
 and then explore some of the perfromance characteristics using the built-in
 Postgres benchmark tool PgBench ---> Before starting, ensure you have StorageOS
 installed on a cluster (refer to the [cluster
-install](../install/clusterinstall.html)).
+install]({% link _docs/install/clusterinstall.md %} guide)).
 
 ## Create a Postgres data volume
 

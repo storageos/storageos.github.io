@@ -63,6 +63,19 @@ Write short and useful documents. Cut out everything unnecessary, while also mak
 HTML should not be included in Markdown unless the team agrees there is appropriate need and no better alternative.  Ask
 on the Slack channel for other suggestions or agreement to proceed before adding HTML.
 
+### Use link syntax to respect permalinks
+
+Prefer:
+
+```
+[cluster install]({% link _docs/install/clusterinstall.md %})
+```
+
+Over:
+```
+[cluster install](../install/clusterinstall.html)
+```
+
 ### Use classes for images
 
 Create a CSS class if you need non-default styling of an image.  Instead of:

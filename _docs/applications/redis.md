@@ -20,7 +20,7 @@ There are several benefits with deploying Redis with StorageOS:
 
 This guide demonstrates running Redis in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install](../install/clusterinstall.html)).
+[cluster install]({% link _docs/install/clusterinstall.md %}).
 
 ## Create a Redis Volume
 

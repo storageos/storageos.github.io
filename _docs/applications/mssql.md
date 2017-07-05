@@ -16,7 +16,7 @@ Microsoft SQL Server for Linux runs with any supported Linux distribution.  The 
 * Minimum of 4 GB of disk space 
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
-Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ](../install/clusterinstall.html)section for further details.
+Before you start, ensure you have StorageOS installed and ready on a Linux cluster - please refer to the [Cluster install ]({% link _docs/install/clusterinstall.md %}) guide for further details.
 
 ## Install MS SQL Server with StorageOS
 

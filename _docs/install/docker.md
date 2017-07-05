@@ -21,7 +21,8 @@ $ sudo docker plugin install storageos/plugin
 ### Requirements
 
 The `docker plugin install` method requires Docker 1.13+ or above.  See
-[Docker (1.0 - 1.12)](container.html) for the container install on previous versions.
+[Docker (1.0 - 1.12)]({% link _docs/install/container.md %}) for the container 
+install on previous versions.
 
 ### KV Store
 
@@ -100,6 +101,6 @@ such as replication and volume failover will not be available.
 $ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
-Other configuration parameters (see [Configuration Reference](../reference/configuration.html))
+Other configuration parameters (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 may be set in a similar way.  For most environments, only the KV_ADDR will need
 to be set if Consul is not running locally on the node.

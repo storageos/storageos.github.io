@@ -8,7 +8,8 @@ url: "https://docs.storageos.com"
 exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
 # Build settings
-incremental: true
+permalink: :module
+incremental: false
 highlighter: rouge
 markdown: kramdown
 kramdown:

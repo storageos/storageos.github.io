@@ -1,25 +1,24 @@
 <div id="side-menu" class="guide-list">
-    {{ title }} </br>
-    {{ anchor }}
     <ul>
         {% for guide in site.guides %}
-
         <li>
             <a class="guide-link title " href="javascript:void(0);" data-toggle="collapse" data-target="#{{ guide.anchor }}">{{ guide.title }}</a>
             <div id="{{ guide.anchor }}" class="guide-child collapse {% if guide.anchor == anchor %}in{% endif %}">
                 <div class="section-list">
                     <ul>
                         {% for section in guide.sections %}
-                        section.module: {{ section.module }} </br>
-                        <li><a class="section-link clickable title {% if section.module == title or anchor contains section.anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}.html">{{ section.title }}</a>
-
+                        <li>
                             {% if section.items or anchor == section.module %}
-                            <ul>
-                                {% for item in section.items %}
-                                item.module: {{ item.module }} </br>
-                                <li><a class="section-link clickable title {% if item.module == title  or section.anchor == anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ item.module }}.html">{{ item.title }}</a></li>
-                                {% endfor %}
-                            </ul>
+                            <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
+                            <div id="{{ section.title }}" class="guide-child collapse {% if title contains section.module %}in{% endif %}">
+                                <ul>
+                                    {% for item in section.items %}
+                                    <li><a class="section-link clickable title {% if item.module == title  or section.anchor == anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% else %}
+                            <a class="section-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
                             {% endif %}
                         </li>
                         {% endfor %}

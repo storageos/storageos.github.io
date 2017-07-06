@@ -25,11 +25,75 @@ At its core, StorageOS provides block storage.  You may choose the filesystem ty
 
 ## Prerequisites
 
-The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container](container.html)), that runs outside of Kubernetes control.
+The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})), that runs outside of Kubernetes control.
 
 Kubernetes 1.7+ is required.
 
->**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container](container.html).
+>**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
+
+## API Configuration
+
+The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
+
+API configuration is set by using Kubernetes secrets.  The configuration secret supports the following parameters:
+
+*  `apiAddress`: The address of the StorageOS API.  This is optional and defaults to `tcp://localhost:5705`, which should be correct if the StorageOS container is running using the default settings. 
+*  `apiUsername`: The username to authenticate to the StorageOS API with.
+*  `apiPassword`: The password to authenticate to the StorageOS API with.
+*  `apiVersion`: Optional, string value defaulting to `1`.  Only set this if requested in StorageOS documentation.
+
+Mutiple credentials can be used by creating different secrets.  
+
+For Persistent Volumes, secrets must be created in the Pod namespace.  Specify the secret name using the `secretName` parameter when attaching existing volumes in Pods or creating new persistent volumes. 
+
+For dynamically provisioned volumes using storage classes, the secret can be created in any namespace.  Note that you would want this to be an admin-controlled namespace with restricted access to users. Specify the secret namespace as parameter `adminSecretNamespace` and name as parameter `adminSecretName` in storage classes.
+
+Example spec:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: storageos-secret
+type: "kubernetes.io/storageos"
+data:
+  apiAddress: dGNwOi8vMTI3LjAuMC4xOjU3MDU=
+  apiUsername: c3RvcmFnZW9z
+  apiPassword: c3RvcmFnZW9z
+```
+
+Values for `apiAddress`, `apiUsername` and `apiPassword` can be generated with:
+
+```bash
+$ echo -n "tcp://127.0.0.1:5705" | base64
+dGNwOi8vMTI3LjAuMC4xOjU3MDU=
+```
+
+Create the secret:
+
+```bash
+$ kubectl create -f storageos-secret.yaml
+secret "storageos-secret" created
+```
+
+Verify the secret:
+
+```bash
+$ kubectl describe secret storageos-secret
+Name:		storageos-secret
+Namespace:	default
+Labels:		<none>
+Annotations:	<none>
+
+Type:	kubernetes.io/storageos
+
+Data
+====
+apiAddress:	20 bytes
+apiPassword:	8 bytes
+apiUsername:	8 bytes
+
+```
 
 ## Examples
 
@@ -256,6 +320,8 @@ StorageOS supports the following storage class parameters:
 *  `pool`: The name of the StorageOS distributed capacity pool to provision the volume from.  Uses the `default` pool which is normally present if not specified.
 *  `description`: The description to assign to volumes that were created dynamically.  All volume descriptions will be the same for the storage class, but different storage classes can be used to allow descriptions for different use cases.  Defaults to `Kubernetes volume`.
 * `fsType`: The default filesystem type to request.  Note that user-defined rules within StorageOS may override this value.  Defaults to `ext4`.
+* `adminSecretNamespace`: The namespace where the API configuration secret is located. Required if adminSecretName set.
+* `adminSecretName`: The name of the secret to use for obtaining the StorageOS API credentials. If not specified, default values will be attempted.
 
 1. Create storage class
 
@@ -271,6 +337,8 @@ StorageOS supports the following storage class parameters:
      pool: default
      description: Kubernetes volume
      fsType: ext4
+     adminSecretNamespace: default
+     adminSecretName: storageos-secret
    ```
 
    Create the storage class:
@@ -401,57 +469,3 @@ StorageOS supports the following storage class parameters:
    NAME                          READY     STATUS    RESTARTS   AGE
    test-storageos-redis-sc-pvc   1/1       Running   0          44s
    ```
-
-## API Configuration
-
-The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
-
-To add a secret to provide custom API configuration, you must name the secret `storageos-api`.  Normally you would add the secret in the `default` namespace so it would be available to all namespaces to use.  You may also add it to a specific namespace for only that namespace to use, allowing different namespaces to authenticate to the API with different user accounts.
-
-Example spec:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: storageos-api
-type: Opaque
-data:
-  apiAddress: dGNwOi8vMTI3LjAuMC4xOjU3MDU=
-  apiUsername: c3RvcmFnZW9z
-  apiPassword: c3RvcmFnZW9z
-```
-
-Values for `apiAddress`, `apiUsername` and `apiPassword` can be generated with:
-
-```bash
-$ echo -n "tcp://127.0.0.1:5705" | base64
-dGNwOi8vMTI3LjAuMC4xOjU3MDU=
-```
-
-Create the secret:
-
-```bash
-$ kubectl create -f storageos-secret.yaml
-secret "storageos-api" created
-```
-
-Verify the secret:
-
-```bash
-$ kubectl describe secret storageos-api
-Name:         storageos-api
-Namespace:    default
-Labels:       <none>
-Annotations:  <none>
-
-Type:	Opaque
-
-Data
-====
-apiAddress:   20 bytes
-apiPassword:  9 bytes
-apiUsername:  9 bytes
-```
-
-Note that there is one caveat to storing secrets in project namespaces - you must not set a custom namespace for the storageos volume that is different than the pod namespace.  This will not normally cause a problem as by default they will be the same.

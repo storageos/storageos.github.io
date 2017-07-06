@@ -27,7 +27,7 @@ install on previous versions.
 ### KV Store
 
 StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Key/Value Store](kvstore.html) for more details.
+management.  See [Key/Value Store]({% link _docs/install/kvstore.md %}) for more details.
 
 ### Routable IP Address
 

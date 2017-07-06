@@ -58,6 +58,10 @@ A small set of fresh and accurate docs are better than a sprawling, loose assemb
 
 Write short and useful documents. Cut out everything unnecessary, while also making a habit of continually massaging and improving every doc to suit your changing needs. Docs work best when they are alive but frequently trimmed, like a bonsai tree.
 
+### Use a linter
+
+On VS Code, install markdownlinter and follow recommendations where appropriate.
+
 ### Avoid HTML in markdown
 
 HTML should not be included in Markdown unless the team agrees there is appropriate need and no better alternative.  Ask

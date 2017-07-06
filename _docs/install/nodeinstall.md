@@ -10,8 +10,9 @@ module: install/nodeinstall
 
 ## Prerequisites
 
-StorageOS requires 64-bit Linux to run. Windows or MacOS users should install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-and [Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box and
+StorageOS requires 64-bit Linux to run. Windows or MacOS users should install
+[VirtualBox](https://www.virtualbox.org/wiki/Downloads) and
+[Vagrant](http://vagrantup.com/downloads.html), then create an Ubuntu box and
 ssh into it:
 
 ```bash
@@ -23,8 +24,9 @@ vagrant@vagrant:~$
 ```
 
 This guide describes the plugin install for Docker 1.13+. (For Docker
-1.10 to 1.12, see the [container install method](../install/container.html).) To
-install the latest version of Docker:
+1.10 to 1.12, see the [container install method]({% link _docs/install/container.md %}).)
+To install the latest version of Docker:
+
 ```
 curl -sSL https://get.docker.com | sudo sh
 ```
@@ -42,7 +44,7 @@ Installed plugin storageos/plugin:0.7.2
 ```
 * `--grant-all-permissions`: Remove this to view requested permissions.
 * `--alias storageos storageos/plugin`: Allows you to specify `--volume-driver storageos` when starting containers.
-* `KV_BACKEND`: Use the built-in key/value store for testing. See [docs](../install/kvstore.html).
+* `KV_BACKEND`: Use the built-in key/value store for testing. See [docs]({% link _docs/install/kvstore.md %}).
 
 2. That's it - StorageOS is now running. Confirm successful installation.
 ```bash

@@ -17,11 +17,13 @@ BoltDB is a embedded KV store included in StorageOS. It provides no replication
 or reliability guarantees, and should only be used for testing.
 
 To specify BoltDB, use `KV_BACKEND=boltdb`
+
 ```bash
 $ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
-If `KV_ADDR` is specified with `KV_BACKEND=boltdb`, this should be the directory where you want BoltDB to be loaded.
+If `KV_ADDR` is specified with `KV_BACKEND=boltdb`, this should be the directory
+where you want BoltDB to be loaded.
 
 ## Consul
 
@@ -41,6 +43,7 @@ $ docker run -d --name consul --net=host consul agent -server \
 -bootstrap-expect=${num_nodes} \
 -retry-join=${leader_ip}
 ```
+
 * `ip`: the public ip address of the Docker node
 * `num_nodes`: how many nodes to run (3 is recommended for testing)
 * `leader_ip`: one of the node's public ip addresses to act as the initial leader
@@ -48,11 +51,15 @@ $ docker run -d --name consul --net=host consul agent -server \
 Consult the [Consul documentation](https://www.consul.io) for detailed
 installation and best practices.
 
-For teams running their own Consul service, supply the host IP address for `ADVERTISE_IP` together with `KV_ADDR` and port for the KV store (default port is 8500).
+For teams running their own Consul service, supply the host IP address for
+`ADVERTISE_IP` together with `KV_ADDR` and port for the KV store (default port
+is 8500).
+
 ```bash
 $ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin ADVERTISE_IP=<ip> KV_ADDR=<ip>:<port>
 ```
 
 ## Other
 
-StorageOS will be adding support for other KV stores such as etcd and/or zookeeper in future releases.
+StorageOS will be adding support for other KV stores such as etcd and/or
+zookeeper in future releases.

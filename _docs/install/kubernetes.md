@@ -25,15 +25,15 @@ At its core, StorageOS provides block storage.  You may choose the filesystem ty
 
 ## Prerequisites
 
-The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container](container.html)), that runs outside of Kubernetes control.
+The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})), that runs outside of Kubernetes control.
 
 Kubernetes 1.7+ is required.
 
->**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container](container.html).
+>**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
 
 ## API Configuration
 
-The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](../../../docs/user-guide/secrets/).
+The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 API configuration is set by using Kubernetes secrets.  The configuration secret supports the following parameters:
 

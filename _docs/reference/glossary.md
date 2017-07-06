@@ -7,7 +7,6 @@ module: reference/glossary
 
 # Glossary of terms
 
-
 | StorageOS term        | Meaning                                      |
 |:----------------------|:---------------------------------------------|
 | ConfigFS              |An interpreted configuration representing desired state|

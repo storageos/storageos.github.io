@@ -12,8 +12,8 @@ Use the StorageOS managed plugin to install StorageOS on Docker Engine 1.13+
 ## Quick Start
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
-$ sudo docker plugin install storageos/plugin
+sudo modprobe nbd nbds_max=1024
+sudo docker plugin install storageos/plugin
 ```
 
 ## Overview
@@ -21,13 +21,14 @@ $ sudo docker plugin install storageos/plugin
 ### Requirements
 
 The `docker plugin install` method requires Docker 1.13+ or above.  See
-[Docker (1.0 - 1.12)]({% link _docs/install/container.md %}) for the container 
+[Docker (1.0 - 1.12)]({% link _docs/install/container.md %}) for the container
 install on previous versions.
 
 ### KV Store
 
-StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Key/Value Store]({% link _docs/install/kvstore.md %}) for more details.
+StorageOS relies on an external key-value store for configuration data and
+cluster management.  See [Key/Value Store]({% link _docs/install/kvstore.md %})
+for more details.
 
 ### Routable IP Address
 
@@ -39,7 +40,7 @@ and it will need to be set manually.
 Use `ip a` to list available ip addresses, and then configure StorageOS to use a
 specific address by appending `ADVERTISE_IP=<ip>` to the plugin install command:
 
-```
+```bash
 sudo docker plugin install storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
 ```
 
@@ -51,20 +52,22 @@ but improves performance significantly. To enable the module and increase the
 number of allowable devices, run:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+sudo modprobe nbd nbds_max=1024
 ```
 
 **To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
-```
-nbd
-```
 
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-```
-options nbd nbds_max=1024
-```
+    ```text
+    nbd
+    ```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+
+    ```text
+    options nbd nbds_max=1024
+    ```
 
 If Consul is running locally, install the plugin using the defaults:
 
@@ -90,7 +93,7 @@ If the KV store is not local, supply the IP address of the Consul service using
 the `KV_ADDR` parameter:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
+docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
 Alternatively, to setup a single test StorageOS instance, you can use the
@@ -98,7 +101,7 @@ built-in BoltDB.  Note that each StorageOS node will be isolated, so features
 such as replication and volume failover will not be available.
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
+docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
 Other configuration parameters (see [Configuration Reference]({% link _docs/reference/configuration.md %}))

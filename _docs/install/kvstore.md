@@ -19,7 +19,7 @@ or reliability guarantees, and should only be used for testing.
 To specify BoltDB, use `KV_BACKEND=boltdb`
 
 ```bash
-$ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_BACKEND=boltdb
+sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
 If `KV_ADDR` is specified with `KV_BACKEND=boltdb`, this should be the directory
@@ -37,11 +37,11 @@ need to start the Consul container on any three (or `num_nodes`) nodes in the
 cluster.
 
 ```bash
-$ docker run -d --name consul --net=host consul agent -server \
--bind=${ip} \
--client=0.0.0.0 \
--bootstrap-expect=${num_nodes} \
--retry-join=${leader_ip}
+docker run -d --name consul --net=host consul agent -server \
+    -bind=${ip} \
+    -client=0.0.0.0 \
+    -bootstrap-expect=${num_nodes} \
+    -retry-join=${leader_ip}
 ```
 
 * `ip`: the public ip address of the Docker node
@@ -56,7 +56,7 @@ For teams running their own Consul service, supply the host IP address for
 is 8500).
 
 ```bash
-$ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin ADVERTISE_IP=<ip> KV_ADDR=<ip>:<port>
+sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin ADVERTISE_IP=<ip> KV_ADDR=<ip>:<port>
 ```
 
 ## Other

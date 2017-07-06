@@ -14,10 +14,10 @@ configuration. `storageos` is designed to be familiar to Docker CLI users.
 
 ## Usage
 
-```
+```bash
 $ storageos
 
-Usage:	storageos COMMAND
+Usage:  storageos COMMAND
 
 Converged storage for containers
 
@@ -53,7 +53,8 @@ Run 'storageos COMMAND --help' for more information on a command.
 
 ## Management Commands
 
-Each of the storageos management commands requires a subcommand to run. Use `storageos COMMAND --help` to view command flags.
+Each of the storageos management commands requires a subcommand to run. Use
+`storageos COMMAND --help` to view command flags.
 
 | Command     | Subcommands                   | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
@@ -67,15 +68,15 @@ Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 
 Read the guides for how to use each command.
 
-* [Create and manage volumes](../manage/volumes.html)
-* [Create and manage rules](../manage/rules.html)
-* [Create and manage namespaces](../manage/namespaces.html)
-* [Create and manage pools](../manage/pools.html)
-* [Cluster information](../manage/node.html)
+* [Create and manage volumes]({% link _docs/manage/volumes.md %})
+* [Create and manage rules]({% link _docs/manage/rules/index.md %})
+* [Create and manage namespaces]({% link _docs/manage/namespaces.md %})
+* [Create and manage pools]({% link _docs/manage/pools.md %})
+* [Cluster information]({% link _docs/manage/nodes.md %})
 
 ## Installation
 
-[Installing the StorageOS CLI](../manage/cli.html)
+[Installing the StorageOS CLI]({% link _docs/manage/cli.md %})
 
 ### Authentication
 
@@ -95,7 +96,7 @@ export STORAGEOS_HOST=<ip address:port>
 
 Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
 
-```
+```bash
 $ storageos -u storageos -p storageos volume list
 NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
 default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)

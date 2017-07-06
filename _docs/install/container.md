@@ -13,19 +13,19 @@ available.
 ## Quick Start
 
 ```bash
-$ sudo mkdir /var/lib/storageos
-$ sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
-$ sudo modprobe nbd nbds_max=1024
-$ docker run -d --name storageos \
-	-e HOSTNAME \
-	--net=host \
-	--pid=host \
-	--privileged \
-	--cap-add SYS_ADMIN \
-	--device /dev/fuse \
-	-v /var/lib/storageos:/var/lib/storageos:rshared \
-	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/node server
+sudo mkdir /var/lib/storageos
+sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
+sudo modprobe nbd nbds_max=1024
+docker run -d --name storageos \
+    -e HOSTNAME \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node server
 ```
 
 ## Overview
@@ -37,8 +37,8 @@ most users should use the [managed plugin install]({% link _docs/install/docker.
 
 ### KV Store
 
-StorageOS relies on an external key-value store for configuration data and 
-cluster management.  See [Key/Value store install]({% link _docs/install/kvstore.md %}) 
+StorageOS relies on an external key-value store for configuration data and
+cluster management.  See [Key/Value store install]({% link _docs/install/kvstore.md %})
 for more details.
 
 ### Routable IP Address
@@ -52,18 +52,13 @@ Use `ip a` to list available ip addresses, and then configure StorageOS to use a
 specific address by adding `-e ADVERTISE_IP=<ip>` to the StorageOS docker run
 command.
 
-TODO - change to container install
-```
-sudo docker plugin install storageos/plugin ADVERTISE_IP=123.123.123.123
-```
-
 ## Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
 present on each node where StorageOS runs.  Prior to installation, create it:
 
 ```bash
-$ sudo mkdir /var/lib/storageos
+sudo mkdir /var/lib/storageos
 ```
 
 Docker needs to be configured to use the StorageOS volume plugin.  This is done
@@ -72,8 +67,8 @@ contents:
 
 ```json
 {
-	"Name": "storageos",
-	"Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
+    "Name": "storageos",
+    "Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
 }
 ```
 
@@ -87,52 +82,55 @@ but improves performance significantly. To enable the module and increase the
 number of allowable devices, run:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+sudo modprobe nbd nbds_max=1024
 ```
 
 **To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
-```
-nbd
-```
 
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-```
-options nbd nbds_max=1024
-```
+    ```text
+    nbd
+    ```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+
+    ```text
+    options nbd nbds_max=1024
+    ```
 
 If Consul is running locally, install the plugin using the defaults:
 
 ```bash
-$ docker run -d --name storageos \
-	-e HOSTNAME \
-	--net=host \
-	--pid=host \
-	--privileged \
-	--cap-add SYS_ADMIN \
-	--device /dev/fuse \
-	-v /var/lib/storageos:/var/lib/storageos:rshared \
-	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/node server
+docker run -d --name storageos \
+    -e HOSTNAME \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node server
 ```
 
 If the KV store is not local, supply the IP address of the Consul service using
 the `KV_ADDR` environment variable:
 
 ```bash
-$ docker run -d --name storageos \
-	-e HOSTNAME \
-  -e KV_ADDR=127.0.0.1:8500 \
-	--net=host \
-	--pid=host \
-	--privileged \
-	--cap-add SYS_ADMIN \
-	--device /dev/fuse \
-	-v /var/lib/storageos:/var/lib/storageos:rshared \
-	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/node server
-$ docker plugin install storageos/plugin KV_ADDR=127.0.0.1:8500
+docker run -d --name storageos \
+    -e HOSTNAME \
+    -e KV_ADDR=127.0.0.1:8500 \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node server
+
+docker plugin install storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
 Alternatively, to setup a single test StorageOS instance, you can use the
@@ -140,6 +138,6 @@ built-in BoltDB by setting `KV_BACKEND=boltdb`.  Note that each StorageOS node
 will be isolated, so features such as replication and volume failover will not
 be available.
 
-Other configuration parameters (see [Configuration Reference]({ link _docs/reference/configuration.md %}))
+Other configuration parameters (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 may be set in a similar way.  For most environments, only the KV_ADDR will need
 to be set if Consul is not running locally on the node.

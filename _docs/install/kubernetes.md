@@ -272,6 +272,8 @@ StorageOS supports the following storage class parameters:
      pool: default
      description: Kubernetes volume
      fsType: ext4
+     adminSecretNamespace: default
+     adminSecretName: storageos-secret
    ```
 
    Create the storage class:

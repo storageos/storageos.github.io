@@ -34,7 +34,7 @@ To set supported labels, use `storageos volume create --label storageos.feature.
 | QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
 
 Feature labels are a powerful and flexible way to control storage features,
-especially when combined with [rules]({% link _docs/manage/rules/index.md %}).
+especially when combined with [rules]({% link _docs/manage/rules.md %}).
 
 ## Using labels with volumes
 

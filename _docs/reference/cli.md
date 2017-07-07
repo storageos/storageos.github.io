@@ -69,7 +69,7 @@ Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
 Read the guides for how to use each command.
 
 * [Create and manage volumes]({% link _docs/manage/volumes.md %})
-* [Create and manage rules]({% link _docs/manage/rules/index.md %})
+* [Create and manage rules]({% link _docs/manage/rules.md %})
 * [Create and manage namespaces]({% link _docs/manage/namespaces.md %})
 * [Create and manage pools]({% link _docs/manage/pools.md %})
 * [Cluster information]({% link _docs/manage/nodes.md %})

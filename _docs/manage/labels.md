@@ -19,7 +19,7 @@ You should prefix labels with your organization domain, such as
 `example.your-label`. Labels prefixed with `storageos.*` are reserved for
 internal use.
 
-### StorageOS feature labels
+## StorageOS feature labels
 
 Applying specific labels to volumes triggers compression, replication and other
 storage features. No feature labels are present by default.
@@ -34,17 +34,19 @@ To set supported labels, use `storageos volume create --label storageos.feature.
 | QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
 
 Feature labels are a powerful and flexible way to control storage features,
-especially when combined with [rules](rules.html).
+especially when combined with [rules]({% link _docs/manage/rules.md %}).
 
 ## Using labels with volumes
 
 To create a volume with labels:
+
 ```bash
 $ storageos volume create --namespace default --label env=prod volume-name
 default/volume-name
 ```
 
 To check the labels on a volume:
+
 ```bash
 $ storageos volume inspect default/volume-name
 [
@@ -83,12 +85,14 @@ $ storageos volume inspect default/volume-name
 ```
 
 To add labels to a volume:
+
 ```bash
 $ storageos volume update --label-add env=dev default/volume-name
 default/volume-name
 ```
 
 To remove labels from a volume (note that only the key is specified):
+
 ```bash
 $ storageos volume update --label-rm env default/volume-name
 default/volume-name
@@ -96,8 +100,9 @@ default/volume-name
 
 ## Using labels with selectors
 
-[Selectors](selectors.html) can be used to filter on labels with the
-`--selector` option. This allows you to quickly search through volumes.
+[Selectors]({% link _docs/manage/selectors.md %}) can be used to filter on
+labels with the `--selector` option. This allows you to quickly search through
+volumes.
 
 ```bash
 $ storageos volume ls --selector=env=dev

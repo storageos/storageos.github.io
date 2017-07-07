@@ -19,34 +19,61 @@ module: install/kubernetes
 
 ## Overview
 
-StorageOS can be used as a storage provider for your Kubernetes cluster.  StorageOS runs as a container within your Kubernetes environment, making local storage accessible from any node within the Kubernetes cluster.  Data can be replicated to protect against node failure.
+StorageOS can be used as a storage provider for your Kubernetes cluster.
+StorageOS runs as a container within your Kubernetes environment, making local
+storage accessible from any node within the Kubernetes cluster.  Data can be
+replicated to protect against node failure.
 
-At its core, StorageOS provides block storage.  You may choose the filesystem type to install to make devices usable from within containers.
+At its core, StorageOS provides block storage.  You may choose the filesystem
+type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-The StorageOS container must be running on each node that wants to contribute storage or that wants to consume storage.  Currently this may be done as a standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})), that runs outside of Kubernetes control.
+The StorageOS container must be running on each node that wants to contribute
+storage or that wants to consume storage.  Currently this may be done as a
+standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})),
+that runs outside of Kubernetes control.
 
 Kubernetes 1.7+ is required.
 
->**Note**: It is not currently possible to run the StorageOS container via Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage providers require that mount propagation be enabled using the `rshared` mount flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589) is planned for Kubernetes 1.8, and is being developed in [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For Kubernetes 1.7, run the StorageOS container directly in Docker on each node, following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
+>**Note**: It is not currently possible to run the StorageOS container via
+Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage
+providers require that mount propagation be enabled using the `rshared` mount
+flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589)
+is planned for Kubernetes 1.8, and is being developed in
+[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For
+Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
+following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
 
 ## API Configuration
 
-The StorageOS provider has been pre-configured to use the StorageOS API defaults, and no additional configuration is required for testing.  If you have changed the API port, or have removed the default account or changed its password (recommended), you must specify the new settings.  This is done using Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
+The StorageOS provider has been pre-configured to use the StorageOS API
+defaults, and no additional configuration is required for testing.  If you have
+changed the API port, or have removed the default account or changed its
+password (recommended), you must specify the new settings.  This is done using
+Kubernetes [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 
-API configuration is set by using Kubernetes secrets.  The configuration secret supports the following parameters:
+API configuration is set by using Kubernetes secrets.  The configuration secret
+supports the following parameters:
 
-*  `apiAddress`: The address of the StorageOS API.  This is optional and defaults to `tcp://localhost:5705`, which should be correct if the StorageOS container is running using the default settings. 
-*  `apiUsername`: The username to authenticate to the StorageOS API with.
-*  `apiPassword`: The password to authenticate to the StorageOS API with.
-*  `apiVersion`: Optional, string value defaulting to `1`.  Only set this if requested in StorageOS documentation.
+- `apiAddress`: The address of the StorageOS API.  This is optional and
+  defaults to `tcp://localhost:5705`, which should be correct if the StorageOS
+  container is running using the default settings.
+- `apiUsername`: The username to authenticate to the StorageOS API with.
+- `apiPassword`: The password to authenticate to the StorageOS API with.
+- `apiVersion`: Optional, string value defaulting to `1`.
 
-Mutiple credentials can be used by creating different secrets.  
+Mutiple credentials can be used by creating different secrets.
 
-For Persistent Volumes, secrets must be created in the Pod namespace.  Specify the secret name using the `secretName` parameter when attaching existing volumes in Pods or creating new persistent volumes. 
+For Persistent Volumes, secrets must be created in the Pod namespace.  Specify
+the secret name using the `secretName` parameter when attaching existing volumes
+in Pods or creating new persistent volumes.
 
-For dynamically provisioned volumes using storage classes, the secret can be created in any namespace.  Note that you would want this to be an admin-controlled namespace with restricted access to users. Specify the secret namespace as parameter `adminSecretNamespace` and name as parameter `adminSecretName` in storage classes.
+For dynamically provisioned volumes using storage classes, the secret can be
+created in any namespace.  Note that you would want this to be an
+admin-controlled namespace with restricted access to users. Specify the secret
+namespace as parameter `adminSecretNamespace` and name as parameter
+`adminSecretName` in storage classes.
 
 Example spec:
 
@@ -97,7 +124,8 @@ apiUsername:	8 bytes
 
 ## Examples
 
-These examples assume you have a running Kubernetes cluster with the StorageOS container running on each node.
+These examples assume you have a running Kubernetes cluster with the StorageOS
+container running on each node.
 
 ### Pre-provisioned Volumes
 
@@ -105,8 +133,11 @@ These examples assume you have a running Kubernetes cluster with the StorageOS c
 
 Pods can be created that access volumes directly.
 
-1. Create a volume using the StorageOS CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
-1. Create a pod that refers to the new volume.  In this case the volume is named `redis-vol01`.
+1. Create a volume using the StorageOS CLI or API.  Consult the
+   [volume documentation]({% link _docs/manage/volumes.md %}) for details.
+
+1. Create a pod that refers to the new volume.  In this case the volume is named
+   `redis-vol01`.
 
    Example spec:
 
@@ -153,7 +184,7 @@ Pods can be created that access volumes directly.
    Create the pod:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-pod.yaml
+   kubectl create -f examples/volumes/storageos/storageos-pod.yaml
    ```
 
    Verify that the pod is running:
@@ -166,7 +197,9 @@ Pods can be created that access volumes directly.
 
 ### Persistent Volumes
 
-1. Create a volume using the StorageOS CLI or API.  Consult the [volume documentation](../manage/volumes.html) for details.
+1. Create a volume using the StorageOS CLI or API.  Consult the
+   [volume documentation]({% link _docs/manage/volumes.md %}) for details.
+
 1. Create the persistent volume `redis-vol01`.
 
    Example spec:
@@ -196,7 +229,7 @@ Pods can be created that access volumes directly.
    Create the persistent volume:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-pv.yaml
+   kubectl create -f examples/volumes/storageos/storageos-pv.yaml
    ```
 
    Verify that the pv has been created:
@@ -242,7 +275,7 @@ Pods can be created that access volumes directly.
    Create the persistent volume claim:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-pvc.yaml
+   kubectl create -f examples/volumes/storageos/storageos-pvc.yaml
    ```
 
    Verify that the pvc has been created:
@@ -296,7 +329,7 @@ Pods can be created that access volumes directly.
    Create the pod:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-pvcpod.yaml
+   kubectl create -f examples/volumes/storageos/storageos-pvcpod.yaml
    ```
 
    Verify that the pod has been created:
@@ -309,19 +342,31 @@ Pods can be created that access volumes directly.
 
 ### Dynamic Provisioning
 
-Dynamic provisioning can be used to auto-create volumes when needed.  They require a Storage Class, a Persistent Volume Claim, and a Pod.
+Dynamic provisioning can be used to auto-create volumes when needed.  They
+require a Storage Class, a Persistent Volume Claim, and a Pod.
 
 #### Storage Class
 
-Kubernetes administrators can use storage classes to define different types of storage made available within the cluster.  Each storage class definition specifies a provisioner type and any parameters needed to access it, as well as any other configuration.
+Kubernetes administrators can use storage classes to define different types of
+storage made available within the cluster.  Each storage class definition
+specifies a provisioner type and any parameters needed to access it, as well as
+any other configuration.
 
 StorageOS supports the following storage class parameters:
 
-*  `pool`: The name of the StorageOS distributed capacity pool to provision the volume from.  Uses the `default` pool which is normally present if not specified.
-*  `description`: The description to assign to volumes that were created dynamically.  All volume descriptions will be the same for the storage class, but different storage classes can be used to allow descriptions for different use cases.  Defaults to `Kubernetes volume`.
-* `fsType`: The default filesystem type to request.  Note that user-defined rules within StorageOS may override this value.  Defaults to `ext4`.
-* `adminSecretNamespace`: The namespace where the API configuration secret is located. Required if adminSecretName set.
-* `adminSecretName`: The name of the secret to use for obtaining the StorageOS API credentials. If not specified, default values will be attempted.
+- `pool`: The name of the StorageOS distributed capacity pool to provision the
+  volume from.  Uses the `default` pool which is normally present if not
+  specified.
+- `description`: The description to assign to volumes that were created
+  dynamically.  All volume descriptions will be the same for the storage class,
+  but different storage classes can be used to allow descriptions for different
+  use cases.  Defaults to `Kubernetes volume`.
+- `fsType`: The default filesystem type to request.  Note that user-defined
+  rules within StorageOS may override   this value.  Defaults to `ext4`.
+- `adminSecretNamespace`: The namespace where the API configuration secret is
+  located. Required if adminSecretName set.
+- `adminSecretName`: The name of the secret to use for obtaining the StorageOS
+  API credentials. If not specified, default values will be attempted.
 
 1. Create storage class
 
@@ -344,7 +389,7 @@ StorageOS supports the following storage class parameters:
    Create the storage class:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-sc.yaml
+   kubectl create -f examples/volumes/storageos/storageos-sc.yaml
    ```
 
    Verify the storage class has been created:
@@ -381,7 +426,7 @@ StorageOS supports the following storage class parameters:
    Create the persistent volume claim (pvc):
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-sc-pvc.yaml
+   kubectl create -f examples/volumes/storageos/storageos-sc-pvc.yaml
    ```
 
    Verify the pvc has been created:
@@ -459,7 +504,7 @@ StorageOS supports the following storage class parameters:
    Create the pod:
 
    ```bash
-   $ kubectl create -f examples/volumes/storageos/storageos-sc-pvcpod.yaml
+   kubectl create -f examples/volumes/storageos/storageos-sc-pvcpod.yaml
    ```
 
    Verify that the pod has been created:

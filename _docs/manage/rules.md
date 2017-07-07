@@ -11,13 +11,17 @@ Rules apply custom configuration to volumes based on matched labels.
 
 ## Overview
 
-Rules are used for managing data policy and placement using StorageOS features such as replication, QoS and compression.
+Rules are used for managing data policy and placement using StorageOS features
+such as replication, QoS and compression.
 
-Rules are created using [selectors](selectors.html) and [labels](labels.html) to evaluate what StorageOS feature to apply.
+Rules are created using [selectors]({% link _docs/manage/selectors.md %}) and
+[labels]({% link _docs/manage/labels.md %}) to evaluate what StorageOS feature
+to apply.
 
-Rules are evaluated when a volume is created. If the selector is satisfied, the labels are applied to the new volume.
+Rules are evaluated when a volume is created. If the selector is satisfied, the
+labels are applied to the new volume.
 
-```
+```bash
 $ storageos rule create --help
 
 Usage:	storageos rule create [OPTIONS] [RULE]
@@ -40,6 +44,7 @@ Options:
 The minimum parameters to create a rule are `--selector` and `--label`.
 
 Create a rule that configures 2 replicas for volumes with the label `env=prod`:
+
 ```bash
 $ storageos rule create --namespace default --selector 'env==prod' --label storageos.feature.replicas=2 replicator
 default/replicator
@@ -51,7 +56,8 @@ Rules also accept the optional parameters `--action` and `--weight`.
 
 `-a, --action string        Rule action (add|remove) (default "add")`
 
-Where multiple rules apply to the same label, a weight is used to determine the order of evaluation. Rules are evaluated starting at the lowest weight.
+Where multiple rules apply to the same label, a weight is used to determine the
+order of evaluation. Rules are evaluated starting at the lowest weight.
 
 `-w, --weight int           Rule weight determines processing order, any integer`
 
@@ -60,12 +66,14 @@ Where multiple rules apply to the same label, a weight is used to determine the 
 ## Using rules
 
 To create a rule that configures 2 replicas for volumes with the label env=prod:
+
 ```bash
 $ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
 default/replicator
 ```
 
 View rules:
+
 ```bash
 $ storageos rule ls
 NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
@@ -76,6 +84,7 @@ default/uat-marker    storageos.feature.replicas<2   add                 env=uat
 ```
 
 Inspect a rule:
+
 ```
 $ storageos rule inspect default/replicator
 [
@@ -106,7 +115,7 @@ Once it's created, inspect it:
 
 You should see that it has two replicas provisioned and additional labels attached:
 
-```
+```json
 "labels": {
         "env": "prod",
         "storageos.driver": "filesystem",
@@ -115,6 +124,7 @@ You should see that it has two replicas provisioned and additional labels attach
 ```
 
 Delete a rule:
+
 ```bash
 $ storageos rule rm default/replicator
 default/replicator
@@ -122,31 +132,37 @@ default/replicator
 
 ### Using advanced selectors
 
-Let's create several rules that instead of adding `storageos.feature.replicas` feature label it would read it's value and based on it would label volumes with `dev/uat/prod` env values.
+Let's create several rules that instead of adding `storageos.feature.replicas`
+feature label it would read it's value and based on it would label volumes with
+`dev/uat/prod` env values.
 
 First, create a rule to label `dev` environments:
 
 ```bash
-$ storageos rule create --namespace default --selector '!storageos.feature.replicas' --action add --label env=dev dev-marker
+storageos rule create --namespace default --selector '!storageos.feature.replicas' --action add --label env=dev dev-marker
 ```
 
-This rule will be matching volumes that do not have (`!`) label `storageos.feature.replicas` and will add `env=dev` label.
-Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
+This rule will be matching volumes that do not have (`!`) label `storageos.feature.replicas` and will add `env=dev`
+label.  Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
+
 ```bash
-$ storageos rule create --namespace default --selector 'storageos.feature.replicas<2' --action add --label env=uat uat-marker
+storageos rule create --namespace default --selector 'storageos.feature.replicas<2' --action add --label env=uat uat-marker
 ```
 
 Create new volume with 1 replica:
+
 ```bash
 storageos volume create --namespace default --label storageos.feature.replicas=1 uat-volume
 ```
 
 Inspect it:
+
 ```bash
 storageos volume inspect default/uat-volume
 ```
 
 Labels should look like:
+
 ```bash
 "labels": {
     "env": "uat",
@@ -155,7 +171,9 @@ Labels should look like:
 },
 ```
 
-Finally, create a rule that will mark volumes as `prod` if they have 2 or more (`gt`) configured replicas:
+Finally, create a rule that will mark volumes as `prod` if they have 2 or more
+(`gt`) configured replicas:
+
 ```bash
 storageos rule create --namespace default --selector 'storageos.feature.replicas>1' --label env=prod prod-marker
 default/prod-marker

@@ -32,7 +32,7 @@ Docker Compose is recommended.
 ### KV Store
 
 StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation](consul.html) for more details.
+management.  See [Consul installation]({% link _docs/install/kvstore.md %}) for more details.
 
 ## Manual Installation
 
@@ -40,38 +40,38 @@ StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be
 present on each node where StorageOS runs.  Prior to installation, create it:
 
 ```bash
-$ sudo mkdir /var/lib/storageos
+sudo mkdir /var/lib/storageos
 ```
 
 Run the Control Plane container:
 
 ```bash
-$ docker run -d --name controlplane \
-	-e HOSTNAME \
-	--net=host \
-	--pid=host \
-	--privileged \
-	--cap-add SYS_ADMIN \
-	-v /var/lib/storageos:/var/lib/storageos:rshared \
-	-v /run/docker/plugins:/run/docker/plugins \
-	storageos/storages controlplane
+docker run -d --name controlplane \
+    -e HOSTNAME \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node controlplane
 ```
 
 Run the Data Plane container:
 
 ```bash
-$ docker run -d --name dataplane \
-	-e HOSTNAME \
-	--net=host \
-	--pid=host \
-	--privileged \
-	--cap-add SYS_ADMIN \
-	--device /dev/fuse \
-	-v /var/lib/storageos:/var/lib/storageos:rshared \
-	storageos/storages dataplane
+docker run -d --name dataplane \
+    -e HOSTNAME \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    storageos/node dataplane
 ```
 
-Environment variables (see [Configuration Reference](../reference/configuration.html))
+Environment variables (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 can be added to tune configuration.
 
 ## Docker Compose
@@ -85,7 +85,7 @@ Write the compose file (below) to a file, e.g. `/etc/storageos/docker-compose.ym
 version: '2'
 services:
   control:
-    image: storageos/node:beta
+    image: storageos/node:latest
     command: "controlplane"
     restart: always
     environment:
@@ -93,7 +93,6 @@ services:
     privileged: true
     cap_add:
       - "SYS_ADMIN"
-    env_file: /etc/default/storageos
     ports:
       - "5705:5705"
       - "4222:4222"
@@ -104,10 +103,9 @@ services:
       - "/var/lib/storageos:/var/lib/storageos:rshared"
       - "/run/docker/plugins:/run/docker/plugins"
   data:
-    image: storageos/node:beta
+    image: storageos/node:latest
     command: "dataplane"
     restart: always
-    env_file: /etc/default/storageos
     network_mode: host
     privileged: true
     cap_add:
@@ -123,11 +121,11 @@ services:
       - "8999:8999"
 ```
 
-Environment variables (see [Configuration Reference](../reference/configuration.html))
+Environment variables (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
 can be added to tune configuration.
 
 Start the containers with:
 
 ```bash
-$ docker compose -f /etc/storageos/docker-compose.yml up
+docker compose -f /etc/storageos/docker-compose.yml up
 ```

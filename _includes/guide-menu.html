@@ -7,7 +7,20 @@
                 <div class="section-list">
                     <ul>
                         {% for section in guide.sections %}
-                        <li><a class="section-link clickable title {% if section.module == title %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}.html">{{ section.title }}</a></li>
+                        <li>
+                            {% if section.items or anchor == section.module %}
+                            <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
+                            <div id="{{ section.title }}" class="guide-child collapse {% if title contains section.module %}in{% endif %}">
+                                <ul>
+                                    {% for item in section.items %}
+                                    <li><a class="section-link clickable title {% if item.module == title  or section.anchor == anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% else %}
+                            <a class="section-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
+                            {% endif %}
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>

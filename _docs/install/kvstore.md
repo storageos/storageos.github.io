@@ -53,6 +53,10 @@ For teams running their own Consul service, supply the host IP address for `ADVE
 $ sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin ADVERTISE_IP=<ip> KV_ADDR=<ip>:<port>
 ```
 
+## Troubleshooting
+
+Please see [KV Store troubleshooting]({% link _docs/troubleshooting/kvstore.md %}).
+
 ## Other
 
 StorageOS will be adding support for other KV stores such as etcd and/or zookeeper in future releases.

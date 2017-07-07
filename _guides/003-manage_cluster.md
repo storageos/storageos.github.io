@@ -24,19 +24,6 @@ sections:
     title: Rules
     description: Create and manage rules
     module: manage/rules
-    items:
-      -
-        title: Item 1
-        description: Create and manage rules
-        module: manage/rules/item_1
-      -
-        title: Item 2
-        description: Create and manage rules
-        module: manage/rules/item_2
-      -
-        title: Item 3
-        description: Create and manage rules
-        module: manage/rules/item_3
   -
     title: Namespaces
     description: Create and manage namespaces

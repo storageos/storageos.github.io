@@ -41,10 +41,10 @@ can only be able to be used for one StorageOS cluster at a time (dedicated Stora
 
 ## GCE/GKE Installation
 
-* Note: Currently GKE does not support kubernetes 1.7. We expect to support GKE when it upgrades the supported
-kubernetes version to 1.7+. The following instructions are for GCE with a 1.7 kubernetes release installed.
+* Note: Currently GKE does not support Kubernetes 1.7. We expect to support GKE when it upgrades the supported
+kubernetes version to 1.7+. The following instructions are for GCE with a 1.7 Kubernetes release installed.
 
-StorageOS needs to run on every node, which makes kubernetes daemonsets the ideal deployment method.
+StorageOS needs to run on every node, which makes Kubernetes DaemonSets the ideal deployment method.
 Before we can create our `daemonSet` we need to enable shared mount propagation to the container
 for `/var/lib/storageos` and (optionally) enable nbd for faster performance on some workloads.
 
@@ -52,32 +52,32 @@ for `/var/lib/storageos` and (optionally) enable nbd for faster performance on s
 
 * For container optimised (`cos` image) based cluster:
 
-Add the following systemd config override
+  Add the following systemd config override
 
-```bash
-sudo su
-cat > /etc/systemd/system/docker.service.d/02storageos.conf << EOF
-[service]
-MountFlags=rshared
-EOF
-```
+  ```bash
+  sudo su
+  cat > /etc/systemd/system/docker.service.d/02storageos.conf << EOF
+  [service]
+  MountFlags=rshared
+  EOF
+  ```
 
-Then restart the daemon:
+  Then restart the daemon:
 
-```bash
+  ```bash
   sudo systemctl daemon-reload
   sudo systemctl restart docker
-```
+  ```
 
 * For `container-vm` based cluster:
 
-On each node:
+  On each node:
 
-```bash
-sudo mkdir /var/lib/storageos
-sudo mount -o bind /var/lib/storageos /var/lib/storageos
-sudo mount --make-rshared /var/lib/storageos
-```
+  ```bash
+  sudo mkdir /var/lib/storageos
+  sudo mount -o bind /var/lib/storageos /var/lib/storageos
+  sudo mount --make-rshared /var/lib/storageos
+  ```
 
 ### Enabling NBD
 

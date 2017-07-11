@@ -9,6 +9,7 @@ module: install/kubernetes
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
+- [GCE/GKE Installation](#gce)
 - [Examples](#examples)
   - [Pre-provisioned Volumes](#pre-provisioned)
     - [Pod](#pod)
@@ -29,21 +30,140 @@ type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-The StorageOS container must be running on each node that wants to contribute
-storage or that wants to consume storage.  Currently this may be done as a
-standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})),
+1. StorageOS K8S support is only available for Kubernetes 1.7+.
+
+2. The `storageos/node` container must be running on each node that wants to contribute
+storage or that wants to consume storage.  To install our StorageOS container
+on kubernetes using DaemonSet follow the steps below.
+
+3. A consul cluster running that is accessible from the kubernetes cluster, the consul servers
+can only be able to be used for one StorageOS cluster at a time (dedicated StorageOS cluster).
+
+## GCE/GKE Installation
+
+* Note: Currently GKE does not support kubernetes 1.7. We expect to support GKE when it upgrades the supported
+kubernetes version to 1.7+. The following instructions are for GCE with a 1.7 kubernetes release installed.
+
+StorageOS needs to run on every node, which makes kubernetes daemonsets the ideal deployment method.
+Before we can create our `daemonSet` we need to enable shared mount propagation to the container
+for `/var/lib/storageos` and (optionally) enable nbd for faster performance on some workloads.
+
+### Configuring mount propagation
+
+* For container optimised (`cos` image) based cluster:
+
+Add the following systemd config override
+
+```bash
+sudo su
+cat > /etc/systemd/system/docker.service.d/02storageos.conf << EOF
+[service]
+MountFlags=rshared
+EOF
+```
+
+Then restart the daemon:
+
+```bash
+  sudo systemctl daemon-reload
+  sudo systemctl restart docker
+```
+
+* For `container-vm` based cluster:
+
+On each node:
+
+```bash
+mount -o bind /var/lib/storageos /var/lib/storageos
+sudo mount -make-rshared /var/lib/storageos
+```
+
+### Enabling NBD
+
+NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run the following
+steps on every node.
+
+```bash
+$ sudo modprobe nbd nbds_max=1024
+```
+
+**To ensure the NBD module is loaded on reboot.**
+
+1. Add the following line to `/etc/modules`
+```
+nbd
+```
+
+2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+```
+options nbd nbds_max=1024
+```
+
+Depending on the VM image that is running kubernetes this means the following
+steps are required to run on each node.
+
+
+### Creating the DaemonSet
+
+Once mount propagation is configured appropriately you may deploy storageos with the following
+daemonSet:
+
+```YAML
+---
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: storageos
+spec:
+  template:
+    metadata:
+      labels:
+        name: storageos
+      annotations:
+        volume.alpha.kubernetes.io/propagation: "{\"storageos\": {\"lib\": \"rshared\"}}"
+    spec:
+      hostNetwork: true
+      hostPID: true
+      containers:
+      - name: storageos
+        image: storageos/node
+        args:
+        - server
+        env:
+        - name: HOSTNAME
+          value: ""
+        - name: KV_BACKEND
+          value: "consul"
+        - name: KV_ADDR
+          value: $KV_ADDR
+        volumeMounts:
+        - name: fuse
+          mountPath: /dev/fuse
+        - name: lib
+          mountPath: /var/lib/storageos
+        securityContext:
+          privileged: true
+          capabilities:
+            add:
+            - SYS_ADMIN
+      volumes:
+        - name: fuse
+          hostPath:
+            path: /dev/fuse
+        - name: lib
+          hostPath:
+            path: /var/lib/storageos
+```
+
+Refer to the [Configuration Reference]({% link _docs/reference/configuration.md %}) for
+information on the configurable environment variables.
+
+### Self-managed StorageOS install
+
+Alternatively, StorageOS can be installed as a standard Docker container on each
+minion (see [Docker Application Container]({% link _docs/install/container.md %}))
 that runs outside of Kubernetes control.
 
-Kubernetes 1.7+ is required.
-
->**Note**: It is not currently possible to run the StorageOS container via
-Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage
-providers require that mount propagation be enabled using the `rshared` mount
-flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589)
-is planned for Kubernetes 1.8, and is being developed in
-[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For
-Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
-following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
 
 ## API Configuration
 

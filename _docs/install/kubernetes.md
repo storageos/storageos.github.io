@@ -74,7 +74,8 @@ Then restart the daemon:
 On each node:
 
 ```bash
-mount -o bind /var/lib/storageos /var/lib/storageos
+sudo mkdir /var/lib/storageos
+sudo mount -o bind /var/lib/storageos /var/lib/storageos
 sudo mount -make-rshared /var/lib/storageos
 ```
 

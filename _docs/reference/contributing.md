@@ -1,10 +1,10 @@
 ---
 layout: guide
-title: Bounty program
-module: bounty_program
+title: StorageOS Docs - Contributing to the docs
+module: contributing
 ---
 
-# StorageOS Guide Bounty
+# Contributing to the StorageOS docs
 
 We are always looking to improve our documentation. If you like to help people
 and can write, read on for the process for submitting your contributions. If your

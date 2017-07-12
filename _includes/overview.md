@@ -10,7 +10,7 @@ The StorageOS container must run on a 64-bit Linux host.
 
 * [Quick start]({% link _docs/introduction/quick_start.md %}) - The fastest way to try out StorageOS.
 * [Cluster install]({% link _docs/install/clusterinstall.md %}) - Set up a StorageOS cluster for testing.
-* [Run a SQL database with containers]({% link _docs/applications/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
+* [Run a SQL database with containers]({% link _docs/applications/databases/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
 
 ## Got feedback or just want to chat?
 

@@ -25,8 +25,11 @@ sections:
     description: StorageOS release notes
     module: reference/release_notes
   -
-    title: Glossary
-    description: Common terms and definitions
-    module: reference/glossary
-
+    title: Get help
+    description: Get help
+    module: reference/get_help
+  -
+    title: Contributing to the docs
+    description: How to contribute to the docs
+    module: reference/contributing
 ---

@@ -23,5 +23,5 @@ sections:
   -
     title: WordPress
     description: Setting up a WordPress cluster with persistent storage.
-    module: applications/wordpress
+    module: applications/wordpress    
 ---

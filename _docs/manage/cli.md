@@ -39,4 +39,3 @@ export STORAGEOS_HOST=127.0.0.1
 ## Further reading
 
 * [CLI reference]({% link _docs/reference/cli.md %})
-* [Configuration reference]({% link _docs/reference/configuration.md %})

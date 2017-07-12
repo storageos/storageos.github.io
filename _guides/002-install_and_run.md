@@ -32,4 +32,8 @@ sections:
     title: Key/Value Store
     description: Key/Value Store
     module: install/kvstore
+  -
+    title: Troubleshooting
+    description: Troubleshooting installation
+    module: install/troubleshooting
 ---

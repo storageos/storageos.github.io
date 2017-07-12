@@ -104,6 +104,21 @@ such as replication and volume failover will not be available.
 docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
-Other configuration parameters (see [Configuration Reference]({% link _docs/reference/configuration.md %}))
-may be set in a similar way.  For most environments, only the KV_ADDR will need
-to be set if Consul is not running locally on the node.
+## Environment variables
+
+For most environments, the default settings should work. If Consul is not
+running locally on the node, you will need to set `KV_ADDR`.
+
+* `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
+* `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.
+* `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
+* `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
+* `KV_ADDR`: IP address/port of the Key/Vaue store.  Defaults to `127.0.0.1:8500`
+* `KV_BACKEND`: Type of KV store to use.  Defaults to `consul`. `boltdb` can be used for single node testing.
+* `API_PORT`: Port for the API to listen on.  Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
+* `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `4222`.
+* `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.
+* `SERF_PORT`: Port for the Serf protocol to listen on.  Defaults to `13700`.
+* `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `17100`.
+* `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`.  Defaults to `info`.
+* `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.

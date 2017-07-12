@@ -51,6 +51,7 @@ Commands:
 Run 'storageos COMMAND --help' for more information on a command.
 ```
 
+<<<<<<< HEAD
 ## Management Commands
 
 Each of the storageos management commands requires a subcommand to run. Use
@@ -74,6 +75,8 @@ Read the guides for how to use each command.
 * [Create and manage pools]({% link _docs/manage/pools.md %})
 * [Cluster information]({% link _docs/manage/nodes.md %})
 
+=======
+>>>>>>> Update reference and automate menus
 ## Installation
 
 [Installing the StorageOS CLI]({% link _docs/manage/cli.md %})
@@ -101,3 +104,34 @@ $ storageos -u storageos -p storageos volume list
 NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
 default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
 ```
+
+## Environment variables
+
+The CLI supports the following environment variables.  Any flags set in the
+command line override their corresponding environment variables.
+
+* `STORAGEOS_USERNAME`: Username for API authentication, equivalent of -u.
+* `STORAGEOS_PASSWORD`: Password for API authentication, equivalent of -p.
+* `STORAGEOS_HOST`: ip_address:port to connect to, equivalent of -H.
+
+## Management Commands
+
+Each of the storageos management commands requires a subcommand to run. Use `storageos COMMAND --help` to view command flags.
+
+| Command     | Subcommands                   | Description                                                    |
+|-------------|-------------------------------|----------------------------------------------------------------|
+| `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
+| `node`      | `ls inspect`                  | Node information.                                              |
+| `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |
+| `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
+| `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|
+
+Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
+
+Read the guides for how to use each command.
+
+* [Create and manage volumes](../manage/volumes.html)
+* [Create and manage rules](../manage/rules.html)
+* [Create and manage namespaces](../manage/namespaces.html)
+* [Create and manage pools](../manage/pools.html)
+* [Cluster information](../manage/node.html)

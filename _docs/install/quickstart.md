@@ -1,12 +1,14 @@
 ---
 layout: guide
-title: StorageOS Docs - Cluster install
+title: StorageOS Docs - Quick start
 anchor: install
-module: install/clusterinstall
+module: install/quickstart
 # Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 
-# Cluster install
+# Quick start
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Arhn0X0UQ-s" frameborder="0" allowfullscreen></iframe>
 
 To test high availability, set up a three node StorageOS cluster using a laptop
 or single machine.

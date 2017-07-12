@@ -15,11 +15,9 @@ Postgres is deployed across a wide variety of platforms with a mix of workloads
 ranging from small, single-node use cases to large Internet-facing with many
 concurrent users.
 
-This guide demonstrates running Postgres in a container with StorageOS. <!---
-and then explore some of the perfromance characteristics using the built-in
-Postgres benchmark tool PgBench ---> Before starting, ensure you have StorageOS
-installed on a cluster (refer to the [cluster
-install]({% link _docs/install/clusterinstall.md %}) guide).
+Before you start, ensure you have StorageOS installed and ready on a Linux
+cluster - please refer to the [quick start]({% link _docs/install/quickstart.md %})
+guide for further details.
 
 ## Create a Postgres data volume
 

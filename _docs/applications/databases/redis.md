@@ -13,14 +13,9 @@ durability to disk.
 
 ## Redis and StorageOS
 
-There are several benefits with deploying Redis with StorageOS:
-
-* Quick and easy to setup
-* Provides persistent storage support for Redis
-
-This guide demonstrates running Redis in a container with StorageOS. Before
-starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install]({% link _docs/install/clusterinstall.md %}).
+Before you start, ensure you have StorageOS installed and ready on a Linux
+cluster - please refer to the [quick start]({% link _docs/install/quickstart.md %})
+guide for further details.
 
 ## Create a Redis Volume
 

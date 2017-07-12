@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - Docker
+title: StorageOS Docs - Docker volume plugin
 anchor: install
-module: install/docker
+module: install/plugin
 ---
 
 # Docker Managed Plugin (Docker Engine 1.13+)

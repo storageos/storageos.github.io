@@ -5,7 +5,7 @@ anchor: install
 module: install/container
 ---
 
-# Docker Application Container (Docker Engine 1.10 - 1.12)
+# Docker Application Container (Docker Engine 1.10+)
 
 Install StorageOS as an application container when Docker managed plugins aren't
 available.
@@ -33,7 +33,7 @@ docker run -d --name storageos \
 ### Requirements
 
 The container installation method requires Docker 1.10+.  For Docker 1.13+
-most users should use the [managed plugin install]({% link _docs/install/docker.md %}) method.
+most users should use the [managed plugin install]({% link _docs/install/plugin.md %}) method.
 
 ### KV Store
 

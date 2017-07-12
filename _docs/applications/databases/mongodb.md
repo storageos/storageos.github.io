@@ -21,7 +21,7 @@ application containers with StorageOS:
 
 This guide demonstrates running MongoDB in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install]({% link _docs/install/clusterinstall.md %}) guide).
+[quick start]({% link _docs/install/quickstart.md %}) guide).
 
 ## Create a MongoDB Data and Config Volume
 

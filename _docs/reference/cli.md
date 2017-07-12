@@ -51,7 +51,6 @@ Commands:
 Run 'storageos COMMAND --help' for more information on a command.
 ```
 
-<<<<<<< HEAD
 ## Management Commands
 
 Each of the storageos management commands requires a subcommand to run. Use
@@ -75,8 +74,7 @@ Read the guides for how to use each command.
 * [Create and manage pools]({% link _docs/manage/pools.md %})
 * [Cluster information]({% link _docs/manage/nodes.md %})
 
-=======
->>>>>>> Update reference and automate menus
+
 ## Installation
 
 [Installing the StorageOS CLI]({% link _docs/manage/cli.md %})

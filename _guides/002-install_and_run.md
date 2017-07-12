@@ -25,6 +25,10 @@ sections:
     description: Alternative deployment methods.
     module: install/advanced
   -
+    title: Troubleshooting
+    description: Troubleshooting docker installation
+    module: install/troubleshooting
+  -
     title: Kubernetes
     description: Kubernetes configuration
     module: install/kubernetes
@@ -32,4 +36,8 @@ sections:
     title: Key/Value Store
     description: Key/Value Store
     module: install/kvstore
+  -
+    title: Troubleshooting KV store
+    description: Troubleshooting KV store installation
+    module: install/kvtroubleshooting
 ---

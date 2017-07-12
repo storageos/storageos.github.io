@@ -14,7 +14,7 @@ configuration. It is open source and available from [Github](https://github.com/
 
 ```bash
 sudo -i
-curl -sSL https://github.com/storageos/go-cli/releases/download/v0.0.10/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.10/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 exit
 ```
@@ -39,4 +39,3 @@ export STORAGEOS_HOST=127.0.0.1
 ## Further reading
 
 * [CLI reference]({% link _docs/reference/cli.md %})
-* [Configuration reference]({% link _docs/reference/configuration.md %})

@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - KV Store Troubleshooting
-anchor: troubleshooting
-module: troubleshooting/kvstore
+anchor: install
+module: install/kvtroubleshooting
 ---
 
 # KV Store Troubleshooting
@@ -10,7 +10,7 @@ module: troubleshooting/kvstore
 A healthy KV Store is essential for StorageOS operation.  The KV Store must be
 accessible to start StorageOS and to make any provisioning changes.  Once a
 StorageOS cluster is running data presentation services will continue to operate
-if the KV Store becomes unavailable though no changes can be made until it has 
+if the KV Store becomes unavailable though no changes can be made until it has
 recovered.
 
 ## Consul External KV Store
@@ -41,7 +41,7 @@ Possible errors:
 
 - `curl: (7) Failed to connect to 127.0.0.1 port 8500: Connection refused`
 
-  Consul is not accessible locally.  First, check the consul container (see 
+  Consul is not accessible locally.  First, check the consul container (see
   "Check Consul container" below).
 
   If the container is running, check to make sure it is listening on 127.0.0.1
@@ -201,4 +201,4 @@ If there are errors, investigate the following:
 - `KV_ADDR` is set correctly.
 - `docker logs storageos` does not show anything unusual.
 
-If you are unsure, [Ask for help]({% link _docs/troubleshooting/get_help.md %}).
+If you are unsure, [ask for help]({% link _docs/reference/get_help.md %}).

@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: StorageOS Docs - Installation
-anchor: troubleshooting
-module: troubleshooting/installation
+title: StorageOS Docs - Troubleshooting installation
+anchor: install
+module: install/troubleshooting
 ---
 
-# Installation
+# Common installation problems and solutions
 
 ## Docker Managed Plugin
 

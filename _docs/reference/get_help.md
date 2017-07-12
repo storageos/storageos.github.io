@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Get help
-anchor: troubleshooting
-module: troubleshooting/get_help
+anchor: reference
+module: reference/get_help
 ---
 
 # Got questions or feedback?

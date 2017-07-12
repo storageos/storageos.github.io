@@ -25,12 +25,11 @@ sections:
     description: StorageOS release notes
     module: reference/release_notes
   -
+    title: Get help
+    description: Get help
+    module: reference/get_help
+  -
     title: Contributing to the docs
     description: How to contribute to the docs
     module: reference/contributing
-  -
-    title: Configuration
-    description: Configuration reference
-    module: reference/configuration
-
 ---

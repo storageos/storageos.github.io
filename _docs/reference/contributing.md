@@ -1,7 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Contributing to the docs
-module: contributing
+anchor: reference
+module: reference/contributing
 ---
 
 # Contributing to the StorageOS docs

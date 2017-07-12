@@ -1,4 +1,4 @@
-# Sorry, we're still working on this page!
+# We're still working on this page!
 
 If you contribute this guide to the community and we accept it, we'll pay you
 $250. [Check out the guidelines]({{site.baseurl}}/docs/reference/contributing)

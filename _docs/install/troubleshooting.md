@@ -5,7 +5,7 @@ anchor: install
 module: install/troubleshooting
 ---
 
-# Common installation problems and solutions
+# Common Docker installation problems and solutions
 
 ## Docker Managed Plugin
 

@@ -126,6 +126,10 @@ pre {
     overflow-x: scroll!important;
 }
 
+redoc[spec-url] .search-input-wrap {
+  margin-top: 150px;
+}
+
 redoc[spec-url] .menu-header img {
   display: none;
 }

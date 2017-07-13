@@ -51,30 +51,6 @@ Commands:
 Run 'storageos COMMAND --help' for more information on a command.
 ```
 
-## Management Commands
-
-Each of the storageos management commands requires a subcommand to run. Use
-`storageos COMMAND --help` to view command flags.
-
-| Command     | Subcommands                   | Description                                                    |
-|-------------|-------------------------------|----------------------------------------------------------------|
-| `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
-| `node`      | `ls inspect`                  | Node information.                                              |
-| `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |
-| `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|
-
-Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
-
-Read the guides for how to use each command.
-
-* [Create and manage volumes]({% link _docs/manage/volumes.md %})
-* [Create and manage rules]({% link _docs/manage/rules.md %})
-* [Create and manage namespaces]({% link _docs/manage/namespaces.md %})
-* [Create and manage pools]({% link _docs/manage/pools.md %})
-* [Cluster information]({% link _docs/manage/nodes.md %})
-
-
 ## Installation
 
 [Installing the StorageOS CLI]({% link _docs/manage/cli.md %})

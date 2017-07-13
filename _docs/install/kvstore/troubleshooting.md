@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - KV Store Troubleshooting
+title: StorageOS Docs - Troubleshooting the KV store
 anchor: install
 module: install/kvstore/troubleshooting
 ---

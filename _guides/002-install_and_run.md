@@ -15,7 +15,7 @@ sections:
     items:
       -
         title: Troubleshooting
-        description: Troubleshooting
+        description: Troubleshooting the KV store
         module: install/kvstore/troubleshooting
   -
     title: Kubernetes
@@ -36,7 +36,7 @@ sections:
         module: install/docker/container
       -
         title: Troubleshooting
-        description: Troubleshooting docker installation
+        description: Troubleshooting a Docker installation
         module: install/docker/troubleshooting
 
 ---

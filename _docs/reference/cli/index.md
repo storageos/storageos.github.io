@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Command line interface
 anchor: reference
-module: reference/cli
+module: reference/cli/index
 ---
 
 # Command Line Interface
@@ -10,7 +10,40 @@ module: reference/cli
 ## Overview
 
 The `storageos` command line interface (CLI) is used to manage cluster-wide
-configuration. `storageos` is designed to be familiar to Docker CLI users.
+configuration. It is open source and available from [Github](https://github.com/storageos/go-cli/releases).
+
+## Installation
+
+To install the StorageOS CLI on a 64 bit Linux machine:
+```bash
+sudo -i
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.10/storageos_linux_amd64 > /usr/local/bin/storageos
+chmod +x /usr/local/bin/storageos
+exit
+```
+
+You will need to provide the correct credentials. The default installation
+creates a single user with username `storageos` and password `storageos`, which
+can be set as environment variables:
+
+```bash
+export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
+```
+
+For remote authentication, set `STORAGEOS_HOST`:
+
+```bash
+export STORAGEOS_HOST=<ip address:port>
+```
+
+Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
+
+```bash
+$ storageos -u storageos -p storageos volume list
+NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
+default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
+```
+
 
 ## Usage
 
@@ -38,45 +71,17 @@ Options:
   -v, --version            Print version information and quit
 
 Management Commands:
+  cluster     Manage clusters
   namespace   Manage namespaces
   node        Manage nodes
   pool        Manage capacity pools
   rule        Manage rules
-  system      Manage StorageOS
   volume      Manage volumes
 
 Commands:
   version     Show the StorageOS version information
 
 Run 'storageos COMMAND --help' for more information on a command.
-```
-
-## Installation
-
-[Installing the StorageOS CLI]({% link _docs/manage/cli.md %})
-
-### Authentication
-
-If you see `API error (401): Unauthorized`, you need to provide the correct
-credentials via environment variables. The default installation creates a single
-user with username `storageos` and password `storageos`.
-
-```bash
-export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
-```
-
-Set `STORAGEOS_HOST` for remote authentication:
-
-```bash
-export STORAGEOS_HOST=<ip address:port>
-```
-
-Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
-
-```bash
-$ storageos -u storageos -p storageos volume list
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
-default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
 ```
 
 ## Environment variables
@@ -90,10 +95,12 @@ command line override their corresponding environment variables.
 
 ## Management Commands
 
-Each of the storageos management commands requires a subcommand to run. Use `storageos COMMAND --help` to view command flags.
+Each of the `storageos` management commands requires a subcommand to run. Use
+`storageos COMMAND --help` to view command flags.
 
 | Command     | Subcommands                   | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
+| `cluster`   | `create inspect rm`           | Cluster discovery and formation.                               |
 | `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
 | `node`      | `ls inspect`                  | Node information.                                              |
 | `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |
@@ -101,11 +108,3 @@ Each of the storageos management commands requires a subcommand to run. Use `sto
 | `pool`      | `create inspect ls rm`        | A collection of storage resources that can be provisioned from.|
 
 Use `storageos COMMAND SUBCOMMAND --help` to view subcommand flags.
-
-Read the guides for how to use each command.
-
-* [Create and manage volumes](../manage/volumes.html)
-* [Create and manage rules](../manage/rules.html)
-* [Create and manage namespaces](../manage/namespaces.html)
-* [Create and manage pools](../manage/pools.html)
-* [Cluster information](../manage/node.html)

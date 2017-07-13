@@ -52,7 +52,7 @@ vagrant plugin install vagrant-alpine
     ```
 
 Now you are ready to [install an application]({% link _docs/applications/databases/postgres.md %})
-or [manage the cluster]({% link _docs/manage/cli.md %}).
+or [manage the cluster]({% link _docs/reference/cli/index.md %}).
 
 To log into other nodes:
 

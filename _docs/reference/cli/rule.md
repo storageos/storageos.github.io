@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Rules
-anchor: manage
-module: manage/rules
+anchor: reference
+module: reference/cli/rule
 ---
 
 # Rules

@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - CI/CD
+title: StorageOS Docs - Content
 anchor: applications
 module: applications/content
 ---

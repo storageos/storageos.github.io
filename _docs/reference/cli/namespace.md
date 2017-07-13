@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Namespaces
-anchor: manage
-module: manage/namespaces
+anchor: reference
+module: reference/cli/namespace
 ---
 
 # Namespaces

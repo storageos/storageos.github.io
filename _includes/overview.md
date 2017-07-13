@@ -12,7 +12,7 @@ The StorageOS container must run on every node in a cluster and requires a
 ## Popular tasks
 
 * [Quick start]({% link _docs/install/quickstart.md %}) - The fastest way to try out StorageOS.
-* [Kubernetes install]({% link _docs/install/kubernetes.md %}) - Set up a K8s cluster.
+* [Install on Kubernetes]({% link _docs/install/kubernetes.md %}) - Use StorageOS with a Kubernetes cluster.
 * [Run a SQL database with containers]({% link _docs/applications/databases/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
 
 ## Got feedback or just want to chat?

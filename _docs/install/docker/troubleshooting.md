@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Troubleshooting installation
 anchor: install
-module: install/troubleshooting
+module: install/docker/troubleshooting
 ---
 
 # Common Docker installation problems and solutions

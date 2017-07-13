@@ -158,7 +158,7 @@ spec:
 ### Self-managed StorageOS install
 
 Alternatively, StorageOS can be installed as a standard Docker container on each
-minion (see [Docker Application Container]({% link _docs/install/container.md %}))
+minion (see [Docker Application Container]({% link _docs/install/docker/container.md %}))
 that runs outside of Kubernetes control.
 
 

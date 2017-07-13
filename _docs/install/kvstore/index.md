@@ -61,7 +61,7 @@ sudo docker plugin install --grant-all-permissions --alias storageos storageos/p
 
 ## Troubleshooting
 
-Please see [KV Store troubleshooting]({% link _docs/install/kvtroubleshooting.md %}).
+Please see [KV Store troubleshooting]({% link _docs/install/kvstore/troubleshooting.md %}).
 
 ## Other
 

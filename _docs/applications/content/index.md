@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - CI/CD
 anchor: applications
-module: applications/cicd/index
+module: applications/content
 ---
 
 {% include wip.md %}

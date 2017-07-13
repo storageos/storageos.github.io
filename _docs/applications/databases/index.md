@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Databases
 anchor: applications
-module: applications/databases/index
+module: applications/databases
 ---
 
 # Installing and running databases

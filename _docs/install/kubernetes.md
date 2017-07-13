@@ -156,13 +156,10 @@ spec:
             path: /var/lib/storageos
 ```
 
-Refer to the [Configuration Reference]({% link _docs/reference/configuration.md %}) for
-information on the configurable environment variables.
-
 ### Self-managed StorageOS install
 
 Alternatively, StorageOS can be installed as a standard Docker container on each
-minion (see [Docker Application Container]({% link _docs/install/container.md %}))
+minion (see [Docker Application Container]({% link _docs/install/docker/container.md %}))
 that runs outside of Kubernetes control.
 
 

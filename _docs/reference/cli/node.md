@@ -7,29 +7,22 @@ module: reference/cli/node
 
 # Node
 
-## List node information
-
-To view the state of your cluster run:
-
 ```bash
-$ storageos node ls
+Usage:	storageos node COMMAND
 
-NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
-vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
+Manage nodes
+
+Options:
+      --help   Print usage
+
+Commands:
+  inspect     Display detailed information on one or more nodes
+  ls          List nodes
+
+Run 'storageos node COMMAND --help' for more information on a command.
 ```
 
-The output shows a StorageOS cluster with three nodes named
-`vol-test-2gb-lon101`, `vol-test-2gb-lon102` and `vol-test-2gb-lon103`.
-For each of the nodes, details about their status is shown, including:
-
-- `SCHEDULER`: whether the node contains the scheduler, which is responsible for
-  the placement of volumes, performing health checks and providing high
-  availability to nodes. A cluster will have exactly one scheduler node.
-- `VOLUMES`: the number of master or replica copies of volumes on this node.
-
-## Inspect a node
+### `storageos node inspect`
 
 To view detailed information such as state, port configuration, pool membership,
 health, version and capacity in JSON format, inspect the node:
@@ -98,3 +91,24 @@ $ storageos node inspect vol-test-2gb-lon103
     }
 ]
 ```
+
+### `storageos node ls`
+
+To view the state of your cluster run:
+
+```bash
+$ storageos node ls
+
+NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
+vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
+vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.7 (00ab7b3 rev)
+vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
+```
+
+The output shows a StorageOS cluster with three nodes named
+`vol-test-2gb-lon101`, `vol-test-2gb-lon102` and `vol-test-2gb-lon103`.
+
+- `SCHEDULER`: whether the node contains the scheduler, which is responsible for
+  the placement of volumes, performing health checks and providing high
+  availability to nodes. A cluster will have exactly one scheduler node.
+- `VOLUMES`: the number of master or replica copies of volumes on this node.

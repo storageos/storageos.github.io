@@ -7,28 +7,26 @@ module: reference/cli/pool
 
 # Pools
 
-Pools are used to create collections of storage resources created from StorageOS
-cluster nodes.
+```bash
+Usage:	storageos pool COMMAND
 
-## Overview
+Manage capacity pools
 
-Pools are used to organize storage resources into common collections such as
-class of server, class of storage, location within the datacenter or subnet.
-Cluster nodes can participate in more than one pool.
+Options:
+      --help   Print usage
 
-Volumes are provisioned from pools.  If a pool name is not specified when the
-volume is created, the default pool name (`default`) will be used.
+Commands:
+  create      Create a capacity pool
+  inspect     Display detailed information on one or more capacity pools
+  ls          List capacity pools
+  rm          Remove one or more capacity pools
 
-## Parameters
+Run 'storageos pool COMMAND --help' for more information on a command.
+```
 
-Pool parameters can be used to set characteristics such as backend storage type,
-participating nodes and whether the pool is activated.
+### `storageos pool create`
 
-### Create a new pool
-
-To create a pool, the pool name is mandatory, and you should specify at least
-one node with `--controllers` (the hostname of a StorageOS node) to allocate
-storage capacity from:
+To create a pool:
 
 ```bash
 $ storageos pool create no-ha --controllers storageos-1-59227
@@ -42,17 +40,9 @@ $ storageos pool create production --label env=prod
 production
 ```
 
-Label metadata:
+### `storageos pool ls`
 
-```json
-“labels”: {
-    “env”: “prod”
-}
-```
-
-### List available pools
-
-To list pools use `storageos pool ls [OPTIONS]`:
+To list pools:
 
 ```bash
 $ storageos pool inspect no-ha
@@ -61,41 +51,40 @@ default             filesystem          storageos-1-59227, storageos-2-59227, st
 no-ha                                   storageos-1-59227
 ```
 
-### Inspect a named pool
+### `storageos pool inspect`
 
-To inspect the metadata for a given pool (or pools) use
-`storageos pool inspect [OPTIONS] POOL [POOL...]`:
+To inspect the metadata for a given pool:
 
 ```bash
 $ storageos pool inspect no-ha
 [
    {
-       “id”: “025fcde4-d596-57c6-aec8-67e64c1ebf28",
-       “name”: “no-ha”,
-       “description”: “”,
-       “default”: false,
-       “defaultDriver”: “”,
-       “controllerNames”: [
-           “storageos-1-59227”
+       "id": "025fcde4-d596-57c6-aec8-67e64c1ebf28",
+       "name": "no-ha",
+       "description": ""
+       "default": false,
+       "defaultDriver": "",
+       "controllerNames": [
+           "storageos-1-59227"
        ],
-       “driverNames”: [],
-       “driverInstances”: null,
-       “active”: true,
-       “capacityStats”: {
-           “total_capacity_bytes”: 0,
-           “available_capacity_bytes”: 0,
-           “provisioned_capacity_bytes”: 0
+       "driverNames": [],
+       "driverInstances": null,
+       "active": true,
+       "capacityStats": {
+           "total_capacity_bytes": 0,
+           "available_capacity_bytes": 0,
+           "provisioned_capacity_bytes": 0
        },
-       “labels”: {
+       "labels": {
           "env": "prod"
        }
    }
 ]
 ```
 
-### Delete a pool
+### `storageos pool rm`
 
-To delete a pool use `storageos pool rm [OPTIONS] POOL] [POOL...]`:
+To delete a pool:
 
 ```bash
 $ storageos pool rm no-ha

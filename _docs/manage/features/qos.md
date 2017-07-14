@@ -11,15 +11,15 @@ You can deprioritize the traffic on noisy apps by throttling ie. reducing the ra
 
 ## Create a throttled volume
 
-To create a throttled volume, set the `storageos.feature.qos` label with the StorageOS CLI:
+To create a throttled volume, set the `storageos.feature.throttle` label with the StorageOS CLI:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.qos=true volume-name
+storageos volume create --namespace default --label storageos.feature.throttle=true volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.feature.qos=true volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.features.throttle=true volume-name
 volume-name
 ```

@@ -27,4 +27,4 @@ Options:
 The volume is expanded immediately but you still need to manually resize the
 filesystem by calling resize2fs.
 
-Shrinking a volume is not supported in the beta.
+Shrinking a volume is not supported.

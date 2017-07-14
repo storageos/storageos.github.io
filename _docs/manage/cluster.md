@@ -5,7 +5,7 @@ anchor: manage
 module: manage/cluster
 ---
 
-# Cluster overview
+# Cluster discovery
 
 A StorageOS cluster needs to know the exact cluster size and peers to connect to
 during start up. All the nodes need to bind to the correct addresses in order to

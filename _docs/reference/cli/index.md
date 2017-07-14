@@ -100,7 +100,6 @@ Each of the `storageos` management commands requires a subcommand to run. Use
 
 | Command     | Subcommands                   | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
-| `cluster`   | `create inspect rm`           | Cluster discovery and formation.                               |
 | `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
 | `node`      | `ls inspect`                  | Node information.                                              |
 | `rule`      | `create inspect ls rm update` | Policy enforcement based on labels.                            |

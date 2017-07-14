@@ -123,7 +123,6 @@ spec:
       annotations:
         volume.alpha.kubernetes.io/propagation: "{\"storageos\": {\"lib\": \"rshared\"}}"
     spec:
-      hostNetwork: true
       hostPID: true
       containers:
       - name: storageos
@@ -137,6 +136,10 @@ spec:
           value: "consul"
         - name: KV_ADDR
           value: $KV_ADDR
+        - name: ADVERTISE_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
         volumeMounts:
         - name: fuse
           mountPath: /dev/fuse

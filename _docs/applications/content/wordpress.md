@@ -84,6 +84,7 @@ your test cluster.
 1. Check the node list
 
    ```bash
+   $ docker node ls
    ID                            HOSTNAME            STATUS              AVAILABILITY        MANAGER STATUS
    id6bcs7lt7i6iroua78rhe3b7 *   storageos-1         Ready               Active              Leader
    l7v3wlksl0xwn4biwej516d8u     storageos-3         Ready               Active              Reachable

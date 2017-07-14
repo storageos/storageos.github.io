@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Volumes
-anchor: manage
-module: manage/volumes
+anchor: reference
+module: reference/cli/volume
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-13
 ---
 

@@ -159,7 +159,7 @@ spec:
 ### Self-managed StorageOS install
 
 Alternatively, StorageOS can be installed as a standard Docker container on each
-minion (see [Docker Application Container]({% link _docs/install/container.md %}))
+minion (see [Docker Application Container]({% link _docs/install/docker/container.md %}))
 that runs outside of Kubernetes control.
 
 
@@ -252,7 +252,7 @@ container running on each node.
 Pods can be created that access volumes directly.
 
 1. Create a volume using the StorageOS CLI or API.  Consult the
-   [volume documentation]({% link _docs/manage/volumes.md %}) for details.
+   [volume documentation]({% link _docs/reference/cli/volume.md %}) for details.
 
 1. Create a pod that refers to the new volume.  In this case the volume is named
    `redis-vol01`.
@@ -313,7 +313,7 @@ Pods can be created that access volumes directly.
 ### Persistent Volumes
 
 1. Create a volume using the StorageOS CLI or API.  Consult the
-   [volume documentation]({% link _docs/manage/volumes.md %}) for details.
+   [volume documentation]({% link _docs/reference/cli/volume.md %}) for details.
 
 1. Create the persistent volume `redis-vol01`.
 

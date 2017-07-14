@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Microsoft SQL Server
 anchor: applications
-module: applications/mssql
+module: applications/databases/mssql
 ---
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2017 with StorageOS
@@ -20,7 +20,7 @@ requirements include:
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
 Before you start, ensure you have StorageOS installed and ready on a Linux
-cluster - please refer to the [Cluster install ]({% link _docs/install/clusterinstall.md %})
+cluster - please refer to the [quick start]({% link _docs/install/quickstart.md %})
 guide for further details.
 
 ## Install MS SQL Server with StorageOS

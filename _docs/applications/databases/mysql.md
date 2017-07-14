@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - MySQL
 anchor: applications
-module: applications/mysql
+module: applications/databases/mysql
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-11
 ---
 
@@ -19,9 +19,9 @@ There are several benefits with deploying MySQL with StorageOS:
 * Instant, stateless MySQL application containers on demand
 * Persistent, highly available storage to mount stateful database data from
 
-This guide demonstrates running MySQL in a container with StorageOS. Before
-starting, ensure you have StorageOS installed on a cluster (refer to the
-[cluster install]({% link _docs/install/clusterinstall.md %}) guide).
+Before you start, ensure you have StorageOS installed and ready on a Linux
+cluster - please refer to the [quick start]({% link _docs/install/quickstart.md %})
+guide for further details.
 
 ## Create a MySQL Volume
 

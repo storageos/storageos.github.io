@@ -1,21 +1,20 @@
 ---
 layout: guide
-title: StorageOS Docs - Cluster install
+title: StorageOS Docs - Quick start
 anchor: install
-module: install/clusterinstall
+module: install/quickstart
 # Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 
-# Cluster install
+# Quick start
 
-To test high availability, set up a three node StorageOS cluster using a laptop
-or single machine.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Arhn0X0UQ-s" frameborder="0" allowfullscreen></iframe>
 
-## Prerequisites
+To quickly test StorageOS on a laptop, you can set up a three node cluster using Vagrant.
 
-Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
+You will need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
 1.9.3](http://vagrantup.com/downloads.html). You will also need the Vagrant
-plugin for Alpine, a lightweight Linux distribution used for testing:
+plugin for Alpine, a lightweight Linux distribution:
 
 ```bash
 vagrant plugin install vagrant-alpine
@@ -52,8 +51,8 @@ vagrant plugin install vagrant-alpine
     vagrant ssh s-1
     ```
 
-Now you are ready to [install an application]({% link _docs/applications/postgres.md %})
-or [manage the cluster]({% link _docs/manage/cli.md %}).
+Now you are ready to [install an application]({% link _docs/applications/databases/postgres.md %})
+or [manage the cluster]({% link _docs/reference/cli/index.md %}).
 
 To log into other nodes:
 

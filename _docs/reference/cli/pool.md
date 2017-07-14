@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Pools
-anchor: manage
-module: manage/pools
+anchor: reference
+module: reference/cli/pool
 ---
 
 # Pools

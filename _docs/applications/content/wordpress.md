@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Swarm with Wordpress
 anchor: applications
-module: applications/wordpress
+module: applications/content/wordpress
 # Last reviewed by julian.topley@storageos.com on 2017-05-23 - WP and Swarm working now
 ---
 

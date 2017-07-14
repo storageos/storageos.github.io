@@ -24,4 +24,4 @@ Installed plugin storageos/plugin:0.7.2
 
 If you don't have Docker 1.13+ installed, check out the
 [node install]({% link _docs/install/nodeinstall.md %}) and
-[cluster install]({% link _docs/install/clusterinstall.md %}) docs.
+[Kubernetes]({% link _docs/install/kubernetes.md %}) docs.

@@ -5,39 +5,38 @@ anchor: install
 
 sections:
   -
-    title: Single node install
-    description: StorageOS node install
-    module: install/nodeinstall
+    title: Quick start
+    description: Quick start
+    module: install/quickstart
   -
-    title: Cluster install
-    description: StorageOS cluster install
-    module: install/clusterinstall
-  -
-    title: Docker
-    description: Docker managed plugin install for Docker Engine 1.13+
-    module: install/docker
-  -
-    title: Docker (1.10 - 1.12)
-    description: Docker container install for Docker Engine 1.10 - 1.12
-    module: install/container
-  -
-    title: Docker (advanced)
-    description: Alternative deployment methods.
-    module: install/advanced
-  -
-    title: Troubleshooting
-    description: Troubleshooting docker installation
-    module: install/troubleshooting
+    title: Key/Value Store
+    description: Key/Value Store
+    module: install/kvstore
+    items:
+      -
+        title: Troubleshooting
+        description: Troubleshooting the KV store
+        module: install/kvstore/troubleshooting
   -
     title: Kubernetes
     description: Kubernetes configuration
     module: install/kubernetes
   -
-    title: Key/Value Store
-    description: Key/Value Store
-    module: install/kvstore
-  -
-    title: Troubleshooting KV store
-    description: Troubleshooting KV store installation
-    module: install/kvtroubleshooting
+    title: Docker
+    description: Docker
+    module: install/docker
+    items:
+      -
+        title: Volume plugin
+        description: Docker managed plugin install for Docker Engine 1.13+
+        module: install/docker/plugin
+      -
+        title: Container
+        description: Docker container install for Docker Engine 1.10+
+        module: install/docker/container
+      -
+        title: Troubleshooting
+        description: Troubleshooting a Docker installation
+        module: install/docker/troubleshooting
+
 ---

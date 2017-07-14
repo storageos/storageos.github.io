@@ -5,23 +5,33 @@ anchor: applications
 
 sections:
   -
-    title: MySQL
-    description: Setting up MySQL with persistent storage.
-    module: applications/mysql
+    title: Databases
+    description: Setting up databases with persistent storage.
+    module: applications/databases
+    items:
+      -
+        title: MySQL
+        description: Setting up MySQL with persistent storage.
+        module: applications/databases/mysql
+      -
+        title: PostgreSQL
+        description: Setting up PostgreSQL with persistent storage.
+        module: applications/databases/postgres
+      -
+        title: Microsoft SQL Server
+        description: Setting up Microsoft SQL with persistent storage.
+        module: applications/databases/mssql
+      -
+        title: Redis
+        description: Setting up Redis with persistent storage.
+        module: applications/databases/redis
   -
-    title: PostgreSQL
-    description: Setting up PostgreSQL with persistent storage.
-    module: applications/postgres
-  -
-    title: Microsoft SQL Server
-    description: Setting up Microsoft SQL with persistent storage.
-    module: applications/mssql
-  -
-    title: Redis
-    description: Setting up Redis with persistent storage.
-    module: applications/redis
-  -
-    title: WordPress
-    description: Setting up a WordPress cluster with persistent storage.
-    module: applications/wordpress    
+    title: Content hosting
+    description: Content hosting
+    module: applications/content
+    items:
+      -
+        title: WordPress
+        description: WordPress
+        module: applications/content/wordpress
 ---

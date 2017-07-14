@@ -96,7 +96,7 @@ $ storageos node inspect vol-test-2gb-lon103
 
 ### `storageos node ls`
 
-To view the state of your cluster run:
+To view the state of your cluster, run:
 
 ```bash
 $ storageos node ls

@@ -7,16 +7,30 @@ module: manage/cluster
 
 # Cluster discovery
 
-A StorageOS cluster needs to know the exact cluster size and peers to connect to
-during start up. All the nodes need to bind to the correct addresses in order to
-peer correctly. To override the default (the first non-loop interface), you can
+All the nodes need to bind to the correct addresses in order to
+peer correctly. To override the default (the first non-loopback interface), you can
 set the `ADVERTISE_IP` environment variable:
 
 ```bash
 export ADVERTISE_IP=172.28.128.3
 ```
 
+To view the status of a cluster, run `storageos node ls`:
+
+```bash
+$ storageos node ls
+
+NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
+vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
+vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.7 (00ab7b3 rev)
+vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
+```
+
 <!--
+A StorageOS cluster needs to know the exact cluster size and peers to connect to
+during start up.
+
+
 ## Cluster discovery
 
 The StorageOS discovery service makes it easy to form a cluster using a token, which is supplied to each node. This is available through the [StorageOS CLI](link /_docs/reference/cli).

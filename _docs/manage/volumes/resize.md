@@ -23,3 +23,8 @@ Options:
       --label-rm list        Remove a volume label if exists (default [])
   -s, --size int             Volume size in GB (default 5)
 ```
+
+The volume is expanded immediately but you still need to manually resize the
+filesystem by calling resize2fs.
+
+Shrinking a volume is not supported in the beta.

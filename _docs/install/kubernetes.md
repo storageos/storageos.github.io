@@ -137,6 +137,10 @@ spec:
           value: "consul"
         - name: KV_ADDR
           value: $KV_ADDR
+        - name: ADVERTISE_IP
+           valueFrom:
+             fieldRef:
+               fieldPath: status.podIP
         volumeMounts:
         - name: fuse
           mountPath: /dev/fuse

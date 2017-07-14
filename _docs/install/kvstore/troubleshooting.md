@@ -201,4 +201,4 @@ If there are errors, investigate the following:
 - `KV_ADDR` is set correctly.
 - `docker logs storageos` does not show anything unusual.
 
-If you are unsure, [ask for help]({% link _docs/reference/get_help.md %}).
+If you are unsure, [ask for help]({% link _docs/get_help/get_help.md %}).

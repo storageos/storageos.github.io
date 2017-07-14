@@ -9,6 +9,8 @@ module: reference/cli/volume
 # Volumes
 
 ```bash
+$ storageos volume
+
 Usage:	storageos volume COMMAND
 
 Manage volumes

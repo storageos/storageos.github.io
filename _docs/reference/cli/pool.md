@@ -8,6 +8,8 @@ module: reference/cli/pool
 # Pools
 
 ```bash
+$ storageos pool
+
 Usage:	storageos pool COMMAND
 
 Manage capacity pools

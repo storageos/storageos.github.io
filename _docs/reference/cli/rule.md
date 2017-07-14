@@ -8,6 +8,8 @@ module: reference/cli/rule
 # Rules
 
 ```bash
+$ storageos rule
+
 Usage:	storageos rule COMMAND
 
 Manage rules

@@ -5,7 +5,11 @@ anchor: manage
 
 sections:
   -
-    title: Data volumes
+    title: Cluster
+    description: Managing a cluster
+    module: manage/cluster
+  -
+    title: Volumes
     description: Creating and managing data volumes
     module: manage/volumes
     items:
@@ -22,7 +26,7 @@ sections:
         description: Using labels and selectors
         module: manage/volumes/labels
   -
-    title: Volume features
+    title: Features
     description: Managing volume features
     module: manage/features
     items:

@@ -12,5 +12,4 @@ sections:
     title: Rules
     description: StorageOS rules
     module: automate/rules
-  -
 ---

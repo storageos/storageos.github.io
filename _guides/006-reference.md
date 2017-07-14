@@ -10,10 +10,6 @@ sections:
     module: reference/cli
     items:
       -
-        title: cluster
-        description: Create and manage clusters
-        module: reference/cli/cluster
-      -
         title: namespace
         description: Create and manage namespaces
         module: reference/cli/namespace
@@ -49,10 +45,6 @@ sections:
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes
-  -
-    title: Get help
-    description: Get help
-    module: reference/get_help
   -
     title: Contributing to the docs
     description: How to contribute to the docs

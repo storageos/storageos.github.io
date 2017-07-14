@@ -5,9 +5,11 @@ anchor: reference
 module: reference/cli/node
 ---
 
-# Node
+# Nodes
 
 ```bash
+$ storageos node
+
 Usage:	storageos node COMMAND
 
 Manage nodes

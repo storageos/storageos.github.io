@@ -11,8 +11,6 @@ module: manage/features/index
 Applying specific labels to volumes triggers compression, replication and other
 storage features. No feature labels are present by default.
 
-To set supported labels, use `storageos volume create --label storageos.feature.cache=true`:
-
 | Feature     | Label                           | Values         | Description                                              |
 |:------------|:--------------------------------|:---------------|:---------------------------------------------------------|
 | Caching     | `storageos.feature.cache`       | true / false   | Improves read performance at the expense of more memory. |
@@ -22,3 +20,8 @@ To set supported labels, use `storageos volume create --label storageos.feature.
 
 Feature labels are a powerful and flexible way to control storage features,
 especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
+
+To create a volume with a feature labels:
+```bash
+storageos volume create --label storageos.feature.cache=true
+```

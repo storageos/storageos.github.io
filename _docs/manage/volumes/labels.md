@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Labels
 anchor: manage
-module: manage/labels
+module: manage/volumes/labels
 # Last reviewed by cheryl.hung@storageos.com on 2017-04-13
 ---
 
@@ -18,23 +18,6 @@ multiple labels but each key must be unique within an object.
 You should prefix labels with your organization domain, such as
 `example.your-label`. Labels prefixed with `storageos.*` are reserved for
 internal use.
-
-## StorageOS feature labels
-
-Applying specific labels to volumes triggers compression, replication and other
-storage features. No feature labels are present by default.
-
-To set supported labels, use `storageos volume create --label storageos.feature.cache=true`:
-
-| Feature     | Label                           | Values         | Description                                              |
-|:------------|:--------------------------------|:---------------|:---------------------------------------------------------|
-| Caching     | `storageos.feature.cache`       | true / false   | Improves read performance at the expense of more memory. |
-| Compression | `storageos.feature.nocompress`  | true / false   | Switches off compression of data at rest and in transit. |
-| Replication | `storageos.feature.replicas`    | integers [0, 5]| Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. |
-| QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
-
-Feature labels are a powerful and flexible way to control storage features,
-especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
 
 ## Using labels with volumes
 
@@ -100,7 +83,10 @@ default/volume-name
 
 ## Using labels with selectors
 
-[Selectors]({% link _docs/manage/selectors.md %}) can be used to filter on
+A client or user can identify a set of objects using a label selector. StorageOS
+selectors work the same as [Kubernetes selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).
+
+Selectors can be used to filter on
 labels with the `--selector` option. This allows you to quickly search through
 volumes.
 
@@ -109,3 +95,14 @@ $ storageos volume ls --selector=env=dev
 NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
 default/volume-name   5GB                                                         active              0/0
 ```
+
+However on rules, selectors define the conditions for triggering a rule. This
+creates a rule that configures 2 replicas for volumes with the label `env=prod`:
+
+```bash
+$ storageos rule create --namespace default --selector 'env==prod' --label storageos.feature.replicas=2 replicator
+default/replicator
+```
+
+See [creating and managing rules]({% link _docs/automate/rules.md %}) for
+more.

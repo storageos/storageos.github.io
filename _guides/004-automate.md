@@ -9,4 +9,7 @@ sections:
     description: The StorageOS API
     module: automate/api
   -
+    title: Rules
+    description: StorageOS rules
+    module: automate/rules
 ---

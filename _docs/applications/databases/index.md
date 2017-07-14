@@ -5,7 +5,7 @@ anchor: applications
 module: applications/databases
 ---
 
-# Installing and running databases
+# Running databases with StorageOS
 
 StorageOS offers many benefits for databases, message queues and KV stores:
 

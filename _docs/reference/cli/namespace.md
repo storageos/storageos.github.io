@@ -7,19 +7,28 @@ module: reference/cli/namespace
 
 # Namespaces
 
-Namespaces help different projects or teams share a StorageOS cluster. No
-namespaces are created by default, and users can have any number of namespaces.
+```bash
+$ storageos namespace
 
-Namespaces apply to volumes and rules.
+Usage:	storageos namespace COMMAND
 
->**Note**: Docker does not support namespaces, so you should avoid mixing
-volumes created by `docker volume create` (which does not allow namespaces) with
-volumes created by `storageos volume create` (which requires a namespace).
+Manage namespaces
 
-## Create a namespace
+Options:
+      --help   Print usage
 
-To start creating rules and volumes, at least one namespace is required.
-To create a namespace, run:
+Commands:
+  create      Create a namespace
+  inspect     Display detailed information on one or more namespaces
+  ls          List namespaces
+  rm          Remove one or more namespaces
+  update      Update a namespace
+
+Run 'storageos namespace COMMAND --help' for more information on a command.
+```
+
+### `storageos namespace create`
+To create a namespace:
 
 ```bash
 $ storageos namespace create legal --description compliance-volumes
@@ -28,9 +37,18 @@ legal
 
 Add the `--display-name` flag to set a display-friendly name.
 
-## List all namespaces
+### `storageos namespace inspect`
 
-To view namespaces, run:
+Check if a namespace has labels applied.
+
+```bash
+$ storageos namespace inspect legal | grep labels
+        "labels": null,
+```
+
+### `storageos namespace ls`
+
+To view namespaces:
 
 ```bash
 $ storageos namespace ls -q
@@ -41,30 +59,9 @@ performance
 
 Remove `-q` for full details
 
-## Inspect namespaces
-
-Check if a namespace has labels applied.
-
-```bash
-$ storageos namespace inspect legal | grep labels
-        "labels": null,
-```
-
-## Removing a namespace
-
-Removing a namespace will remove all volumes and rules that belong to that
-namespace. An API call or CLI command to remove a namespace will fail if there
-are mounted volumes (to prevent data loss).
-
-To remove a namespace:
-
+### `storageos namespace rm`
+To remove a namespace (add --force to remove namespaces with mounted volumes):
 ```bash
 $ storageos namespace rm legal
 legal
-```
-
-Force remove:
-
-```bash
-storageos namespace rm --force my-namespace
 ```

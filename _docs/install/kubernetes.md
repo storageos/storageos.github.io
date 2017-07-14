@@ -292,9 +292,6 @@ Pods can be created that access volumes directly.
            # of the pod.  Set to `default` or leave blank if you are not using
            # namespaces.
            volumeNamespace: test-storageos
-           # The name of the storageos pool to use.  Will use `default` if not
-           # specified, which should be available on most StorageOS clusters.
-           pool: default
            # The filesystem type to format the volume with, if required.
            fsType: ext3
    ```
@@ -367,7 +364,6 @@ Pods can be created that access volumes directly.
        Type:            StorageOS (a StorageOS Persistent Disk resource)
        VolumeName:      pv0001
        VolumeNamespace: default
-       Pool:
        FSType:          ext4
        ReadOnly:        false
    No events.
@@ -580,7 +576,6 @@ StorageOS supports the following storage class parameters:
        Type:            StorageOS (a StorageOS Persistent Disk resource)
        VolumeName:      pvc-480952e7-f8e0-11e6-af8c-08002736b526
        VolumeNamespace: default
-       Pool:            default
        FSType:          ext4
        ReadOnly:        false
    No events.

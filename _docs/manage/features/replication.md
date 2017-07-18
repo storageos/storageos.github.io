@@ -9,12 +9,14 @@ module: manage/features/replication
 
 Replication is used for data protection, high availability and failover.
 
-If a volume is replicated, each replica is scheduled on a different node. Writes to
-the master volume are written synchronously to each replica. During the replication
-process a volume can continue to be used with no noticeable drop in performance.
+If a volume is replicated, each replica is scheduled on a different node. Writes
+to the master volume are written synchronously to each replica. During the
+replication process a volume can continue to be used with no noticeable drop in
+performance.
 
 The maximum number of replicas that can be created is five, or up to the number
-of remaining nodes in the cluster. For most applications, one replica is sufficient.
+of remaining nodes in the cluster. For most applications, one replica is
+sufficient.
 
 ## Recovery
 

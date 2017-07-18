@@ -8,38 +8,25 @@ module: manage/volumes/index
 
 # Volumes
 
-Volumes are used to store data. All volumes are thinly provisioned so only
-consume capacity which is actually used, and are in a global namespace, so all
-volumes accessible to any container anywhere on the cluster.
+Volumes are used to store data.
 
-Volumes are created within storage pools, which is a group of nodes that
-contributes storage. The default is to create one storage pool across a whole
-cluster; but can be adjusted using the `storageos pool` command.
+Volumes are provisioned from [storage pools](#pools). All volumes are thinly provisioned
+so only consume capacity which is actually used.
+
+In order to mount volumes into containers, they are formatted with a filesystem
+such as `ext4`. All volumes accessible to any container anywhere on the cluster
+(global namespace) but each volume may only be mounted by one container at a
+time.
+
+You can manage volumes within your organization using [namespaces](#namespaces)
+and [labels]({% link _docs/manage/volumes/labels.md %}).
 
 StorageOS volumes may be accessed through the [standard Docker
 CLI](https://docs.docker.com/engine/reference/commandline/volume_create/), or
-through the `storageos` CLI for more options and control.
+through the [storageos CLI]({% link _docs/manage/volumes/create.md %}) for more
+options and control.
 
-# Pools
-
-Pools are used to create collections of storage resources created from StorageOS
-cluster nodes.
-
-## Overview
-
-Pools are used to organize storage resources into common collections such as
-class of server, class of storage, location within the datacenter or subnet.
-Cluster nodes can participate in more than one pool.
-
-Volumes are provisioned from pools.  If a pool name is not specified when the
-volume is created, the default pool name (`default`) will be used.
-
-## Parameters
-
-Pool parameters can be used to set characteristics such as backend storage type,
-participating nodes and whether the pool is activated.
-
-## Namespaces
+# Namespaces
 
 Namespaces help different projects or teams share a StorageOS cluster. No
 namespaces are created by default, and users can have any number of namespaces.
@@ -88,7 +75,7 @@ $ storageos namespace inspect legal | grep labels
 
 Removing a namespace will remove all volumes and rules that belong to that
 namespace. An API call or CLI command to remove a namespace will fail if there
-are mounted volumes (to prevent data loss).
+are mounted volumes to prevent data loss.
 
 To remove a namespace:
 
@@ -97,8 +84,26 @@ $ storageos namespace rm legal
 legal
 ```
 
-Force remove:
+To force remove, even if there are mounted volumes:
 
 ```bash
 storageos namespace rm --force my-namespace
 ```
+
+# Pools
+
+Pools are used to create collections of storage resources created from StorageOS
+cluster nodes.
+
+Pools are used to organize storage resources into common collections such as
+class of server, class of storage, location within the datacenter or subnet.
+Cluster nodes can participate in more than one pool.
+
+## Using pools
+
+Volumes are provisioned from pools.  If a pool name is not specified when the
+volume is created, the default pool name (`default`) will be used.
+
+To create and manage pools individually, use the [storageos pool command]({%
+link _docs/reference/cli/pool.md %}) to manage which nodes participate in the
+pool (via controllers) and the drivers to use.

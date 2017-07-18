@@ -11,4 +11,4 @@ The StorageOS API is an HTTP API used for managing volumes and StorageOS service
 
 The REST APIs are accessible at port 5705 on any of the nodes in a StorageOS cluster.
 
-The full API reference can be accessed [here](link _docs/reference/api.md).
+The full API reference can be accessed [here]({% link _docs/reference/api.md %}).

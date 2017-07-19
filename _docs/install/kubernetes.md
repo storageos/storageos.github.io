@@ -29,11 +29,6 @@ type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-The StorageOS container must be running on each node that wants to contribute
-storage or that wants to consume storage.  Currently this may be done as a
-standard Docker container (see [Docker Application Container]({% link _docs/install/container.md %})),
-that runs outside of Kubernetes control.
-
 Kubernetes 1.7+ is required.
 
 >**Note**: It is not currently possible to run the StorageOS container via
@@ -45,6 +40,30 @@ is planned for Kubernetes 1.8, and is being developed in
 Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
 following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
 
+To achieve better performance you should enable NBD on each node that intend to
+consume or provide storage, as follows.
+
+### Enabling NBD
+
+NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run the following
+steps on every node.
+
+```bash
+$ sudo modprobe nbd nbds_max=1024
+```
+
+**To ensure the NBD module is loaded on reboot.**
+
+1. Add the following line to `/etc/modules`
+```
+nbd
+```
+
+2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+```
+options nbd nbds_max=1024
+
+```
 ## API Configuration
 
 The StorageOS provider has been pre-configured to use the StorageOS API

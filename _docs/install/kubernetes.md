@@ -49,21 +49,23 @@ NBD is a default Linux kernel module that allows block devices to be run in user
 steps on every node.
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+sudo modprobe nbd nbds_max=1024
 ```
 
 **To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
-```
-nbd
-```
 
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-```
-options nbd nbds_max=1024
+   ```text
+   nbd
+   ```
 
-```
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+
+   ```text
+   options nbd nbds_max=1024
+   ```
+
 ## API Configuration
 
 The StorageOS provider has been pre-configured to use the StorageOS API

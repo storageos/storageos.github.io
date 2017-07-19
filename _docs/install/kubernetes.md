@@ -38,7 +38,7 @@ flag.  The [containerized mount feature](https://github.com/kubernetes/community
 is planned for Kubernetes 1.8, and is being developed in
 [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For
 Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
-following the instructions at [Docker Application Container]({% link _docs/install/container.md %}).
+following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
 
 To achieve better performance you should enable NBD on each node that intend to
 consume or provide storage, as follows.
@@ -214,7 +214,7 @@ Pods can be created that access volumes directly.
 ### Persistent Volumes
 
 1. Create a volume using the StorageOS CLI or API.  Consult the
-   [volume documentation]({% link _docs/manage/volumes.md %}) for details.
+   [volume documentation]({% link _docs/manage/volumes/index.md %}) for details.
 
 1. Create the persistent volume `redis-vol01`.
 

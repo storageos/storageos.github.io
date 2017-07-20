@@ -9,7 +9,7 @@ sections:
     description: StorageOS Overview
     module: introduction/overview
   -
-    title: Quick start
-    description: StorageOS quick start
-    module: introduction/quick_start
+    title: Get help
+    description: Get help
+    module: introduction/get_help    
 ---

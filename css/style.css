@@ -1413,7 +1413,7 @@ object {
 
 body {
     font: 300 13px/22px "Helvetica Neue", Helvetica, Arial;
-    color: #666;
+    color: #333;
     background-color: #fff;
     margin-top: 0;
 }
@@ -1769,6 +1769,37 @@ footer ul {
     width: 50%;
 }
 footer ul li {list-style-type: none; margin-left: 0; padding: 0}
+
+.hbspt-form {position: relative;}
+.hs-input {
+    background-color: #646a81 !important;
+    border: medium none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 12px;
+    height: 50px;
+    text-indent: 10px;
+    width: 100%;
+}
+.hs-button {
+    background-color: #5fb000 !important;
+    color: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    height: 50px;
+    letter-spacing: 4px;
+    line-height: 50px;
+    padding: 0 20px;
+    position: absolute;
+    right: 0;
+    text-indent: 0 !important;
+    text-transform: uppercase;
+    top: 0;
+    width: auto;
+border: none;
+    border-radius: 5px;
+}
+
 section.footers {
     background: white;
     padding: 10px;

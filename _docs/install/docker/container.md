@@ -62,7 +62,7 @@ present on each node where StorageOS runs.  Prior to installation, create it:
 sudo mkdir /var/lib/storageos
 ```
 
-### Configuring Docker
+### Docker only/Docker Swarm configuration
 
 Docker needs to be configured to use the StorageOS volume plugin.  This is done
 by writing a configuration file in `/etc/docker/plugins/storageos.json` with

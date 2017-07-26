@@ -18,6 +18,11 @@ sections:
         description: Troubleshooting the KV store
         module: install/kvstore/troubleshooting
   -
+    title: Cluster Discovery
+    description: Cluster discovery
+    module: install/clusterdiscovery
+    items:
+  -
     title: Schedulers
     description: Running StorageOS using schedulers
     module: install/schedulers

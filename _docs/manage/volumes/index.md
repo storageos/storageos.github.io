@@ -11,8 +11,8 @@ module: manage/volumes/index
 Volumes are used to store data.
 
 Volumes are provisioned from [storage pools]({% link
-_docs/manage/cluster/pools.md %}) and sit in a [namespace]({% link
-_docs/manage/cluster/namespaces.md %}). All volumes are thinly provisioned so
+_docs/manage/volumes/pools.md %}) and sit in a [namespace]({% link
+_docs/manage/volumes/namespaces.md %}). All volumes are thinly provisioned so
 only consume capacity which is actually used.
 
 Volume names consist of lower case alphanumeric characters or '-', and must

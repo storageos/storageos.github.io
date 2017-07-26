@@ -9,11 +9,11 @@ module: install/docker
 
 For Docker environments, StorageOS can be installed in two ways.
 
-The volume plugin is a convenient package for 1) testing and 2) deploying using Docker Swarm. It's available for Docker engine 1.13 and above.
+1. Kubernetes users should use the [container install]({% link _docs/install/docker/plugin.md %}), or if you are running Docker 1.10 - 1.13.
 
-For Kubernetes users or compatibility with Docker 1.10, use the container install.
+2. All other users (testing, Docker Swarm) should use the [volume plugin]({% link _docs/install/docker/plugin.md %}).
 
-In either approach, you will need to install StorageOS on every node in a cluster.
+With either approach, you will need to install StorageOS on every node in a cluster.
 
 ## Prerequisites
 

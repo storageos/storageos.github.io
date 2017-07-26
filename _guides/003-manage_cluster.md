@@ -5,27 +5,22 @@ anchor: manage
 
 sections:
   -
-    title: Cluster
-    description: Managing a cluster
-    module: manage/cluster
-    items:
-      -
-        title: Namespaces
-        description: Using namespaces
-        module: manage/cluster/namespaces
-      -
-        title: Pools
-        description: Using pools
-        module: manage/cluster/pools
-  -
     title: Volumes
     description: Creating and managing data volumes
     module: manage/volumes
     items:
       -
+        title: Namespaces
+        description: Using namespaces
+        module: manage/volumes/namespaces
+      -
         title: Labels and selectors
         description: Using labels and selectors
         module: manage/volumes/labels
+      -
+        title: Pools
+        description: Using pools
+        module: manage/volumes/pools
   -
     title: Features
     description: Managing volume features

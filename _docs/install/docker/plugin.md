@@ -25,11 +25,6 @@ the `KV_ADDR` parameter:
 docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
-Alternatively, to setup a single test StorageOS instance, you can use the
-built-in BoltDB by setting `KV_BACKEND=boltdb`.  Note that each StorageOS node
-will be isolated, so features such as replication and volume failover will not
-be available.
-
 ### Upgrading the plugin
 
 In order to make plugin upgrades easier, install the plugin using

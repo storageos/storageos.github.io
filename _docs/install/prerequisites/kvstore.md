@@ -11,20 +11,6 @@ StorageOS requires a Key/Value store to persist cluster configuration and for
 distributed locking. The KV store needs to be installed and ready before
 StorageOS starts, otherwise it will wait for the KV store to be ready.
 
-## BoltDB
-
-BoltDB is a embedded KV store included in StorageOS. It provides no replication
-or reliability guarantees, and should only be used for testing.
-
-To specify BoltDB, use `KV_BACKEND=boltdb`
-
-```bash
-sudo docker plugin install --grant-all-permissions --alias storageos storageos/plugin KV_BACKEND=boltdb
-```
-
-If `KV_ADDR` is specified with `KV_BACKEND=boltdb`, this should be the directory
-where you want BoltDB to be loaded.
-
 ## Consul
 
 Consul is an open source KV store from HashiCorp and the default KV store for

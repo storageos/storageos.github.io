@@ -31,17 +31,19 @@ type to install to make devices usable from within containers.
 
 Kubernetes 1.7+ is required.
 
+Run the StorageOS container directly in Docker on each node,
+following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
+
 >**Note**: It is not currently possible to run the StorageOS container via
 Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage
 providers require that mount propagation be enabled using the `rshared` mount
 flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589)
 is planned for Kubernetes 1.8, and is being developed in
-[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For
-Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
-following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
+[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).
 
-To achieve better performance you should [enable NBD on each node]({% link _docs/install/prerequisites/performance.md %}) that intend to
-consume or provide storage.
+To achieve better performance you should [enable NBD on each node]({% link
+_docs/install/prerequisites/performance.md %}) that intend to consume or provide
+storage.
 
 ## API Configuration
 

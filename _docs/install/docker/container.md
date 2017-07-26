@@ -9,6 +9,8 @@ module: install/docker/container
 
 Install StorageOS as an application container for Docker Engine 1.10+ or Kubernetes 1.7+.
 
+
+
 ```bash
 sudo mkdir /var/lib/storageos
 sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
@@ -25,7 +27,7 @@ docker run -d --name storageos \
     storageos/node server
 ```
 
-### Prerequisites
+## Prerequisites
 
 Ensure you have a functioning [key-value store and NBD is enabled]({%link _docs/install/docker/index.md %}).
 
@@ -44,14 +46,7 @@ docker run -d --name storageos \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
     storageos/node server
-
-docker plugin install storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
-
-Alternatively, to setup a single test StorageOS instance, you can use the
-built-in BoltDB by setting `KV_BACKEND=boltdb`.  Note that each StorageOS node
-will be isolated, so features such as replication and volume failover will not
-be available.
 
 ### Shared volume directory
 

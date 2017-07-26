@@ -1800,6 +1800,8 @@ border: none;
     border-radius: 5px;
 }
 
+.hbspt-form label {display: none;}
+
 section.footers {
     background: white;
     padding: 10px;

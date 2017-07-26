@@ -12,7 +12,7 @@ module: reference/glossary
 | ConfigFS              |An interpreted configuration representing desired state|
 | Control Plane         |StorageOS component responsible for managing configuration, rules engine, provisioning and recovery processes|
 | Data Plane            |StorageOS component that processes all data access requests and pools the aggregated storage for presentation to clients|
-| Dedupe                |Abbreviated term for deduplicate or deduplication (see also https://en.oxforddictionaries.com/definition/dupe and http://www.dictionary.com/browse/dedupe)|
+| Dedupe                |Abbreviated term for deduplicate or deduplication|
 | Docker Plugin         |The Docker managed plugin install method for Docker 1.13+|
 | Key/Value Store or KV Store|Key/Value store used for service discovery, configuration and health checking|
 | Container Install     |Container-based installation method pre Docker 1.13|
@@ -22,5 +22,3 @@ module: reference/glossary
 | StorageOS Container   |StorageOS instance running the control plane and data plane|
 | StorageOS cluster     |A cluster with StorageOS-managed storage, via installing the software on each node|
 | UUID                  |Universally Unique Identifier is a 128-bit number used to identify information in computer systems which for practical purposes are unique|
-| Unix/unix             |Trademarked as UNIX, is a family of multitasking, multiuser computer operating systems that derive from the original AT&T Unix, developed starting in the 1970s at the Bell Labs research center|
-| No-Knowledge Encryption|A means of ensuring hosting service providers know nothing about the data stored on their servers (see also https://tresorit.com/blog/zero-knowledge-encryption/)|

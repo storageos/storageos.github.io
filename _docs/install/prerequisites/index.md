@@ -7,9 +7,15 @@ module: install/prerequisites/index
 
 # Prerequisites
 
-StorageOS has two mandatory requirements:
+The minimum requirements for a StorageOS node are
 
-1. A [key-value store]({% link _docs/install/prerequisites/kvstore.md %}) for configuration data and cluster management.
-2.  A mechanism for [cluster discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), which allows StorageOS nodes to contact each other.
+* 64-bit Linux
+* Docker 1.10
+* A [key-value store]({% link _docs/install/prerequisites/kvstore.md %}) for configuration data and cluster management.
+* A mechanism for [cluster discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), which allows StorageOS nodes to contact each other.
 
-You should also enable the [Network Block Device module]({% link _docs/install/prerequisites/nbd.md %}) on each node, which improves performance significantly.
+While it is not mandatory, enabling the [Network Block Device module]({% link _docs/install/prerequisites/nbd.md %}) improves performance significantly.
+
+This allows you to install StorageOS using a [container orchestrator]({% link _docs/install/schedulers/index.md %}) or with [Docker only]({% link _docs/install/docker/index.md %}).
+
+For replication and HA, a minimum of three nodes is required for quorum.

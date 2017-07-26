@@ -22,9 +22,9 @@ sections:
         description: Cluster discovery
         module: install/prerequisites/clusterdiscovery
       -
-        title: Performance
-        description: Performance
-        module: install/prerequisites/performance
+        title: Network Block Device
+        description: Network Block Device
+        module: install/prerequisites/nbd
       -
         title: Troubleshooting
         description: Troubleshooting

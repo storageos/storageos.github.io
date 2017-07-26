@@ -12,4 +12,4 @@ StorageOS has two mandatory requirements:
 1. A [key-value store]({% link _docs/install/prerequisites/kvstore.md %}) for configuration data and cluster management.
 2.  A mechanism for [cluster discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), which allows StorageOS nodes to contact each other.
 
-You should also enable the [NBD module]({% link _docs/install/prerequisites/performance.md %}) on each node, which improves performance significantly.
+You should also enable the [Network Block Device module]({% link _docs/install/prerequisites/nbd.md %}) on each node, which improves performance significantly.

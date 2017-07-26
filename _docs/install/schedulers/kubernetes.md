@@ -41,8 +41,8 @@ flag.  The [containerized mount feature](https://github.com/kubernetes/community
 is planned for Kubernetes 1.8, and is being developed in
 [PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).
 
-To achieve better performance you should [enable NBD on each node]({% link
-_docs/install/prerequisites/performance.md %}) that intend to consume or provide
+To achieve better performance you should [enable the Network Block Device module]({% link
+_docs/install/prerequisites/nbd.md %}) on each node that intend to consume or provide
 storage.
 
 ## API Configuration

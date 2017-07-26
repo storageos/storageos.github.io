@@ -9,15 +9,17 @@ module: install/docker/index
 
 StorageOS can be installed in two ways.
 
-1. Kubernetes and Docker 1.10 - 1.13 users should use the [container install]({% link _docs/install/docker/plugin.md %}).
+1. Kubernetes and Docker 1.10 - 1.13 users should use the [container install]({%
+link _docs/install/docker/plugin.md %}).
 
-2. All other users (eg. Docker Swarm, testing) use the [volume plugin]({% link _docs/install/docker/plugin.md %}).
+2. All other users (eg. Docker Swarm, testing) should use the [volume plugin]({%
+link _docs/install/docker/plugin.md %}).
 
-With either approach, you will need to install StorageOS on every node in a cluster.
+With either approach, you will need to install StorageOS on every node in a
+cluster.
 
-## Prerequisites
-
-Ensure you read [the prerequisites]({% link _docs/install/prerequisites/index.md %}) before installing StorageOS on a Docker cluster.
+Ensure you read [the prerequisites]({% link _docs/install/prerequisites/index.md %})
+before installing StorageOS.
 
 ## Environment variables
 

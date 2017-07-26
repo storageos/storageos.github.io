@@ -9,23 +9,12 @@ module: install/docker/plugin
 
 Install the StorageOS volume plugin on Docker Engine 1.13+.
 
-```bash
-sudo modprobe nbd nbds_max=1024
-sudo docker plugin install storageos/plugin
-```
 
-### Prerequisites
+## Prerequisites
 
 Ensure you have a functioning [key-value store and NBD is enabled]({%link _docs/install/docker/index.md %}).
 
-If the KV store is not local, supply the IP address of the Consul service using
-the `KV_ADDR` parameter:
-
-```bash
-docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
-```
-
-### Upgrading the plugin
+## Install the volume plugin
 
 In order to make plugin upgrades easier, install the plugin using
 `--alias storageos`.  This ensures that volumes provisioned with a previous
@@ -43,4 +32,9 @@ Plugin "storageos/plugin" is requesting the following privileges:
  - capabilities: [CAP_SYS_ADMIN]
 Do you grant the above permissions? [y/N]
 ```
+
+If the KV store is not local, supply the IP address of the Consul service using
+the `KV_ADDR` environment variable.
+
+
 Volumes should then be provisioned using the alias i.e. `--volume-driver storageos`.

@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: StorageOS Docs - Performance
+title: StorageOS Docs - Network Block Device
 anchor: install
-module: install/prerequisites/performance
+module: install/prerequisites/nbd
 ---
 
-# Performance enhancements
+# Network Block Device
 
 NBD (Network Block Device) is a default Linux kernel module that allows block
 devices to be run in userspace. It is not a requirement for StorageOS to run,

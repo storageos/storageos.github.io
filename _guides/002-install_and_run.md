@@ -9,19 +9,26 @@ sections:
     description: Quick start
     module: install/quickstart
   -
-    title: Key/Value Store
-    description: Key/Value Store
-    module: install/kvstore
+    title: Prerequisites
+    description: Prerequisites
+    module: install/prerequisites
     items:
       -
+        title: Key/Value Store
+        description: Key/Value Store
+        module: install/prerequisites/kvstore
+      -
+        title: Cluster discovery
+        description: Cluster discovery
+        module: install/prerequisites/clusterdiscovery
+      -
+        title: Performance
+        description: Performance
+        module: install/prerequisites/performance
+      -
         title: Troubleshooting
-        description: Troubleshooting the KV store
-        module: install/kvstore/troubleshooting
-  -
-    title: Cluster Discovery
-    description: Cluster discovery
-    module: install/clusterdiscovery
-    items:
+        description: Troubleshooting
+        module: install/prerequisites/troubleshooting
   -
     title: Schedulers
     description: Running StorageOS using schedulers

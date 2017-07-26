@@ -22,14 +22,14 @@ vagrant plugin install vagrant-alpine
 
 ## Installation
 
-1. Clone this repository, which contains scripts to automate setup.
+1. Get the setup needed for a three-node StorageOS cluster:
 
     ```bash
     git clone https://github.com/storageos/storageos-alpine.git
     cd storageos-alpine
     ```
 
-1. Bring up a three-node StorageOS cluster. This takes around five minutes.
+1. Bring up the cluster. This takes around five minutes.
 
     ```bash
     $ make all
@@ -51,5 +51,4 @@ vagrant plugin install vagrant-alpine
     vagrant ssh s-1
     ```
 
-Now you are ready to [install an application]({% link _docs/applications/databases/postgres.md %})
-or [manage the cluster]({% link _docs/reference/cli/index.md %}).
+Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %}) or [install Postgres]({% link _docs/applications/databases/postgres.md %}).

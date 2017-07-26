@@ -10,100 +10,122 @@ module: manage/volumes/index
 
 Volumes are used to store data.
 
-Volumes are provisioned from [storage pools](#pools). All volumes are thinly provisioned
-so only consume capacity which is actually used.
+Volumes are provisioned from [storage pools]({% link
+_docs/manage/cluster/pools.md %}) and sit in a [namespace]({% link
+_docs/manage/cluster/namespaces.md %}). All volumes are thinly provisioned so
+only consume capacity which is actually used.
+
+Volume names consist of lower case alphanumeric characters or '-', and must
+start and end with an alphanumeric character. By default, volumes are 5GB in
+size (overridden by `--size`) and formatted as ext4 (overridden by
+`--fstype=ext2|ext3|ext4|xfs|btrfs`).
 
 In order to mount volumes into containers, they are formatted with a filesystem
-such as `ext4`. All volumes accessible to any container anywhere on the cluster
+such as `ext4`. All volumes are accessible to any container anywhere on the cluster
 (global namespace) but each volume may only be mounted by one container at a
-time.
+time. Additional behaviours may be specified by adding [labels]({% link _docs/manage/volumes/labels.md %}).
 
-You can manage volumes within your organization using [namespaces](#namespaces)
-and [labels]({% link _docs/manage/volumes/labels.md %}).
-
-StorageOS volumes may be accessed through the [standard Docker
-CLI](https://docs.docker.com/engine/reference/commandline/volume_create/), or
-through the [storageos CLI]({% link _docs/manage/volumes/create.md %}) for more
+Volumes can be created and managed using the [standard Docker
+CLI](https://docs.docker.com/engine/reference/commandline/volume_create/) or
+through the [StorageOS CLI]({% link _docs/reference/cli/volume.md %}) for more
 options and control.
 
-# Namespaces
+## Using the Docker CLI
 
-Namespaces help different projects or teams share a StorageOS cluster. No
-namespaces are created by default, and users can have any number of namespaces.
+The Docker CLI does not support namespaced volumes, so all volumes created using
+the Docker CLI must be in the `default` namepsace.
 
-Namespaces apply to volumes and rules.
-
->**Note**: Docker does not support namespaces, so you should avoid mixing
-volumes created by `docker volume create` (which does not allow namespaces) with
-volumes created by `storageos volume create` (which requires a namespace).
-
-## Create a namespace
-
-To start creating rules and volumes, at least one namespace is required.
-To create a namespace, run:
-
+To create a 15GB volume, run:
 ```bash
-$ storageos namespace create legal --description compliance-volumes
-legal
+$ docker volume create --driver storageos --opt size=15 --opt fstype=ext4 volume-name
 ```
 
-Add the `--display-name` flag to set a display-friendly name.
-
-## List all namespaces
-
-To view namespaces, run:
-
+To create a volume and provision to a Docker container in one step, run:
 ```bash
-$ storageos namespace ls -q
-default
-legal
-performance
+docker run --volume-driver storageos -v volume-name:/data alpine ash -i
 ```
 
-Remove `-q` for full details
+When using dynamic provisioning it is not possible to specify options at
+creation time. The volume will default to 5GB, but the size can be dynamically
+expanded using the CLI or API.
 
-## Inspect namespaces
-
-Check if a namespace has labels applied.
-
+To list all volume, run:
 ```bash
-$ storageos namespace inspect legal | grep labels
-        "labels": null,
+docker volume ls
 ```
 
-## Removing a namespace
+## Using the StorageOS CLI
 
-Removing a namespace will remove all volumes and rules that belong to that
-namespace. An API call or CLI command to remove a namespace will fail if there
-are mounted volumes to prevent data loss.
+With the StorageOS CLI, you must specify a namespace using the `--namespace` flag.
 
-To remove a namespace:
+To create a 15GB volume in the `default` namespace, run:
 
 ```bash
-$ storageos namespace rm legal
-legal
+$ storageos volume create --namespace default --size 15 --fstype ext4 volume-name
+default/volume-name
 ```
 
-To force remove, even if there are mounted volumes:
+To view all volumes in all namespaces, run:
 
 ```bash
-storageos namespace rm --force my-namespace
+$ storageos volume ls
+NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
+default/volume-name   15GB                                                        active              0/0
 ```
 
-# Pools
+To mount a volume on the current node into `/mnt`, run:
 
-Pools are used to create collections of storage resources created from StorageOS
-cluster nodes.
+```bash
+storageos volume mount default/volume-name /mnt
+```
 
-Pools are used to organize storage resources into common collections such as
-class of server, class of storage, location within the datacenter or subnet.
-Cluster nodes can participate in more than one pool.
+In order for the mount to succeed, StorageOS must be running on the node and the
+volume must not be mounted anywhere else. When the volume is mounted a lock is
+placed on the volume to ensure it is not written by multiple concurrent writers
+as this could lead to data inconsistency.
 
-## Using pools
+By default the volume will be formatted using `ext4`, which may be overridden or
+updated with `--fstype`.
 
-Volumes are provisioned from pools.  If a pool name is not specified when the
-volume is created, the default pool name (`default`) will be used.
+## Resizing volumes
 
-To create and manage pools individually, use the [storageos pool command]({%
-link _docs/reference/cli/pool.md %}) to manage which nodes participate in the
-pool (via controllers) and the drivers to use.
+To resize a volume, use `storageos volume update --size <new_size_in_GB> `.
+
+The volume is expanded immediately but you will need to manually resize the
+filesystem by calling `resize2fs`.
+
+Shrinking a volume is not supported.
+
+## Unmounting and removing volumes
+
+To unmount a volume on the current node, run:
+
+```bash
+storageos volume unmount default/volume-name
+```
+
+The unmount command should be run on the node that has the volume mounted.
+Unmounting the volume detaches the filesystem from the node and removes the
+mount lock. In cases where the filesystem was unmounted manually using the Linux
+`umount` utility, or the node is no longer active, you can specify the `--force`
+flag to only remove the mount lock.
+
+To delete a volume, run:
+
+```bash
+$ storageos volume rm default/volume-name
+default/volume-name
+```
+
+All data in this volume will be lost.
+
+This command will fail if the volume is mounted. To delete a mounted volume, add
+`--force` flag:
+
+```bash
+$ storageos volume rm --force default/volume-name
+default/volume-name
+```
+
+Volumes may not be removed immediately as the data will be purged in the
+background.

@@ -68,5 +68,4 @@ sections:
         title: Google Cloud
         description: Installing on Google Cloud
         module: install/cloud/googlecloud
-  -
 ---

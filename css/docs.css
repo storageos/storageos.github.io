@@ -33,6 +33,10 @@
 .guide-list .section-link.title.active {
   color: #61c202;
 }
+.guide-child ul {
+  padding-left: 25px;
+}
+
 
 .page-content {
   padding-top:150px;

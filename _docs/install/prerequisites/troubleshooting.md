@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - Troubleshooting the KV store
+title: StorageOS Docs - Troubleshooting
 anchor: install
-module: install/kvstore/troubleshooting
+module: install/prerequisites/troubleshooting
 ---
 
 # KV Store Troubleshooting
@@ -15,7 +15,7 @@ recovered.
 
 ## Consul External KV Store
 This section assumes that Consul has been installed by following the
-[Consul installation]({% link _docs/install/kvstore/index.md %}) guide.
+[Consul installation]({% link _docs/install/prerequisites/kvstore.md %}) guide.
 
 Depending on your installation, Consul may be running on the same node as
 StorageOS or on remote nodes.  Find the correct server by looking at the ip

@@ -9,14 +9,26 @@ sections:
     description: Quick start
     module: install/quickstart
   -
-    title: Key/Value Store
-    description: Key/Value Store
-    module: install/kvstore
+    title: Prerequisites
+    description: Prerequisites
+    module: install/prerequisites
     items:
       -
+        title: Key/Value Store
+        description: Key/Value Store
+        module: install/prerequisites/kvstore
+      -
+        title: Cluster discovery
+        description: Cluster discovery
+        module: install/prerequisites/clusterdiscovery
+      -
+        title: Network Block Device
+        description: Network Block Device
+        module: install/prerequisites/nbd
+      -
         title: Troubleshooting
-        description: Troubleshooting the KV store
-        module: install/kvstore/troubleshooting
+        description: Troubleshooting
+        module: install/prerequisites/troubleshooting
   -
     title: Schedulers
     description: Running StorageOS using schedulers
@@ -68,5 +80,4 @@ sections:
         title: Google Cloud
         description: Installing on Google Cloud
         module: install/cloud/googlecloud
-  -
 ---

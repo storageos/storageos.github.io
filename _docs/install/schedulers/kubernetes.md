@@ -31,40 +31,19 @@ type to install to make devices usable from within containers.
 
 Kubernetes 1.7+ is required.
 
+Run the StorageOS container directly in Docker on each node,
+following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
+
 >**Note**: It is not currently possible to run the StorageOS container via
 Kubernetes in a Pod or Daemonset.  StorageOS and other containerized storage
 providers require that mount propagation be enabled using the `rshared` mount
 flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589)
 is planned for Kubernetes 1.8, and is being developed in
-[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).  For
-Kubernetes 1.7, run the StorageOS container directly in Docker on each node,
-following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
+[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).
 
-To achieve better performance you should enable NBD on each node that intend to
-consume or provide storage, as follows.
-
-### Enabling NBD
-
-NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run the following
-steps on every node.
-
-```bash
-sudo modprobe nbd nbds_max=1024
-```
-
-**To ensure the NBD module is loaded on reboot.**
-
-1. Add the following line to `/etc/modules`
-
-   ```text
-   nbd
-   ```
-
-1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-
-   ```text
-   options nbd nbds_max=1024
-   ```
+To achieve better performance you should [enable the Network Block Device module]({% link
+_docs/install/prerequisites/nbd.md %}) on each node that intend to consume or provide
+storage.
 
 ## API Configuration
 

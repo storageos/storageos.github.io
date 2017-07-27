@@ -2,64 +2,26 @@
 layout: guide
 title: StorageOS Docs - Docker only
 anchor: install
-module: install/docker
+module: install/docker/index
 ---
 
 # Overview
 
-For Docker environments, StorageOS can be installed in two ways.
+StorageOS can be installed in two ways.
 
-The volume plugin is a convenient package for 1) testing and 2) deploying using Docker Swarm. It's available for Docker engine 1.13 and above.
+1. Kubernetes and Docker 1.10 - 1.13 users should use the [container install]({%
+link _docs/install/docker/plugin.md %}).
 
-For Kubernetes users or compatibility with Docker 1.10, use the container install.
+2. All other users (eg. Docker Swarm, testing) should use the [volume plugin]({%
+link _docs/install/docker/plugin.md %}).
 
-In either approach, you will need to install StorageOS on every node in a cluster.
+With either approach, you will need to install StorageOS on every node in a
+cluster.
 
-## Prerequisites
+Ensure you read [the prerequisites]({% link _docs/install/prerequisites/index.md %})
+before installing StorageOS.
 
-### KV Store
-
-StorageOS relies on an external key-value store for configuration data and
-cluster management.  See [Key/Value store install]({% link _docs/install/kvstore/index.md %})
-for more details.
-
-### NBD
-
-NBD (Network Block Device) is a default Linux kernel module that allows block
-devices to be run in userspace. It is not a requirement for StorageOS to run,
-but improves performance significantly. To enable the module and increase the
-number of allowable devices, run:
-
-```bash
-sudo modprobe nbd nbds_max=1024
-```
-
-To ensure the NBD module is loaded on reboot:
-
-1. Add the following line to `/etc/modules`
-
-    ```text
-    nbd
-    ```
-
-1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-
-    ```text
-    options nbd nbds_max=1024
-    ```
-
-### Routable IP Address
-
-StorageOS nodes must be able to contact each other over the network.  By default,
-the node's first non-loopback address will be configured as the `ADVERTISE_IP`.
-In some cases (such as with Vagrant installations), this will not be appropriate
-and it will need to be set manually.
-
-Use `ip a` to list available ip addresses, and then configure StorageOS to use a
-specific address by adding `-e ADVERTISE_IP=<ip>` to the StorageOS docker run
-command.
-
-# Environment variables
+## Environment variables
 
 For most environments, the default settings should work. If Consul is not
 running locally on the node, you will need to set `KV_ADDR`.

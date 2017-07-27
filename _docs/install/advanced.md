@@ -32,7 +32,7 @@ Docker Compose is recommended.
 ### KV Store
 
 StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation]({% link _docs/install/kvstore/index.md %}) for more details.
+management.  See [Consul installation]({% link _docs/install/prerequisites/kvstore.md %}) for more details.
 
 ## Manual Installation
 

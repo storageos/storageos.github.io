@@ -1796,7 +1796,7 @@ footer ul li {list-style-type: none; margin-left: 0; padding: 0}
     text-transform: uppercase;
     top: 0;
     width: auto;
-border: none;
+    border: none;
     border-radius: 5px;
 }
 
@@ -1979,3 +1979,4 @@ section.footers {
             padding-left: 15px;
         }
     }
+}

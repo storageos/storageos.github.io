@@ -1,15 +1,20 @@
 ---
 layout: guide
-title: StorageOS Docs - Cluster
-anchor: manage
-module: manage/cluster
+title: StorageOS Docs - Cluster discovery
+anchor: install
+module: install/prerequisites/clusterdiscovery
 ---
 
 # Cluster discovery
 
-All the nodes need to bind to the correct addresses in order to
-peer correctly. To override the default (the first non-loopback interface), you can
-set the `ADVERTISE_IP` environment variable:
+StorageOS nodes must be able to contact each other over the network.  By default, it is assumed that this is the node's first non-loopback address.
+
+## Setting the IP address manually
+
+In some cases (such as with Vagrant installations), this will not be appropriate and it will need to be set manually.
+
+Use `ip a` to list available ip addresses, then set the `ADVERTISE_IP` environment variable on each node to configure StorageOS to use a
+specific address:
 
 ```bash
 export ADVERTISE_IP=172.28.128.3
@@ -55,30 +60,3 @@ Alternatively, you can supply the `INITIAL_CLUSTER` environment variable:
 INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380,storageos-2=http://172.28.128.9:2380,storageos-3=http://172.28.128.15:2380
 ```
 -->
-
-## Pools
-
-StorageOS manages storage using pools, which are collections of storage resouces
-created from StorageOS cluster nodes. Most users will use the default pool.
-
-Pools are used to organize storage resources into common collections such as
-class of server, class of storage, location within the datacenter or subnet.
-Cluster nodes can participate in more than one pool.
-
-Volumes are provisioned from pools.  If a pool name is not specified when the
-volume is created, the default pool name (`default`) will be used.
-
-[Create and manage pools with the CLI](link /_docs/reference/cli/pool)
-
-## Namespaces
-
-Namespaces help different projects or teams share a StorageOS cluster. No
-namespaces are created by default, and users can have any number of namespaces.
-
-Namespaces apply to volumes and rules.
-
->**Note**: Docker does not support namespaces, so you should avoid mixing
-volumes created by `docker volume create` (which does not allow namespaces) with
-volumes created by `storageos volume create` (which requires a namespace).
-
-[Create and manage namespaces with the CLI](link /_docs/reference/cli/namespace)

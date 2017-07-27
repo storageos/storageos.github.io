@@ -32,6 +32,7 @@ sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/asset
 ```bash
 docker run -d --name storageos \
     -e HOSTNAME \
+    -e ADVERTISE_IP=xxx.xxx.xxx.xxx \
     --net=host \
     --pid=host \
     --privileged \
@@ -39,8 +40,7 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server \
-    ADVERTISE_IP=xxx.xxx.xxx.xxx
+    storageos/node server
 ```
 
 If the KV store is not local, supply the IP address of the Consul service using

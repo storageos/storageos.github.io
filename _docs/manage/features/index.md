@@ -13,7 +13,7 @@ storage features. No feature labels are present by default.
 
 | Feature     | Label                           | Values         | Description                                              |
 |:------------|:--------------------------------|:---------------|:---------------------------------------------------------|
-| Caching     | `storageos.feature.nocache`     | true / false   | Switches off caching, which improves read/write performance at the cost of more memory. |
+| Caching     | `storageos.feature.nocache`     | true / false   | Switches off caching. |
 | Compression | `storageos.feature.nocompress`  | true / false   | Switches off compression of data at rest and in transit. |
 | Replication | `storageos.feature.replicas`    | integers [0, 5]| Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. |
 | QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
@@ -23,5 +23,5 @@ especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
 
 To create a volume with a feature labels:
 ```bash
-storageos volume create --label storageos.feature.cache=true
+storageos volume create --label storageos.feature.throttle=true
 ```

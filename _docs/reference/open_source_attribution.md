@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Open Source Attribution
+title: StorageOS Docs - Open Source Attribution 
 anchor: reference
 module: reference/open_source_attribution
 ---
@@ -133,7 +133,7 @@ modification, are permitted provided that the following conditions
 are met:
 
 1. Redistributions of source code must retain the above copyright
-   notice, this list of conditions and the following disclaimer.
+   notice, this list of conditions and the following disclaimer. 
 
 2. Redistributions in binary form must reproduce the above copyright
    notice, this list of conditions and the following disclaimer in
@@ -217,7 +217,7 @@ are met:
     Eric Young (eay@cryptsoft.com)"
    The word 'cryptographic' can be left out if the rouines from the library
    being used are not cryptographic related :-).
-4. If you include any Windows specific code (or a derivative thereof) from
+4. If you include any Windows specific code (or a derivative thereof) from 
    the apps directory (application code) you must include an acknowledgement:
    "This product includes software written by Tim Hudson (tjh@cryptsoft.com)"
 
@@ -586,7 +586,6 @@ limitations under the License.
 ```
 
 
-
 ## github.com/dgrijalva/jwt-go
 
 ```
@@ -621,7 +620,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 MetroHash
 
 This package is a mechanical translation of the reference C++ code for
-MetroHash, available at https://github.com/jandrewrogers/MetroHash
+MetroHash, available at https://github.com/jandrewrogers/MetroHash 
 
 I claim no additional copyright over the original implementation.
 

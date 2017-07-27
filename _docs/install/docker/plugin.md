@@ -22,7 +22,7 @@ version of the plugin continue to function after the upgrade.  (By default,
 Docker ties volumes to the plugin version.)
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx
 Plugin "storageos/plugin" is requesting the following privileges:
  - network: [host]
  - mount: [/var/lib/storageos]

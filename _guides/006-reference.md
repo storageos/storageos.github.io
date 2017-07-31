@@ -14,6 +14,10 @@ sections:
         description: Create and manage namespaces
         module: reference/cli/namespace
       -
+        title: user
+        description: Create and manage users
+        module: reference/cli/user
+      -
         title: node
         description: View node information
         module: reference/cli/node

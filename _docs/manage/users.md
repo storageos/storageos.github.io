@@ -18,20 +18,19 @@ Admins also have the added ability to add, update and remove users policies and 
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
 
-## CLI
-### Creating a new user
+## Creating a new user
 
 Users can be created, deleted and managed from the `storageos` CLI. For example to create a new non-admin user 'awesomeUser' and add them to the 'test' and 'dev' groups, run:
 
 ```bash
-$ storageos user create bob --groups test,dev --password --role user awesomeUser
+$ storageos user create --groups test,dev --password --role user awesomeUser
 Password: 
 Confirm Password: 
 ```
 
 >**Note**: Passwords are prompted for interactively to avoid passwords appearing in terminal logs
 
-### List current users
+## List current users
 
 ```bash
 $ storageos user ls
@@ -40,7 +39,7 @@ ID                                     USERNAME            GROUPS              R
 9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
 ```
 
-### Remove users
+## Remove users
 
 Users can be deleted using the `storageos user rm` command. Multiple users can be selected at once, and both IDs or usernames can be used to select users.
 
@@ -62,7 +61,7 @@ ID                                     USERNAME            GROUPS              R
 9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
 ```
 
-### Update a user
+## Update a user
 
 User information can also be updated from the CLI using the `storageos user update` command, using optional arguments to denote which field(s) need updating.
 The following example updates a user's password, adds them to the group "testers" and removes them from the group "dev".

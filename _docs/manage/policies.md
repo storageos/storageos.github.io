@@ -13,8 +13,8 @@ Policies are a simple Attribute-Based Access Control records that are used to pe
 
 ## Format
 
-The format for policy rules is similar to that of Kubernetes' ABAC syntax, defining acceptable actions within the system. If any of the policy entries match the
-action is allowed.
+The format for policy rules is similar to that of [Kubernetes' ABAC syntax](https://kubernetes.io/docs/admin/authorization/abac/), defining acceptable actions within the system.
+If any of the policy entries match the action is allowed.
 
 >**Note**: Admin users (users with their role field set to `admin`) are treated as super-users which can perform any action within the system, regardless of policies set.
 

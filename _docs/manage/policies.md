@@ -9,14 +9,14 @@ module: manage/policies
 
 Policies are a simple Attribute-Based Access Control records that are used to permission users (or groups) to namespaces.
 
->**Note**: On initial startup there is only the storageos user and no policies are in place. If no policies exist, all users can access all namespaces.
+>**Note**: On initial startup there is only the `storageos` user and no policies are in place. If no policies exist, all users can access all namespaces.
 
 ## Format
 
 The format for policy rules is similar to that of Kubernetes' ABAC syntax, defining acceptable actions within the system. If any of the policy entries match the
 action is allowed.
 
->**Note**: Admin users are treated as super-users which can perform any action within the system, regardless of policies set.
+>**Note**: Admin users (users with their role field set to `admin`) are treated as super-users which can perform any action within the system, regardless of policies set.
 
 ```json
 {"spec":{"user": "bob", "namespace": "legal"}}
@@ -25,12 +25,11 @@ action is allowed.
 
 The rules above will allow any user with the username bob, or in the group compliance, to access the legal namespace.
 
-## CLI
 
-### Adding policies
-Policies can be added via the CLI application using the `storageos policy create command. New policies can be supplied to this command with n-many positional arguments, a set of files or by reading from stdin. The positional arguments are expected to be in the form of either a single policy object or a json list of policy objects. The file input is expected to be in json line format (one object per line, the same as kubernetes). Reading from stdin will accept either json line format, or json objects/lists.
+## Adding policies
+Policies can be added via the CLI application using the `storageos policy create` command. New policies can be supplied to this command with n-many positional arguments, a set of files or by reading from stdin. The positional arguments are expected to be in the form of either a single policy object or a json list of policy objects. The file input is expected to be in json line format (one object per line, the same as kubernetes). Reading from stdin will accept either json line format, or json objects/lists.
 
-#### Adding using positional args
+### Adding using positional args
 Policies can be added using positional arguments. They are expected to either be policy objects, or a json list of policy objects. In this example both are used.
 
 ```bash
@@ -43,8 +42,8 @@ c14aa3ff-99f7-d0fb-41e9-ad45b0919851   bar                                     f
 13de44a2-c50a-c225-9f65-871cfad0c838                       baz                 false                                                       restricted
 ```
 
-#### Adding using jsonl files
-Policies can also be added using kubernetes style policy files (json line format). In this example we use these two files:
+### Adding using jsonl files
+Policies can also be added using Kubernetes style policy files (json line format). In this example we use these two files:
 
 p1.jsonl:
 ```json
@@ -67,7 +66,7 @@ ID                                     USER                GROUP               R
 34c868ef-4e4b-fb71-f0f7-fa94e4652776   bar                                     false                                                       testing
 8ced2820-7ad1-bd46-4d9f-d7dab1ba4c67                       baz                 false                                                       restricted
 ```
-#### Adding using stdin
+### Adding using stdin
 The final method of adding policies is using the stdin for the `storageos policy create` command, using the `--stdin` option. The stdin accepts input in both json form and jsonl form.
 
 json form:
@@ -89,7 +88,7 @@ ID                                     USER                GROUP               R
 f1e33492-aa9b-3922-7824-383941d37a5d   bar                                     false                                                       testing
 ```
 
-### Listing current policies
+## Listing current policies
 Policies live in the system can be displayed using the `storageos policy ls` command.
 
 ```bash
@@ -100,7 +99,7 @@ c14aa3ff-99f7-d0fb-41e9-ad45b0919851   bar                                     f
 13de44a2-c50a-c225-9f65-871cfad0c838                       baz                 false                                                       restricted
 ```
 
-### Removing policies
+## Removing policies
 Policies can be removed from the system using the `storageos policy rm` command. Multiple policies can be selected at once.
 
 ```bash

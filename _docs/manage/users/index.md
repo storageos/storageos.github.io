@@ -7,16 +7,20 @@ module: manage/users
 
 # Users
 
-User accounts facilitate granular permissioning of acceptable actions within the system by the use of policies.
+User accounts facilitate granular permissioning of acceptable actions within the system by the use of [Policies.]({% link _docs/manage/users/policies.md%})
 
 >**Note**: On initial startup there is only the `storageos` user which is an admin user.
 
 ## Admin vs User accounts
 
 Admin users are treated as super-users which can perform any action within the system, regardless of policies set.
-Admins also have the added ability to add, update and remove users policies and perform other administrative roles within the system.
+Admins also have the added ability to add, update and remove users, their policies and perform other administrative roles within the system.
+Such as manging volumes, or creating new namespaces.
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
+
+>**Note**: In this context, access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) means the abiltiy to create/update/remove
+[Volumes]({% link _docs/manage/volumes/index.md%}) and [Rules]({% link _docs/automate/rules.md%}) within that namespace.
 
 ## Creating a new user
 

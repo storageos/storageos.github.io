@@ -25,6 +25,9 @@ If any of the policy entries match the action is allowed.
 
 The rules above will allow any user with the username bob, or in the group compliance, to access the legal namespace.
 
+>**Note**: In this context, access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) means the abiltiy to create/update/remove
+[Volumes]({% link _docs/manage/volumes/index.md%}) and [Rules]({% link _docs/automate/rules.md%}) within that namespace.
+
 
 ## Adding policies
 Policies can be added via the CLI application using the `storageos policy create` command. New policies can be supplied to this command with n-many positional arguments, a set of files or by reading from stdin. The positional arguments are expected to be in the form of either a single policy object or a json list of policy objects. The file input is expected to be in json line format (one object per line, the same as kubernetes). Reading from stdin will accept either json line format, or json objects/lists.

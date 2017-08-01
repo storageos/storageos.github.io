@@ -18,6 +18,10 @@ sections:
         description: Create and manage users
         module: reference/cli/user
       -
+        title: policy
+        description: Create and manage policies
+        module: reference/cli/policy
+      -
         title: node
         description: View node information
         module: reference/cli/node

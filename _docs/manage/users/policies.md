@@ -30,7 +30,8 @@ The rules above will allow any user with the username bob, or in the group compl
 
 
 ## Adding policies
-Policies can be added via the CLI application using the `storageos policy create` command. New policies can be supplied to this command with n-many positional arguments, a set of files or by reading from stdin. The positional arguments are expected to be in the form of either a single policy object or a json list of policy objects. The file input is expected to be in json line format (one object per line, the same as kubernetes). Reading from stdin will accept either json line format, or json objects/lists.
+Policies can be added via the CLI application using the `storageos policy create` command. New policies can be supplied to this command with n-many positional arguments, or by providing a set of files.
+The positional arguments are expected to be in the form of either a single policy object or a json list of policy objects. The file input is expected to be in json line format (one object per line, the same as kubernetes).
 
 ### Adding using positional args
 Policies can be added using positional arguments. They are expected to either be policy objects, or a json list of policy objects. In this example both are used.
@@ -69,27 +70,8 @@ ID                                     USER                GROUP               R
 34c868ef-4e4b-fb71-f0f7-fa94e4652776   bar                                     false                                                       testing
 8ced2820-7ad1-bd46-4d9f-d7dab1ba4c67                       baz                 false                                                       restricted
 ```
-### Adding using stdin
-The final method of adding policies is using the stdin for the `storageos policy create` command, using the `--stdin` option. The stdin accepts input in both json form and jsonl form.
 
-json form:
-```bash
-$ echo '{"spec":{"user":"foo", "namespace": "*"}}' | storageos policy create --stdin
-
-$ storageos policy ls
-ID                                     USER                GROUP               READONLY            APIGROUP            RESOURCE            NAMESPACE           NONRESOURCEPATH
-1dcd73d1-23de-0329-7501-fc7aa60affb2   foo                                     false                                                       *
-```
-
-jsonl form:
-```bash
-$ cat p1.jsonl | storageos policy create --stdin
-
-$ storageos policy ls
-ID                                     USER                GROUP               READONLY            APIGROUP            RESOURCE            NAMESPACE           NONRESOURCEPATH
-976a74bd-630c-eeb5-8c33-b033b99dcf68   foo                                     false                                                       *
-f1e33492-aa9b-3922-7824-383941d37a5d   bar                                     false                                                       testing
-```
+>**Note**: It is also possible to consume this file format from stdin using the `--stdin` option.
 
 ## Listing current policies
 Policies live in the system can be displayed using the `storageos policy ls` command.

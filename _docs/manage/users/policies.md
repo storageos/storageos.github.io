@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Policies
 anchor: manage
-module: manage/policies
+module: manage/users/policies
 ---
 
 # Policies

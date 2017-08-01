@@ -100,3 +100,6 @@ $ storageos policy ls
 ID                                     USER                GROUP               READONLY            APIGROUP            RESOURCE            NAMESPACE           NONRESOURCEPATH
 c14aa3ff-99f7-d0fb-41e9-ad45b0919851   bar                                     false                                                       testing
 ```
+
+>**Note**: Once `storageos policy rm` has completed, the selected policies will have all been removed from the system.
+However, during this call requests may still be checked against some subset of the policies to be removed.

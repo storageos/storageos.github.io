@@ -19,7 +19,7 @@ Such as manging volumes, or creating new namespaces.
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
 
->**Note**: In this context, access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) means the abiltiy to create/update/remove
+>**Note**: In this context, access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) means the ability to create/update/remove
 [Volumes]({% link _docs/manage/volumes/index.md%}) and [Rules]({% link _docs/automate/rules.md%}) within that namespace.
 
 ## Creating a new user

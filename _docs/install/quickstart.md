@@ -8,8 +8,6 @@ module: install/quickstart
 
 # Quick start
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Arhn0X0UQ-s" frameborder="0" allowfullscreen></iframe>
-
 To quickly test StorageOS on a laptop, you can set up a three node cluster using Vagrant.
 
 You will need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant

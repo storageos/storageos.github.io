@@ -33,6 +33,8 @@ $ storageos cluster create
 cluster token: 207f0026-3844-40e0-884b-729d79c124b8
 ```
 
+The default cluster size is 3; pass `-s` to set the size to 3-7.
+
 ### `storageos cluster inspect`
 
 To inspect a cluster:

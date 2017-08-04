@@ -14,8 +14,8 @@ them.
 
 As public Beta software, StorageOS has yet to be released commercially and may
 contain imperfections causing the software not to perform as well as GA release
-software. _We therefore recommend you only install this on non-production,
-non-business critical infrastructure or devices._
+software. **Therefore we recommend you only install this on non-production,
+non-business critical infrastructure or devices.**
 
 Before the GA release, data formats used by StorageOS may change and there may
 not be an automated migration process. When upgrades break compatibility or
@@ -30,6 +30,7 @@ and to perform upgrades only after reading the release notes.
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin
   installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
+- Clients mounting volumes from RHEL7/CentOS 7 will experience degraded performance due to the absence of the [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those platforms.
 
 ## 0.7.10
 

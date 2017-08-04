@@ -10,16 +10,13 @@ module: reference/cli/index
 ## Overview
 
 The `storageos` command line interface (CLI) is used to manage cluster-wide
-configuration. It is open source and available from [Github](https://github.com/storageos/go-cli/releases).
+configuration. It is [open source](https://github.com/storageos/go-cli) and available from the [Docker Hub](https://hub.docker.com/r/storageos/cli/).
 
 ## Installation
 
-To install the StorageOS CLI on a 64 bit Linux machine:
+Alias the StorageOS CLI:
 ```bash
-sudo -i
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.10/storageos_linux_amd64 > /usr/local/bin/storageos
-chmod +x /usr/local/bin/storageos
-exit
+$ alias storageos="docker run storageos/cli"
 ```
 
 You will need to provide the correct credentials. The default installation

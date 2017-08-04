@@ -30,7 +30,8 @@ and to perform upgrades only after reading the release notes.
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin
   installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
-- Clients mounting volumes from RHEL7/CentOS 7 will experience degraded performance due to the absence of the [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those platforms.
+- Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
+performance due to the absence of the [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those platforms.
 
 ## 0.7.10
 

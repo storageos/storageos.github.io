@@ -12,7 +12,7 @@ Compression reduces the amount of data stored or transmitted to reduce performan
 
 ## Create a uncompressed volume
 
-All volumes are compressed by default. To create an uncompressed volume, set the `storageos.feature.nocompression` label with the StorageOS CLI:
+All volumes are compressed by default. To create an uncompressed volume, set the `storageos.feature.nocompression` label:
 
 ```bash
 storageos volume create --namespace default --label storageos.feature.nocompression=true volume-name

@@ -30,7 +30,7 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 For remote authentication, set `STORAGEOS_HOST`:
 
 ```bash
-export STORAGEOS_HOST=<ip address:port>
+export STORAGEOS_HOST=<ip address>
 ```
 
 Credentials can be overridden with the `-u`, `-p`  and `-h` flags.

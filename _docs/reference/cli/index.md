@@ -88,7 +88,7 @@ command line override their corresponding environment variables.
 
 * `STORAGEOS_USERNAME`: Username for API authentication, equivalent of -u.
 * `STORAGEOS_PASSWORD`: Password for API authentication, equivalent of -p.
-* `STORAGEOS_HOST`: ip_address:port to connect to, equivalent of -H.
+* `STORAGEOS_HOST`: ip_address to connect to, equivalent of -H.
 
 ## Management Commands
 

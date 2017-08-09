@@ -23,16 +23,15 @@ ADVERTISE_IP=172.28.128.3
 
 ## Option 1: Cluster discovery service
 
-The simplest method is to use the discovery service, which is available through
-the [StorageOS CLI]({%link _docs/reference/cli/cluster.md %}). To get a token
-for a cluster with three nodes:
+The simplest method is to use the public discovery service. To get a token for a
+3 node cluster using the [StorageOS CLI]({%link _docs/reference/cli/cluster.md %}):
 
 ```bash
 $ storageos cluster create --size 3
 cluster token: 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-Supply this cluster ID to all the nodes that you want to join the cluster:
+Supply this cluster ID as an environment variable to all the nodes that you want to join the cluster:
 ```bash
 CLUSTER_ID=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
@@ -43,7 +42,9 @@ are registered, StorageOS will start up.
 
 ## Option 2: Supply INITIAL_CLUSTER
 
-Alternatively, provide an explicit list of hostnames and IP addresses via the `INITIAL_CLUSTER` environment variable.
+Alternatively, provide an explicit list of hostnames and IP addresses via the
+`INITIAL_CLUSTER` environment variable.
+
 ```bash
 INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380,storageos-2=http://172.28.128.9:2380,storageos-3=http://172.28.128.15:2380
 ```
@@ -54,9 +55,9 @@ INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380
 ```
 Note that replicas are not available in a single node install.
 
-## Check cluster status
+## Cluster status
 
-To check the cluster initialized successfully, run
+To check the cluster initialized successfully:
 
 ```bash
 $ storageos node ls

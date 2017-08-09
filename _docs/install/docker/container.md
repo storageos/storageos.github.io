@@ -11,7 +11,7 @@ Install StorageOS as an application container for Docker Engine 1.10+ or Kuberne
 
 ## Prerequisites
 
-Ensure you have a functioning [key-value store and NBD is enabled]({%link _docs/install/prerequisites/index.md %}).
+Ensure you have a functioning [key-value store]({%link _docs/install/prerequisites/kvstore.md %}) and [NBD is enabled]({%link _docs/install/prerequisites/nbd.md %}).
 
 StorageOS shares volumes via `/var/lib/storageos`.  This must be
 present on each node where StorageOS runs.
@@ -20,8 +20,8 @@ present on each node where StorageOS runs.
 sudo mkdir /var/lib/storageos
 ```
 
-For Docker only or Docker Swarm clusters, Docker needs to be configured to use
-the StorageOS volume plugin:
+For Docker only or Docker Swarm clusters, configure Docker to use the StorageOS
+volume plugin:
 
 ```bash
 sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json

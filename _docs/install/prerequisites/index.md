@@ -17,8 +17,6 @@ The following conditions must be met before installing StorageOS:
   * 2380, 8222 (cluster services)
   * 5705 (HTTP API)
   * 13700 (cluster health checks)
-1. A [key-value store]({% link _docs/install/prerequisites/kvstore.md %}) for
-configuration data and cluster management.
 1. A mechanism for [cluster
 discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), to allow
 StorageOS nodes to contact each other.

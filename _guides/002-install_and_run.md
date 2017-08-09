@@ -14,10 +14,6 @@ sections:
     module: install/prerequisites
     items:
       -
-        title: Key/Value Store
-        description: Key/Value Store
-        module: install/prerequisites/kvstore
-      -
         title: Cluster discovery
         description: Cluster discovery
         module: install/prerequisites/clusterdiscovery
@@ -25,10 +21,6 @@ sections:
         title: Network Block Device
         description: Network Block Device
         module: install/prerequisites/nbd
-      -
-        title: Troubleshooting
-        description: Troubleshooting
-        module: install/prerequisites/troubleshooting
   -
     title: Schedulers
     description: Running StorageOS using schedulers

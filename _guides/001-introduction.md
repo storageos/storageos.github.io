@@ -11,5 +11,9 @@ sections:
   -
     title: Get help
     description: Get help
-    module: introduction/get_help    
+    module: introduction/get_help
+  -
+    title: Online tutorials
+    description: Browser-based tutorials
+    module: introduction/tutorials
 ---

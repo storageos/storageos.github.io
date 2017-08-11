@@ -14,9 +14,12 @@ configuration. It is [open source](https://github.com/storageos/go-cli) and avai
 
 ## Installation
 
-Alias the StorageOS CLI:
+Install to `/usr/local/bin`:
 ```bash
-$ alias storageos="docker run storageos/cli"
+sudo -i
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.11/storageos_linux_amd64 > /usr/local/bin/storageos
+chmod +x /usr/local/bin/storageos
+exit
 ```
 
 You will need to provide the correct credentials. The default installation
@@ -30,7 +33,7 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 For remote authentication, set `STORAGEOS_HOST`:
 
 ```bash
-export STORAGEOS_HOST=<ip address:port>
+export STORAGEOS_HOST=<ip address>
 ```
 
 Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
@@ -88,7 +91,7 @@ command line override their corresponding environment variables.
 
 * `STORAGEOS_USERNAME`: Username for API authentication, equivalent of -u.
 * `STORAGEOS_PASSWORD`: Password for API authentication, equivalent of -p.
-* `STORAGEOS_HOST`: ip_address:port to connect to, equivalent of -H.
+* `STORAGEOS_HOST`: ip_address to connect to, equivalent of -H.
 
 ## Management Commands
 

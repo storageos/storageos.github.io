@@ -7,7 +7,8 @@ module: install/docker/container
 
 # Docker Application Container
 
-Install StorageOS as an application container for Docker Engine 1.10+ or Kubernetes 1.7+.
+Install StorageOS as an application container for Docker Engine 1.10+ or
+Kubernetes 1.7+.
 
 ## Prerequisites
 

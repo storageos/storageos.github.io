@@ -55,15 +55,4 @@ INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380
 ```
 Note that replicas are not available in a single node install.
 
-## Cluster status
-
-To check the cluster initialized successfully:
-
-```bash
-$ storageos node ls
-
-NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
-vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
-```
+[How to check the cluster status]({%link _docs/install/health.md %})

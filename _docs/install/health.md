@@ -7,7 +7,7 @@ module: install/health
 
 # Cluster health
 
-You can check on the status of your cluster.
+Various tools are available for checking on the status of a cluster.
 
 ### Cluster members
 

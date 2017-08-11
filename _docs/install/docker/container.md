@@ -11,7 +11,10 @@ Install StorageOS as an application container for Docker Engine 1.10+ or Kuberne
 
 ## Prerequisites
 
-Ensure you have a functioning [key-value store]({%link _docs/install/prerequisites/kvstore.md %}) and [NBD is enabled]({%link _docs/install/prerequisites/nbd.md %}).
+[Enable nbd:]({%link _docs/install/prerequisites/nbd.md %})
+```bash
+sudo modprobe nbd nbds_max=1024
+```
 
 StorageOS shares volumes via `/var/lib/storageos`.  This must be
 present on each node where StorageOS runs.
@@ -29,10 +32,15 @@ sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/asset
 
 ## Install the storageos/node container
 
+Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery
+token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
+`CLUSTER_ID` when you install the container:
+
 ```bash
 docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=xxx.xxx.xxx.xxx \
+    -e CLUSTER_ID=xxxxxxxxxxxxxxxxx \
     --net=host \
     --pid=host \
     --privileged \
@@ -42,6 +50,3 @@ docker run -d --name storageos \
     -v /run/docker/plugins:/run/docker/plugins \
     storageos/node server
 ```
-
-If the KV store is not local, supply the IP address of the Consul service using
-the `KV_ADDR` environment variable.

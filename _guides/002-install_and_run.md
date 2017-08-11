@@ -72,4 +72,8 @@ sections:
         title: Google Cloud
         description: Installing on Google Cloud
         module: install/cloud/googlecloud
+  -
+    title: Cluster health
+    description: Checking the status of a StorageOS cluster
+    module: install/health
 ---

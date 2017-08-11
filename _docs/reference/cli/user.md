@@ -31,7 +31,7 @@ Run 'storageos user COMMAND --help' for more information on a command.
 To create a new (admin) user "awesomeUser" with a interactively provided password that is a member of the group "dev":
 
 ```bash
-$ storageos user create --role admin --password --groups dev awesomeUser
+$ storageos user create --role admin --groups dev awesomeUser
 Password: 
 Confirm Password: 
 ```

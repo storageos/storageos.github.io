@@ -27,12 +27,13 @@ Users only have the ability to change their password and have access to the name
 Users can be created, deleted and managed from the `storageos` CLI. For example to create a new non-admin user 'awesomeUser' and add them to the 'test' and 'dev' groups, run:
 
 ```bash
-$ storageos user create --groups test,dev --password --role user awesomeUser
+$ storageos user create --groups test,dev --role user awesomeUser
 Password: 
 Confirm Password: 
 ```
 
->**Note**: Passwords are prompted for interactively to avoid passwords appearing in terminal logs
+Passwords are prompted for interactively to avoid passwords appearing in terminal logs, but can also be provided with the `--password flag`.
+Passwords must not be < 8 characters long.
 
 ## List current users
 
@@ -85,3 +86,6 @@ ID                                     USERNAME            GROUPS              R
 e367ccf0-240d-538f-540f-5013784b5665   awesomeUser         testers             user
 9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
 ```
+
+>**Note**: In this case the `--password` flag is a boolean used to indicate that you wish to update the user's password.
+The password will be prompted for interactively.

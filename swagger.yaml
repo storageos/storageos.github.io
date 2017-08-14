@@ -55,6 +55,14 @@ tags:
     x-displayName: "Pools"
     description: |
       Create and manage distributed capacity pools.
+  - name: "Rule"
+    x-displayName: "Rules"
+    description: |
+      Create and manage rules.
+  - name: "CapacityStat"
+    x-displayName: "CapacityStats"
+    description: |
+      Create and manage capacity statistics.
 
 definitions:
 

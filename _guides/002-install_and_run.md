@@ -44,13 +44,13 @@ sections:
     module: install/docker
     items:
       -
-        title: Volume plugin
-        description: Docker managed plugin install for Docker Engine 1.13+
-        module: install/docker/plugin
-      -
         title: Container
         description: Docker container install for Docker Engine 1.10+
         module: install/docker/container
+      -
+        title: Volume plugin
+        description: Docker managed plugin install for Docker Engine 1.13+
+        module: install/docker/plugin
       -
         title: Troubleshooting
         description: Troubleshooting a Docker installation

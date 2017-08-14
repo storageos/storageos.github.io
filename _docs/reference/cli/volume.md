@@ -90,10 +90,10 @@ default/volume-name   15GB                                                      
 
 ### `storageos volume mount`
 
-To mount a volume on the current node into `/mnt`:
+To mount a volume on the current node into `/mnt` (note this requires root):
 
 ```bash
-storageos volume mount default/volume-name /mnt
+sudo storageos volume mount default/volume-name /mnt
 ```
 
 ### `storageos volume rm`
@@ -107,8 +107,10 @@ default/volume-name
 
 ### `storageos volume unmount`
 
-To unmount a volume on the current node, run:
+To unmount a volume on the current node (note this requires root):
 
 ```bash
-storageos volume unmount default/volume-name
+sudo storageos volume unmount default/volume-name
 ```
+
+>**Unmounting volumes requires the user to be root.**

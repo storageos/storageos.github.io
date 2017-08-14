@@ -43,10 +43,10 @@ $ curl -v http://localhost:5705/v1/health
 < Content-Length: 539
 <
 * Connection 0 to host localhost left intact
-{"submodules":{"kv":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707066Z","changedAt":"2017-08-11T11:31:41.124110346Z"},"kv_write":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707825Z","changedAt":"2017-08-11T11:31:51.088848317Z"},"nats":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503706574Z","changedAt":"2017-08-11T11:31:51.088844662Z"},"scheduler":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707417Z","changedAt":"2017-08-11T11:31:51.088847582Z"}}}
+{"submodules":{"kv":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707066Z","changedAt":"2017-08-11T11:31:41.124110346Z"},"kv_write":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707825Z","changedAt":"2017-08-11T11:31:51.088848317Z"},"nats":{"status":"alive","message":","updatedAt":"2017-08-11T12:07:55.503706574Z","changedAt":"2017-08-11T11:31:51.088844662Z"},"scheduler":{"status":"alive","message":"","updatedAt":"2017-08-11T12:07:55.503707417Z","changedAt":"2017-08-11T11:31:51.088847582Z"}}}
 ```
 
-### Installation
+### Install logs
 
 For container installs (`storageos/node`), pipe the container logs to grep to check that the cluster services initialized correctly:
 
@@ -59,4 +59,18 @@ By using this product, you are agreeing to the terms of the StorageOS Ltd. End U
 ==> Starting StorageOS server...
     version: StorageOS 22c3cf0, Built: 2017-08-10T141824Z
 ==> StorageOS server running!
+```
+
+For plugin installs (`storageos/plugin`), use `journalctl` to view logs:
+```bash
+$ journalctl | grep StorageOS
+Aug 11 15:27:06 storageos-1 dockerd[14521]: time="2017-08-11T15:27:06Z" level=info msg="By using this product, you are agreeing to the terms of the StorageOS Ltd. End User Subscription Agreement (EUSA) found at: https://storageos.com/legal/#eusa" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:06 storageos-1 dockerd[14521]: time="2017-08-11T15:27:06Z" level=info msg="==> Starting StorageOS server..." plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:12 storageos-1 dockerd[14521]: time="2017-08-11T15:27:12Z" level=info msg="    version: StorageOS c456268, Built: 2017-08-10T105011Z" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:15 storageos-1 dockerd[14521]: time="2017-08-11T15:27:15Z" level=info msg="==> StorageOS server running!" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:15 storageos-1 dockerd[14521]: time="2017-08-11T15:27:15Z" level=info msg="StorageOS Volume Presentation level=info" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:15 storageos-1 dockerd[14521]: time="2017-08-11T15:27:15Z" level=info msg="StorageOS DirectFS v1 server (server v0.1 protocol v1.2) start level=info" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:16 storageos-1 dockerd[14521]: time="2017-08-11T15:27:16Z" level=info msg="StorageOS DIRECTOR category=director level=info" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:16 storageos-1 dockerd[14521]: time="2017-08-11T15:27:16Z" level=info msg="StorageOS DirectFS v1 client (server v0.1 protocol v1.2) start category=clinit level=info" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
+Aug 11 15:27:17 storageos-1 dockerd[14521]: time="2017-08-11T15:27:17Z" level=info msg="StorageOS RDB plugin category=rdbplginit level=info" plugin=8faec9ebb155cb05a42ac804bb21a0cfb1c0861543fa2741fd04e8ce0acc421a
 ```

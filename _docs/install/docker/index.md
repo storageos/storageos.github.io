@@ -23,15 +23,16 @@ fulfilled before installing StorageOS.
 
 ## Environment variables
 
-For most environments, the default settings should work. If Consul is not
-running locally on the node, you will need to set `KV_ADDR`.
+For most environments, the default settings should work.
 
 * `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.
 * `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
+{% comment %}
 * `KV_ADDR`: IP address/port of the Key/Vaue store.  Defaults to `127.0.0.1:8500`
-* `KV_BACKEND`: Type of KV store to use.  Defaults to `consul`. `boltdb` can be used for single node testing.
+* `KV_BACKEND`: Type of KV store to use.  Defaults to `consul`.
+{% endcomment %}
 * `API_PORT`: Port for the API to listen on.  Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
 * `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `4222`.
 * `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.

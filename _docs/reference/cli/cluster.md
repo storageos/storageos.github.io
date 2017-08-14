@@ -27,7 +27,7 @@ Run 'storageos cluster COMMAND --help' for more information on a command.
 
 ### `storageos cluster create`
 
-To create a cluster:
+To create a cluster token id, which is used for [cluster discovery]({%link _docs/install/prerequisites/clusterdiscovery.md %}):
 ```bash
 $ storageos cluster create
 cluster token: 207f0026-3844-40e0-884b-729d79c124b8

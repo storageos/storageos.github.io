@@ -7,11 +7,14 @@ module: manage/features/caching
 
 # Caching
 
-Local caching improves read performance by using memory to cache data. By
-default caching uses 5% of available memory and increases based on:
-* More than 3GB total, 7%
-* More than 8GB total, 13%
-* More than 12 GB free, 20%.
+Local caching improves read performance by using memory to cache data.
+
+| Available memory   | StorageOS cache size |
+|:-------------------|:---------------------|
+| 3 GB or less       | 3%                   |
+| 3-8 GB             | 5%                   |
+| 8-12 GB            | 7%                   |
+| 12 GB or more      | 10%                  |
 
 ## Create a cached volume
 

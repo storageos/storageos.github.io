@@ -56,10 +56,6 @@ sections:
         description: Troubleshooting a Docker installation
         module: install/docker/troubleshooting
       -
-        title: Mounting volumes
-        description: Mounting StorageOS volumes to a container
-        module: install/docker/mount
-      -
   -
     title: Cloud providers
     description: Running StorageOS on cloud providers

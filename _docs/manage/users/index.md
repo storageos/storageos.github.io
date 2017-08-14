@@ -31,6 +31,7 @@ Password:
 Confirm Password: 
 ```
 
+Usernames are case-sensitive and follow the format `[a-zA-Z0-9]+` (one or more alphanumeric characters).
 Passwords are prompted for interactively to avoid passwords appearing in terminal logs, but can also be provided with the `--password flag`.
 Passwords must not be < 8 characters long.
 

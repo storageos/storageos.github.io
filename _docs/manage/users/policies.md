@@ -32,9 +32,8 @@ These policy files detail acceptable actions within the system, if any of the po
 
 The rules above will allow any user with the username bob, or in the group compliance, to access the legal namespace.
 
->**Note**: In this context, access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) means the ability to create/update/remove
+Access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) grants the ability to create/update/remove
 [Volumes]({% link _docs/manage/volumes/index.md%}) and [Rules]({% link _docs/automate/rules.md%}) within that namespace.
-
 
 
 ### Adding using flags

@@ -43,8 +43,4 @@ sections:
         description: Compression
         module: manage/features/compression
       -
-  -
-    title: Mounting volumes
-    description: Mounting StorageOS volumes to a container
-    module: install/docker/mount
 ---

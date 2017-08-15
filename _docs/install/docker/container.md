@@ -51,3 +51,11 @@ docker run -d --name storageos \
     -v /run/docker/plugins:/run/docker/plugins \
     storageos/node server
 ```
+
+To use StorageOS volumes with containers, specify `--volume-driver storageos`:
+
+```bash
+$ docker container run -it --volume-driver storageos --volume myvol:/data busybox sh
+/ #
+```
+This creates a new container with a StorageOS volume called `myvol` mounted at `/data`.

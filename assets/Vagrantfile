@@ -18,7 +18,7 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    soegarots/node:uuid-bc403991 server
+    storageos/node server
 
 # Install StorageOS CLI
 curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.11/storageos_linux_amd64 > /usr/local/bin/storageos
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
     end
   end
 
- 
+
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "3328"
     vb.cpus = "1"

@@ -55,7 +55,6 @@ sections:
         title: Troubleshooting
         description: Troubleshooting a Docker installation
         module: install/docker/troubleshooting
-      -
   -
     title: Cloud providers
     description: Running StorageOS on cloud providers

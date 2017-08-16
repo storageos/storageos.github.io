@@ -42,3 +42,4 @@ For most environments, the default settings should work.
 * `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `17100`.
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`.  Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.
+* `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.

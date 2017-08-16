@@ -31,6 +31,8 @@ For most environments, the default settings should work.
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.
 * `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
+* CLUSTER_ID: Cluster ID for the node to join an existing cluster previously created through 'storageos cluster create' command
+* INITIAL_CLUSTER: Static list of pre-existing cluster, supplied as comma separated list of <hostname>=<ip>:2380
 {% comment %}
 * `KV_ADDR`: IP address/port of the Key/Vaue store.  Defaults to `127.0.0.1:8500`
 * `KV_BACKEND`: Type of KV store to use.  Defaults to `consul`.

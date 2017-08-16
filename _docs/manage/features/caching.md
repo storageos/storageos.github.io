@@ -18,12 +18,12 @@ Local caching improves read performance by using memory to cache data.
 
 ## Create a cached volume
 
-All reads and writes are cached by default. To disable caching (eg. during
+All reads and writes are cached by default. To disable caching (e.g. during
 database backups which do not need to be cached), set the
 `storageos.feature.nocache` label:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.nocache=true volume-name
+storageos volume create --label storageos.feature.nocache=true volume-name
 ```
 
 or the Docker CLI:

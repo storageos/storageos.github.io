@@ -9,7 +9,7 @@ module: install/docker/plugin
 
 Install the StorageOS volume plugin on Docker Engine 1.13+.
 
->**Use the [container install method]({%link _docs/install/docker/container.md %}) with Kubernetes or to mount volumes to the host.**
+>**Use the [container install method]({%link _docs/install/docker/container.md %}) with Kubernetes or to mount volumes to the host using the CLI.**
 
 ## Prerequisites
 

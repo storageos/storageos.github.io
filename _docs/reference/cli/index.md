@@ -36,7 +36,7 @@ For remote authentication, set `STORAGEOS_HOST`:
 export STORAGEOS_HOST=<ip address>
 ```
 
-Credentials can be overridden with the `-u`, `-p`  and `-h` flags.
+Credentials can be overridden with the `-u`, `-p`  and `-H` flags.
 
 ```bash
 $ storageos -u storageos -p storageos volume list

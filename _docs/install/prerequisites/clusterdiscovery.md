@@ -13,7 +13,7 @@ during start up. This enables nodes to contact each other over the network.
 ## Setting the IP address
 
 By default, a node's IP address is assumed to be the first non-loopback address.
-To override this (eg. for Vagrant installations), set the `ADVERTISE_IP`
+To override this (e.g. for Vagrant installations), set the `ADVERTISE_IP`
 environment variable on each node to configure StorageOS to use a specific
 address:
 
@@ -30,7 +30,7 @@ _docs/reference/cli/cluster.md %}):
 
 ```bash
 $ storageos cluster create --size 3
-cluster token: 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
+017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
 Supply the returned cluster ID token as an environment variable to each node:

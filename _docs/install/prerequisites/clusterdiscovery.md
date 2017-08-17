@@ -21,11 +21,20 @@ address:
 ADVERTISE_IP=172.28.128.3
 ```
 
-## Option 1: Specify cluster size
+## Clustering
+
+The Raft protocol requires an odd number of nodes for consensus. The recommended size
+for test and small production deployments is 3 nodes, which can tolerate a
+single node failure. Greater tolerance can be achieved with 5 or 7 node
+clusters; performance will degrade for more nodes.
+
+Replicas are unavailable in a single node install.
+
+### Option 1: Specify cluster size
 
 The first option is to use the StorageOS discovery service, which is a public `etcd` service.
 
-Specify the expected size of the cluster using the [StorageOS CLI]({%link
+Specify the expected size of the cluster (3 ,5 or 7) using the [StorageOS CLI]({%link
 _docs/reference/cli/cluster.md %}):
 
 ```bash
@@ -43,7 +52,7 @@ Each node will report that it is waiting for the cluster. Once three members
 are registered, StorageOS will start up.
 
 
-## Option 2: Specify hostnames and IP addresses
+### Option 2: Specify hostnames and IP addresses
 
 Alternatively, provide an explicit list of hostnames and IP addresses via the
 `INITIAL_CLUSTER` environment variable.
@@ -51,7 +60,5 @@ Alternatively, provide an explicit list of hostnames and IP addresses via the
 ```bash
 INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380,storageos-2=http://172.28.128.9:2380,storageos-3=http://172.28.128.15:2380
 ```
-
-Note that replicas are not available in a single node install.
 
 * [Checking the cluster status]({%link _docs/install/health.md %})

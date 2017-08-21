@@ -9,6 +9,7 @@ module: install/prerequisites/index
 
 The following conditions must be met before installing StorageOS:
 
+1. Minimum one core with 2GB RAM.
 1. Linux with a 64-bit architecture
  * For Red Hat Enterprise Linux 7, [read the release notes]({% link _docs/reference/release_notes.md %}).
 1. Docker 1.10 or later

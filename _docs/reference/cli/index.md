@@ -17,7 +17,7 @@ configuration. It is [open source](https://github.com/storageos/go-cli) and avai
 Install to `/usr/local/bin`:
 ```bash
 sudo -i
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.11/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.12/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 exit
 ```

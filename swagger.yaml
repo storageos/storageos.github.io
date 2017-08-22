@@ -111,6 +111,20 @@ definitions:
         format: "datetime"
         readOnly: true
 
+  UserCreateOptions:
+    type: "object"
+    description: "Parameters available for creating a new user."
+    required: [Username, Password]
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+      groups:
+        type: "string"
+      role:
+        type: "string"
+
   PolicyCreateOptions:
     type: "object"
     description: "Parameters available for creating a new policy."
@@ -514,16 +528,16 @@ definitions:
     type: "object"
     description: "An user object, defining one user"
     properties:
-      ID:
+      id:
         description: "The ID of the user"
         type: "string"
-      Username:
+      username:
         description: "The Username of the user"
         type: "string"
-      Groups:
+      groups:
         description: "Comma seperated list of groups the user is in. e.g. 'dev,qa,sys'"
         type: "string"
-      Role:
+      role:
         description: "The role of the user [admin|user]"
         type: "string"
 
@@ -635,7 +649,7 @@ parameters:
     description: "Timeout for the list call."
 
 paths:
-  /users/{ID}:
+  /users/{id}:
     get:
       summary: "Get user"
       description: "Display a user selected by ID"
@@ -669,9 +683,47 @@ paths:
       consumes:
         - "application/x-www-urlencoded"
       tags: ["User"]
+      parameters:
+        - name: "Password"
+          description: "The new password for the user"
+          in: "query"
+          type: "string"
+
+        - name: "Groups"
+          description: "The new comma separated list of groups to assign the user to. E.g. 'dev,qa,sys'"
+          in: "query"
+          type: "string"
+
+        - name: "Role"
+          description: "The new role for the user [admin|user]"
+          in: "query"
+          type: "string"
       responses:
         200:
-          description: "Success"
+          description: "The user was updated successfully"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "User not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      summary: "Delete user"
+      description: "Remove a user selected by ID"
+      tags: ["User"]
+      responses:
+        200:
+          description: "The User was deleted successfully"
         401:
           description: "Not authenticated with the API"
           schema:
@@ -715,6 +767,36 @@ paths:
           description: "Server error"
           schema:
             $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Create User"
+      description: "Create a new User on the system"
+      consumes:
+        - "application/json"
+      tags: ["User"]
+      parameters:
+        - name: "PolicyCreateOptions"
+          in: "body"
+          schema:
+            $ref: "#/definitions/UserCreateOptions"
+      responses:
+        200:
+          description: "The User was created successfully"
+        400:
+          description: "The provided JSON was incorrect"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 
   /policies:
     get:
@@ -729,9 +811,12 @@ paths:
           schema:
             type: "object"
             properties:
-              id:
-                description: "The ID of the policy"
-                $ref: "#/definitions/Policy"
+              "d313dcb6-a193-77ce-dd34-42b9e2100ee6":
+                  $ref: "#/definitions/Policy"
+              "a245deb1-d592-94ab-de12-53b7e1510ba4":
+                  $ref: "#/definitions/Policy"
+              "...":
+                  $ref: "#/definitions/Policy"
         401:
           description: "Not authenticated with the API"
           schema:
@@ -757,10 +842,11 @@ paths:
             $ref: "#/definitions/PolicyCreateOptions"
       responses:
         200:
-          description: "Success"
+          description: "The policy was created successfully"
+        400:
+          description: "The provided JSON was incorrect"
           schema:
-            type: "string"
-            description: "The ID of the created policy"
+            $ref: "#/definitions/ErrorResponse"
         401:
           description: "Not authenticated with the API"
           schema:
@@ -808,7 +894,7 @@ paths:
       tags: ["Policy"]
       responses:
         200:
-          description: "Success"
+          description: "The Policy was deleted successfully"
         401:
           description: "Not authenticated with the API"
           schema:

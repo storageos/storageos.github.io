@@ -8,18 +8,17 @@ module: manage/users
 # Users
 
 User accounts facilitate granular permissioning of acceptable actions within the system by the use of [Policies.]({% link _docs/manage/users/policies.md%})
-
->**Note**: On initial startup there is only the `storageos` user which is an admin user.
+On initial startup there is only the `storageos` user which is an admin user.
 
 ## Admin vs User accounts
 
 Admin users are treated as super-users which can perform any action within the system, regardless of policies set.
 Admins also have the added ability to add, update and remove users, their policies and perform other administrative roles within the system.
-Such as manging creating new namespaces.
+Such as managing creating new namespaces.
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
-Access to a [Namespace]({% link _docs/manage/volumes/namespaces.md%}) grants the ability to create/update/remove
-[Volumes]({% link _docs/manage/volumes/index.md%}) and [Rules]({% link _docs/automate/rules.md%}) within that namespace.
+Access to a [namespace]({% link _docs/manage/volumes/namespaces.md%}) grants a user the ability to create/update/remove
+[volumes]({% link _docs/manage/volumes/index.md%}) and [rules]({% link _docs/automate/rules.md%}) within that namespace.
 
 ## Creating a new user
 
@@ -32,7 +31,7 @@ Confirm Password:
 ```
 
 Usernames are case-sensitive and follow the format `[a-zA-Z0-9]+` (one or more alphanumeric characters).
-Passwords are prompted for interactively to avoid passwords appearing in terminal logs, but can also be provided with the `--password flag`.
+Passwords are prompted for interactively to avoid passwords appearing in terminal logs, but can also be provided with the `--password` flag.
 Passwords must not be < 8 characters long.
 
 ## List current users

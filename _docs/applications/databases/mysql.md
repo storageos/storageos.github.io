@@ -92,8 +92,6 @@ guide for further details.
 
    ```bash
    mysql> use testdb
-   Reading table information for completion of table and column names
-   You can turn off this feature to get a quicker startup with -A
    Database changed
    ```
 
@@ -180,8 +178,6 @@ container has exited.
 
    ```bash
    mysql> use testdb
-   Reading table information for completion of table and column names
-   You can turn off this feature to get a quicker startup with -A
    Database changed
    ```
 

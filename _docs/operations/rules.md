@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Rules
-anchor: automate
-module: automate/rules
+anchor: operations
+module: operations/rules
 ---
 
 # Rules

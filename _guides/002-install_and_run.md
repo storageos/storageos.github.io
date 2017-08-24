@@ -31,6 +31,10 @@ sections:
         description: Installing on Kubernetes
         module: install/schedulers/kubernetes
       -
+        title: Docker Swarm
+        description: Installing on Docker Swarm
+        module: install/schedulers/dockerswarm
+      -
         title: Rancher
         description: Installing on Rancher
         module: install/schedulers/rancher

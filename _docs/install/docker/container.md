@@ -28,8 +28,7 @@ For Docker only or Docker Swarm clusters, configure Docker to use the StorageOS
 volume plugin:
 
 ```bash
-sudo mkdir /etc/docker/plugins
-sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
+sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
 ```
 
 ## Install the storageos/node container

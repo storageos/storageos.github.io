@@ -38,7 +38,7 @@ and to perform upgrades only after reading the release notes.
 
 ## Upgrades
 
-Due to nature the KV Store change there is no upgrade method from 0.7.x to
+Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 0.8.0+.  Our recommendation is to create a new cluster, paying attention to the
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`)
 
@@ -52,7 +52,7 @@ We will endeavor to make upgrades more seamless in the future.
 This is our first feature release since launching our public beta, and it
 focusses on feedback from users.  As always, please let us know how you are using
 StorageOS, what problems it is solving for you and how it can improve.  Join our
-Slack channel!
+[Slack channel!](http://slack.storageos.com)
 
 New
 
@@ -61,7 +61,7 @@ New
   deprecated, though external etcd clusters are now supported.
 - Cluster discovery service to help bootstrap clusters.  Allocate a new cluster
   with `storageos cluster create` and pass the cluster identifier to each
-  StorageOS node in the `CLUSTER_API` environment variable to allow nodes to
+  StorageOS node in the `CLUSTER_ID` environment variable to allow nodes to
   discover the cluster without specifying hostnames or ip addresses.
 - Access control policies can restrict access to volumes and rules created
   within a namespace.
@@ -84,7 +84,7 @@ Improved
 - Environment variable validation
 - Selectors for rules
 - Use default namespace when not specified
-- Internal volume performance counters (Prometheus endpoints coming soon!)
+- Internal volume performance counters
 - API can report health while waiting for cluster to initialize
 
 Fixed

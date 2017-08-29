@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - API
-anchor: automate
-module: automate/api
+anchor: operations
+module: operations/api
 ---
 
 # RESTful API

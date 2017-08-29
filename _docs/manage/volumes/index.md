@@ -32,7 +32,7 @@ options and control.
 
 ## Using the Docker CLI
 
-The Docker CLI does not support namespaced volumes, so all volumes created using
+>**The Docker CLI does not support namespaced volumes** so all volumes created using
 the Docker CLI must be in the `default` namepsace.
 
 To create a 15GB volume, run:

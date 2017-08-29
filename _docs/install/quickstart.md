@@ -3,52 +3,35 @@ layout: guide
 title: StorageOS Docs - Quick start
 anchor: install
 module: install/quickstart
-# Last reviewed by simon.croome@storageos.com on 2017-04-11
 ---
 
 # Quick start
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Arhn0X0UQ-s" frameborder="0" allowfullscreen></iframe>
+To quickly test StorageOS on a laptop, you can run a cluster locally using
+Vagrant.
 
-To quickly test StorageOS on a laptop, you can set up a three node cluster using Vagrant.
+You will need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
+and [Vagrant 1.9.3](http://vagrantup.com/downloads.html).
 
-You will need to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant
-1.9.3](http://vagrantup.com/downloads.html). You will also need the Vagrant
-plugin for Alpine, a lightweight Linux distribution:
-
-```bash
-vagrant plugin install vagrant-alpine
-```
 
 ## Installation
 
-1. Get the setup needed for a three-node StorageOS cluster:
+Download the [Vagrantfile]({%link assets/Vagrantfile %}) and
+run `vagrant up` to provision three Ubuntu 16.04 VMs running Docker, the
+StorageOS container, and the StorageOS CLI.
 
-    ```bash
-    git clone https://github.com/storageos/storageos-alpine.git
-    cd storageos-alpine
-    ```
+```bash
+$ curl -sS https://docs.storageos.com/assets/Vagrantfile -o Vagrantfile
+$ vagrant up
+Bringing machine 'storageos-1' up with 'virtualbox' provider...
+Bringing machine 'storageos-2' up with 'virtualbox' provider...
+Bringing machine 'storageos-3' up with 'virtualbox' provider...
+...
+==> storageos-3: c2bda12c8025: Pull complete
+==> storageos-3: Digest: sha256:f9201f8a417eec88f0e417576442e4daecb552310f3eeda2b0676145203b1ea8
+==> storageos-3: Status: Downloaded newer image for storageos/node
+==> storageos-3: e91abf267c3f6d4dee8aaa31b3a233329d3a6e905ae83578b9bd2c59c32f5661
+```
 
-1. Bring up the cluster. This takes around five minutes.
-
-    ```bash
-    $ make all
-    Bringing machine 's-1' up with 'virtualbox' provider...
-    Bringing machine 's-2' up with 'virtualbox' provider...
-    Bringing machine 's-3' up with 'virtualbox' provider...
-    [...]
-    ```
-
-    This sets up three virtual machines named `s-1`, `s-2`, `s-3` running
-    * Alpine Linux
-    * Docker
-    * The recommended KV store, Consul.
-    * The StorageOS volume plugin.
-
-1. Connect to one of the VMs
-
-    ```bash
-    vagrant ssh s-1
-    ```
-
-Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %}) or [install Postgres]({% link _docs/applications/databases/postgres.md %}).
+Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %})
+or [install Postgres]({% link _docs/applications/databases/postgres.md %}).

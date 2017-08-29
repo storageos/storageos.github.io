@@ -27,11 +27,13 @@ Run 'storageos cluster COMMAND --help' for more information on a command.
 
 ### `storageos cluster create`
 
-To create a cluster:
+To create a cluster token id, which is used for [cluster discovery]({%link _docs/install/prerequisites/clusterdiscovery.md %}):
 ```bash
 $ storageos cluster create
-cluster token: 207f0026-3844-40e0-884b-729d79c124b8
+207f0026-3844-40e0-884b-729d79c124b8
 ```
+
+The default cluster size is 3; pass `-s` to set the size to 3-7.
 
 ### `storageos cluster inspect`
 
@@ -46,6 +48,18 @@ $ storageos cluster inspect 207f0026-3844-40e0-884b-729d79c124b8
         "updatedAt": "2017-07-14T13:17:29.22605861Z"
     }
 ]
+```
+
+### `storageos cluster health`
+
+To view the status of various components:
+
+```bash
+$ storageos cluster health
+NODE                ADDRESS             STATUS              KV                  NATS                SCHEDULER          DFS_CLIENT          DFS_SERVER          DIRECTOR            FS_DRIVER           FS
+storageos-3         192.168.50.102      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
+storageos-2         192.168.50.101      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
+storageos-1         192.168.50.100      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
 ```
 
 ### `storageos cluster rm`

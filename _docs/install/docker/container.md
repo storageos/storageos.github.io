@@ -7,11 +7,15 @@ module: install/docker/container
 
 # Docker Application Container
 
-Install StorageOS as an application container for Docker Engine 1.10+ or Kubernetes 1.7+.
+Install StorageOS as an application container for Docker Engine 1.10+ or
+Kubernetes 1.7+.
 
 ## Prerequisites
 
-Ensure you have a functioning [key-value store and NBD is enabled]({%link _docs/install/prerequisites/index.md %}).
+[Enable nbd:]({%link _docs/install/prerequisites/nbd.md %})
+```bash
+sudo modprobe nbd nbds_max=1024
+```
 
 StorageOS shares volumes via `/var/lib/storageos`.  This must be
 present on each node where StorageOS runs.
@@ -20,19 +24,24 @@ present on each node where StorageOS runs.
 sudo mkdir /var/lib/storageos
 ```
 
-For Docker only or Docker Swarm clusters, Docker needs to be configured to use
-the StorageOS volume plugin:
+For Docker only or Docker Swarm clusters, configure Docker to use the StorageOS
+volume plugin:
 
 ```bash
-sudo wget -O /etc/docker/plugins/storageos.json https://docs.storageos.com/assets/storageos.json
+sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
 ```
 
 ## Install the storageos/node container
+
+Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery
+token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
+`CLUSTER_ID` when you install the container:
 
 ```bash
 docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=xxx.xxx.xxx.xxx \
+    -e CLUSTER_ID=xxxxxxxxxxxxxxxxx \
     --net=host \
     --pid=host \
     --privileged \
@@ -43,5 +52,10 @@ docker run -d --name storageos \
     storageos/node server
 ```
 
-If the KV store is not local, supply the IP address of the Consul service using
-the `KV_ADDR` environment variable.
+To use StorageOS volumes with containers, specify `--volume-driver storageos`:
+
+```bash
+$ docker container run -it --volume-driver storageos --volume myvol:/data busybox sh
+/ #
+```
+This creates a new container with a StorageOS volume called `myvol` mounted at `/data`.

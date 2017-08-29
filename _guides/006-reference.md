@@ -10,6 +10,10 @@ sections:
     module: reference/cli
     items:
       -
+        title: cluster
+        description: Create and manage cluster
+        module: reference/cli/cluster
+      -
         title: namespace
         description: Create and manage namespaces
         module: reference/cli/namespace

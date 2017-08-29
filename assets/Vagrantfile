@@ -1,0 +1,59 @@
+$install_storageos = <<SCRIPT
+
+# Prerequisites
+sudo modprobe nbd nbds_max=1024
+sudo mkdir /var/lib/storageos
+sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
+
+# Install StorageOS container
+docker run -d --name storageos \
+    -e HOSTNAME \
+    -e ADVERTISE_IP=$1 \
+    -e INITIAL_CLUSTER=storageos-1=http://192.168.50.100:2380,storageos-2=http://192.168.50.101:2380,storageos-3=http://192.168.50.102:2380 \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node server
+
+# Install StorageOS CLI
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.12/storageos_linux_amd64 > /usr/local/bin/storageos
+chmod +x /usr/local/bin/storageos
+echo "export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=192.168.50.100" > /home/vagrant/.profile
+SCRIPT
+
+nodes = 3
+i = 0
+hostnames = nodes.times.collect { |n| "storageos-#{n + 1}" }
+node_ips = nodes.times.collect { |n| "192.168.50.#{n + 100}" }
+image = "bento/ubuntu-16.04"
+
+
+Vagrant.configure("2") do |config|
+  config.vm.provision "docker"
+  config.vm.box_check_update = false
+  config.vm.box = image
+
+  hostnames.each do |hostname|
+    config.vm.define hostname do |node|
+      node.vm.hostname = hostname
+      node.vm.network "private_network", ip: node_ips[i]
+      node.vm.provision "shell" do |s|
+        s.inline = $install_storageos
+        s.args = node_ips[i]
+        s.keep_color = true
+      end
+      i += 1
+    end
+  end
+
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = "1"
+  end
+
+end

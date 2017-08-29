@@ -21,6 +21,10 @@ sections:
         title: Network Block Device
         description: Network Block Device
         module: install/prerequisites/nbd
+      -
+        title: Ports and Firewall Settings
+        description: Ports and Firewall Settings
+        module: install/prerequisites/firewalls
   -
     title: Schedulers
     description: Running StorageOS using schedulers

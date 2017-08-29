@@ -13,11 +13,7 @@ The following conditions must be met before installing StorageOS:
 1. Linux with a 64-bit architecture
  * For Red Hat Enterprise Linux 7, [read the release notes]({% link _docs/reference/release_notes.md %}).
 1. Docker 1.10 or later
-1. The following ports should be open:
-  * 2379, 4222, 17100 (messaging services)
-  * 2380, 8222 (cluster services)
-  * 5705 (HTTP API)
-  * 13700 (cluster health checks)
+1. The necessary ports should be open. See the [Ports and Firewall settings]({% link _docs/install/prerequisites/firewalls.md %})
 1. A mechanism for [cluster
 discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), to allow
 StorageOS nodes to contact each other.

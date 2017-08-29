@@ -33,7 +33,7 @@ token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
 $ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx CLUSTER_ID=xxxxxxxxxxxxxxxxx
 Plugin "storageos/plugin" is requesting the following privileges:
  - network: [host]
- - mount: [/var/lib/storageos]
+ - mount: [/var/lib]
  - mount: [/dev]
  - device: [/dev/fuse]
  - allow-all-devices: [true]

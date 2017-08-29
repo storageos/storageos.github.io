@@ -9,13 +9,21 @@ module: manage/features/caching
 
 Local caching improves read performance by using memory to cache data.
 
+| Available memory   | StorageOS cache size |
+|:-------------------|:---------------------|
+| 3 GB or less       | 3%                   |
+| 3-8 GB             | 5%                   |
+| 8-12 GB            | 7%                   |
+| 12 GB or more      | 10%                  |
+
 ## Create a cached volume
 
-All reads and writes are cached by default. To disable caching, set the
-`storageos.feature.nocache` label with the StorageOS CLI:
+All reads and writes are cached by default. To disable caching (e.g. during
+database backups which do not need to be cached), set the
+`storageos.feature.nocache` label:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.nocache=true volume-name
+storageos volume create --label storageos.feature.nocache=true volume-name
 ```
 
 or the Docker CLI:

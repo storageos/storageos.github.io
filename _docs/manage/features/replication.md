@@ -33,7 +33,7 @@ label `storageos.feature.replicas` to a value between 1 and 5. No
 replicas are set by default.
 
 To create a volume with 2 replicas (3 copies of the data total), set the
-`storageos.feature.replicas` label with the StorageOS CLI:
+`storageos.feature.replicas` label:
 
 ```bash
 storageos volume create --namespace default --label storageos.feature.replicas=2 volume-name

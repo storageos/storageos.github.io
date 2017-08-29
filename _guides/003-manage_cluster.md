@@ -42,4 +42,5 @@ sections:
         title: Compression
         description: Compression
         module: manage/features/compression
+      -
 ---

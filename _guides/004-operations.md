@@ -1,15 +1,15 @@
 ---
 layout: default
-title: Automate
-anchor: automate
+title: Operations
+anchor: operations
 
 sections:
   -
     title: API
     description: The StorageOS API
-    module: automate/api
+    module: operations/api
   -
     title: Rules
     description: StorageOS rules
-    module: automate/rules
+    module: operations/rules
 ---

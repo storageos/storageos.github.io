@@ -104,5 +104,5 @@ $ storageos rule create --namespace default --selector 'env==prod' --label stora
 default/replicator
 ```
 
-See [creating and managing rules]({% link _docs/automate/rules.md %}) for
+See [creating and managing rules]({% link _docs/operations/rules.md %}) for
 more.

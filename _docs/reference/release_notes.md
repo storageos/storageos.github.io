@@ -27,11 +27,74 @@ and to perform upgrades only after reading the release notes.
 
 ## Known Issues
 
+- Once a 0.8.0 cluster has been established, it is currently not possible to add
+  or remove members.  We expect this functionality to come in 0.8.1, and welcome
+  feedback on how this should behave.
 - `storageos volume mount <vol> <mountpoint>` sometimes hangs on Managed Plugin
   installs.  Volumes mount into containers correctly using Docker.
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
-performance due to the absence of the [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those platforms.
+  performance due to the absence of the [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those platforms.
+
+## Upgrades
+
+Due to nature the KV Store change there is no upgrade method from 0.7.x to
+0.8.0+.  Our recommendation is to create a new cluster, paying attention to the
+new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`)
+
+Upgrades within a minor release (e.g. 0.7.9 -> 0.7.10) can be done by restarting
+the StorageOS container with the new version.
+
+We will endeavor to make upgrades more seamless in the future.
+
+## 0.8.0
+
+This is our first feature release since launching our public beta, and it
+focusses on feedback from users.  As always, please let us know how you are using
+StorageOS, what problems it is solving for you and how it can improve.  Join our
+Slack channel!
+
+New
+
+- Embedded KV Store based on etcd to further simplify deployment and ongoing
+  cluster management.  Support for external Consul KV clusters has been
+  deprecated, though external etcd clusters are now supported.
+- Cluster discovery service to help bootstrap clusters.  Allocate a new cluster
+  with `storageos cluster create` and pass the cluster identifier to each
+  StorageOS node in the `CLUSTER_API` environment variable to allow nodes to
+  discover the cluster without specifying hostnames or ip addresses.
+- Access control policies can restrict access to volumes and rules created
+  within a namespace.
+- User and group management allows multiple users to be created and then used to
+  apply access policy by group membership or named account.
+- Anonymized usage metrics are collected and sent to StorageOS to help us better
+  understand usage patterns so we can focus our efforts accordingly.  Metrics
+  can be disabled by setting the `DISABLE_TELEMETRY` environment variable to 
+  `true`.
+- Location-based scheduling allows administrators to specify scheduling
+  constraints on volumes at creation time.  This provides a simple mechanism to
+  influence data placement.  (e.g. The volume's data may only be stored on nodes
+  which have their environment label set to `production`)
+- Cluster health reporting with CLI (`storageos cluster health`)
+
+Improved
+
+- Graceful behaviour when communication blocked by firewalls
+- Docker integration now supports ext2/3/4, btrfs and xfs
+- Environment variable validation
+- Selectors for rules
+- Use default namespace when not specified
+- Internal volume performance counters (Prometheus endpoints coming soon!)
+- API can report health while waiting for cluster to initialize
+
+Fixed
+
+- Better behaviour when communication blocked by firewalls
+- Ensure namespaces are unique when creating
+- Volume create should give error when size=0
+- CLI/API filters not working as expected
+- Can't edit a pool with the CLI
+- Excessive logging on network timeouts
 
 ## 0.7.10
 

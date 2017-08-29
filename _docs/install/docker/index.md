@@ -32,7 +32,7 @@ For most environments, the default settings should work.
 * `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
 * `CLUSTER_ID`: Cluster ID for the node to join an existing cluster previously created through 'storageos cluster create' command
-* `INITIAL_CLUSTER`: Static list of pre-existing cluster, supplied as comma separated list of <hostname>=<url>:2380
+* `INITIAL_CLUSTER`: Static list of pre-existing cluster, supplied as comma separated list of `<hostname>=<url>:2380`
 * `API_PORT`: Port for the API to listen on.  Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
 * `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `4222`.
 * `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.

@@ -42,5 +42,12 @@ sections:
         title: Compression
         description: Compression
         module: manage/features/compression
+  -
+    title: Users
+    description: Creating and managing Users
+    module: manage/users
+    items:
       -
----
+        title: Policies
+        description: Using policies
+        module: manage/users/policies

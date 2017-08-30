@@ -63,6 +63,14 @@ tags:
     x-displayName: "CapacityStats"
     description: |
       Create and manage capacity statistics.
+  - name: "User"
+    x-displayName: "Users"
+    description: |
+      Create and manage users.
+  - name: "Policy"
+    x-displayName: "Policies"
+    description: |
+      Create and manage policies.
 
 definitions:
 
@@ -102,6 +110,41 @@ definitions:
         type: "string"
         format: "datetime"
         readOnly: true
+
+  UserCreateOptions:
+    type: "object"
+    description: "Parameters available for creating a new user."
+    required: [Username, Password]
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+      groups:
+        type: "string"
+      role:
+        type: "string"
+
+  PolicyCreateOptions:
+    type: "object"
+    description: "Parameters available for creating a new policy."
+    required: [Spec]
+    properties:
+      Spec:
+        description: "The policy spec"
+        type: "object"
+        required: [Namespace]
+        x-nullable: false
+        properties:
+          Namespace:
+            type: "string"
+            description: "The name or ID of the namspace the policy grants access to"
+          User:
+            type: "string"
+            description: "The username or ID of the user the policy permissions"
+          Group:
+            type: "string"
+            description: "The name of the user group the policy permissions"
 
   VolumeCreateOptions:
     type: "object"
@@ -481,6 +524,41 @@ definitions:
         type: "integer"
         readOnly: true
 
+  User:
+    type: "object"
+    description: "An user object, defining one user"
+    properties:
+      id:
+        description: "The ID of the user"
+        type: "string"
+      username:
+        description: "The Username of the user"
+        type: "string"
+      groups:
+        description: "Comma seperated list of groups the user is in. e.g. 'dev,qa,sys'"
+        type: "string"
+      role:
+        description: "The role of the user [admin|user]"
+        type: "string"
+
+  Policy:
+    type: "object"
+    description: "An authorization policy object, defining one permission rule"
+    properties:
+      Spec:
+        description: "The policy spec"
+        type: "object"
+        properties:
+          Namespace:
+              type: "string"
+              description: "The name or ID of the namspace the policy grants access to"
+          User:
+              type: "string"
+              description: "The username or ID of the user the policy permissions"
+          Group:
+              type: "string"
+              description: "The name of the user group the policy permissions"
+
   DriverInstances:
     type: "object"
     description: "DriverInstances shows the internal configuration and state of each driver on all the nodes in the pool. Data within DriverInstances can not be modified directly."
@@ -571,6 +649,269 @@ parameters:
     description: "Timeout for the list call."
 
 paths:
+  /users/{id}:
+    get:
+      summary: "Get user"
+      description: "Display a user selected by ID"
+      produces:
+        - "application/json"
+      tags: ["User"]
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/User"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "User not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Update user"
+      description: "Display a user selected by ID"
+      consumes:
+        - "application/x-www-urlencoded"
+      tags: ["User"]
+      parameters:
+        - name: "Password"
+          description: "The new password for the user"
+          in: "query"
+          type: "string"
+
+        - name: "Groups"
+          description: "The new comma separated list of groups to assign the user to. E.g. 'dev,qa,sys'"
+          in: "query"
+          type: "string"
+
+        - name: "Role"
+          description: "The new role for the user [admin|user]"
+          in: "query"
+          type: "string"
+      responses:
+        200:
+          description: "The user was updated successfully"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "User not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      summary: "Delete user"
+      description: "Remove a user selected by ID"
+      tags: ["User"]
+      responses:
+        200:
+          description: "The User was deleted successfully"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "User not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /users:
+    get:
+      summary: "List users"
+      description: "List all users in the system"
+      tags: ["User"]
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/User"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Create User"
+      description: "Create a new User on the system"
+      consumes:
+        - "application/json"
+      tags: ["User"]
+      parameters:
+        - name: "PolicyCreateOptions"
+          in: "body"
+          schema:
+            $ref: "#/definitions/UserCreateOptions"
+      responses:
+        200:
+          description: "The User was created successfully"
+        400:
+          description: "The provided JSON was incorrect"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /policies:
+    get:
+      summary: "List policies"
+      description: "Display all the policies set in the system"
+      tags: ["Policy"]
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            type: "object"
+            properties:
+              "d313dcb6-a193-77ce-dd34-42b9e2100ee6":
+                  $ref: "#/definitions/Policy"
+              "a245deb1-d592-94ab-de12-53b7e1510ba4":
+                  $ref: "#/definitions/Policy"
+              "...":
+                  $ref: "#/definitions/Policy"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      summary: "Create policy"
+      description: "Create a new policy on the system"
+      consumes:
+        - "application/json"
+      tags: ["Policy"]
+      parameters:
+        - name: "PolicyCreateOptions"
+          in: "body"
+          schema:
+            $ref: "#/definitions/PolicyCreateOptions"
+      responses:
+        200:
+          description: "The policy was created successfully"
+        400:
+          description: "The provided JSON was incorrect"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /policies/{id}:
+    get:
+      summary: "Get policy"
+      description: "Display a policy selected by ID"
+      produces:
+        - "application/json"
+      tags: ["Policy"]
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Policy"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "Policy not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      summary: "Delete policy"
+      description: "Remove a policy selected by ID"
+      tags: ["Policy"]
+      responses:
+        200:
+          description: "The Policy was deleted successfully"
+        401:
+          description: "Not authenticated with the API"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        403:
+          description: "Authenticated user is forbidden access to this data/action"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        404:
+          description: "Policy not found"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
   /namespaces/{namespace}/volumes:
     get:
       summary: "List volumes"

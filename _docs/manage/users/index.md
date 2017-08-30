@@ -18,7 +18,7 @@ Such as managing creating new namespaces.
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
 Access to a [namespace]({% link _docs/manage/volumes/namespaces.md%}) grants a user the ability to create/update/remove
-[volumes]({% link _docs/manage/volumes/index.md%}) and [rules]({% link _docs/automate/rules.md%}) within that namespace.
+[volumes]({% link _docs/manage/volumes/index.md%}) and [rules]({% link _docs/operations/rules.md%}) within that namespace.
 
 ## Creating a new user
 

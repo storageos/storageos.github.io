@@ -21,9 +21,9 @@ To view the status of a cluster, run `storageos node ls`:
 $ storageos node ls
 
 NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
-vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.7 (00ab7b3 rev)
-vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.7 (00ab7b3 rev)
+vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.8.0 (2051fdd rev)
+vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.8.0 (2051fdd rev)
+vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.8.0 (2051fdd rev)
 ```
 
 <!--
@@ -52,7 +52,7 @@ are registered, StorageOS will start up.
 Alternatively, you can supply the `INITIAL_CLUSTER` environment variable:
 
 ```bash
-INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380,storageos-2=http://172.28.128.9:2380,storageos-3=http://172.28.128.15:2380
+INITIAL_CLUSTER=storageos-1=http://172.28.128.3:5707,storageos-2=http://172.28.128.9:5707,storageos-3=http://172.28.128.15:5707
 ```
 -->
 

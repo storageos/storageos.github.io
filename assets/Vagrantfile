@@ -9,7 +9,7 @@ sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.stora
 docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=$1 \
-    -e INITIAL_CLUSTER=storageos-1=http://192.168.50.100:2380,storageos-2=http://192.168.50.101:2380,storageos-3=http://192.168.50.102:2380 \
+    -e INITIAL_CLUSTER=storageos-1=http://192.168.50.100:5707,storageos-2=http://192.168.50.101:5707,storageos-3=http://192.168.50.102:5707 \
     --net=host \
     --pid=host \
     --privileged \

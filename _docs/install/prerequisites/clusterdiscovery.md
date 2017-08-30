@@ -58,7 +58,7 @@ Alternatively, provide an explicit list of hostnames and IP addresses via the
 `INITIAL_CLUSTER` environment variable.
 
 ```bash
-INITIAL_CLUSTER=storageos-1=http://172.28.128.3:2380,storageos-2=http://172.28.128.9:2380,storageos-3=http://172.28.128.15:2380
+INITIAL_CLUSTER=storageos-1=http://172.28.128.3:5707,storageos-2=http://172.28.128.9:5707,storageos-3=http://172.28.128.15:5707
 ```
 
 * [Checking the cluster status]({%link _docs/install/health.md %})

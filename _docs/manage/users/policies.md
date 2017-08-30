@@ -33,7 +33,7 @@ These policy files detail acceptable actions within the system, if any of the po
 The rules above will allow any user with the username bob, or in the group compliance, to access the legal namespace.
 
 Access to a [namespace]({% link _docs/manage/volumes/namespaces.md%}) grants the ability to create/update/remove
-[volumes]({% link _docs/manage/volumes/index.md%}) and [rules]({% link _docs/automate/rules.md%}) within that namespace.
+[volumes]({% link _docs/manage/volumes/index.md%}) and [rules]({% link _docs/operations/rules.md%}) within that namespace.
 
 
 ### Adding using flags

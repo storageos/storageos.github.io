@@ -13,4 +13,15 @@ pre-configured live environments.
 Learn StorageOS through interactive, guided tutorials based on real-world
 scenarios.
 
->**Coming soon** To be notifed when online tutorials launch, sign up to the newsletter below.
+>**Coming soon** To be notified when online tutorials launch, sign up below.
+
+<!--[if lte IE 8]>
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+<![endif]-->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+  hbspt.forms.create({
+    portalId: '3402546',
+    formId: '2d71a20e-d0ff-4153-8775-5e8eaabc2423'
+  });
+</script>

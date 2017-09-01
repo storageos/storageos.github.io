@@ -47,6 +47,12 @@ the StorageOS container with the new version.
 
 We will endeavor to make upgrades more seamless in the future.
 
+## 0.8.1
+
+Improved
+
+- NBD device numbers now start at 1 instead of 0 to defend against default values
+
 ## 0.8.0
 
 This is our first feature release since launching our public beta, and it

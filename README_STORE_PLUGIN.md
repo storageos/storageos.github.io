@@ -4,7 +4,7 @@ The StorageOS volume plugin turns your Docker node into a hyper-converged storag
 
 Volumes are available across the cluster so if a container gets moved to another node it still has access to its data. Data can be protected with synchronous replication. Compression, caching, and QoS are enabled by default, and all volumes are thin-provisioned.
 
-No other hardware or software is required, except an optional KV store.
+No other hardware or software is required.
 
 For Docker 1.10 - 1.12, an application container is available (storageos-node).
 
@@ -36,12 +36,6 @@ Install StorageOS:
 
 ```bash
 $ docker plugin install --alias storageos store/storageos/plugin
-```
-
-This requires you to have Consul installed and available on the Docker host. You may specify a remote consul service by appending `KV_ADDR=<consul_ip:8500>` to the install command, or for single-node installs, you may use `KV_BACKEND=boltdb` instead. For example:
-
-```bash
-$ docker plugin install --alias storageos store/storageos/plugin KV_ADDR=192.168.0.1:8500
 ```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>

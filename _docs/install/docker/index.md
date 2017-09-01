@@ -38,6 +38,8 @@ For most environments, the default settings should work.
 * `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.
 * `SERF_PORT`: Port for the Serf protocol to listen on.  Defaults to `13700`.
 * `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `17100`.
+* `KV_ADDR`: IP address/port of an external Key/Vaue store.  Must be specified with `KV_BACKEND=etcd`.
+* `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance.
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`.  Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.

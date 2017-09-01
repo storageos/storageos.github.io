@@ -34,7 +34,7 @@ $ docker run -d --name storageos \
     storageos/node server
 ```
 
-To provision a new `CLUSTER_ID`, see [cluster discovery](http://127.0.0.1:4000/docs/install/prerequisites/clusterdiscovery).
+To provision a new `CLUSTER_ID`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
 
 ## Use StorageOS
 
@@ -131,7 +131,7 @@ $ docker run -d --name storageos \
     storageos/node server
 ```
 
-To provision a new `CLUSTER_ID`, see [cluster discovery](http://127.0.0.1:4000/docs/install/prerequisites/clusterdiscovery).
+To provision a new `CLUSTER_ID`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
 

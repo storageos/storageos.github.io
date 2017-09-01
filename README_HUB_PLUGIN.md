@@ -4,7 +4,7 @@ The StorageOS volume plugin turns your Docker node into a hyper-converged storag
 
 Volumes are available across the cluster so if a container gets moved to another node it still has access to its data. Data can be protected with synchronous replication. Compression, caching, and QoS are enabled by default, and all volumes are thin-provisioned.
 
-No other hardware or software is required, except an optional KV store for multi-node deployments.
+No other hardware or software is required.
 
 During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
@@ -41,7 +41,7 @@ To install multiple StorageOS nodes in a clustered configuration, see the instal
 To get the most out of StorageOS, try:
 
 1. Running the CLI to manage volumes, rules, and cluster configuration
-2. Joining more nodes to the cluster (must use Consul as the KV store)
+1. Joining more nodes to the cluster (must use Consul as the KV store)
 
 ## Requirements
 

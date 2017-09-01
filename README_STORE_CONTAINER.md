@@ -54,7 +54,7 @@ $ docker run -d --name storageos \
     storageos/node server
 ```
 
-To provision a new `CLUSTER_ID`, see [cluster discovery](http://127.0.0.1:4000/docs/install/prerequisites/clusterdiscovery).
+To provision a new `CLUSTER_ID`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
 
 For more details consult <https://docs.storageos.com/docs/install/container.html>
 
@@ -96,7 +96,7 @@ Although the default settings should work for most environments, a number of set
 * `SERF_PORT`: Port for the Serf protocol to listen on. Defaults to `13700`.
 * `DFS_PORT`: Port for DirectFS to listen on. Defaults to `17100`.
 * `KV_ADDR`: IP address/port of an external Key/Vaue store.  Must be specified with `KV_BACKEND=etcd`.
-* `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance, or `boltdb` can be used for single node testing.
+* `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance.
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.

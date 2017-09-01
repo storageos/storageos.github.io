@@ -15,7 +15,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 To install a single StorageOS node for testing:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -41,7 +41,6 @@ To install multiple StorageOS nodes in a clustered configuration, see the instal
 To get the most out of StorageOS, try:
 
 1. Running the CLI to manage volumes, rules, and cluster configuration
-1. Joining more nodes to the cluster (must use Consul as the KV store)
 
 ## Requirements
 
@@ -74,14 +73,16 @@ $ sudo modprobe nbd nbds_max=1024
 **To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
-```
-nbd
-```
 
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-```
-options nbd nbds_max=1024
-```
+   ```bash
+   nbd
+   ```
+
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+
+   ```bash
+   options nbd nbds_max=1024
+   ```
 
 ### StorageOS Plugin Installation (Docker 1.13+)
 
@@ -92,7 +93,7 @@ $ docker plugin install --alias storageos storageos/plugin
 
 Plugin "storageos/plugin" is requesting the following privileges:
 - network: [host]
-- mount: [/var/lib/storageos]
+- mount: [/var/lib]
 - mount: [/dev]
 - device: [/dev/fuse]
 - allow-all-devices: [true]
@@ -103,13 +104,13 @@ Do you grant the above permissions? [y/N]
 If using Consul for the KV store and it is not local, supply the IP address of the Consul service using the `KV_ADDR` parameter:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
+docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
 ```
 
 Alternatively, to setup a single test StorageOS instance for testing, you can use the built-in BoltDB. Note that each additional StorageOS node will be isolated, so features such as replication and volume failover will not be available.
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
+docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
@@ -120,18 +121,20 @@ Other configuration parameters (see Configuration Reference below) may be set in
 
 Although the default settings should work for most environments, a number of settings are configurable:
 
-- `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
-- `KV_ADDR`: IP address/port of the Key/Vaue store. Defaults to `127.0.0.1:8500`
-- `ADVERTISE_IP`: IP address of the Docker node, for incoming connections. Defaults to first non-loopback address.
-- `USERNAME`: Username to authenticate to the API with. Defaults to `storageos`.
-- `PASSWORD`: Password to authenticate to the API with. Defaults to `storageos`.
-- `KV_ADDR`: IP address/port of the Key/Vaue store. Defaults to `127.0.0.1:8500`
-- `KV_BACKEND`: Type of KV store to use. Defaults to `consul`. `boltdb` can be used for single node testing.
-- `API_PORT`: Port for the API to listen on. Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
-- `NATS_PORT`: Port for NATS messaging to listen on. Defaults to `4222`.
-- `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on. Defaults to `8222`.
-- `SERF_PORT`: Port for the Serf protocol to listen on. Defaults to `13700`.
-- `DFS_PORT`: Port for DirectFS to listen on. Defaults to `17100`.
-- `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
-- `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
-- `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
+* `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
+* `ADVERTISE_IP`: IP address of the Docker node, for incoming connections. Defaults to first non-loopback address.
+* `USERNAME`: Username to authenticate to the API with. Defaults to `storageos`.
+* `PASSWORD`: Password to authenticate to the API with. Defaults to `storageos`.
+* `CLUSTER_ID`: Cluster ID for the node to join an existing cluster previously created through 'storageos cluster create' command
+* `INITIAL_CLUSTER`: Static list of pre-existing cluster, supplied as comma separated list of `<hostname>=<url>:5707`
+* `API_PORT`: Port for the API to listen on. Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
+* `NATS_PORT`: Port for NATS messaging to listen on. Defaults to `4222`.
+* `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on. Defaults to `8222`.
+* `SERF_PORT`: Port for the Serf protocol to listen on. Defaults to `13700`.
+* `DFS_PORT`: Port for DirectFS to listen on. Defaults to `17100`.
+* `KV_ADDR`: IP address/port of an external Key/Vaue store.  Must be specified with `KV_BACKEND=etcd`.
+* `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance.
+* `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
+* `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
+* `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
+

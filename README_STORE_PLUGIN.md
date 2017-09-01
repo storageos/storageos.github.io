@@ -38,12 +38,6 @@ Install StorageOS:
 $ docker plugin install --alias storageos store/storageos/plugin
 ```
 
-This requires you to have Consul installed and available on the Docker host. You may specify a remote consul service by appending `KV_ADDR=<consul_ip:8500>` to the install command, or for single-node installs, you may use `KV_BACKEND=boltdb` instead. For example:
-
-```bash
-$ docker plugin install --alias storageos store/storageos/plugin KV_ADDR=192.168.0.1:8500
-```
-
 For more details consult <https://docs.storageos.com/docs/install/docker.html>
 
 ## Use StorageOS

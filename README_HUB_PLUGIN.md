@@ -15,7 +15,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 To install a single StorageOS node for testing:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -47,16 +47,6 @@ To get the most out of StorageOS, try:
 ### Docker Version
 
 The `docker plugin install` method requires Docker 1.13.0 or above. Older versions (from Docker 1.10.0 onwards) can use the [node container install](../node) method.
-
-### Key-value Store
-
-Multi-node StorageOS installations require an external key-value store for configuration data and cluster management. Consul is currently required, though support for etcd is being tested and should be available in the future.
-
-We believe that the KV store is best managed separately from the StorageOS plugin so that the plugin can remain stateless. Most organizations will already be familiar with managing Consul or etcd as they are common components in cloud-native architectures.
-
-For single-node testing, BoltDB is embedded and can be used in place of an external KV store by specifying `KV_BACKEND=boltdb` when installing (`consul` is the default).
-
-For help setting up Consul, consult the [documentation](https://hub.docker.com/_/consul/).
 
 ## Installation
 
@@ -99,18 +89,6 @@ Plugin "storageos/plugin" is requesting the following privileges:
 - allow-all-devices: [true]
 - capabilities: [CAP_SYS_ADMIN]
 Do you grant the above permissions? [y/N]
-```
-
-If using Consul for the KV store and it is not local, supply the IP address of the Consul service using the `KV_ADDR` parameter:
-
-```bash
-docker plugin install --alias storageos storageos/plugin KV_ADDR=127.0.0.1:8500
-```
-
-Alternatively, to setup a single test StorageOS instance for testing, you can use the built-in BoltDB. Note that each additional StorageOS node will be isolated, so features such as replication and volume failover will not be available.
-
-```bash
-docker plugin install --alias storageos storageos/plugin KV_BACKEND=boltdb
 ```
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.

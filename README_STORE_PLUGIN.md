@@ -10,32 +10,34 @@ For Docker 1.10 - 1.12, an application container is available (storageos-node).
 
 During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
-Full documentation is available at <https://docs.storageos.com>.
+Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
 
 ## Installation
 
 _Optional:_ Enabling NBD prior to installation is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices run:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+sudo modprobe nbd nbds_max=1024
 ```
 
 **To ensure the NBD module is loaded on reboot.**
 
 1. Add the following line to `/etc/modules`
-```
-nbd
-```
 
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-```
-options nbd nbds_max=1024
-```
+   ```bash
+   nbd
+   ```
 
-Install StorageOS:
+1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
+
+   ```bash
+   options nbd nbds_max=1024
+   ```
+
+Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the plugin:
 
 ```bash
-$ docker plugin install --alias storageos store/storageos/plugin
+docker plugin install --alias storageos store/storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
 ```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>
@@ -45,13 +47,13 @@ For more details consult <https://docs.storageos.com/docs/install/docker.html>
 You can now run containers backed by StorageOS volumes:
 
 ```bash
-$ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "echo hello > /data/myfile"
+sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c "echo hello > /data/myfile"
 ```
 
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-$ sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
 ```
 
 ## Next Steps
@@ -59,5 +61,5 @@ $ sudo docker volume create --driver storageos --opt size=20 --opt storageos.fea
 To get the most out of StorageOS, try:
 
 1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli.html>
-2. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
-3. Fail containers to other nodes, or enable replication and fail Docker nodes.
+1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
+1. Fail containers to other nodes, or enable replication and fail Docker nodes.

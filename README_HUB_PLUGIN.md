@@ -12,16 +12,16 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Quick Start
 
-To install a single StorageOS node for testing:
+Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the plugin:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
+docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
 
 ```bash
-$ docker run --name postgres01 \
+docker run --name postgres01 \
    -e PGDATA=/var/lib/postgresql/data/db \
    -v postgres01:/var/lib/postgresql/data \
    --volume-driver=storageos -d postgres
@@ -30,17 +30,17 @@ $ docker run --name postgres01 \
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-$ docker volume create \
+docker volume create \
   --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
 ```
-
-To install multiple StorageOS nodes in a clustered configuration, see the installation section below.
 
 ### Next Steps
 
 To get the most out of StorageOS, try:
 
-1. Running the CLI to manage volumes, rules, and cluster configuration
+1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli.html>
+1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
+1. Fail containers to other nodes, or enable replication and fail Docker nodes.
 
 ## Requirements
 
@@ -57,7 +57,7 @@ The plugin (or node container) should be installed on each Docker node where you
 (Optional) NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
+sudo modprobe nbd nbds_max=1024
 ```
 
 **To ensure the NBD module is loaded on reboot.**
@@ -76,10 +76,10 @@ $ sudo modprobe nbd nbds_max=1024
 
 ### StorageOS Plugin Installation (Docker 1.13+)
 
-If Consul is running locally, the defaults will work:
+Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
 
 Plugin "storageos/plugin" is requesting the following privileges:
 - network: [host]
@@ -91,7 +91,9 @@ Plugin "storageos/plugin" is requesting the following privileges:
 Do you grant the above permissions? [y/N]
 ```
 
-Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
+To provision a new `CLUSTER_ID`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
+
+Other configuration parameters (see Configuration Reference below) may be set in a similar way.
 
 **NOTE**: In order to make plugin upgrades easier, install the plugin using `--alias storageos`. This ensures that volumes provisioned with a previous version of the plugin continue to function after the upgrade. By default, Docker ties volumes to the plugin version. Volumes should then be provisioned using the alias e.g. `--volume-driver storageos`.
 
@@ -115,4 +117,3 @@ Although the default settings should work for most environments, a number of set
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
-

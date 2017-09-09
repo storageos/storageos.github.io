@@ -25,6 +25,10 @@ sections:
         title: Redis
         description: Setting up Redis with persistent storage.
         module: applications/databases/redis
+      -
+        title: Cassandra
+        description: Setting up Cassandra with persistent storage.
+        module: applications/databases/cassandra        
   -
     title: Content hosting
     description: Content hosting

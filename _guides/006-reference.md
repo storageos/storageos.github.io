@@ -41,6 +41,10 @@ sections:
         title: volume
         description: Create and manage volumes
         module: reference/cli/volume
+      -
+        title: login
+        description: Store credentials for known cluster hosts
+        module: reference/cli/login
   -
     title: API
     description: Describes the HTTP API

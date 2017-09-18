@@ -17,7 +17,7 @@ configuration. It is [open source](https://github.com/storageos/go-cli) and avai
 Install to `/usr/local/bin`:
 ```bash
 sudo -i
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.12/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.13/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 exit
 ```
@@ -42,6 +42,22 @@ Credentials can be overridden with the `-u`, `-p`  and `-H` flags.
 $ storageos -u storageos -p storageos volume list
 NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
 default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
+```
+
+The storageos CLI also provides a credential store for setting these values long-term.
+
+```bash
+$ storageos login 10.1.5.249
+Username: storageos
+Password: 
+Credentials verified
+```
+
+The CLI will automatically use the stored credentials when contacting a known host (if not overridden by `-u` or `-p`).
+To prevent this, use the logout command to forget the credentials.
+
+```bash
+$ storageos logout 10.1.5.249
 ```
 
 

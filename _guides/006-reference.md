@@ -14,21 +14,21 @@ sections:
         description: Create and manage cluster
         module: reference/cli/cluster
       -
+        title: login
+        description: Store credentials for known cluster hosts
+        module: reference/cli/login
+      -
         title: namespace
         description: Create and manage namespaces
         module: reference/cli/namespace
       -
-        title: user
-        description: Create and manage users
-        module: reference/cli/user
+        title: node
+        description: View node information
+        module: reference/cli/node
       -
         title: policy
         description: Create and manage policies
         module: reference/cli/policy
-      -
-        title: node
-        description: View node information
-        module: reference/cli/node
       -
         title: pool
         description: Create and manage pools
@@ -38,13 +38,14 @@ sections:
         description: Create and manage rules
         module: reference/cli/rule
       -
+        title: user
+        description: Create and manage users
+        module: reference/cli/user
+      -
         title: volume
         description: Create and manage volumes
         module: reference/cli/volume
-      -
-        title: login
-        description: Store credentials for known cluster hosts
-        module: reference/cli/login
+
   -
     title: API
     description: Describes the HTTP API

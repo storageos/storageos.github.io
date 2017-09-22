@@ -89,7 +89,7 @@ updated with `--fstype`.
 
 ## Resizing volumes
 
-To resize a volume, use `storageos volume update --size <new_size_in_GB> `.
+To resize a volume, use `storageos volume update --size <new_size_in_GB> default/volume-name`.
 
 The volume is expanded immediately but you will need to manually resize the
 filesystem by calling `resize2fs`.

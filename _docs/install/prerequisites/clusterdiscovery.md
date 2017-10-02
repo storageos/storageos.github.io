@@ -7,8 +7,9 @@ module: install/prerequisites/clusterdiscovery
 
 # Cluster discovery
 
-StorageOS nodes need to know the exact cluster size and peers to connect to
-during start up. This enables nodes to contact each other over the network.
+StorageOS nodes need to be informed which cluster to join on start-up. This enables
+the nodes to contact each-other over the network to join a pre-existing cluster,
+or bootstrap a new one.
 
 ## Setting the IP address
 
@@ -30,11 +31,16 @@ clusters; performance will degrade for more nodes.
 
 Replicas are unavailable in a single node install.
 
-### Option 1: Specify cluster size
+## The `JOIN` keyword
 
-The first option is to use the StorageOS discovery service, which is a public `etcd` service.
+The environment variable `JOIN` is used to pass clustering information to the StorageOS node.
+This environment variable can contain two types of information, a cluster token or a set of IP addresses.
 
-Specify the expected size of the cluster (3 ,5 or 7) using the [StorageOS CLI]({%link
+### Option 1: Cluster token
+
+StorageOS offers a public `etcd` discovery service to aid in cluster discovery.
+
+To use this method, specify the expected size of the cluster (3 ,5 or 7) using the [StorageOS CLI]({%link
 _docs/reference/cli/cluster.md %}):
 
 ```bash
@@ -45,20 +51,27 @@ $ storageos cluster create --size 3
 Supply the returned cluster ID token as an environment variable to each node:
 
 ```bash
-CLUSTER_ID=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
+JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
 Each node will report that it is waiting for the cluster. Once three members
 are registered, StorageOS will start up.
 
 
-### Option 2: Specify hostnames and IP addresses
+### Option 2: Specifying IP addresses
 
-Alternatively, provide an explicit list of hostnames and IP addresses via the
-`INITIAL_CLUSTER` environment variable.
+An alternative to the discovery service is providing an explicit list of IP addresses.
 
 ```bash
-INITIAL_CLUSTER=storageos-1=http://172.28.128.3:5707,storageos-2=http://172.28.128.9:5707,storageos-3=http://172.28.128.15:5707
+JOIN=storageos-1=172.28.128.3,172.28.128.9,172.28.128.15
+```
+
+### Option 3: Doing both
+
+These methods are not mutually exclusive, and in some situations it may be desirable to use both.
+
+```bash
+JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
 * [Checking the cluster status]({%link _docs/install/health.md %})

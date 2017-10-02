@@ -35,13 +35,13 @@ sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.stora
 
 Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery
 token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
-`CLUSTER_ID` when you install the container:
+`JOIN` when you install the container:
 
 ```bash
 docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=xxx.xxx.xxx.xxx \
-    -e CLUSTER_ID=xxxxxxxxxxxxxxxxx \
+    -e JOIN=xxxxxxxxxxxxxxxxx \
     --net=host \
     --pid=host \
     --privileged \

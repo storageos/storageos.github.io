@@ -27,10 +27,10 @@ Docker ties volumes to the plugin version.)
 
 Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery
 token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
-`CLUSTER_ID` when you install the container:
+`JOIN` when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx CLUSTER_ID=xxxxxxxxxxxxxxxxx
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx JOIN=xxxxxxxxxxxxxxxxx
 Plugin "storageos/plugin" is requesting the following privileges:
  - network: [host]
  - mount: [/var/lib]

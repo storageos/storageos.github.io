@@ -69,6 +69,7 @@ JOIN=storageos-1=172.28.128.3,172.28.128.9,172.28.128.15
 ### Option 3: Doing both
 
 These methods are not mutually exclusive, and in some situations it may be desirable to use both.
+When multiple methods are provided, the arguments are evaluated and attempted in left-to-right order.
 
 ```bash
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9

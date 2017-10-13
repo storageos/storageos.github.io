@@ -42,6 +42,10 @@ sections:
         title: Compression
         description: Compression
         module: manage/features/compression
+      -
+        title: Volume placement
+        description: Volume placement
+        module: manage/features/placement
   -
     title: Users
     description: Creating and managing Users

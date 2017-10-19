@@ -679,25 +679,15 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     post:
       summary: "Update user"
-      description: "Display a user selected by ID"
+      description: "Update/replace a User object by ID"
       consumes:
-        - "application/x-www-urlencoded"
+        - "application/json"
       tags: ["User"]
       parameters:
-        - name: "Password"
-          description: "The new password for the user"
-          in: "query"
-          type: "string"
-
-        - name: "Groups"
-          description: "The new comma separated list of groups to assign the user to. E.g. 'dev,qa,sys'"
-          in: "query"
-          type: "string"
-
-        - name: "Role"
-          description: "The new role for the user [admin|user]"
-          in: "query"
-          type: "string"
+        - name: "User"
+          in: "body"
+          schema:
+            $ref: "#/definitions/User"
       responses:
         200:
           description: "The user was updated successfully"

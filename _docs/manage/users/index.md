@@ -13,8 +13,7 @@ On initial startup there is only the `storageos` user which is an admin user.
 ## Admin vs User accounts
 
 Admin users are treated as super-users which can perform any action within the system, regardless of policies set.
-Admins also have the added ability to add, update and remove users, their policies and perform other administrative roles within the system.
-Such as managing creating new namespaces.
+Admins also have the added ability to add, update and remove users, their policies and perform other administrative roles within the system, such as managing or creating new namespaces.
 
 Users only have the ability to change their password and have access to the namespaces granted to them by the policies set.
 Access to a [namespace]({% link _docs/manage/volumes/namespaces.md%}) grants a user the ability to create/update/remove
@@ -26,8 +25,8 @@ Users can be created, deleted and managed from the `storageos` CLI. For example 
 
 ```bash
 $ storageos user create --groups test,dev --role user awesomeUser
-Password: 
-Confirm Password: 
+Password:
+Confirm Password:
 ```
 
 Usernames are case-sensitive and follow the format `[a-zA-Z0-9]+` (one or more alphanumeric characters).
@@ -77,8 +76,8 @@ e367ccf0-240d-538f-540f-5013784b5665   awesomeUser         dev                 u
 9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
 
 $ storageos user update --password --add-groups testers --remove-groups dev awesomeUser
-Password: 
-Confirm Password: 
+Password:
+Confirm Password:
 
 $ storageos user ls
 ID                                     USERNAME            GROUPS              ROLE

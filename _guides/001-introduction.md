@@ -13,7 +13,7 @@ sections:
     description: Get help
     module: introduction/get_help
   -
-    title: Online tutorials
-    description: Browser-based tutorials
+    title: Interactive tutorials
+    description: Interactive, browser-based tutorials
     module: introduction/tutorials
 ---

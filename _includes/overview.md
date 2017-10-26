@@ -6,12 +6,11 @@ build stateful containerized apps.
 StorageOS is available from the Docker Hub as a volume plugin (for Docker 1.13+)
 or as a container image (Docker 1.10+ or Kubernetes 1.7+).
 
-The StorageOS container must run on every node in a cluster and requires a
-64-bit Linux host.
 
 ## Popular tasks
 
-* [Quick start]({% link _docs/install/quickstart.md %}) - The fastest way to try out StorageOS.
+* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - The fastest way to try out StorageOS.
+* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally with Vagrant.
 * [Install on Kubernetes]({% link _docs/install/schedulers/kubernetes.md %}) - Use StorageOS with a Kubernetes cluster.
 * [Run a SQL database with containers]({% link _docs/applications/databases/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
 

@@ -5,23 +5,24 @@ anchor: introduction
 module: introduction/tutorials
 ---
 
-# Online tutorials
+# Interactive tutorials
 
-You can try out and experiment with StorageOS right in your web browser, using
-pre-configured live environments.
+Our interactive tutorials provide you with a pre-configured StorageOS instance,
+accessible from your browser without any downloads or configuration. Use it to
+experiment, learn StorageOS and see how we can help solve problems with
+container storage.
 
-Learn StorageOS through interactive, guided tutorials based on real-world
-scenarios.
+You will need to sign up to our portal. [Learn how to provision StorageOS volumes without signing up.]({% link _docs/introduction/provisionstorage.md %}).
 
->**Coming soon** To be notified when online tutorials launch, sign up below.
-
-<!--[if lte IE 8]>
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-<![endif]-->
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    portalId: '3402546',
-    formId: '2d71a20e-d0ff-4153-8775-5e8eaabc2423'
-  });
-</script>
+<script src="//www.katacoda.com/embed.js"></script>
+<div id="katacoda-terminal"
+  data-katacoda-id="storageos/portal/dashboard"
+  data-katacoda-color="#4f5263"
+  data-katacoda-secondary="#61c202"
+  data-katacoda-background="#fff"
+  data-katacoda-hideprogress="true"
+  data-katacoda-font="Helvetica Neue"
+  data-katacoda-fontheader="Helvetica Neue"
+  data-katacoda-startscenariobuttontext="Start"
+  style="height: 900px;">
+</div>

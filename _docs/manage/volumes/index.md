@@ -37,12 +37,12 @@ the Docker CLI must be in the `default` namepsace.
 
 To create a 15GB volume, run:
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt fstype=ext4 volume-name
+$ docker volume create --driver storageos --opt size=15 volume-name
 ```
 
 To create a volume and provision to a Docker container in one step, run:
 ```bash
-docker run --volume-driver storageos -v volume-name:/data alpine ash -i
+docker run --rm -ti --volume-driver storageos -v volume-name:/data alpine ash
 ```
 
 When using dynamic provisioning it is not possible to specify options at

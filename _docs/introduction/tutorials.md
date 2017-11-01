@@ -5,23 +5,47 @@ anchor: introduction
 module: introduction/tutorials
 ---
 
-# Online tutorials
+# Interactive tutorials
 
-You can try out and experiment with StorageOS right in your web browser, using
-pre-configured live environments.
+[Our interactive tutorials](my.storageos.com/main/tutorials) provide you with a
+pre-configured StorageOS cluster, accessible from your browser without any
+downloads or configuration.
 
-Learn StorageOS through interactive, guided tutorials based on real-world
-scenarios.
+<script src="//www.katacoda.com/embed.js"></script>
+<script type="text/javascript">
+  var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+  var windowEvent = window[eventMethod];
+  var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
 
->**Coming soon** To be notified when online tutorials launch, sign up below.
-
-<!--[if lte IE 8]>
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-<![endif]-->
-<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
-<script>
-  hbspt.forms.create({
-    portalId: '3402546',
-    formId: '2d71a20e-d0ff-4153-8775-5e8eaabc2423'
-  });
+  windowEvent(messageEvent,function(e) {
+  var d = e.data;
+  if(e && e.origin && e.origin.indexOf('katacoda.com') >= 0) {
+    var t = {
+      'event': 'katacoda-scenario',
+      'eventName': "katacoda-" + d.scenario,
+      'eventAction': d.action,
+      'eventLabel': d.label
+    }
+    window.ga = window.ga || [];
+    window.ga.push(t);
+  }
+  },false);
 </script>
+
+<div
+    data-katacoda-id="storageos/docker-sandbox"
+    data-katacoda-ctatext="More" data-katacoda-ctaurl="https://my.storageos.com/main/tutorials"
+    data-katacoda-color="4f5263"
+    data-katacoda-secondary="61c202"
+    data-katacoda-font="Helvetica Neue"
+    data-katacoda-fontheader="Helvetica Neue"
+    style="height: calc(100vh - 120px);">
+</div>
+
+
+[Get access to all tutorials](my.storageos.com/main/tutorials), including:
+
+* How to install StorageOS with Docker
+* How to provision StorageOS volumes
+* How to provision replicated volumes for HA
+* Sandbox – Kubernetes cluster

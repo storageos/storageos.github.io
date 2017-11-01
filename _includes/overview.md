@@ -9,8 +9,8 @@ or as a container image (Docker 1.10+ or Kubernetes 1.7+).
 
 ## Popular tasks
 
-* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - The fastest way to try out StorageOS.
-* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally with Vagrant.
+* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - Try StorageOS in your browser.
+* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
 * [Install on Kubernetes]({% link _docs/install/schedulers/kubernetes.md %}) - Use StorageOS with a Kubernetes cluster.
 * [Run a SQL database with containers]({% link _docs/applications/databases/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
 

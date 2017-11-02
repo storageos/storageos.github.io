@@ -35,6 +35,10 @@ sections:
         description: Installing on Kubernetes
         module: install/schedulers/kubernetes
       -
+        title: OpenShift
+        description: Installing on OpenShift
+        module: install/schedulers/openshift
+      -
         title: Docker Swarm
         description: Installing on Docker Swarm
         module: install/schedulers/dockerswarm

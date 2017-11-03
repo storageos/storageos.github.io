@@ -1,0 +1,311 @@
+# setup / overview.
+# origin-0 is a single master
+# origin-1, origin-2 and origin-3 are nodes running a StorageOS container
+
+# CentOS7
+cat /etc/redhat-release
+
+# OpenShift 3.7 release candidate
+oc version
+oc get node
+
+# StorageOS running as docker container on the nodes
+ssh origin-1 systemctl status storageos | head -12
+ssh origin-1 storageos node ls
+ssh origin-1 storageos volume ls
+
+# StorageOS / OpenShift demo
+
+# Setu up a secret
+
+# Must contain an API end point for OpenShift to StorageOS communication
+
+API_ADDRESS="$(host origin-1 |cut -d' ' -f4)"
+
+API=$( echo -n "tcp://${API_ADDRESS}:5705" | base64 )
+cat > storageos-secret.yaml <<EOF
+--- 
+apiVersion: v1
+kind: Secret
+metadata:
+  name: storageos-secret
+type: "kubernetes.io/storageos"
+data:
+  apiAddress: $API
+  apiUsername: c3RvcmFnZW9z
+  apiPassword: c3RvcmFnZW9z
+...
+EOF
+
+oc get secrets |grep -q ^storageos-secret && oc delete secret storageos-secret
+oc create -f storageos-secret.yaml
+oc get secrets storageos-secret
+
+
+# Pre-Provisioned volume demo
+
+ssh origin-1 storageos volume create nginx-vol01
+
+cat > storageos-pod.yaml <<EOF
+--- 
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: nginx
+    role: master
+  name: test-storageos-nginx
+spec:
+  containers:
+    - name: master
+      image: nginx
+      env:
+        - name: MASTER
+          value: "true"
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          cpu: "0.1"
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html/
+          name: nginx-data
+  volumes:
+    - name: nginx-data
+      storageos:
+        # This volume must already exist within StorageOS
+        volumeName: nginx-vol01
+        volumeNamespace: default
+        fsType: ext3
+...
+EOF
+
+oc create -f storageos-pod.yaml
+oc get pods test-storageos-nginx
+
+
+# oc exec -ti test-storageos-nginx bash
+# cd /usr/share/nginx/html/
+
+# Now put something in index.html, for example a timestamp.
+oc get pods test-storageos-nginx -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+echo "date > /usr/share/nginx/html/index.html" | oc exec -i test-storageos-nginx bash
+oc get pods test-storageos-nginx -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+
+# the volume is persistent, killing the pod and spinning up a new one.
+oc delete pod test-storageos-nginx
+oc create -f storageos-pod.yaml
+oc get pod test-storageos-nginx
+
+# Is the data stil there?
+oc get pods test-storageos-nginx -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+
+
+# Persistent Volume Claim
+
+# Create the StorageOS volume manually
+
+ssh origin-1 storageos volume create nginx-pv01 --label storageos.feature.replicas=1
+
+# persistent volume
+cat > storageos-pv.yaml <<EOF
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  storageos:
+    # This volume must already exist within StorageOS
+    volumeName: nginx-pv01
+    volumeNamespace: default
+    fsType: ext4
+...
+EOF
+
+oc create -f storageos-pv.yaml
+oc describe pv pv0001
+
+# and now the Persistent Volume Claim
+cat > storageos-pvc.yaml <<EOF
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc0001
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+...
+EOF
+
+oc create -f storageos-pvc.yaml
+oc describe pvc pvc0001
+
+# Spin up a pod to test pvc0001
+
+cat > storageos-pvcpod.yaml << EOF
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: nginx
+    role: master
+  name: test-storageos-nginx-pvc
+spec:
+  containers:
+    - name: master
+      image: nginx
+      env:
+        - name: MASTER
+          value: "true"
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          cpu: "0.1"
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: nginx-data
+  volumes:
+    - name: nginx-data
+      persistentVolumeClaim:
+        claimName: pvc0001
+...
+EOF
+
+oc get pods |grep ^test-storageos-nginx-pvc && oc delete pod test-storageos-nginx-pvc
+oc create -f storageos-pvcpod.yaml
+oc get pod test-storageos-nginx-pvc
+
+# And the same test again with some data
+
+oc get pods test-storageos-nginx-pvc -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+echo "date > /usr/share/nginx/html/index.html" | oc exec -i test-storageos-nginx-pvc bash
+oc get pods test-storageos-nginx-pvc -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+
+# the volume is persistent, killing the pod and spinning up a new one.
+oc delete pod test-storageos-nginx-pvc
+oc create -f storageos-pvcpod.yaml
+oc get pod test-storageos-nginx-pvc
+
+# Is the data stil there?
+oc get pods test-storageos-nginx-pvc -o template --template="curl http://{{ .status.podIP }}:80/" | sh
+
+
+
+# Dynamic Provisioning
+
+##############
+
+# Set up a StorageClass
+
+cat > storageos-sc.yaml <<EOF
+---
+kind: StorageClass
+apiVersion: storage.k8s.io/v1beta1
+metadata:
+  name: fast
+provisioner: kubernetes.io/storageos
+parameters:
+  pool: default
+  description: Kubernetes volume
+  fsType: ext4
+  adminSecretNamespace: default
+  adminSecretName: storageos-secret
+...
+EOF
+
+oc create -f storageos-sc.yaml
+oc describe storageclass fast
+
+# Create a PVC refering to the StorageClass. This allows OpenShift to create the volume in StorageOS
+
+cat > storageos-sc-pvc.yaml <<EOF
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fast0001
+  annotations:
+    volume.beta.kubernetes.io/storage-class: fast
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+...
+EOF
+
+oc create -f storageos-sc-pvc.yaml
+oc get pvc fast0001
+oc describe pvc fast0001
+
+# A new persistent volume will also be created and bound to the pvc:
+oc describe pv $( oc get pvc fast0001 -o template --template "{{.spec.volumeName}}" )
+
+ssh origin-1 storageos volume ls
+
+# And now a pod using this PVC
+
+cat > storageos-sc-pvcpod.yaml <<EOF
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: nginx
+    role: master
+  name: test-storageos-nginx-sc-pvc
+spec:
+  containers:
+    - name: master
+      image: nginx
+      env:
+        - name: MASTER
+          value: "true"
+      ports:
+        - containerPort: 80
+      resources:
+        limits:
+          cpu: "0.1"
+      volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: nginx-data
+  volumes:
+    - name: nginx-data
+      persistentVolumeClaim:
+        claimName: fast0001
+...
+EOF
+
+oc create -f storageos-sc-pvcpod.yaml
+oc get pods test-storageos-nginx-sc-pvc
+
+oc describe pods test-storageos-nginx-sc-pvc
+
+ssh origin-1 storageos volume ls
+
+
+# tidy up
+rm -f storageos-{secrets,pod,pv,pvc,pvcpod,sc,sc-pv,sc-pvcpod}.yaml
+
+oc delete pods $(oc get pods |grep ^test-storageos |cut -d' ' -f 1)
+
+oc delete pvc pvc0001 fast0001
+oc delete pv pv0001
+oc delete secret storageos-secret
+oc delete storageclass fast
+
+ssh origin-1 storageos volume rm default/nginx-vol01 default/nginx-pv01
+

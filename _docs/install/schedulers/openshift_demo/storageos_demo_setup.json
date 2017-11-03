@@ -1,0 +1,302 @@
+{
+  "version": 1,
+  "width": 266,
+  "height": 44,
+  "duration": 75.842795,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "stdout": [
+    [
+      0.010073,
+      "\u001b[?1034hbash-3.2$ "
+    ],
+    [
+      1.38573,
+      "s"
+    ],
+    [
+      0.19224,
+      "s"
+    ],
+    [
+      0.142764,
+      "h"
+    ],
+    [
+      0.103765,
+      " "
+    ],
+    [
+      0.289127,
+      "o"
+    ],
+    [
+      0.152115,
+      "r"
+    ],
+    [
+      0.14402,
+      "i"
+    ],
+    [
+      0.112154,
+      "g"
+    ],
+    [
+      0.103861,
+      "i"
+    ],
+    [
+      0.079896,
+      "n"
+    ],
+    [
+      0.31209,
+      "-"
+    ],
+    [
+      0.888086,
+      "0"
+    ],
+    [
+      1.511997,
+      "."
+    ],
+    [
+      0.247962,
+      "d"
+    ],
+    [
+      0.128139,
+      "o"
+    ],
+    [
+      0.25587,
+      "."
+    ],
+    [
+      0.096132,
+      "s"
+    ],
+    [
+      0.191786,
+      "t"
+    ],
+    [
+      0.168319,
+      "o"
+    ],
+    [
+      0.047911,
+      "r"
+    ],
+    [
+      0.192042,
+      "a"
+    ],
+    [
+      0.143901,
+      "g"
+    ],
+    [
+      0.096029,
+      "e"
+    ],
+    [
+      0.175958,
+      "o"
+    ],
+    [
+      0.152101,
+      "s"
+    ],
+    [
+      0.175841,
+      "."
+    ],
+    [
+      0.536113,
+      "n"
+    ],
+    [
+      0.111983,
+      "e"
+    ],
+    [
+      0.095826,
+      "t"
+    ],
+    [
+      0.168213,
+      " "
+    ],
+    [
+      0.143975,
+      "-"
+    ],
+    [
+      0.295983,
+      "l"
+    ],
+    [
+      0.136036,
+      " "
+    ],
+    [
+      0.16795,
+      "r"
+    ],
+    [
+      0.088104,
+      "o"
+    ],
+    [
+      0.151822,
+      "o"
+    ],
+    [
+      0.128013,
+      "t"
+    ],
+    [
+      0.856348,
+      "\r\n"
+    ],
+    [
+      0.34237,
+      "Last login: Fri Nov  3 15:49:39 2017 from 212.36.56.22\r\r\n"
+    ],
+    [
+      0.489567,
+      "\u001b]0;root@origin-0:~\u0007\u001b[?1034h[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# origin-0 is a single master"
+    ],
+    [
+      1.349867,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# origin-1, origin-2 and origin-3 are nodes running a StorageOS container"
+    ],
+    [
+      0.878159,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# CentOS7\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# cat /etc/redhat-release"
+    ],
+    [
+      1.361937,
+      "\r\n"
+    ],
+    [
+      0.001324,
+      "CentOS Linux release 7.4.1708 (Core) \r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# OpenShift 3.7 release candidate"
+    ],
+    [
+      0.455339,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc version"
+    ],
+    [
+      0.971905,
+      "\r\n"
+    ],
+    [
+      0.403479,
+      "oc v3.7.0-rc.0+eecb026-1\r\nkubernetes v1.7.6+a08f5eeb62\r\nfeatures: Basic-Auth GSSAPI Kerberos SPNEGO\r\n\r\nServer https://origin-0.do.storageos.net:8443\r\nopenshift v3.7.0-rc.0+eecb026-1\r\nkubernetes v1.7.6+a08f5eeb62\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get node"
+    ],
+    [
+      1.338167,
+      "\r\n"
+    ],
+    [
+      0.546914,
+      "NAME                        STATUS                     AGE       VERSION\r\norigin-0.do.storageos.net   Ready,SchedulingDisabled   4d        v1.7.6+a08f5eeb62\r\norigin-1.do.storageos.net   Ready                      4d        v1.7.6+a08f5eeb62\r\norigin-2.do.storageos.net   Ready                      4d        v1.7.6+a08f5eeb62\r\norigin-3.do.storageos.net   Ready                      4d        v1.7.6+a08f5eeb62\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# StorageOS running as docker container on the nodes"
+    ],
+    [
+      1.461133,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "ssh origin-1 systemctl status storageos | head -12"
+    ],
+    [
+      0.464014,
+      "\r\n"
+    ],
+    [
+      0.381661,
+      "● storageos.service - StorageOS\r\n   Loaded: loaded (/etc/systemd/system/storageos.service; enabled; vendor preset: disabled)\r\n   Active: active (running) since Thu 2017-11-02 09:18:06 UTC; 1 day 6h ago\r\n  Process: 2219 ExecStop=/usr/bin/docker stop storageos (code=exited, status=0/SUCCESS)\r\n  Process: 2288 ExecStartPre=/usr/bin/docker pull storageos/node:0.8.1 (code=exited, status=0/SUCCESS)\r\n  Process: 2277 ExecStartPre=/usr/bin/docker rm storageos (code=exited, status=0/SUCCESS)\r\n  Process: 2267 ExecStartPre=/usr/bin/docker kill storageos (code=exited, status=1/FAILURE)\r\n Main PID: 2299 (docker-current)\r\n   Memory: 7.4M\r\n   CGroup: /system.slice/storageos.service\r\n           └─2299 /usr/bin/docker-current run --name storageos -e DISABLE_TELEMETRY=true -e HOSTNAME -e ADVERTISE_IP -e INITIAL_CLUSTER --net=host --pid=host --privileged --cap-add SYS_ADMIN --device /dev/fuse -v /var/lib/storageos:/var/lib/storageos:rshared -v /run/docker/plugins:/run/docker/plugins storageos/node:0.8.1 server\r\n\r\n\u001b]0;root@o"
+    ],
+    [
+      4.9e-05,
+      "rigin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "ssh origin-1 storageos node ls"
+    ],
+    [
+      0.495948,
+      "\r\n"
+    ],
+    [
+      0.557827,
+      "NAME                ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION               LABELS\r\norigin-1            138.68.183.193      Healthy 2 days      false               M: 0, R: 0          160GiB              1.55%               0.8.1 (e910e2c rev)   \r\norigin-2            138.68.183.195      Healthy 34 hours    true                M: 0, R: 0          160GiB              1.52%               0.8.1 (e910e2c rev)   \r\norigin-3            138.68.183.141      Healthy 24 hours    false               M: 0, R: 0          160GiB              1.66%               0.8.1 (e910e2c rev)   \r\n"
+    ],
+    [
+      4.4e-05,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "ssh origin-1 storageos volume ls"
+    ],
+    [
+      0.458085,
+      "\r\n"
+    ],
+    [
+      0.432708,
+      "NAMESPACE/NAME      SIZE                MOUNTED BY          NODE SELECTOR       STATUS              REPLICAS            LOCATION\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "logout\r\n"
+    ],
+    [
+      0.005291,
+      "Connection to origin-0.do.storageos.net closed.\r\r\n"
+    ],
+    [
+      0.000888,
+      "bash-3.2$ "
+    ]
+  ]
+}

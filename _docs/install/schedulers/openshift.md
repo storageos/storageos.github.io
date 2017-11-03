@@ -144,11 +144,11 @@ Pods can be created that access volumes directly.
    Example command: run on a node with StorageOS set up
 
    ```bash
-   storageos volume create redis-vol01
+   storageos volume create nginx-vol01
    ```
 
 1. Create a pod that refers to the new volume.  In this case the volume is named
-   `redis-vol01`.
+   `nginx-vol01`.
 
    Example spec:
 
@@ -159,29 +159,29 @@ Pods can be created that access volumes directly.
    kind: Pod
    metadata:
      labels:
-       name: redis
+       name: nginx
        role: master
-     name: test-storageos-redis
+     name: test-storageos-nginx
    spec:
      containers:
        - name: master
-         image: kubernetes/redis:v1
+         image: nginx
          env:
            - name: MASTER
              value: "true"
          ports:
-           - containerPort: 6379
+           - containerPort: 80
          resources:
            limits:
              cpu: "0.1"
          volumeMounts:
-           - mountPath: /redis-master-data
-             name: redis-data
+           - mountPath: /usr/share/nginx/html
+             name: nginx-data
      volumes:
-       - name: redis-data
+       - name: nginx-data
          storageos:
            # This volume must already exist within StorageOS
-           volumeName: redis-vol01
+           volumeName: nginx-vol01
            # volumeNamespace is optional, and specifies the volume scope within
            # StorageOS.  If no namespace is provided, it will use the namespace
            # of the pod.  Set to `default` or leave blank if you are not using
@@ -202,10 +202,10 @@ Pods can be created that access volumes directly.
    Verify that the pod is running:
 
    ```bash
-   oc get pods test-storageos-redis
+   oc get pods test-storageos-nginx
 
    NAME                   READY     STATUS    RESTARTS   AGE
-   test-storageos-redis   1/1       Running   0          24s
+   test-storageos-nginx   1/1       Running   0          24s
    ```
 
 ### Persistent Volumes
@@ -216,12 +216,12 @@ Pods can be created that access volumes directly.
 **note** this example uses a replicated volume.
 
 ```bash
-storageos volume create redis-pv01 --label storageos.feature.replicas=1
+storageos volume create nginx-pv01 --label storageos.feature.replicas=1
 
-default/redis-pv01
+default/nginx-pv01
 ```
 
-1. Create the persistent volume `redis-vol01`.
+1. Create the persistent volume `nginx-vol01`.
 
    Example spec:
 
@@ -240,7 +240,7 @@ default/redis-pv01
      persistentVolumeReclaimPolicy: Recycle
      storageos:
        # This volume must already exist within StorageOS
-       volumeName: redis-pv01
+       volumeName: nginx-pv01
        # volumeNamespace is optional, and specifies the volume scope within
        # StorageOS.  Set to `default` or leave blank if you are not using
        # namespaces.
@@ -337,26 +337,26 @@ default/redis-pv01
    kind: Pod
    metadata:
      labels:
-       name: redis
+       name: nginx
        role: master
-     name: test-storageos-redis-pvc
+     name: test-storageos-nginx-pvc
    spec:
      containers:
        - name: master
-         image: kubernetes/redis:v1
+         image: nginx
          env:
            - name: MASTER
              value: "true"
          ports:
-           - containerPort: 6379
+           - containerPort: 80
          resources:
            limits:
              cpu: "0.1"
          volumeMounts:
-           - mountPath: /redis-master-data
-             name: redis-data
+           - mountPath: /usr/share/nginx/html
+             name: nginx-data
      volumes:
-       - name: redis-data
+       - name: nginx-data
          persistentVolumeClaim:
            claimName: pvc0001
    ...
@@ -372,10 +372,10 @@ default/redis-pv01
    Verify that the pod has been created:
 
    ```bash
-   oc get pods test-storageos-redis-pvc
+   oc get pods test-storageos-nginx-pvc
 
    NAME                       READY     STATUS    RESTARTS   AGE
-   test-storageos-redis-pvc   1/1       Running   0          1m
+   test-storageos-nginx-pvc   1/1       Running   0          1m
    ```
 
 ### Dynamic Provisioning
@@ -531,26 +531,26 @@ StorageOS supports the following storage class parameters:
    kind: Pod
    metadata:
      labels:
-       name: redis
+       name: nginx
        role: master
-     name: test-storageos-redis-sc-pvc
+     name: test-storageos-nginx-sc-pvc
    spec:
      containers:
        - name: master
-         image: kubernetes/redis:v1
+         image: nginx
          env:
            - name: MASTER
              value: "true"
          ports:
-           - containerPort: 6379
+           - containerPort: 80
          resources:
            limits:
              cpu: "0.1"
          volumeMounts:
-           - mountPath: /redis-master-data
-             name: redis-data
+           - mountPath: /usr/share/nginx/html
+             name: nginx-data
      volumes:
-       - name: redis-data
+       - name: nginx-data
          persistentVolumeClaim:
            claimName: fast0001
    ...
@@ -566,10 +566,10 @@ StorageOS supports the following storage class parameters:
    Verify that the pod has been created:
 
    ```bash
-   oc get pods test-storageos-redis-sc-pvc
+   oc get pods test-storageos-nginx-sc-pvc
 
    NAME                          READY     STATUS    RESTARTS   AGE
-   test-storageos-redis-sc-pvc   1/1       Running   0          44s
+   test-storageos-nginx-sc-pvc   1/1       Running   0          44s
    ```
 
 # Examples cleanup
@@ -578,13 +578,17 @@ On the master OpenShift server:
 
 ```bash
 rm -f storageos-{secrets,pod,pv,pvc,pvcpod,sc,sc-pv,sc-pvcpod}.yaml
-oc delete pod test-storageos-redis-sc-pvc test-storageos-redis-pvc test-storageos-redis
+oc delete pod test-storageos-nginx-sc-pvc test-storageos-nginx-pvc test-storageos-nginx
+oc delete pods $(oc get pods |grep ^test-storageos |cut -d' ' -f 1)
+
 oc delete pvc pvc0001 fast0001
 oc delete pv pv0001
+oc delete secret storageos-secret
+oc delete storageclass fast
 ```
 
 On an OpenShift node:
 
 ```bash
-storageos volume rm default/redis-vol01 default/redis-pv01
+storageos volume rm default/nginx-vol01 default/nginx-pv01
 ```

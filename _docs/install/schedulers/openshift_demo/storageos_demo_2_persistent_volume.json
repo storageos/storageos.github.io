@@ -1,0 +1,806 @@
+{
+  "version": 1,
+  "width": 266,
+  "height": 44,
+  "duration": 139.424981,
+  "command": null,
+  "title": null,
+  "env": {
+    "TERM": "xterm-256color",
+    "SHELL": "/bin/bash"
+  },
+  "stdout": [
+    [
+      0.010594,
+      "\u001b[?1034hbash-3.2$ "
+    ],
+    [
+      2.5,
+      "ssh origin-0"
+    ],
+    [
+      6.5e-05,
+      ".do.storage"
+    ],
+    [
+      3.2e-05,
+      "os.n"
+    ],
+    [
+      2.9e-05,
+      "et"
+    ],
+    [
+      3e-05,
+      " -"
+    ],
+    [
+      6e-05,
+      "l "
+    ],
+    [
+      3e-05,
+      "ro"
+    ],
+    [
+      0.000237,
+      "o"
+    ],
+    [
+      0.000135,
+      "t"
+    ],
+    [
+      0.430024,
+      "\r\n"
+    ],
+    [
+      0.35919,
+      "Last login: Fri Nov  3 16:26:25 2017 from 212.36.56.22\r\r\n"
+    ],
+    [
+      0.435344,
+      "\u001b]0;root@origin-0:~\u0007\u001b[?1034h[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# Persistent Volume Claim"
+    ],
+    [
+      0.396225,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# Create the StorageOS volume manually"
+    ],
+    [
+      0.279025,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "ssh origin-1 storageos volume create nginx-pv01 --label storageos.feature.replicas=1"
+    ],
+    [
+      0.327066,
+      "\r\n"
+    ],
+    [
+      1.532278,
+      "default/nginx-pv01\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      1.889211,
+      "#"
+    ],
+    [
+      0.455648,
+      " "
+    ],
+    [
+      0.136301,
+      "t"
+    ],
+    [
+      0.15134,
+      "h"
+    ],
+    [
+      0.062987,
+      "i"
+    ],
+    [
+      0.128706,
+      "s"
+    ],
+    [
+      0.112166,
+      " "
+    ],
+    [
+      0.128118,
+      "o"
+    ],
+    [
+      0.199949,
+      "n"
+    ],
+    [
+      0.112359,
+      "e"
+    ],
+    [
+      0.127606,
+      " "
+    ],
+    [
+      0.192048,
+      "i"
+    ],
+    [
+      0.136123,
+      "s"
+    ],
+    [
+      0.119955,
+      " "
+    ],
+    [
+      0.200628,
+      "r"
+    ],
+    [
+      0.104216,
+      "e"
+    ],
+    [
+      0.150534,
+      "p"
+    ],
+    [
+      0.217085,
+      "l"
+    ],
+    [
+      0.167293,
+      "i"
+    ],
+    [
+      0.07209,
+      "c"
+    ],
+    [
+      0.208078,
+      "a"
+    ],
+    [
+      0.257068,
+      "t"
+    ],
+    [
+      0.079207,
+      "e"
+    ],
+    [
+      0.28864,
+      "d"
+    ],
+    [
+      2.5,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "ssh origin-1 storageos volume"
+    ],
+    [
+      0.31613,
+      " "
+    ],
+    [
+      0.641006,
+      "l"
+    ],
+    [
+      0.07846,
+      "s"
+    ],
+    [
+      0.362072,
+      "\r\n"
+    ],
+    [
+      0.795059,
+      "NAMESPACE/NAME        SIZE                MOUNTED BY                  NODE SELECTOR       STATUS              REPLICAS            LOCATION\r\ndefault/nginx-pv01    5GB                                                                 active              1/1                 origin-2 (healthy)\r\ndefault/nginx-vol01   5GB                 origin-1.do.storageos.net                       active              0/0                 origin-3 (healthy)\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# persistent volume"
+    ],
+    [
+      0.349421,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "cat > storageos-pv.yaml <<EOF\r\n> ---\r\n> apiVersion: v1\r\n> kind: PersistentVolume\r\n> metadata:\r\n>   name: pv0001\r\n> spec:\r\n>   capacity:\r\n>     storage: 5Gi\r\n>   accessModes:\r\n>     - ReadWriteOnce\r\n>   persistentVolumeReclaimPolicy: Recycle\r\n>   storageos:\r\n>     # This volume must already exist within StorageOS\r\n>     volumeName: nginx-pv01\r\n>     volumeNamespace: default\r\n>     fsType: ext4\r\n> ...\r\n> EOF"
+    ],
+    [
+      0.93913,
+      "\r\n"
+    ],
+    [
+      0.003293,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc create -f storageos-pv.yaml"
+    ],
+    [
+      0.414748,
+      "\r\n"
+    ],
+    [
+      0.488923,
+      "persistentvolume \"pv0001\" created\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc describe pv pv0001"
+    ],
+    [
+      0.414403,
+      "\r\n"
+    ],
+    [
+      0.358893,
+      "Name:\t\tpv0001\r\nLabels:\t\t<none>\r\nAnnotations:\t<none>\r\nStorageClass:\t\r\nStatus:\t\tAvailable\r\nClaim:\t\t\r\nReclaim Policy:\tRecycle\r\nAccess Modes:\tRWO\r\nCapacity:\t5Gi\r\nMessage:\t\r\nSource:\r\n    Type:\t\tStorageOS (a StorageOS Persistent Disk resource)\r\n    VolumeName:\t\tnginx-pv01\r\n    VolumeNamespace:\tdefault\r\n    FSType:\t\text4\r\n    ReadOnly:\t\tfalse\r\nEvents:\t\t\t<none>\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# and now the Persistent Volume Claim"
+    ],
+    [
+      0.758213,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "cat > storageos-pvc.yaml <<EOF\r\n> ---\r\n> apiVersion: v1\r\n> kind: PersistentVolumeClaim\r\n> metadata:\r\n>   name: pvc0001\r\n> spec:\r\n>   accessModes:\r\n>     - ReadWriteOnce\r\n>   resources:\r\n>     requests:\r\n>       storage: 5Gi\r\n> ...\r\n> EOF"
+    ],
+    [
+      0.308833,
+      "\r\n"
+    ],
+    [
+      0.004503,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc create -f storageos-pvc.yaml"
+    ],
+    [
+      0.71824,
+      "\r\n"
+    ],
+    [
+      0.338501,
+      "persistentvolumeclaim \"pvc0001\" created\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc describe pvc pvc0001"
+    ],
+    [
+      0.367246,
+      "\r\n"
+    ],
+    [
+      0.337318,
+      "Name:\t\tpvc0001\r\nNamespace:\tdefault\r\nStorageClass:\t\r\nStatus:\t\tBound\r\nVolume:\t\tpv0001\r\nLabels:\t\t<none>\r\nAnnotations:\tpv.kubernetes.io/bind-completed=yes\r\n\t\tpv.kubernetes.io/bound-by-controller=yes\r\nCapacity:\t5Gi\r\nAccess Modes:\tRWO\r\nEvents:\t\t<none>\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# Spin up a pod to test pvc0001"
+    ],
+    [
+      0.287946,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "cat > storageos-pvcpod.yaml << EOF\r\n> ---\r\n> apiVersion: v1\r\n> kind: Pod\r\n> metadata:\r\n>   labels:\r\n>     name: nginx\r\n>     role: master\r\n>   name: test-storageos-nginx-pvc\r\n> spec:\r\n>   containers:\r\n>     - name: master\r\n>       image: nginx\r\n>       env:\r\n>         - name: MASTER\r\n>           value: \"true\"\r\n>       ports:\r\n>         - containerPort: 80\r\n>       resources:\r\n>         limits:\r\n>           cpu: \"0.1\"\r\n>       volumeMounts:\r\n>         - mountPath: /usr/share/nginx/html\r\n>           name: nginx-data\r\n>   volumes:\r\n>     - name: nginx-data\r\n>       persistentVolumeClaim:\r\n>         claimName: pvc0001\r\n> ...\r\n> EOF"
+    ],
+    [
+      0.887391,
+      "\r\n"
+    ],
+    [
+      0.003258,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pods |grep ^test-storageos-nginx-pvc && oc delete pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.236631,
+      "\r\n"
+    ],
+    [
+      0.388263,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc create -f storageos-pvcpod.yaml"
+    ],
+    [
+      0.32621,
+      "\r\n"
+    ],
+    [
+      0.482127,
+      "pod \"test-storageos-nginx-pvc\" created\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.399936,
+      "\r\n"
+    ],
+    [
+      0.344509,
+      "NAME                       READY     STATUS              RESTARTS   AGE\r\ntest-storageos-nginx-pvc   0/1       ContainerCreating   0          5s\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.497309,
+      "\r\n"
+    ],
+    [
+      0.3696,
+      "NAME                       READY     STATUS              RESTARTS   AGE\r\ntest-storageos-nginx-pvc   0/1       ContainerCreating   0          35s\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.562588,
+      "\r\n"
+    ],
+    [
+      0.57853,
+      "NAME                       READY     STATUS    RESTARTS   AGE\r\ntest-storageos-nginx-pvc   1/1       Running   0          1m\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      0.643503,
+      "oc get pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.296033,
+      "\b"
+    ],
+    [
+      0.507817,
+      "\b"
+    ],
+    [
+      0.079754,
+      "\b"
+    ],
+    [
+      0.088171,
+      "\b"
+    ],
+    [
+      0.08915,
+      "\b"
+    ],
+    [
+      0.08325,
+      "\b"
+    ],
+    [
+      0.085835,
+      "\b"
+    ],
+    [
+      0.083773,
+      "\b"
+    ],
+    [
+      0.085879,
+      "\b"
+    ],
+    [
+      0.088762,
+      "\b"
+    ],
+    [
+      0.085689,
+      "\b"
+    ],
+    [
+      0.086126,
+      "\b"
+    ],
+    [
+      0.084143,
+      "\b"
+    ],
+    [
+      0.088136,
+      "\b"
+    ],
+    [
+      0.091779,
+      "\b"
+    ],
+    [
+      0.084168,
+      "\b"
+    ],
+    [
+      0.08265,
+      "\b"
+    ],
+    [
+      0.08829,
+      "\b"
+    ],
+    [
+      0.102414,
+      "\b"
+    ],
+    [
+      0.071784,
+      "\b"
+    ],
+    [
+      0.087173,
+      "\b"
+    ],
+    [
+      0.082894,
+      "\b"
+    ],
+    [
+      0.086985,
+      "\b"
+    ],
+    [
+      0.083123,
+      "\b"
+    ],
+    [
+      0.088375,
+      "\b"
+    ],
+    [
+      0.08807,
+      "\b"
+    ],
+    [
+      0.081972,
+      "\b"
+    ],
+    [
+      0.089609,
+      "\b"
+    ],
+    [
+      0.087275,
+      "\b"
+    ],
+    [
+      0.990554,
+      "\b\u001b[1P"
+    ],
+    [
+      0.240786,
+      "\b\u001b[1P"
+    ],
+    [
+      0.214895,
+      "\b\u001b[1P"
+    ],
+    [
+      1.752359,
+      "\u001b[1@d"
+    ],
+    [
+      0.263734,
+      "\u001b[1@e"
+    ],
+    [
+      0.251304,
+      "\u001b[1@s"
+    ],
+    [
+      0.139874,
+      "\u001b[1@c"
+    ],
+    [
+      0.281025,
+      "\u001b[1@r"
+    ],
+    [
+      0.152601,
+      "\u001b[1@i"
+    ],
+    [
+      0.215626,
+      "\u001b[1@b"
+    ],
+    [
+      0.079446,
+      "\u001b[1@e"
+    ],
+    [
+      1.466185,
+      "\r\n"
+    ],
+    [
+      0.522611,
+      "Name:\t\ttest-storageos-nginx-pvc\r\nNamespace:\tdefault\r\nNode:\t\torigin-3.do.storageos.net/138.68.183.141\r\nStart Time:\tFri, 03 Nov 2017 16:28:54 +0000\r\nLabels:\t\tname=nginx\r\n\t\trole=master\r\nAnnotations:\topenshift.io/scc=anyuid\r\nStatus:\t\tRunning\r\nIP:\t\t10.33.0.40\r\nContainers:\r\n  master:\r\n    Container ID:\tdocker://f87f486241e0f513a75d86f1f4c7d7273520975a62a53b03c2f8a75524103951\r\n    Image:\t\tnginx\r\n    Image ID:\t\tdocker-pullable://docker.io/nginx@sha256:adea4f68096fded167603ba6663ed615a80e090da68eb3c9e2508c15c8368401\r\n    Port:\t\t80/TCP\r\n    State:\t\tRunning\r\n      Started:\t\tFri, 03 Nov 2017 16:30:01 +0000\r\n    Ready:\t\tTrue\r\n    Restart Count:\t0\r\n    Limits:\r\n      cpu:\t100m\r\n    Requests:\r\n      cpu:\t100m\r\n    Environment:\r\n      MASTER:\ttrue\r\n    Mounts:\r\n      /usr/share/nginx/html from nginx-data (rw)\r\n      /var/run/secrets/kubernetes.io/serviceaccount from default-token-2gpwn (ro)\r\nConditions:\r\n  Type\t\tStatus\r\n  Initialized \tTrue \r\n  Ready \tTrue \r\n  PodScheduled \tTrue \r\nVolumes:\r\n  nginx-data:\r\n    Type:\tPersistent"
+    ],
+    [
+      5.6e-05,
+      "VolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)\r\n    ClaimName:\tpvc0001\r\n    ReadOnly:\tfalse\r\n  default-token-2gpwn:\r\n    Type:\tSecret (a volume populated by a Secret)\r\n    SecretName:\tdefault-token-2gpwn\r\n    Optional:\tfalse\r\nQoS Class:\tBurstable\r\nNode-Selectors:\t<none>\r\nTolerations:\t<none>\r\nEvents:\r\n  FirstSeen\tLastSeen\tCount\tFrom\t\t\t\t\tSubObjectPath\t\tType\t\tReason\t\t\tMessage\r\n  ---------\t--------\t-----\t----\t\t\t\t\t-------------\t\t--------\t------\t\t\t-------\r\n  1m\t\t1m\t\t1\tdefault-scheduler\t\t\t\t\t\tNormal\t\tScheduled\t\tSuccessfully assigned test-storageos-nginx-pvc to origin-3.do.storageos.net\r\n  1m\t\t1m\t\t1\tkubelet, origin-3.do.storageos.net\t\t\t\tNormal\t\tSuccessfulMountVolume\tMountVolume.SetUp succeeded for volume \"default-token-2gpwn\" \r\n  26s\t\t26s\t\t1\tkubelet, origin-3.do.storageos.net\t\t\t\tNormal\t\tSuccessfulMountVolume\tMountVolume.SetUp succeeded for volume \"pv0001\" \r\n  24s\t\t24s\t\t1\tkubelet, origin-3.do.storageos.net\tspec.containers{master}\tNormal\t\tPulling\t\t\tpulling image \"nginx\"\r\n  22s\t\t22s\t\t1\tkubelet"
+    ],
+    [
+      9.3e-05,
+      ", origin-3.do.storageos.net\tspec.containers{master}\tNormal\t\tPulled\t\t\tSuccessfully pulled image \"nginx\"\r\n  21s\t\t21s\t\t1\tkubelet, origin-3.do.storageos.net\tspec.containers{master}\tNormal\t\tCreated\t\t\tCreated container\r\n  21s\t\t21s\t\t1\tkubelet, origin-3.do.storageos.net\tspec.containers{master}\tNormal\t\tStarted\t\t\tStarted container\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# And the same test again with some data"
+    ],
+    [
+      0.318416,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pods test-storageos-nginx-pvc -o template --template=\"curl http://{{ .status.podIP }}:80/\" | sh"
+    ],
+    [
+      0.25434,
+      "\r\n"
+    ],
+    [
+      0.377278,
+      "<html>\r\r\n<head><title>403 Forbidden</title></head>\r\r\n<body bgcolor=\"white\">\r\r\n<center><h1>403 Forbidden</h1></center>\r\r\n<hr><center>nginx/1.13.6</center>\r\r\n</body>\r\r\n</html>\r\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      1.404267,
+      "d"
+    ],
+    [
+      0.119691,
+      "a"
+    ],
+    [
+      0.442585,
+      "t"
+    ],
+    [
+      0.053311,
+      "e"
+    ],
+    [
+      0.186202,
+      "\r\nFri Nov  3 16:30:39 UTC 2017\r\n"
+    ],
+    [
+      0.001412,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "echo \"date > /usr/share/nginx/html/index.html\" | oc exec -i test-storageos-nginx-pvc bash"
+    ],
+    [
+      0.243612,
+      "\r\n"
+    ],
+    [
+      0.518639,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pods test-storageos-nginx-pvc -o template --template=\"curl http://{{ .status.podIP }}:80/\" | sh"
+    ],
+    [
+      0.381801,
+      "\r\n"
+    ],
+    [
+      0.334696,
+      "Fri Nov  3 16:30:44 UTC 2017\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# the volume is persistent, killing the pod and spinning up a new one."
+    ],
+    [
+      0.452988,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc delete pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.319325,
+      "\r\n"
+    ],
+    [
+      0.35888,
+      "pod \"test-storageos-nginx-pvc\" deleted\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc create -f storageos-pvcpod.yaml"
+    ],
+    [
+      0.331431,
+      "\r\n"
+    ],
+    [
+      0.766285,
+      "Error from server (AlreadyExists): error when creating \"storageos-pvcpod.yaml\": object is being deleted: pods \"test-storageos-nginx-pvc\" already exists\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.271847,
+      "oc create -f storageos-pvcpod.yaml"
+    ],
+    [
+      2.5,
+      "\r\n"
+    ],
+    [
+      0.313243,
+      "Error from server (AlreadyExists): error when creating \"storageos-pvcpod.yaml\": object is being deleted: pods \"test-storageos-nginx-pvc\" already exists\r\n"
+    ],
+    [
+      0.005205,
+      "\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      1.842052,
+      "#"
+    ],
+    [
+      0.249815,
+      " "
+    ],
+    [
+      0.401866,
+      "oo"
+    ],
+    [
+      0.154937,
+      "p"
+    ],
+    [
+      0.11367,
+      "s"
+    ],
+    [
+      0.279402,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# oops"
+    ],
+    [
+      0.143684,
+      "\b\b\b\b\b\boc create -f storageos-pvcpod.yaml"
+    ],
+    [
+      2.5,
+      "\r\n"
+    ],
+    [
+      0.408307,
+      "pod \"test-storageos-nginx-pvc\" created\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pod test-storageos-nginx-pvc"
+    ],
+    [
+      0.448065,
+      "\r\n"
+    ],
+    [
+      0.373193,
+      "NAME                       READY     STATUS    RESTARTS   AGE\r\ntest-storageos-nginx-pvc   1/1       Running   0          9s\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "# Is the data stil there?"
+    ],
+    [
+      0.231043,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "oc get pods test-storageos-nginx-pvc -o template --template=\"curl http://{{ .status.podIP }}:80/\" | sh"
+    ],
+    [
+      0.318079,
+      "\r\n"
+    ],
+    [
+      0.434349,
+      "Fri Nov  3 16:30:44 UTC 2017\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      2.5,
+      "#"
+    ],
+    [
+      0.496676,
+      " "
+    ],
+    [
+      0.134293,
+      "w"
+    ],
+    [
+      0.152148,
+      "o"
+    ],
+    [
+      0.152131,
+      "o"
+    ],
+    [
+      0.272669,
+      "h"
+    ],
+    [
+      0.192021,
+      "o"
+    ],
+    [
+      0.151642,
+      "o"
+    ],
+    [
+      0.408483,
+      "!"
+    ],
+    [
+      0.320767,
+      "\r\n\u001b]0;root@origin-0:~\u0007[root@origin-0 ~]# "
+    ],
+    [
+      1.607958,
+      "logout\r\n"
+    ],
+    [
+      0.007618,
+      "Connection to origin-0.do.storageos.net closed.\r\r\n"
+    ],
+    [
+      0.001973,
+      "bash-3.2$ "
+    ]
+  ]
+}

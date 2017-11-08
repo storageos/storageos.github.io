@@ -7,11 +7,11 @@ module: introduction/tutorials
 
 # Interactive tutorials
 
-[Our interactive tutorials](https://my.storageos.com/main/tutorials) provide you with a
+[Our interactive tutorials](https://my.storageos.com/sign-in?referrer=/main/tutorials) provide you with a
 pre-configured StorageOS cluster, accessible from your browser without any
 downloads or configuration.
 
-[![StorageOS tutorials](/images/tutorials.png)](https://my.storageos.com/main/tutorials)
+[![StorageOS tutorials](/images/tutorials.png)](https://my.storageos.com/sign-in?referrer=/main/tutorials)
 
 <script src="//www.katacoda.com/embed.js"></script>
 

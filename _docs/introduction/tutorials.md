@@ -10,19 +10,11 @@ module: introduction/tutorials
 [Our interactive tutorials](https://my.storageos.com/main/tutorials) provide you with a
 pre-configured StorageOS cluster, accessible from your browser without any
 downloads or configuration.
-<div id="dashboard"
-    data-katacoda-id="storageos/portal/dashboard"
-    data-katacoda-color="#4f5263"
-    data-katacoda-secondary="#61c202"
-    data-katacoda-background="#fff"
-    data-katacoda-hideprogress="true"
-    data-katacoda-font="Helvetica Neue"
-    data-katacoda-fontheader="Helvetica Neue"
-    data-katacoda-startscenariobuttontext="Start tutorial"
-    style="height: calc(100vh - 350px);">
-</div>
+
+[![StorageOS tutorials](/images/tutorials.png)](https://my.storageos.com/main/tutorials)
 
 <script src="//www.katacoda.com/embed.js"></script>
+
 <script type="text/javascript">
   var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
   var windowEvent = window[eventMethod];
@@ -44,7 +36,7 @@ downloads or configuration.
 </script>
 
 <div id="sandbox"
-    data-katacoda-id="storageos/docker-sandbox"
+    data-katacoda-id="storageos/provisioning-storage"
     data-katacoda-ctatext="More" data-katacoda-ctaurl="https://my.storageos.com/main/tutorials"
     data-katacoda-color="4f5263"
     data-katacoda-secondary="61c202"

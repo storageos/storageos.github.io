@@ -11,7 +11,11 @@ module: introduction/tutorials
 pre-configured StorageOS cluster, accessible from your browser without any
 downloads or configuration.
 
-[![StorageOS tutorials](/images/tutorials.png)](https://my.storageos.com/sign-in?referrer=/main/tutorials)
+<div style="margin:0 auto; width:60%">
+<a href="https://my.storageos.com/sign-in?referrer=/main/tutorials">
+  <img border="0" alt="StorageOS tutorials" src="../../images/tutorials.png">
+</a>
+</div>
 
 <script src="//www.katacoda.com/embed.js"></script>
 

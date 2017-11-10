@@ -35,14 +35,12 @@ OpenShift 3.7+ is required.
 Run the StorageOS container directly in Docker on each node,
 following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
 
->Note: OpenShift uses iptables, make sure there are rules in place to allow storageos to work.
+>**Note**: OpenShift uses iptables, ensure all rules are in place to allow StorageOS to work.
 
 >**Note**: It is not currently possible to run the StorageOS container via
 OpenShift in a Pod or Daemonset.  StorageOS and other containerized storage
 providers require that mount propagation be enabled using the `rshared` mount
-flag.  The [containerized mount feature](https://github.com/kubernetes/community/pull/589)
-is planned for Kubernetes 1.8, and is being developed in
-[PR #46444](https://github.com/kubernetes/kubernetes/pull/46444).
+flag which is a Kubernetes 1.8 feature. OpenShift 3.7 uses Kubernetes 1.7 which does not have this feature yet.
 
 ## API Configuration
 

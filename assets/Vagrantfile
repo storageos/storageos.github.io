@@ -3,7 +3,6 @@ $install_storageos = <<SCRIPT
 # Prerequisites
 sudo modprobe nbd nbds_max=1024
 sudo mkdir /var/lib/storageos
-sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
 
 # Install StorageOS container
 docker run -d --name storageos \

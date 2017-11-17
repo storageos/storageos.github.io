@@ -17,7 +17,6 @@ Full documentation is available at <https://docs.storageos.com>.
 ```bash
 $ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
-$ wget -O /etc/docker/plugins/storageos.json http://docs.storageos.com/assets/storageos.json
 $ docker run -d --name storageos \
     -e HOSTNAME \
     --net=host \
@@ -97,19 +96,6 @@ nbd
 ```
 options nbd nbds_max=1024
 ```
-
-### Docker Volume Driver Configuration
-
-Docker needs to be configured to use the StorageOS volume plugin. This is done by writing a configuration file in `/etc/docker/plugins/storageos.json` with contents:
-
-```json
-{
-    "Name": "storageos",
-    "Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
-}
-```
-
-This file instructs Docker to use the volume driver API listening on the specified Unix domain socket. Note that the socket is only accessible by the root user, and it is only present when the StorageOS node container is running.
 
 ### Run the StorageOS node container
 

@@ -63,7 +63,7 @@ are registered, StorageOS will start up.
 An alternative to the discovery service is providing an explicit list of IP addresses.
 
 ```bash
-JOIN=storageos-1=172.28.128.3,172.28.128.9,172.28.128.15
+JOIN=172.28.128.3,172.28.128.9,172.28.128.15
 ```
 
 ### Option 3: Doing both

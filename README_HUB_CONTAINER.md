@@ -98,19 +98,6 @@ sudo modprobe nbd nbds_max=1024
    options nbd nbds_max=1024
    ```
 
-### Docker Plugin Configuration
-
-Docker needs to be configured to use the StorageOS volume plugin. This is done by writing a configuration file in `/etc/docker/plugins/storageos.json` with contents:
-
-```json
-{
-    "Name": "storageos",
-    "Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
-}
-```
-
-This file instructs Docker to use the volume plugin API listening on the specified Unix domain socket. Note that the socket is only accessible by the root user, and it is only present when the StorageOS client container is running.
-
 ### Run the StorageOS node container
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the container:

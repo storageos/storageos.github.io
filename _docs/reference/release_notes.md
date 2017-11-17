@@ -25,7 +25,26 @@ release notes.
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
+## Deprecation notices
+
+While in Beta there may be changes that break backwards compatibility.  GA
+releases will strive to preserve compatibility between versions.
+
+- The `INITIAL_CLUSTER` environment variable has been replaced with
+  `JOIN`, and `INITIAL_CLUSTER` should no longer be used to bootstrap a new
+  cluster.  `JOIN` provides a more flexible mechanism for creating new clusters
+  and expanding existing clusters.
+- The API object format for users has changed to make it consistent with other
+  objects.  Version 0.9.0+ of the StorageOS CLI must be used to manage users on
+  a version 0.9.x cluster.
+
+0.8.x
+
 ## Known Issues
+
+0.9.x
+
+0.8.x
 
 - Once a 0.8.0 cluster has been established, it is currently not possible to add
   or remove members.  We expect this functionality to come in 0.8.1, and welcome
@@ -75,7 +94,7 @@ New
   apply access policy by group membership or named account.
 - Anonymized usage metrics are collected and sent to StorageOS to help us better
   understand usage patterns so we can focus our efforts accordingly.  Metrics
-  can be disabled by setting the `DISABLE_TELEMETRY` environment variable to 
+  can be disabled by setting the `DISABLE_TELEMETRY` environment variable to
   `true`.
 - Location-based scheduling allows administrators to specify scheduling
   constraints on volumes at creation time.  This provides a simple mechanism to

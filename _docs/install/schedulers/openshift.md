@@ -211,13 +211,13 @@ Pods can be created that access volumes directly.
 1. Create a volume using the StorageOS CLI or API.  Consult the
    [volume documentation]({% link _docs/manage/volumes/index.md %}) for details.
 
-**note** this example uses a replicated volume.
+   **Note** this example uses a replicated volume.
 
-```bash
-storageos volume create nginx-pv01 --label storageos.feature.replicas=1
-
-default/nginx-pv01
-```
+   ```bash
+   storageos volume create nginx-pv01 --label storageos.feature.replicas=1
+   
+   default/nginx-pv01
+   ```
 
 1. Create the persistent volume `nginx-vol01`.
 

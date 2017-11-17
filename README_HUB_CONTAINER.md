@@ -19,7 +19,6 @@ Provide the host ip address in ADVERTISE_IP and a cluster discovery token with C
 ```bash
 $ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
-$ sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
 $ docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=xxx.xxx.xxx.xxx \

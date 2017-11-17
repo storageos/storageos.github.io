@@ -24,13 +24,6 @@ present on each node where StorageOS runs.
 sudo mkdir /var/lib/storageos
 ```
 
-For Docker only or Docker Swarm clusters, configure Docker to use the StorageOS
-volume plugin:
-
-```bash
-sudo curl -o /etc/docker/plugins/storageos.json --create-dirs https://docs.storageos.com/assets/storageos.json
-```
-
 ## Install the storageos/node container
 
 Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery

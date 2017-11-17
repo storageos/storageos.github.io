@@ -1,4 +1,0 @@
-{
-	"Name": "storageos",
-	"Addr": "unix:////run/docker/plugins/storageos/storageos.sock"
-}

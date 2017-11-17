@@ -2,8 +2,8 @@
 layout: guide
 title: StorageOS Docs - Swarm with Wordpress
 anchor: applications
-module: applications/content/wordpress
-# Last reviewed by julian.topley@storageos.com on 2017-05-23 - WP and Swarm working now
+module: applications/wordpress
+# Last reviewed by cheryl.hung@storageos.com on 2017-11-16
 ---
 
 # ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo
@@ -15,7 +15,7 @@ losing access to the underlying persistent storage.
 ## Create a Docker Swarm cluster
 
 The first step in this exercise is to get Docker Swarm set up and running on
-your test cluster.
+your test cluster, which should already have StorageOS installed.
 
 1. Log into the first StorageOS node and confirm the public facing IP address
    (192.168.50.100 in this example):

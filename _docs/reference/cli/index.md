@@ -10,16 +10,16 @@ module: reference/cli/index
 ## Overview
 
 The `storageos` command line interface (CLI) is used to manage cluster-wide
-configuration. It is [open source](https://github.com/storageos/go-cli) and available from the [Docker Hub](https://hub.docker.com/r/storageos/cli/).
+configuration. It is [open source](https://github.com/storageos/go-cli).
 
 ## Installation
 
 Install to `/usr/local/bin`:
 ```bash
-sudo -i
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.13/storageos_linux_amd64 > /usr/local/bin/storageos
-chmod +x /usr/local/bin/storageos
-exit
+# linux/amd64
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/0.9.0/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
+# OS X/amd64
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/0.9.0/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 ```
 
 You will need to provide the correct credentials. The default installation
@@ -33,7 +33,7 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 For remote authentication, set `STORAGEOS_HOST`:
 
 ```bash
-export STORAGEOS_HOST=<ip address>
+export STORAGEOS_HOST=10.1.5.249
 ```
 
 Credentials can be overridden with the `-u`, `-p`  and `-H` flags.
@@ -49,7 +49,7 @@ The storageos CLI also provides a credential store for setting these values long
 ```bash
 $ storageos login 10.1.5.249
 Username: storageos
-Password: 
+Password:
 Credentials verified
 ```
 

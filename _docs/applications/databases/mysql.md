@@ -61,12 +61,11 @@ guide for further details.
 
 ## Create a test database
 
-1. Connect to MySQL container, entering `storageos` at the prompt.
+1. Connect to MySQL container and run the mysql client.
 
    ```bash
    $ docker exec -it mysql-dev bash
-   root@41b99204cabf:/# mysql -u root -p
-   Enter password:
+   root@41b99204cabf:/# MYSQL_PWD=storageos mysql -u root
    mysql>
    ```
 
@@ -149,36 +148,24 @@ container has exited.
        -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found
    ```
 
-1. Connect to the MySQL database, entering `storageos` at the prompt.
+1. Connect to the MySQL container and connect to the testdb database.
 
    ```bash
    $ docker exec -it mysql-dev bash
-   root@771452bc98c2:/# mysql -u root -p
-   Enter password:
+   root@771452bc98c2:/# MYSQL_PWD=storageos mysql -u root testdb
    mysql>
    ```
 
 1. List the tables and confirm our table is still there
 
    ```bash
-   mysql> show databases;
-   +--------------------+
-   | Database           |
-   +--------------------+
-   | information_schema |
-   | mysql              |
-   | performance_schema |
-   | sys                |
-   | testdb             |
-   +--------------------+
-   5 rows in set (0.01 sec)
-   ```
-
-1. Connect to the testdb database
-
-   ```bash
-   mysql> use testdb
-   Database changed
+   mysql> show tables;
+   +------------------+
+   | Tables_in_testdb |
+   +------------------+
+   | fruit            |
+   +------------------+
+   1 row in set (0.00 sec)
    ```
 
 1. Insert some more data to the table

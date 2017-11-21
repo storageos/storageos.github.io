@@ -649,13 +649,14 @@ parameters:
     description: "Timeout for the list call."
 
 paths:
-  /users/{id}:
+  '/users/{id}':
     get:
       summary: "Get user"
       description: "Display a user selected by ID"
       produces:
         - "application/json"
-      tags: ["User"]
+      tags:
+        - User
       responses:
         200:
           description: "Success"

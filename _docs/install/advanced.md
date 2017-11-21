@@ -29,11 +29,6 @@ compatible with Docker managed plugins, which are limited to a single container.
 
 Docker Compose is recommended.
 
-### KV Store
-
-StorageOS relies on an external key-value store for configuration data and cluster
-management.  See [Consul installation]({% link _docs/install/prerequisites/kvstore.md %}) for more details.
-
 ## Manual Installation
 
 StorageOS shares volumes via the `/var/lib/storageos` directory.  This must be

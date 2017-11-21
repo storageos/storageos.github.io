@@ -23,7 +23,7 @@ consumes:
 basePath: "/v1"
 info:
   title: "StorageOS API"
-  version: "0.7"
+  version: "0.9"
   x-logo:
     url: "https://storageos.com/wp-content/themes/storageOS/images/logo.svg"
   description: |

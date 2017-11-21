@@ -44,15 +44,15 @@ guide for further details.
 
 1. Confirm there are no errors or warnings.
 
-```bash
-$ docker logs redis-test
-1:C 24 Aug 14:37:44.565 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-1:C 24 Aug 14:37:44.565 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid=1, just started
-1:C 24 Aug 14:37:44.565 # Configuration loaded
-1:M 24 Aug 14:37:44.566 * Running mode=standalone, port=6379.
-1:M 24 Aug 14:37:44.566 # Server initialized
-1:M 24 Aug 14:37:44.567 * Ready to accept connections
-```
+   ```bash
+   $ docker logs redis-test
+   1:C 24 Aug 14:37:44.565 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+   1:C 24 Aug 14:37:44.565 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid=1, just started
+   1:C 24 Aug 14:37:44.565 # Configuration loaded
+   1:M 24 Aug 14:37:44.566 * Running mode=standalone, port=6379.
+   1:M 24 Aug 14:37:44.566 # Server initialized
+   1:M 24 Aug 14:37:44.567 * Ready to accept connections
+   ```
 
    Refer to the Configuration section below for more details on warning messages.
 

@@ -55,5 +55,5 @@ be copied.
 
 To add replicas to a volume:
 ```bash
-$ storageos volume update --label-add storageos.feature.replicas=2 env=dev default/volume-name default/volume-name
+$ storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
 ```

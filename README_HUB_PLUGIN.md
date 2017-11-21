@@ -12,10 +12,10 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Quick Start
 
-Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the plugin:
+Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
+docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -76,10 +76,10 @@ sudo modprobe nbd nbds_max=1024
 
 ### StorageOS Plugin Installation (Docker 1.13+)
 
-Provide the host ip address in ADVERTISE_IP and a cluster discovery token with CLUSTER_ID when you install the container:
+Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP CLUSTER_ID=$CLUSTER_ID
+$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 
 Plugin "storageos/plugin" is requesting the following privileges:
 - network: [host]
@@ -91,7 +91,7 @@ Plugin "storageos/plugin" is requesting the following privileges:
 Do you grant the above permissions? [y/N]
 ```
 
-To provision a new `CLUSTER_ID`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
+To generate a new cluster ID to use in `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way.
 
@@ -105,8 +105,7 @@ Although the default settings should work for most environments, a number of set
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections. Defaults to first non-loopback address.
 * `USERNAME`: Username to authenticate to the API with. Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with. Defaults to `storageos`.
-* `CLUSTER_ID`: Cluster ID for the node to join an existing cluster previously created through 'storageos cluster create' command
-* `INITIAL_CLUSTER`: Static list of pre-existing cluster, supplied as comma separated list of `<hostname>=<url>:5707`
+* `JOIN`: A URI defining the cluster for the node to join. Either in the form of a list of IPs, a cluster token (created through 'storageos cluster create') or both.
 * `API_PORT`: Port for the API to listen on. Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
 * `NATS_PORT`: Port for NATS messaging to listen on. Defaults to `4222`.
 * `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on. Defaults to `8222`.

@@ -2,7 +2,6 @@ $install_storageos = <<SCRIPT
 
 # Prerequisites
 sudo modprobe nbd nbds_max=1024
-sudo mkdir /var/lib/storageos
 
 # Install StorageOS container
 docker run -d --name storageos \
@@ -16,10 +15,10 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    storageos/node:0.9.0 server
 
 # Install StorageOS CLI
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.0.13/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.9.1/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 echo "export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=192.168.50.100" > /home/vagrant/.profile
 echo "Defaults env_keep += \\"STORAGEOS_HOST STORAGEOS_USERNAME STORAGEOS_PASSWORD\\"" > /etc/sudoers.d/00_storageos_env

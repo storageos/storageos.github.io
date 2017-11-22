@@ -30,7 +30,7 @@ token]({%link _docs/install/prerequisites/clusterdiscovery.md %}) with
 `JOIN` when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=xxx.xxx.xxx.xxx JOIN=xxxxxxxxxxxxxxxxx
+$ docker plugin install --alias storageos storageos/plugin:0.9.0 ADVERTISE_IP=xxx.xxx.xxx.xxx JOIN=xxxxxxxxxxxxxxxxx
 Plugin "storageos/plugin" is requesting the following privileges:
  - network: [host]
  - mount: [/var/lib]

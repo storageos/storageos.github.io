@@ -17,11 +17,11 @@ only consume capacity which is actually used.
 
 Volume names consist of lower case alphanumeric characters or '-', and must
 start and end with an alphanumeric character. By default, volumes are 5GB in
-size (overridden by `--size`) and formatted as ext4 (overridden by
+size (overridden by `--size`) and formatted as xfs (overridden by
 `--fstype=ext2|ext3|ext4|xfs|btrfs`).
 
 In order to mount volumes into containers, they are formatted with a filesystem
-such as `ext4`. All volumes are accessible to any container anywhere on the cluster
+such as `xfs`. All volumes are accessible to any container anywhere on the cluster
 (global namespace) but each volume may only be mounted by one container at a
 time. Additional behaviours may be specified by adding [labels]({% link _docs/manage/volumes/labels.md %}).
 
@@ -129,3 +129,22 @@ default/volume-name
 
 Volumes may not be removed immediately as the data will be purged in the
 background.
+
+## Using node selector
+
+Node selector is a form of constraint. For the volume to be eligible for a deployment on a node, selector must match node's labels. An empty selector
+always matches a node.
+
+If a group of nodes have a label `country=US`, then a node selector could be used
+during volume creation:
+
+```bash
+$ storageos volume create --nodeSelector 'country=US'
+```
+
+Another options for this case:
+
+```
+country in (US, CA)
+country notin (UK)
+```

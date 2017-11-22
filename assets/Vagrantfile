@@ -15,7 +15,7 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.9 server
+    storageos/node:0.9.0 server
 
 # Install StorageOS CLI
 curl -sSL https://github.com/storageos/go-cli/releases/download/0.9.1/storageos_linux_amd64 > /usr/local/bin/storageos

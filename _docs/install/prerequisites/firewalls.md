@@ -46,6 +46,7 @@ ufw allow 5708/tcp
 ufw allow 5709/tcp
 ufw allow 5710/tcp
 ufw allow 5711/tcp
+ufw allow 5711/udp
 ```
 
 The equivalent `IPTABLES` commands (assuming `eth0` is correct):
@@ -81,4 +82,5 @@ iptables -A INPUT -p tcp --dport 5710 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 5710 -j ACCEPT
 iptables -A INPUT -p tcp --dport 5711 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 5711 -j ACCEPT
+iptables -A OUTPUT -p udp --dport 5711 -j ACCEPT
 ```

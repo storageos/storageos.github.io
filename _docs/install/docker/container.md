@@ -17,13 +17,6 @@ Kubernetes 1.7+.
 sudo modprobe nbd nbds_max=1024
 ```
 
-StorageOS shares volumes via `/var/lib/storageos`.  This must be
-present on each node where StorageOS runs.
-
-```bash
-sudo mkdir /var/lib/storageos
-```
-
 ## Install the storageos/node container
 
 Provide the host ip address in `ADVERTISE_IP` and a [cluster discovery
@@ -42,7 +35,7 @@ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    storageos/node:0.9 server
 ```
 
 To use StorageOS volumes with containers, specify `--volume-driver storageos`:

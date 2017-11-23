@@ -17,7 +17,6 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
 $ docker run -d --name storageos \
     -e HOSTNAME \
@@ -30,7 +29,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    storageos/node:0.9.0 server
 ```
 
 To provision a new `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
@@ -67,14 +66,6 @@ The container installation method requires Docker 1.10+. For Docker 1.13+ most u
 ## Installation
 
 The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
-
-### State
-
-StorageOS shares volumes via the `/var/lib/storageos` directory. This must be present on each node where StorageOS runs. Prior to installation, create it:
-
-```bash
-sudo mkdir /var/lib/storageos
-```
 
 ### Network Block Device (NBD)
 
@@ -114,7 +105,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    storageos/node:0.9.0 server
 ```
 
 To generate a new cluster ID to use in `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).

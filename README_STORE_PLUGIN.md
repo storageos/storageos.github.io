@@ -34,10 +34,10 @@ sudo modprobe nbd nbds_max=1024
    options nbd nbds_max=1024
    ```
 
-Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the plugin:
+Provide the host ip address in `ADVERTISE_IP` and a cluster discovery token with `JOIN` when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos store/storageos/plugin ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+docker plugin install --alias storageos store/storageos/plugin:0.9.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 ```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>

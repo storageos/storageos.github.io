@@ -49,7 +49,8 @@ This may cause cluster instability while nodes are being upgraded.
 
 Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 0.8.x+.  Our recommendation is to create a new cluster, paying attention to the
-new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`)
+new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
+`INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
 
 ## 0.9.0
 

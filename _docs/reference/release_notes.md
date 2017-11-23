@@ -27,7 +27,7 @@ and to perform upgrades only after reading the release notes.
 
 ## Upgrades
 
-Upgrades can be performed by restarting to StorageOS node container with the
+Upgrades can be performed by restarting the StorageOS node container with the
 new version, or by performing `docker plugin upgrade` on Docker Managed Plugin
 installs.
 

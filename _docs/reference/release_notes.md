@@ -65,8 +65,8 @@ of improvements and better failure handling and recovery.
 While in Beta there may be changes that break backwards compatibility.  GA
 releases will strive to preserve compatibility between versions.
 
-- The `INITIAL_CLUSTER` environment variable has been replaced with
-  `JOIN`, and `INITIAL_CLUSTER` should no longer be used to bootstrap a new
+- The `INITIAL_CLUSTER` and `CLUSTER_ID` environment variables have been
+  replaced with `JOIN` and they should no longer be used to bootstrap a new
   cluster.  `JOIN` provides a more flexible mechanism for creating new clusters
   and expanding existing clusters.  Errors or deprecation notices in the log at
   startup will help verify that the correct environment variables are used.

@@ -14,17 +14,34 @@ sections:
     module: install/prerequisites
     items:
       -
-        title: Cluster discovery
-        description: Cluster discovery
+        title: Cluster Discovery
+        description: Cluster Discovery
         module: install/prerequisites/clusterdiscovery
       -
-        title: Network Block Device
-        description: Network Block Device
-        module: install/prerequisites/nbd
+        title: Device Presentation
+        description: Device Presentation
+        module: install/prerequisites/devicepresentation
       -
         title: Ports and Firewall Settings
         description: Ports and Firewall Settings
         module: install/prerequisites/firewalls
+  -
+    title: Docker
+    description: Docker
+    module: install/docker
+    items:
+      -
+        title: Docker Container
+        description: Docker container install for Docker Engine 1.10+
+        module: install/docker/container
+      -
+        title: Docker Volume plugin
+        description: Docker managed plugin install for Docker Engine 1.13+
+        module: install/docker/plugin
+      -
+        title: Docker Swarm
+        description: Installing on Docker Swarm
+        module: install/schedulers/dockerswarm
   -
     title: Schedulers
     description: Running StorageOS using schedulers
@@ -51,23 +68,6 @@ sections:
         description: Installing on Mesosphere DC/OS
         module: install/schedulers/mesosphere-dcos
   -
-    title: Docker only
-    description: Docker
-    module: install/docker
-    items:
-      -
-        title: Container
-        description: Docker container install for Docker Engine 1.10+
-        module: install/docker/container
-      -
-        title: Volume plugin
-        description: Docker managed plugin install for Docker Engine 1.13+
-        module: install/docker/plugin
-      -
-        title: Troubleshooting
-        description: Troubleshooting a Docker installation
-        module: install/docker/troubleshooting
-  -
     title: Cloud providers
     description: Running StorageOS on cloud providers
     module: install/cloud
@@ -88,4 +88,8 @@ sections:
     title: Cluster health
     description: Checking the status of a StorageOS cluster
     module: install/health
+  -
+    title: Troubleshooting
+    description: Troubleshooting a Docker installation
+    module: install/troubleshooting
 ---

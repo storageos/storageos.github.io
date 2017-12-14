@@ -35,52 +35,22 @@ To configure firewall rules using `UFW` commands:
 
 ```bash
 ufw default allow outgoing
-ufw allow 5701/tcp
-ufw allow 5702/tcp
-ufw allow 5703/tcp
-ufw allow 5704/tcp
-ufw allow 5705/tcp
-ufw allow 5706/tcp
-ufw allow 5707/tcp
-ufw allow 5708/tcp
-ufw allow 5709/tcp
-ufw allow 5710/tcp
-ufw allow 5711/tcp
+ufw allow 5701:5711/tcp
 ufw allow 5711/udp
 ```
 
 The equivalent `IPTABLES` commands (assuming `eth0` is correct):
 
 ```bash
-# Set defaults at the top of the table to allow outgoing traffic
+# Set defaults at the top of the table to allow localhost, outgoing traffic
+# and established connections
+iptables -I INPUT -i lo -j ACCEPT
+iptables -I OUTPUT -o lo -j ACCEPT
 iptables -I OUTPUT -o eth0 -d 0.0.0.0/0 -j ACCEPT
 iptables -I INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # Open required ports
 
-iptables -A INPUT -p tcp --dport 5701 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5701 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5702 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5702 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5703 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5703 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5704 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5704 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5705 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5705 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5706 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5706 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5707 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5707 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5708 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5708 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5708 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5708 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5709 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5709 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5710 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5710 -j ACCEPT
-iptables -A INPUT -p tcp --dport 5711 -j ACCEPT
-iptables -A OUTPUT -p tcp --dport 5711 -j ACCEPT
-iptables -A OUTPUT -p udp --dport 5711 -j ACCEPT
+iptables -A INPUT -p tcp --dport 5701:5711 -j ACCEPT
+iptables -A INPUT -p udp --dport 5711 -j ACCEPT
 ```

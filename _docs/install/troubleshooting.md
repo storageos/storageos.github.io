@@ -12,7 +12,7 @@ Error response from daemon: dial unix /run/docker/plugins/a-very-long-hash-value
 ```
 
 This error indicates that the StorageOS plugin container did not successfully
-start during installation. This is usualy due to incorrect option values
+start during installation. This is usually due to incorrect option values
 being passed to the docker plugin installation command.
 
 Please refer to the [plugin]({%link _docs/install/docker/plugin.md %})

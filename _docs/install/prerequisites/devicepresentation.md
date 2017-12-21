@@ -8,22 +8,8 @@ module: install/prerequisites/devicepresentaion.md
 # Device presentation
 
 StorageOS requires one of two runtime requirements to present virtual block devices
-from Userspace. While not mandatory, the NBD aproach does offer significantly
+from userspace. While not mandatory, the NBD aproach does offer significantly
 better performance over the loop-device alternative.
-
-## Loopback driver
-
-The loopback driver is a Linux kernel feature, which allows creation of a block
-device whose files map to the bocks of a regular file. This kernel feature is a
-runtime requirement in the absence of the NBD kernel module.
-
-While this feature is enabled by default on most systems, StorageOS does require some
-specific parameters to be set. To configure these, add the following
-configuration line in `/etc/modprobe.d/loop.conf`
-
-```text
-options loop max_loop=1024
-```
 
 ## Network Block Device
 
@@ -53,5 +39,19 @@ To ensure the NBD module is loaded on reboot:
     ```
 
 Your distribution may set different defaults for the provided
-parameters. For storageos to run correctly, our values must be used in their
+parameters. For StorageOS to run correctly, our values must be used in their
 place.
+
+## Loopback driver (fallback)
+
+The loopback driver is a Linux kernel feature, which allows creation of a block
+device whose files map to the bocks of a regular file. This kernel feature is a
+runtime requirement in the absence of the NBD kernel module.
+
+While this feature is enabled by default on most systems, StorageOS does require some
+specific parameters to be set. To configure these, add the following
+configuration line in `/etc/modprobe.d/loop.conf`
+
+```text
+options loop max_loop=1024
+```

@@ -4,7 +4,7 @@ $install_storageos = <<SCRIPT
 sudo modprobe nbd nbds_max=1024
 
 # Install StorageOS container
-docker run -d --name storageos \
+docker run -d --restart unless-stopped --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=$1 \
     -e JOIN=192.168.50.100,192.168.50.101,192.168.50.102 \

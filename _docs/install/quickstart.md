@@ -35,3 +35,6 @@ Bringing machine 'storageos-3' up with 'virtualbox' provider...
 
 Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %})
 or [install Postgres]({% link _docs/applications/databases/postgres.md %}).
+
+__NOTE__: If due to some reason, the storageos containers stop, they can be
+restarted by running `docker start storageos`.

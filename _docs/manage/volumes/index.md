@@ -129,3 +129,23 @@ default/volume-name
 
 Volumes may not be removed immediately as the data will be purged in the
 background.
+
+## Using node selector
+
+A node selector is a constraint on where volumes may be deployed, based on node labels. For the volume to be eligible for a deployment on a node, selector must match node's labels. An empty selector always matches a node.
+
+If a group of nodes are labelled `country=US`, then a node selector can be used
+during volume creation:
+
+```bash
+$ storageos volume create --nodeSelector 'country=US'
+```
+
+Selectors may also be set-based:
+
+```
+country in (US, CA)
+country notin (UK)
+```
+
+Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors. 

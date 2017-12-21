@@ -142,7 +142,7 @@ releases will strive to preserve compatibility between versions.
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those
+  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
   platforms.
 
 ## 0.8.1
@@ -211,7 +211,7 @@ StorageOS, what problems it is solving for you and how it can improve.  Join our
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/nbd.md %}) on those
+  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
   platforms.
 
 ## 0.7.10

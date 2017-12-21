@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Cloud providers
 anchor: install
-module: install/cloud
+module: install/cloud/index
 ---
 
 # Cloud providers

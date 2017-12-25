@@ -18,10 +18,12 @@ docker run -d --restart unless-stopped --name storageos \
     storageos/node:0.9.0 server
 
 # Install StorageOS CLI
-curl -sSL https://github.com/storageos/go-cli/releases/download/0.9.1/storageos_linux_amd64 > /usr/local/bin/storageos
+curl -sSL https://github.com/storageos/go-cli/releases/download/0.9.3/storageos_linux_amd64 > /usr/local/bin/storageos
 chmod +x /usr/local/bin/storageos
 echo "export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=192.168.50.100" > /home/vagrant/.profile
 echo "Defaults env_keep += \\"STORAGEOS_HOST STORAGEOS_USERNAME STORAGEOS_PASSWORD\\"" > /etc/sudoers.d/00_storageos_env
+sudo apt-get install -y bash-completion
+sudo /usr/local/bin/storageos install-bash-completion --stdout > /etc/bash_completion.d/storageos
 SCRIPT
 
 nodes = 3

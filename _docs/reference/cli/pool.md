@@ -47,10 +47,10 @@ production
 To list pools:
 
 ```bash
-$ storageos pool inspect no-ha
-POOL NAME           DRIVERS             CONTROLLERS                                               AVAIL               TOTAL               STATUS
-default             filesystem          storageos-1-59227, storageos-2-59227, storageos-3-59227   0 B                 0 B                 active
-no-ha                                   storageos-1-59227
+$ storageos pool ls
+NAME                DRIVERS             NODES               TOTAL               USED                STATUS
+default             filesystem          1                   40.58GB             5.41%               active
+no-ha                                   0                   0B                  -                   active
 ```
 
 ### `storageos pool inspect`

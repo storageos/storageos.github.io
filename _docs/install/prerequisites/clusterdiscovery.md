@@ -36,6 +36,8 @@ Replicas are unavailable in a single node install.
 The environment variable `JOIN` is used to pass clustering information to the StorageOS node.
 This environment variable can contain two types of information, a cluster token or a set of IP addresses.
 
+You can [check the cluster status]({%link _docs/install/health.md %}) to confirm a successful installation.
+
 ### Option 1: Cluster token
 
 StorageOS offers a public `etcd` discovery service to aid in cluster discovery.
@@ -75,4 +77,18 @@ When multiple methods are provided, the arguments are evaluated and attempted in
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
-* [Checking the cluster status]({%link _docs/install/health.md %})
+### Note on single node clusters
+
+Some deployments require the use of StorageOS in a one-node cluster setup.
+The `JOIN` command line argument is always required, even in clusters with only one node.
+
+A blank `JOIN` variable will result in a non-functional cluster, this is to prevent non-obvious
+split-brain scenarios in multi-node clusters, where one or more nodes were started without `JOIN` config.
+
+In the case of a one-node-cluster, the value of `JOIN` should equal the `ADVERTISE_IP`.
+
+```bash
+ADVERTISE_IP=172.28.128.3
+JOIN=$ADVERTISE_IP
+```
+

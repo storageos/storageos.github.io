@@ -25,7 +25,7 @@ Failure modes specify how StorageOS scheduler should react to node issues.
 There are three different modes:
 
 * **soft** is the default mode. It works together with the failure tolerance label to help decide whether volume should be writable or not. Failure tolerance specifies how many failed replicas we tolerate, defaults to (Replicas - 1) if Replicas > 0, o if we have 2 replicas it will default to 1, if we have 3 replicas, tolerance will be 2.
-* **hard** is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable.
+* **hard** is a mode where any loss in desired replicas count will mark volume as unavailable.
 * **alwayson** is a mode where as long as any copy of the volume is alive, volume will be writable.
 
 You can select failure mode through the labels:

@@ -74,7 +74,7 @@ scenarios.  Full documentation to be added to the docs site soon.
   - `alwayson` will optimise for availability and will keep a volume online even
     if all replicas have failed.
   - `soft` is set by default, and will only take a volume offline if the number
-    of replicas falls below the `SoftFailureTolerance` (default: number of
+    of replicas falls below the Failure tolerance (default: number of
     replicas - 1).  This will allow a volume with 2 replicas in a 3 node cluster
     to remain active while a node reboots.
 
@@ -92,7 +92,7 @@ scenarios.  Full documentation to be added to the docs site soon.
      level requested in the filter.
   1. Set `LOG_FILTER=cp=info,dp=info,etcd=debug` to set controlplane and
      dataplane logs back to `info` level, then `etcd` to `debug`.
-- Enabled profiling of the controlplanewhen DEBUG=true is set.  The endpoint is
+- Enabled profiling of the controlplane when DEBUG=true is set.  The endpoint is
   availble at http://localhost:5705/debug/pprof.
 - Debug endpoints to monitor and control KV store leadership (DEBUG=true must be
   set).
@@ -115,15 +115,15 @@ scenarios.  Full documentation to be added to the docs site soon.
 - Updated etcd libraries to v3.3.0-rc.0.
 - Etcd tuning (TickMs = 200, ElectionMs = 5000)
 - Updated other dependencies to latest stable releases.
-- Dataplane, etcd, gRPC and Nats now use same log format as the controlplane.
-- More user-friedly error message when ADVERTISE_IP is invalid.
+- Dataplane, etcd, gRPC and NATS now use same log format as the controlplane.
+- More user-friendly error message when `ADVERTISE_IP` is invalid.
 
 ### Fixed
 
 - Fixed a bug that caused mounts to fail with `Failed to mount: exit status 32`.
   This was caused by the volume being marked as ready before the device was
   fully initialised, and the mount starting before the initialization completed.
-- Volume names are no longer lowercased and keep the case requested.  This
+- Volume names are no longer lowercased and keep the requested case.  This
   fixes an issue with Docker EE with mixed-case volume names.
 - Volume delete on non-existent volume now returns HTTP 404 instead of 500.
 - Do not reset node health if internal healthcheck returns invalid response.

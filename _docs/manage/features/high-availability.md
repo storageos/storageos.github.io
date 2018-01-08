@@ -20,7 +20,7 @@ sufficient.
 
 ## Failure modes
 
-Failure modes specify how StorageOS scheduler should react to node issues. 
+Failure modes specify how StorageOS should react to node issues. 
 
 There are three different modes:
 

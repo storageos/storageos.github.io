@@ -52,6 +52,83 @@ Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 `INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
 
+## 0.9.1
+
+The 0.9.1 release includes a fix for the `mount deadline exceeded` error, where
+a volume mount fails after a long delay.
+
+The logging susbsystem has also been overhauled to reduce noise and to allow
+filtering messages by log level and component.  We expect to build on this in
+upcoming releases to further improve diagnostics.
+
+### New
+
+- Failure modes can be specified to control behaviour in specific failure
+scenarios.  Full documentation to be added to the docs site soon.
+
+  - `hard` will enforce the desired number of replicas and take a volume offline
+    if the replica count is not met.  In practice, the volume should only go
+    offline if there isn't a suitable node to place a new replica on.  For
+    example, if you have configured 2 replicas in a 3 node cluster and a node
+    goes offline.
+  - `alwayson` will optimise for availability and will keep a volume online even
+    if all replicas have failed.
+  - `soft` is set by default, and will only take a volume offline if the number
+    of replicas falls below the Failure tolerance (default: number of
+    replicas - 1).  This will allow a volume with 2 replicas in a 3 node cluster
+    to remain active while a node reboots.
+
+  You can select the failure mode through the labels:
+
+    ```bash
+    storageos volume create --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
+    ```
+
+- Log filtering allows finer-grained control of log messages so that debug-level
+  messages can be enabled only on some components.  Filtering is controlled by
+  setting `LOG_FILTER=cat1=level1,catN=LevelN`.  For example, to enable
+  debugging on only the etcd category:
+  1. Set `LOG_LEVEL=debug` to enable debug logs.  This must be set to the lowest
+     level requested in the filter.
+  1. Set `LOG_FILTER=cp=info,dp=info,etcd=debug` to set controlplane and
+     dataplane logs back to `info` level, then `etcd` to `debug`.
+- Enabled profiling of the controlplane when DEBUG=true is set.  The endpoint is
+  availble at http://localhost:5705/debug/pprof.
+- Debug endpoints to monitor and control KV store leadership (DEBUG=true must be
+  set).
+
+  - HTTP GET on http://localhost:5705/debug/leader returns true/false if the
+    node is the cluster leader.
+  - HTTP PUT on http://localhost:5705/debug/leader/resign will cause leader to
+    resign, triggering a new election.
+  - HTTP PUT on http://localhost:5705/debug/leader/run will cause node to run
+    for cluster leadership.
+
+  These actions are used primarily for automated testing where we introduce instability into the cluster to ensure there is no service disruption.
+
+
+### Improved
+
+- More instructive log messages if unable to create filesystem.
+- Improve check for whether a device is using NBD for presentation.
+- Log whenever a dataplane process restarts.
+- Updated etcd libraries to v3.3.0-rc.0.
+- Etcd tuning (TickMs = 200, ElectionMs = 5000)
+- Updated other dependencies to latest stable releases.
+- Dataplane, etcd, gRPC and NATS now use same log format as the controlplane.
+- More user-friendly error message when `ADVERTISE_IP` is invalid.
+
+### Fixed
+
+- Fixed a bug that caused mounts to fail with `Failed to mount: exit status 32`.
+  This was caused by the volume being marked as ready before the device was
+  fully initialised, and the mount starting before the initialization completed.
+- Volume names are no longer lowercased and keep the requested case.  This
+  fixes an issue with Docker EE with mixed-case volume names.
+- Volume delete on non-existent volume now returns HTTP 404 instead of 500.
+- Do not reset node health if internal healthcheck returns invalid response.
+  Instead, retry and wait for valid response message.
+
 ## 0.9.0
 
 This release focusses on usability and backend improvements.  It builds on the

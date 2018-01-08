@@ -27,9 +27,9 @@ sections:
     module: manage/features
     items:
       -
-        title: Replication
-        description: Replication
-        module: manage/features/replication
+        title: High Availability
+        description: High Availability
+        module: manage/features/high-availability
       -
         title: Quality of service
         description: Quality of Service

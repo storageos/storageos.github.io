@@ -2,10 +2,10 @@
 layout: guide
 title: StorageOS Docs - Replication
 anchor: manage
-module: manage/features/replication
+module: manage/features/high-availability
 ---
 
-# Replication
+# High Availability
 
 Replication is used for data protection, high availability and failover.
 
@@ -45,6 +45,10 @@ or the Docker CLI:
 $ docker volume create --driver storageos --opt size=15 --opt storageos.feature.replicas=2 volume-name
 volume-name
 ```
+
+## Failure modes
+
+
 
 ### Adding replicas
 

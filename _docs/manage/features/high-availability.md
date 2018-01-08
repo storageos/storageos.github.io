@@ -18,6 +18,22 @@ The maximum number of replicas that can be created is five, or up to the number
 of remaining nodes in the cluster. For most applications, one replica is
 sufficient.
 
+## Failure modes
+
+Failure modes specify how StorageOS scheduler should react to node issues. 
+
+There are three different modes:
+
+* **soft** is the default mode. It works together with the failure tolerance label to help decide whether volume should be writable or not. Failure tolerance specifies how many failed replicas we tolerate, defaults to (Replicas - 1) if Replicas > 0, o if we have 2 replicas it will default to 1, if we have 3 replicas, tolerance will be 2.
+* **hard** is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable.
+* **alwayson** is a mode where as long as any copy of the volume is alive, volume will be writable.
+
+You can select failure mode through the labels:
+
+```bash
+storageos volume create --namespace default --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
+```
+
 ## Recovery
 
 If the master volume is lost, a random replica is promoted to master and a new
@@ -45,10 +61,6 @@ or the Docker CLI:
 $ docker volume create --driver storageos --opt size=15 --opt storageos.feature.replicas=2 volume-name
 volume-name
 ```
-
-## Failure modes
-
-
 
 ### Adding replicas
 

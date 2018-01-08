@@ -40,8 +40,8 @@ This environment variable can contain two types of information, a cluster token 
 
 StorageOS offers a public `etcd` discovery service to aid in cluster discovery.
 
-To use this method, specify the expected size of the cluster (3 ,5 or 7) using the [StorageOS CLI]({%link
-_docs/reference/cli/cluster.md %}):
+To use this method, specify the expected size of the cluster (3, 5 or 7) using the [StorageOS CLI]({%link
+_docs/reference/cli/index.md %}):
 
 ```bash
 $ storageos cluster create --size 3

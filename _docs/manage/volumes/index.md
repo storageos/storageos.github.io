@@ -17,11 +17,11 @@ only consume capacity which is actually used.
 
 Volume names consist of lower case alphanumeric characters or '-', and must
 start and end with an alphanumeric character. By default, volumes are 5GB in
-size (overridden by `--size`) and formatted as xfs (overridden by
+size (overridden by `--size`) and formatted as ext4 (overridden by
 `--fstype=ext2|ext3|ext4|xfs|btrfs`).
 
 In order to mount volumes into containers, they are formatted with a filesystem
-such as `xfs`. All volumes are accessible to any container anywhere on the cluster
+such as `ext4`. All volumes are accessible to any container anywhere on the cluster
 (global namespace) but each volume may only be mounted by one container at a
 time. Additional behaviours may be specified by adding [labels]({% link _docs/manage/volumes/labels.md %}).
 
@@ -132,19 +132,20 @@ background.
 
 ## Using node selector
 
-Node selector is a form of constraint. For the volume to be eligible for a deployment on a node, selector must match node's labels. An empty selector
-always matches a node.
+A node selector is a constraint on where volumes may be deployed, based on node labels. For the volume to be eligible for a deployment on a node, selector must match node's labels. An empty selector always matches a node.
 
-If a group of nodes have a label `country=US`, then a node selector could be used
+If a group of nodes are labelled `country=US`, then a node selector can be used
 during volume creation:
 
 ```bash
 $ storageos volume create --nodeSelector 'country=US'
 ```
 
-Another options for this case:
+Selectors may also be set-based:
 
 ```
 country in (US, CA)
 country notin (UK)
 ```
+
+Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors. 

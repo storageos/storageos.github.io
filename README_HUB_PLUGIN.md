@@ -15,7 +15,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+docker plugin install --alias storageos storageos/plugin:0.9.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -79,7 +79,7 @@ sudo modprobe nbd nbds_max=1024
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+$ docker plugin install --alias storageos storageos/plugin:0.9.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 
 Plugin "storageos/plugin" is requesting the following privileges:
 - network: [host]
@@ -116,3 +116,4 @@ Although the default settings should work for most environments, a number of set
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
+* `DISABLE_ERROR_REPORTING`: To disable error reporting across the cluster, set to `true`. Defaults to `false`. Errors are reported to help identify and resolve potential issues that may occur.

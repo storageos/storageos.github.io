@@ -14,7 +14,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Installation
 
-_Optional:_ Enabling NBD prior to installation is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
+_Optional:_ Enabling NBD prior to installation is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, run:
 
 ```bash
 sudo modprobe nbd nbds_max=1024
@@ -50,7 +50,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node server
+    storageos/node:0.9.0 server
 ```
 
 To provision a new `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
@@ -98,3 +98,4 @@ Although the default settings should work for most environments, a number of set
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`. Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`. Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
+* `DISABLE_ERROR_REPORTING`: To disable error reporting across the cluster, set to `true`. Defaults to `false`. Errors are reported to help identify and resolve potential issues that may occur.

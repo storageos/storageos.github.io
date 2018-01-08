@@ -13,7 +13,7 @@ Install the StorageOS volume plugin on Docker Engine 1.13+.
 
 ## Prerequisites
 
-[Enable nbd:]({%link _docs/install/prerequisites/nbd.md %})
+[Enable nbd:]({%link _docs/install/prerequisites/devicepresentation.md %})
 ```bash
 sudo modprobe nbd nbds_max=1024
 ```

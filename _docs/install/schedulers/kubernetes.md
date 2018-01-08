@@ -36,7 +36,7 @@ You will need to run the StorageOS container
 Alternatively, StorageOS may be run as a pod or daemonset in Kubernetes 1.8+.
 
 To achieve better performance you should [enable the Network Block Device module]({% link
-_docs/install/prerequisites/nbd.md %}) on each node that intend to consume or provide
+_docs/install/prerequisites/devicepresentation.md %}) on each node that intend to consume or provide
 storage.
 
 ## API Configuration

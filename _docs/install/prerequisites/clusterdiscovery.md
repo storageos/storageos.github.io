@@ -10,8 +10,6 @@ module: install/prerequisites/clusterdiscovery
 On startup, you will need to specify whether a StorageOS node should bootstrap a
 new cluster or join an existing cluster.
 
-## Setting the IP address
-
 By default, a node's IP address is assumed to be the first non-loopback address.
 To override this, set the `ADVERTISE_IP` environment variable on each node:
 

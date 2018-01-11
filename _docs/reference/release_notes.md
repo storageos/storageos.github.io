@@ -52,6 +52,29 @@ Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 `INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
 
+## 0.9.2
+
+The 0.9.2 fixes a memory leak, so upgrading is recommended.  It also reduces
+the time taken to delete volumes.
+
+More work has gone into logging, with API endpoints to control verbosity and
+log filtering of running nodes individually or cluster-wide.  Version 0.9.4 of
+the CLI provides the `storageos logs` subcommand to control settings remotely.
+
+### New
+
+- API endpoints for logging configuration
+
+### Improved
+
+- Remove cgo dependencies from controlplane
+- Better error message when the KV store is unavailable
+- Reduced memory footprint of controlplane by 67%.
+
+### Fixed
+
+- Memory leak introduced in 0.9.0 fixed
+
 ## 0.9.1
 
 The 0.9.1 release includes a fix for the `mount deadline exceeded` error, where

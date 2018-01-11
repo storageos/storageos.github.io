@@ -34,18 +34,18 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 export STORAGEOS_HOST=10.1.5.249
 
 # Use flags to override environment variables on any command
-$ storageos -u storageos -p storageos volume list
+storageos -u storageos -p storageos volume list
 NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
 default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
 
 # Store credentials
-$ storageos login 10.1.5.249
+storageos login 10.1.5.249
 Username: storageos
 Password:
 Credentials verified
 
 # Forget credentials
-$ storageos logout 10.1.5.249
+storageos logout 10.1.5.249
 ```
 
 ## Usage

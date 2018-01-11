@@ -58,7 +58,7 @@ The 0.9.2 fixes a memory leak, so upgrading is recommended.  It also reduces
 the time taken to delete volumes.
 
 More work has gone into logging, with API endpoints to control verbosity and
-log filtering of running nodes individually or cluster-wide.  Version 1.9.3 of
+log filtering of running nodes individually or cluster-wide.  Version 1.9.4 of
 the CLI provides the `storageos logs` subcommand to control settings remotely.
 
 ### New

@@ -148,9 +148,8 @@ All 3 nodes should be Active and with the status of Leader or Reachable
    ```
 
 1. Setup WordPress server using wp network overlay and publish to default port
-80 on public facing IPs of Swarm nodes. You will need to sync all the different
-instances of WordPress with the same salt to make sure the session management
-operates correctly.
+80 on public facing IPs of Swarm nodes. You will need to sync the different
+WordPress instances with the same salt to ensure correct session management.
 
    ```bash
    docker service create \

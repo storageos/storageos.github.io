@@ -33,7 +33,7 @@ Kubernetes 1.7+ is required.
 
 You will need to run the StorageOS container
 [directly in Docker on each node]({% link _docs/install/docker/container.md %}).
-Alternatively, StorageOS may be run as a pod or daemonset in Kubernetes 1.8+.
+Alternatively, StorageOS may be run as a pod or daemonset in Kubernetes 1.8+, but this requires you to set the alpha feature gate `MountPropagation=true`.  This can be done by appending `--feature-gates MountPropagation=true` to the kube-apiserver and kubelet services.
 
 To achieve better performance you should [enable the Network Block Device module]({% link
 _docs/install/prerequisites/devicepresentation.md %}) on each node that intend to consume or provide

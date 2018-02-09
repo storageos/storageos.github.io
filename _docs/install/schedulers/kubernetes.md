@@ -29,15 +29,37 @@ type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-Kubernetes 1.7+ is required.
-
-You will need to run the StorageOS container
+Kubernetes 1.7+ is required. You will need to run the StorageOS container
 [directly in Docker on each node]({% link _docs/install/docker/container.md %}).
-Alternatively, StorageOS may be run as a pod or daemonset in Kubernetes 1.8+, but this requires you to set the alpha feature gate `MountPropagation=true`.  This can be done by appending `--feature-gates MountPropagation=true` to the kube-apiserver and kubelet services.
 
-To achieve better performance you should [enable the Network Block Device module]({% link
-_docs/install/prerequisites/devicepresentation.md %}) on each node that intend to consume or provide
-storage.
+Alternatively, StorageOS may be run as a pod or daemonset in Kubernetes 1.8+,
+but this requires you to set the alpha feature gate `MountPropagation=true`.
+This can be done by appending `--feature-gates MountPropagation=true` to the
+kube-apiserver and kubelet services.
+
+For deployments where the kubelet runs in a container (eg. OpenShift, CoreOS or
+Rancher), you may see the following error when mounting the volume:
+
+``` MountVolume.SetUp failed for volume
+"pvc-f7c16837-0ce0-11e8-92d9-0271ec2f69f7" : stat
+/var/lib/storageos/volumes/d303a9c7-76b9-c401-7a3a-55185d1711f8: no such file or
+directory"
+
+Unable to mount volumes for pod
+"test-storageos-redis-sc-pvc_default(09d454a7-0d81-11e8-92d9-0271ec2f69f7)":
+timeout expired waiting for volumes to attach/mount for pod
+"default"/"test-storageos-redis-sc-pvc". list of unattached/unmounted
+volumes=[redis-data] ```
+
+Until the [upstream fix](https://github.com/kubernetes/kubernetes/pull/58816])
+is merged, you will need to add:
+`--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each of the
+kubelets. See examples with [OpenShift]({%link assets/openshift.sh %}) and
+[Ansible]({%link assets/ansible.sh %}).
+
+To achieve better performance you should [enable the Network Block Device
+module]({% link _docs/install/prerequisites/devicepresentation.md %}) on each
+node that intend to consume or provide storage.
 
 ## API Configuration
 

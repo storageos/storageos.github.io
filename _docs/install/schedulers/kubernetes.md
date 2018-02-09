@@ -37,10 +37,11 @@ but this requires you to set the alpha feature gate `MountPropagation=true`.
 This can be done by appending `--feature-gates MountPropagation=true` to the
 kube-apiserver and kubelet services.
 
-For deployments where the kubelet runs in a container (eg. OpenShift, CoreOS or
+For deployments where the kubelet runs in a container (eg. OpenShift, CoreOS,
 Rancher), you may see the following error when mounting the volume:
 
-``` MountVolume.SetUp failed for volume
+```
+MountVolume.SetUp failed for volume
 "pvc-f7c16837-0ce0-11e8-92d9-0271ec2f69f7" : stat
 /var/lib/storageos/volumes/d303a9c7-76b9-c401-7a3a-55185d1711f8: no such file or
 directory"
@@ -49,7 +50,8 @@ Unable to mount volumes for pod
 "test-storageos-redis-sc-pvc_default(09d454a7-0d81-11e8-92d9-0271ec2f69f7)":
 timeout expired waiting for volumes to attach/mount for pod
 "default"/"test-storageos-redis-sc-pvc". list of unattached/unmounted
-volumes=[redis-data] ```
+volumes=[redis-data]
+```
 
 Until the [upstream fix](https://github.com/kubernetes/kubernetes/pull/58816])
 is merged, you will need to add:

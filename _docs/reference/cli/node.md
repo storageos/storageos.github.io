@@ -7,6 +7,8 @@ module: reference/cli/node
 
 # Nodes
 
+(Download and install the StorageOS CLI [here]({%link _docs/reference/cli/index.md %})
+
 ```bash
 $ storageos node
 

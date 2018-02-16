@@ -7,6 +7,8 @@ module: reference/cli/rule
 
 # Rules
 
+(Download and install the StorageOS CLI [here]({%link _docs/reference/cli/index.md %})
+
 ```bash
 $ storageos rule
 

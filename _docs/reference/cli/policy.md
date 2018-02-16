@@ -6,6 +6,9 @@ module: reference/cli/policy
 ---
 
 # Policies
+
+(Download and install the StorageOS CLI [here]({%link _docs/reference/cli/index.md %})
+
 ```bash
 $ storageos policy 
 

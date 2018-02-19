@@ -29,31 +29,31 @@ is created and synced.
 ###  Create a volume with replicas
 
 Volumes are replicated (copied) across nodes by setting the StorageOS feature
-label `storageos.feature.replicas` to a value between 1 and 5. No
+label `storageos.com/replicas` to a value between 1 and 5. No
 replicas are set by default.
 
 To create a volume with 2 replicas (3 copies of the data total), set the
-`storageos.feature.replicas` label:
+`storageos.com/replicas` label:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.replicas=2 volume-name
+storageos volume create --namespace default --label storageos.com/replicas=2 volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.feature.replicas=2 volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.com/replicas=2 volume-name
 volume-name
 ```
 
 ### Adding replicas
 
-When `storageos.feature.replicas` is set on an existing volume, the entire
+When `storageos.com/replicas` is set on an existing volume, the entire
 volume will be copied (synced via a separate process) to a new replica, and any
 new writes that come in to the master volume during or after the sync will also
 be copied.
 
 To add replicas to a volume:
 ```bash
-$ storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
+$ storageos volume update --label-add storageos.com/replicas=2 default/volume-name
 ```

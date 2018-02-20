@@ -3,6 +3,9 @@ $install_storageos = <<SCRIPT
 # Prerequisites
 sudo modprobe nbd nbds_max=1024
 
+# Activate UI
+export ALPHA_FEATURES=true
+
 # Install StorageOS container
 docker run -d --restart unless-stopped --name storageos \
     -e HOSTNAME \

@@ -33,6 +33,9 @@ Bringing machine 'storageos-3' up with 'virtualbox' provider...
 ==> storageos-3: e91abf267c3f6d4dee8aaa31b3a233329d3a6e905ae83578b9bd2c59c32f5661
 ```
 
+Log into the [StorageOS UI](http://192.168.50.100:5705) with the username
+`storageos` and password `storageos`.
+
 ## SSH into the VMs
 
 First confirm that all three VMs are up and running.

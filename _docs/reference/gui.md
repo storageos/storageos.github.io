@@ -9,8 +9,7 @@ module: reference/gui
 
 StorageOS provides a GUI for cluster and volume management.
 
-**Note**: This feature is currently in alpha. To access the GUI from version 0.10.0,
-set the environment variable `ALPHA_FEATURES=true`.
+**Note**: This feature is in beta as of version 0.10.0.
 
 The GUI is available at port 5705 on any one of the nodes in the cluster.
 

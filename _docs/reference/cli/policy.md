@@ -68,7 +68,7 @@ f1e33492-aa9b-3922-7824-383941d37a5d                       testers             s
 To delete a policy from the system, run:
 
 ```bash
-$ storageos user rm 9fb096af-0a16-d1d2-5416-b637f0194b3f
+$ storageos policy rm 9fb096af-0a16-d1d2-5416-b637f0194b3f
 9fb096af-0a16-d1d2-5416-b637f0194b3f
 ```
 

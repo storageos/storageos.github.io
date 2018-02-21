@@ -37,7 +37,7 @@ Run 'storageos volume COMMAND --help' for more information on a command.
 To create a 15GB volume in the default namespace:
 
 ```bash
-$ storageos volume create --namespace default --size 15 --fsType xfs volume-name
+$ storageos volume create --namespace default --size 15 --fstype xfs volume-name
 default/volume-name
 ```
 

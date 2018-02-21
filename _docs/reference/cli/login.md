@@ -7,8 +7,6 @@ module: reference/cli/login
 
 # Login
 
-(Download and install the StorageOS CLI [here]({%link _docs/reference/cli/index.md %})
-
 ```bash
 $ storageos login --help
 

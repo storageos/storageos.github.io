@@ -22,8 +22,6 @@ ADVERTISE_IP=172.28.128.3
 StorageOS offers a public `etcd` discovery service, which is a convenient way to
 pass clustering information to the StorageOS node.
 
-(Download and install the StorageOS CLI [here]({%link _docs/reference/cli/index.md %})
-
 ```bash
 # Create a cluster discovery token. This token is not used after initialization
 storageos cluster create

@@ -60,21 +60,3 @@ JOIN=$ADVERTISE_IP
 ```
 
 Replicas are unavailable in a single node install.
-
-## Node failure tolerance
-
-StorageOS embeds a key-value store called etcd in clusters with at least three
-nodes for failover. The default three etcd nodes allows for a single node
-failure, which can be increased to achieve greater tolerance.
-
-```bash
-# Tolerate up to two node failures
-storageos cluster create --size 5
-
-# Tolerate up to three node failures
-storageos cluster create --size 7
-```
-
-Performance will degrade for more than seven etcd nodes.
-
-This does not affect how many StorageOS nodes can join the cluster.

@@ -34,11 +34,6 @@ $ storageos cluster create
 207f0026-3844-40e0-884b-729d79c124b8
 ```
 
-The embedded key-value cluster size determines the [node failure
-tolerance]({%link _docs/install/prerequisites/clusterdiscovery.md %}) and can be
-adjusted with the `--size` flag. This does not affect how many StorageOS nodes
-can join the cluster.
-
 ### `storageos cluster inspect`
 
 To inspect a cluster:

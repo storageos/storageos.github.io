@@ -113,6 +113,8 @@ in order to reduce pain later.
   and you are unable or unwilling to share the default `/var/lib/storageos/volumes`
   location into the `kubelet` container.  Instead, share the `kubelet` plugin
   directory into the StorageOS container, and set `DEVICE_DIR` to use it.
+  Hovever, Kubernetes 1.10 will be required in order for `kubelet` to use a
+  directory other than `/var/lib/storageos/volumes`.
 
   For example:
 

@@ -23,7 +23,7 @@ StorageOS requires a few ports to be open in order to function correctly. These 
 | 5710        | tcp       | NATS service           |
 | 5711        | tcp & udp | Gossip service         |
 
-StorageOS also uses random ports to dial-out to these ports on other sotrageOS nodes. For this reason, outgoing traffic should be enabled.
+StorageOS also uses random ports to dial-out to these ports on other StorageOS nodes. For this reason, outgoing traffic should be enabled.
 
 
 ## Firewalls and VPS providers

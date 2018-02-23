@@ -50,7 +50,7 @@ Please update to the latest CLI when installing 0.10.x.
 
 ### 0.8.x -> 0.9.x
 
-Start-up sripts should be updated to use the new cluster discovery syntax (See:
+Start-up scripts should be updated to use the new cluster discovery syntax (See:
 https://docs.storageos.com/docs/install/prerequisites/clusterdiscovery)
 
 Do not mix a cluster with 0.8.x and 0.9.x versions as port numbers have changed.
@@ -65,7 +65,7 @@ new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 
 ## 0.10.0
 
-The 0.10.0 version focusses on stability and usabilty as we get closer to GA,
+The 0.10.0 version focusses on stability and usability as we get closer to GA,
 but also adds a number of new features (UI, Prometheus metrics, log streaming).
 
 ### Breaking changes
@@ -135,7 +135,7 @@ in order to reduce pain later.
 ### Improved
 
 - `soft` volume failure mode will now tolerate the replica being offline (for
-  example during a node reboot), if there is only one replica configued.  To
+  example during a node reboot), if there is only one replica configured.  To
   ensure there are always two copies of the data, use `hard` mode with a single
   replica, or use two replicas with `soft` mode.
 - Ensure volumes can only be mounted with the correct underlying filesystem.

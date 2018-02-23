@@ -20,15 +20,26 @@ sufficient.
 
 ## Failure modes
 
-Failure modes specify how StorageOS should react to node issues. 
+Failure modes specify how StorageOS should react to node issues.
 
 There are three different modes:
 
-* **soft** is the default mode. It works together with the failure tolerance label to help decide whether volume should be writable or not. Failure tolerance specifies how many failed replicas we tolerate, defaults to (Replicas - 1) if Replicas > 0, so if there are 2 replicas it will default to 1, if there are 3 replicas, tolerance will be 2.
-* **hard** is a mode where any loss in desired replicas count will mark volume as unavailable.
-* **alwayson** is a mode where as long as any copy of the volume is alive, volume will be writable.
+* **soft** is the default mode.  It works together with the failure tolerance
+  label to help decide whether the volume should be writable or not.  The
+  failure tolerance specifies how many failed replicas we tolerate, defaulting
+  to 1 if there is only 1 replica, or replicas - 1 if there is more than 1
+  replica.
 
-You can select failure mode through the labels:
+  To ensure there are always two copies of the data, use `hard` mode with a
+  single replica, or use two replicas with `soft` mode.
+
+* **hard** is a mode where any loss in desired replicas count will mark the
+  volume as unavailable and any reads or writes will fail.
+
+* **alwayson** is a mode where as long as any copy of the volume is available
+  the volume will be usable.
+
+You can select failure mode using labels:
 
 ```bash
 storageos volume create --namespace default --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
@@ -42,34 +53,39 @@ replica is created and synced.
 If a replica volume is lost and there are enough remaining nodes, a new replica
 is created and synced.
 
-###  Create a volume with replicas
+While a new replica is created and being synced, the volume's health will be
+marked as `degraded` and the failure mode will determine whether the volume can
+be used while the recovery is taking place.
+
+### Create a volume with replicas
 
 Volumes are replicated (copied) across nodes by setting the StorageOS feature
-label `storageos.feature.replicas` to a value between 1 and 5. No
+label `storageos.com/replicas` to a value between 1 and 5. No
 replicas are set by default.
 
 To create a volume with 2 replicas (3 copies of the data total), set the
-`storageos.feature.replicas` label:
+`storageos.com/replicas` label:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.replicas=2 volume-name
+storageos volume create --namespace default --label storageos.com/replicas=2 volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.feature.replicas=2 volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.com/replicas=2 volume-name
 volume-name
 ```
 
 ### Adding replicas
 
-When `storageos.feature.replicas` is set on an existing volume, the entire
+When `storageos.com/replicas` is set on an existing volume, the entire
 volume will be copied (synced via a separate process) to a new replica, and any
 new writes that come in to the master volume during or after the sync will also
 be copied.
 
 To add replicas to a volume:
+
 ```bash
-$ storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
+storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
 ```

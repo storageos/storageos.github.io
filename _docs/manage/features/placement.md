@@ -8,7 +8,7 @@ module: manage/features/placement
 # Volume Placement
 
 Master volume placement can be influenced when the volume created by specifying the requested master node name in the
-`storageos.com/hint.master` label.  When possible, the scheduled will place the master volume on this node.  If this is not
+`storageos.com/hint.master` label.  When possible, the scheduler will place the master volume on this node.  If this is not
 possible, perhaps due insufficient capacity on the requested node, the scheduler evaluate remaining nodes and place the
 volume elsewhere.
 

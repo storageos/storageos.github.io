@@ -28,12 +28,12 @@ Run 'storageos logs COMMAND --help' for more information on a command.
 
 The `logs` command is intended to assist with troubleshooting a running cluster.
 
-Verbosity controls the level of detail shown in the logs, with `info` the
-default.  `debug`, `info`, `warning`, `error` and `fatal` available.  During
-normal operation `info` level is recommended.
+Verbosity controls the level of detail shown in the logs with `info` the
+default.  The available options are `debug`, `info`, `warning`, `error` and
+`fatal`.  During normal operation `info` level is recommended.
 
 Filters fine-tune the amount of detail shown.  They allow you to
-set verbosity to `debug` level, then set specific categoies at a higher level
+set verbosity to `debug` level, then set specific categories at a higher level
 (e.g. `info`) so there is less noise while troubleshooting an issue.
 
 For example, the filter `dp=info,cp=info,etcd=debug` would set all dataplane and

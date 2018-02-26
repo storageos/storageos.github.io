@@ -9,6 +9,10 @@ sections:
     description: Quick start
     module: install/quickstart
   -
+    title: Install CLI
+    description: Install CLI
+    module: install/installcli
+  -
     title: Prerequisites
     description: Prerequisites
     module: install/prerequisites

@@ -6,6 +6,7 @@ module: reference/cli/policy
 ---
 
 # Policies
+
 ```bash
 $ storageos policy 
 

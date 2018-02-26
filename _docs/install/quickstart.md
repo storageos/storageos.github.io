@@ -58,4 +58,5 @@ or [install Postgres]({% link _docs/applications/databases/postgres.md %}).
 
 __NOTE__: If due to some reason, the storageos containers stop, they can be
 restarted by running `docker start storageos`.
+
 __NOTE__: When finished with the VMs, you can terminate them with `vagrant destroy`

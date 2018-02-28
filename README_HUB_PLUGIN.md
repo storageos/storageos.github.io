@@ -12,10 +12,13 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Quick Start
 
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos storageos/plugin:0.9.2 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+$ JOIN=$(storageos cluster create)
+$ docker plugin install --alias storageos storageos/plugin:0.10.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=${JOIN}
 ```
 
 That's it - you can now start containers with StorageOS-backed volumes:
@@ -31,7 +34,7 @@ Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
 docker volume create \
-  --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+  --driver storageos --opt size=20 --opt storageos.com/replicas=2 vol01
 ```
 
 ### Next Steps
@@ -79,9 +82,9 @@ sudo modprobe nbd nbds_max=1024
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ docker plugin install --alias storageos storageos/plugin:0.9.2 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
-
-Plugin "storageos/plugin" is requesting the following privileges:
+$ JOIN=$(storageos cluster create)
+$ docker plugin install --alias storageos storageos/plugin:0.10.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=${JOIN}
+Plugin "storageos/plugin:0.10.0" is requesting the following privileges:
 - network: [host]
 - mount: [/var/lib]
 - mount: [/dev]

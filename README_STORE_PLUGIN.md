@@ -6,8 +6,6 @@ Volumes are available across the cluster so if a container gets moved to another
 
 No other hardware or software is required.
 
-For Docker 1.10 - 1.12, an application container is available (storageos-node).
-
 During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
 Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).
@@ -34,10 +32,13 @@ sudo modprobe nbd nbds_max=1024
    options nbd nbds_max=1024
    ```
 
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+
 Provide the host ip address in `ADVERTISE_IP` and a cluster discovery token with `JOIN` when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos store/storageos/plugin:0.9.2 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+$ JOIN=$(storageos cluster create)
+$ docker plugin install --alias storageos store/storageos/plugin:0.10.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 ```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>
@@ -53,7 +54,7 @@ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c 
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/replicas=2 vol01
 ```
 
 ## Next Steps

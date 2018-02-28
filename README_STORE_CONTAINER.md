@@ -34,15 +34,17 @@ sudo modprobe nbd nbds_max=1024
    options nbd nbds_max=1024
    ```
 
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo mkdir /var/lib/storageos
 $ sudo modprobe nbd nbds_max=1024
+$ JOIN=$(storageos cluster create)
 $ docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=xxx.xxx.xxx.xxx \
-    -e JOIN=xxxxxxxxxxxxxxxxx \
+    -e JOIN=${JOIN} \
     --net=host \
     --pid=host \
     --privileged \
@@ -50,7 +52,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.9.2 server
+    storageos/node:0.10.0 server
 ```
 
 To provision a new `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
@@ -68,7 +70,7 @@ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c 
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/replicas=2 vol01
 ```
 
 ## Next Steps

@@ -6,8 +6,6 @@ Volumes are available across the cluster so if a container gets moved to another
 
 No other hardware or software is required.
 
-For Docker 1.10 - 1.12, an application container is available (storageos-node).
-
 During beta, StorageOS is freely available for testing and experimentation. _DO NOT USE FOR PRODUCTION DATA_. A Developer edition will be free forever.
 
 Full documentation is available at <https://docs.storageos.com>. To stay informed about new features and production-ready releases, sign up on our [customer portal](https://my.storageos.com).

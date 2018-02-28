@@ -24,20 +24,21 @@ sudo modprobe nbd nbds_max=1024
 
 1. Add the following line to `/etc/modules`
 
-   ```bash
-   nbd
-   ```
+```bash
+$ nbd
+```
 
 1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
 
-   ```bash
-   options nbd nbds_max=1024
-   ```
+```bash
+$ options nbd nbds_max=1024
+```
 
 Provide the host ip address in `ADVERTISE_IP` and a cluster discovery token with `JOIN` when you install the plugin:
 
 ```bash
-docker plugin install --alias storageos store/storageos/plugin:0.9.2 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
+$ JOIN=$(storageos cluster create)
+$ docker plugin install --alias storageos store/storageos/plugin:0.10.0 ADVERTISE_IP=$ADVERTISE_IP JOIN=$JOIN
 ```
 
 For more details consult <https://docs.storageos.com/docs/install/docker.html>
@@ -53,7 +54,7 @@ sudo docker run -it --rm --volume-driver storageos -v test01:/data alpine sh -c 
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-sudo docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/replicas=2 vol01
 ```
 
 ## Next Steps

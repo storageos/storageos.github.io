@@ -12,6 +12,8 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Quick Start
 
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the plugin:
 
 ```bash

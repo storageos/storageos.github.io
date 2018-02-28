@@ -34,6 +34,8 @@ sudo modprobe nbd nbds_max=1024
    options nbd nbds_max=1024
    ```
 
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash

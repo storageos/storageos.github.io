@@ -20,7 +20,7 @@ Local caching improves read performance by using memory to cache data.
 
 All reads and writes are cached by default. To disable caching (e.g. during
 database backups which do not need to be cached), set the
-`storageos.feature.nocache` label:
+`storageos.com/nocache` label:
 
 ```bash
 storageos volume create --label storageos.feature.nocache=true volume-name

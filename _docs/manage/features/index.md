@@ -11,13 +11,13 @@ module: manage/features/index
 Applying specific labels to volumes triggers compression, replication and other
 storage features. No feature labels are present by default.
 
-| Feature     | Label                           | Values         | Description                                              |
-|:------------|:--------------------------------|:---------------|:---------------------------------------------------------|
-| Caching     | `storageos.feature.nocache`     | true / false   | Switches off caching. |
-| Compression | `storageos.feature.nocompress`  | true / false   | Switches off compression of data at rest and in transit. |
-| Replication | `storageos.feature.replicas`    | integers [0, 5]| Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. |
-| QoS         | `storageos.feature.throttle`    | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
-| Placement   | `storageos.hint.master`         | Node hostname or uuid   | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied. |
+| Feature     | Label                         | Values         | Description                                              |
+|:------------|:------------------------------|:---------------|:---------------------------------------------------------|
+| Caching     | `storageos.com/nocache`       | true / false   | Switches off caching. |
+| Compression | `storageos.com/nocompression` | true / false   | Switches off compression of data at rest and in transit. |
+| Replication | `storageos.com/replicas`      | integers [0, 5]| Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. |
+| QoS         | `storageos.com/throttle`      | true / false   | Deprioritizes traffic by reducing the rate of disk I/O.  |
+| Placement   | `storageos.com/hint.master`   | Node hostname or uuid   | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied. |
 
 
 Feature labels are a powerful and flexible way to control storage features,
@@ -27,3 +27,9 @@ To create a volume with a feature labels:
 ```bash
 storageos volume create --label storageos.feature.throttle=true
 ```
+
+## Deprecated labels
+
+In releases 0.9.0 and before, the labels `nocache`, `nocompression`, `replicas`,
+`throttle` and `hint.master` were prefixed by `storageos.feature.` instead of
+`storageos.com/`. This format has been deprecated from 0.10.0 onwards.

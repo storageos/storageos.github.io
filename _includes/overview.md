@@ -7,12 +7,12 @@ StorageOS is available from the Docker Hub as a volume plugin (for Docker 1.13+)
 or as a container image (Docker 1.10+ or Kubernetes 1.7+).
 
 
-## Popular tasks
+## Popular
 
-* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - Try StorageOS in your browser.
-* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
 * [Install on Kubernetes]({% link _docs/install/schedulers/kubernetes.md %}) - Use StorageOS with a Kubernetes cluster.
-* [Run a SQL database with containers]({% link _docs/applications/databases/postgres.md %}) - Deploy Postgres to a StorageOS cluster.
+* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
+* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - Try StorageOS in your browser.
+* [StorageOS architecture](http://resources.storageos.com/storageos_platform_architecture_overview) - Download the whitepaper.
 
 ## Got feedback or just want to chat?
 

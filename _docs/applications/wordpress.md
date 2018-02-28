@@ -6,16 +6,17 @@ module: applications/wordpress
 # Last reviewed by cheryl.hung@storageos.com on 2017-11-16
 ---
 
-# ![image](/images/docs/explore/wordpresslogo.png) WordPress Cluster Demo
+# ![image](/images/docs/explore/wordpresslogo.png) Highly available WordPress
 
-This section will focus on creating a WordPress cluster with persistent storage.
-Here we will demonstrate draining and activating a node in the cluster without
-losing access to the underlying persistent storage.
+In this guide, you will
+
+* Create a WordPress cluster with persistent storage
+* Drain and active a node in the cluster without losing access to the underlying
+persistent storage.
+
+You will need a three node cluster with StorageOS pre-installed.
 
 ## Create a Docker Swarm cluster
-
-The first step in this exercise is to get Docker Swarm set up and running on
-your test cluster, which should already have StorageOS installed.
 
 1. Log into the first StorageOS node and confirm the public facing IP address
    (192.168.50.100 in this example):
@@ -147,20 +148,30 @@ All 3 nodes should be Active and with the status of Leader or Reachable
    ```
 
 1. Setup WordPress server using wp network overlay and publish to default port
-   80 on public facing IPs of swarm nodes
+80 on public facing IPs of Swarm nodes. You will need to sync the different
+WordPress instances with the same salt to ensure correct session management.
 
    ```bash
    docker service create \
-       --name wp \
-       --network wp \
-       --publish 80:80 \
-       --mode global \
-       --detach=true \
-       -e WORDPRESS_DB_USER=wordpress \
-       -e WORDPRESS_DB_PASSWORD=wordpress \
-       -e WORDPRESS_DB_HOST=db:3306 \
-       -e WORDPRESS_DB_NAME=wordpress \
-        wordpress:latest
+     --mount type=volume,src=wp,dst=/var/www/html,volume-driver=storageos \
+     --name wp \
+     --network wp \
+     --publish 80:80 \
+     --mode global \
+     --detach=true \
+     -e WORDPRESS_DB_USER=wordpress \
+     -e WORDPRESS_DB_PASSWORD=wordpress \
+     -e WORDPRESS_DB_HOST=db:3306 \
+     -e WORDPRESS_DB_NAME=wordpress \
+     -e WORDPRESS_AUTH_KEY=... \
+     -e WORDPRESS_SECURE_AUTH_KEY=... \
+     -e WORDPRESS_LOGGED_IN_KEY=... \
+     -e WORDPRESS_NONCE_KEY=... \
+     -e WORDPRESS_AUTH_SALT=... \
+     -e WORDPRESS_SECURE_AUTH_SALT=... \
+     -e WORDPRESS_LOGGED_IN_SALT=... \
+     -e WORDPRESS_NONCE_SALT=... \
+     wordpress:latest
    ```
 
 1. Confirm WordPress service is running

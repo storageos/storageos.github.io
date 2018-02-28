@@ -7,72 +7,56 @@ module: install/prerequisites/clusterdiscovery
 
 # Cluster discovery
 
-StorageOS nodes need to be informed which cluster to join on start-up. This enables
-the nodes to contact each-other over the network to join a pre-existing cluster,
-or bootstrap a new one.
-
-## Setting the IP address
+On startup, you will need to specify whether a StorageOS node should bootstrap a
+new cluster or join an existing cluster.
 
 By default, a node's IP address is assumed to be the first non-loopback address.
-To override this (e.g. for Vagrant installations), set the `ADVERTISE_IP`
-environment variable on each node to configure StorageOS to use a specific
-address:
+To override this, set the `ADVERTISE_IP` environment variable on each node:
 
 ```bash
 ADVERTISE_IP=172.28.128.3
 ```
 
-## Clustering
+## Cluster initialization
 
-The Raft protocol requires an odd number of nodes for consensus. The recommended size
-for test and small production deployments is 3 nodes, which can tolerate a
-single node failure. Greater tolerance can be achieved with 5 or 7 node
-clusters; performance will degrade for more nodes.
-
-Replicas are unavailable in a single node install.
-
-## The `JOIN` keyword
-
-The environment variable `JOIN` is used to pass clustering information to the StorageOS node.
-This environment variable can contain two types of information, a cluster token or a set of IP addresses.
-
-### Option 1: Cluster token
-
-StorageOS offers a public `etcd` discovery service to aid in cluster discovery.
-
-To use this method, specify the expected size of the cluster (3, 5 or 7) using the [StorageOS CLI]({%link
-_docs/reference/cli/index.md %}):
+StorageOS offers a public `etcd` discovery service, which is a convenient way to
+pass clustering information to the StorageOS node.
 
 ```bash
-$ storageos cluster create --size 3
+# Create a cluster discovery token. This token is not used after initialization
+storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
-```
 
-Supply the returned cluster ID token as an environment variable to each node:
-
-```bash
+# Supply the returned cluster ID token to each node via JOIN
 JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-Each node will report that it is waiting for the cluster. Once three members
-are registered, StorageOS will start up.
-
-
-### Option 2: Specifying IP addresses
-
-An alternative to the discovery service is providing an explicit list of IP addresses.
+Alternatively, you can specify the IP addresses explicity.
 
 ```bash
+# Specify a node to connect to in an existing cluster
+JOIN=172.28.128.3
+
+# Specify a list of nodes to attempt to connect to, in left-to-right order
 JOIN=172.28.128.3,172.28.128.9,172.28.128.15
-```
 
-### Option 3: Doing both
-
-These methods are not mutually exclusive, and in some situations it may be desirable to use both.
-When multiple methods are provided, the arguments are evaluated and attempted in left-to-right order.
-
-```bash
+# Specify both the discovery service and IP addresses, tried left-to-right
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
-* [Checking the cluster status]({%link _docs/install/health.md %})
+You can [check the cluster status]({%link _docs/install/health.md %}) to confirm
+a successful installation.
+
+### Single node clusters
+
+The `JOIN` command line argument is always required, even in clusters with only
+one node. A blank `JOIN` variable will result in a non-functional cluster. This
+is to prevent non-obvious split-brain scenarios in multi-node clusters, where
+`JOIN` was mistakenly omitted.
+
+```bash
+# Create a one-node cluster
+JOIN=$ADVERTISE_IP
+```
+
+Replicas are unavailable in a single node install.

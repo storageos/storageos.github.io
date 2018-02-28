@@ -27,13 +27,12 @@ Run 'storageos cluster COMMAND --help' for more information on a command.
 
 ### `storageos cluster create`
 
-To create a cluster token id, which is used for [cluster discovery]({%link _docs/install/prerequisites/clusterdiscovery.md %}):
+To create a cluster token for [cluster discovery]({%link
+_docs/install/prerequisites/clusterdiscovery.md %}):
 ```bash
 $ storageos cluster create
 207f0026-3844-40e0-884b-729d79c124b8
 ```
-
-The default cluster size is 3; pass `-s` to set the size to 3-7.
 
 ### `storageos cluster inspect`
 

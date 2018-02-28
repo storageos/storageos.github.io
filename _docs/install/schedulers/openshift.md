@@ -75,7 +75,7 @@ API_ADDRESS="138.68.183.193"
 
 API=$( echo -n "tcp://${API_ADDRESS}:5705" | base64 )
 cat > storageos-secret.yaml <<EOF
---- 
+---
 apiVersion: v1
 kind: Secret
 metadata:
@@ -152,7 +152,7 @@ Pods can be created that access volumes directly.
 
    ```bash
    cat > storageos-pod.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: Pod
    metadata:
@@ -214,8 +214,8 @@ Pods can be created that access volumes directly.
    **Note** this example uses a replicated volume.
 
    ```bash
-   storageos volume create nginx-pv01 --label storageos.feature.replicas=1
-   
+   storageos volume create nginx-pv01 --label storageos.com/replicas=1
+
    default/nginx-pv01
    ```
 
@@ -225,7 +225,7 @@ Pods can be created that access volumes directly.
 
    ```bash
    cat > storageos-pv.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: PersistentVolume
    metadata:
@@ -285,7 +285,7 @@ Pods can be created that access volumes directly.
 
    ```bash
    cat > storageos-pvc.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: PersistentVolumeClaim
    metadata:
@@ -310,7 +310,7 @@ Pods can be created that access volumes directly.
 
    ```bash
    oc describe pvc pvc0001
- 
+
    Name:          pvc0001
    Namespace:     default
    StorageClass:
@@ -330,7 +330,7 @@ Pods can be created that access volumes directly.
 
    ```bash
    cat > storageos-pvcpod.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: Pod
    metadata:
@@ -410,7 +410,7 @@ StorageOS supports the following storage class parameters:
 
    ```bash
    cat > storageos-sc.yaml <<EOF
-   --- 
+   ---
    kind: StorageClass
    apiVersion: storage.k8s.io/v1beta1
    metadata:
@@ -451,7 +451,7 @@ StorageOS supports the following storage class parameters:
 
    ```bash
    cat > storageos-sc-pvc.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: PersistentVolumeClaim
    metadata:
@@ -524,7 +524,7 @@ StorageOS supports the following storage class parameters:
 
    ```bash
    cat > storageos-sc-pvcpod.yaml <<EOF
-   --- 
+   ---
    apiVersion: v1
    kind: Pod
    metadata:

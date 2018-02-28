@@ -33,8 +33,33 @@ Bringing machine 'storageos-3' up with 'virtualbox' provider...
 ==> storageos-3: e91abf267c3f6d4dee8aaa31b3a233329d3a6e905ae83578b9bd2c59c32f5661
 ```
 
+Log into the [StorageOS UI](http://192.168.50.100:5705) with the username
+`storageos` and password `storageos`.
+
+## SSH into the VMs
+
+First confirm that all three VMs are up and running.
+
+```bash
+$ vagrant status
+Current machine states:
+
+storageos-1               running (virtualbox)
+storageos-2               running (virtualbox)
+storageos-3               running (virtualbox)
+```
+
+Next, connect to a VM as shown below.
+```bash
+$ vagrant ssh storageos-1
+...
+vagrant@storageos-1:~$
+```
+
 Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %})
 or [install Postgres]({% link _docs/applications/databases/postgres.md %}).
 
-__NOTE__: If due to some reason, the storageos containers stop, they can be
+If due to some reason, the storageos containers stop, they can be
 restarted by running `docker start storageos`.
+
+When finished with the VMs, you can terminate them with `vagrant destroy`

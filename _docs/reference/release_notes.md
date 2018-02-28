@@ -37,9 +37,20 @@ unavailable while the StorageOS container restarts.
 
 Where there are special considerations they are described below.
 
+During Beta upgrades may not always be possible as our focus will be on making
+bug fixes and new features available as soon as possible.  Once StorageOS
+reaches GA, more effort will be made to ensure that upgrades are seamless.
+
+### 0.9.x -> 0.10.x
+
+Due to breaking changes between 0.9.x and 0.10.x upgrading is not possible.
+Instead we recommend that you provision a new cluster and migrate data.
+
+Please update to the latest CLI when installing 0.10.x.
+
 ### 0.8.x -> 0.9.x
 
-Start-up sripts should be updated to use the new cluster discovery syntax (See:
+Start-up scripts should be updated to use the new cluster discovery syntax (See:
 https://docs.storageos.com/docs/install/prerequisites/clusterdiscovery)
 
 Do not mix a cluster with 0.8.x and 0.9.x versions as port numbers have changed.
@@ -51,6 +62,198 @@ Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 0.8.x+.  Our recommendation is to create a new cluster, paying attention to the
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 `INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
+
+## 0.10.0
+
+The 0.10.0 version focusses on stability and usability as we get closer to GA,
+but also adds a number of new features (UI, Prometheus metrics, log streaming).
+
+### Breaking changes
+
+We took the decision to bundle as many known breaking changes into this release
+in order to reduce pain later.
+
+- The API endpoint `/v1/controllers` has been replaced with `/v1/nodes`.  This
+  removes the concept of storage controllers being different objects from
+  storage clients.  Now both are simply nodes, with the
+  `storageos.com/deployment` label used to configure the deployment type.
+  Deployment types can be `computeonly` and `mixed` are supported, with `mixed`
+  being the default.
+
+  Older versions of the CLI should be mostly backwards compatible but some
+  features such as node and pool capacity will not work.
+
+- The label format for configuring StorageOS features has changed from
+  `storageos.feature.xyz` to `storageos.com/xyz`.  This format is more familiar
+  to Kubernetes users.  Using the old format will still work until 0.11 when
+  conversion will be removed.  In 0.10 a deprecation notice will be issued.
+
+- The environment variable used to add labels to nodes at startup time has
+  changed from `LABEL_ADD` to `LABELS`.  Multiple labels can be comma-separated:
+  `LABELS=storageos.com/deployment=computeonly,region=us-west-1`
+
+### New
+
+- There is now a Web interface, available on all cluster nodes on the API port
+  (`5705`).  To access, point your web browser to http://ADVERTISE_IP:5705.
+  where ADVERTISE_IP is the public ip address of a StorageOS node.  Unless you
+  have changed the default credentials, login with user `storageos`, password
+  `storageos`.  See: {% link _docs/reference/gui.md %}
+- Prometheus stats are exported on each cluster node at
+  http://ADVERTISE_IP:5705/v1/metrics.  Prometheus 2.x is required.
+- The CLI can now stream realtime logs from the active StorageOS cluster with
+  `storageos logs -f`.  Logs are aggregated from all cluster nodes over a single
+  connection to the API.  Future releases will add support for filtering and
+  controlling the log level.  See: {% link _docs/reference/cli/logs.md %}
+- The location of the StorageOS volumes can now be configured on a per-node
+  basis by setting the `DEVICE_DIR` environment variable on the StorageOS node
+  container.
+
+  This is especially useful when running Kubernetes in a container
+  and you are unable or unwilling to share the default `/var/lib/storageos/volumes`
+  location into the `kubelet` container.  Instead, share the `kubelet` plugin
+  directory into the StorageOS container, and set `DEVICE_DIR` to use it.
+  Hovever, Kubernetes 1.10 will be required in order for `kubelet` to use a
+  directory other than `/var/lib/storageos/volumes`.
+
+  For example:
+
+  ```bash
+  JOIN=$(storageos cluster create)
+  docker run --rm --name storageos \
+    -e HOSTNAME \
+    -e DEVICE_DIR=/var/lib/kubelet/plugins/kubernetes.io~storageos/devices \
+    -e JOIN=${JOIN} \
+    --pid host \
+    --privileged --cap-add SYS_ADMIN \
+    -v /var/lib/kubelet/plugins/kubernetes.io~storageos:/var/lib/kubelet/plugins/kubernetes.io~storageos:rshared \
+    --device /dev/fuse \
+    --net host \
+    storageos server
+   ```
+
+### Improved
+
+- `soft` volume failure mode will now tolerate the replica being offline (for
+  example during a node reboot), if there is only one replica configured.  To
+  ensure there are always two copies of the data, use `hard` mode with a single
+  replica, or use two replicas with `soft` mode.
+- Ensure volumes can only be mounted with the correct underlying filesystem.
+  You will now get a validation error if you try to mount an ext3 formatted
+  filesystem as ext4.  `ext4` is the default if not specified when mounting an
+  unformatted volume.
+
+### Fixed
+
+- Ensure cache is invalidated after mkfs.  Fixes mount error 32 that could occur
+  with Kubernetes or Openshift on Centos/RHEL.
+- Memory leak in replication client led to excessive use over time.
+- Standardised all paths to 256 byte length to support user-configurable
+  `DEVICE_DIR`.
+- Fixed clean shutdown issue where filesystem could start new threads while
+  shutting down.  This was only observed in stress tests.
+- Shutdown signal handling improved, fixing `Transport endpoint is not connected`
+  on Centos / RHEL in certain restart situations.
+
+## 0.9.2
+
+The 0.9.2 fixes a memory leak, so upgrading is recommended.  It also reduces
+the time taken to delete volumes.
+
+More work has gone into logging, with API endpoints to control verbosity and
+log filtering of running nodes individually or cluster-wide.  Version 0.9.4 of
+the CLI provides the `storageos logs` subcommand to control settings remotely.
+
+### New
+
+- API endpoints for logging configuration
+
+### Improved
+
+- Remove cgo dependencies from controlplane
+- Better error message when the KV store is unavailable
+- Reduced memory footprint of controlplane by 67%.
+
+### Fixed
+
+- Memory leak introduced in 0.9.0 fixed
+
+## 0.9.1
+
+The 0.9.1 release includes a fix for the `mount deadline exceeded` error, where
+a volume mount fails after a long delay.
+
+The logging susbsystem has also been overhauled to reduce noise and to allow
+filtering messages by log level and component.  We expect to build on this in
+upcoming releases to further improve diagnostics.
+
+### New
+
+- Failure modes can be specified to control behaviour in specific failure
+scenarios.  Full documentation to be added to the docs site soon.
+
+  - `hard` will enforce the desired number of replicas and take a volume offline
+    if the replica count is not met.  In practice, the volume should only go
+    offline if there isn't a suitable node to place a new replica on.  For
+    example, if you have configured 2 replicas in a 3 node cluster and a node
+    goes offline.
+  - `alwayson` will optimise for availability and will keep a volume online even
+    if all replicas have failed.
+  - `soft` is set by default, and will only take a volume offline if the number
+    of replicas falls below the Failure tolerance (default: number of
+    replicas - 1).  This will allow a volume with 2 replicas in a 3 node cluster
+    to remain active while a node reboots.
+
+  You can select the failure mode through the labels:
+
+    ```bash
+    storageos volume create --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
+    ```
+
+- Log filtering allows finer-grained control of log messages so that debug-level
+  messages can be enabled only on some components.  Filtering is controlled by
+  setting `LOG_FILTER=cat1=level1,catN=LevelN`.  For example, to enable
+  debugging on only the etcd category:
+  1. Set `LOG_LEVEL=debug` to enable debug logs.  This must be set to the lowest
+     level requested in the filter.
+  1. Set `LOG_FILTER=cp=info,dp=info,etcd=debug` to set controlplane and
+     dataplane logs back to `info` level, then `etcd` to `debug`.
+- Enabled profiling of the controlplane when DEBUG=true is set.  The endpoint is
+  availble at http://localhost:5705/debug/pprof.
+- Debug endpoints to monitor and control KV store leadership (DEBUG=true must be
+  set).
+
+  - HTTP GET on http://localhost:5705/debug/leader returns true/false if the
+    node is the cluster leader.
+  - HTTP PUT on http://localhost:5705/debug/leader/resign will cause leader to
+    resign, triggering a new election.
+  - HTTP PUT on http://localhost:5705/debug/leader/run will cause node to run
+    for cluster leadership.
+
+  These actions are used primarily for automated testing where we introduce instability into the cluster to ensure there is no service disruption.
+
+
+### Improved
+
+- More instructive log messages if unable to create filesystem.
+- Improve check for whether a device is using NBD for presentation.
+- Log whenever a dataplane process restarts.
+- Updated etcd libraries to v3.3.0-rc.0.
+- Etcd tuning (TickMs = 200, ElectionMs = 5000)
+- Updated other dependencies to latest stable releases.
+- Dataplane, etcd, gRPC and NATS now use same log format as the controlplane.
+- More user-friendly error message when `ADVERTISE_IP` is invalid.
+
+### Fixed
+
+- Fixed a bug that caused mounts to fail with `Failed to mount: exit status 32`.
+  This was caused by the volume being marked as ready before the device was
+  fully initialised, and the mount starting before the initialization completed.
+- Volume names are no longer lowercased and keep the requested case.  This
+  fixes an issue with Docker EE with mixed-case volume names.
+- Volume delete on non-existent volume now returns HTTP 404 instead of 500.
+- Do not reset node health if internal healthcheck returns invalid response.
+  Instead, retry and wait for valid response message.
 
 ## 0.9.0
 

@@ -72,6 +72,7 @@ Options:
 
 Management Commands:
   cluster                 Manage clusters
+  logs                    View and manage node logs
   namespace               Manage namespaces
   node                    Manage nodes
   policy                  Manage policies
@@ -93,6 +94,7 @@ Run 'storageos COMMAND --help' for more information on a command.
 | Command     | Subcommand                    | Description                                                    |
 |-------------|-------------------------------|----------------------------------------------------------------|
 | `cluster`   | `create health inspect rm`    | Cluster information.                                           |
+| `logs`      | `view`                        | View and manage node logs.                                     |
 | `login`     |                               | Store login credentials for a given StorageOS host.            |
 | `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |

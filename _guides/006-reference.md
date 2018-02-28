@@ -18,6 +18,10 @@ sections:
         description: Store credentials for known cluster hosts
         module: reference/cli/login
       -
+        title: logs
+        description: View and manage node logs
+        module: reference/cli/logs
+      -
         title: namespace
         description: Create and manage namespaces
         module: reference/cli/namespace

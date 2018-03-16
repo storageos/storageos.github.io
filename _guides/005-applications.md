@@ -29,8 +29,4 @@ sections:
         title: Cassandra
         description: Setting up Cassandra with persistent storage.
         module: applications/databases/cassandra
-  -
-    title: WordPress
-    description: WordPress
-    module: applications/wordpress
 ---

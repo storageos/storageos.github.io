@@ -28,10 +28,17 @@ Run 'storageos pool COMMAND --help' for more information on a command.
 
 ### `storageos pool create`
 
-To create a pool:
+To create a pool with one node assigned:
 
 ```bash
-$ storageos pool create no-ha --controllers storageos-1-59227
+$ storageos pool create no-ha --nodes storageos-1-59227
+no-ha
+```
+
+To create a pool with multiple nodes assigned:
+
+```bash
+$ storageos pool create no-ha --nodes storageos-1-59227,storageos-2-59227
 no-ha
 ```
 
@@ -66,9 +73,11 @@ $ storageos pool inspect no-ha
        "description": ""
        "default": false,
        "defaultDriver": "",
-       "controllerNames": [
-           "storageos-1-59227"
+       "nodeNames": [
+           "storageos-1-59227",
+           "storageos-2-59227"
        ],
+       "controllerNames": null,
        "driverNames": [],
        "driverInstances": null,
        "active": true,

@@ -53,7 +53,7 @@ timeout expired waiting for volumes to attach/mount for pod
 volumes=[redis-data]
 ```
 
-Until the [upstream fix](https://github.com/kubernetes/kubernetes/pull/58816])
+Until the [upstream fix](https://github.com/kubernetes/kubernetes/pull/58816)
 is merged, you will need to add:
 `--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each of the
 kubelets. See examples with [OpenShift]({%link assets/openshift.sh %}) and

@@ -31,7 +31,7 @@ For most environments, the default settings should work.
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.
 * `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
-* `JOIN`: A URI defining the cluster for the node to join; see [cluster discovery]( http://localhost:4000/docs/install/prerequisites/clusterdiscovery).
+* `JOIN`: A URI defining the cluster for the node to join; see [cluster discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}).
 * `API_PORT`: Port for the API to listen on.  Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
 * `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `4222`.
 * `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.

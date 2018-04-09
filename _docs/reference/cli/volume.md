@@ -30,7 +30,7 @@ Commands:
 Run 'storageos volume COMMAND --help' for more information on a command.
 ```
 
-Note that the mount and unmount commands are not available on MacOS.
+Note that the mount and unmount commands are not available on MacOS or Windows.
 
 ### `storageos volume create`
 

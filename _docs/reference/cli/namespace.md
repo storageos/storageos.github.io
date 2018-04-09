@@ -14,6 +14,9 @@ Usage:	storageos namespace COMMAND
 
 Manage namespaces
 
+Aliases:
+  namespace, ns
+
 Options:
       --help   Print usage
 

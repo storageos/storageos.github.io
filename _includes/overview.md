@@ -9,7 +9,7 @@ or as a container image (Docker 1.10+ or Kubernetes 1.7+).
 
 ## Popular
 
-* [Install on Kubernetes]({% link _docs/install/schedulers/kubernetes.md %}) - Use StorageOS with a Kubernetes cluster.
+* [Install on Kubernetes]({% link _docs/install/kubernetes/index.md %}) - Use StorageOS with a Kubernetes cluster.
 * [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
 * [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - Try StorageOS in your browser.
 * [StorageOS architecture](http://resources.storageos.com/storageos_platform_architecture_overview) - Download the whitepaper.

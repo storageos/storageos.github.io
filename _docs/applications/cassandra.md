@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Cassandra
 anchor: applications
-module: applications/databases/cassandra
+module: applications/cassandra
 ---
 
 # ![image](/images/docs/explore/cassandralogo.png) Cassandra with StorageOS

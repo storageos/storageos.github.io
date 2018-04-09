@@ -16,7 +16,9 @@ Options:
       --clear-filter       Clears the filter
       --filter string      Set the logging filter
   -f, --follow             Tail the logs for the given node, or all nodes if not specified
+      --format string      Output format (raw or table) or a Go template (default "raw")
       --help               Print usage
+  -q, --quiet              Only display volume names
   -t, --timeout int        Timeout in seconds. (default 5)
       --verbosity string   Set the logging verbosity
 

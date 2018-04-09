@@ -5,6 +5,10 @@ anchor: operations
 
 sections:
   -
+    title: Monitoring
+    description: Monitoring
+    module: operations/monitoring
+  -
     title: Upgrading a cluster
     description: Upgrading a cluster
     module: operations/upgrades

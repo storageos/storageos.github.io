@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Microsoft SQL Server
 anchor: applications
-module: applications/databases/mssql
+module: applications/mssql
 ---
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2017 with StorageOS

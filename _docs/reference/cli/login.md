@@ -16,8 +16,11 @@ Store login credentials for a given storageos host
 
 Options:
       --help              Print usage
-      --password string   The password to use for this host
-      --username string   The username to use for this host
+  -p, --password string   The password to use for this host (will override value of the global option
+                          --password)
+  -u, --username string   The username to use for this host (will override value of the global option
+                          --username)
+
 ```
 
 The storageos CLI provides a simple credentials helper to aid in cluster management.
@@ -29,7 +32,7 @@ To store credentials for a host use the `login` command:
 ```bash
 $ storageos login 10.1.5.249
 Username: storageos
-Password: 
+Password:
 Credentials verified
 ```
 

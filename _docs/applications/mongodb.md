@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - MongoDB
 anchor: applications
-module: applications/databases/mongodb
+module: applications/mongodb
 ---
 
 # ![image](/images/docs/explore/mongologo.png) MongoDB with StorageOS

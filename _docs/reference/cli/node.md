@@ -18,10 +18,24 @@ Options:
       --help   Print usage
 
 Commands:
+  cordon      Put one or more nodes into an unschedulable state
+  health      Display detailed information on a given node
   inspect     Display detailed information on one or more nodes
   ls          List nodes
+  uncordon    Restore one or more nodes from an unschedulable state
+  update      Update a node
 
 Run 'storageos node COMMAND --help' for more information on a command.
+```
+
+### `storageos node cordon`
+
+Puts one or mores into an unschedulable state, in preparation for upgrading or
+decommisioning a node.
+
+```bash
+$ storageos node cordon host01
+host01
 ```
 
 ### `storageos node inspect`
@@ -114,3 +128,12 @@ The output shows a StorageOS cluster with three nodes named
   the placement of volumes, performing health checks and providing high
   availability to nodes. A cluster will have exactly one scheduler node.
 - `VOLUMES`: the number of master or replica copies of volumes on this node.
+
+### `storageos node uncordon`
+
+Restore one or more nodes after cordoning the node for upgrade.
+
+```bash
+$ storageos node uncordon host01
+host01
+```

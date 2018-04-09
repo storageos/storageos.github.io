@@ -30,6 +30,8 @@ Commands:
 Run 'storageos volume COMMAND --help' for more information on a command.
 ```
 
+Note that the mount and unmount commands are not available on MacOS or Windows.
+
 ### `storageos volume create`
 
 To create a 15GB volume in the default namespace:
@@ -98,7 +100,7 @@ sudo storageos volume mount default/volume-name /mnt
 
 ### `storageos volume rm`
 
-To delete a volume (use ``--force` to delete mounted volumes):
+To delete a volume (use `--force` to delete mounted volumes):
 
 ```bash
 $ storageos volume rm default/volume-name
@@ -112,5 +114,3 @@ To unmount a volume on the current node (note this requires root):
 ```bash
 sudo storageos volume unmount default/volume-name
 ```
-
->**Unmounting volumes requires the user to be root.**

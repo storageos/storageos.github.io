@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Redis
 anchor: applications
-module: applications/databases/redis
+module: applications/redis
 # Last reviewed by julian.topley@storageos.com on 2017-05-22
 ---
 

@@ -57,7 +57,7 @@ vagrant@storageos-1:~$
 ```
 
 Now you are ready to [manage volumes]({% link _docs/manage/volumes/index.md %})
-or [install Postgres]({% link _docs/applications/databases/postgres.md %}).
+or [install Postgres]({% link _docs/applications/postgres.md %}).
 
 If due to some reason, the storageos containers stop, they can be
 restarted by running `docker start storageos`.

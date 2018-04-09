@@ -46,14 +46,4 @@ sections:
         title: Volume placement
         description: Volume placement
         module: manage/features/placement
-  -
-    title: Users
-    description: Creating and managing Users
-    module: manage/users
-    items:
-      -
-        title: Policies
-        description: Using policies
-        module: manage/users/policies
-
 ---

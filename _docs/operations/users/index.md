@@ -1,13 +1,13 @@
 ---
 layout: guide
 title: StorageOS Docs - Users
-anchor: manage
-module: manage/users
+anchor: operations
+module: operations/users
 ---
 
 # Users
 
-User accounts facilitate granular permissioning of acceptable actions within the system by the use of [Policies.]({% link _docs/manage/users/policies.md%})
+User accounts facilitate granular permissioning of acceptable actions within the system by the use of [Policies.]({% link _docs/operations/users/policies.md%})
 On initial startup there is only the `storageos` user which is an admin user.
 
 ## Admin vs User accounts

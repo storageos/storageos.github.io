@@ -18,32 +18,6 @@ The maximum number of replicas that can be created is five, or up to the number
 of remaining nodes in the cluster. For most applications, one replica is
 sufficient.
 
-## Failure modes
-
-Failure modes specify how StorageOS should react to node issues.
-
-There are three different modes:
-
-* **soft** is the default mode.  It works together with the failure tolerance
-  label to help decide whether the volume should be writable or not.  The
-  failure tolerance specifies how many failed replicas we tolerate, defaulting
-  to 1 if there is only 1 replica, or replicas - 1 if there is more than 1
-  replica.
-
-  To ensure there are always two copies of the data, use `hard` mode with a
-  single replica, or use two replicas with `soft` mode.
-
-* **hard** is a mode where any loss in desired replicas count will mark the
-  volume as unavailable and any reads or writes will fail.
-
-* **alwayson** is a mode where as long as any copy of the volume is available
-  the volume will be usable.
-
-You can select failure mode using labels:
-
-```bash
-storageos volume create --namespace default --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
-```
 
 ## Recovery
 
@@ -88,4 +62,31 @@ To add replicas to a volume:
 
 ```bash
 storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
+```
+
+## Failure modes
+
+Failure modes specify how StorageOS should react to node issues.
+
+There are three different modes:
+
+* *soft* is the default mode.  It works together with the failure tolerance
+  label to help decide whether the volume should be writable or not.  The
+  failure tolerance specifies how many failed replicas we tolerate, defaulting
+  to 1 if there is only 1 replica, or replicas - 1 if there is more than 1
+  replica.
+
+  To ensure there are always two copies of the data, use `hard` mode with a
+  single replica, or use two replicas with `soft` mode.
+
+* *hard* is a mode where any loss in desired replicas count will mark the
+  volume as unavailable and any reads or writes will fail.
+
+* *alwayson* is a mode where as long as any copy of the volume is available
+  the volume will be usable.
+
+You can select failure mode using labels:
+
+```bash
+storageos volume create --namespace default --label storageos.com/replicas=2 --label storageos.com/failure.mode=alwayson volume-name
 ```

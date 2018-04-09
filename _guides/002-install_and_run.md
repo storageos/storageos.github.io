@@ -9,46 +9,52 @@ sections:
     description: Quick start
     module: install/quickstart
   -
-    title: Install CLI
-    description: Install CLI
-    module: install/installcli
-  -
     title: Prerequisites
     description: Prerequisites
     module: install/prerequisites
     items:
       -
-        title: Cluster Discovery
-        description: Cluster Discovery
+        title: Install CLI
+        description: Install CLI
+        module: install/cli
+      -
+        title: Cluster discovery
+        description: Cluster discovery
         module: install/prerequisites/clusterdiscovery
       -
-        title: Device Presentation
-        description: Device Presentation
+        title: Device presentation
+        description: Device presentation
         module: install/prerequisites/devicepresentation
       -
-        title: Ports and Firewall Settings
-        description: Ports and Firewall Settings
+        title: Ports and firewall settings
+        description: Ports and firewall settings
         module: install/prerequisites/firewalls
-  -
-    title: Docker Container
-    description: Docker container install for Docker Engine 1.10+
-    module: install/docker/container
-  -
-    title: Docker Volume plugin
-    description: Docker managed plugin install for Docker Engine 1.13+
-    module: install/docker/plugin
-  -
-    title: Docker Swarm
-    description: Installing on Docker Swarm
-    module: install/schedulers/dockerswarm
   -
     title: Kubernetes
     description: Installing on Kubernetes
-    module: install/schedulers/kubernetes
+    module: install/kubernetes
+    items:
+      -
+        title: Preprovisioned volumes
+        description: Preprovisioned volumes
+        module: install/kubernetes/preprovisioned
+      -
+        title: Dynamic provisioning
+        description: Dynamic provisioning
+        module: install/kubernetes/dynamic-provisioning
   -
     title: OpenShift
     description: Installing on OpenShift
-    module: install/schedulers/openshift
+    module: install/schedulers/openshift        
+  -
+    title: Docker
+    description: Installing on Docker
+    module: install/docker
+    items:
+      -
+        title: Docker Swarm
+        description: Installing on Docker Swarm
+        module: install/docker/swarm
   -
     title: Cluster health
     description: Checking the status of a StorageOS cluster

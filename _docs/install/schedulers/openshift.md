@@ -33,7 +33,7 @@ type to install to make devices usable from within containers.
 OpenShift 3.7+ is required.
 
 Run the StorageOS container directly in Docker on each node,
-following the instructions at [Docker Application Container]({% link _docs/install/docker/container.md %}).
+following the instructions at [Docker Application Container]({% link _docs/install/docker/index.md %}).
 
 >**Note**: OpenShift uses iptables, ensure all rules are in place to allow StorageOS to work.
 

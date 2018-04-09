@@ -29,3 +29,6 @@ collections:
     output: true
   support:
     output: true
+
+plugins:
+  - jekyll-redirect-from

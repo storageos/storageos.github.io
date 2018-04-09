@@ -16,7 +16,7 @@ The following conditions must be met before installing StorageOS:
 1. The necessary ports should be open. See the [ports and firewall settings]({% link _docs/install/prerequisites/firewalls.md %})
 1. A mechanism for [cluster
 discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), to allow
-StorageOS nodes to contact each other. 
+StorageOS nodes to contact each other.
 1. A mechanism for [device presentation]({% link _docs/install/prerequisites/devicepresentation.md %})
 
-This allows you to install StorageOS using a [container orchestrator]({% link _docs/install/schedulers/index.md %}) or with [Docker only]({% link _docs/install/docker/index.md %}).
+This allows you to install StorageOS using a container orchestrator such as [Kubernetes]({% link _docs/install/kubernetes/index.md %}) or with [Docker only]({% link _docs/install/docker/index.md %}).

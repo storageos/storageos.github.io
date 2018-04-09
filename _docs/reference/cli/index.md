@@ -2,19 +2,17 @@
 layout: guide
 title: StorageOS Docs - Command line interface
 anchor: reference
-module: reference/cli/index
+module: reference/cli
+redirect_from: /docs/install/cli
 ---
 
 # Command Line Interface
 
-## Overview
-
 The `storageos` command line interface (CLI) is used to manage cluster-wide
-configuration. It is [open source](https://github.com/storageos/go-cli).
+configuration.
 
 ## Installation
 
-Install to `/usr/local/bin`:
 ```bash
 # linux/amd64
 curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/0.10.0/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
@@ -32,20 +30,6 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 
 # Authenticate to remote host
 export STORAGEOS_HOST=10.1.5.249
-
-# Use flags to override environment variables on any command
-storageos -u storageos -p storageos volume list
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS            LOCATION
-default/repl-volume   5GB                                                         active              2/2                 vol-test-2gb-lon103 (healthy)
-
-# Store credentials
-storageos login 10.1.5.249
-Username: storageos
-Password:
-Credentials verified
-
-# Forget credentials
-storageos logout 10.1.5.249
 ```
 
 ## Usage
@@ -61,7 +45,7 @@ By using this product, you are agreeing to the terms of the the StorageOS Ltd. E
 User Subscription Agreement (EUSA) found at: https://storageos.com/legal/#eusa
 
 Options:
-      --config string     Location of client config files (default "/Users/cheryl/.storageos")
+      --config string     Location of client config files (default "/Users/<user>/.storageos")
   -D, --debug             Enable debug mode
       --help              Print usage
   -H, --host list         Node endpoint(s) to connect to (will override STORAGEOS_HOST env variable value)
@@ -82,6 +66,7 @@ Management Commands:
   volume                  Manage volumes
 
 Commands:
+  install-bash-completion Install bash completion for the storageos cli
   login                   Store login credentials for a given storageos host
   logout                  Delete stored login credentials for a given storageos host
   version                 Show the StorageOS version information
@@ -98,10 +83,12 @@ Run 'storageos COMMAND --help' for more information on a command.
 | `login`     |                               | Store login credentials for a given StorageOS host.            |
 | `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `node`      | `inspect ls`                  | Node information.                                              |
+| `node`      | `cordon health inspect ls uncordon update` | Node information.                                 |
 | `policy`    | `create inspect ls rm`        | Define how resources are accessed by users and groups.         |
 | `pool`      | `create inspect ls rm`        | A collection of storage resources for provisioning volumes.    |
 | `rule`      | `create inspect ls rm update` | Rules define label-based policies to apply to volumes.         |
 | `user`      | `create inspect ls rm update` | User and group management.                                     |
 | `version`   |                               | Display the version.                                           |
 | `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
+
+[Source is available on Github](https://github.com/storageos/go-cli).

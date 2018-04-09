@@ -10,13 +10,6 @@ module: install/prerequisites/clusterdiscovery
 On startup, you will need to specify whether a StorageOS node should bootstrap a
 new cluster or join an existing cluster.
 
-By default, a node's IP address is assumed to be the first non-loopback address.
-To override this, set the `ADVERTISE_IP` environment variable on each node:
-
-```bash
-ADVERTISE_IP=172.28.128.3
-```
-
 ## Cluster initialization
 
 StorageOS offers a public `etcd` discovery service, which is a convenient way to
@@ -24,7 +17,7 @@ pass clustering information to the StorageOS node.
 
 ```bash
 # Create a cluster discovery token. This token is not used after initialization
-storageos cluster create
+$ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 
 # Supply the returned cluster ID token to each node via JOIN
@@ -44,10 +37,6 @@ JOIN=172.28.128.3,172.28.128.9,172.28.128.15
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
-You can [check the cluster status]({%link _docs/install/health.md %}) to confirm
-a successful installation.
-
-### Single node clusters
 
 The `JOIN` command line argument is always required, even in clusters with only
 one node. A blank `JOIN` variable will result in a non-functional cluster. This
@@ -55,8 +44,6 @@ is to prevent non-obvious split-brain scenarios in multi-node clusters, where
 `JOIN` was mistakenly omitted.
 
 ```bash
-# Create a one-node cluster
+# Create a one-node cluster; note that replicas are unavailable.
 JOIN=$ADVERTISE_IP
 ```
-
-Replicas are unavailable in a single node install.

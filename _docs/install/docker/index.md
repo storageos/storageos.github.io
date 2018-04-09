@@ -1,31 +1,51 @@
 ---
 layout: guide
-title: StorageOS Docs - Docker only
+title: StorageOS Docs - Docker container
 anchor: install
-module: install/docker/index
+module: install/docker/container
+redirect_from: /docs/install/docker/container
 ---
 
-# Overview
+# Install with Docker
 
-StorageOS can be installed in one of two ways.
+Install StorageOS as an application container for Docker Engine 1.10+ or
+Kubernetes 1.7. [**Try it in your browser for up to one hour >>**](https://my.storageos.com/main/tutorial/install-with-docker)
 
-1. For Kubernetes and Docker 1.10+, use the [container install]({%
-link _docs/install/docker/container.md %}).
+## Prerequisites
 
-2. For Docker 1.13+ testing, use the [volume plugin]({%
-link _docs/install/docker/plugin.md %}).
+Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
+```bash
+$ storageos cluster create
+017e4605-3c3a-434d-b4b1-dfe514a9cd0f
+```
 
->**Do not install both the node and the plugin**. The plugin is harder to debug, so if in doubt, use the container install.
+You should [enable nbd on each node in turn:]({%link _docs/install/prerequisites/devicepresentation.md %})
+```bash
+sudo modprobe nbd nbds_max=1024
+```
 
-With either approach, you will need to install StorageOS on every node in a
-cluster.
+## Install
 
-Ensure [the prerequisites]({% link _docs/install/prerequisites/index.md %}) are
-fulfilled before installing StorageOS.
+Run StorageOS on each node, replacing `ADVERTISE_IP` with the host
+ip address and `JOIN` with your token:
 
-## Environment variables
+```bash
+docker run -d --name storageos \
+    -e HOSTNAME \
+    -e ADVERTISE_IP=10.26.2.5 \
+    -e JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f \
+    --net=host \
+    --pid=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node:0.10.0 server
+```
 
-For most environments, the default settings should work.
+If you are performing a non-default installation, the following environment
+variables can be provided:
 
 * `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.
@@ -43,3 +63,34 @@ For most environments, the default settings should work.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
 * `DISABLE_ERROR_REPORTING`: To disable error reporting across the cluster, set to `true`. Defaults to `false`. Errors are reported to help identify and resolve potential issues that may occur.
+
+## Confirming installation
+
+Load the [GUI]({%link _docs/reference/gui.md %}) on port 5705 on any of the nodes:
+
+![Logging in](/images/docs/gui/login.png)
+
+If this fails, [install the CLI]({%link _docs/reference/cli/index.md %}) and run
+`storageos cluster health`. If any components are unhealthy, look at the Docker
+logs:
+
+```bash
+$ docker logs storageos
+time="2018-04-09T09:16:41Z" level=info msg="by using this product, you are agreeing to the terms of the StorageOS Ltd. End User Subscription Agreement (EUSA) found at: https://storageos.com/legal/#eusa" module=command
+time="2018-04-09T09:16:41Z" level=info msg="starting server" address=172.17.0.7 cluster= hostname=host01 id=b80ac576-5bd0-4b0e-8b95-cbdea8233b08 join=7895d1a5-49ba-4b0a-82fd-5becd1b9c487 labels="map[]" module=command version="StorageOS 0.10.0 (d70f6f5), built: 2018-02-27T144558Z"
+time="2018-04-09T09:16:41Z" level=info msg="starting api server" action=create category=server endpoint="0.0.0.0:5705" module=cp
+time="2018-04-09T09:16:41Z" level=info msg="started temporary docker volume plugin api while control plane starts"
+...
+```
+
+## Creating volumes
+
+To use StorageOS volumes with containers, specify `--volume-driver storageos`:
+
+```bash
+$ docker container run -it --volume-driver storageos --volume myvol:/data busybox sh
+/ #
+```
+This creates a new container with a StorageOS volume called `myvol` mounted at `/data`.
+
+*Note: The [Docker managed plugin](https://hub.docker.com/r/storageos/plugin/) is deprecated.*

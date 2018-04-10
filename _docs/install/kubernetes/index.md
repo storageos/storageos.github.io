@@ -19,8 +19,7 @@ type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-You will need a Kubernetes 1.8+ cluster with Beta APIs enabled. For Kubernetes
-1.7, you can [install the container directly in Docker]({%link _docs/install/docker/index.md %}).
+You will need a Kubernetes 1.8+ cluster with Beta APIs enabled.
 
 1. Enable the `MountPropagation` flag by appending `--feature-gates
 MountPropagation=true` to the kube-apiserver and kubelet services.
@@ -33,6 +32,8 @@ of the kubelets. This will be [fixed](https://github.com/kubernetes/kubernetes/p
 _docs/install/prerequisites/devicepresentation.md %}) on each node for better
 performance.
 
+For Kubernetes 1.7, you can [install the container directly in
+Docker]({%link _docs/install/docker/index.md %}).
 
 ## Install with Helm
 

@@ -34,7 +34,6 @@ docker run -d --name storageos \
     -e HOSTNAME \
     -e ADVERTISE_IP=10.26.2.5 \
     -e JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f \
-    --net=host \
     --pid=host \
     --privileged \
     --cap-add SYS_ADMIN \
@@ -52,11 +51,14 @@ variables can be provided:
 * `USERNAME`: Username to authenticate to the API with.  Defaults to `storageos`.
 * `PASSWORD`: Password to authenticate to the API with.  Defaults to `storageos`.
 * `JOIN`: A URI defining the cluster for the node to join; see [cluster discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}).
+* `DEVICE_DIR`: Where the volumes are exported.  This directory must be shared into the container using the rshared volume mount option. Defaults to `/var/lib/storageos/volumes`.
 * `API_PORT`: Port for the API to listen on.  Defaults to `5705` ([IANA Registered](https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705)).
-* `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `4222`.
-* `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `8222`.
-* `SERF_PORT`: Port for the Serf protocol to listen on.  Defaults to `13700`.
-* `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `17100`.
+* `NATS_PORT`: Port for NATS messaging to listen on.  Defaults to `5708`.
+* `NATS_CLUSTER_PORT`: Port for the NATS cluster service to listen on.  Defaults to `5710`.
+* `SERF_PORT`: Port for the Serf protocol to listen on.  Defaults to `5711`.
+* `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `5703`.
+* `KV_PEER_PORT`: Port for the embedded Key/Value store. Defaults to `5707`.
+* `KV_CLIENT_PORT`: Port for the embedded Key/Value store. Defaults to `5706`.
 * `KV_ADDR`: IP address/port of an external Key/Vaue store.  Must be specified with `KV_BACKEND=etcd`.
 * `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance.
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`.  Defaults to `info`.

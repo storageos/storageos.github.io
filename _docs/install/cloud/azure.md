@@ -9,25 +9,25 @@ module: install/cloud/azure
 
 ## Azure Container Service (AKS) Installation
 
-We expect StorageOS to run on AKS when it reaches GA and it supports Kubernetes
-1.10.  Since AKS runs `kubelet` in a container, an additional parameter was
+Since AKS runs `kubelet` in a container, an additional parameter was
 added to the StorageOS driver in Kubernetes 1.10 to allow configuring the
 location where StorageOS presents volume devices to `kubelet` to see the
 devices.
 
-Until then, you may deploy your own Kubernetes cluster on Azure using the ACS
-Kubernetes installation below.
+We expect StorageOS to run on AKS when it supports Kubernetes
+1.10.  Until then, you may deploy your own Kubernetes cluster on Azure using the acs-engine instructions below.
 
-## Azure Container Service (ACS) Kubernetes Installation
+## acs-engine
 
-`acs-engine` is the open-source tool that Microsoft uses to deploy AKS clusters, and it can be used to deploy your own Kubernetes cluster on Azure.  It allows
+`acs-engine` is an open-source tool from Microsoft that uses to deploy AKS clusters, and it can be used to deploy your own Kubernetes cluster on Azure.  It allows
 you to specify the version of Kubernetes and specific features.
 
 For more information and installation instructions, consult the
 [acs-engine kubernetes guide](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 
+There are various [examples of kubernetes cluster definitions](https://github.com/Azure/acs-engine/tree/master/examples) for acs-engine, but the important thing is to specify kubernetes 1.10 as StorageOS requires this version to support running with kubelet in a container.
 
-The template below can be used in place of `examples/kubernetes.json` in the "Deploy" step:
+Example definition (saved as `kubernetes.json` for use in the instructions below):
 
 ```json
 {
@@ -35,15 +35,7 @@ The template below can be used in place of `examples/kubernetes.json` in the "De
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      "orchestratorRelease": "1.10",
-      "kubernetesConfig": {
-        "kubeletConfig" : {
-          "--feature-gates": "MountPropagation=true"
-        },
-        "apiServerConfig" : {
-          "--feature-gates": "MountPropagation=true"
-        }
-      }
+      "orchestratorRelease": "1.10"
     },
     "masterProfile": {
       "count": 1,
@@ -74,20 +66,38 @@ The template below can be used in place of `examples/kubernetes.json` in the "De
     }
   }
 }
-
 ```
 
-The `MountPropagation` feature must be enabled, as this allows the StorageOS
-container to expose devices.
+To deploy a cluster through acs-engine you need your Azure Subscription ID. 
+The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) is a great way to get the ID of your subscription. If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:
 
-To create the cluster, save the json file as `kubernetes.json` and run:
+```bash
+# save the current subscription id in a variable for later...
+subscriptionId=$(az account show --output tsv --query id)
+
+# or show the current account (to copy locally if running from the Cloud Shell)
+az account show --output json
+
+# or list your subscriptions (if you have multiple subscriptions)
+az account list
+```
+
+With your subscription id you can now run `acs-engine` to deploy your kubernetes cluster:
 
 ```bash
 # IMPORTANT: enter your own parameters, especially 'subscription-id'
-acs-engine deploy --subscription-id 51ac25de-afdg-9201-d923-8d8e8e8e8e8e \
+acs-engine deploy --subscription-id $subscriptionId \
     --dns-prefix storageos --location westus2 \
     --auto-suffix --api-model kubernetes.json
 ```
+
+The deployment also creates a KUBECONFIG for your cluster under the `_output` directory. The exact filename depends on the dns prefix and location you specified. To set the KUBECONFIG for the example above:
+
+```bash
+KUBECONFIG=~/mydir/_output/storageos/kubeconfig/kubeconfig.westus2.json
+```
+
+Running `kubectl cluster-version` should now connect to your new cluster!
 
 Consult the [acs-engine documentation](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 for more information.

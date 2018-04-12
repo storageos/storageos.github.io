@@ -117,7 +117,11 @@ Helm Chart and install:
 git clone https://github.com/storageos/helm-chart.git storageos
 cd storageos
 helm install . --name storageos-test \
-  --set image.repository=soegarots/node,image.tag=ad3f0ccb6,service.type=LoadBalancer,cluster.join="$(storageos cluster create)",cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos
+  --set image.repository=soegarots/node \
+  --set image.tag=ad3f0ccb6 \
+  --set service.type=LoadBalancer \
+  --set cluster.join="$(storageos cluster create)" \
+  --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos
 ```
 
 After the `helm install` command completes, finish the installation by running
@@ -146,7 +150,7 @@ information and available options.
 Verify the cluster is healthy with the StorageOS CLI:
 
 ```bash
-$ STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o custom-columns=IP:status.loadBalancer.ingress[0].ip --no-headers=true)
+$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o custom-columns=IP:status.loadBalancer.ingress[0].ip --no-headers=true)
 $ storageos node ls
 NAME                        ADDRESS             HEALTH                  SCHEDULER           VOLUMES             TOTAL               USED                VERSION                 LABELS
 k8s-agentpool1-40905336-0   10.240.0.4          Healthy About an hour   false               M: 1, R: 0          29.02GiB            11.38%              ad3f0cc (ad3f0cc rev)   

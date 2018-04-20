@@ -23,13 +23,13 @@ database backups which do not need to be cached), set the
 `storageos.com/nocache` label:
 
 ```bash
-storageos volume create --label storageos.feature.nocache=true volume-name
+storageos volume create --label storageos.com/nocache=true volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.feature.nocache=true volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.com/nocache=true volume-name
 volume-name
 ```
 

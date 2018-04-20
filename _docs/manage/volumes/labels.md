@@ -100,7 +100,7 @@ However on rules, selectors define the conditions for triggering a rule. This
 creates a rule that configures 2 replicas for volumes with the label `env=prod`:
 
 ```bash
-$ storageos rule create --namespace default --selector 'env==prod' --label storageos.feature.replicas=2 replicator
+$ storageos rule create --namespace default --selector 'env==prod' --label storageos.com/replicas=2 replicator
 default/replicator
 ```
 

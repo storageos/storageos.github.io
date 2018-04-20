@@ -11,7 +11,7 @@ Prometheus stats are exported on each cluster node at
 http://ADVERTISE_IP:5705/v1/metrics. Prometheus 2.x is required.
 
 ```bash
-$ curl -v http://localhost:5705/v1/metrics
+$ curl -v http://localhost:5705/metrics
 *   Trying ::1...
 * Connected to localhost (::1) port 5705 (#0)
 > GET /v1/metrics HTTP/1.1

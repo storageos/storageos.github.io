@@ -27,7 +27,7 @@ The minimum parameters to create a rule are `--selector` and `--label`.
 Create a rule that configures 2 replicas for volumes with the label `env=prod`:
 
 ```bash
-$ storageos rule create --namespace default --selector 'env==prod' --label storageos.feature.replicas=2 replicator
+$ storageos rule create --namespace default --selector 'env==prod' --label storageos.com/replicas=2 replicator
 default/replicator
 ```
 
@@ -49,7 +49,7 @@ order of evaluation. Rules are evaluated starting at the lowest weight.
 To create a rule that configures 2 replicas for volumes with the label env=prod:
 
 ```bash
-$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
+$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.com/replicas=2 replicator
 default/replicator
 ```
 
@@ -58,10 +58,10 @@ View rules:
 ```bash
 $ storageos rule ls
 NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
-default/dev-marker    !storageos.feature.replicas    add                 env=dev
-default/prod-marker   storageos.feature.replicas>1   add                 env=prod
-default/replicator    env==prod                      add                 storageos.feature.replicas=2
-default/uat-marker    storageos.feature.replicas<2   add                 env=uat
+default/dev-marker    !storageos.com/replicas    add                 env=dev
+default/prod-marker   storageos.com/replicas>1   add                 env=prod
+default/replicator    env==prod                      add                 storageos.com/replicas=2
+default/uat-marker    storageos.com/replicas<2   add                 env=uat
 ```
 
 Inspect a rule:
@@ -79,7 +79,7 @@ $ storageos rule inspect default/replicator
         "action": "add",
         "selector": "env==prod",
         "labels": {
-            "storageos.feature.replicas": "2"
+            "storageos.com/replicas": "2"
         }
     }
 ]
@@ -100,7 +100,7 @@ You should see that it has two replicas provisioned and additional labels attach
 "labels": {
         "env": "prod",
         "storageos.driver": "filesystem",
-        "storageos.feature.replicas": "2"
+        "storageos.com/replicas": "2"
     },
 ```
 
@@ -113,27 +113,27 @@ default/replicator
 
 ### Using advanced selectors
 
-Let's create several rules that instead of adding `storageos.feature.replicas`
+Let's create several rules that instead of adding `storageos.com/replicas`
 feature label it would read it's value and based on it would label volumes with
 `dev/uat/prod` env values.
 
 First, create a rule to label `dev` environments:
 
 ```bash
-storageos rule create --namespace default --selector '!storageos.feature.replicas' --action add --label env=dev dev-marker
+storageos rule create --namespace default --selector '!storageos.com/replicas' --action add --label env=dev dev-marker
 ```
 
-This rule will be matching volumes that do not have (`!`) label `storageos.feature.replicas` and will add `env=dev`
+This rule will be matching volumes that do not have (`!`) label `storageos.com/replicas` and will add `env=dev`
 label.  Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
 
 ```bash
-storageos rule create --namespace default --selector 'storageos.feature.replicas<2' --action add --label env=uat uat-marker
+storageos rule create --namespace default --selector 'storageos.com/replicas<2' --action add --label env=uat uat-marker
 ```
 
 Create new volume with 1 replica:
 
 ```bash
-storageos volume create --namespace default --label storageos.feature.replicas=1 uat-volume
+storageos volume create --namespace default --label storageos.com/replicas=1 uat-volume
 ```
 
 Inspect it:
@@ -148,7 +148,7 @@ Labels should look like:
 "labels": {
     "env": "uat",
     "storageos.driver": "filesystem",
-    "storageos.feature.replicas": "1"
+    "storageos.com/replicas": "1"
 },
 ```
 
@@ -156,7 +156,7 @@ Finally, create a rule that will mark volumes as `prod` if they have 2 or more
 (`gt`) configured replicas:
 
 ```bash
-storageos rule create --namespace default --selector 'storageos.feature.replicas>1' --label env=prod prod-marker
+storageos rule create --namespace default --selector 'storageos.com/replicas>1' --label env=prod prod-marker
 default/prod-marker
 ```
 

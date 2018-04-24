@@ -8,13 +8,13 @@ module: operations/monitoring
 # Monitoring
 
 Prometheus stats are exported on each cluster node at
-http://ADVERTISE_IP:5705/metrics. Prometheus 2.x is required.
+http://ADVERTISE_IP:5705/v1/metrics. Prometheus 2.x is required.
 
 ```bash
-$ curl -v http://localhost:5705/metrics
+$ curl -v http://localhost:5705/v1/metrics
 *   Trying ::1...
 * Connected to localhost (::1) port 5705 (#0)
-> GET /metrics HTTP/1.1
+> GET /v1/metrics HTTP/1.1
 > Host: localhost:5705
 > User-Agent: curl/7.47.0
 > Accept: */*
@@ -27,45 +27,45 @@ $ curl -v http://localhost:5705/metrics
 < Content-Type: text/plain; charset=utf-8
 < Transfer-Encoding: chunked
 <
-# HELP storageos_cluster_driver_count storageos_cluster_driver_count
-# TYPE storageos_cluster_driver_count gauge
-storageos_cluster_driver_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
-# HELP storageos_cluster_pool_count storageos_cluster_pool_count
-# TYPE storageos_cluster_pool_count gauge
-storageos_cluster_pool_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
-# HELP storageos_cluster_volume_degraded_count storageos_cluster_volume_degraded_count
-# TYPE storageos_cluster_volume_degraded_count gauge
-storageos_cluster_volume_degraded_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_syncing_count storageos_cluster_volume_syncing_count
-# TYPE storageos_cluster_volume_syncing_count gauge
-storageos_cluster_volume_syncing_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_suspect_count storageos_cluster_volume_suspect_count
-# TYPE storageos_cluster_volume_suspect_count gauge
-storageos_cluster_volume_suspect_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_device_count storageos_cluster_device_count
-# TYPE storageos_cluster_device_count gauge
-storageos_cluster_device_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_namespace_count storageos_cluster_namespace_count
-# TYPE storageos_cluster_namespace_count gauge
-storageos_cluster_namespace_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
-# HELP storageos_cluster_node_count storageos_cluster_node_count
-# TYPE storageos_cluster_node_count gauge
-storageos_cluster_node_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 3
-# HELP storageos_cluster_rule_count storageos_cluster_rule_count
-# TYPE storageos_cluster_rule_count gauge
-storageos_cluster_rule_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_count storageos_cluster_volume_count
-# TYPE storageos_cluster_volume_count gauge
-storageos_cluster_volume_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_dead_count storageos_cluster_volume_dead_count
-# TYPE storageos_cluster_volume_dead_count gauge
-storageos_cluster_volume_dead_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_healthy_count storageos_cluster_volume_healthy_count
-# TYPE storageos_cluster_volume_healthy_count gauge
-storageos_cluster_volume_healthy_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
-# HELP storageos_cluster_volume_total_size_gb storageos_cluster_volume_total_size_gb
-# TYPE storageos_cluster_volume_total_size_gb gauge
-storageos_cluster_volume_total_size_gb{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_driver_count storageos_array_driver_count
+# TYPE storageos_array_driver_count gauge
+storageos_array_driver_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
+# HELP storageos_array_pool_count storageos_array_pool_count
+# TYPE storageos_array_pool_count gauge
+storageos_array_pool_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
+# HELP storageos_array_volume_degraded_count storageos_array_volume_degraded_count
+# TYPE storageos_array_volume_degraded_count gauge
+storageos_array_volume_degraded_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_syncing_count storageos_array_volume_syncing_count
+# TYPE storageos_array_volume_syncing_count gauge
+storageos_array_volume_syncing_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_suspect_count storageos_array_volume_suspect_count
+# TYPE storageos_array_volume_suspect_count gauge
+storageos_array_volume_suspect_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_device_count storageos_array_device_count
+# TYPE storageos_array_device_count gauge
+storageos_array_device_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_namespace_count storageos_array_namespace_count
+# TYPE storageos_array_namespace_count gauge
+storageos_array_namespace_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 1
+# HELP storageos_array_node_count storageos_array_node_count
+# TYPE storageos_array_node_count gauge
+storageos_array_node_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 3
+# HELP storageos_array_rule_count storageos_array_rule_count
+# TYPE storageos_array_rule_count gauge
+storageos_array_rule_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_count storageos_array_volume_count
+# TYPE storageos_array_volume_count gauge
+storageos_array_volume_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_dead_count storageos_array_volume_dead_count
+# TYPE storageos_array_volume_dead_count gauge
+storageos_array_volume_dead_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_healthy_count storageos_array_volume_healthy_count
+# TYPE storageos_array_volume_healthy_count gauge
+storageos_array_volume_healthy_count{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
+# HELP storageos_array_volume_total_size_gb storageos_array_volume_total_size_gb
+# TYPE storageos_array_volume_total_size_gb gauge
+storageos_array_volume_total_size_gb{instance="92745fc5-ecbb-f2f5-fa5d-b749b481ec8d",is_telemetry="true"} 0
 # HELP exposer_request_latencies Latencies of serving scrape requests, in milliseconds
 # TYPE exposer_request_latencies histogram
 exposer_request_latencies_bucket{le="1"} 1

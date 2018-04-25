@@ -19,13 +19,13 @@ We expect StorageOS to run on AKS when it supports Kubernetes
 
 ## acs-engine
 
-`acs-engine` is an open-source tool from Microsoft that uses to deploy AKS clusters, and it can be used to deploy your own Kubernetes cluster on Azure.  It allows
+`acs-engine` is an open-source tool from Microsoft that can be used to deploy your own Kubernetes cluster on Azure.  It allows
 you to specify the version of Kubernetes and specific features.
 
 For more information and installation instructions, consult the
-[acs-engine kubernetes guide](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
+[acs-engine Kubernetes guide](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 
-There are various [examples of kubernetes cluster definitions](https://github.com/Azure/acs-engine/tree/master/examples) for acs-engine, but the important thing is to specify kubernetes 1.10 as StorageOS requires this version to support running with kubelet in a container.
+There are various [examples of Kubernetes cluster definitions](https://github.com/Azure/acs-engine/tree/master/examples) for acs-engine, but the important thing is to specify kubernetes 1.10 as StorageOS requires this version to support running with kubelet in a container.
 
 Example definition (saved as `kubernetes.json` for use in the instructions below):
 
@@ -68,8 +68,8 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
 }
 ```
 
-To deploy a cluster through acs-engine you need your Azure Subscription ID. 
-The [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) is a great way to get the ID of your subscription. If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:
+To deploy a cluster through acs-engine you need your Azure Subscription ID.
+You can retrieve your subscription ID through the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:
 
 ```bash
 # save the current subscription id in a variable for later...
@@ -97,7 +97,7 @@ The deployment also creates a KUBECONFIG for your cluster under the `_output` di
 KUBECONFIG=~/mydir/_output/storageos/kubeconfig/kubeconfig.westus2.json
 ```
 
-Running `kubectl cluster-version` should now connect to your new cluster!
+Running `kubectl cluster-version` should now connect to your new cluster.
 
 Consult the [acs-engine documentation](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 for more information.
@@ -117,7 +117,7 @@ Helm Chart and install:
 git clone https://github.com/storageos/helm-chart.git storageos
 cd storageos
 helm install . --name storageos-test \
-  --set image.repository=soegarots/node \
+  --set image.repository=storageos/node \
   --set image.tag=ad3f0ccb6 \
   --set service.type=LoadBalancer \
   --set cluster.join="$(storageos cluster create)" \

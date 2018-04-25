@@ -11,7 +11,7 @@ StorageOS may be deployed in compute only mode, which allows applications
 running on nodes with no storage to consume storage from other nodes.
 
 To deploy StorageOS on a node with no storage, specify the label
-`storageos.com/deployment`:
+`storageos.com/deployment=computeonly`:
 
 ```bash
 docker run -d --name storageos \

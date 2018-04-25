@@ -79,11 +79,12 @@ There are three different modes:
   To ensure there are always two copies of the data, use `hard` mode with a
   single replica, or use two replicas with `soft` mode.
 
-* *hard* is a mode where any loss in desired replicas count will mark the
-  volume as unavailable and any reads or writes will fail.
+* *hard*: if the number of replicas falls below that set in
+  `storageos.com/replicas`, mark the volume as unavailable. Any reads or writes
+  will fail.
 
-* *alwayson* is a mode where as long as any copy of the volume is available
-  the volume will be usable.
+* *alwayson*: as long as any copy of the volume is available, the volume will be
+  usable.
 
 You can select failure mode using labels:
 

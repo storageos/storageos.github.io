@@ -45,7 +45,7 @@ sections:
   -
     title: OpenShift
     description: Installing on OpenShift
-    module: install/schedulers/openshift        
+    module: install/schedulers/openshift
   -
     title: Docker
     description: Installing on Docker
@@ -55,6 +55,10 @@ sections:
         title: Docker Swarm
         description: Installing on Docker Swarm
         module: install/docker/swarm
+  -
+    title: Deployment types
+    description: Deployment types
+    module: install/deployment
   -
     title: Cluster health
     description: Checking the status of a StorageOS cluster

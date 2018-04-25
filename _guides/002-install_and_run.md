@@ -30,6 +30,27 @@ sections:
         description: Ports and firewall settings
         module: install/prerequisites/firewalls
   -
+    title: Cloud
+    description: Installing in Cloud Providers
+    module: install/cloud
+    items:
+      -
+        title: Overview
+        description: Overview of Cloud Providers
+        module: install/cloud/index
+      -
+        title: Azure
+        description: Install in Azure
+        module: install/cloud/azure
+      -
+        title: AWS
+        description: Install in AWS
+        module: install/cloud/aws
+      -
+        title: Google
+        description: Install in Google Cloud
+        module: install/cloud/googlecloud
+  -
     title: Kubernetes
     description: Installing on Kubernetes
     module: install/kubernetes

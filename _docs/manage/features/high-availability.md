@@ -61,7 +61,7 @@ be copied.
 To add replicas to a volume:
 
 ```bash
-storageos volume update --label-add storageos.feature.replicas=2 default/volume-name
+storageos volume update --label-add storageos.com/replicas=2 default/volume-name
 ```
 
 ## Failure modes

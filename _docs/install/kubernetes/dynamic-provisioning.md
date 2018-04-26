@@ -123,7 +123,7 @@ StorageOS supports the following storage class parameters:
    Create the storage class:
 
    ```bash
-   kubectl create -f examples/volumes/storageos/storageos-sc.yaml
+   kubectl create -f storageos-sc.yaml
    ```
 
    Verify the storage class has been created:
@@ -163,7 +163,7 @@ Create persistent volume claim
    Create the persistent volume claim (pvc):
 
    ```bash
-   kubectl create -f examples/volumes/storageos/storageos-sc-pvc.yaml
+   kubectl create -f storageos-sc-pvc.yaml
    ```
 
    Verify the pvc has been created:
@@ -242,7 +242,7 @@ Create persistent volume claim
    Create the pod:
 
    ```bash
-   kubectl create -f examples/volumes/storageos/storageos-sc-pvcpod.yaml
+   kubectl create -f storageos-sc-pvcpod.yaml
    ```
 
    Verify that the pod has been created:

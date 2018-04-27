@@ -1,3 +1,7 @@
+# Deprecation warning
+
+The Docker Volume Plugin installation is deprecated. Use https://store.docker.com/images/storageos-node instead.
+
 # StorageOS Docker Volume Plugin
 
 The StorageOS volume plugin turns your Docker node into a hyper-converged storage platform. Each node that runs the StorageOS plugin can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.

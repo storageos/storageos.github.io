@@ -124,7 +124,7 @@ EOF
 ```
 
 ```
-kubectl create -f examples/volumes/storageos/storageos-sc.yaml
+kubectl create -f storageos-sc.yaml
 ```
 
 Verify the storage class has been created:
@@ -161,7 +161,7 @@ EOF
 ```
 
 ```
-kubectl create -f examples/volumes/storageos/storageos-sc-pvc.yaml
+kubectl create -f storageos-sc-pvc.yaml
 ```
 
 Verify the pvc has been created:
@@ -238,7 +238,7 @@ EOF
 ```
 
 ```
-kubectl create -f examples/volumes/storageos/storageos-sc-pvcpod.yaml
+kubectl create -f storageos-sc-pvcpod.yaml
 ```
 
 Verify that the pod has been created:

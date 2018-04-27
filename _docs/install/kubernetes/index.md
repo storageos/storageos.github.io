@@ -24,7 +24,7 @@ You will need a Kubernetes 1.8+ cluster with Beta APIs enabled.
 1. Enable the `MountPropagation` flag by appending `--feature-gates
 MountPropagation=true` to the kube-apiserver and kubelet services.
 
-1. For deployments where the kubelet runs in a container (eg. [OpenShift]({%link _docs/install/schedulers/openshift.md %}), CoreOS,
+1. For deployments where the kubelet runs in a container (eg. [OpenShift]({%link _docs/install/openshift.md %}), CoreOS,
 Rancher), add `--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each
 of the kubelets. This will be [fixed](https://github.com/kubernetes/kubernetes/pull/58816) in Kubernetes 1.10+.
 

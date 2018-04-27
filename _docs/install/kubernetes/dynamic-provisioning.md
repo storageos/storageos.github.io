@@ -102,7 +102,6 @@ StorageOS supports the following storage class parameters:
 - `adminSecretName`: The name of the secret to use for obtaining the StorageOS
   API credentials. If not specified, default values will be attempted.
 
-
 ## 2. Create storage class
 
 Create a `fast` storage class backed by StorageOS:

@@ -66,7 +66,16 @@ sections:
   -
     title: OpenShift
     description: Installing on OpenShift
-    module: install/schedulers/openshift
+    module: install/openshift
+    items:
+      -
+        title: Preprovisioned volumes
+        description: Preprovisioned volumes
+        module: install/openshift/preprovisioned
+      -
+        title: Dynamic provisioning
+        description: Dynamic provisioning
+        module: install/openshift/dynamic-provisioning
   -
     title: Docker
     description: Installing on Docker

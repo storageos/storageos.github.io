@@ -27,10 +27,6 @@ of the kubelets. This will be [fixed](https://github.com/kubernetes/kubernetes/p
 1. The [iptables rules]({% link
 _docs/install/prerequisites/firewalls.md %}) required for StorageOS.
 
-1. [Enable the Network Block Device module]({% link
-_docs/install/prerequisites/devicepresentation.md %}) on each node for better
-performance.
-
 For OpenShift 3.7, you can [install the container directly in
 Docker]({%link _docs/install/docker/index.md %}).
 

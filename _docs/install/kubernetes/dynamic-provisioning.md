@@ -14,6 +14,9 @@ StorageOS volumes can be created on-demand through dynamic provisioning.
 1. Users create a persistent volume claim (PVC).
 1. The user references the PVC in a pod.
 
+The [StorageOS Helm chart](https://github.com/storageos/helm-chart) includes the
+secret and storage class, so you may skip to step 3 to provision volumes.
+
 ## 1. Create secret
 
 You need to provide the correct credentials to authenticate against the StorageOS API
@@ -87,6 +90,11 @@ in Pods or creating new persistent volumes.
 
 Mutiple credentials can be used by creating different secrets.
 
+The Kubernetes master needs to be able to access the api, so if the master
+doesn't run the storageos container then a LoadBalancer ip may be needed.
+
+## 2. Create storage class
+
 StorageOS supports the following storage class parameters:
 
 - `pool`: The name of the StorageOS distributed capacity pool to provision the
@@ -101,8 +109,6 @@ StorageOS supports the following storage class parameters:
   located. Required if adminSecretName set.
 - `adminSecretName`: The name of the secret to use for obtaining the StorageOS
   API credentials. If not specified, default values will be attempted.
-
-## 2. Create storage class
 
 Create a `fast` storage class backed by StorageOS:
 

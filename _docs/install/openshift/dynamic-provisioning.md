@@ -14,6 +14,9 @@ StorageOS volumes can be created on-demand through dynamic provisioning.
 1. Users create a persistent volume claim (PVC).
 1. The user references the PVC in a pod.
 
+The [StorageOS Helm chart](https://github.com/storageos/helm-chart) includes the
+secret and storage class, so you may skip to step 3 to provision volumes.
+
 ## 1. Create secret
 
 You need to provide the correct credentials to authenticate against the StorageOS API

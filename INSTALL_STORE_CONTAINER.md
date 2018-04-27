@@ -45,7 +45,7 @@ $ docker run --name postgres01 \
 Or pre-create and manage StorageOS volumes using the `docker volume` command:
 
 ```bash
-docker volume create --driver storageos --opt size=20 --opt storageos.feature.replicas=2 vol01
+docker volume create --driver storageos --opt size=20 --opt storageos.com/replicas=2 vol01
 ```
 
 ### Next Steps

@@ -19,7 +19,7 @@ Options:
 
 Commands:
   create      Creates a rule. To create a rule that configures 2 replicas for volumes with the label env=prod, run:
-storageos rule create --namespace default --selector env==prod --action add --label storageos.feature.replicas=2 replicator
+storageos rule create --namespace default --selector env==prod --action add --label storageos.com/replicas=2 replicator
 
   inspect     Display detailed information on one or more rules
   ls          List rules
@@ -33,7 +33,7 @@ Run 'storageos rule COMMAND --help' for more information on a command.
 To create a rule that configures 2 replicas for volumes with the label env=prod:
 
 ```bash
-$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.feature.replicas=2 replicator
+$ storageos rule create --namespace default --selector 'env==prod' --action add --label storageos.com/replicas=2 replicator
 default/replicator
 ```
 
@@ -53,7 +53,7 @@ $ storageos rule inspect default/replicator
         "action": "add",
         "selector": "env==prod",
         "labels": {
-            "storageos.feature.replicas": "2"
+            "storageos.com/replicas": "2"
         }
     }
 ]
@@ -65,10 +65,10 @@ To list all rules:
 ```bash
 $ storageos rule ls
 NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
-default/dev-marker    !storageos.feature.replicas    add                 env=dev
-default/prod-marker   storageos.feature.replicas>1   add                 env=prod
-default/replicator    env==prod                      add                 storageos.feature.replicas=2
-default/uat-marker    storageos.feature.replicas<2   add                 env=uat
+default/dev-marker    !storageos.com/replicas    add                 env=dev
+default/prod-marker   storageos.com/replicas>1   add                 env=prod
+default/replicator    env==prod                  add                 storageos.com/replicas=2
+default/uat-marker    storageos.com/replicas<2   add                 env=uat
 ```
 
 ### `storageos rule rm`

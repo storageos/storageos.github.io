@@ -35,19 +35,30 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      "orchestratorRelease": "1.10"
+      "orchestratorRelease": "1.10",
+      "kubernetesConfig": {
+          "addons": [
+              {
+                  "name": "tiller",
+                  "enabled" : true
+              }
+          ]
+      }
     },
     "masterProfile": {
       "count": 1,
-      "dnsPrefix": "",
+      "dnsPrefix": "mycluster",
       "vmSize": "Standard_D2_v2"
     },
     "agentPoolProfiles": [
       {
-        "name": "agentpool1",
+        "name": "minions",
         "count": 3,
         "vmSize": "Standard_D2_v2",
-        "availabilityProfile": "AvailabilitySet"
+        "availabilityProfile": "AvailabilitySet",
+        "customNodeLabels": {
+          "env": "test"
+        }
       }
     ],
     "linuxProfile": {
@@ -67,6 +78,8 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
   }
 }
 ```
+
+Unless you specify a publickey, acs-engine is going to create an ssh key pair for you. That grants you access to the kubernetes master from which you can hop to all minions.
 
 To deploy a cluster through acs-engine you need your Azure Subscription ID.
 You can retrieve your subscription ID through the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:

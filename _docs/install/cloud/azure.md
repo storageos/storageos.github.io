@@ -110,7 +110,7 @@ The deployment also creates a KUBECONFIG for your cluster under the `_output` di
 KUBECONFIG=~/mydir/_output/storageos/kubeconfig/kubeconfig.westus2.json
 ```
 
-Running `kubectl cluster-version` should now connect to your new cluster.
+Running `kubectl cluster-info` should now connect to your new cluster.
 
 Consult the [acs-engine documentation](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 for more information.

@@ -120,7 +120,7 @@ for more information.
 First, make sure the [StorageOS CLI]({%link _docs/reference/cli/index.md %}) has
 been installed on your local machine.
 
-Once the Kubernetes cluster is available, you can proceed to install the Helm client [client](https://docs.helm.sh/using_helm/#installing-helm) in your machine.
+Once the Kubernetes cluster is available, you can proceed to install the [Helm client](https://docs.helm.sh/using_helm/#installing-helm) in your machine.
 
 The Kubernetes cluster has got tiller add on enabled, hence the helm server is running.
 

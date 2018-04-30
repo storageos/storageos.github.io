@@ -164,7 +164,7 @@ information and available options.
 Verify the cluster is healthy with the StorageOS CLI:
 
 ```bash
-$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o jsonpath={.status.loadBalancer.ingress[0].ip})
+$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ storageos node ls
 NAME                        ADDRESS             HEALTH                  SCHEDULER           VOLUMES             TOTAL               USED                VERSION                 LABELS
 k8s-agentpool1-40905336-0   10.240.0.4          Healthy About an hour   false               M: 1, R: 0          29.02GiB            11.38%              ad3f0cc (ad3f0cc rev)   

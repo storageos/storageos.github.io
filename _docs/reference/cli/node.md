@@ -45,12 +45,7 @@ host01
 
 ### `storageos node drain`
 
-Evicts all volumes from one or more nodes.
-In case of draining a node hosting primary volumes, existing replicas will be promoted in different nodes. A replica will be created and promoted to primary if the volume didn't have replication enabled.
-All replicas will be relocated to any available nodes in the cluster. If there are non, the replica will remain present. Nodes may not be available for different reasons such as rule configurations, the amount of replicas +1 matching the amount of nodes in the cluster, etc.
-While the node is in drain state, it will try to relocate it's volumes. Therefore, adding one or more nodes to the cluster would make volumes to move automatically. In addition, a node in drain state will not host any new volumes.
-
-Any volume mounted in that node will be evicted but still hold the StorageOS mount making the data available for the client, with no downtime.
+Evicts all volumes from one or more nodes and puts them into an unschedulable state.
 
 ```bash
 $ storageos node drain node-1

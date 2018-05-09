@@ -83,7 +83,7 @@ Run 'storageos COMMAND --help' for more information on a command.
 | `login`     |                               | Store login credentials for a given StorageOS host.            |
 | `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `node`      | `cordon health inspect ls uncordon update` | Node information.                                 |
+| `node`      | `cordon drain health inspect ls uncordon undrain update` | Node information.                                 |
 | `policy`    | `create inspect ls rm`        | Define how resources are accessed by users and groups.         |
 | `pool`      | `create inspect ls rm`        | A collection of storage resources for provisioning volumes.    |
 | `rule`      | `create inspect ls rm update` | Rules define label-based policies to apply to volumes.         |

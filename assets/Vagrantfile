@@ -1,5 +1,10 @@
 $install_storageos = <<SCRIPT
 
+
+sudo apt-get -y purge docker-ce 
+curl -qS https://get.docker.com/ -o install-docker && chmod +x install-docker
+sudo CHANNEL=stable ./install-docker
+
 # Prerequisites
 sudo modprobe nbd nbds_max=1024
 

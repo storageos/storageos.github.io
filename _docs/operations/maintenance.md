@@ -9,7 +9,8 @@ module: operations/maintenance
 
 ## Node drain
 
-It is recommended to drain a node before any maintenance operation.
+It is recommended to drain a node before any maintenance operation. Executing a node drain will move any active volumes from the node and re-schedule them on other nodes in a cluster.
+This operation will take longer for large volumes.
 
 You can either [cordon or drain](/docs/reference/cli/node) a node using the [StorageOS cli](/docs/reference/cli/index). 
 

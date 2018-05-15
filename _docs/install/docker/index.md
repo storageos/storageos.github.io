@@ -13,7 +13,7 @@ Kubernetes 1.7. [**Try it in your browser for up to one hour >>**](https://my.st
 
 ## Prerequisites
 
-It is recommended to use an stable version of [docker](https://docs.docker.com/release-notes/docker-ce/).
+It is recommended to use a stable version of [docker](https://docs.docker.com/release-notes/docker-ce/).
 
 Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
 ```bash

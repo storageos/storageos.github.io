@@ -31,7 +31,7 @@ A `storageos node cordon` will avoid any new volumes to be hosted in that node. 
 
 #### If there are no available nodes free
 
-There is a variety of reasons for which a volume can not be hosted by a node. For instance, because there are rules in place that define restrictions of location, or because the amount of replicas +1 match the amount of nodes in the cluster.
+There are a variety of reasons for which a volume can not be hosted by a node. For instance, because there are rules in place that define restrictions of location, or because the amount of replicas +1 match the amount of nodes in the cluster.
 
 - A replica will be promoted to primary 
 - The old primary will become a replica

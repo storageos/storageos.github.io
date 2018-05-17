@@ -95,8 +95,10 @@ default/volume-name   15GB                                                      
 To mount a volume on the current node into `/mnt` (note this requires root):
 
 ```bash
-sudo storageos volume mount default/volume-name /mnt
+sudo -E storageos volume mount default/volume-name /mnt
 ```
+
+*(Important: use the `sudo -E` option to preserve the storageos environment credentials)*
 
 ### `storageos volume rm`
 
@@ -112,5 +114,7 @@ default/volume-name
 To unmount a volume on the current node (note this requires root):
 
 ```bash
-sudo storageos volume unmount default/volume-name
+sudo -E storageos volume unmount default/volume-name
 ```
+
+*(Important: use the `sudo -E` option to preserve the storageos environment credentials)*

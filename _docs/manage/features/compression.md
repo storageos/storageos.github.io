@@ -12,15 +12,15 @@ Compression reduces the amount of data stored or transmitted to improve performa
 
 ## Create a uncompressed volume
 
-All volumes are compressed by default. To create an uncompressed volume, set the `storageos.com/nocompression` label:
+All volumes are compressed by default. To create an uncompressed volume, set the `storageos.com/nocompress` label:
 
 ```bash
-storageos volume create --namespace default --label storageos.com/nocompression=true volume-name
+storageos volume create --namespace default --label storageos.com/nocompress=true volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.com/nocompression=true volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.com/nocompress=true volume-name
 volume-name
 ```

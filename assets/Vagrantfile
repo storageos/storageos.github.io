@@ -1,5 +1,8 @@
 $install_storageos = <<SCRIPT
 
+curl -qS https://get.docker.com/ -o install-docker && chmod +x install-docker
+sudo CHANNEL=stable ./install-docker
+
 # Prerequisites
 sudo modprobe nbd nbds_max=1024
 
@@ -34,7 +37,6 @@ image = "bento/ubuntu-16.04"
 
 
 Vagrant.configure("2") do |config|
-  config.vm.provision "docker"
   config.vm.box_check_update = false
   config.vm.box = image
 

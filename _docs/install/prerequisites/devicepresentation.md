@@ -11,6 +11,7 @@ StorageOS is developed using Linux-IO (LIO) Target. An open-source implementatio
 software interface for Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code.
 
 However, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel image.
+
 Check the [os distribution support page](/docs/reference/os_support) to validate what OS can be used and how to enable LIO.
 
 ## Network Block Device

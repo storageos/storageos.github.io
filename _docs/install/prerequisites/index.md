@@ -13,7 +13,7 @@ The following conditions must be met before installing StorageOS:
 1. Linux with a 64-bit architecture
  * Check [OS distribution compatibility](/docs/reference/os_support).
  * For Red Hat Enterprise Linux 7, [read the release notes]({% link _docs/reference/release_notes.md %}).
-1. Docker 1.10 or later
+1. Docker 1.10 or later, with mount propagation enabled.
 1. The necessary ports should be open. See the [ports and firewall settings]({% link _docs/install/prerequisites/firewalls.md %})
 1. A mechanism for [cluster
 discovery]({% link _docs/install/prerequisites/clusterdiscovery.md %}), to allow

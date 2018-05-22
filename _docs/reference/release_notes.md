@@ -5,41 +5,31 @@ anchor: reference
 module: reference/release_notes
 ---
 
-# Beta warning
-
-StorageOS is currently in Beta. This allows users to explore our software prior
-to General Availability (GA) release. Any feedback on software problems and
-usability will help improve our product and allows us to track issues and fix
-them.
-
-As public Beta software, StorageOS has yet to be released commercially and may
-contain imperfections causing the software not to perform as well as GA release
-software. **Therefore we recommend you only install this on non-production,
-non-business critical infrastructure or devices.**
-
-Before the GA release, data formats used by StorageOS may change and there may
-not be an automated migration process. When upgrades break compatibility or
-require manual migration processes we will endeavour to make this clear in the
-release notes.
-
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
 ## Upgrades
 
 Upgrades can be performed by restarting the StorageOS node container with the
-new version, or by performing `docker plugin upgrade` on Docker Managed Plugin
-installs.
+new version.
 
 Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
-unavailable while the StorageOS container restarts.
+unavailable while the StorageOS container restarts.  
+
+See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+with online migration of volumes.
 
 Where there are special considerations they are described below.
 
-During Beta upgrades may not always be possible as our focus will be on making
-bug fixes and new features available as soon as possible.  Once StorageOS
-reaches GA, more effort will be made to ensure that upgrades are seamless.
+### 0.10.x - 1.0.x
+
+Due to breaking changes between 0.10.x and 1.0.x upgrading is not possible.  We
+will now endeavour to allow upgrades between versions.
+
+If you are installing on a node that has had a previous version installed, make
+sure that the contents of `/var/lib/storageos` has been removed, and that you
+provision with a new cluster discovery token (if using).
 
 ### 0.9.x -> 0.10.x
 
@@ -62,6 +52,36 @@ Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 0.8.x+.  Our recommendation is to create a new cluster, paying attention to the
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 `INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
+
+## 1.0.0-rc1
+
+TODO: Version 1.0 adds several major improvements
+
+### Breaking changes
+
+
+
+### New
+
+- Volume presentation has changed to use the SCSI subsystem via LIO (Linux-IO).
+  Previous versions used NBD where available, or FUSE where is wasn't.  The main
+  driver for this was to improve performance on the RHEL platform where NBD is
+  not available.  LIO is available for all major distributions and is widely
+  used.  For more information, see
+  [device presentation]({%link _docs/install/prerequisites/devicepresentation %})
+- Internally, the StorageOS scheduler has switched to using level-based state
+  handling and the gRPC protocol.  This allows the scheduler to make assertions
+  about the current state, rather than relying on events that can be missed.
+  The scheduler now behaves in the same way as Kubernetes controllers do; by
+  evaluating the current state, calculating adjustments, sharing desired state
+  and allowing individual components to apply differences.  For more information
+  on level triggered logic, see 
+  [Edve vs Level triggerd logic](https://speakerdeck.com/thockin/edge-vs-level-triggered-logic)
+
+### Improved
+
+### Fixed
+
 
 ## 0.10.0
 

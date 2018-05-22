@@ -35,19 +35,30 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
   "properties": {
     "orchestratorProfile": {
       "orchestratorType": "Kubernetes",
-      "orchestratorRelease": "1.10"
+      "orchestratorRelease": "1.10",
+      "kubernetesConfig": {
+          "addons": [
+              {
+                  "name": "tiller",
+                  "enabled" : true
+              }
+          ]
+      }
     },
     "masterProfile": {
       "count": 1,
-      "dnsPrefix": "",
+      "dnsPrefix": "mycluster",
       "vmSize": "Standard_D2_v2"
     },
     "agentPoolProfiles": [
       {
-        "name": "agentpool1",
+        "name": "minions",
         "count": 3,
         "vmSize": "Standard_D2_v2",
-        "availabilityProfile": "AvailabilitySet"
+        "availabilityProfile": "AvailabilitySet",
+        "customNodeLabels": {
+          "env": "test"
+        }
       }
     ],
     "linuxProfile": {
@@ -67,6 +78,8 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
   }
 }
 ```
+
+Unless you specify a publickey, acs-engine is going to create an ssh key pair for you under `_output` directory. It grants you access to the kubernetes master from which you can hop to all minions.
 
 To deploy a cluster through acs-engine you need your Azure Subscription ID.
 You can retrieve your subscription ID through the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:
@@ -97,7 +110,7 @@ The deployment also creates a KUBECONFIG for your cluster under the `_output` di
 KUBECONFIG=~/mydir/_output/storageos/kubeconfig/kubeconfig.westus2.json
 ```
 
-Running `kubectl cluster-version` should now connect to your new cluster.
+Running `kubectl cluster-info` should now connect to your new cluster.
 
 Consult the [acs-engine documentation](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 for more information.
@@ -107,8 +120,9 @@ for more information.
 First, make sure the [StorageOS CLI]({%link _docs/reference/cli/index.md %}) has
 been installed on your local machine.
 
-Once the Kubernetes cluster is available, use [Helm](https://helm.sh/) to
-install StorageOS.
+Once the Kubernetes cluster is available, you can proceed to install the [Helm client](https://docs.helm.sh/using_helm/#installing-helm) in your machine.
+
+The Kubernetes cluster has got tiller add on enabled, hence the helm server is running.
 
 Once Helm is installed and configured for the cluster, checkout the StorageOS
 Helm Chart and install:
@@ -150,7 +164,7 @@ information and available options.
 Verify the cluster is healthy with the StorageOS CLI:
 
 ```bash
-$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o jsonpath={.status.loadBalancer.ingress[0].ip})
+$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ storageos node ls
 NAME                        ADDRESS             HEALTH                  SCHEDULER           VOLUMES             TOTAL               USED                VERSION                 LABELS
 k8s-agentpool1-40905336-0   10.240.0.4          Healthy About an hour   false               M: 1, R: 0          29.02GiB            11.38%              ad3f0cc (ad3f0cc rev)   

@@ -19,10 +19,7 @@ $ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-You should [enable nbd on each node in turn:]({%link _docs/install/prerequisites/devicepresentation.md %})
-```bash
-sudo modprobe nbd nbds_max=1024
-```
+You should [enable LIO on each node in turn:]({%link _docs/reference/os_support %})
 
 ## Install
 

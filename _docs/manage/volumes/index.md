@@ -73,11 +73,13 @@ NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT        
 default/volume-name   15GB                                                        active              0/0
 ```
 
-To mount a volume on the current node into `/mnt`, run:
+To mount a volume on the current node into `/mnt`, run (note this requires root):
 
 ```bash
-storageos volume mount default/volume-name /mnt
+sudo -E storageos volume mount default/volume-name /mnt
 ```
+
+*(Important: use the `sudo -E` option to preserve the storageos environment credentials)*
 
 In order for the mount to succeed, StorageOS must be running on the node and the
 volume must not be mounted anywhere else. When the volume is mounted a lock is

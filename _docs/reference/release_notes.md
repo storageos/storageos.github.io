@@ -5,6 +5,8 @@ anchor: reference
 module: reference/release_notes
 ---
 
+# Release Notes
+
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
@@ -23,6 +25,9 @@ new version.
 Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
+
+See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+with online migration of volumes.
 
 See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
 with online migration of volumes.
@@ -119,8 +124,6 @@ maintainability.
 # Previous Releases
 
 ## Upgrades
-
-### 0.9.x -> 0.10.x
 
 Due to breaking changes between 0.9.x and 0.10.x upgrading is not possible.
 Instead we recommend that you provision a new cluster and migrate data.
@@ -309,8 +312,8 @@ scenarios.  Full documentation to be added to the docs site soon.
   - HTTP PUT on http://localhost:5705/debug/leader/run will cause node to run
     for cluster leadership.
 
-  These actions are used primarily for automated testing where we introduce instability into the cluster to ensure there is no service disruption.
-
+  These actions are used primarily for automated testing where we introduce
+  instability into the cluster to ensure there is no service disruption.
 
 ### Improved
 
@@ -424,8 +427,8 @@ releases will strive to preserve compatibility between versions.
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
-  platforms.
+  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  on those platforms.
 
 ## 0.8.1
 
@@ -493,8 +496,8 @@ StorageOS, what problems it is solving for you and how it can improve.  Join our
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
-  platforms.
+  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  on those platforms.
 
 ## 0.7.10
 

@@ -104,7 +104,7 @@ maintainability.
 - Performance has improved significantly throughout and has been thoroughly
   tested on a variety of workloads.  Specific areas include optimisations for
   larger block sizes and improvements to the caching engine.
-- Volumes will go read-only shortly before the underlying device runs out of of
+- Volumes will go read-only shortly before the underlying device runs out of
   space.  This allows the filesystem to handle errors gracefully and can protect
   against corruption.
 - Pools have been overhauled to be dynamic, making use of label selectors.

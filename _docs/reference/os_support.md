@@ -8,12 +8,12 @@ module: reference/ossupport
 # OS support
 
 StorageOS uses FUSE known as a Filesystem in Userspace. It is a software interface for Unix-like computer operating systems that lets non-privileged users create their own file systems without editing kernel code. In addition, StorageOS is developed using Linux-IO (LIO) Target. An open-source implementation of the SCSI target.
-However, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel package.
+Although, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel package.
 
 
 ## Distribution support
 
-The following table shows which distributions can enable the kernel modules to use LIO, whether needed to install linux-virtual-extra or not.
+The following table shows which distributions can enable the kernel modules to use LIO, whether extra packages are required.
 
 | Distribution               | Can use LIO? | Comments                                                           |
 | ---                        | :---:        | ---                                                                |
@@ -99,7 +99,7 @@ sudo ./enable_lio.sh
 
 It is required to install linux-image-extra for any generic ubuntu. 
 
-Google Cloud Engine has got a candidate to install linux-image-extra with gce optimisation for Ubuntu 16.04. However, Ubuntu 18.04 doesn't have a package for it yet.
+Google Cloud Engine has a candidate to install linux-image-extra with gce optimisation for Ubuntu 16.04 but this package is not yet available for Ubuntu 18.04.
 
 ```
 sudo apt -y update
@@ -107,7 +107,7 @@ sudo apt -y install linux-image-extra-$(uname -r)
 ```
 
 ## Why there is no support for Ubuntu (AWS, Azure)
-Canonical has created Ubuntu images for cloud providers with optimised versions of the kernel. These versions don't include the kernel modules needed by LIO and the linux-image-extra, where the modules are found in the generic image, doesn't have a candidate for the optimised version of the kernels.
+Canonical created Ubuntu images for cloud providers with optimised versions of the kernel. These versions don't include the kernel modules needed by LIO and the linux-image-extra, where the modules are found in the generic image, doesn't have a candidate for the optimised version of the kernels.
 
 You can check if linux-image-extra is available in the repositories.
 ```

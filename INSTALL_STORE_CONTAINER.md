@@ -68,9 +68,9 @@ The node container (or plugin) should be installed on each Docker node where you
 ### Linux-IO (LIO)
 
 StorageOS is developed using Linux-IO (LIO) Target. An open-source implementation of the SCSI target.
-However, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel package.
+Although, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel package.
 
-Enabling LIO is mandatory for the best performance, check how to enable LIO here <https://docs.storageos.com/docs/reference/os_support>.
+Enabling LIO is mandatory, check how to enable LIO here <https://docs.storageos.com/docs/reference/os_support>.
 
 ### Run the StorageOS node container
 

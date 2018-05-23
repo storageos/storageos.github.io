@@ -63,10 +63,15 @@ sections:
         title: Dynamic provisioning
         description: Dynamic provisioning
         module: install/kubernetes/dynamic-provisioning
+  -
+    title: Kubernetes (CSI)
+    description: Installing on Kubernetes
+    module: install/kubernetes-csi
+    items:
       -
         title: Dynamic provisioning (CSI)
         description: Dynamic provisioning (CSI)
-        module: install/kubernetes/dynamic-provisioning-with-csi
+        module: install/kubernetes-csi/dynamic-provisioning
   -
     title: OpenShift
     description: Installing on OpenShift

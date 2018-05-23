@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - Kubernetes
+title: StorageOS Docs - Kubernetes (CSI)
 anchor: install
-module: install/kubernetes/dynamic-provisioning-with-csi
+module: install/kubernetes-csi/dynamic-provisioning
 ---
 
 # Dynamic Provisioning (CSI)

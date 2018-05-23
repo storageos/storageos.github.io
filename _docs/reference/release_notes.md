@@ -12,7 +12,8 @@ and to perform upgrades only after reading the release notes.
 
 The latest tagged release is `1.0.0-rc1`, available from the
 [Docker Hub](https://hub.docker.com/r/storageos/node/) as
-`storageos/node:1.0.0-rc1`.
+`storageos/node:1.0.0-rc1`, or via the
+[Helm Chart](https://github.com/storageos/helm-chart)
 
 The latest CLI release is `1.0.0-rc1`, available from
 [Github](https://github.com/storageos/go-cli/releases)

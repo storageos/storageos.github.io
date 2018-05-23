@@ -13,7 +13,7 @@ However, LIO is supported by most of the kernels available nowadays, some distri
 
 ## Distribution support
 
-The following table shows which distributions can enable the kernel modules to use LIO, weather needed to install linux-virtual-extra or not.
+The following table shows which distributions can enable the kernel modules to use LIO, whether needed to install linux-virtual-extra or not.
 
 | Distribution               | Can use LIO? | Comments                                                           |
 | ---                        | :---:        | ---                                                                |

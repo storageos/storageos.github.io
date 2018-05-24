@@ -7,19 +7,25 @@ module: install/kubernetes-csi/dynamic-provisioning
 
 # Dynamic Provisioning (CSI)
 
-StorageOS supports [Container Storage Interface](https://kubernetes-csi.github.io/docs/) which enables kubernetes to use
-a unix domain socket to communicate with StorageOS driver. Using this setup
-removes the need to explicitly create secrets for kubernetes to talk to
-StorageOS driver.
+StorageOS supports the [Container Storage Interface](https://kubernetes-csi.github.io/docs/)
+which defines a common integration layer between orchestrators such as
+Kubernetes and external storage providers such as StorageOS.
 
-StorageOS volumes can be created on-demand through dynamic provisioning.
+CSI removes the requirement for Kubernetes to connect directly to the StorageOS
+API, which gives more flexibility in configuration and allows updates to be
+applied independently of the Kubernetes release cycle.
+
+We expect the CSI connection method to become the preferred method in Kubernetes
+1.11, with deprecation of the native driver in Kubernetes 1.12.
+
+With CSI, StorageOS volumes can be created on-demand through dynamic provisioning.
 
 1. Adminstrators create storage classes to define different types of storage.
 1. Users create a persistent volume claim (PVC).
 1. The user references the PVC in a pod.
 
-The [StorageOS Helm chart for CSI deployment](https://github.com/storageos/helm-chart/tree/csi-deployment) includes the
-storage class, so you may skip to step 2 to provision volumes.
+If you are using the [StorageOS Helm chart for CSI deployment](https://github.com/storageos/helm-chart/tree/csi-deployment),
+it includes the storage class, so you may skip to step 2 to provision volumes.
 
 ## 1. Create storage class
 
@@ -28,23 +34,27 @@ StorageOS supports the following storage class parameters:
 - `pool`: The name of the StorageOS distributed capacity pool to provision the
   volume from; defaults to `default`.
 - `fsType`: The default filesystem type to request. Note that user-defined
-  rules within StorageOS may override this value. Defaults to `ext4`.
+  rules within StorageOS may be used to override this value. Defaults to `ext4`.
+
+Additionally, the following parameters can be set only if CSI credentials are
+enabled:
+
 - `csiProvisionerSecretName`: The name of the secret to use for obtaining the
-CSI provisioner credentials. This should be set only when CSI credentials is enabled.
+CSI provisioner credentials.
 - `csiProvisionerSecretNamespace`: The namespace where the CSI provisioner
-credentials secret is located. This should be set only when CSI credentials is enabled.
+credentials secret are located.
 - `csiControllerPublishSecretName`: The name of the secret to use for obtaining
-the CSI controller publish credentials. This should be set only when CSI credentials is enabled.
+the CSI controller publish credentials.
 - `csiControllerPublishSecretNamespace`: The namespace where the CSI controller
-publish credentials secret is located. This should be set only when CSI credentials is enabled.
+publish credentials secret is located.
 - `csiNodeStageSecretName`: The name of the secret to use for obtaining the CSI
-node stage credentials. This should be set only when CSI credentials is enabled.
+node stage credentials.
 - `csiNodeStageSecretNamespace`: The namespace where the CSI node stage
-credentials secret is located. This should be set only when CSI credentials is enabled.
+credentials secret is located.
 - `csiNodePublishSecretName`: The name of the secret to use for obtaining the
-CSI node publish credentials. This should be set only when CSI credentials is enabled.
+CSI node publish credentials.
 - `csiNodePublishSecretNamespace`: The namespace where the CSI node publish
-credentials secret is located. This should be set only when CSI credentials is enabled.
+credentials secret is located.
 
 Create a `fast` storage class backed by StorageOS:
 
@@ -61,7 +71,7 @@ parameters:
 EOF
 ```
 
-```
+```bash
 kubectl create -f storageos-sc.yaml
 ```
 
@@ -84,7 +94,7 @@ Events:                <none>
 
 Create the PVC which uses the `fast` storage class:
 
-```
+```bash
 cat > storageos-sc-pvc.yaml <<EOF
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -100,7 +110,7 @@ spec:
 EOF
 ```
 
-```
+```bash
 kubectl create -f storageos-sc-pvc.yaml
 ```
 
@@ -140,7 +150,7 @@ Reclaim Policy:  Delete
 Access Modes:    RWO
 Capacity:        5Gi
 Node Affinity:   <none>
-Message:         
+Message:
 Source:
     Type:          CSI (a Container Storage Interface (CSI) volume source)
     Driver:        storageos
@@ -184,7 +194,7 @@ spec:
 EOF
 ```
 
-```
+```bash
 kubectl create -f storageos-sc-pvcpod.yaml
 ```
 
@@ -196,36 +206,39 @@ NAME                          READY     STATUS    RESTARTS   AGE
 test-storageos-redis-sc-pvc   1/1       Running   0          44s
 ```
 
-
 ## Enable CSI Credentials
 
-CSI unix domain socket is open and insecure by default. To secure it using
-credentials, the StorageOS container should be started with the credentials,
-and the storage class using StorageOS as provisioner should know the secret
-reference that has the credentials.
+The default CSI unix domain socket is open and insecure. To secure it with
+authentication credentials, the StorageOS container should be started with
+knowledge of the credentials that will be used for various actions.
 
-To enable CSI credentials using the [csi-deployment helm chart](https://github.com/storageos/helm-chart/tree/csi-deployment), edit values.yaml file and enable the various credential options.
+The credentials should also be stored in secrets and refered to in the storage
+class.
+
+To enable CSI credentials using the [csi-deployment helm chart](https://github.com/storageos/helm-chart/tree/csi-deployment),
+edit the values.yaml file and enable the various credential options.
+
 ```yaml
 csi:
-  # provisionCreds is credentials for volume create and delete operations.
+  # provisionCreds are credentials for volume create and delete operations.
   provisionCreds:
     enable: true
     username: username1
     password: password1
     secretName: storageos-provision-creds
-  # controllerPublishCreds is credentials for controller volume publish and unpublish operations.
+  # controllerPublishCreds are credentials for controller volume publish and unpublish operations.
   controllerPublishCreds:
     enable: true
     username: username2
     password: password2
     secretName: storageos-ctrl-publish-creds
-  # nodeStageCreds is credentials for node volume stage operations.
+  # nodeStageCreds are credentials for node volume stage operations.
   nodeStageCreds:
     enable: true
     username: username3
     password: password3
     secretName: storageos-node-stage-creds
-  # nodePublishCreds is credentials for node volume publish operations.
+  # nodePublishCreds are credentials for node volume publish operations.
   nodePublishCreds:
     enable: true
     username: username4
@@ -233,14 +246,17 @@ csi:
     secretName: storageos-node-publish-creds
 ```
 
-When the chart is installed with the above credential options set, StorageOS
-node containers are started with the credentials, Kubernetes secrets containing
-the credentials are created and a StorageClass is created that has references to
-the created secrets. With this set, when kubernetes sends a request to the CSI
-driver, it sends the credentials in the request to authenticate it.
-Requests without the credentials are denied.
+When the chart is installed with the credential options above set:
+
+1. StorageOS node containers are started with the credentials granted access.
+1. Kubernetes secrets containing the credentials are created.
+1. A StorageClass is created with references to the credential secrets.
+
+When CSI Credentials are configured, requests with incorrect or no credentials
+are denied.
 
 Example of a StorageClass with CSI credentials:
+
 ```yaml
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -263,6 +279,7 @@ parameters:
 ```
 
 Example of a secret used in CSI credentials:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -277,5 +294,5 @@ data:
 
 The data values must be base64 encoded.
 
-
-Refer [Kubernetes-CSI docs](https://kubernetes-csi.github.io/docs/) for more about CSI.
+Refer to the [Kubernetes-CSI docs](https://kubernetes-csi.github.io/docs/) for
+more information about CSI.

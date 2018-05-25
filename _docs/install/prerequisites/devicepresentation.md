@@ -7,51 +7,14 @@ module: install/prerequisites/devicepresentaion.md
 
 # Device presentation
 
-StorageOS requires one of two runtime requirements to present virtual block devices
-from userspace. While not mandatory, the NBD aproach does offer significantly
-better performance over the loop-device alternative.
+StorageOS requires the Linux-IO (LIO) Target, an open-source implementation of the SCSI target.
 
-## Network Block Device
 
-NBD (Network Block Device) is a Linux kernel module, available on many
-distributions, that allows block devices to be run in userspace. It is not a
-requirement for StorageOS to run, but improves performance significantly and
-will be used in preference if available. To enable the module and increase the
-number of allowable devices, run:
+Although, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel image.
+For supported distributions it is mandatory to enable certain kernel modules. 
 
-```bash
-sudo modprobe nbd nbds_max=1024
-```
+Check the [OS distribution support page](/docs/reference/os_support) to validate which OS can be used and how to enable LIO.
 
-To ensure the NBD module is loaded on reboot:
+## Network Block Device (deprecated)
 
-1. Add the following line to `/etc/modules`
-
-    ```text
-    nbd
-    ```
-
-1. Add the following module configuration lines in `/etc/modprobe.d/nbd.conf`
-
-    ```text
-    options nbd nbds_max=1024
-    options nbd max_part=15
-    ```
-
-Your distribution may set different defaults for the provided
-parameters. For StorageOS to run correctly, our values must be used in their
-place.
-
-## Loopback driver (fallback)
-
-The loopback driver is a Linux kernel feature, which allows creation of a block
-device whose files map to the bocks of a regular file. This kernel feature is a
-runtime requirement in the absence of the NBD kernel module.
-
-While this feature is enabled by default on most systems, StorageOS does require some
-specific parameters to be set. To configure these, add the following
-configuration line in `/etc/modprobe.d/loop.conf`
-
-```text
-options loop max_loop=1024
-```
+StorageOS versions prior to 1.0.0 used to use NBD (Network Block Device) to present virtual block devices from userspace. **NBD is no longer used or required by StorageOS.**

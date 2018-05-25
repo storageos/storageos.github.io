@@ -21,10 +21,7 @@ $ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-You should [enable nbd on each node in turn:]({%link _docs/install/prerequisites/devicepresentation.md %})
-```bash
-sudo modprobe nbd nbds_max=1024
-```
+You should [enable LIO on each node in turn:](/docs/reference/os_support)
 
 ## Install
 
@@ -40,9 +37,10 @@ docker run -d --name storageos \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \
+    -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc1 server
 ```
 
 If you are performing a non-default installation, the following environment

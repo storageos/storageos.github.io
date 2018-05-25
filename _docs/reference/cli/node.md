@@ -10,19 +10,24 @@ module: reference/cli/node
 ```bash
 $ storageos node
 
-Usage:	storageos node COMMAND
+Usage:  storageos node COMMAND
 
 Manage nodes
+
+Aliases:
+  node, n
 
 Options:
       --help   Print usage
 
 Commands:
   cordon      Put one or more nodes into an unschedulable state
+  drain       Migrate volumes from one or more nodes.
   health      Display detailed information on a given node
   inspect     Display detailed information on one or more nodes
   ls          List nodes
   uncordon    Restore one or more nodes from an unschedulable state
+  undrain     Stop drain on one or more nodes.
   update      Update a node
 
 Run 'storageos node COMMAND --help' for more information on a command.
@@ -30,12 +35,21 @@ Run 'storageos node COMMAND --help' for more information on a command.
 
 ### `storageos node cordon`
 
-Puts one or mores into an unschedulable state, in preparation for upgrading or
+Puts one or more nodes into an unschedulable state, in preparation for upgrading or
 decommisioning a node.
 
 ```bash
 $ storageos node cordon host01
 host01
+```
+
+### `storageos node drain`
+
+Evicts all volumes from one or more nodes and puts them into an unschedulable state.
+
+```bash
+$ storageos node drain node-1
+node-1
 ```
 
 ### `storageos node inspect`
@@ -136,4 +150,13 @@ Restore one or more nodes after cordoning the node for upgrade.
 ```bash
 $ storageos node uncordon host01
 host01
+```
+
+### `storageos node undrain`
+
+Stops any draining procedure in place and restores the node to its normal functionality.
+
+```bash
+$ storageos node undrain node-1 
+node-1
 ```

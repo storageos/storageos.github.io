@@ -30,9 +30,10 @@ $ docker run -d --name storageos \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \
+    -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc1 server
 ```
 
 ## Use StorageOS
@@ -68,29 +69,9 @@ The container installation method requires Docker 1.10+. For Docker 1.13+ most u
 
 The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
-### Network Block Device (NBD)
-
-(Optional) NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
-
-```bash
-sudo modprobe nbd nbds_max=1024
-```
-
-**To ensure the NBD module is loaded on reboot.**
-
-1. Add the following line to `/etc/modules`
-
-   ```bash
-   nbd
-   ```
-
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-
-   ```bash
-   options nbd nbds_max=1024
-   ```
-
 ### Run the StorageOS node container
+
+Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 

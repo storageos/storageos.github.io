@@ -15,9 +15,9 @@ configuration.
 
 ```bash
 # linux/amd64
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/0.10.0/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc1/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 # OS X/amd64
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/0.10.0/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc1/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 ```
 
 You will need to provide the correct credentials to connect to the API. The
@@ -83,7 +83,7 @@ Run 'storageos COMMAND --help' for more information on a command.
 | `login`     |                               | Store login credentials for a given StorageOS host.            |
 | `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
 | `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `node`      | `cordon health inspect ls uncordon update` | Node information.                                 |
+| `node`      | `cordon drain health inspect ls uncordon undrain update` | Node information.                                 |
 | `policy`    | `create inspect ls rm`        | Define how resources are accessed by users and groups.         |
 | `pool`      | `create inspect ls rm`        | A collection of storage resources for provisioning volumes.    |
 | `rule`      | `create inspect ls rm update` | Rules define label-based policies to apply to volumes.         |

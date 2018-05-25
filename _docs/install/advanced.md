@@ -62,6 +62,7 @@ docker run -d --name dataplane \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \
+    -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     storageos/node dataplane
 ```
@@ -94,6 +95,7 @@ services:
     volumes:
       - "/var/lib/storageos:/var/lib/storageos:rshared"
       - "/run/docker/plugins:/run/docker/plugins"
+      - "/sys:/sys"
   data:
     image: storageos/node:latest
     command: "dataplane"
@@ -109,6 +111,7 @@ services:
       - /dev/fuse
     volumes:
       - "/var/lib/storageos:/var/lib/storageos:rshared"
+      - "/sys:/sys"
     ports:
       - "8999:8999"
 ```

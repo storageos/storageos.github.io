@@ -5,43 +5,126 @@ anchor: reference
 module: reference/release_notes
 ---
 
-# Beta warning
-
-StorageOS is currently in Beta. This allows users to explore our software prior
-to General Availability (GA) release. Any feedback on software problems and
-usability will help improve our product and allows us to track issues and fix
-them.
-
-As public Beta software, StorageOS has yet to be released commercially and may
-contain imperfections causing the software not to perform as well as GA release
-software. **Therefore we recommend you only install this on non-production,
-non-business critical infrastructure or devices.**
-
-Before the GA release, data formats used by StorageOS may change and there may
-not be an automated migration process. When upgrades break compatibility or
-require manual migration processes we will endeavour to make this clear in the
-release notes.
+# Release Notes
 
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
+The latest tagged release is `1.0.0-rc1`, available from the
+[Docker Hub](https://hub.docker.com/r/storageos/node/) as
+`storageos/node:1.0.0-rc1`, or via the
+[Helm Chart](https://github.com/storageos/helm-chart)
+
+The latest CLI release is `1.0.0-rc1`, available from
+[Github](https://github.com/storageos/go-cli/releases)
+
 ## Upgrades
 
 Upgrades can be performed by restarting the StorageOS node container with the
-new version, or by performing `docker plugin upgrade` on Docker Managed Plugin
-installs.
+new version.
 
 Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
 
+See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+with online migration of volumes.
+
+See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+with online migration of volumes.
+
+The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
+updated when upgrading the cluster version.
+
 Where there are special considerations they are described below.
 
-During Beta upgrades may not always be possible as our focus will be on making
-bug fixes and new features available as soon as possible.  Once StorageOS
-reaches GA, more effort will be made to ensure that upgrades are seamless.
+### 0.10.x - 1.0.x
 
-### 0.9.x -> 0.10.x
+Due to breaking changes between 0.10.x and 1.0.x upgrading is not possible.  We
+will now endeavour to allow upgrades between versions.
+
+If you are installing on a node that has had a previous version installed, make
+sure that the contents of `/var/lib/storageos` has been removed, and that you
+provision with a new cluster discovery token (if using).
+
+## 1.0.0-rc1
+
+The 1.0 release series is focussed on supporting enterprise workloads, with
+numerous new features and improvements to performance, stability and
+maintainability.
+
+### Breaking changes
+
+- Several internal data structures were changed and are not compatible with
+  previous versions.  For this reason upgrades from version 0.10.x and earlier
+  are not supported.
+- The API endpoint `/v1/metrics` has been replaced with `/metrics` to conform
+  with Prometheus best practices.
+
+### New
+
+- Volume presentation has changed to use the SCSI subsystem via the
+  Linux SCSI Target driver. Previous versions used NBD where available, or FUSE
+  where it wasn't.  Using the new volume presentation improves performance on
+  the RHEL platform where NBD is not available.  This feature is available for
+  all major distributions and is widely used.  For more information, see
+  [device presentation]({%link _docs/install/prerequisites/devicepresentation %})
+- Internally, the StorageOS scheduler has switched to using level-based state
+  handling and the gRPC protocol.  This allows the scheduler to make assertions
+  about the current state, rather than relying on events that can be missed.
+  The scheduler now behaves in the same way as Kubernetes controllers do; by
+  evaluating the current state, calculating adjustments, sharing desired state
+  and allowing individual components to apply differences.  For more information
+  on level triggered logic, see
+  [Edge vs Level triggerd logic](https://speakerdeck.com/thockin/edge-vs-level-triggered-logic)
+- Encyption at-rest is available on a per-volume level by setting the label
+  `storageos.com/encryption=true`.  In Kubernetes, volume encryption keys are
+  stored in Secrets.  Elsewhere, keys are stored in etcd, the key-value store
+  used internally within StorageOS.  No other configuration is required.
+- Container Storage Interface (CSI) version 0.2 compatibility.  CSI is a
+  specification for storage providers that enables StorageOS to support any
+  orchestrator that supports CSI.  Currently this includes Kubernetes and
+  derivatives, Mesos and Docker.  Over time CSI will replace the native driver
+  in Kubernetes, though the existing v1 API will remain.
+- Multiple devices on a node can now be used, and StorageOS will shard data
+  across them.
+- Node maintenance command such as `storageos node cordon` and `storageos node
+  drain` aid upgrades by live-migrating active volumes prior to node maintenance.
+- Node labels can now be used for volume anti-affinity, allowing StorageOS to
+  make sure a master volume and its replicas are in separate failure domains.
+- Cloud provider failure domains are now auto-set as labels for nodes deployed
+  in Azure, AWS or GCE.
+- Administrators can download or upload to Storageos, support, cluster
+  information and log files.  This is currently only available via the Web
+  interfce or the API.
+- Kubernetes mount option support (requires Kubernetes 1.10).
+
+### Improved
+
+- Performance has improved significantly throughout and has been thoroughly
+  tested on a variety of workloads.  Specific areas include optimisations for
+  larger block sizes and improvements to the caching engine.
+- Volumes will go read-only shortly before the underlying device runs out of
+  space.  This allows the filesystem to handle errors gracefully and can protect
+  against corruption.
+- Pools have been overhauled to be dynamic, making use of label selectors.
+- Increased number of volumes per node.
+- Invalid labels now generate a validation error.
+- `storageos.com/` namespaced labels must validate against known labels.
+
+### Fixed
+
+- Mapping of compression and throttle labels.
+- Remove hard connection limit on replication services.
+- `docker ps` shows unhealthy when everything is fine.
+- Throttle impact was too small to be noticed.
+- Volume size '0' produced 10GB volume.
+- Re-adding user to a group creates a duplicate entry.
+- Node and pool capacity stats were sometimes wrong.
+
+# Previous Releases
+
+## Upgrades
 
 Due to breaking changes between 0.9.x and 0.10.x upgrading is not possible.
 Instead we recommend that you provision a new cluster and migrate data.
@@ -230,8 +313,8 @@ scenarios.  Full documentation to be added to the docs site soon.
   - HTTP PUT on http://localhost:5705/debug/leader/run will cause node to run
     for cluster leadership.
 
-  These actions are used primarily for automated testing where we introduce instability into the cluster to ensure there is no service disruption.
-
+  These actions are used primarily for automated testing where we introduce
+  instability into the cluster to ensure there is no service disruption.
 
 ### Improved
 
@@ -345,8 +428,8 @@ releases will strive to preserve compatibility between versions.
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
-  platforms.
+  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  on those platforms.
 
 ## 0.8.1
 
@@ -414,8 +497,8 @@ StorageOS, what problems it is solving for you and how it can improve.  Join our
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [nbd kernel module]({%link _docs/install/prerequisites/devicepresentation.md %}) on those
-  platforms.
+  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  on those platforms.
 
 ## 0.7.10
 

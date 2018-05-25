@@ -13,11 +13,11 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 ## Quick Start
 
 Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
 $ JOIN=$(storageos cluster create)
 $ docker run -d --name storageos \
     -e HOSTNAME \
@@ -66,27 +66,12 @@ The container installation method requires Docker 1.10+ running on 64-bit linux.
 
 The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
-### Network Block Device (NBD)
+### Linux-IO (LIO)
 
-(Optional) NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
+StorageOS is developed using Linux-IO (LIO) Target. An open-source implementation of the SCSI target.
+Although, LIO is supported by most of the kernels available nowadays, some distributions have left the kernel module out of the main kernel package.
 
-```bash
-$ sudo modprobe nbd nbds_max=1024
-```
-
-**To ensure the NBD module is loaded on reboot.**
-
-1. Add the following line to `/etc/modules`
-
-```
-nbd
-```
-
-2. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-
-```
-options nbd nbds_max=1024
-```
+Enabling LIO is mandatory, check how to enable LIO here <https://docs.storageos.com/docs/reference/os_support>.
 
 ### Run the StorageOS node container
 
@@ -95,7 +80,6 @@ Install the StorageOS command line interface (CLI) following the instructions at
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
 $ JOIN=$(storageos cluster create)
 $ docker run -d --name storageos \
     -e HOSTNAME \

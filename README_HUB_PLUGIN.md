@@ -55,29 +55,10 @@ The `docker plugin install` method requires Docker 1.13.0 or above. Older versio
 
 The plugin (or node container) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
-### Network Block Device (NBD)
-
-(Optional) NBD is a default Linux kernel module that allows block devices to be run in userspace. Enabling NBD is recommended as it will increase performance for some workloads. To enable the module and increase the number of allowable devices, you must either run:
-
-```bash
-sudo modprobe nbd nbds_max=1024
-```
-
-**To ensure the NBD module is loaded on reboot.**
-
-1. Add the following line to `/etc/modules`
-
-   ```bash
-   nbd
-   ```
-
-1. Add the following module configuration line in `/etc/modprobe.d/nbd.conf`
-
-   ```bash
-   options nbd nbds_max=1024
-   ```
 
 ### StorageOS Plugin Installation (Docker 1.13+)
+
+Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 

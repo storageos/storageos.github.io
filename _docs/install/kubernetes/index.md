@@ -39,6 +39,10 @@ Docker]({%link _docs/install/docker/index.md %}).
 
 Firstly, [install Helm](https://docs.helm.sh/using_helm).
 
+The StorageOS helm chart triggers an [init container](https://github.com/storageos/init) to enable required kernel configuration on your host. If that procedure doesn't finish successfully, StorageOS container will not start.
+
+If that is your case checkout the [os support](/docs/reference/os_support) page as you can manually prepare the settings for the kernel.
+
 ```bash
 $ git clone https://github.com/storageos/helm-chart.git storageos
 $ cd storageos

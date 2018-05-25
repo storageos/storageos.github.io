@@ -27,10 +27,7 @@ Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
 
-See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
-with online migration of volumes.
-
-See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+See [maintenance]({%link _docs/operations/maintenance.md %}) for commands to help
 with online migration of volumes.
 
 The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
@@ -68,7 +65,7 @@ maintainability.
   where it wasn't.  Using the new volume presentation improves performance on
   the RHEL platform where NBD is not available.  This feature is available for
   all major distributions and is widely used.  For more information, see
-  [device presentation]({%link _docs/install/prerequisites/devicepresentation %})
+  [device presentation]({%link _docs/install/prerequisites/devicepresentation.md %})
 - Internally, the StorageOS scheduler has switched to using level-based state
   handling and the gRPC protocol.  This allows the scheduler to make assertions
   about the current state, rather than relying on events that can be missed.

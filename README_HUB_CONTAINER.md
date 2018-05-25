@@ -30,9 +30,10 @@ $ docker run -d --name storageos \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \
+    -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc1 server
 ```
 
 ## Use StorageOS

@@ -28,10 +28,6 @@ MountPropagation=true` to the kube-apiserver and kubelet services.
 Rancher), add `--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each
 of the kubelets. This will be [fixed](https://github.com/kubernetes/kubernetes/pull/58816) in Kubernetes 1.10+.
 
-1. [Enable the Network Block Device module]({% link
-_docs/install/prerequisites/devicepresentation.md %}) on each node for better
-performance.
-
 For Kubernetes 1.7, you can [install the container directly in
 Docker]({%link _docs/install/docker/index.md %}).
 

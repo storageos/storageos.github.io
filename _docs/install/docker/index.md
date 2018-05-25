@@ -21,7 +21,7 @@ $ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-You should [enable LIO on each node in turn:]({%link _docs/reference/os_support %})
+You should [enable LIO on each node in turn:](/docs/reference/os_support)
 
 ## Install
 

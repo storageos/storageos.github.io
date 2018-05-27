@@ -2,8 +2,6 @@
 
 The StorageOS Node container turns your Docker node into a hyper-converged storage platform. Each Docker host that runs the Node container can contribute available local or attached storage into a distributed pool, which is then available to all cluster members via a global namespace.
 
-_NOTE: For Docker 1.13+ most users should use the [managed plugin install](../plugin) method._
-
 Volumes are available across the cluster so if a container gets moved to another node it still has access to its data. Data can be protected with synchronous replication. Compression, caching, and QoS are enabled by default, and all volumes are thin-provisioned.
 
 No other hardware or software is required.

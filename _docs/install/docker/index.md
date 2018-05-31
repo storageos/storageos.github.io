@@ -15,13 +15,13 @@ Kubernetes 1.7. [**Try it in your browser for up to one hour >>**](https://my.st
 
 It is recommended to use a stable version of [docker](https://docs.docker.com/release-notes/docker-ce/).
 
-Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
-```bash
-$ storageos cluster create
-017e4605-3c3a-434d-b4b1-dfe514a9cd0f
-```
+1. Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
+    ```bash
+    $ storageos cluster create
+    017e4605-3c3a-434d-b4b1-dfe514a9cd0f
+    ```
 
-You should [enable LIO on each node in turn:](/docs/reference/os_support)
+1. [Enable LIO](/docs/reference/os_support) on each node.
 
 ## Install
 

@@ -115,7 +115,9 @@ Running `kubectl cluster-info` should now connect to your new cluster.
 Consult the [acs-engine documentation](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 for more information.
 
-### StorageOS installation
+### StorageOS installation with Helm
+
+>If you want to install StorageOS without Helm, check out the following [page]({%link _docs/install/kubernetes/index.md %}).
 
 First, make sure the [StorageOS CLI]({%link _docs/reference/cli/index.md %}) has
 been installed on your local machine.

@@ -10,9 +10,9 @@ module: reference/release_notes
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
-The latest tagged release is `1.0.0-rc1`, available from the
+The latest tagged release is `1.0.0-rc2`, available from the
 [Docker Hub](https://hub.docker.com/r/storageos/node/) as
-`storageos/node:1.0.0-rc1`, or via the
+`storageos/node:1.0.0-rc2`, or via the
 [Helm Chart](https://github.com/storageos/helm-chart)
 
 The latest CLI release is `1.0.0-rc1`, available from
@@ -43,6 +43,15 @@ will now endeavour to allow upgrades between versions.
 If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
+
+## 1.0.0-rc2
+
+Single fix to address provisioning issue in Amazon AWS.
+
+### Fixed
+
+- Increased time to wait for device to appear, causing volume creation to fail.
+  This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.
 
 ## 1.0.0-rc1
 

@@ -40,7 +40,7 @@ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc1 server
+    storageos/node:1.0.0-rc2 server
 ```
 
 If you are performing a non-default installation, the following environment

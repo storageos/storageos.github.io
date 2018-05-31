@@ -4,7 +4,8 @@ curl -qS https://get.docker.com/ -o install-docker && chmod +x install-docker
 sudo CHANNEL=stable ./install-docker
 
 # Prerequisites
-sudo modprobe nbd nbds_max=1024
+curl -kLOs https://raw.githubusercontent.com/storageos/init/master/enable-lio.sh
+sudo ./enable-lio.sh
 
 # Install StorageOS container
 docker run -d --restart unless-stopped --name storageos \

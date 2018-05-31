@@ -21,7 +21,7 @@ type to install to make devices usable from within containers.
 
 You will need a Kubernetes 1.8+ cluster with Beta APIs enabled.
 
-1. Install [StorageOS CLI](/docs/reference/cli/index).
+1. Install [StorageOS CLI]({%link _docs/reference/cli/index.md %}).
 
 1. Enable the `MountPropagation` flag by appending `--feature-gates
 MountPropagation=true` to the kube-apiserver and kubelet services.
@@ -43,7 +43,7 @@ Firstly, [install Helm](https://docs.helm.sh/using_helm). If you are running a r
 
 The StorageOS helm chart triggers an [init container](https://github.com/storageos/init) to enable required kernel configuration on your host. If that procedure doesn't finish successfully, StorageOS container will not start.
 
-If that is your case, checkout the [os support](/docs/reference/os_support) page as you can manually prepare the settings for the kernel.
+If that is the case, check out the [os support](/docs/reference/os_support) page as you can manually prepare the settings for the kernel.
 
 ```bash
 $ git clone https://github.com/storageos/helm-chart.git storageos
@@ -192,14 +192,13 @@ $ helm delete --purge my-release
     END
     ```
 
-    StorageOS uses a secret to discover the API endpoint of its workers. `adminSecretNamespace` have to be set according to the namespace created previously. Equally important is that
-    the service account grants permissions to StorageOS pods to have access to that secret.
+    StorageOS uses a secret to discover the API endpoint of its workers. `adminSecretNamespace` must be set to the specified namespace, and the service account needs to have granted permissions to StorageOS pods to have access to that secret.
 
 
 1. Create DaemonSet
 
-    StorageOS server pod runs as a daemonset, therefore all instances of your cluster will have a StorageOS worker. In case that you want to limit the amount of nodes in the StorageOS cluster
-    or make sure which Kubernetes nodes run storage workloads, you can define `spec.nodeSelector` based on node tags. For more information check [here](https://kubernetes.io/docs/concepts/configuration/assign-pod-node).
+    StorageOS server pod runs as a daemonset, therefore all nodes in your cluster will have a StorageOS worker. If you want to limit the amount of nodes in the StorageOS cluster
+    or enforce which Kubernetes nodes run storage workloads, you can define `spec.nodeSelector` based on node tags. For more information check [here](https://kubernetes.io/docs/concepts/configuration/assign-pod-node).
 
     ```
     # Get a cluster token id

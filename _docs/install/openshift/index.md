@@ -197,8 +197,7 @@ $ helm delete --purge my-release
     END
     ```
 
-    StorageOS uses a secret to discover the API endpoint of its workers. `adminSecretNamespace` have to be set according to the namespace created previously. Equally important is that
-    the service account grants permissions to StorageOS pods to have access to that secret.
+    StorageOS uses a secret to discover the API endpoint of its workers. `adminSecretNamespace` must be set to the specified namespace, and the service account needs to have granted permissions to StorageOS pods to have access to that secret.
 
 
 1. Create DaemonSet

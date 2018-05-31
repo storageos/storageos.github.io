@@ -27,8 +27,7 @@ Firstly, [install Helm](https://docs.helm.sh/using_helm).
 ```bash
 $ git clone https://github.com/storageos/helm-chart.git storageos
 $ cd storageos
-$ git checkout csi-deployment
-$ helm install --name my-release . --set cluster.join=<join-token/node-ip>
+$ helm install --name my-release . --set cluster.join=<join-token/node-ip> --set csi.enable=true
 ```
 
 To uninstall the release with all related Kubernetes components:

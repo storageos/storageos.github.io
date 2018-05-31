@@ -24,7 +24,7 @@ With CSI, StorageOS volumes can be created on-demand through dynamic provisionin
 1. Users create a persistent volume claim (PVC).
 1. The user references the PVC in a pod.
 
-If you are using the [StorageOS Helm chart for CSI deployment](https://github.com/storageos/helm-chart/tree/csi-deployment),
+If you are using the [StorageOS Helm chart for deployment](https://github.com/storageos/helm-chart/blob/master/README-CSI.md),
 it includes the storage class, so you may skip to step 2 to provision volumes.
 
 ## 1. Create storage class
@@ -215,7 +215,7 @@ knowledge of the credentials that will be used for various actions.
 The credentials should also be stored in secrets and refered to in the storage
 class.
 
-To enable CSI credentials using the [csi-deployment helm chart](https://github.com/storageos/helm-chart/tree/csi-deployment),
+To enable CSI credentials using the [StorageOS helm chart](https://github.com/storageos/helm-chart/blob/master/README-CSI.md),
 edit the values.yaml file and enable the various credential options.
 
 ```yaml

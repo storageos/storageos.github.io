@@ -117,7 +117,7 @@ for more information.
 
 ### StorageOS installation with Helm
 
->If you want to install StorageOS without Helm, check out the following [page]({%link _docs/install/kubernetes/index.md %}).
+>To install StorageOS without Helm, check out the following [page]({%link _docs/install/kubernetes/index.md %}).
 
 First, make sure the [StorageOS CLI]({%link _docs/reference/cli/index.md %}) has
 been installed on your local machine.

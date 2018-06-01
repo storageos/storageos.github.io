@@ -32,7 +32,7 @@ The following table shows which distributions can enable the kernel modules to u
 The following script tries to load kernel modules in your host. 
 If it finishes without error, your OS is compatible and LIO support will be enabled.
 
-You can run the script or execute the containerised version of it. Both solutions require the execution for every host that will run StorageOS.
+You can run the script or execute the containerised version of it. Both solutions require the execution on every host that will run StorageOS.
 
 
 ### Execute in host

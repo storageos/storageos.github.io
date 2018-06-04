@@ -100,8 +100,7 @@ With your subscription id you can now run `acs-engine` to deploy your kubernetes
 ```bash
 # IMPORTANT: enter your own parameters, especially 'subscription-id'
 acs-engine deploy --subscription-id $subscriptionId \
-    --dns-prefix storageos --location westus2 \
-    --auto-suffix --api-model kubernetes.json
+    --location westus2 --auto-suffix --api-model kubernetes.json
 ```
 
 The deployment also creates a KUBECONFIG for your cluster under the `_output` directory. The exact filename depends on the dns prefix and location you specified. To set the KUBECONFIG for the example above:

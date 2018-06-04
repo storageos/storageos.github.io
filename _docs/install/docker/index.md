@@ -34,6 +34,7 @@ docker run -d --name storageos \
     -e ADVERTISE_IP=10.26.2.5 \
     -e JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f \
     --pid=host \
+    --network=host \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \

@@ -100,8 +100,7 @@ With your subscription id you can now run `acs-engine` to deploy your kubernetes
 ```bash
 # IMPORTANT: enter your own parameters, especially 'subscription-id'
 acs-engine deploy --subscription-id $subscriptionId \
-    --dns-prefix storageos --location westus2 \
-    --auto-suffix --api-model kubernetes.json
+    --location westus2 --auto-suffix --api-model kubernetes.json
 ```
 
 The deployment also creates a KUBECONFIG for your cluster under the `_output` directory. The exact filename depends on the dns prefix and location you specified. To set the KUBECONFIG for the example above:
@@ -164,7 +163,7 @@ information and available options.
 Verify the cluster is healthy with the StorageOS CLI:
 
 ```bash
-$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace default -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+$ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace storageos -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ storageos node ls
 NAME                        ADDRESS             HEALTH                  SCHEDULER           VOLUMES             TOTAL               USED                VERSION                 LABELS
 k8s-agentpool1-40905336-0   10.240.0.4          Healthy About an hour   false               M: 1, R: 0          29.02GiB            11.38%              ad3f0cc (ad3f0cc rev)   

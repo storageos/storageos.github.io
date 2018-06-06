@@ -29,8 +29,13 @@ The following table shows which distributions can enable the kernel modules to u
 
 ## How to enable LIO support
 
-The following script will try to load the modules in your host. If it finishes without error, your OS is compatible and LIO support will be enabled.
+The following script tries to load kernel modules in your host. 
+If it finishes without error, your OS is compatible and LIO support will be enabled.
 
+You can run the script or execute the containerised version of it. Both solutions require the execution on every host that will run StorageOS.
+
+
+### Execute in host
 It requires privileged permissions.
 
 ```
@@ -93,6 +98,17 @@ END
 
 chmod +x enable_lio.sh
 sudo ./enable_lio.sh
+```
+
+### Execute from a container
+```
+docker run --name enable_lio                  \
+           --privileged                       \
+           --rm                               \
+           --cap-add=SYS_ADMIN                \
+           -v /lib/modules:/lib/modules       \
+           -v /sys:/sys:rshared               \
+           storageos/init
 ```
 
 ## Ubuntu generic and GCE

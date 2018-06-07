@@ -22,3 +22,6 @@ Cluster nodes can participate in more than one pool.
 To create and manage pools individually, use the [storageos pool command]({%
 link _docs/reference/cli/pool.md %}) to manage which nodes participate in the
 pool (via controllers) and the drivers to use.
+
+The pool cli command makes use of [label selectors]({%
+link _docs/manage/volumes/labels.md %}), which work in the same manner as [Kubernetes selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors).

@@ -13,6 +13,10 @@ sections:
     description: Upgrading a cluster
     module: operations/upgrades
   -
+    title: Maintenance
+    description: Node maintenance
+    module: operations/maintenance
+  -
     title: Users
     description: Creating and managing Users
     module: operations/users

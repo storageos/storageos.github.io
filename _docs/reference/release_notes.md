@@ -10,9 +10,9 @@ module: reference/release_notes
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
-The latest tagged release is `1.0.0-rc1`, available from the
+The latest tagged release is `1.0.0-rc2`, available from the
 [Docker Hub](https://hub.docker.com/r/storageos/node/) as
-`storageos/node:1.0.0-rc1`, or via the
+`storageos/node:1.0.0-rc2`, or via the
 [Helm Chart](https://github.com/storageos/helm-chart)
 
 The latest CLI release is `1.0.0-rc1`, available from
@@ -27,10 +27,7 @@ Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
 
-See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
-with online migration of volumes.
-
-See [maintenance]({%link _docs/operations/maintenance %}) for commands to help
+See [maintenance]({%link _docs/operations/maintenance.md %}) for commands to help
 with online migration of volumes.
 
 The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
@@ -46,6 +43,15 @@ will now endeavour to allow upgrades between versions.
 If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
+
+## 1.0.0-rc2
+
+Single fix to address provisioning issue in Amazon AWS.
+
+### Fixed
+
+- Increased time to wait for device to appear, causing volume creation to fail.
+  This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.
 
 ## 1.0.0-rc1
 
@@ -68,7 +74,7 @@ maintainability.
   where it wasn't.  Using the new volume presentation improves performance on
   the RHEL platform where NBD is not available.  This feature is available for
   all major distributions and is widely used.  For more information, see
-  [device presentation]({%link _docs/install/prerequisites/devicepresentation %})
+  [device presentation]({%link _docs/install/prerequisites/devicepresentation.md %})
 - Internally, the StorageOS scheduler has switched to using level-based state
   handling and the gRPC protocol.  This allows the scheduler to make assertions
   about the current state, rather than relying on events that can be missed.

@@ -24,8 +24,9 @@ docker run -d --name storageos \
       --cap-add SYS_ADMIN \
       --device /dev/fuse \
       -v /var/lib/storageos:/var/lib/storageos:rshared \
+      -v /sys:/sys \
       -v /run/docker/plugins:/run/docker/plugins \
-      storageos/node:0.10.0 server
+      storageos/node:1.0.0-rc2 server
 ```
 
 The deployment types `computeonly` and `mixed` are supported, with `mixed` being

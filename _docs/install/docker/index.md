@@ -15,16 +15,13 @@ Kubernetes 1.7. [**Try it in your browser for up to one hour >>**](https://my.st
 
 It is recommended to use a stable version of [docker](https://docs.docker.com/release-notes/docker-ce/).
 
-Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
-```bash
-$ storageos cluster create
-017e4605-3c3a-434d-b4b1-dfe514a9cd0f
-```
+1. Get a [cluster discovery token]({%link _docs/install/prerequisites/clusterdiscovery.md %})
+    ```bash
+    $ storageos cluster create
+    017e4605-3c3a-434d-b4b1-dfe514a9cd0f
+    ```
 
-You should [enable nbd on each node in turn:]({%link _docs/install/prerequisites/devicepresentation.md %})
-```bash
-sudo modprobe nbd nbds_max=1024
-```
+1. [Enable LIO](/docs/reference/os_support) on each node.
 
 ## Install
 
@@ -37,12 +34,14 @@ docker run -d --name storageos \
     -e ADVERTISE_IP=10.26.2.5 \
     -e JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f \
     --pid=host \
+    --network=host \
     --privileged \
     --cap-add SYS_ADMIN \
     --device /dev/fuse \
+    -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc2 server
 ```
 
 If you are performing a non-default installation, the following environment

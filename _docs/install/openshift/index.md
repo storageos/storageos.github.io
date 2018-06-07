@@ -55,7 +55,7 @@ Docker]({%link _docs/install/docker/index.md %}).
 
 ## Install with Helm
 
-StorageOS container needs privileged execution permissions. Because of that it is required to add a security context constraint. 
+The StorageOS container needs privileged execution permissions. so a security context constraint must be added.
 
 ```bash
 RELEASE=my-release # Name of the release for storageos Chart

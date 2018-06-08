@@ -19,12 +19,17 @@ type to install to make devices usable from within containers.
 
 ## Prerequisites
 
-You will need a Kubernetes 1.8+ cluster with Beta APIs enabled.
+You will need a Kubernetes 1.8+ cluster with Beta APIs enabled. The following prerequisites are met by default for Kubernetes 1.10+. 
 
 1. Install [StorageOS CLI]({%link _docs/reference/cli/index.md %}).
-
-1. Enable the `MountPropagation` flag by appending `--feature-gates
-MountPropagation=true` to the kube-apiserver and kubelet services.
+1. Make sure your docker installation has mount propagation enabled.
+```
+# A successful run is proof of mount propagation enabled
+docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
+```
+1. Enable `MountPropagation` in Kubernetes (the procedure to enable mount propagation flags depends on the cluster's boot procedure):
+ - Append flag `--feature-gates MountPropagation=true` to the deployments kube-apiserver and kube-controller-manager, usually found under `/etc/kubernetes/manifests` in the master node.
+ - Add flag in the kubelet service config `KUBELET_EXTRA_ARGS=--feature-gates=MountPropagation=true`.
 
 1. For deployments where the kubelet runs in a container (eg. [OpenShift]({%link _docs/install/openshift/index.md %}), CoreOS,
 Rancher), add `--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each

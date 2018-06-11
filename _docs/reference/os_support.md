@@ -29,7 +29,7 @@ The following table shows which distributions can enable the kernel modules to u
 
 ## How to enable LIO support
 
-The following script tries to load kernel modules in your host. 
+The following script tries to load kernel modules in your host.
 If it finishes without error, your OS is compatible and LIO support will be enabled.
 
 You can run the script or execute the containerised version of it. Both solutions require the execution on every host that will run StorageOS.
@@ -70,12 +70,12 @@ fi
 
 # Enable a mod if not present
 # /sys/module/$modname/initstate has got the word "live"
-# in case the kernel module is loaded and running 
+# in case the kernel module is loaded and running
 for mod in target_core_mod tcm_loop target_core_file; do
     state_file=/sys/module/$mod/initstate
     if [ -f "$state_file" ] && grep -q live "$state_file"; then
         echo "Module $mod is running"
-    else 
+    else
         echo "Module $mod is not running"
         echo "executing modprobe -b $mod"
         modprobe -b $mod
@@ -108,12 +108,12 @@ docker run --name enable_lio                  \
            --cap-add=SYS_ADMIN                \
            -v /lib/modules:/lib/modules       \
            -v /sys:/sys:rshared               \
-           storageos/init
+           storageos/init:0.1
 ```
 
 ## Ubuntu generic and GCE
 
-It is required to install linux-image-extra for any generic ubuntu. 
+It is required to install linux-image-extra for any generic ubuntu.
 
 Google Cloud Engine has a candidate to install linux-image-extra with gce optimisation for Ubuntu 16.04 but this package is not yet available for Ubuntu 18.04.
 

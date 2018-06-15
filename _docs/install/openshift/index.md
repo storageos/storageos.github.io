@@ -14,9 +14,13 @@ be replicated to protect against node failure.
 At its core, StorageOS provides block storage.  You may choose the filesystem
 type to install to make devices usable from within containers.
 
-## Prerequisites
+For OpenShift 3.7, you can [install the container directly in Docker]({%link _docs/install/docker/index.md %}).
 
-You will need an OpenShift 3.8+ cluster with Beta APIs enabled.
+## Prerequisites for Openshfit 3.9
+
+You will need an OpenShift cluster with Beta APIs enabled.
+
+>Openshift 3.10 enables MountPropagation feature gates by default, hence point 4 can be skipped.
 
 
 1. Install [StorageOS CLI](/docs/reference/cli/index).
@@ -32,28 +36,24 @@ docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
     ```
 kubernetesMasterConfig:
   apiServerArguments:
-    feature-gates:
-    - MountPropagation=true
+        feature-gates:
+        - MountPropagation=true
   controllerArguments:
-    feature-gates:
-    - MountPropagation=true
+        feature-gates:
+        - MountPropagation=true
     ```
 
 - Add to the feature-gates to the kubelet arguments (/etc/origin/node/node-config.yaml):
 
     ```
 kubeletArguments:
-  feature-gates:
-  - MountPropagation=true
+    feature-gates:
+    - MountPropagation=true
     ```
     
 - **Warning:** Restarting OpenShift services can cause downtime in the cluster.
 - Restart services in the MasterNode `origin-master-api.service`, `origin-master-controllers.service` and `origin-node.service`
 - Restart service in all Nodes `origin-node.service`
-
-
-For OpenShift 3.7, you can [install the container directly in
-Docker]({%link _docs/install/docker/index.md %}).
 
 
 ## Installation

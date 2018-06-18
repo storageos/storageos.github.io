@@ -97,3 +97,59 @@ $ docker container run -it --volume-driver storageos --volume myvol:/data busybo
 This creates a new container with a StorageOS volume called `myvol` mounted at `/data`.
 
 *Note: The [Docker managed plugin](https://hub.docker.com/r/storageos/plugin/) is deprecated.*
+
+## Install systemd StorageOS service (optional)
+
+1. Set the configuration file
+
+    ```bash
+   cat <<END > /etc/default/storageos
+
+   # Advertise ip is the ip of the machine itself, where the service is being started
+   ADVERTISE_IP="10.0.1.226"
+
+   # Join variable set to all addresses of the cluster or a join token created from: storageos cluster create
+   JOIN="10.0.1.14:5705,10.0.1.176:5705,10.0.1.226:5705"
+
+   LOG_LEVEL=info
+   END
+    ```
+
+    The `ADVERTISE_IP` will be used to expose ports, therefore it needs to be set to an address that the rest of instances in the cluster can connect. The `JOIN` variable 
+    can be set according the [discovery method]({%link _docs/install/prerequisites/clusterdiscovery.md %}). In this case, it specifies every node of the StorageOS cluster. This
+    variable can be set equally for all nodes that install systemd's service.
+
+1. Create the storageos.service file
+
+    ```bash
+   cat <<END > /etc/systemd/system/storageos.service
+   [Unit]
+   Description=StorageOS
+   Wants=network-online.target
+   After=network-online.target
+   After=docker.service
+   Requires=docker.service
+
+   [Service]
+   TimeoutStartSec=0
+   EnvironmentFile=/etc/default/storageos
+   ExecStartPre=-/usr/bin/docker kill storageos
+   ExecStartPre=-/usr/bin/docker rm storageos
+   ExecStartPre=/usr/bin/docker pull storageos/node:1.0.0-rc2
+   ExecStart=/usr/bin/docker run --name storageos -e DISABLE_TELEMETRY=true -e HOSTNAME -e ADVERTISE_IP -e JOIN --net=host --pid=host --privileged --cap-add SYS_ADMIN --device /dev/fuse -v /var/lib/storageos:/var/lib/storageos:rshared -v /run/docker/plugins:/run/docker/plugins -v /sys:/sys storageos/node:1.0.0-rc2 server
+   ExecStop=/usr/bin/docker stop storageos
+
+   [Install]
+   WantedBy=default.target
+   END
+    ```
+
+1. Start StorageOS
+
+    ```bash
+   systemctl daemon-reload
+   systemctl start storageos.service
+
+   # Check the logs
+   systemctl status -l storageos.service
+    ```

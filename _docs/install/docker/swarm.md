@@ -90,12 +90,11 @@ Install StorageOS containers in your cluster by following the [docker installati
    z1hkolqqq6kspunalqyk4c4dg     storageos-2         Ready               Active              Reachable
    ```
 
-       All 3 nodes should be Active and with the status of Leader or Reachable
+    All 3 nodes should be Active and with the status of Leader or Reachable
 
 ## Example
 
 Deploy Nginx using driver `storageos`. This deployment will trigger an nginx container with a persistent volume attached to each one of them. 
-These volumes will live among stop/starts.
 
 ```bash
 cat <<END > ./nginx.yaml

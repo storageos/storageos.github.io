@@ -29,7 +29,7 @@ docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
 ```
 1. Enable `MountPropagation` in Kubernetes (the procedure to enable mount propagation flags depends on the cluster's boot procedure):
  - Append flag `--feature-gates MountPropagation=true` to the deployments kube-apiserver and kube-controller-manager, usually found under `/etc/kubernetes/manifests` in the master node.
- - Add flag in the kubelet service config `KUBELET_EXTRA_ARGS=--feature-gates=MountPropagation=true`.
+ - Add flag in the kubelet service config `KUBELET_EXTRA_ARGS=--feature-gates=MountPropagation=true`. For systemd, this usually is located in `/etc/systemd/system/`.
 
 1. For deployments where the kubelet runs in a container (eg. [OpenShift]({%link _docs/install/openshift/index.md %}), CoreOS,
 Rancher), add `--volume=/var/lib/storageos:/var/lib/storageos:rshared` to each

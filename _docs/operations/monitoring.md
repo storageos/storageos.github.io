@@ -8,7 +8,7 @@ module: operations/monitoring
 # Monitoring
 
 Prometheus stats are exported on each cluster node at
-http://ADVERTISE_IP:5705/metrics. Prometheus 2.x is required.
+`http://ADVERTISE_IP:5705/metrics`. Prometheus 2.x is required.
 
 ```bash
 $ curl -v http://localhost:5705/metrics

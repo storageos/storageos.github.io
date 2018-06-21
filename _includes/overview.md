@@ -11,7 +11,7 @@ or Kubernetes 1.7+.
 
 * [Install on Kubernetes]({% link _docs/install/kubernetes/index.md %}) - Use StorageOS with a Kubernetes cluster.
 * [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
-* [Interactive tutorials]({% link _docs/introduction/tutorials.md %}) - Try StorageOS in your browser.
+* [Interactive tutorials](http://play.storageos.com) - Try StorageOS in your browser.
 * [StorageOS architecture](http://resources.storageos.com/storageos_platform_architecture_overview) - Download the whitepaper.
 
 ## Got feedback or just want to chat?

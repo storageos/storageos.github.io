@@ -64,11 +64,11 @@ To list all rules:
 
 ```bash
 $ storageos rule ls
-NAMESPACE/NAME        SELECTOR                       ACTION              LABELS
-default/dev-marker    !storageos.com/replicas    add                 env=dev
-default/prod-marker   storageos.com/replicas>1   add                 env=prod
-default/replicator    env==prod                  add                 storageos.com/replicas=2
-default/uat-marker    storageos.com/replicas<2   add                 env=uat
+NAMESPACE/NAME       SELECTOR                  ACTION  LABELS
+default/dev-marker   !storageos.com/replicas   add     env=dev
+default/prod-marker  storageos.com/replicas>1  add     env=prod
+default/replicator   env==prod                 add     storageos.com/replicas=2
+default/uat-marker   storageos.com/replicas<2  add     env=uat
 ```
 
 ### `storageos rule rm`

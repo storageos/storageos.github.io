@@ -56,10 +56,10 @@ Displays the logging verbosity and filters for the whole cluster.
 
 ```bash
 storageos logs view
-NODE                LEVEL               FILTER
-storageos-1-19426   debug               cp=info,dp=info,leader=debug
-storageos-2-19426   info
-storageos-3-19426   debug               cp=info,dp=info,ha=debug
+NODE         LEVEL  FILTER
+storageos-1  debug  cp=info,dp=info,leader=debug
+storageos-2  info
+storageos-3  debug  cp=info,dp=info,ha=debug
 ```
 
 ### Set verbosity
@@ -74,7 +74,7 @@ OK
 To set the verbosity level on specific nodes, append a list of node names:
 
 ```bash
-storageos logs --verbosity debug storageos-1-19426 storageos-2-19426
+storageos logs --verbosity debug storageos-1 storageos-2
 OK
 ```
 
@@ -83,7 +83,7 @@ OK
 To set a filter on a single node:
 
 ```bash
-storageos logs --filter cp=info,dp=info,leader=debug storageos-1-19426
+storageos logs --filter cp=info,dp=info,leader=debug storageos-1
 OK
 ```
 
@@ -103,7 +103,7 @@ OK
 You can clear the filter on specific nodes by appending one or more node names:
 
 ```bash
-storageos logs --clear-filter storageos-1-19426
+storageos logs --clear-filter storageos-1
 OK
 ```
 
@@ -113,10 +113,8 @@ OK
 
 ```bash
 # Tail logs for the given node
-storageos logs --follow storageos-1-19426
+storageos logs --follow storageos-1
 
 # Tail log for all nodes
 storageos logs --follow
 ```
-
-

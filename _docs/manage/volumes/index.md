@@ -69,8 +69,8 @@ To view all volumes in all namespaces, run:
 
 ```bash
 $ storageos volume ls
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
-default/volume-name   15GB                                                        active              0/0
+NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
+default/volume-name  15GB                   active  0/0       storageos-1 (healthy)
 ```
 
 To mount a volume on the current node into `/mnt`, run (note this requires root):

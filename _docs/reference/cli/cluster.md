@@ -41,15 +41,22 @@ $ storageos cluster create
 
 ### `storageos cluster health`
 
-To view the status of various components:
+To view the status of cluster nodes:
 
 ```bash
-$ storageos cluster health
-NODE                ADDRESS             STATUS              KV                  NATS                SCHEDULER          DFS_CLIENT          DFS_SERVER          DIRECTOR            FS_DRIVER           FS
-storageos-3         192.168.50.102      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
-storageos-2         192.168.50.101      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
-storageos-1         192.168.50.100      Healthy             alive               alive               alive              alive               alive               alive               alive               alive
+$ storageos cluster Healthy
+NODE         ADDRESS         CP_STATUS  DP_STATUS
+storageos-1  192.168.50.100  Healthy    Healthy
+storageos-2  192.168.50.101  Healthy    Healthy
+storageos-3  192.168.50.102  Healthy    Healthy
 ```
+
+To view the status in more detail there are additional format 
+options which can be given to the `--format` flag:
+
+- `cp` shows the status of control plane components
+- `dp` shows the status of data plane components
+- `detailed` shows the status of control plane and data plane components
 
 ### `storageos cluster inspect`
 

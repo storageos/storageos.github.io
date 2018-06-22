@@ -46,35 +46,42 @@ default/volume-name
 To view volume details:
 
 ```bash
-$ storageos volume inspect legal/scratch1
+$ storageos volume inspect default/volume-name
 [
     {
-        "id": "770620f3-7a93-4b90-8349-4b0d2ae88129",
+        "id": "8d17066e-07d9-3f5f-e0de-edfc28e13f8f",
         "inode": 0,
-        "name": "scratch1",
-        "size": 10,
-        "pool": "no-ha",
+        "name": "volume-name",
+        "size": 15,
+        "pool": "default",
         "fsType": "xfs",
         "description": "",
-        "labels": {
-            "storageos.driver": "filesystem"
-        },
-        "namespace": "legal",
+        "labels": {},
+        "namespace": "default",
+        "nodeSelector": "",
         "master": {
             "id": "",
             "inode": 0,
+            "node": "",
+            "nodeName": "storageos-1",
             "controller": "",
-            "health": "",
-            "status": "",
+            "controllerName": "",
+            "health": "healthy",
+            "status": "active",
             "createdAt": "0001-01-01T00:00:00Z"
         },
         "mounted": false,
-        "replicas": null,
+        "mountDevice": "",
+        "mountpoint": "",
+        "mountedAt": "0001-01-01T00:00:00Z",
+        "replicas": [],
         "health": "",
-        "status": "failed",
+        "status": "active",
         "statusMessage": "",
+        "mkfsDone": false,
+        "mkfsDoneAt": "0001-01-01T00:00:00Z",
         "createdAt": "0001-01-01T00:00:00Z",
-        "createdBy": ""
+        "createdBy": "storageos"
     }
 ]
 ```
@@ -85,9 +92,9 @@ $ storageos volume inspect legal/scratch1
 To view all volumes in all namespaces:
 
 ```bash
-$ storageos volume ls
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
-default/volume-name   15GB                                                        active              0/0
+$ storageos volume ls 
+NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
+default/volume-name  15GB                   active  0/0       storageos-1 (healthy)
 ```
 
 ### `storageos volume mount`

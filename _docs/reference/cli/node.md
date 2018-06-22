@@ -39,8 +39,8 @@ Puts one or more nodes into an unschedulable state, in preparation for upgrading
 decommisioning a node.
 
 ```bash
-$ storageos node cordon host01
-host01
+$ storageos node cordon storageos-1
+storageos-1
 ```
 
 ### `storageos node drain`
@@ -48,74 +48,91 @@ host01
 Evicts all volumes from one or more nodes and puts them into an unschedulable state.
 
 ```bash
-$ storageos node drain node-1
-node-1
+$ storageos node drain storageos-1
+storageos-1
 ```
 
 ### `storageos node inspect`
 
-To view detailed information such as state, port configuration, pool membership,
+To view detailed information such as state, port configuration, 
 health, version and capacity in JSON format, inspect the node:
 
 ```bash
-$ storageos node inspect vol-test-2gb-lon103
+$ storageos node inspect storageos-1
 [
     {
-        "id": "2b59bf5b-53c7-89dd-35c3-0439af6870e0",
-        "hostID": 18226,
-        "scheduler": false,
-        "name": "vol-test-2gb-lon103",
-        "address": "46.101.51.16",
+        "id": "dafdcc3b-7a7a-14e4-77f4-bcc2070543cf",
+        "hostname": "",
+        "address": "192.168.50.100",
+        "kvAddr": "",
         "apiPort": 5705,
-        "natsPort": 4222,
-        "natsClusterPort": 8222,
-        "serfPort": 13700,
-        "dfsPort": 17100,
-        "description": "",
-        "controllerGroups": null,
-        "tags": null,
+        "natsPort": 5708,
+        "natsClusterPort": 5710,
+        "serfPort": 5711,
+        "dfsPort": 5703,
+        "kvPeerPort": 5707,
+        "kvClientPort": 5706,
         "labels": null,
-        "volumeStats": {
-            "masterVolumeCount": 1,
-            "replicaVolumeCount": 1,
-            "virtualVolumeCount": 0
-        },
-        "poolStats": {
-            "default": {
-                "filesystem": {
-                    "totalCapacityBytes": 41567956992,
-                    "availableCapacityBytes": 39235608576,
+        "logLevel": "",
+        "logFormat": "",
+        "logFilter": "",
+        "bindAddr": "",
+        "deviceDir": "/var/lib/storageos/volumes",
+        "join": "",
+        "kvBackend": "",
+        "debug": false,
+        "devices": [
+            {
+                "ID": "e303b84f-b562-c1b0-8434-1ee89f5a9f8d",
+                "labels": {
+                    "default": "true"
+                },
+                "status": "active",
+                "identifier": "/var/lib/storageos/data",
+                "class": "filesystem",
+                "capacityStats": {
+                    "totalCapacityBytes": 40576331776,
+                    "availableCapacityBytes": 38596853760,
                     "provisionedCapacityBytes": 0
-                }
-            },
-            "pool13": {
-                "filesystem": {
-                    "totalCapacityBytes": 41567956992,
-                    "availableCapacityBytes": 39235608576,
-                    "provisionedCapacityBytes": 0
-                }
+                },
+                "createdAt": "2018-06-22T09:20:17.499457963Z",
+                "updatedAt": "2018-06-22T09:35:17.87048772Z"
             }
-        },
+        ],
+        "hostID": 53012,
+        "name": "storageos-1",
+        "description": "",
+        "createdAt": "2018-06-20T09:22:17.491813738Z",
+        "updatedAt": "2018-06-22T09:35:17.876400176Z",
         "health": "healthy",
-        "healthUpdatedAt": "2017-05-12T17:59:39.841776028Z",
+        "healthUpdatedAt": "2018-06-22T09:20:22.868508782Z",
         "versionInfo": {
             "storageos": {
                 "name": "storageos",
-                "buildDate": "2017-05-12T104014Z",
-                "revision": "00ab7b3",
-                "version": "0.8.0",
+                "buildDate": "2018-05-25T190132Z",
+                "revision": "f8915fa",
+                "version": "1.0.0",
                 "apiVersion": "1",
-                "goVersion": "go1.7.3",
+                "goVersion": "go1.9.1",
                 "os": "linux",
                 "arch": "amd64",
                 "kernelVersion": "",
                 "experimental": false
             }
         },
-        "version": "StorageOS 0.8.0 (00ab7b3), Built: 2017-05-12T104014Z",
+        "version": "StorageOS 1.0.0 (f8915fa), built: 2018-05-25T190132Z",
+        "Revision": "",
+        "scheduler": true,
+        "cordon": false,
+        "drain": false,
+        "volumeStats": {
+            "masterVolumeCount": 0,
+            "replicaVolumeCount": 2,
+            "virtualVolumeCount": 0
+        },
         "capacityStats": {
-            "totalCapacityBytes": 83135913984,
-            "availableCapacityBytes": 78471217152,
+            "totalCapacityBytes": 40576331776,
+            "availableCapacityBytes": 38596853760,
             "provisionedCapacityBytes": 0
         }
     }
@@ -129,14 +146,14 @@ To view the state of your cluster, run:
 ```bash
 $ storageos node ls
 
-NAME                  ADDRESS             HEALTH              SCHEDULER           VOLUMES             TOTAL               USED                VERSION             LABELS
-vol-test-2gb-lon101   46.101.50.155       Healthy 2 days      true                M: 0, R: 2          77.43GiB            5.66%               0.8.0 (00ab7b3 rev)
-vol-test-2gb-lon102   46.101.50.231       Healthy 2 days      false               M: 1, R: 0          38.71GiB            5.90%               0.8.0 (00ab7b3 rev)
-vol-test-2gb-lon103   46.101.51.16        Healthy 2 days      false               M: 1, R: 1          77.43GiB            5.61%               0.8.0 (00ab7b3 rev)
+NAME         ADDRESS         HEALTH              SCHEDULER  VOLUMES     TOTAL    USED   VERSION
+storageos-1  192.168.50.100  Healthy 18 minutes  true       M: 0, R: 2  40.58GB  4.88%  1.0.0
+storageos-2  192.168.50.101  Healthy 17 minutes  false      M: 1, R: 0  40.58GB  4.88%  1.0.0
+storageos-3  192.168.50.102  Healthy 17 minutes  false      M: 1, R: 1  40.58GB  4.88%  1.0.0
 ```
 
 The output shows a StorageOS cluster with three nodes named
-`vol-test-2gb-lon101`, `vol-test-2gb-lon102` and `vol-test-2gb-lon103`.
+`storageos-1`, `storageos-2` and `storageos-3`.
 
 - `SCHEDULER`: whether the node contains the scheduler, which is responsible for
   the placement of volumes, performing health checks and providing high
@@ -148,8 +165,8 @@ The output shows a StorageOS cluster with three nodes named
 Restore one or more nodes after cordoning the node for upgrade.
 
 ```bash
-$ storageos node uncordon host01
-host01
+$ storageos node uncordon storageos-1
+storageos-1
 ```
 
 ### `storageos node undrain`
@@ -157,6 +174,6 @@ host01
 Stops any draining procedure in place and restores the node to its normal functionality.
 
 ```bash
-$ storageos node undrain node-1 
-node-1
+$ storageos node undrain storageos-1 
+storageos-1
 ```

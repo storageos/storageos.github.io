@@ -23,10 +23,22 @@ You will need a Kubernetes 1.8+ cluster with Beta APIs enabled. The following pr
 
 1. Install [StorageOS CLI]({%link _docs/reference/cli/index.md %}).
 1. Make sure your docker installation has mount propagation enabled.
-```
-# A successful run is proof of mount propagation enabled
-docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
-```
+    ```
+   # A successful run is proof of mount propagation enabled
+   docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
+
+   # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
+   # you can enable mount propagation by overriding the MountFlag argument
+   mkdir -p /etc/systemd/system/docker.service.d/
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   [Service]
+   MountFlags=shared
+   EOF
+
+   systemctl daemon-reload
+   systemctl restart docker.service
+    ```
+
 1. Enable `MountPropagation` in Kubernetes (the procedure to enable mount propagation flags depends on the cluster's boot procedure):
  - Append flag `--feature-gates MountPropagation=true` to the deployments kube-apiserver and kube-controller-manager, usually found under `/etc/kubernetes/manifests` in the master node.
  - Add flag in the kubelet service config `KUBELET_EXTRA_ARGS=--feature-gates=MountPropagation=true`. For systemd, this usually is located in `/etc/systemd/system/`.

@@ -29,7 +29,7 @@ The following table shows which distributions can enable the kernel modules to u
 
 ## How to enable LIO support
 
-The following script tries to load kernel modules in your host. 
+The following script tries to load kernel modules in your host.
 If it finishes without error, your OS is compatible and LIO support will be enabled.
 
 You can run the script or execute the containerised version of it. Both solutions require the execution on every host that will run StorageOS.
@@ -70,12 +70,12 @@ fi
 
 # Enable a mod if not present
 # /sys/module/$modname/initstate has got the word "live"
-# in case the kernel module is loaded and running 
+# in case the kernel module is loaded and running
 for mod in target_core_mod tcm_loop target_core_file; do
     state_file=/sys/module/$mod/initstate
     if [ -f "$state_file" ] && grep -q live "$state_file"; then
         echo "Module $mod is running"
-    else 
+    else
         echo "Module $mod is not running"
         echo "executing modprobe -b $mod"
         modprobe -b $mod
@@ -101,23 +101,24 @@ sudo ./enable_lio.sh
 ```
 
 ### Execute from a container
-```
+
+```bash
 docker run --name enable_lio                  \
            --privileged                       \
            --rm                               \
            --cap-add=SYS_ADMIN                \
            -v /lib/modules:/lib/modules       \
            -v /sys:/sys:rshared               \
-           storageos/init
+           storageos/init:0.1
 ```
 
 ## Ubuntu generic and GCE
 
-It is required to install linux-image-extra for any generic ubuntu. 
+It is required to install linux-image-extra for any generic ubuntu.
 
 Google Cloud Engine has a candidate to install linux-image-extra with gce optimisation for Ubuntu 16.04 but this package is not yet available for Ubuntu 18.04.
 
-```
+```bash
 sudo apt -y update
 sudo apt -y install linux-image-extra-$(uname -r)
 ```
@@ -126,7 +127,8 @@ sudo apt -y install linux-image-extra-$(uname -r)
 Canonical created Ubuntu images for cloud providers with optimised versions of the kernel. These versions don't include the kernel modules needed by LIO and the linux-image-extra, where the modules are found in the generic image, doesn't have a candidate for the optimised version of the kernels.
 
 You can check if linux-image-extra is available in the repositories.
-```
+
+```bash
 sudo apt -y update && apt search linux-image-extra-$(uname -r)
 ```
 
@@ -134,7 +136,7 @@ It is possible to use Ubuntu with the mentioned cloud providers, however, it is 
 
 To be able to use Ubuntu, it is necessary to change the kernel installed in your machine. Note that you will no longer use the performance optimisations Canonical has put in place for cloud providers.
 
-```
+```bash
 sudo apt -y update
 sudo apt install -y linux-virtual linux-image-extra-virtual
 sudo apt purge -y linux*aws
@@ -142,4 +144,3 @@ sudo apt purge -y linux*aws
 # Reboot the machine
 sudo shutdown -r now
 ```
-

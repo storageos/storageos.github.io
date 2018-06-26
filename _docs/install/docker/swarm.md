@@ -8,7 +8,13 @@ redirect_from: /docs/install/schedulers/dockerswarm
 
 # Docker Swarm
 
-This guides walks you through getting StorageOS set up and running on a Docker Swarm cluster.
+This guide walks you through getting StorageOS set up and running on a Docker Swarm cluster.
+
+## Prerequisites
+
+Install StorageOS containers in your cluster by following the [docker installation procedure]({%link _docs/install/docker/index.md  %}).
+
+## Install 
 
 1. Log into the first StorageOS node and confirm the public facing IP address
    (192.168.50.100 in this example):
@@ -84,4 +90,32 @@ This guides walks you through getting StorageOS set up and running on a Docker S
    z1hkolqqq6kspunalqyk4c4dg     storageos-2         Ready               Active              Reachable
    ```
 
-All 3 nodes should be Active and with the status of Leader or Reachable
+    All 3 nodes should be Active and with the status of Leader or Reachable
+
+## Example
+
+Deploy Nginx using driver `storageos`. This deployment will trigger an nginx container with a persistent volume attached to each one of them. 
+
+```bash
+cat <<END > ./nginx.yaml
+version: '3.4'
+services:
+    nginx:
+      image: nginx
+      network_mode: "host"
+      pid: "host"
+      ports:
+        - 80:80
+      volumes:
+          - data:/usr/share/nginx/html
+      deploy:
+        mode: global # One container per node
+        restart_policy:
+          condition: on-failure
+volumes:
+    data:
+        driver: storageos
+        name: 'web-{{ "{{.Task.Slot" }}}}'
+END
+docker stack deploy -c nginx.yaml nginx
+```

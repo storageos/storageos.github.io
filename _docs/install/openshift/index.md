@@ -25,10 +25,21 @@ You will need an OpenShift cluster with Beta APIs enabled.
 
 1. Install [StorageOS CLI](/docs/reference/cli/index).
 1. Make sure your docker installation has mount propagation enabled.
-```
-# A successful run is proof that mount propagation is enabled
-docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
-```
+    ```
+   # A successful run is proof of mount propagation enabled
+   docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
+
+   # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
+   # you can enable mount propagation by overriding the MountFlag argument
+   mkdir -p /etc/systemd/system/docker.service.d/
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   [Service]
+   MountFlags=shared
+   EOF
+
+   systemctl daemon-reload
+   systemctl restart docker.service
+    ```
 1. The [iptables rules]({% link _docs/install/prerequisites/firewalls.md %}) required for StorageOS.
 1. Enable the `MountPropagation` flag by appending feature gates to the api and controller (you can apply these changes using the Ansible Playbooks)
 - Add to the KubernetesMasterConfig section (/etc/origin/master/master-config.yaml):

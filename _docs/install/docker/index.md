@@ -22,6 +22,23 @@ It is recommended to use a stable version of [docker](https://docs.docker.com/re
     ```
 
 1. [Enable LIO](/docs/reference/os_support) on each node.
+1. Make sure your docker installation has mount propagation enabled.
+
+    ```
+   # A successful run is proof of mount propagation enabled
+   docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
+
+   # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
+   # you can enable mount propagation by overriding the MountFlag argument
+   mkdir -p /etc/systemd/system/docker.service.d/
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   [Service]
+   MountFlags=shared
+   EOF
+
+   systemctl daemon-reload
+   systemctl restart docker.service
+    ```
 
 ## Install
 

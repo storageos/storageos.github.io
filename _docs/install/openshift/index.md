@@ -14,7 +14,7 @@ be replicated to protect against node failure.
 At its core, StorageOS provides block storage.  You may choose the filesystem
 type to install to make devices usable from within containers.
 
-For OpenShift 3.7, you can [install the container directly in Docker]({%link _docs/install/docker/index.md %}).
+For OpenShift 3.7, you can [install the container directly in Docker]({%link _docs/install/docker/index.md %}) and follow the instructions of [Dynamic Provisioning]({%link _docs/install/openshift/dynamic-provisioning.md %}) to create the StorageOS secret and StorageClass.
 
 ## Prerequisites for Openshfit 3.9
 

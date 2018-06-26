@@ -29,6 +29,10 @@ sections:
         title: Ports and firewall settings
         description: Ports and firewall settings
         module: install/prerequisites/firewalls
+      - 
+        title: Mount Propagation
+        description: Mount propagation for docker, k8s and OpenShift
+        module: install/prerequisites/mountpropagation
   -
     title: Cloud
     description: Installing in Cloud Providers

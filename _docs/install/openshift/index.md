@@ -122,9 +122,9 @@ helm delete --purge $RELEASE
 1. Create project and service account
 
     ```bash
-    oc new-project storageos
-    oc create serviceaccount storageos
-    oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
+   oc new-project storageos
+   oc create serviceaccount storageos
+   oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
     ```
 
 1. Create role

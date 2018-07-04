@@ -55,7 +55,7 @@ time="2018-01-11T12:42:58Z" level=info msg="lost leadership election, waiting" a
 Displays the logging verbosity and filters for the whole cluster.
 
 ```bash
-$ storageos logs view
+storageos logs view
 NODE                LEVEL               FILTER
 storageos-1-19426   debug               cp=info,dp=info,leader=debug
 storageos-2-19426   info
@@ -67,14 +67,14 @@ storageos-3-19426   debug               cp=info,dp=info,ha=debug
 To set the verbosity level on all nodes in the cluster:
 
 ```bash
-$ storageos logs --verbosity debug
+storageos logs --verbosity debug
 OK
 ```
 
 To set the verbosity level on specific nodes, append a list of node names:
 
 ```bash
-$ storageos logs --verbosity debug storageos-1-19426 storageos-2-19426
+storageos logs --verbosity debug storageos-1-19426 storageos-2-19426
 OK
 ```
 
@@ -83,7 +83,7 @@ OK
 To set a filter on a single node:
 
 ```bash
-$ storageos logs --filter cp=info,dp=info,leader=debug storageos-1-19426
+storageos logs --filter cp=info,dp=info,leader=debug storageos-1-19426
 OK
 ```
 
@@ -96,18 +96,27 @@ To remove the filter, use the `--clear-filter` flag.
 To clear on all nodes:
 
 ```bash
-$ storageos logs --clear-filter
+storageos logs --clear-filter
 OK
 ```
 
 You can clear the filter on specific nodes by appending one or more node names:
 
 ```bash
-$ storageos logs --clear-filter storageos-1-19426
+storageos logs --clear-filter storageos-1-19426
 OK
 ```
 
 ### Viewing logs
 
-In an upcoming release, the `--follow` flag will allow you to view the cluster
-logs as they are generated.
+`--follow` flag allows you to view the cluster logs as they are generated.
+
+```bash
+# Tail logs for the given node
+storageos logs --follow storageos-1-19426
+
+# Tail log for all nodes
+storageos logs --follow
+```
+
+

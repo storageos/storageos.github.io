@@ -7,40 +7,76 @@ module: operations/maintenance
 
 # Maintenance
 
-## Node drain
+## Add a node
 
-It is recommended to drain a node before any maintenance operation. Executing a node drain will move any active volumes from the node and re-schedule them on other nodes in a cluster.
+Nodes may be added to a cluster by running the StorageOS container with `JOIN`
+set to the IP address of one of the nodes.
+
+## Upgrade a node
+
+### 1. Drain volumes from the node
+
+```bash
+$ storageos node drain node01
+```
+
+This evicts any active volumes as follows:
+
+1. If there are no replicas, create a new replica.
+2. Promote a replica to master.
+3. Switch the original master to become a replica.
+4. Relocate the original master to a different node (or remove it if a new replica was created in step 1).
+
+If StorageOS cannot create a replica in step 1 (eg. because there are no
+available nodes or because placement is restricted by a node selector or rule),
+the original master volume will remain in the drained node. When a new eligible
+node is added to the cluster, the volume will be moved automatically.
+
 This operation will take longer for large volumes.
 
-You can either [cordon or drain](/docs/reference/cli/node) a node using the [StorageOS cli](/docs/reference/cli/index). 
+Draining a node will not cause downtime. Any volume mounted in that
+specific node will be evicted but still hold the StorageOS mount, making the
+data transparently available to the client.
 
-A `storageos node cordon` will avoid any new volumes to be hosted in that node. On the other hand, a `storageos node drain` will evict all volumes from the node and will prevent any new volumes to be hosted, as well.
+Finally, draining nodes will also prevent new volumes from being scheduled to the
+node (as with `storageos node cordon`).
 
+### 2. Kill the container
 
-####  Hosting primary volumes with replication enabled:
+```bash
+docker kill storageos
+```
 
-- Existing replicas will be promoted in different nodes
-- The previous primary will become a replica. 
-- The replica is relocated to a different node
+### 3. Restart the StorageOS node container with the new version
 
-#### Hosting primary volumes with replication *not enabled*:
+```bash
+docker run -d --name storageos \
+    -e HOSTNAME \
+    -e ADVERTISE_IP=10.26.2.5 \
+    -e JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f \
+    --pid=host \
+    --network=host \
+    --privileged \
+    --cap-add SYS_ADMIN \
+    --device /dev/fuse \
+    -v /sys:/sys \
+    -v /var/lib/storageos:/var/lib/storageos:rshared \
+    -v /run/docker/plugins:/run/docker/plugins \
+    storageos/node:1.0.0-rc2 server
+```
 
-- A replica will be created in a different available node 
-- The new replica will be promoted to primary
-- The old primary volume will be removed
+See
 
+### 4. Undrain the node
 
-#### If there are no available nodes free
+```bash
+$ storageos node undrain node01
+```
 
-There are a variety of reasons why a volume cannot be hosted by a node. For instance, because there are rules in place that define restrictions of location, or because the amount of replicas +1 match the amount of nodes in the cluster.
+## Removing nodes
 
-- A replica will be promoted to primary 
-- The old primary will become a replica
-- The replica will remain in the drained node till a free node becomes available
-
-
-If you find yourself in the situation where the volumes can't be relocated, you can add one or more nodes to the StorageOS cluster. By doing so, the volumes will be moved automatically as soon as they become available. While a node is in a drain state, it will keep trying to evict all its volumes. 
-You can stop an eviction process by undraining the node.
-
->Performing a node drain will not remove the StorageOS mounts living in that node. 
->Any volume mounted in that specific node will be evicted but still hold the StorageOS mount making the data transparently available to the client, with zero downtime.
+It is currently not possible for a node to leave the cluster completely. If the
+StorageOS container is stopped and/or removed from a node then the node will be
+detected as failed and it will be marked offline, but there is no way to remove
+the node from the list. `storageos node rm` will be added to remove the node
+from the cluster.

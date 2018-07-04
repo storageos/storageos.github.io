@@ -9,10 +9,6 @@ sections:
     description: Monitoring
     module: operations/monitoring
   -
-    title: Upgrading a cluster
-    description: Upgrading a cluster
-    module: operations/upgrades
-  -
     title: Maintenance
     description: Node maintenance
     module: operations/maintenance

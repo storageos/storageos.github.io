@@ -15,7 +15,7 @@ be replicated to protect against node failure.
 At its core, StorageOS provides block storage.  You may choose the filesystem
 type to install to make devices usable from within containers.
 
-[**Try it in your browser for up to one hour >>**](https://my.storageos.com/main/tutorial/k8s-sandbox)
+[**Try it in your browser for up to one hour >>**](https://play.storageos.com/k8s-sandbox)
 
 ## Prerequisites
 

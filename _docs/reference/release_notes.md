@@ -44,7 +44,7 @@ If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
 
-## 1.0.0-rc3
+## 1.0.0-rc2
 
 Single fix to address provisioning issue in Amazon AWS.
 
@@ -589,4 +589,3 @@ growing suite of platforms and usage scenarios.
 ## 0.7.3 and earlier
 
 - Unreleased private betas
-

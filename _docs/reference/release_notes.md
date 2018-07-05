@@ -62,8 +62,7 @@ Multiple improvements based on customer feedback.
   stuck in pending state if the scheduler loses state (e.g. from a restart)
   while the operation is in progress.  Now the operation is idempotent and will
   be retried until successful.
-- Volume placement now distributes volumes across nodes more evenly by taking
-  available capacity (not just total) into account in node ranking decisions.
+- Volume placement now distributes volumes across nodes more evenly.
 - CSI version 0.3 (latest) is now fully supported.  Additionally, improvements
   to CSI include how the default filesystem is determined, read-only mounts, and
   better checking for volume capabilities.

@@ -44,6 +44,49 @@ If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
 
+## 1.0.0-rc3
+
+Multiple improvements based on customer feedback.
+
+### New
+
+- StorageOS can now be installed alongside other storage products that make use
+  of the Linux SCSI Target driver.
+- The CLI now checks for version compatibility with the API.
+
+
+### Improved
+
+- Volume deletion now uses the scheduler's desired state processing rather than
+  the previous imperative operation.  This fixes an issue where deletes could be
+  stuck in pending state if the scheduler loses state (e.g. from a restart)
+  while the operation is in progress.  Now the operation is idempotent and will
+  be retried until successful.
+- Volume placement now distributes volumes across nodes more evenly by taking
+  available capacity (not just total) into account in node ranking decisions.
+- CSI version 0.3 (latest) is now fully supported.  Additionally, improvements
+  to CSI include how the default filesystem is determined, read-only mounts, and
+  better checking for volume capabilities.
+- Internal communication now times out after 5 seconds instead of 60.  This
+  allows retry or recovery steps to initiate much quicker than before.  This 
+  timeout only affects inter-process communication on the same host, not over
+  the network to remote hosts.
+- Added a "degraded" state to the internal health monitoring.  This allows a
+  recovery period before marking a node offline, which then triggers a restart.
+  This improves stability when the KV store (internal or external) is undergoing
+  a leadership change.
+- Minor improvements to the UI notifications and error messages.
+
+### Fixed
+
+- Online device resizing now works with SCSI devices.  Note that `resize2fs`
+  still needs to be run manually on the filesystem, and we are working on making
+  this step automated.
+- When deleting data from a volume, some metadata was not always being removed.
+  This meant that volumes with frequently changing data could use more capacity
+  than allocated.
+
+
 ## 1.0.0-rc2
 
 Single fix to address provisioning issue in Amazon AWS.

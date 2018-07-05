@@ -10,9 +10,9 @@ module: reference/release_notes
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
-The latest tagged release is `1.0.0-rc2`, available from the
+The latest tagged release is `1.0.0-rc3`, available from the
 [Docker Hub](https://hub.docker.com/r/storageos/node/) as
-`storageos/node:1.0.0-rc2`, or via the
+`storageos/node:1.0.0-rc3`, or via the
 [Helm Chart](https://github.com/storageos/helm-chart)
 
 The latest CLI release is `1.0.0-rc1`, available from
@@ -589,4 +589,3 @@ growing suite of platforms and usage scenarios.
 ## 0.7.3 and earlier
 
 - Unreleased private betas
-

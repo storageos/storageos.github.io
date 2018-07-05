@@ -133,7 +133,7 @@ git clone https://github.com/storageos/helm-chart.git storageos
 cd storageos
 helm install . --name storageos-test \
   --set image.repository=storageos/node \
-  --set image.tag=1.0.0-rc2 \
+  --set image.tag=1.0.0-rc3 \
   --set service.type=LoadBalancer \
   --set cluster.join="$(storageos cluster create)" \
   --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos

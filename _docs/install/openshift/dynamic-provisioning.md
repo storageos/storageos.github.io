@@ -46,7 +46,7 @@ cat > storageos-secret.yaml <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
-  name: storageos-secret
+  name: storageos-api
 type: "kubernetes.io/storageos"
 data:
   apiAddress: dGNwOi8vMTI3LjAuMC4xOjU3MDU=
@@ -56,14 +56,14 @@ EOF
 ```
 ```
 oc create -f storageos-secret.yaml
-secret "storageos-secret" created
+secret "storageos-api" created
 ```
 
 Verify the secret:
 
 ```bash
-$ oc describe secret storageos-secret
-Name:		storageos-secret
+$ oc describe secret storageos-api
+Name:		storageos-api
 Namespace:	default
 Labels:		<none>
 Annotations:	<none>
@@ -122,7 +122,7 @@ StorageOS supports the following storage class parameters:
    description: Kubernetes volume
    fsType: ext4
    adminSecretNamespace: default
-   adminSecretName: storageos-secret
+   adminSecretName: storageos-api
  ...
  EOF
  ```
@@ -140,7 +140,7 @@ StorageOS supports the following storage class parameters:
  IsDefaultClass: No
  Annotations:    <none>
  Provisioner:    kubernetes.io/storageos
- Parameters:     adminSecretName=storageos-secret,adminSecretNamespace=default,description=Kubernetes volume,fsType=ext4,pool=default
+ Parameters:     adminSecretName=storageos-api,adminSecretNamespace=default,description=Kubernetes volume,fsType=ext4,pool=default
  Events:         <none>
  ```
 
@@ -274,7 +274,7 @@ oc delete pods $(oc get pods |grep ^test-storageos |cut -d' ' -f 1)
 
 oc delete pvc pvc0001 fast0001
 oc delete pv pv0001
-oc delete secret storageos-secret
+oc delete secret storageos-api
 oc delete storageclass fast
 ```
 

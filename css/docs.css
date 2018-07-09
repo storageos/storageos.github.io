@@ -4,7 +4,7 @@
     transition: 0.3s;
 }
 .guide-list > ul {
-	padding-left: 20px;
+	padding-left: 0px;
 }
 .section-list > ul {
 	padding-left: 10px;
@@ -19,8 +19,8 @@
 .guide-list .guide-link.title:before {
     content: "";
     position: absolute;
-    top: 11px;
-    left: 0px;
+    top: 14px;
+    left: 5px;
     border-style: solid;
     border-width: 5px 0 5px 8px;
     border-color: transparent transparent transparent #b5e61e;
@@ -39,8 +39,8 @@
 
 
 .page-content {
-  padding-top:150px;
-  margin-bottom: 30px;
+  padding-top:60px;
+  margin-bottom: 60px;
 }
 
 .guides {
@@ -48,15 +48,19 @@
 }
 
 h1 {
-  margin-bottom: 10px;
-  font-weight: 500;
-  color: #4c5164;
+    color: #4a5165;
+    font-size: 35px;
+    font-weight: 700;
+    margin-bottom: 30px;
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: 300;
-  margin: 25px 0 10px;
+    color: #4c5164;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    line-height: 38px;
 }
 
 h3 {
@@ -94,9 +98,13 @@ pre {
 }
 
 .header-docs-link {
-  font-size: 24px;
-  font-weight: 600;
-  padding-left: 42px;
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 42px;
+    text-transform: uppercase;
+    letter-spacing: 0.52em;
+    position: relative;
+    top: -24px;
 }
 
 code {

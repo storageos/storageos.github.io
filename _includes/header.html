@@ -1,43 +1,47 @@
 <header>
 	<section class="logo-menu">
-		<nav class="navbar navbar-default navbar-fixed-top">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					        <span class="sr-only">Toggle navigation</span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-					        <span class="icon-bar"></span>
-				      	</button>
-					<div class="logo-tag">
-						<a href="https://storageos.com/" class="custom-logo-link" rel="home" itemprop="url"><img width="276" height="45" src="https://storageos.com/wp-content/themes/storageOS/images/logo.svg" class="custom-logo" alt="" itemprop="logo" /></a>
-						<a href="/" class="header-docs-link">Documentation</a>
-					</div>
-				</div>
+			<div id="header">
+       <div class="container">
+         <div class="navbar-header">
+					 <button class="guides-button" data-toggle="collapse" data-target="#guides-panel">
+					 <i class="fa fa-list"></i>
+				 </button>
+					 <a class="navbar-brand navbar-brand" href="">
+             <img src="https://storageos.com/wp-content/themes/storageOS/images/logo_docs_new.svg" role="presentation">
+           </a>
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+           </button>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+           <ul class="nav navbar-nav">
+             <li role="presentation" class="has-children"><a href="#">Product <span class="caret"></span></a>
+             	<ul>
+                   	<li><a href="https://storageos.com/product" target="_blank">Overview</a></li>
+                     <li><a href="https://storageos.com/features" target="_blank">Features</a></li>
+                     <li><a href="https://storageos.com/use-cases" target="_blank">Use cases</a></li>
+                   </ul>
+             </li>
+             <li role="presentation" class=""><a href="https://storageos.com/pricing/" target="_blank">Pricing</a></li>
+             <li role="presentation" class=""><a href="https://docs.storageos.com/" target="_blank">Docs</a></li>
+             <li role="presentation" class=""><a href="https://storageos.com/company/" target="_blank">Company</a></li>
+             <li role="presentation" class="has-children"><a href="#">Learn <span class="caret"></span></a>
+             	<ul>
+                   	<li><a href="https://storageos.com/blog/" target="_blank">Blog</a></li>
+                     <li><a href="https://storageos.com/resources/" target="_blank">Resources</a></li>
+                   </ul></li>
+           <li role="presentation" class=""><a href="https://my.storageos.com/sign-in" target="_blank">Login</a></li>
+            <li role="presentation" class=""><a href="https://docs.storageos.com/docs/install/quickstart" target="_blank">Quick Start</a></li>
+           </ul>
 
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-					<div class="menu-primary-navigation-container">
-						<ul id="menu-primary-navigation" class="nav navbar-nav navbar-right">
-							<li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a title="Product" href="https://storageos.com/product/" data-ps2id-api="true">Product</a></li>
-							<li id="menu-item-44" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-44"><a title="Pricing" href="https://storageos.com/pricing/" data-ps2id-api="true">Pricing</a></li>
-							<li id="menu-item-50" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-50"><a title="Docs" href="/" data-ps2id-api="true">Docs</a></li>
-							<li id="menu-item-46" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46"><a title="Company" href="https://storageos.com/company/" data-ps2id-api="true">Company</a></li>
-							<li id="menu-item-48" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-48"><a title="Blog" href="https://storageos.com/blog/" data-ps2id-api="true">Blog</a></li>
-							<li id="menu-item-52" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-52"><a title="Login" href="https://my.storageos.com/" data-ps2id-api="true">Login</a></li>
-							<li id="menu-item-51" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-51"><a title="Quick Start" href="/docs/install/quickstart" data-ps2id-api="true">Quick Start</a></li>
-						</ul>
-					</div>
-
-
-
-				</div>
-				<!-- /.end of collaspe navbar-collaspe -->
-			</div>
+         </div>
+       </div>
+     </div>
 			<!-- /.end of container -->
-		</nav>
+
 	</section>
 	<!-- /.end of section -->
 </header>

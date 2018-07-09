@@ -15,7 +15,7 @@ The latest tagged release is `1.0.0-rc3`, available from the
 `storageos/node:1.0.0-rc3`, or via the
 [Helm Chart](https://github.com/storageos/helm-chart)
 
-The latest CLI release is `1.0.0-rc1`, available from
+The latest CLI release is `1.0.0-rc2`, available from
 [Github](https://github.com/storageos/go-cli/releases)
 
 ## Upgrades

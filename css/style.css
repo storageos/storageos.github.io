@@ -1627,7 +1627,9 @@ a.readmore {
 
 .guides-button {display: none;}
 .guide-list ul li a {color: #4a5165;}
-
+.guides {
+display: block; height: 100%!important;
+}
 @media (min-width: 960px) {
 
 	 ul.nav li ul {position: absolute; z-index: 9999; width: 100%; padding-left: 0; background-color: #fff; border: 1px solid #ddd; min-width: 160px; display: none; margin-left: 0;}
@@ -1745,7 +1747,7 @@ a.readmore {
 position: fixed;
 background: #fff;
 width: 300px;
-height: 100%;
+height: 100%!important;
 z-index: 999;
 top: 75px;
 display: none;

@@ -39,7 +39,7 @@
 
 
 .page-content {
-  padding-top:60px;
+  padding-top:0px;
   margin-bottom: 60px;
 }
 
@@ -48,10 +48,11 @@
 }
 
 h1 {
-    color: #4a5165;
-    font-size: 35px;
-    font-weight: 700;
+    color: #4a5165!Important;
+    font-size: 35px!important;
+    font-weight: 700!important;
     margin-bottom: 30px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 h2 {
@@ -61,31 +62,39 @@ h2 {
     margin-bottom: 10px;
     margin-top: 30px;
     line-height: 38px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 h3 {
   font-size: 18px;
   font-weight: 400;
   margin: 25px 0 10px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
+
+h5 {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;}
 
 p {
   margin-bottom: 0.5em;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 li {
   font-size: 16px;
   padding-top: 5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 p a {
   font-weight: 300;
   text-decoration: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
-
+span {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;}
 pre {
-  margin-top: 10px;
+  margin-top: 10px; font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;
 }
+pre span {font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;}
 
 .content a {
   color: #55af00;

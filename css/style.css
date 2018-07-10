@@ -1321,7 +1321,7 @@ a:active {
 .page-content,
 .entry-content,
 .entry-summary {
-    margin: 1.5em 0 0;
+    margin: 0 0 0;
 }
 .page-links {
     clear: both;
@@ -1630,6 +1630,10 @@ a.readmore {
 .guides {
 display: block; height: 100%!important;
 }
+#side-menu {margin-top: 60px;}
+
+.content {margin-top: 60px;}
+
 @media (min-width: 960px) {
 
 	 ul.nav li ul {position: absolute; z-index: 9999; width: 100%; padding-left: 0; background-color: #fff; border: 1px solid #ddd; min-width: 160px; display: none; margin-left: 0;}
@@ -1646,6 +1650,11 @@ display: block; height: 100%!important;
 
 	 }
 @media (max-width: 959px) {
+
+  .page-content {
+    padding-top: 120px!important;
+    margin-bottom: 60px;
+}
     #header {
       height: auto;
       padding: 0;
@@ -1654,7 +1663,7 @@ display: block; height: 100%!important;
       padding: 0;
       overflow: initial;
       box-shadow: none;
-      margin: 0;
+      margin: 70px 0 0 0;
     }
     #header .navbar-nav {
       margin-bottom: 10px;
@@ -1677,7 +1686,8 @@ display: block; height: 100%!important;
     width: 100%;
     background: #fff;
     z-index: 9999;
-    border-bottom: 1px solid #ddd; left: 0;
+    border-bottom: 1px solid #ddd; margin-left: -15px;
+    margin-right: -15px;
     }
     #header .navbar-left,.navbar-right {
       float: none !important;
@@ -1685,6 +1695,7 @@ display: block; height: 100%!important;
     #header .navbar-toggle {
       display: block;
       margin-top: 20px;
+      margin-right: 10px;
     }
     #header .navbar-fixed-top {
       top: 0;
@@ -1755,7 +1766,7 @@ border-right: 1px solid #ddd;
 overflow-x: auto; padding-bottom:  100px;
 }
 .guides-button {position: absolute;
-left: 20px;
+left: 10px;
 top: 25px;
 background: none!important; border:  none; display: block;}
 
@@ -1769,7 +1780,7 @@ background: none!important; border:  none; display: block;}
 
     font-weight: 100;
 }
-.content {width: 100%;}
+.content {width: 100%; margin-top:  0;}
 
 }
 @media (max-width: 640px) {

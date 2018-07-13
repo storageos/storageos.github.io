@@ -268,9 +268,10 @@ h6 {
     clear: both;
 }
 p {
-    font-size: 16px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 32px;
     margin-bottom: 1.5em;
+    font-weight: 300;
 }
 dfn,
 cite,
@@ -602,12 +603,12 @@ footer h3 {color: #ACADB5!important; font-weight: bold; font-size: 2em; border-b
     color: #fff;
     font-size: 16px;
     line-height: 1.9;
-    font-weight: 500;
+    font-weight: 400;
 }
 #footer ul.pages li a {
     color: #fff;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
 }
 #footer ul.pages li {
     padding: 5px 0;
@@ -1527,7 +1528,7 @@ a.readmore {
 }
 
 .container {
-    max-width: 1300px;
+    max-width: 1344px;
     width: 100%;
 }
 
@@ -1637,7 +1638,8 @@ display: block; height: 100%!important;
 @media (min-width: 960px) {
 
 	 ul.nav li ul {position: absolute; z-index: 9999; width: 100%; padding-left: 0; background-color: #fff; border: 1px solid #ddd; min-width: 160px; display: none; margin-left: 0;}
-	#header .navbar-nav li li {list-style-type: none;}
+#header .navbar-nav li {padding-top: 0;}
+  #header .navbar-nav li li {list-style-type: none;}
 	#header .navbar-nav li li a {padding: 10px;
     white-space: nowrap;
     display: block;
@@ -1647,6 +1649,10 @@ display: block; height: 100%!important;
 
 	#header .navbar-nav li li a:hover {color: #55af00; text-decoration: none;}
 	#header .navbar-nav li:hover ul {display: block}
+
+  .navbar-nav {
+      float: left;
+      margin: 0 -15px 0 0;
 
 	 }
 @media (max-width: 959px) {

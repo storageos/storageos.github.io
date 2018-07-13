@@ -13,16 +13,3 @@ layout: default
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-jQuery("#side-menu li").hover( function ( e ){
- e.preventDefault() // prevent default action - hash doesn't appear in url
- jQuery( this ).find( ".guide-child" ).toggleClass( "in" );
-});
-
-jQuery("#side-menu li li").hover( function ( e ){
- e.preventDefault() // prevent default action - hash doesn't appear in url
- jQuery( this ).find( ".guide-child-two" ).toggleClass( "in" );
-});
-
-</script>

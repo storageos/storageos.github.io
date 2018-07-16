@@ -4,7 +4,7 @@
     transition: 0.3s;
 }
 .guide-list > ul {
-	padding-left: 20px;
+	padding-left: 0px;
 }
 .section-list > ul {
 	padding-left: 10px;
@@ -13,14 +13,16 @@
 	list-style: none;
 }
 .guide-list ul li a {
-	padding: 7.5px 10px 7.5px 20px;
-	display: block;
+    padding: 7.5px 10px 7.5px 20px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
 }
 .guide-list .guide-link.title:before {
     content: "";
     position: absolute;
-    top: 11px;
-    left: 0px;
+    top: 14px;
+    left: 5px;
     border-style: solid;
     border-width: 5px 0 5px 8px;
     border-color: transparent transparent transparent #b5e61e;
@@ -39,8 +41,8 @@
 
 
 .page-content {
-  padding-top:150px;
-  margin-bottom: 30px;
+  padding-top:0px;
+  margin-bottom: 60px;
 }
 
 .guides {
@@ -48,39 +50,54 @@
 }
 
 h1 {
-  margin-bottom: 10px;
-  font-weight: 500;
+    color: #4a5165!Important;
+    font-size: 35px!important;
+    font-weight: 700!important;
+    margin-bottom: 30px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 h2 {
-  font-size: 28px;
-  font-weight: 300;
-  margin: 25px 0 10px;
+    color: #4c5164;
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    line-height: 38px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 h3 {
   font-size: 18px;
   font-weight: 400;
   margin: 25px 0 10px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
+
+h5 {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;}
 
 p {
   margin-bottom: 0.5em;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 li {
-  font-size: 16px;
+  font-size: 20px;
   padding-top: 5px;
+  font-weight: 300;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
 
 p a {
   font-weight: 300;
   text-decoration: none;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;
 }
-
+span {font-family: "Helvetica Neue",Helvetica,Arial,sans-serif!important;}
 pre {
-  margin-top: 10px;
+  margin-top: 10px; font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;
 }
+pre span {font-family: Menlo,Monaco,Consolas,"Courier New",monospace!important;}
 
 .content a {
   color: #55af00;
@@ -93,9 +110,13 @@ pre {
 }
 
 .header-docs-link {
-  font-size: 24px;
-  font-weight: 600;
-  padding-left: 42px;
+    font-size: 12px;
+    font-weight: 400;
+    padding-left: 42px;
+    text-transform: uppercase;
+    letter-spacing: 0.52em;
+    position: relative;
+    top: -24px;
 }
 
 code {

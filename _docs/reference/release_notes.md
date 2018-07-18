@@ -44,6 +44,43 @@ If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
 
+## 1.0.0-rc4
+
+Multiple bug fixes and improvements, and improved shutdown handling.
+
+### New
+
+- Available capacity is now used in volume placement decisions.  This should
+  allow for a more even distribution of capacity across the cluster, especially
+  in clusters with large volumes.
+- Licenses can now be applied from the Web UI.
+
+
+### Improved
+
+- The shutdown process has been improved within the data plane, speeding up
+  the removal of devices and reducing the risk that the container runtime or 
+  orchestrator will forcefully stop StorageOS.
+- IO operations on volumes being deleted now return a fatal error so that the
+  operation is not retried and can fail immediately.
+- During node filtering for volume scheduling decisions, it was possible to
+  return duplicate nodes as candidates for the volume placement.  This resulted
+  in slightly unbalanced placement across the cluster.
+- Volume replica removal didn't prioritise syncing volumes over healthy.  This
+  meant that a fully-synced replica might be removed instead of one that is not
+  yet synced, in cases where the number of replicas was increased and then 
+  immediately reduced.
+- Log verbosity has been reduced at info level.  Set `LOG_LEVEL=debug` for more
+  verbose logging.
+
+### Fixed
+
+- UI labels overlapped when window resized in Firefox.
+- You can now provision the licenced amount, rather than up to the licenced
+  amount fixing: "cannot provision volume with size 999 GB, currently 
+  provisioned: 1 GB, licenced: 1000 GB".
+
+
 ## 1.0.0-rc3
 
 Multiple improvements based on customer feedback.
@@ -67,7 +104,7 @@ Multiple improvements based on customer feedback.
   to CSI include how the default filesystem is determined, read-only mounts, and
   better checking for volume capabilities.
 - Internal communication now times out after 5 seconds instead of 60.  This
-  allows retry or recovery steps to initiate much quicker than before.  This 
+  allows retry or recovery steps to initiate much quicker than before.  This
   timeout only affects inter-process communication on the same host, not over
   the network to remote hosts.
 - Added a "degraded" state to the internal health monitoring.  This allows a
@@ -75,6 +112,7 @@ Multiple improvements based on customer feedback.
   This improves stability when the KV store (internal or external) is undergoing
   a leadership change.
 - Minor improvements to the UI notifications and error messages.
+- Upgraded controlplane compiler to Golang 10.0.3 (from 1.9.1).
 
 ### Fixed
 

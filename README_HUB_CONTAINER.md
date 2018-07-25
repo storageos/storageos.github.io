@@ -61,11 +61,11 @@ To get the most out of StorageOS, try:
 
 ### Docker Version
 
-The container installation method requires Docker 1.10+. For Docker 1.13+ most users should use the [managed plugin install](../plugin) method.
+The container installation method requires Docker 1.10+.
 
 ## Installation
 
-The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
+The node container should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
 ### Run the StorageOS node container
 
@@ -89,7 +89,7 @@ $ docker run -d --name storageos \
     storageos/node:0.10.0 server
 ```
 
-Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
+Other configuration parameters (see Configuration Reference below) may be set in a similar way.
 
 ## Configuration Parameters
 

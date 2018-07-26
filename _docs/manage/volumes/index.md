@@ -33,7 +33,7 @@ options and control.
 ## Using the Docker CLI
 
 >**The Docker CLI does not support namespaced volumes** so all volumes created using
-the Docker CLI must be in the `default` namepsace.
+the Docker CLI must be in the `default` namespace.
 
 To create a 15GB volume, run:
 ```bash
@@ -150,4 +150,4 @@ country in (US, CA)
 country notin (UK)
 ```
 
-Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors. 
+Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors.

@@ -35,7 +35,7 @@ $ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc3 server
+    storageos/node:1.0.0-rc4 server
 ```
 
 To provision a new `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).

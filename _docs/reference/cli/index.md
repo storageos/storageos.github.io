@@ -28,7 +28,7 @@ password `storageos`:
 # Use environment variables
 export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 
-# Authenticate to remote host
+# Access StorageOS running on a remote host by providing the IP address
 export STORAGEOS_HOST=10.1.5.249
 ```
 

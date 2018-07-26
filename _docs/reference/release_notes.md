@@ -59,7 +59,7 @@ Multiple bug fixes and improvements, and improved shutdown handling.
 ### Improved
 
 - The shutdown process has been improved within the data plane, speeding up
-  the removal of devices and reducing the risk that the container runtime or 
+  the removal of devices and reducing the risk that the container runtime or
   orchestrator will forcefully stop StorageOS.
 - IO operations on volumes being deleted now return a fatal error so that the
   operation is not retried and can fail immediately.
@@ -68,7 +68,7 @@ Multiple bug fixes and improvements, and improved shutdown handling.
   in slightly unbalanced placement across the cluster.
 - Volume replica removal didn't prioritise syncing volumes over healthy.  This
   meant that a fully-synced replica might be removed instead of one that is not
-  yet synced, in cases where the number of replicas was increased and then 
+  yet synced, in cases where the number of replicas was increased and then
   immediately reduced.
 - Log verbosity has been reduced at info level.  Set `LOG_LEVEL=debug` for more
   verbose logging.
@@ -77,7 +77,7 @@ Multiple bug fixes and improvements, and improved shutdown handling.
 
 - UI labels overlapped when window resized in Firefox.
 - You can now provision the licenced amount, rather than up to the licenced
-  amount fixing: "cannot provision volume with size 999 GB, currently 
+  amount fixing: "cannot provision volume with size 999 GB, currently
   provisioned: 1 GB, licenced: 1000 GB".
 
 

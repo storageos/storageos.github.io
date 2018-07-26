@@ -32,7 +32,7 @@ You will need an OpenShift cluster with Beta APIs enabled.
    # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
    # you can enable mount propagation by overriding the MountFlag argument
    mkdir -p /etc/systemd/system/docker.service.d/
-   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagation_flags.conf
    [Service]
    MountFlags=shared
    EOF

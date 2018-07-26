@@ -31,7 +31,7 @@ $ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc3 server
+    storageos/node:1.0.0-rc4 server
 ```
 
 ## Use StorageOS

@@ -14,10 +14,11 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/reference/cli/index>.
 
+Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
 $ JOIN=$(storageos cluster create)
 $ docker run -d --name storageos \
     -e HOSTNAME \
@@ -86,7 +87,7 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc4 server
 ```
 
 Other configuration parameters (see Configuration Reference below) may be set in a similar way.

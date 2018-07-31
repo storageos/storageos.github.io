@@ -7,7 +7,7 @@ module: introduction/tutorials
 
 # Interactive tutorials
 
-[Our interactive tutorials](http://play.storageos.com) provide you with a
+[Our interactive tutorials](https://play.storageos.com/main) provide you with a
 pre-configured StorageOS cluster, accessible from your browser without any
 downloads or configuration.
 

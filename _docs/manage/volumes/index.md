@@ -33,7 +33,7 @@ options and control.
 ## Using the Docker CLI
 
 >**The Docker CLI does not support namespaced volumes** so all volumes created using
-the Docker CLI must be in the `default` namepsace.
+the Docker CLI must be in the `default` namespace.
 
 To create a 15GB volume, run:
 ```bash
@@ -69,8 +69,8 @@ To view all volumes in all namespaces, run:
 
 ```bash
 $ storageos volume ls
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
-default/volume-name   15GB                                                        active              0/0
+NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
+default/volume-name  15GB                   active  0/0       storageos-1 (healthy)
 ```
 
 To mount a volume on the current node into `/mnt`, run (note this requires root):
@@ -150,4 +150,4 @@ country in (US, CA)
 country notin (UK)
 ```
 
-Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors. 
+Since StorageOS selectors are similar to Kubernetes selectors, please check out documentation available there: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors.

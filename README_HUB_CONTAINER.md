@@ -14,10 +14,11 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/reference/cli/index>.
 
+Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
+
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
 ```bash
-$ sudo modprobe nbd nbds_max=1024
 $ JOIN=$(storageos cluster create)
 $ docker run -d --name storageos \
     -e HOSTNAME \
@@ -31,7 +32,7 @@ $ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc2 server
+    storageos/node:1.0.0-rc4 server
 ```
 
 ## Use StorageOS
@@ -52,7 +53,7 @@ sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/r
 
 To get the most out of StorageOS, try:
 
-1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli.html>
+1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli/index>
 1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
 1. Fail containers to other nodes, or enable replication and fail Docker nodes.
 
@@ -61,11 +62,11 @@ To get the most out of StorageOS, try:
 
 ### Docker Version
 
-The container installation method requires Docker 1.10+. For Docker 1.13+ most users should use the [managed plugin install](../plugin) method.
+The container installation method requires Docker 1.10+.
 
 ## Installation
 
-The node container (or plugin) should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
+The node container should be installed on each Docker node where you want to consume StorageOS volumes or to present capacity to other nodes.
 
 ### Run the StorageOS node container
 
@@ -86,10 +87,10 @@ $ docker run -d --name storageos \
     --device /dev/fuse \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:0.10.0 server
+    storageos/node:1.0.0-rc4 server
 ```
 
-Other configuration parameters (see Configuration Reference below) may be set in a similar way. For most environments, only the KV_ADDR will need to be set if Consul is not running locally on the node.
+Other configuration parameters (see Configuration Reference below) may be set in a similar way.
 
 ## Configuration Parameters
 

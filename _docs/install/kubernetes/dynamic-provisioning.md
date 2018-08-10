@@ -46,7 +46,7 @@ cat > storageos-secret.yaml <<EOF
 apiVersion: v1
 kind: Secret
 metadata:
-  name: storageos-secret
+  name: storageos-api
 type: "kubernetes.io/storageos"
 data:
   apiAddress: dGNwOi8vMTI3LjAuMC4xOjU3MDU=
@@ -56,15 +56,15 @@ EOF
 ```
 ```
 kubectl create -f storageos-secret.yaml
-secret "storageos-secret" created
+secret "storageos-api" created
 ```
 
 
 Verify the secret:
 
 ```bash
-kubectl describe secret storageos-secret
-Name:		storageos-secret
+kubectl describe secret storageos-api
+Name:		storageos-api
 Namespace:	default
 Labels:		<none>
 Annotations:	<none>
@@ -124,7 +124,7 @@ parameters:
   description: Kubernetes volume
   fsType: ext4
   adminSecretNamespace: default
-  adminSecretName: storageos-secret
+  adminSecretName: storageos-api
 EOF
 ```
 

@@ -57,9 +57,9 @@ To list the policies on the system, run:
 
 ```bash
 $ storageos policy ls
-ID                                     USER                GROUP               NAMESPACE
-9fb096af-0a16-d1d2-5416-b637f0194b3f                       developers          staging
-f1e33492-aa9b-3922-7824-383941d37a5d                       testers             staging
+ID                                    USER  GROUP       NAMESPACE
+9fb096af-0a16-d1d2-5416-b637f0194b3f        developers  staging
+f1e33492-aa9b-3922-7824-383941d37a5d        testers     staging
 ```
 
 ### `storageos policy rm`
@@ -74,8 +74,8 @@ The policy is now deleted.
 
 ```bash
 $ storageos policy ls
-ID                                     USER                GROUP               NAMESPACE
-f1e33492-aa9b-3922-7824-383941d37a5d                       testers             staging
+ID                                    USER  GROUP    NAMESPACE
+f1e33492-aa9b-3922-7824-383941d37a5d        testers  staging
 ```
 
 >**Note**: The ID used is the policy ID as displayed in `storageos policy ls`

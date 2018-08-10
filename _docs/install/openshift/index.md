@@ -16,7 +16,7 @@ type to install to make devices usable from within containers.
 
 For OpenShift 3.7, you can [install the container directly in Docker]({%link _docs/install/docker/index.md %}) and follow the instructions of [Dynamic Provisioning]({%link _docs/install/openshift/dynamic-provisioning.md %}) to create the StorageOS secret and StorageClass.
 
-## Prerequisites for Openshfit 3.9
+## Prerequisites for OpenShift 3.9
 
 You will need an OpenShift cluster with Beta APIs enabled.
 
@@ -32,7 +32,7 @@ You will need an OpenShift cluster with Beta APIs enabled.
    # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
    # you can enable mount propagation by overriding the MountFlag argument
    mkdir -p /etc/systemd/system/docker.service.d/
-   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagation_flags.conf
    [Service]
    MountFlags=shared
    EOF

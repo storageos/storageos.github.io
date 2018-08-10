@@ -37,9 +37,9 @@ Passwords must not be < 8 characters long.
 
 ```bash
 $ storageos user ls
-ID                                     USERNAME            GROUPS              ROLE
-16965f92-7633-f1b4-700b-9b05b4a85ae5   awesomeUser         test,dev            user
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
+ID                                    USERNAME     GROUPS    ROLE
+16965f92-7633-f1b4-700b-9b05b4a85ae5  awesomeUser  test,dev  user
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos              admin
 ```
 
 ## Remove users
@@ -48,11 +48,11 @@ Users can be deleted using the `storageos user rm` command. Multiple users can b
 
 ```bash
 $ storageos user ls
-ID                                     USERNAME            GROUPS              ROLE
-7add322d-806c-09a4-65ce-103e9c8c4701   removeMe1                               user
-0ff5f0d2-8fad-745c-f917-662f740019cc   removeMe2                               user
-234e09d2-12bd-b8b8-db54-efb73c53fdb8   removeMe3                               user
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
+ID                                    USERNAME   GROUPS  ROLE
+7add322d-806c-09a4-65ce-103e9c8c4701  removeMe1          user
+0ff5f0d2-8fad-745c-f917-662f740019cc  removeMe2          user
+234e09d2-12bd-b8b8-db54-efb73c53fdb8  removeMe3          user
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos          admin
 
 $ storageos user rm removeMe1 removeMe2 234e09d2-12bd-b8b8-db54-efb73c53fdb8
 removeMe1
@@ -60,8 +60,8 @@ removeMe2
 234e09d2-12bd-b8b8-db54-efb73c53fdb8
 
 $ storageos user ls
-ID                                     USERNAME            GROUPS              ROLE
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
+ID                                    USERNAME   GROUPS  ROLE
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos          admin
 ```
 
 ## Update a user
@@ -71,18 +71,18 @@ The following example updates a user's password, adds them to the group "testers
 
 ```bash
 $ storageos user ls
-ID                                     USERNAME            GROUPS              ROLE
-e367ccf0-240d-538f-540f-5013784b5665   awesomeUser         dev                 user
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
+ID                                    USERNAME     GROUPS  ROLE
+e367ccf0-240d-538f-540f-5013784b5665  awesomeUser  dev     user
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos            admin
 
 $ storageos user update --password --add-groups testers --remove-groups dev awesomeUser
 Password:
 Confirm Password:
 
 $ storageos user ls
-ID                                     USERNAME            GROUPS              ROLE
-e367ccf0-240d-538f-540f-5013784b5665   awesomeUser         testers             user
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                               admin
+ID                                    USERNAME     GROUPS   ROLE
+e367ccf0-240d-538f-540f-5013784b5665  awesomeUser  testers  user
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos             admin
 ```
 
 >**Note**: In this case the `--password` flag is a boolean used to indicate that you wish to update the user's password.

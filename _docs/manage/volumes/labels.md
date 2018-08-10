@@ -92,8 +92,8 @@ volumes.
 
 ```bash
 $ storageos volume ls --selector=env=dev
-NAMESPACE/NAME        SIZE                MOUNTED BY          MOUNTPOINT          STATUS              REPLICAS
-default/volume-name   5GB                                                         active              0/0
+NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
+default/volume-name  5GB                    active  0/0       storageos-1 (healthy)
 ```
 
 However on rules, selectors define the conditions for triggering a rule. This

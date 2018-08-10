@@ -10,12 +10,12 @@ module: reference/release_notes
 We recommend always using "tagged" versions of StorageOS rather than "latest",
 and to perform upgrades only after reading the release notes.
 
-The latest tagged release is `1.0.0-rc2`, available from the
+The latest tagged release is `1.0.0-rc4`, available from the
 [Docker Hub](https://hub.docker.com/r/storageos/node/) as
-`storageos/node:1.0.0-rc2`, or via the
+`storageos/node:1.0.0-rc4`, or via the
 [Helm Chart](https://github.com/storageos/helm-chart)
 
-The latest CLI release is `1.0.0-rc1`, available from
+The latest CLI release is `1.0.0-rc2`, available from
 [Github](https://github.com/storageos/go-cli/releases)
 
 ## Upgrades
@@ -43,6 +43,86 @@ will now endeavour to allow upgrades between versions.
 If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
+
+## 1.0.0-rc4
+
+Multiple bug fixes and improvements, and improved shutdown handling.
+
+### New
+
+- Available capacity is now used in volume placement decisions.  This should
+  allow for a more even distribution of capacity across the cluster, especially
+  in clusters with large volumes.
+- Licenses can now be applied from the Web UI.
+
+
+### Improved
+
+- The shutdown process has been improved within the data plane, speeding up
+  the removal of devices and reducing the risk that the container runtime or
+  orchestrator will forcefully stop StorageOS.
+- IO operations on volumes being deleted now return a fatal error so that the
+  operation is not retried and can fail immediately.
+- During node filtering for volume scheduling decisions, it was possible to
+  return duplicate nodes as candidates for the volume placement.  This resulted
+  in slightly unbalanced placement across the cluster.
+- Volume replica removal didn't prioritise syncing volumes over healthy.  This
+  meant that a fully-synced replica might be removed instead of one that is not
+  yet synced, in cases where the number of replicas was increased and then
+  immediately reduced.
+- Log verbosity has been reduced at info level.  Set `LOG_LEVEL=debug` for more
+  verbose logging.
+
+### Fixed
+
+- UI labels overlapped when window resized in Firefox.
+- You can now provision the licenced amount, rather than up to the licenced
+  amount fixing: "cannot provision volume with size 999 GB, currently
+  provisioned: 1 GB, licenced: 1000 GB".
+
+
+## 1.0.0-rc3
+
+Multiple improvements based on customer feedback.
+
+### New
+
+- StorageOS can now be installed alongside other storage products that make use
+  of the Linux SCSI Target driver.
+- The CLI now checks for version compatibility with the API.
+
+
+### Improved
+
+- Volume deletion now uses the scheduler's desired state processing rather than
+  the previous imperative operation.  This fixes an issue where deletes could be
+  stuck in pending state if the scheduler loses state (e.g. from a restart)
+  while the operation is in progress.  Now the operation is idempotent and will
+  be retried until successful.
+- Volume placement now distributes volumes across nodes more evenly.
+- CSI version 0.3 (latest) is now fully supported.  Additionally, improvements
+  to CSI include how the default filesystem is determined, read-only mounts, and
+  better checking for volume capabilities.
+- Internal communication now times out after 5 seconds instead of 60.  This
+  allows retry or recovery steps to initiate much quicker than before.  This
+  timeout only affects inter-process communication on the same host, not over
+  the network to remote hosts.
+- Added a "degraded" state to the internal health monitoring.  This allows a
+  recovery period before marking a node offline, which then triggers a restart.
+  This improves stability when the KV store (internal or external) is undergoing
+  a leadership change.
+- Minor improvements to the UI notifications and error messages.
+- Upgraded controlplane compiler to Golang 10.0.3 (from 1.9.1).
+
+### Fixed
+
+- Online device resizing now works with SCSI devices.  Note that `resize2fs`
+  still needs to be run manually on the filesystem, and we are working on making
+  this step automated.
+- When deleting data from a volume, some metadata was not always being removed.
+  This meant that volumes with frequently changing data could use more capacity
+  than allocated.
+
 
 ## 1.0.0-rc2
 
@@ -589,4 +669,3 @@ growing suite of platforms and usage scenarios.
 ## 0.7.3 and earlier
 
 - Unreleased private betas
-

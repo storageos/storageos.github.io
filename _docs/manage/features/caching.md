@@ -32,5 +32,3 @@ or the Docker CLI:
 $ docker volume create --driver storageos --opt size=15 --opt storageos.com/nocache=true volume-name
 volume-name
 ```
-
-To cache reads but not writes, for example when doing backups, set `nowritecache`.

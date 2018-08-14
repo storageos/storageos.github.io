@@ -5,6 +5,10 @@ anchor: operations
 
 sections:
   -
+    title: Namespaces
+    description: Namespaces
+    module: operations/namespaces
+  -
     title: Extend storage capacity
     description: Extend physical capacity
     module: operations/extend-storage

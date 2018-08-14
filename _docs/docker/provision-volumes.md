@@ -5,7 +5,7 @@ anchor: docker
 module: docker/provision-volumes
 ---
 
-## Creating volumes
+# Create volumes
 
 To use StorageOS volumes with containers, specify `--volume-driver storageos`:
 

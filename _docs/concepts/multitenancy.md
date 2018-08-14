@@ -7,30 +7,24 @@ module: concepts/multitenancy
 
 # Multitenancy
 
-Multiple users, teams or projects can share a StorageOS cluster. 
+StorageOS provides mechanisms for managing how different projects or teams share
+a StorageOS cluster.
 
+Volumes and rules are namespaced, and namespaces in Kubernetes propagate
+automatically to StorageOS namespaces.
 
+You can deprioritize the traffic on noisy applications by setting
+`storageos.com/throttle=true` on a volume. This reduces the rate of disk I/O and
+enables other applications to take priority.
 
+# Users and policies
 
-
-StorageOS provides mechanisms for managing how different projects or teams share a StorageOS cluster. Volumes and rules are namespaced.
-
-
-Namespaces help different projects or teams share a StorageOS cluster. No namespaces are created by default, and users can have any number of namespaces.
-
-Namespaces apply to volumes and rules.
-
-
-# Quality of service
-
-You can deprioritize the traffic on noisy apps by throttling ie. reducing the rate of disk I/O.
-
-
-# Users
+This section applies to Docker only; in Kubernetes deployments, you should use
+standard Kubernetes RBAC mechanisms.
 
 User accounts facilitate granular permissioning of acceptable actions within the
-system by the use of policies
-On initial startup there is only the admin `storageos` user.
+system by the use of policies. On initial startup there is only the admin
+`storageos` user.
 
 ## Admin vs User accounts
 

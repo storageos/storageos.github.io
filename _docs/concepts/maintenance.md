@@ -61,4 +61,4 @@ upgrade path between versions.
 Upgrades can be performed by restarting the StorageOS node container with the
 new version.
 
-Backups will be in a future release.
+Backups are coming soon.

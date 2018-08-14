@@ -27,7 +27,7 @@ Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
 
-See [Backups and upgrades]({%link _docs/kubernetes/backups.md %}) for commands to help
+See [Node maintenance]({%link _docs/concepts/maintenance.md %}) for commands to help
 with online migration of volumes.
 
 The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be

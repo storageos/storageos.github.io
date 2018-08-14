@@ -33,8 +33,4 @@ sections:
         title: Add and remove nodes
         description: Add and remove nodes
         module: kubernetes/addnodes
-      -
-        title: Backups and upgrades
-        description: Backups and upgrades
-        module: kubernetes/backups
 ---

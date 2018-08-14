@@ -21,8 +21,8 @@ sections:
     description: Provision StorageClasses and PVCs
     module: kubernetes/provision-volumes
   -
-    title: Run in production
-    description: Run in production
+    title: Production deployments
+    description: Production deployments
     module: kubernetes/production
     items:
       -

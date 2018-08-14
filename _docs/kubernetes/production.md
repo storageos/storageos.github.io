@@ -1,16 +1,15 @@
 ---
 layout: guide
-title: StorageOS Docs - Running in production
+title: StorageOS Docs - Production deployments
 anchor: kubernetes
 module: kubernetes/production
 ---
 
-# Run StorageOS in production
+# Production deployments
 
 ## Deploy StorageOS with an external key-value store
 
 ```bash
-# Install StorageOS as a daemonset with CSI and RBAC support
 git clone https://github.com/storageos/deploy.git storageos
 cd storageos/k8s/deploy-storageos/external-etcd
 
@@ -26,7 +25,6 @@ deploy-storageos.sh
 kubectl label node MY_NODE storageos=compute-only
 kubectl label node MY_NODE storageos=storage
 
-# Install StorageOS as a daemonset with CSI and RBAC support
 git clone https://github.com/storageos/deploy.git storageos
 cd storageos/k8s/deploy-storageos/labeled-deployment
 ./deploy-storageos.sh

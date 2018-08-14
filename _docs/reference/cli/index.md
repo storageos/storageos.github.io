@@ -3,7 +3,6 @@ layout: guide
 title: StorageOS Docs - Command line interface
 anchor: reference
 module: reference/cli
-redirect_from: /docs/prerequisites/cli
 ---
 
 # Command Line Interface

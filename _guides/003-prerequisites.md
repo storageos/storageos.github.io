@@ -9,10 +9,6 @@ sections:
     description: Overview
     module: prerequisites/overview
   -
-    title: Install CLI
-    description: Install CLI
-    module: prerequisites/cli
-  -
     title: Cluster discovery
     description: Cluster discovery
     module: prerequisites/clusterdiscovery
@@ -25,7 +21,7 @@ sections:
     description: Ports and firewall settings
     module: prerequisites/firewalls
   -
-    title: Mount Propagation
-    description: Mount propagation for docker, k8s and OpenShift
+    title: Mount propagation
+    description: Mount propagation for docker, Kubernetes and OpenShift
     module: prerequisites/mountpropagation
 ---

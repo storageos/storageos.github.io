@@ -11,9 +11,8 @@ StorageOS requires [mount
 propagation](https://kubernetes.io/docs/concepts/storage/volumes/#mount-propagation)
 in order to present devices as volumes to containers. In Kubernetes 1.8 and 1.9 you need to enable this alpha feature.
 
-* Set `--feature-gates MountPropagation=true` in the kube-apiserver and
-kube-controller-manager deployments, usually found in the master nodes under
-`/etc/kubernetes/manifests`.
+* Set `--feature-gates MountPropagation=true` in the kube-apiserver, usually found in the master nodes under
+`/etc/kubernetes/manifests/kube-apiserver.manifest`.
 * Set `KUBELET_EXTRA_ARGS=--feature-gates=MountPropagation=true` in the kubelet
 service config. For systemd, this usually is located in `/etc/systemd/system/`.
 

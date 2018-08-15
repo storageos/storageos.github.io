@@ -12,9 +12,10 @@ module: concepts/production
 StorageOS uses a key-value store to store cluster configuration. For ease of
 use, etcd is embedded into the container image.
 
-If you run Kubernetes using an external etcd cluster for high availability, you
-may choose to use the same etcd cluster for StorageOS, which may be more stable
-than using the internal embedded etcd.
+If you are already familiar with running etcd clusters, you may prefer to run
+etcd yourself. Doing so will give you greater flexibility in how and where it is
+deployed, allow custom tuning, and may be easier to integrate into operational
+tools and processes.
 
 ## Deploying compute-only nodes
 
@@ -24,6 +25,12 @@ other nodes for application workloads.
 By default, StorageOS nodes both present and consume storage
  (`storageos.com/deployment=mixed`). You can specify that a node should only
  consume storage by setting the `storageos.com/deployment=computeonly` label.
+
+ You can specify that a node should only consume storage by setting the
+ `storageos.com/deployment=computeonly` label on the node. This can be done by
+ setting the label on the StorageOS container at startup
+ (LABELS='storageos.com/deployment=computeonly'), or by applying the label once
+ it is running. Note that volumes must be drained off the node first.
 
 ## Rules
 
@@ -36,3 +43,6 @@ rules are evaluated to determine whether to apply the action.
 An example business requirement might be that all production volumes are
 replicated twice. This would be defined with a selector `env==prod`, and the
 action would be to add the label `storageos.com/replicas=2`.
+
+Rules can be created with the CLI or Web UI. See [Rules]({%link
+_docs/operations/rules.md %}) for details.

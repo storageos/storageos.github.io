@@ -13,7 +13,7 @@ applications such as databases and Elasticsearch, incurring one network round
 trip on writes.
 
 The basic model for StorageOS replication is of a master volume with distributed
-replicas. Each volume can replicated between 0 and 5 times, which are
+replicas. Each volume can be replicated between 0 and 5 times, which are
 provisioned to 0 to 5 nodes, up to the number of remaining nodes in the cluster.
 
 In this diagram, the master volume `D` was created on node 1, and two replicas,
@@ -21,9 +21,10 @@ In this diagram, the master volume `D` was created on node 1, and two replicas,
 
 ![StorageOS replication](/images/docs/concepts/high-availability.png)
 
-Writes that come into `D` are written in parallel to `D2` and `D3`. When both
-replicas acknowledge the write success, the write is marked as succeeded for the
-application.
+Writes that come into `D` (step 1) are written in parallel to `D2` and `D3`
+(step 2). When both replicas and the master acknowledge that the data has been
+written (step 3), the write operation return successfully to the application
+(step 4).
 
 For most applications, one replica is sufficient (`storageos.com/replicas=1`).
 
@@ -31,8 +32,7 @@ For most applications, one replica is sufficient (`storageos.com/replicas=1`).
 
 If the master volume is lost, a random replica is promoted to master (`D2` or
 `D3` above) and a new replica is created and synced on an available node (Node 2
-or 4) within miliseconds. This is transparent to the application and does not
-cause downtime.
+or 4). This is transparent to the application and does not cause downtime.
 
 If a replica volume is lost and there are enough remaining nodes, a new replica
 is created and synced on an available node. While a new replica is created and

@@ -17,20 +17,19 @@ You can deprioritize the traffic on noisy applications by setting
 `storageos.com/throttle=true` on a volume. This reduces the rate of disk I/O and
 enables other applications to take priority.
 
-# Users and policies
-
-This section applies to Docker only; in Kubernetes deployments, you should use
-standard Kubernetes RBAC mechanisms.
+# Users, groups and policies
 
 User accounts facilitate granular permissioning of acceptable actions within the
 system by the use of policies. On initial startup there is only the admin
 `storageos` user.
 
+Users can be members of multiple groups.
+
 ## Admin vs User accounts
 
 Admin users are treated as super-users which can perform any action within the
 system, regardless of policies set. Admins also have the added ability to add,
-update and remove users, their policies and perform other administrative roles
+update and remove users, their policies and to perform other administrative roles
 within the system, such as managing or creating new namespaces.
 
 Users only have the ability to change their password and have access to the

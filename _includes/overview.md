@@ -1,8 +1,8 @@
 # StorageOS Documentation
 
-This documentation is aimed at architects, DevOps engineers, developers,
-sysadmins and anybody who wants to understand how to use StorageOS. It assumes
-some knowledge of Docker containers and orchestrators.
+This documentation is aimed at architects, engineers, developers, sysadmins and
+anybody who wants to understand how to use StorageOS. It assumes some knowledge
+of Docker containers and container orchestrators.
 
 1. Start by [understanding the architecture]({% link
 _docs/concepts/architecture.md %}) and [playing with a demo](http://play.storageos.com/main).

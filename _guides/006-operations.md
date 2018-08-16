@@ -5,6 +5,10 @@ anchor: operations
 
 sections:
   -
+    title: Cluster health
+    description: Cluster healthy
+    module: operations/health
+  -
     title: Monitor volumes
     description: Monitor volumes
     module: operations/monitor
@@ -20,4 +24,8 @@ sections:
     title: Rules
     description: StorageOS rules
     module: operations/rules
+  -
+    title: Troubleshooting
+    description: Troubleshooting
+    module: operations/troubleshooting
 ---

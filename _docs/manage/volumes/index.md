@@ -140,7 +140,7 @@ If a group of nodes are labelled `country=US`, then a node selector can be used
 during volume creation:
 
 ```bash
-$ storageos volume create --nodeSelector 'country=US'
+$ storageos volume create --node-selector 'country=US'
 ```
 
 Selectors may also be set-based:

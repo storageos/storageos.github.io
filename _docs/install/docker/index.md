@@ -58,7 +58,7 @@ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc4 server
+    storageos/node:{{ site.latest_node_version }} server
 ```
 
 If you are performing a non-default installation, the following environment
@@ -152,8 +152,8 @@ This creates a new container with a StorageOS volume called `myvol` mounted at `
    EnvironmentFile=/etc/default/storageos
    ExecStartPre=-/usr/bin/docker kill storageos
    ExecStartPre=-/usr/bin/docker rm storageos
-   ExecStartPre=/usr/bin/docker pull storageos/node:1.0.0-rc4
-   ExecStart=/usr/bin/docker run --name storageos -e DISABLE_TELEMETRY=true -e HOSTNAME -e ADVERTISE_IP -e JOIN --net=host --pid=host --privileged --cap-add SYS_ADMIN --device /dev/fuse -v /var/lib/storageos:/var/lib/storageos:rshared -v /run/docker/plugins:/run/docker/plugins -v /sys:/sys storageos/node:1.0.0-rc4 server
+   ExecStartPre=/usr/bin/docker pull storageos/node:{{ site.latest_node_version }}
+   ExecStart=/usr/bin/docker run --name storageos -e DISABLE_TELEMETRY=true -e HOSTNAME -e ADVERTISE_IP -e JOIN --net=host --pid=host --privileged --cap-add SYS_ADMIN --device /dev/fuse -v /var/lib/storageos:/var/lib/storageos:rshared -v /run/docker/plugins:/run/docker/plugins -v /sys:/sys storageos/node:{{ site.latest_node_version }} server
    ExecStop=/usr/bin/docker stop storageos
 
    [Install]

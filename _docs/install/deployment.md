@@ -26,7 +26,7 @@ docker run -d --name storageos \
       -v /var/lib/storageos:/var/lib/storageos:rshared \
       -v /sys:/sys \
       -v /run/docker/plugins:/run/docker/plugins \
-      storageos/node:1.0.0-rc4 server
+      storageos/node:{{ site.latest_node_version }} server
 ```
 
 The deployment types `computeonly` and `mixed` are supported, with `mixed` being

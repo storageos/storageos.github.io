@@ -298,7 +298,7 @@ helm delete --purge $RELEASE
                 - SYS_ADMIN
           containers:
           - name: storageos
-            image: "storageos/node:1.0.0-rc1"
+            image: "storageos/node:{{ site.latest_node_version }}"
             imagePullPolicy: IfNotPresent
             args:
             - server

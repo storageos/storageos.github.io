@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Monitor volumes
-anchor: kubernetes
-module: kubernetes/monitor volumes
+anchor: operations
+module: operations/monitor
 ---
 
 # Monitor volumes

@@ -26,10 +26,6 @@ sections:
     module: kubernetes/production
     items:
       -
-        title: Monitor volumes
-        description: Monitor volumes
-        module: kubernetes/monitor
-      -
         title: Add and remove nodes
         description: Add and remove nodes
         module: kubernetes/addnodes

@@ -5,6 +5,10 @@ anchor: operations
 
 sections:
   -
+    title: Monitor volumes
+    description: Monitor volumes
+    module: operations/monitor
+  -
     title: Namespaces
     description: Namespaces
     module: operations/namespaces

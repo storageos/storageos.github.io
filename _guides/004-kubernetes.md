@@ -17,8 +17,12 @@ sections:
     description: Install on 1.7 and prior
     module: kubernetes/install-1.7
   -
+    title: Create StorageClasses
+    description: Create StorageClasses
+    module: kubernetes/create-storageclass
+  -
     title: Provision volumes
-    description: Provision StorageClasses and PVCs
+    description: Provision PVCs
     module: kubernetes/provision-volumes
   -
     title: Production deployments

@@ -60,9 +60,9 @@ To list the users on the system, run:
 
 ```bash
 $ storageos user ls
-ID                                     USERNAME            GROUPS                 ROLE
-861511a8-2843-1031-724c-2cabaa2ca4e9   awesomeUser         dev                    admin
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                                  admin
+ID                                    USERNAME     GROUPS  ROLE
+861511a8-2843-1031-724c-2cabaa2ca4e9  awesomeUser  dev     admin
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos    admin
 ```
 
 ### `storageos user rm`
@@ -76,8 +76,8 @@ $ storageos user rm 861511a8-2843-1031-724c-2cabaa2ca4e9
 The user is now deleted.
 ```bash
 $ storageos user ls
-ID                                     USERNAME            GROUPS                 ROLE
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9   storageos                                  admin
+ID                                    USERNAME   GROUPS  ROLE
+9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos          admin
 ```
 >**Note**: Either the username or the ID can be used to select the user.
 

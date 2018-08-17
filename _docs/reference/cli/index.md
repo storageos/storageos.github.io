@@ -15,9 +15,9 @@ configuration.
 
 ```bash
 # linux/amd64
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc1/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc2/storageos_linux_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 # OS X/amd64
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc1/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/1.0.0-rc2/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 ```
 
 You will need to provide the correct credentials to connect to the API. The
@@ -28,7 +28,7 @@ password `storageos`:
 # Use environment variables
 export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos
 
-# Authenticate to remote host
+# Access StorageOS running on a remote host by providing the IP address
 export STORAGEOS_HOST=10.1.5.249
 ```
 

@@ -15,7 +15,7 @@ be replicated to protect against node failure.
 At its core, StorageOS provides block storage.  You may choose the filesystem
 type to install to make devices usable from within containers.
 
-[**Try it in your browser for up to one hour >>**](https://my.storageos.com/main/tutorial/k8s-sandbox)
+[**Try it in your browser for up to one hour >>**](https://play.storageos.com/k8s-sandbox)
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ You will need a Kubernetes 1.8+ cluster with Beta APIs enabled. The following pr
    # In case you see the error, docker: Error response from daemon: linux mounts: Could not find source mount of /mnt
    # you can enable mount propagation by overriding the MountFlag argument
    mkdir -p /etc/systemd/system/docker.service.d/
-   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagtion_flags.conf
+   cat <<EOF > /etc/systemd/system/docker.service.d/mount_propagation_flags.conf
    [Service]
    MountFlags=shared
    EOF

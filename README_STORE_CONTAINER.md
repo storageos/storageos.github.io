@@ -14,7 +14,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 ## Installation
 
-Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/install/installcli>.
+Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/reference/cli/index>.
 
 Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
 
@@ -35,7 +35,7 @@ $ docker run -d --name storageos \
     -v /sys:/sys \
     -v /var/lib/storageos:/var/lib/storageos:rshared \
     -v /run/docker/plugins:/run/docker/plugins \
-    storageos/node:1.0.0-rc2 server
+    storageos/node:1.0.0-rc4 server
 ```
 
 To provision a new `JOIN`, see [cluster discovery](http://docs.storageos.com/docs/install/prerequisites/clusterdiscovery).
@@ -60,7 +60,7 @@ sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/r
 
 To get the most out of StorageOS, try:
 
-1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli.html>
+1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli/index>
 1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
 1. Fail containers to other nodes, or enable replication and fail Docker nodes.
 

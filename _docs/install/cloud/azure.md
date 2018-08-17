@@ -133,7 +133,7 @@ git clone https://github.com/storageos/helm-chart.git storageos
 cd storageos
 helm install . --name storageos-test \
   --set image.repository=storageos/node \
-  --set image.tag=1.0.0-rc2 \
+  --set image.tag=1.0.0-rc4 \
   --set service.type=LoadBalancer \
   --set cluster.join="$(storageos cluster create)" \
   --set cluster.sharedDir=/var/lib/kubelet/plugins/kubernetes.io~storageos
@@ -167,10 +167,10 @@ Verify the cluster is healthy with the StorageOS CLI:
 ```bash
 $ export STORAGEOS_HOST=$(kubectl get svc/storageos --namespace storageos -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ storageos node ls
-NAME                        ADDRESS             HEALTH                  SCHEDULER           VOLUMES             TOTAL               USED                VERSION                 LABELS
-k8s-agentpool1-40905336-0   10.240.0.4          Healthy About an hour   false               M: 1, R: 0          29.02GiB            11.38%              ad3f0cc (ad3f0cc rev)   
-k8s-agentpool1-40905336-1   10.240.0.66         Healthy About an hour   false               M: 0, R: 0          29.02GiB            12.06%              ad3f0cc (ad3f0cc rev)   
-k8s-agentpool1-40905336-2   10.240.0.35         Healthy About an hour   true                M: 0, R: 0          29.02GiB            11.14%              ad3f0cc (ad3f0cc rev)   
+NAME                       ADDRESS      HEALTH                 SCHEDULER  VOLUMES     TOTAL    USED    VERSION                 
+k8s-agentpool1-40905336-0  10.240.0.4   Healthy About an hour  false      M: 1, R: 0  31.16GB  11.38%  1.0.0    
+k8s-agentpool1-40905336-1  10.240.0.66  Healthy About an hour  false      M: 0, R: 0  31.16GB  12.06%  1.0.0    
+k8s-agentpool1-40905336-2  10.240.0.35  Healthy About an hour  true       M: 0, R: 0  31.16GB  11.14%  1.0.0    
 ```
 
 You can now create a Persistent Volume Claim:

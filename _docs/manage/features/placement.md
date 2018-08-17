@@ -21,9 +21,9 @@ Get a list of available nodes:
 
 ```bash
 $ storageos node ls -q
-storageos-1-88252
-storageos-2-88252
-storageos-3-88252
+storageos-1
+storageos-2
+storageos-3
 ```
 
 ## Create a volume with master on a specific node
@@ -31,12 +31,12 @@ storageos-3-88252
 Set the `storageos.com/hint.master` label to the requested node:
 
 ```bash
-storageos volume create --namespace default --label storageos.com/hint.master=storageos-3-88252 volume-name
+storageos volume create --namespace default --label storageos.com/hint.master=storageos-3 volume-name
 ```
 
 or the Docker CLI:
 
 ```bash
-$ docker volume create --driver storageos --opt size=15 --opt storageos.com/hint.master=storageos-3-88252 volume-name
+$ docker volume create --driver storageos --opt size=15 --opt storageos.com/hint.master=storageos-3 volume-name
 volume-name
 ```

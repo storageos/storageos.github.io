@@ -1,3 +1,6 @@
+@charset "UTF-8";
+/* CSS Document */
+
 /*
 Theme Name: ultrabootstrap
 Theme URI: http://phantomthemes.com/downloads/ultrabootstrap-premium-wordpress-theme/
@@ -1008,7 +1011,9 @@ text-align: left; list-style-type: none; min-height: 63px;
 .post-content li {font-size: 16px; margin-bottom: 10px;}
 
 
-@media (max-width: 767px) {.team .vc_col-sm-2 {
+@media (max-width: 767px) {
+
+  .team .vc_col-sm-2 {
     width: 100%;
 }
 .intro-banner-text p strong {
@@ -1655,6 +1660,7 @@ display: block; height: 100%!important;
       margin: 0 -15px 0 0;
 
 	 }
+}
 @media (max-width: 959px) {
 
   .page-content {
@@ -2196,4 +2202,3 @@ section.footers {
             padding-left: 15px;
         }
     }
-}

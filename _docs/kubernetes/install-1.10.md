@@ -18,8 +18,8 @@ vendor-specific drivers will be deprecated from Kubernetes 1.12.
 ```bash
 # Install StorageOS as a daemonset with CSI and RBAC support
 git clone https://github.com/storageos/deploy.git storageos
-cd storageos/k8s/deploy-storageos/csi
-kubectl create -f manifests/
+cd storageos/k8s/deploy-storageos/CSI
+./deploy-storageos.sh
 ```
 
 or using the Helm chart:

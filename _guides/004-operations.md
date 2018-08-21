@@ -13,6 +13,10 @@ sections:
     description: Upgrading a cluster
     module: operations/upgrades
   -
+    title: Extend storage capacity
+    description: Extend physical capacity
+    module: operations/extend-storage
+  -
     title: Maintenance
     description: Node maintenance
     module: operations/maintenance

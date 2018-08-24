@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Cassandra
-anchor: docker
-module: docker/cassandra
+anchor: platforms
+module: platforms/docker/cassandra
 ---
 
 # ![image](/images/docs/explore/cassandralogo.png) Cassandra with StorageOS

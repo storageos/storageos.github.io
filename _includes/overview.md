@@ -7,11 +7,11 @@ some knowledge of Docker containers and orchestrators.
 1. Start by [understanding the architecture]({% link
 _docs/concepts/architecture.md %}) and [playing with a demo](http://play.storageos.com/main).
 
-1. Once you are ready to install on your cluster, make sure the [prerequisites are
+1. Once you are ready to install into your environment, make sure the [prerequisites are
 fulfilled]({% link _docs/introduction/quickstart.md %}) and then follow the
-installation guides for [Kubernetes]({% link _docs/kubernetes/install-1.10.md %}),
-[OpenShift]({% link _docs/openshift/install-3.8.md %}) or [Docker]({% link
-_docs/docker/install.md %}).
+installation guides for [Kubernetes]({% link _docs/platforms/kubernetes/install-1.10.md %}),
+[OpenShift]({% link _docs/platforms/openshift/install-3.8.md %}) or [Docker]({% link
+_docs/platforms/docker/install.md %}).
 
 1. When you want to run StorageOS in production, read about [best practices]({% link
 _docs/concepts/production.md %}).

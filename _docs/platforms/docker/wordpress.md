@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Swarm with Wordpress
-anchor: docker
-module: docker/wordpress
+anchor: platforms
+module: platforms/docker/wordpress
 ---
 
 # ![image](/images/docs/explore/wordpresslogo.png) Highly available WordPress

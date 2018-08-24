@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - MongoDB
-anchor: docker
-module: docker/mongodb
+anchor: platforms
+module: platforms/docker/mongodb
 ---
 
 # ![image](/images/docs/explore/mongologo.png) MongoDB with StorageOS

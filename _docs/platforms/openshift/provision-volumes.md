@@ -1,21 +1,17 @@
 ---
 layout: guide
 title: StorageOS Docs - Provision volumes
-anchor: kubernetes
-module: kubernetes/provision-volumes
+anchor: platforms
+module: platforms/openshift/provision-volumes
 ---
 
 This document describes how to provision StorageOS volumes. Administrators
-define storage profiles using Kubernetes StorageClasses, and users request
+define storage profiles using OpenShift StorageClasses, and users request
 storage volumes using PersistentVolumeClaims (PVCs).
 
-Create all examples below:
-```bash
-git clone https://github.com/storageos/deploy.git storageos
-kubectl create -f storageos/examples/
-```
+All examples are available in [this repo](https://github.com/storageos/demos/blob/master/k8s/examples).
 
-## Storage class
+## Create storage class
 
 ```bash
 apiVersion: storage.k8s.io/v1
@@ -59,7 +55,7 @@ CSI node publish credentials.
 - `csiNodePublishSecretNamespace`: The namespace where the CSI node publish
 credentials secret is located.
 
-## Persistent volume claim
+## Create persistent volume
 
 ```bash
 apiVersion: v1
@@ -76,7 +72,7 @@ spec:
       storage: 5Gi
 ```
 
-## Replicated volumes
+## Create replicated volume
 
 With CSI deployments, you can enable replication on a storage class so that all
 PVCs created from the storage class will have replication enabled by default:

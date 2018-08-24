@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Redis
-anchor: docker
-module: docker/redis
+anchor: platforms
+module: platforms/docker/redis
 ---
 
 # ![image](/images/docs/explore/redislogo.png) Redis with StorageOS

@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Production deployments
-anchor: kubernetes
-module: kubernetes/production
+anchor: platforms
+module: platforms/kubernetes/production
 ---
 
 # Production deployments

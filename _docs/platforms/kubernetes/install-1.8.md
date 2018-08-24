@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Installing on Kubernetes
-anchor: kubernetes
-module: kubernetes/install-1.8
+anchor: platforms
+module: platforms/kubernetes/install-1.8
 ---
 
 # Kubernetes 1.8 and 1.9

@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Installing on Kubernetes 1.10
-anchor: kubernetes
-module: kubernetes/install-1.10
+anchor: platforms
+module: platforms/kubernetes/install-1.10
 redirect_from: /docs/install/schedulers/kubernetes
 redirect_from: /docs/install/kubernetes
 ---

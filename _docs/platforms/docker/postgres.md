@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - PostgreSQL
-anchor: docker
-module: docker/postgres
+anchor: platforms
+module: platforms/docker/postgres
 ---
 
 # ![image](/images/docs/explore/postgresqllogo.png) PostgreSQL with StorageOS

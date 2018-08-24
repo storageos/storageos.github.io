@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Provision volumes
-anchor: openshift
-module: openshift/provision-volumes
+anchor: platforms
+module: platforms/openshift/provision-volumes
 ---
 
 This document describes how to provision StorageOS volumes. Administrators

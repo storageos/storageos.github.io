@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Installing on OpenShift 3.9
-anchor: openshift
-module: openshift/install-3.9
+anchor: platforms
+module: platforms/openshift/install-3.9
 ---
 
 # OpenShift 3.9+

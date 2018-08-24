@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Docker container
-anchor: docker
-module: docker/provision-volumes
+anchor: platforms
+module: platforms/docker/provision-volumes
 ---
 
 # Create volumes

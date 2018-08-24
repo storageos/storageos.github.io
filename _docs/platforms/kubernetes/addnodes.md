@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Adding and removing nodes
-anchor: kubernetes
-module: kubernetes/addnodes
+anchor: platforms
+module: platforms/kubernetes/addnodes
 ---
 
 # Add nodes

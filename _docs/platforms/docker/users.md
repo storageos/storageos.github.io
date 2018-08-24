@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Users
-anchor: docker
-module: docker/users
+anchor: platforms
+module: platforms/docker/users
 ---
 
 # Users and Policies

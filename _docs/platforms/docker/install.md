@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Docker container
-anchor: docker
-module: docker/install
+anchor: platforms
+module: platforms/docker/install
 redirect_from: /docs/install/docker/container
 redirect_from: install/docker/container
 ---

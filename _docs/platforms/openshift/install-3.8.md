@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Installing on Kubernetes
-anchor: openshift
-module: openshift/install-3.8
+anchor: platforms
+module: platforms/openshift/install-3.8
 ---
 
 # Openshift 3.8

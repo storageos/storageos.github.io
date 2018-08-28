@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Azure
-anchor: azure
-module: azure/install
+anchor: platforms
+module: platforms/azure/install
 ---
 
 # Azure

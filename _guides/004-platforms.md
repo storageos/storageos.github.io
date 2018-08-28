@@ -93,4 +93,11 @@ sections:
         title: Examples - Cassandra
         description: Setting up Cassandra with persistent storage.
         module: platforms/docker/cassandra
+  - title: Azure
+    description: Azure
+    module: platforms/azure
+    items:
+      - title: Install
+        description: Install
+        module: platforms/azure/install
 ---

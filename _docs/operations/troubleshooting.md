@@ -25,7 +25,7 @@ Common causes of this issue are
   (when using a cluster token)
 - Missing `-v /run/docker/plugins:/run/docker/plugins`
 
-Refer to the [container install instructions]({%link _docs/docker/install.md
+Refer to the [container install instructions]({%link _docs/platforms/docker/install.md
 %}), or run `docker logs storageos` for more debug output.
 
 

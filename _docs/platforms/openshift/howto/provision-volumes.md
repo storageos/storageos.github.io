@@ -2,8 +2,10 @@
 layout: guide
 title: StorageOS Docs - Provision volumes
 anchor: platforms
-module: platforms/openshift/provision-volumes
+module: platforms/openshift/howto/provision-volumes
 ---
+
+# Provision Volumes
 
 This document describes how to provision StorageOS volumes. Administrators
 define storage profiles using OpenShift StorageClasses, and users request

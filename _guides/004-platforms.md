@@ -9,54 +9,74 @@ sections:
     description: Kubernetes
     module: platforms/kubernetes
     items:
-      -
-        title: Install - 1.10+
-        description: Install on 1.10+
-        module: platforms/kubernetes/install-1.10
-      -
-        title: Install - 1.8, 1.9
-        description: Install on 1.8, 1.9
-        module: platforms/kubernetes/install-1.8
-      -
-        title: Install - 1.7
-        description: Install on 1.7 and prior
-        module: platforms/kubernetes/install-1.7
-      -
-        title: Howto - Provision volumes
-        description: Provision StorageClasses and PVCs
-        module: platforms/kubernetes/provision-volumes
-      -
-        title: Howto - Monitor volumes
-        description: Monitor volumes
-        module: platforms/kubernetes/monitor
-      -
-        title: Howto - Add and remove nodes
-        description: Add and remove nodes
-        module: platforms/kubernetes/addnodes
-      -
-        title: Production deployment tips
-        description: Production deployments
-        module: platforms/kubernetes/production
+      - 
+        title: Install
+        description: Install K8S
+        module: platforms/kubernetes/install
+        subitems:
+          - 
+            title: 1.10+
+            description: Install on 1.10+
+            module: platforms/kubernetes/install/1.10
+          -
+            title: 1.8, v1.9
+            description: Install on 1.8, 1.9
+            module: platforms/kubernetes/install/1.8
+          -
+            title: 1.7
+            description: Install on 1.7 and prior
+            module: platforms/kubernetes/install/1.7
+      - 
+        title: HowTo
+        description: Examples for operations
+        module: platforms/kubernetes/howto
+        subitems:
+          -
+            title: Provision volumes
+            description: Provision StorageClasses and PVCs
+            module: platforms/kubernetes/howto/provision-volumes
+          -
+            title: Monitor volumes
+            description: Monitor volumes
+            module: platforms/kubernetes/howto/monitor
+          -
+            title: Add and remove nodes
+            description: Add and remove nodes
+            module: platforms/kubernetes/howto/addnodes
+          -
+            title: Production deployment tips
+            description: Production deployments
+            module: platforms/kubernetes/howto/production
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
     items:
       -
-        title: Install - 3.9+
-        description: Install on 3.9+
-        module: platforms/openshift/install-3.9
+        title: Install
+        description: Install on OpenShift
+        module: platforms/openshift/install
+        subitems:
+          -
+            title: 3.9+
+            description: Install on 3.9+
+            module: platforms/openshift/install/3.9
+          -
+            title: 3.8
+            description: Install on 3.8
+            module: platforms/openshift/install/3.8
+          -
+            title: 3.7 and prior
+            description: Install on 3.7 and prior
+            module: platforms/openshift/install/3.7
       -
-        title: Install - 3.8
-        description: Install on 3.8
-        module: platforms/openshift/install-3.8
-      -
-        title: Install - 3.7 and prior
-        description: Install on 3.7 and prior
-        module: platforms/openshift/install-3.7
-      -
-        title: Provision volumes
-        description: Provision volumes
-        module: platforms/openshift/provision-volumes
+        title: HowTo
+        description: Examples for operations
+        module: platforms/openshift/howto
+        subitems:
+          -
+            title: Provision volumes
+            description: Provision volumes
+            module: platforms/openshift/howto/provision-volumes
   - title: Docker
     description: Docker
     module: platforms/docker
@@ -74,25 +94,30 @@ sections:
         description: Creating and managing users
         module: platforms/docker/users
       -
-        title: Examples - MySQL
-        description: Setting up MySQL with persistent storage.
-        module: platforms/docker/mysql
-      -
-        title: Examples - PostgreSQL
-        description: Setting up PostgreSQL with persistent storage.
-        module: platforms/docker/postgres
-      -
-        title: Examples - MSSQL
-        description: Setting up Microsoft SQL with persistent storage.
-        module: platforms/docker/mssql
-      -
-        title: Examples - Redis
-        description: Setting up Redis with persistent storage.
-        module: platforms/docker/redis
-      -
-        title: Examples - Cassandra
-        description: Setting up Cassandra with persistent storage.
-        module: platforms/docker/cassandra
+        title: Use cases
+        description: Application examples
+        module: platforms/docker/examples
+        subitems:
+          -
+            title: MySQL
+            description: Setting up MySQL with persistent storage.
+            module: platforms/docker/examples/mysql
+          -
+            title: PostgreSQL
+            description: Setting up PostgreSQL with persistent storage.
+            module: platforms/docker/examples/postgres
+          -
+            title: MSSQL
+            description: Setting up Microsoft SQL with persistent storage.
+            module: platforms/docker/examples/mssql
+          -
+            title: Redis
+            description: Setting up Redis with persistent storage.
+            module: platforms/docker/examples/redis
+          -
+            title: Cassandra
+            description: Setting up Cassandra with persistent storage.
+            module: platforms/docker/examples/cassandra
   - title: Azure
     description: Azure
     module: platforms/azure

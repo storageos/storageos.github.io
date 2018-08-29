@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - MySQL
 anchor: platforms
-module: platforms/docker/mysql
+module: platforms/docker/examples/mysql
 ---
 
 # ![image](/images/docs/explore/mysqllogo.png) MySQL with StorageOS

@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Install applications on Docker
 anchor: platforms
-module: platforms/docker
+module: platforms/docker/examples
 ---
 
 # Docker

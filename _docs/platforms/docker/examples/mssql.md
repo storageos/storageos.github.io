@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Microsoft SQL Server
 anchor: platforms
-module: platforms/docker/mssql
+module: platforms/docker/examples/mssql
 ---
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2017 with StorageOS

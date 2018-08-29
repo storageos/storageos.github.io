@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Provision volumes
 anchor: platforms
-module: platforms/kubernetes/provision-volumes
+module: platforms/kubernetes/howto/provision-volumes
 ---
 
 This document describes how users request storage volumes using

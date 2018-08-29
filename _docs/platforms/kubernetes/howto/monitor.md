@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Monitor volumes
 anchor: platforms
-module: platforms/kubernetes/monitor
+module: platforms/kubernetes/howto/monitor
 ---
 
 # Monitor volumes

@@ -7,19 +7,6 @@ module: operations/rules
 
 # Rules
 
-Rules apply custom configuration to volumes based on matched labels.
-
-## Overview
-
-Rules are used for managing data policy and placement using StorageOS features
-such as replication, QoS and compression.
-
-Rules are created using [labels and selectors]({% link _docs/manage/volumes/labels.md %})
-to evaluate which StorageOS features to apply.
-
-Rules are evaluated when a volume is created. If the selector is satisfied, the
-labels are applied to the new volume.
-
 ## Required parameters
 
 The minimum parameters to create a rule are `--selector` and `--label`.

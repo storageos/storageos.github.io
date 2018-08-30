@@ -59,14 +59,6 @@ sections:
     description: Describes the graphical user interface
     module: reference/gui
   -
-    title: OS Compatibility
-    description: Describes which OSs can be used with StorageOS
-    module: reference/os_support
-  -
-    title: Glossary
-    description: Common terms and definitions
-    module: reference/glossary
-  -
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes

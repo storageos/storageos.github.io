@@ -7,6 +7,9 @@ url: "https://docs.storageos.com"
 
 exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
+latest_node_version: 1.0.0-rc4
+latest_cli_version: 1.0.0-rc2
+
 # Build settings
 permalink: :module
 incremental: false

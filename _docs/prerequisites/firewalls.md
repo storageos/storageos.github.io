@@ -7,7 +7,8 @@ module: prerequisites/firewalls
 
 # Port list
 
-StorageOS requires a few ports to be open:
+StorageOS daemons listen on specific ports, which we require to be accessible
+between all nodes in the cluster:
 
 | Port Number | TCP/UDP   | Use                    |
 |:-----------:|:---------:|:---------------------- |
@@ -23,15 +24,16 @@ StorageOS requires a few ports to be open:
 | 5710        | tcp       | NATS service           |
 | 5711        | tcp & udp | Gossip service         |
 
-StorageOS also uses random ports to dial-out to these ports on other StorageOS nodes. For this reason, outgoing traffic should be enabled.
+StorageOS also uses [ephemeral](https://en.wikipedia.org/wiki/Ephemeral_port) ports to dial-out to these ports on other StorageOS nodes. For this reason, outgoing traffic should be enabled.
 
 
 ## Firewalls and VPS providers
 
-Some VPS providers (such as Digital Ocean) have some default firewall rules set
-which must be updated to allow StorageOS to run.
+Some VPS providers (such as Digital Ocean) ship default firewall rulesets which
+must be updated to allow StorageOS to run. Some example rules are shown below -
+modify to taste.
 
-To configure firewall rules using `UFW` commands:
+For distributions using UFW, such as RHEL and derivatives:
 
 ```bash
 ufw default allow outgoing
@@ -39,18 +41,16 @@ ufw allow 5701:5711/tcp
 ufw allow 5711/udp
 ```
 
-The equivalent `IPTABLES` commands (assuming `eth0` is correct):
+For those using plain iptables:
 
 ```bash
-# Set defaults at the top of the table to allow localhost, outgoing traffic
-# and established connections
-iptables -I INPUT -i lo -j ACCEPT
-iptables -I OUTPUT -o lo -j ACCEPT
-iptables -I OUTPUT -o eth0 -d 0.0.0.0/0 -j ACCEPT
-iptables -I INPUT -i eth0 -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Inbound traffic
+iptables -I INPUT -i lo -m comment --comment 'Permit loopback traffic' -j ACCEPT
+iptables -I INPUT -m state --state ESTABLISHED,RELATED -m comment --comment 'Permit established traffic' -j ACCEPT
+iptables -A INPUT -p tcp --dport 5701:5711 -m comment --comment 'StorageOS' -j ACCEPT
+iptables -A INPUT -p udp --dport 5711 -m comment --comment 'StorageOS' -j ACCEPT
 
-# Open required ports
-
-iptables -A INPUT -p tcp --dport 5701:5711 -j ACCEPT
-iptables -A INPUT -p udp --dport 5711 -j ACCEPT
+# Outbound traffic
+iptables -I OUTPUT -o lo -m comment --comment 'Permit loopback traffic' -j ACCEPT
+iptables -I OUTPUT -d 0.0.0.0/0 -m comment --comment 'Permit outbound traffic' -j ACCEPT
 ```

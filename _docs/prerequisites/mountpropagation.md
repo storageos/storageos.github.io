@@ -14,7 +14,7 @@ containers (see linux kernel documentation
 Certain versions of docker ship with a systemd manifest with
 [MountFlags](https://www.freedesktop.org/software/systemd/man/systemd.exec.html#) set
 to 'slave', thus preventing StorageOS from working. This can be removed or set
-to 'shared' with a simple systemd drop in:
+to 'shared' with a systemd drop in:
 
 ```bash
 mkdir -p /etc/systemd/system/docker.service.d/
@@ -33,10 +33,10 @@ To confirm behaviour, the following command should run without error
 docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
 ```
 
-Orchestrators such as kubernetes or openshift have their own ways of exposing
-this setting. Kubernetes 1.10 and openshift 3.10 have mount propagation enabled by
+Orchestrators such as Kubernetes or OpenShift have their own ways of exposing
+this setting. Kubernetes 1.10 and OpenShift 3.10 have mount propagation enabled by
 default. Previous versions require that feature gates are enabled on the
-kubernetes master's `controller-manager` and `apiserver` services and in the
+Kubernetes master's `controller-manager` and `apiserver` services and in the
 `kubelet` service on each node.
 
 Installations of orchestrators using Docker require that mount propagation is

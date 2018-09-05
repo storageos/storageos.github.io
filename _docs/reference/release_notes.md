@@ -315,7 +315,7 @@ in order to reduce pain later.
 ### Fixed
 
 - Ensure cache is invalidated after mkfs.  Fixes mount error 32 that could occur
-  with Kubernetes or Openshift on Centos/RHEL.
+  with Kubernetes or OpenShift on Centos/RHEL.
 - Memory leak in replication client led to excessive use over time.
 - Standardised all paths to 256 byte length to support user-configurable
   `DEVICE_DIR`.

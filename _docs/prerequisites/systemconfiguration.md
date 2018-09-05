@@ -2,10 +2,10 @@
 layout: guide
 title: StorageOS Docs - Device Presentation
 anchor: prerequisites
-module: prerequisites/devicepresentation
+module: prerequisites/systemconfiguration
 ---
 
-# Device presentation
+# System Configuration
 
 StorageOS requires certain kernel modules to function, in particular [Linux-IO
 ](http://linux-iscsi.org/wiki/Main_Page), an open-source implementation of the
@@ -16,12 +16,13 @@ We require the following modules to be loaded:
 * `target_core_mod`
 * `tcm_loop`
 * `target_core_file`
+* `configfs`
 
 Depending on the distribution, the modules are sometimes shipped as part of the
 base kernel package, and sometimes in a kernel extras package which requires
 installation.
 
-# Distribution Specifics
+## Distribution Specifics
  
 **RHEL 7.5, CentOS 7** and **Debian 9** are fully supported.
 
@@ -45,12 +46,12 @@ sudo apt purge -y linux*aws
 sudo shutdown -r now
 ```
 
+## Automatic Configuration
 Once required kernel modules are installed on the system, for convenience we
 provide a container which will ensure the appropriate modules are loaded and
 ready for use at runtime. On Docker installations, you will need to run the
-init container prior to starting StorageOS (or otherwise ensure the modules are
-loaded). Our installation guides for Kubernetes and OpenShift include this
-step.
+init container prior to starting StorageOS. Our installation guides for
+Kubernetes and OpenShift include this step.
 
 ```bash
 # Load the required kernel modules. The Kubernetes and OpenShift installations include this step.
@@ -62,3 +63,10 @@ docker run --name enable_lio                  \
            -v /sys:/sys:rshared               \
            storageos/init:0.1
 ```
+
+## Manual Configuration
+For those wishing to manage their own kernel configuration, rather than using
+the init container, perform the following steps:
+
+* Ensure kernel modules are all loaded per list above
+* Ensure configfs is loaded and mounted at /sys/kernel/config

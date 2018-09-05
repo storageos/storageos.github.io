@@ -28,6 +28,11 @@ written (step 3), the write operation return successfully to the application
 
 For most applications, one replica is sufficient (`storageos.com/replicas=1`).
 
+## Network Traffic
+
+All replication traffic on the wire is compressed using the lz4 algorithm, then
+streamed over tcp/ip to target port tcp/5703.
+
 ## Failover
 
 If the master volume is lost, a random replica is promoted to master (`D2` or
@@ -44,3 +49,11 @@ mode will determine whether the volume can be used during recovery:
 | Hard               | If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail. |`storageos.com/failure.mode=hard` |
 | Always On           | As long as any copy of the volume is available, the volume will be usable.                   |`storageos.com/failure.mode=alwayson` |
 | Soft               | Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica.                  |`storageos.com/failure.mode=soft storageos.com/failure.tolerance=2` |
+
+## Enforcing replication policies
+
+While replica count and replication failure mode are controllable on a
+per-volume basis, some environments may prefer to set appropriate policies to
+ensure a desired level of data protection. This can be accomplished on a
+per-namespace basis  using
+[Rules]({%link _docs/operations/rules.md %}).

@@ -25,7 +25,7 @@ you to specify the version of Kubernetes and specific features.
 For more information and installation instructions, consult the
 [acs-engine Kubernetes guide](https://github.com/Azure/acs-engine/blob/master/docs/kubernetes/deploy.md)
 
-There are various [examples of Kubernetes cluster definitions](https://github.com/Azure/acs-engine/tree/master/examples) for acs-engine, but the important thing is to specify kubernetes 1.10 as StorageOS requires this version to support running with kubelet in a container.
+There are various [examples of Kubernetes cluster definitions](https://github.com/Azure/acs-engine/tree/master/examples) for acs-engine, but the important thing is to specify Kubernetes 1.10 as StorageOS requires this version to support running with kubelet in a container.
 
 Example definition (saved as `kubernetes.json` for use in the instructions below):
 
@@ -79,7 +79,7 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
 }
 ```
 
-Unless you specify a publickey, acs-engine is going to create an ssh key pair for you under `_output` directory. It grants you access to the kubernetes master from which you can hop to all minions.
+Unless you specify a publickey, acs-engine is going to create an ssh key pair for you under `_output` directory. It grants you access to the Kubernetes master from which you can hop to all minions.
 
 To deploy a cluster through acs-engine you need your Azure Subscription ID.
 You can retrieve your subscription ID through the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest). If you don't have the Azure CLI installed then you can sign in to [Azure Cloud Shell](https://shell.azure.com) to run the commands there:
@@ -95,7 +95,7 @@ az account show --output json
 az account list
 ```
 
-With your subscription id you can now run `acs-engine` to deploy your kubernetes cluster:
+With your subscription id you can now run `acs-engine` to deploy your Kubernetes cluster:
 
 ```bash
 # IMPORTANT: enter your own parameters, especially 'subscription-id'

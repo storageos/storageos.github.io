@@ -9,7 +9,7 @@ redirect_from: install/docker/container
 
 # Install with Docker 1.10+
 
-If you are running containers without orchestration, you can create a SystemD
+If you are running containers without orchestration, you can create a systemd
 service to run the StorageOS container on each node.
 
 ```bash

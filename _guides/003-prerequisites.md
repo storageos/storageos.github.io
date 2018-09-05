@@ -13,9 +13,9 @@ sections:
     description: Cluster discovery
     module: prerequisites/clusterdiscovery
   -
-    title: Device presentation
+    title: System Configuration
     description: Device presentation
-    module: prerequisites/devicepresentation
+    module: prerequisites/systemconfiguration
   -
     title: Ports and firewall settings
     description: Ports and firewall settings

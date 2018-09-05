@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Device Presentation
+title: StorageOS Docs - System Configuration
 anchor: prerequisites
 module: prerequisites/systemconfiguration
 ---

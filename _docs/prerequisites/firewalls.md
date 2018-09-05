@@ -33,6 +33,9 @@ Some VPS providers (such as Digital Ocean) ship default firewall rulesets which
 must be updated to allow StorageOS to run. Some example rules are shown below -
 modify to taste.
 
+
+
+### UFW
 For distributions using UFW, such as RHEL and derivatives:
 
 ```bash
@@ -41,6 +44,18 @@ ufw allow 5701:5711/tcp
 ufw allow 5711/udp
 ```
 
+### Firewalld
+
+For distributions that enable firewalld to control iptables such as some installations of OpenShift.
+
+```bash
+firewall-cmd --permanent  --new-service=storageos
+firewall-cmd --permanent  --service=storageos --add-port=5700-5800/tcp
+firewall-cmd --add-service=storageos  --zone=public --permanent
+firewall-cmd --reload
+```
+
+### Iptables
 For those using plain iptables:
 
 ```bash
@@ -54,3 +69,6 @@ iptables -A INPUT -p udp --dport 5711 -m comment --comment 'StorageOS' -j ACCEPT
 iptables -I OUTPUT -o lo -m comment --comment 'Permit loopback traffic' -j ACCEPT
 iptables -I OUTPUT -d 0.0.0.0/0 -m comment --comment 'Permit outbound traffic' -j ACCEPT
 ```
+
+
+

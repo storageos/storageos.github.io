@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Troubleshooting
+title: StorageOS Docs - Firewalls
 anchor: prerequisites
 module: prerequisites/firewalls
 ---

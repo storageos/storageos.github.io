@@ -1,28 +1,32 @@
 # StorageOS Documentation
 
-StorageOS enables persistent storage for containers. It allows developers to
-build stateful containerized apps.
-
-StorageOS is available from the Docker Hub as a container image for Docker 1.10+
-or Kubernetes 1.7+.
+This documentation is aimed at architects, engineers, developers, sysadmins and
+anybody who wants to understand how to use StorageOS. It assumes some knowledge
+of Docker containers and container orchestrators.
 
 
-## Popular
+## Getting Started
 
-* [Install on Kubernetes]({% link _docs/install/kubernetes/index.md %}) - Use StorageOS with a Kubernetes cluster.
-* [Quick start]({% link _docs/install/quickstart.md %}) - Run StorageOS locally.
-* [Interactive tutorials](https://play.storageos.com/main) - Try StorageOS in your browser.
-* [StorageOS architecture](http://resources.storageos.com/storageos_platform_architecture_overview) - Download the whitepaper.
+1. Start by [understanding the architecture]({% link
+_docs/concepts/architecture.md %}) and [playing with a demo](http://play.storageos.com/main).
 
-## Got feedback or just want to chat?
+1. Once you are ready to install into your environment follow the
+installation guides for [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}),
+[OpenShift]({% link _docs/platforms/openshift/install/3.9.md %}) or [Docker]({% link
+_docs/platforms/docker/install.md %}). Note that we provide platform-specific
+documentation under the 'Platforms' heading, and additional platform-agnostic
+documentation under 'Operations'.
 
-Join us on [Slack](https://slack.storageos.com), or [see other
-ways](https://support.storageos.com) to get in touch.
+1. When you want to run StorageOS in production, read about [best practices]({% link
+_docs/concepts/production.md %}).
 
-<script async defer src="http://slack.storageos.com/slackin.js"></script>
+## Seeking help
 
-## Public beta
+The fastest way to get in touch is to [join our public Slack
+channel.](https://slack.storageos.com) <script async defer
+src="http://slack.storageos.com/slackin.js"></script>
 
-During beta, StorageOS is freely available for testing and experimentation. To
-stay informed about new features and production-ready releases, sign up on our
-[customer portal](https://my.storageos.com).
+You can file a support ticket by [emailing
+support@storageos.com](mailto:support@storageos.com), or file bugs against
+specific components on the [StorageOS Github
+repos](https://github.com/storageos).

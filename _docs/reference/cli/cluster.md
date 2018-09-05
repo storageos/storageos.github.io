@@ -32,7 +32,7 @@ Run 'storageos cluster COMMAND --help' for more information on a command.
 ### `storageos cluster create`
 
 To create a cluster token for [cluster discovery]({%link
-_docs/install/prerequisites/clusterdiscovery.md %}):
+_docs/prerequisites/clusterdiscovery.md %}):
 
 ```bash
 $ storageos cluster create
@@ -51,7 +51,7 @@ storageos-2  192.168.50.101  Healthy    Healthy
 storageos-3  192.168.50.102  Healthy    Healthy
 ```
 
-To view the status in more detail there are additional format 
+To view the status in more detail there are additional format
 options which can be given to the `--format` flag:
 
 - `cp` shows the status of control plane components

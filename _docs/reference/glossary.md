@@ -13,7 +13,6 @@ module: reference/glossary
 | Control Plane         |StorageOS component responsible for managing configuration, rules engine, provisioning and recovery processes|
 | Data Plane            |StorageOS component that processes all data access requests and pools the aggregated storage for presentation to clients|
 | Dedupe                |Abbreviated term for deduplicate or deduplication|
-| Docker Plugin         |The Docker managed plugin install method for Docker 1.13+|
 | Container Install     |Container-based installation method pre Docker 1.13|
 | StorageOS Node        |A unit within a cluster running the StorageOS software responsible for aggregating and serving out storage to clients|
 | Node Discovery        |Serf is used for decentralised node discovery to detect and notify node failures to the remaining cluster nodes using Gossip|

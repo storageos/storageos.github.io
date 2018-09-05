@@ -27,7 +27,7 @@ Before a node is upgraded, applications local to the node that mount StorageOS
 volumes should be migrated to other cluster nodes or their data volumes will be
 unavailable while the StorageOS container restarts.
 
-See [maintenance]({%link _docs/operations/maintenance.md %}) for commands to help
+See [Node maintenance]({%link _docs/concepts/maintenance.md %}) for commands to help
 with online migration of volumes.
 
 The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
@@ -154,7 +154,7 @@ maintainability.
   where it wasn't.  Using the new volume presentation improves performance on
   the RHEL platform where NBD is not available.  This feature is available for
   all major distributions and is widely used.  For more information, see
-  [device presentation]({%link _docs/install/prerequisites/devicepresentation.md %})
+  [device presentation]({%link _docs/prerequisites/devicepresentation.md %})
 - Internally, the StorageOS scheduler has switched to using level-based state
   handling and the gRPC protocol.  This allows the scheduler to make assertions
   about the current state, rather than relying on events that can be missed.
@@ -514,7 +514,7 @@ releases will strive to preserve compatibility between versions.
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  [NBD kernel module]({%link _docs/prerequisites/devicepresentation.md %})
   on those platforms.
 
 ## 0.8.1
@@ -583,7 +583,7 @@ StorageOS, what problems it is solving for you and how it can improve.  Join our
 - Docker can only access volumes created in the `default` namespace.
 - Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
   performance due to the absence of the
-  [NBD kernel module]({%link _docs/install/prerequisites/devicepresentation.md %})
+  [NBD kernel module]({%link _docs/prerequisites/devicepresentation.md %})
   on those platforms.
 
 ## 0.7.10

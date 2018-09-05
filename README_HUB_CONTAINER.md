@@ -14,7 +14,7 @@ Full documentation is available at <https://docs.storageos.com>. To stay informe
 
 Install the StorageOS command line interface (CLI) following the instructions at <https://docs.storageos.com/docs/reference/cli/index>.
 
-Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
+Enable LIO support following <https://docs.storageos.com/docs/prerequisites/devicepresentation>.
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 
@@ -54,7 +54,7 @@ sudo docker volume create --driver storageos --opt size=20 --opt storageos.com/r
 To get the most out of StorageOS, try:
 
 1. Running the CLI to manage volumes, rules, and cluster configuration. See <https://docs.storageos.com/docs/reference/cli/index>
-1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/install/clusterinstall.html>
+1. Joining more nodes to the cluster. A quick start guide is available at <https://docs.storageos.com/docs/docker/install>
 1. Fail containers to other nodes, or enable replication and fail Docker nodes.
 
 
@@ -70,7 +70,7 @@ The node container should be installed on each Docker node where you want to con
 
 ### Run the StorageOS node container
 
-Enable LIO support following <https://docs.storageos.com/docs/reference/os_support>.
+Enable LIO support following <https://docs.storageos.com/docs/prerequisites/devicepresentation>.
 
 Provide the host ip address in ADVERTISE_IP and a cluster discovery token with JOIN when you install the container:
 

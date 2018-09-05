@@ -3,7 +3,6 @@ layout: guide
 title: StorageOS Docs - Command line interface
 anchor: reference
 module: reference/cli
-redirect_from: /docs/install/cli
 ---
 
 # Command Line Interface
@@ -19,6 +18,7 @@ curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/{{ si
 # OS X/amd64
 curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/{{ site.latest_cli_version }}/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 ```
+
 
 You will need to provide the correct credentials to connect to the API. The
 default installation creates a single user with username `storageos` and

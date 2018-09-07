@@ -8,4 +8,12 @@ sections:
     title: Overview
     description: StorageOS Overview
     module: introduction/overview
+  -
+    title: Quickstart
+    description: StorageOS Quickstart
+    module: introduction/quickstart
+  -
+    title: Support
+    description: StorageOS Support
+    module: introduction/support
 ---

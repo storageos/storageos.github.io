@@ -59,6 +59,10 @@ sections:
     description: Describes the graphical user interface
     module: reference/gui
   -
+    title: Environment Variables
+    description: Describes the support environment variables for StorageOS
+    module: reference/envvars
+  -
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes

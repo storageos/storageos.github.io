@@ -86,10 +86,6 @@ sections:
         description: Install
         module: platforms/docker/install
       -
-        title: Provision volumes
-        description: Provision volumes
-        module: platforms/docker/provision-volumes
-      -
         title: Users and policies
         description: Creating and managing users
         module: platforms/docker/users

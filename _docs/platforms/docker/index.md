@@ -7,4 +7,7 @@ module: platforms/docker
 
 # Docker
 
-StorageOS can install as a standalone [Docker](https://www.docker.com/) container, and be used to provide permanent storage for other containers.
+While not suitable for production deployments, it is possible to run StorageOS
+in a standalone [Docker](https://www.docker.com) container, and provide
+permanent storage for other containers. This can be useful for testing and
+experimentation with our product.

@@ -7,7 +7,7 @@ of Docker containers and container orchestrators.
 # Sections
 
 Our documentation is arranged into sections, accessible from the navigation bar
-on the right.
+on the left.
 
 **Introduction** - Quickstart and support information.
 

@@ -27,7 +27,7 @@ redirect_from: install/docker/container
     --device=/dev/fuse \
     --volume=/var/lib/storageos:/var/lib/storageos:rshared \
     --volume=/run/docker/plugins:/run/docker/plugins \
-    --volume=/sys:/sys
+    --volume=/sys:/sys \
     storageos/node:1.0.0-rc4 server
 ```
 * With the StorageOS [CLI]({% link _docs/reference/cli/index.md %}) installed, create

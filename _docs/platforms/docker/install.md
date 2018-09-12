@@ -45,6 +45,10 @@ export STORAGEOS_USERNAME=storageos STORAGEOS_PASSWORD=storageos STORAGEOS_HOST=
     busybox sh
 ```
 
+*n.b. StorageOS supports a number of environment variables to tune its
+behaviour. See the [Environment Variables]({% link _docs/reference/envvars.md
+%}) section for more details.*
+
 # Running as a systemd service
 For some deployments, it is useful to run storageos as a service under systemd
 control. We provide a sample manifest and associated scripts on github to

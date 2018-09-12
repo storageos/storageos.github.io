@@ -9,7 +9,7 @@ module: platforms/docker/users
 
 ## Creating a new user
 
-Users can be created, deleted and managed from the `storageos` CLI. For example to create a new non-admin user 'awesomeUser' and add them to the 'test' and 'dev' groups, run:
+Users can be created, deleted and managed from the `storageos` [CLI]({% link _docs/reference/cli/index.md %}). For example to create a new non-admin user 'awesomeUser' and add them to the 'test' and 'dev' groups, run:
 
 ```bash
 $ storageos user create --groups test,dev --role user awesomeUser

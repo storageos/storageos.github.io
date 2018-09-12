@@ -4,29 +4,21 @@ This documentation is aimed at architects, engineers, developers, sysadmins and
 anybody who wants to understand how to use StorageOS. It assumes some knowledge
 of Docker containers and container orchestrators.
 
+# Sections
 
-## Getting Started
+Our documentation is arranged into sections, accessible from the navigation bar
+on the left.
 
-1. Start by [understanding the architecture]({% link
-_docs/concepts/architecture.md %}) and [playing with a demo](http://play.storageos.com/main).
+**Introduction** - Quickstart and support information.
 
-1. Once you are ready to install into your environment follow the
-installation guides for [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}),
-[OpenShift]({% link _docs/platforms/openshift/install/3.9.md %}) or [Docker]({% link
-_docs/platforms/docker/install.md %}). Note that we provide platform-specific
-documentation under the 'Platforms' heading, and additional platform-agnostic
-documentation under 'Operations'.
+**Concepts** - Architectural and deep technical information.
 
-1. When you want to run StorageOS in production, read about [best practices]({% link
-_docs/concepts/production.md %}).
+**Prerequisites** - We require certain prerequisites to be met for the product to function
+correctly. Please read these carefully and ensure they are implemented.
 
-## Seeking help
+**Platforms** - Due to differences in the various orchestrators that StorageOS can run under,
+we list install guides and other platform specific operations here.
 
-The fastest way to get in touch is to [join our public Slack
-channel.](https://slack.storageos.com) <script async defer
-src="http://slack.storageos.com/slackin.js"></script>
+**Operations** - Platform agnostic operations.
 
-You can file a support ticket by [emailing
-support@storageos.com](mailto:support@storageos.com), or file bugs against
-specific components on the [StorageOS Github
-repos](https://github.com/storageos).
+**Reference** - Information on our GUI, CLI, and other important information.

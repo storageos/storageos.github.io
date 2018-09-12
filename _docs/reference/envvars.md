@@ -1,4 +1,15 @@
-Configuration settings are available via environment variables:
+---
+layout: guide
+title: StorageOS Docs - Environment Variables
+anchor: reference
+module: reference/envvars
+---
+
+# Environment Variables
+
+Several aspects of StorageOS behaviour can be controlled via environment
+variables. These can be injected in via any of the usual mechanisms such as
+[ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/).
 
 * `HOSTNAME`: Hostname of the Docker node, only if you wish to override it.
 * `ADVERTISE_IP`: IP address of the Docker node, for incoming connections.  Defaults to first non-loopback address.

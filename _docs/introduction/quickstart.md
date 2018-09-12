@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Quickstart
 anchor: introduction
 module: introduction/quickstart
+redirect_from: /docs/introduction/quick_start
 ---
 
 # Quickstart

@@ -16,7 +16,6 @@ redirect_from: install/docker/container
 ```bash
 /usr/bin/docker run \
     --name=storageos \
-    --env=DISABLE_TELEMETRY=true \
     --env=HOSTNAME=$(hostname) \
     --env=ADVERTISE_IP=127.0.0.1 \
     --env=JOIN=127.0.0.1 \
@@ -28,7 +27,7 @@ redirect_from: install/docker/container
     --volume=/var/lib/storageos:/var/lib/storageos:rshared \
     --volume=/run/docker/plugins:/run/docker/plugins \
     --volume=/sys:/sys \
-    storageos/node:1.0.0-rc4 server
+    storageos/node:{{ site.latest_node_version }}
 ```
 * With the StorageOS [CLI]({% link _docs/reference/cli/index.md %}) installed, create
   a test volume:

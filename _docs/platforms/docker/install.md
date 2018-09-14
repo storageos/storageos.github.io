@@ -27,7 +27,7 @@ redirect_from: install/docker/container
     --volume=/var/lib/storageos:/var/lib/storageos:rshared \
     --volume=/run/docker/plugins:/run/docker/plugins \
     --volume=/sys:/sys \
-    storageos/node:{{ site.latest_node_version }}
+    storageos/node:{{ site.latest_node_version }} server
 ```
 * With the StorageOS [CLI]({% link _docs/reference/cli/index.md %}) installed, create
   a test volume:

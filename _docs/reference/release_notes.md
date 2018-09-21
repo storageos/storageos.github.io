@@ -44,6 +44,15 @@ If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
 
+## 1.0.0-rc5
+
+### New
+
+### Improved
+
+### Fixed
+
+
 ## 1.0.0-rc4
 
 Multiple bug fixes and improvements, and improved shutdown handling.

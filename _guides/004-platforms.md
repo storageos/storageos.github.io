@@ -47,6 +47,19 @@ sections:
             title: Production deployment tips
             description: Production deployments
             module: platforms/kubernetes/howto/production
+      - 
+        title: Troubleshoot
+        description: Troubleshooting
+        module: platforms/kubernetes/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting install
+            module: platforms/kubernetes/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/kubernetes/troubleshoot/volumes
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -77,6 +90,15 @@ sections:
             title: Provision volumes
             description: Provision volumes
             module: platforms/openshift/howto/provision-volumes
+      - 
+        title: Troubleshoot
+        description: Troubleshooting
+        module: platforms/openshift/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting install
+            module: platforms/openshift/troubleshoot/install
   - title: Docker
     description: Docker
     module: platforms/docker

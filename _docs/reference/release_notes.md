@@ -46,6 +46,18 @@ provision with a new cluster discovery token (if using).
 
 ## 1.0.0-rc5
 
+1.0.0-rc5 is a big release, with multiple bug fixes, performance and usability
+improvements as we get closer to removing the RC label.
+
+### Breaking changes
+
+- Between rc4 and rc5 the location of the lock that governs configuration
+  changes has moved.  For maximum safety, shutdown StorageOS on all nodes
+  prior to upgrading to rc5.  If this is not feasible, contact
+  support@storageos.com for further instructions.
+- Prometheus metric names and types have changed to adhere to best practices.
+  If you have existing dashboards they will need to be updated.
+
 ### New
 
 - User, group and policy management added to the Web UI.
@@ -62,15 +74,17 @@ provision with a new cluster discovery token (if using).
 - RHEL/Centos has a limit of 256 devices per HBA.  The API now returns
   `cannot create new volume, active volumes at maximum` when this limit has been
   reached.
-- TODO: network connectivity
-- TODO: licence placeholder: DEV-1224
-- TODO: Metrics placeholder, DEV-2243, DEV-2536
-
+- New network connectivity diagnostics to help diagnose potential firewall
+  issues.  With the CLI (`storageos cluster connectivity`) or API
+  (`GET /v1/diagnostics/network`), all required connectivity will be verified.
+- Without a licence, StorageOS has all features enabled but provisioned capacity
+  is now limited to 100GB.  Once registered (via the Web UI), capacity increases
+  to 500GB.
 
 ### Improved
 
-- Increased performance by reducing context switches in the IO path when passing
-  data to or from the backend. (TODO: give rough % increase?)
+- Increased overall performance by reducing context switches in the IO path when
+  passing data to or from the backend. (TODO: give rough % increase?)
 - Increased replication performance by optimising the parallel writes to
   multiple destinations.  With >1 replicas this will roughly double replication
   performance, but it also reduces the overhead of adding additional replicas to
@@ -112,6 +126,8 @@ provision with a new cluster discovery token (if using).
   - `decommissioned`: If a volume is being deleted the health will be marked as
     decommissioned.
 
+- Prometheus metrics have been overhauled to provide more friendly and useful
+  metrics.  Most metric names will have been renamed or replaced
 - Migrate from vue-resource to Axios for handling ajax requests in the Web UI.
 - Warnings are now logged when volumes can not be provisioned due to licensing
   constraints.
@@ -174,7 +190,7 @@ provision with a new cluster discovery token (if using).
 - If a volume with no replicas goes offline and then recovers, the volume was
   not marked as `healthy`.
 - The CLI was reporting replicas that were not active, creating inaccurate
-  volume counts.  
+  volume counts.
 - On a new volume with no replicas with the master on node1, if the volume was
   mounted on a node that does not hold the volume master (node2) and then node1
   drained, then the new volume created on another node will not be mountable.

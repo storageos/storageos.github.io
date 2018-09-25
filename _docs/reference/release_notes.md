@@ -128,7 +128,7 @@ improvements as we get closer to removing the RC label.
 
 - Prometheus metrics have been overhauled to provide more friendly and useful
   metrics.  Most metric names will have been renamed or replaced
-- Migrate from [vue-resource](https://github.com/pagekit/vue-resource)
+- Internal library change from [vue-resource](https://github.com/pagekit/vue-resource)
   ([deprecation notice](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4))
   to [Axios](https://github.com/axios/axios) for handling ajax requests in the
   Web UI.

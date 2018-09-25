@@ -99,6 +99,10 @@ sections:
             title: Installation
             description: Troubleshooting install
             module: platforms/openshift/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/openshift/troubleshoot/volumes
   - title: Docker
     description: Docker
     module: platforms/docker

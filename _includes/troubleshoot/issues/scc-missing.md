@@ -6,7 +6,7 @@ StorageOS deployment doesn't have any pod replicas. The DaemonSet couldn't alloc
 ```bash
 [root@master02 standard]# {{ page.cmd }} get pod
 No resources found.
-[root@master02 standard]# {{ page.cmd }} describe ds
+[root@master02 standard]# {{ page.cmd }} describe daemonset storageos
 (...)
 Events:
   Type     Reason        Age                From                  Message

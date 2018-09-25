@@ -1,10 +1,10 @@
 ---
 layout: guide
-title: StorageOS Docs - Kubernetes troubleshoot
+title: StorageOS Docs - openshift troubleshoot
 anchor: platforms
-cmd: kubectl
-platform: Kubernetes
-module: platforms/kubernetes/troubleshoot/volumes
+cmd: oc
+platform: OpenShift
+module: platforms/openshift/troubleshoot/volumes
 ---
 
 # Troubleshooting

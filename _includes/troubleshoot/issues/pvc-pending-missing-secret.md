@@ -1,6 +1,6 @@
 ## PVC pending state - Secret Missing
 
-The PVC created remains in pending state making pods that need to mount that PVC unable to start
+The PVC created remains in pending state making pods that need to mount that PVC unable to start.
 
 ### Issue: 
 ```bash

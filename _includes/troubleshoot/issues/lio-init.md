@@ -34,6 +34,6 @@ modprobe: FATAL: Module tcm_loop not found.
 ```
 
 ### Solution:
-Install the kernel modules (usually found in the linux-image-extra-$(uname -r) package of your distribution) in your nodes following this [prerequisites page]({%link
+Install the kernel modules (usually found in the `linux-image-extra-$(uname -r)` package of your distribution) in your nodes following this [prerequisites page]({%link
 _docs/prerequisites/systemconfiguration.md %}) and delete StorageOS pods, so the DaemonSet creates the pods again.
 

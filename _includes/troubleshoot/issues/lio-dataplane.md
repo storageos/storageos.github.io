@@ -18,6 +18,6 @@ lsmod  | egrep "^tcm_loop|^target_core_mod|^target_core_file|^configfs"
 ```
 
 ### Solution:
-Install the kernel modules (usually found in the linux-image-extra-$(uname -r) package of your distribution) in your nodes following this [prerequisites page]({%link
+Install the kernel modules (usually found in the `linux-image-extra-$(uname -r)` package of your distribution) in your nodes following this [prerequisites page]({%link
 _docs/prerequisites/systemconfiguration.md %}) and restart the container.
 

@@ -24,8 +24,8 @@ variables. These can be injected in via any of the usual mechanisms such as
 * `DFS_PORT`: Port for DirectFS to listen on.  Defaults to `5703`.
 * `KV_PEER_PORT`: Port for the embedded Key/Value store. Defaults to `5707`.
 * `KV_CLIENT_PORT`: Port for the embedded Key/Value store. Defaults to `5706`.
-* `KV_ADDR`: IP address/port of an external Key/Vaue store.  Must be specified with `KV_BACKEND=etcd`.
 * `KV_BACKEND`: Type of KV store to use. Defaults to `embedded`. `etcd` is supported with `KV_ADDR` set to an external etcd instance.
+* `KV_ADDR`: Comma separated list of etcd targets, in the form host[:port].  Must be specified with `KV_BACKEND=etcd`.
 * `LOG_LEVEL`: One of `debug`, `info`, `warning` or `error`.  Defaults to `info`.
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.

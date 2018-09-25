@@ -83,18 +83,16 @@ improvements as we get closer to removing the RC label.
 
 ### Improved
 
-- Increased overall performance by reducing context switches in the IO path when
-  passing data to or from the backend. This results in lower latency for all IO.
+- Increased overall performance by reducing context switches in the IO path,
+  resulting in lower latency for all IO.
 - Increased replication performance by optimising the parallel writes to
   multiple destinations.  With >1 replicas this will roughly double replication
   performance, but it also reduces the overhead of adding additional replicas to
   a volume.
 - Time taken to detect and recover from a node failure reduced from 45-70
   seconds to <15 seconds.
-- Replaced the internal distributed lock mechanism to ensure correct and
-  deterministic behaviour in the majority of failure scenarios.  Nodes are now
-  notified when locks are released and acquired, and there is a consistent view
-  of which node holds the lock.
+- Improved the internal distributed lock mechanism to ensure correct and
+  deterministic behaviour in the majority of failure scenarios.
 - Implemented basic check-and-set (CAS) on control plane operations where
   consistency is required.
 - Stop all control plane state evaluations if KV store is unavailable for more
@@ -127,7 +125,7 @@ improvements as we get closer to removing the RC label.
     decommissioned.
 
 - Prometheus metrics have been overhauled to provide more friendly and useful
-  metrics.  Most metric names will have been renamed or replaced
+  statistics.
 - Internal library change from [vue-resource](https://github.com/pagekit/vue-resource)
   ([deprecation notice](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4))
   to [Axios](https://github.com/axios/axios) for handling ajax requests in the
@@ -143,7 +141,8 @@ improvements as we get closer to removing the RC label.
 - Improved description and flow of cluster diagnostics upload.
 - Web UI volume detail page re-designed.
 - Web UI theme tweaks: list view, pagination, headers, in-place edit.
-- Upgrade internal messaging library and restructure implementation.
+- Upgrade version of internal messaging library (nats) and restructure
+  implementation.
 - Ensure the API supports label selectors on all object listings and improve
   internal code consistency and tests.
 - Ensure control plane workers and gRPC connection pool are shutdown cleanly
@@ -154,7 +153,7 @@ improvements as we get closer to removing the RC label.
   potential issue that could lead to unclean shutdown.
 - The lun ID is now computed dynamically.  This allows support for devices 
   across multiple HBAs in the future, which will remove the limitation of 
-  256 volumes on RHEL/Centos clusters.
+  256 volumes on RHEL7/Centos7 clusters and other systems with kernel 3.x.
 - SCSI lun support now supports co-existence with other block storage providers
 - Bulk volume creation could cause excessive validation warning messages in the
   logs do to concurrent configuration requests to the data plane.  Now, if the
@@ -165,6 +164,10 @@ improvements as we get closer to removing the RC label.
 
 ### Fixed
 
+- Filesystems now behave correctly when the underlying data store is out of
+  capacity.  Previously the filesystem would appear to hang as it would retry
+  the operation indefinitely.  Now, the filesystem will receive a fatal error
+  and will typically become read-only.
 - Listing volumes bypassed policy evaluation so a user in one namespace was able
   to view volume details in another namespace.  Create, update and delete were
   not affected and required correct authorization.
@@ -220,10 +223,6 @@ improvements as we get closer to removing the RC label.
   situations could allow the client to re-use a connection while it was still
   being prepared for re-use.  This could lead to a replication error or volumes
   stuck in "syncing" state.
-- Filesystems now behave correctly when the underlying data store is out of
-  capacity.  Previously the filesystem would appear to hang as it would retry
-  the operation indefinitely.  Now, the filesystem will receive a fatal error
-  and will typically become read-only.
 - No longer logs an error when deleting a volume with no data.
 
 ## 1.0.0-rc4

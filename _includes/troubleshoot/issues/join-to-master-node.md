@@ -27,8 +27,10 @@ If that happens but the master node has not been configured to run workloads, th
 Check that the first node of the `JOIN` variable started properly.
 
 ```bash
-{{ page.cmd }} -n storageos describe ds/storageos | grep JOIN
-{{ page.cmd }} -n storageos get pod -o wide
+root@node1:~/# {{ page.cmd }} -n storageos describe ds/storageos | grep JOIN
+    JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
+root@node1:~/# {{ page.cmd }} -n storageos get pod -o wide | grep 172.28.128.3
+storageos-8zqxl   1/1       Running   0          2m        172.28.128.3   node1
 ```
 
 ### Solution:

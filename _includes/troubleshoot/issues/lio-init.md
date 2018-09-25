@@ -20,11 +20,17 @@ Check the logs of the init container.
 {{ page.cmd }} -n storageos logs $ANY_STORAGEOS_POD -c enable-lio
 ```
 
-In case of failure, it will show the following output, indicating that the kernel modules couldn't
+In case of failure, it will show the following output, indicating which kernel modules couldn't
 be loaded or that they are not properly configured:
 
 ```bash
-# INIT OUTPUT
+Checking configfs
+configfs mounted on sys/kernel/config
+Module target_core_mod is not running
+executing modprobe -b target_core_mod
+Module tcm_loop is not running
+executing modprobe -b tcm_loop
+modprobe: FATAL: Module tcm_loop not found.
 ```
 
 ### Solution:

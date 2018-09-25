@@ -128,7 +128,10 @@ improvements as we get closer to removing the RC label.
 
 - Prometheus metrics have been overhauled to provide more friendly and useful
   metrics.  Most metric names will have been renamed or replaced
-- Migrate from vue-resource to Axios for handling ajax requests in the Web UI.
+- Migrate from [vue-resource](https://github.com/pagekit/vue-resource)
+  ([deprecation notice](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4))
+  to [Axios](https://github.com/axios/axios) for handling ajax requests in the
+  Web UI.
 - Warnings are now logged when volumes can not be provisioned due to licensing
   constraints.
 - Internal logging improvements to ensure that runtime changes to log levels or

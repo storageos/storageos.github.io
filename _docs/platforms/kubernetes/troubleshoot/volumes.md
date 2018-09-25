@@ -9,5 +9,5 @@ module: platforms/kubernetes/troubleshoot/volumes
 
 {% include troubleshoot/issues/mount-in-pod-stat.md %}
 
-{% include troubleshoot/issues/pvc-pending.md %}
+{% include troubleshoot/issues/pvc-pending-missing-secret.md %}
 

@@ -46,7 +46,7 @@ provision with a new cluster discovery token (if using).
 
 ## 1.0.0-rc5
 
-1.0.0-rc5 is a big release, with multiple bug fixes, performance and usability
+1.0.0-rc5 is a major update, with multiple bug fixes, performance and usability
 improvements as we get closer to removing the RC label.
 
 ### Breaking changes
@@ -78,13 +78,13 @@ improvements as we get closer to removing the RC label.
   issues.  With the CLI (`storageos cluster connectivity`) or API
   (`GET /v1/diagnostics/network`), all required connectivity will be verified.
 - Without a licence, StorageOS has all features enabled but provisioned capacity
-  is now limited to 100GB.  Once registered (via the Web UI), capacity increases
-  to 500GB.
+  is now limited to 100GB.  Once registered (for free, via the Web UI), capacity
+  increases to 500GB.
 
 ### Improved
 
 - Increased overall performance by reducing context switches in the IO path when
-  passing data to or from the backend. (TODO: give rough % increase?)
+  passing data to or from the backend. This results in lower latency for all IO.
 - Increased replication performance by optimising the parallel writes to
   multiple destinations.  With >1 replicas this will roughly double replication
   performance, but it also reduces the overhead of adding additional replicas to
@@ -102,7 +102,7 @@ improvements as we get closer to removing the RC label.
 - Ensure node does not participate in state evaluations when it has been set as
   unschedulable with `storageos node cordon` or `storageos node drain`.
 - Internal library change from [Serf](https://github.com/hashicorp/serf) to
-  [Memberlist](https://github.com/hashicorp/memberlist).  This helped simplify
+  [Memberlist](https://github.com/hashicorp/memberlist).  This helps simplify
   node failure detection.
 - Control plane state evaluations are now performed serially with an interval of
   once per second.  This reduces the load on the cluster during bulk or recovery
@@ -112,7 +112,7 @@ improvements as we get closer to removing the RC label.
   it takes 10-50ms.
 - Node capacity now includes capacity from all devices made available for use by
   StorageOS.
-- Volume health improved.  Health is now defined as:
+- Volume health management and reporting is improved.  Health is now defined as:
 
   - `healthy`: Only if the volume master and requested number of replicas are
     healthy.
@@ -135,8 +135,8 @@ improvements as we get closer to removing the RC label.
   filters maintain consistency across multiple consumers.
 - Diagnostic requests now support JSON requests via the "Accepts" header,
   defaulting to the current tar archive response.  Internally, collection from
-  multiple nodes is now streamed with a timeout of 10 seconds to prevent a
-  deadlocked node from blocking the response.
+  multiple nodes is now streamed with a timeout of 10 seconds to prevent an
+  unresponsive node from blocking the response.
 - Improved description and flow of cluster diagnostics upload.
 - Web UI volume detail page re-designed.
 - Web UI theme tweaks: list view, pagination, headers, in-place edit.
@@ -149,10 +149,10 @@ improvements as we get closer to removing the RC label.
 - Explicitly shutdown the data plane gRPC handlers in the replication client
   prior to shutting down the rest of the data plane.  This protects against a
   potential issue that could lead to unclean shutdown.
-- The lun ID was previously set to use the device ID for convenience.  This has
-  now been decoupled in order to support devices across multiple HBAs in the
-  future, which will remove the limitation of 256 volumes on RHEL/Centos
-  clusters.
+- The lun ID is now computed dynamically.  This allows support for devices 
+  across multiple HBAs in the future, which will remove the limitation of 
+  256 volumes on RHEL/Centos clusters.
+- SCSI lun support now supports co-existence with other block storage providers
 - Bulk volume creation could cause excessive validation warning messages in the
   logs do to concurrent configuration requests to the data plane.  Now, if the
   volume already exists or a CAS update fails, a conflict error (rather than
@@ -204,7 +204,7 @@ improvements as we get closer to removing the RC label.
   while a shutdown is in progress.  This only occured during shutdown and did
   not affect data consistency.
 - Fixed an unclean shutdown issue in the replication client where references to
-  the client's server pair could be cleared while IO was still in progress.  A
+  the client configuration could be cleared while IO was still in progress.  A
   reference counter has been implemented to ensure that all operations have
   completed prior to the server entry being removed.  This only occured during
   shutdown and did not affect data consistency.
@@ -220,9 +220,7 @@ improvements as we get closer to removing the RC label.
 - Filesystems now behave correctly when the underlying data store is out of
   capacity.  Previously the filesystem would appear to hang as it would retry
   the operation indefinitely.  Now, the filesystem will receive a fatal error
-  and will typically make itself read-only.
-- Remove race condition in internal blob metadata creation, never seen to cause
-  an issue.
+  and will typically become read-only.
 - No longer logs an error when deleting a volume with no data.
 
 ## 1.0.0-rc4

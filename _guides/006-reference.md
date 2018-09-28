@@ -63,6 +63,10 @@ sections:
     description: Describes the support environment variables for StorageOS
     module: reference/envvars
   -
+    title: Labels (features)
+    description:  StorageOS special labels to apply features
+    module: reference/labels
+  -
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes

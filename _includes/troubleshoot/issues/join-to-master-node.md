@@ -19,7 +19,7 @@ defined in the `JOIN` variable.
 If there are no active StorageOS nodes, the bootstrap process will elect the first node in the `JOIN` variable 
 as master, hence the rest will try to discover from it. In case of that node not starting, the whole cluster will remain unable to bootstrap.
 
-Installations of StorageOS on {{ page.platform }} use a DaemonSet, which by default they might be able to be allocated in master nodes.
+Installations of StorageOS on {{ page.platform }} use a DaemonSet, which by default schedule StorageOS pods to master nodes, since they have the node-role.kubernetes.io/master:NoSchedule taint applied in typical installations.
 If that happens but the master node has not been configured to run workloads, the StorageOS Pod will never start. If by chance, the JOIN variable was defined listing that node as the first in the list, the StorageOS cluster will remain unable to start.
 
 ### Doublecheck:

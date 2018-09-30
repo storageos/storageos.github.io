@@ -7,56 +7,37 @@ module: operations/troubleshooting
 
 # Troubleshooting
 
-## Installation issues
+Examples of common misconfigurations specific for platforms can be found in its own Troubleshooting section.
 
-``` Error response from daemon: dial unix
-/run/docker/plugins/a-very-long-hash-value/storageos.sock: connect: connection
-refused ```
-
-This error indicates that the StorageOS did not successfully start during
-installation. This is usually due to incorrect option values being passed to the
-docker plugin installation command.
-
-Common causes of this issue are
-
-- Missing or invalid `JOIN` information
-- Inability to contact the StorageOS [discovery
-  service]({%link _docs/prerequisites/clusterdiscovery.md %})
-  (when using a cluster token)
-- Missing `-v /run/docker/plugins:/run/docker/plugins`
-
-Refer to the [container install instructions]({%link _docs/platforms/docker/install.md
-%}), or run `docker logs storageos` for more debug output.
+- [Kubernetes]({%link _docs/platforms/kubernetes/troubleshoot/index.md %})
+- [Openhift]({%link _docs/platforms/openshift/troubleshoot/index.md %})
+- [Docker]({%link _docs/platforms/docker/troubleshoot/index.md %})
 
 
-## Clearing cached `JOIN`
+# Submit a support case
+StorageOS team handles support requests. To be able to assist you promptly and effectively it is best to provide as much information as possible. This is relevant information you can send in addition to a support request when having any issue or unexpected behaviour. 
 
-When trying out StorageOS in Dev/POC environments it is common to change the
-value of the `JOIN` variable between installs. However, if a cluster has
-previously been made, the old `JOIN` value is cached and used
-in preference. When re-installing StorageOS, you should clear the
-old cached data:
+## StorageOS 
+- Version of StorageOS
+- `storageos node ls`
+- `storageos volume ls`
+- `storageos volume inspect VOL_ID # in case of issues with an specific volume`
 
-```
-$ rm -rf /var/lib/storageos*
-```
+## Orchestrator related (Kubernetes, OpenShift, etc)
+- Version and installation method
+- Managed or self managed?
+- `kubectl -n storageos get pod` 
+- `kubectl -n storageos logs -lapp=storageos -c storageos`
+- `kubectl -n storageos get storageclass`
+- Specific for your namespaces: `kubectl describe pvc PVC_NAME` 
+- Specific for your namespaces: `kubectl describe pod POD_NAME` 
 
-Note this will remove any data stored on this node.
+## Common
+- Cloud provider/Bare metal
+- OS distribution and version
+- Kernel version
+- docker version and installation procedure (distro packages or docker install)
 
-## Re-using an old cluster token
+# Reuse nodes for a new StorageOS cluster
 
-When re-installing StorageOS it is possible to make the mistake of using an old
-cluster token from a previous install. This will cause the new StorageOS install
-to attempt to join the old cluster, normally resulting in a failure.
-
-```
-$ docker plugin install --alias storageos storageos/plugin:0.9.2 JOIN=$PREVIOUS_CLUSTER_ID
-0.9.2: Pulling from storageos/plugin
-a4eba3fe5636: Download complete
-Digest: sha256:4f4a87e1506b7357815f574ded1ef7fd53e94683ce9d802a134019dfd8e9580a
-Status: Downloaded newer image for storageos/plugin:0.9.2
-Installed plugin storageos/plugin:0.9.2
-
-$ storageos cluster health
-API not responding to list nodes: API error (Service Unavailable): KV Store Unavailable
-```
+{% include troubleshoot/issues/newcluster-old-nodes.md %}

@@ -140,6 +140,19 @@ sections:
             title: Cassandra
             description: Setting up Cassandra with persistent storage.
             module: platforms/docker/examples/cassandra
+      - 
+        title: Troubleshoot
+        description: Troubleshooting
+        module: platforms/docker/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting install
+            module: platforms/docker/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/docker/troubleshoot/volumes
   - title: Azure
     description: Azure
     module: platforms/azure

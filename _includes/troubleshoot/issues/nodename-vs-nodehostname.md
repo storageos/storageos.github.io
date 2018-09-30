@@ -13,6 +13,3 @@ The StorageOS registration process to start the cluster uses the hostname of the
 ### Solution:
 
 Make sure the hostnames match with the {{ page.platform }} advertised names. If you have changed the hostname of your nodes, make sure that you restart the nodes to apply the change.
-
-
-{% include troubleshoot/issues/one-node-multiple-clusters.md %}

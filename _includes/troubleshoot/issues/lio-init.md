@@ -5,7 +5,11 @@
 StorageOS pods not starting with `Init:Error`
 ```bash
 {{ page.cmd }} -n storageos get pod
-# output of error
+NAME              READY     STATUS              RESTARTS   AGE
+storageos-2kwqx   0/1       Init:Err             0          6s
+storageos-cffcr   0/1       Init:Err             0          6s
+storageos-d4f69   0/1       Init:Err             0          6s
+storageos-nhq7m   0/1       Init:Err             0          6s
 ```
 
 ### Reason:

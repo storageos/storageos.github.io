@@ -18,9 +18,9 @@ Options:
   -f, --follow             Tail the logs for the given node, or all nodes if not specified
       --format string      Output format (raw or table) or a Go template (default "raw")
       --help               Print usage
+   -l, --log-level string   Set the logging level ("debug"|"info"|"warn"|"error"|"fatal")
   -q, --quiet              Only display volume names
   -t, --timeout int        Timeout in seconds. (default 5)
-      --verbosity string   Set the logging verbosity
 
 Commands:
   view        Show logging configuration
@@ -30,17 +30,17 @@ Run 'storageos logs COMMAND --help' for more information on a command.
 
 The `logs` command is intended to assist with troubleshooting a running cluster.
 
-Verbosity controls the level of detail shown in the logs with `info` the
-default.  The available options are `debug`, `info`, `warning`, `error` and
+`--log-level` controls the level of detail shown in the logs with `info` the
+default.  The available options are `debug`, `info`, `warn`, `error` and
 `fatal`.  During normal operation `info` level is recommended.
 
-Filters fine-tune the amount of detail shown.  They allow you to
-set verbosity to `debug` level, then set specific categories at a higher level
+Filters fine-tune the amount of detail shown.  They allow you to set the log
+level to `debug` level, then set specific categories at a higher level
 (e.g. `info`) so there is less noise while troubleshooting an issue.
 
 For example, the filter `dp=info,cp=info,etcd=debug` would set all dataplane and
 controlplane categories to `info` level, then only enable `debug` on the `etcd`
-category.  Filters are evaluated from left to right.  The verbosity must also be
+category.  Filters are evaluated from left to right.  The log level must also be
 set to `debug` to show the `etcd` category at `debug` level.
 
 Categories are tags on log messages that relate to the component that generated
@@ -52,7 +52,7 @@ time="2018-01-11T12:42:58Z" level=info msg="lost leadership election, waiting" a
 
 ### `storageos logs view`
 
-Displays the logging verbosity and filters for the whole cluster.
+Displays the current log levels and filters for the whole cluster.
 
 ```bash
 storageos logs view
@@ -62,19 +62,19 @@ storageos-2  info
 storageos-3  debug  cp=info,dp=info,ha=debug
 ```
 
-### Set verbosity
+### Set log verbosity
 
-To set the verbosity level on all nodes in the cluster:
+To set the log level on all nodes in the cluster:
 
 ```bash
-storageos logs --verbosity debug
+storageos logs --log-level debug
 OK
 ```
 
-To set the verbosity level on specific nodes, append a list of node names:
+To set the log level on specific nodes, append a list of node names:
 
 ```bash
-storageos logs --verbosity debug storageos-1 storageos-2
+storageos logs --log-level debug storageos-1 storageos-2
 OK
 ```
 

@@ -44,6 +44,187 @@ If you are installing on a node that has had a previous version installed, make
 sure that the contents of `/var/lib/storageos` has been removed, and that you
 provision with a new cluster discovery token (if using).
 
+## 1.0.0-rc5
+
+1.0.0-rc5 is a major update, with multiple bug fixes, performance and usability
+improvements as we get closer to removing the RC label.
+
+### Breaking changes
+
+- Between rc4 and rc5 the location of the lock that governs configuration
+  changes has moved.  For maximum safety, shutdown StorageOS on all nodes
+  prior to upgrading to rc5.  If this is not feasible, contact
+  support@storageos.com for further instructions.
+- Prometheus metric names and types have changed to adhere to best practices.
+  If you have existing dashboards they will need to be updated.
+
+### New
+
+- User, group and policy management added to the Web UI.
+- A custom or self-hosted cluster discovery service can now be specified by
+  setting the `DISCOVERY_HOST` environment variable to the hostname or ip of the
+  running service.  The source code for the discovery service is open and
+  available on [GitHub](https://github.com/storageos/discovery).  Note that the
+  cluster discovery service is optional and supplied as a convenience.
+- The `KV_ADDR` environment variable now supports specifying multiple hostnames
+  or addresses of external etcd servers.  Hostnames and addresses should be
+  comma-separated and can include the port number (required if not `2379`, the
+  etcd default).
+- Passes CSI 0.3 (latest) [conformance tests](https://github.com/kubernetes-csi/csi-test).
+- RHEL/Centos has a limit of 256 devices per HBA.  The API now returns
+  `cannot create new volume, active volumes at maximum` when this limit has been
+  reached.
+- New network connectivity diagnostics to help diagnose potential firewall
+  issues.  With the CLI (`storageos cluster connectivity`) or API
+  (`GET /v1/diagnostics/network`), all required connectivity will be verified.
+- Without a licence, StorageOS has all features enabled but provisioned capacity
+  is now limited to 100GB.  Once registered (for free, via the Web UI), capacity
+  increases to 500GB.
+
+### Improved
+
+- Increased overall performance by reducing context switches in the IO path,
+  resulting in lower latency for all IO.
+- Increased replication performance by optimising the parallel writes to
+  multiple destinations.  With >1 replicas this will roughly double replication
+  performance, but it also reduces the overhead of adding additional replicas to
+  a volume.
+- Time taken to detect and recover from a node failure reduced from 45-70
+  seconds to <15 seconds.
+- Improved the internal distributed lock mechanism to ensure correct and
+  deterministic behaviour in the majority of failure scenarios.
+- Implemented basic check-and-set (CAS) on control plane operations where
+  consistency is required.
+- Stop all control plane state evaluations if KV store is unavailable for more
+  than the distributed lock TTL (5 seconds).
+- Ensure node does not participate in state evaluations when it has been set as
+  unschedulable with `storageos node cordon` or `storageos node drain`.
+- Internal library change from [Serf](https://github.com/hashicorp/serf) to
+  [Memberlist](https://github.com/hashicorp/memberlist).  This helps simplify
+  node failure detection.
+- Control plane state evaluations are now performed serially with an interval of
+  once per second.  This reduces the load on the cluster during bulk or recovery
+  operations.  Previously, multiple workers may try to apply the same changes,
+  causing unnessessary validation to take place.  A Prometheus histogram has
+  been added to track duration of each state evaluation.  Under normal operation
+  it takes 10-50ms.
+- Node capacity now includes capacity from all devices made available for use by
+  StorageOS.
+- Volume health management and reporting is improved.  Health is now defined as:
+
+  - `healthy`: Only if the volume master and requested number of replicas are
+    healthy.
+  - `syncing`: If any replicas are in the process of re-syncing.
+  - `suspect`: The master is healthy, but at least one replica is suspect or
+    degraded.
+  - `degraded`: If the master is suspect/degraded or the master is healthy
+    but at least one replica is dead.
+  - `offline`: If the volume is offline, typically because the master is not
+    available and there were no healthy replicas to failover to.
+  - `decommissioned`: If a volume is being deleted the health will be marked as
+    decommissioned.
+
+- Prometheus metrics have been overhauled to provide more friendly and useful
+  statistics.
+- Internal library change from [vue-resource](https://github.com/pagekit/vue-resource)
+  ([deprecation notice](https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4))
+  to [Axios](https://github.com/axios/axios) for handling ajax requests in the
+  Web UI.
+- Warnings are now logged when volumes can not be provisioned due to licensing
+  constraints.
+- Internal logging improvements to ensure that runtime changes to log levels or
+  filters maintain consistency across multiple consumers.
+- Diagnostic requests now support JSON requests via the "Accepts" header,
+  defaulting to the current tar archive response.  Internally, collection from
+  multiple nodes is now streamed with a timeout of 10 seconds to prevent an
+  unresponsive node from blocking the response.
+- Improved description and flow of cluster diagnostics upload.
+- Web UI volume detail page re-designed.
+- Web UI theme tweaks: list view, pagination, headers, in-place edit.
+- Upgrade version of internal messaging library (nats) and restructure
+  implementation.
+- Ensure the API supports label selectors on all object listings and improve
+  internal code consistency and tests.
+- Ensure control plane workers and gRPC connection pool are shutdown cleanly
+  prior to shutting down the data plane to ensure operations have completed and
+  to reduce warnings in logs.
+- Explicitly shutdown the data plane gRPC handlers in the replication client
+  prior to shutting down the rest of the data plane.  This protects against a
+  potential issue that could lead to unclean shutdown.
+- The lun ID is now computed dynamically.  This allows support for devices 
+  across multiple HBAs in the future, which will remove the limitation of 
+  256 volumes on RHEL7/Centos7 clusters and other systems with kernel 3.x.
+- SCSI lun support now supports co-existence with other block storage providers
+- Bulk volume creation could cause excessive validation warning messages in the
+  logs do to concurrent configuration requests to the data plane.  Now, if the
+  volume already exists or a CAS update fails, a conflict error (rather than
+  generic error) is returned to the control plane.  This allows the control
+  plane to only log a warning or error message if the intended action failed.
+- Ongoing log message readability and tuning of log levels.
+
+### Fixed
+
+- Filesystems now behave correctly when the underlying data store is out of
+  capacity.  Previously the filesystem would appear to hang as it would retry
+  the operation indefinitely.  Now, the filesystem will receive a fatal error
+  and will typically become read-only.
+- Listing volumes bypassed policy evaluation so a user in one namespace was able
+  to view volume details in another namespace.  Create, update and delete were
+  not affected and required correct authorization.
+- Deletion of encrypted volumes did not work correctly.
+- Product version details were not always displayed correctly.
+- Licence upload could fail with error: `licence and actual array UUIDs do not
+  match`.
+- Erroneously reported an error when removing data for a volume that was already
+  deleted.
+- Web UI icons no longer load from the Internet and now display in disconnected
+  environments.
+- Web UI capacity now uses gigabytes to be consistent with CLI.
+- API error when running `storageos cluster health` was suggesting to use
+  `storageos cluster health` to diagnose the errror.
+- API for retrieving the Cluster ID is no longer restricted to administrators
+  only, but any authenticated user.
+- Rules against namespaces with common prefixes no longer clash.
+- It was possible to create more than one namespace with the same name.
+- Fixed `fork/exec /usr/sbin/symmetra: text file busy`, caused by the operating
+  system not having closed the file for writing before it is executed.
+- Fixed `docker volume rm <volname>` returning 0 but not deleting the volume
+  correctly.
+- If a volume has a single replica and the master fails when the replica is in
+  `syncing` state, the volume is now marked as `offline` until the master
+  recovers.  Previously, the volume remained in `syncing` state indefinitely.
+- If a volume with no replicas goes offline and then recovers, the volume was
+  not marked as `healthy`.
+- The CLI was reporting replicas that were not active, creating inaccurate
+  volume counts.
+- On a new volume with no replicas with the master on node1, if the volume was
+  mounted on a node that does not hold the volume master (node2) and then node1
+  drained, then the new volume created on another node will not be mountable.
+- Prometheus `/metrics` endpoint always returns text format with correct text
+  encoding, even if binary output was requested.  This matches the Prometheus
+  2.0 policy to deprecate the binary format, and allows the endpoint to work
+  with other collectors that support the text format, e.g. Telegraf.
+- Fixed an unclean shutdown issue in the data plane volume presentation where
+  configuration of a volume could still be attempted while a shutdown was in
+  progress.  A lock is now taken to ensure order and to refuse configuration
+  while a shutdown is in progress.  This only occured during shutdown and did
+  not affect data consistency.
+- Fixed an unclean shutdown issue in the replication client where references to
+  the client configuration could be cleared while IO was still in progress.  A
+  reference counter has been implemented to ensure that all operations have
+  completed prior to the server entry being removed.  This only occured during
+  shutdown and did not affect data consistency.
+- Ensure all internal IO acknowledgements are received or a timeout reached
+  prior to shutting down the replication server.  This fixes an issue where
+  a shutdown or fatal error could cause the server to crash as it was being
+  shutdown cleanly.  This only occured during shutdown and did not affect data
+  consistency.
+- Fixed an issue in the replication client connection handler that in some
+  situations could allow the client to re-use a connection while it was still
+  being prepared for re-use.  This could lead to a replication error or volumes
+  stuck in "syncing" state.
+- No longer logs an error when deleting a volume with no data.
+
 ## 1.0.0-rc4
 
 Multiple bug fixes and improvements, and improved shutdown handling.

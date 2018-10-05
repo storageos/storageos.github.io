@@ -1058,10 +1058,14 @@ paths:
       responses:
         200:
           description: "Node deleted"
+        400:
+          description: "Only possible to delete nodes when using external etcd"
         403:
           description: "Forbidden"
+        404:
+          description: "Node does not exist"
         412:
-          description: "Volumes in the node being deleted"
+          description: "Node not offline"
         500:
           description: "Server error"
           schema:

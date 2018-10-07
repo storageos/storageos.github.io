@@ -1,7 +1,7 @@
 ## Peer discovery - Pod allocation
 
 ### Issue:
-StorageOS nodes can't join the cluster showing the following logs.
+StorageOS nodes can't join the cluster and shows the following log entries.
 
 ```bash
 time="2018-09-24T13:40:20Z" level=info msg="not first cluster node, joining first node" action=create address=172.28.128.5 category=etcd host=node3 module=cp target=172.28.128.6
@@ -11,16 +11,22 @@ time="2018-09-24T13:40:20Z" level=info msg="retrying cluster join in 5 seconds..
 ```
 
 ### Reason:
-StorageOS uses a gossip protocol to discover the nodes in the cluster. When StorageOS starts, one
-or more nodes can be referenced so new nodes can query existing ones for the list of members. This error
-indicates that the node can't connect to any of the nodes in the known list. The known list is
-defined in the `JOIN` variable.
+StorageOS uses a gossip protocol to discover the nodes in the cluster. When
+StorageOS starts, one or more active nodes must be referenced so new nodes can
+query existing ones for the list of members. This error indicates that the node
+can't connect to any of the nodes in the known list. The known list is defined
+in the `JOIN` variable.
 
-If there are no active StorageOS nodes, the bootstrap process will elect the first node in the `JOIN` variable 
-as master, hence the rest will try to discover from it. In case of that node not starting, the whole cluster will remain unable to bootstrap.
+If there are no active StorageOS nodes, the bootstrap process will elect the
+first node in the `JOIN` variable as master, and the rest will try to
+discover from it. In case of that node not starting, the whole cluster will
+remain unable to bootstrap.
 
-Installations of StorageOS on {{ page.platform }} use a DaemonSet, which by default schedule StorageOS pods to master nodes, since they have the node-role.kubernetes.io/master:NoSchedule taint applied in typical installations.
-If that happens but the master node has not been configured to run workloads, the StorageOS Pod will never start. If by chance, the JOIN variable was defined listing that node as the first in the list, the StorageOS cluster will remain unable to start.
+Installations of StorageOS on {{ page.platform }} use a DaemonSet, and by
+default do not schedule StorageOS pods to master nodes, due to the presence of
+the `node-role.kubernetes.io/master:NoSchedule` taint in typical installations.
+In such cases the `JOIN` variable must not contain master nodes or the
+StorageOS cluster will remain unable to start.
 
 ### Doublecheck:
 
@@ -35,6 +41,10 @@ storageos-8zqxl   1/1       Running   0          2m        172.28.128.3   node1
 
 ### Solution:
 
-Make sure that the `JOIN` variable doesn't specify the master nodes. In case you are using the discovery service, it is necessary to ensure that the DaemonSet can't allocate Pods in the masters. This can be achieved with taints, node selectors or labels.
+Make sure that the `JOIN` variable doesn't specify the master nodes. In case
+you are using the discovery service, it is necessary to ensure that the
+DaemonSet won't allocate Pods on the masters. This can be achieved with taints,
+node selectors or labels.
 
-An [example of deployment](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/labeled-deployment) is available to see how to run StorageOS with node labels.
+An [example of deployment](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/labeled-deployment)
+is available to see how to run StorageOS with node labels.

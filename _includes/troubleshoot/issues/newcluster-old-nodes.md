@@ -1,10 +1,10 @@
 ## Clearing cached `JOIN`
 
 When trying out StorageOS in Dev/POC environments it is common to change the
-value of the `JOIN` variable between installs. However, if a cluster has
-previously been made, the old `JOIN` value is cached and used
-in preference. When re-installing StorageOS, you should clear the
-old cached data:
+value of the `JOIN` variable between installs. However, if a node has
+previously participated in a cluster, the old `JOIN` value is cached and used
+in preference.  When re-installing StorageOS, you should clear the old cached
+data:
 
 ```
 $ rm -rf /var/lib/storageos*
@@ -15,8 +15,8 @@ $ rm -rf /var/lib/storageos*
 ## Re-using an old cluster token
 
 When re-installing StorageOS it is possible to make the mistake of using an old
-cluster token from a previous install. This will cause the new StorageOS install
-to attempt to join the old cluster, normally resulting in a failure.
+cluster token from a previous install. This will cause the new StorageOS
+install to attempt to join the old cluster, normally resulting in a failure.
 
 ```
 $ docker plugin install --alias storageos storageos/plugin:0.9.2 JOIN=$PREVIOUS_CLUSTER_ID

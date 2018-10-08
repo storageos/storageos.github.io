@@ -2,8 +2,8 @@
 
 ### Issue:
 
-The output of `{{ page.cmd }} describe pod $POD_ID` show the `no such file`
-error of the StorageOS volume device file.
+The output of `{{ page.cmd }} describe pod $POD_ID` contains `no such file or
+directory` and references the StorageOS volume device file.
 
 ```bash
 root@node1:~# {{ page.cmd }} -n storageos describe $POD_ID

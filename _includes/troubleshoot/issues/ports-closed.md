@@ -1,9 +1,8 @@
 ## Peer discovery - Networking
 
 ### Issue:
-StorageOS nodes can't join the cluster showing the following logs.
-
-> This error keeps appearing after 1 min of starting StorageOS.
+StorageOS nodes can't join the cluster showing the following logs after one
+minute of container uptime.
 
 ```bash
 time="2018-09-24T13:40:20Z" level=info msg="not first cluster node, joining first node" action=create address=172.28.128.5 category=etcd host=node3 module=cp target=172.28.128.6
@@ -13,10 +12,11 @@ time="2018-09-24T13:40:20Z" level=info msg="retrying cluster join in 5 seconds..
 ```
 
 ### Reason:
-StorageOS uses a gossip protocol to discover the nodes in the cluster. When StorageOS starts, one
-or more nodes can be referenced so new nodes can query existing ones for the list of members. This error
-indicates that the node can't connect to any of the nodes in the known list. The known list is
-defined in the `JOIN` variable.
+StorageOS uses a gossip protocol to discover the nodes in the cluster. When
+StorageOS starts, one or more nodes can be referenced so new nodes can query
+existing ones for the list of members. This error indicates that the node can't
+connect to any of the nodes in the known list. The known list is defined in the
+`JOIN` variable.
 
 ### Doublecheck:
 
@@ -31,9 +31,14 @@ Ncat: Connected to 10.0.1.166:5705.
 Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
 ```
 
-StorageOS expose network diagnostics in its API. The storageos-cli can be used to output them. To be able to use it, the cli must query the API of the node that is running. The diagnostics run for the nodes that are or have been registered. If all the ports are blocked during the first bootstrap of the cluster, the diagnostics won't show any data as nodes couldn't register.
+StorageOS exposes network diagnostics in its API, viewable from the CLI.  To
+use this feature, the CLI must query the API of a running node. The diagnostics
+show information from all known cluster members. If all the ports are blocked
+during the first bootstrap of the cluster, the diagnostics won't show any data
+as nodes couldn't register.
 
-> StorageOS networks diagnostics are available for storageos-rc5 and storageos-cli-rc3 and above.
+> StorageOS networks diagnostics are available for storageos-rc5 and
+> storageos-cli-rc3 and above.
 
 ```bash
 # Example:
@@ -86,6 +91,7 @@ node2   node1.api       172.28.128.3:5705  1.363071ms   OK
 node2   node1.nats      172.28.128.3:5708  1.349383ms   OK
 ```
 ### Solution:
-Open ports following the [prerequisites page]({%link _docs/prerequisites/firewalls.md %}).
+Open ports following the [prerequisites page]({%link
+_docs/prerequisites/firewalls.md %}).
 
 

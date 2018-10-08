@@ -48,13 +48,13 @@ sections:
             description: Production deployments
             module: platforms/kubernetes/howto/production
       - 
-        title: Troubleshoot
+        title: Troubleshooting
         description: Troubleshooting
         module: platforms/kubernetes/troubleshoot
         subitems:
           -
             title: Installation
-            description: Troubleshooting install
+            description: Troubleshooting installation
             module: platforms/kubernetes/troubleshoot/install
           -
             title: Volume Provisioning
@@ -91,13 +91,13 @@ sections:
             description: Provision volumes
             module: platforms/openshift/howto/provision-volumes
       - 
-        title: Troubleshoot
+        title: Troubleshooting
         description: Troubleshooting
         module: platforms/openshift/troubleshoot
         subitems:
           -
             title: Installation
-            description: Troubleshooting install
+            description: Troubleshooting installation
             module: platforms/openshift/troubleshoot/install
           -
             title: Volume Provisioning
@@ -141,13 +141,13 @@ sections:
             description: Setting up Cassandra with persistent storage.
             module: platforms/docker/examples/cassandra
       - 
-        title: Troubleshoot
+        title: Troubleshooting
         description: Troubleshooting
         module: platforms/docker/troubleshoot
         subitems:
           -
             title: Installation
-            description: Troubleshooting install
+            description: Troubleshooting installation
             module: platforms/docker/troubleshoot/install
           -
             title: Volume Provisioning

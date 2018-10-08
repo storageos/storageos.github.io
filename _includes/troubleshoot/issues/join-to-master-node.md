@@ -1,7 +1,7 @@
 ## Peer discovery - Pod allocation
 
 ### Issue:
-StorageOS nodes can't join the cluster and shows the following log entries.
+StorageOS nodes can't join the cluster and show the following log entries.
 
 ```bash
 time="2018-09-24T13:40:20Z" level=info msg="not first cluster node, joining first node" action=create address=172.28.128.5 category=etcd host=node3 module=cp target=172.28.128.6

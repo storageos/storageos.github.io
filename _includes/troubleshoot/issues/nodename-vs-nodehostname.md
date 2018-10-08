@@ -8,8 +8,15 @@ time="2018-09-24T13:47:02Z" level=error msg="failed to start api" error="error v
 ```
 ### Reason:
 
-The StorageOS registration process to start the cluster uses the hostname of the node where StorageOS container is running, provided by {{ page.platform }}. However, StorageOS verifies the network hostname of the OS as a prestart check to make sure it can communicate with other nodes. If those 2 names don't match, StorageOS will remain unable to start.
+The StorageOS registration process to start the cluster uses the hostname of
+the node where StorageOS container is running, provided by {{ page.platform }}.
+However, StorageOS verifies the network hostname of the OS as a prestart check
+to make sure it can communicate with other nodes. If those 2 names don't match,
+StorageOS will remain unable to start.
 
 ### Solution:
 
-Make sure the hostnames match with the {{ page.platform }} advertised names. If you have changed the hostname of your nodes, make sure that you restart the nodes to apply the change.
+Make sure the hostnames match with the {{ page.platform }} advertised names. If
+you have changed the hostname of your nodes, make sure that you restart the
+nodes to apply the change.
+

@@ -1,4 +1,4 @@
-# Troubleshoot
+# Troubleshooting
 
 This section is aimed to help you determine issues in your cluster, whether they are related to the
 StorageOS installation, the integration with orchestrators or common misconfigurations.

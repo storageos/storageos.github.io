@@ -1,6 +1,7 @@
 ## StorageOS pods missing -- DaemonSet error
 
-StorageOS deployment doesn't have any pod replicas. The DaemonSet couldn't allocate any Pod due to security issues. 
+StorageOS deployment doesn't have any pod replicas. The DaemonSet couldn't
+allocate any Pod due to security issues. 
 
 ### Issue: 
 ```bash
@@ -16,13 +17,15 @@ Events:
 
 ### Reason:
 
-This {{ page.platform }} cluster has security context constraint policies enabled that forbid any pod, without the explicitly set policy for the service account, to be allocated.
+This {{ page.platform }} cluster has security context constraint policies
+enabled that forbid any pod, without the explicitly set policy for the service
+account, to be allocated.
 
 ### Doublecheck:
 
 Check if the StorageOS ServiceAccount can create pods with enough permissions 
 ```bash
-oc get scc privileged -o yaml # Or custom scc with enough privileges
+{{ page.cmd }} get scc privileged -o yaml # Or custom scc with enough privileges
 (...)
 users:
 - system:admin
@@ -33,12 +36,14 @@ users:
 - system:serviceaccount:tiller:tiller
 ```
 
-If the StorageOS sa system:serviceaccount:storageos:storageos is in the privileged scc it will be able to create pods.
+If the StorageOS sa system:serviceaccount:storageos:storageos is in the
+privileged scc it will be able to create pods.
 
 ### Solution:
 
-Add the ServiceAccount system:serviceaccount:storageos:storageos to a scc with enough privieges. 
+Add the ServiceAccount system:serviceaccount:storageos:storageos to a scc with
+enough privieges. 
 
 ```bash
-oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
+{{ page.cmd }} adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
 ```

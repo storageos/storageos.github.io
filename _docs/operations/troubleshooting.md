@@ -7,56 +7,18 @@ module: operations/troubleshooting
 
 # Troubleshooting
 
-## Installation issues
+We provide platform specific troubleshooting information in the following sections:
 
-``` Error response from daemon: dial unix
-/run/docker/plugins/a-very-long-hash-value/storageos.sock: connect: connection
-refused ```
+- [Kubernetes]({%link _docs/platforms/kubernetes/troubleshoot/index.md %})
+- [Openshift]({%link _docs/platforms/openshift/troubleshoot/index.md %})
+- [Docker]({%link _docs/platforms/docker/troubleshoot/index.md %})
 
-This error indicates that the StorageOS did not successfully start during
-installation. This is usually due to incorrect option values being passed to the
-docker plugin installation command.
+# Common Platform Agnostic Issues
 
-Common causes of this issue are
+{% include troubleshoot/issues/newcluster-old-nodes.md %}
 
-- Missing or invalid `JOIN` information
-- Inability to contact the StorageOS [discovery
-  service]({%link _docs/prerequisites/clusterdiscovery.md %})
-  (when using a cluster token)
-- Missing `-v /run/docker/plugins:/run/docker/plugins`
+# Getting Help
 
-Refer to the [container install instructions]({%link _docs/platforms/docker/install.md
-%}), or run `docker logs storageos` for more debug output.
-
-
-## Clearing cached `JOIN`
-
-When trying out StorageOS in Dev/POC environments it is common to change the
-value of the `JOIN` variable between installs. However, if a cluster has
-previously been made, the old `JOIN` value is cached and used
-in preference. When re-installing StorageOS, you should clear the
-old cached data:
-
-```
-$ rm -rf /var/lib/storageos*
-```
-
-Note this will remove any data stored on this node.
-
-## Re-using an old cluster token
-
-When re-installing StorageOS it is possible to make the mistake of using an old
-cluster token from a previous install. This will cause the new StorageOS install
-to attempt to join the old cluster, normally resulting in a failure.
-
-```
-$ docker plugin install --alias storageos storageos/plugin:0.9.2 JOIN=$PREVIOUS_CLUSTER_ID
-0.9.2: Pulling from storageos/plugin
-a4eba3fe5636: Download complete
-Digest: sha256:4f4a87e1506b7357815f574ded1ef7fd53e94683ce9d802a134019dfd8e9580a
-Status: Downloaded newer image for storageos/plugin:0.9.2
-Installed plugin storageos/plugin:0.9.2
-
-$ storageos cluster health
-API not responding to list nodes: API error (Service Unavailable): KV Store Unavailable
-```
+If our troubleshooting guides do not help resolve your issue, please see our
+[support section]({% link _docs/introduction/support.md %}) for details on how
+to get in touch with us.

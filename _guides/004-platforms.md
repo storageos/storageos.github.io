@@ -47,6 +47,19 @@ sections:
             title: Production deployment tips
             description: Production deployments
             module: platforms/kubernetes/howto/production
+      - 
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/kubernetes/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/kubernetes/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/kubernetes/troubleshoot/volumes
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -77,6 +90,19 @@ sections:
             title: Provision volumes
             description: Provision volumes
             module: platforms/openshift/howto/provision-volumes
+      - 
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/openshift/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/openshift/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/openshift/troubleshoot/volumes
   - title: Docker
     description: Docker
     module: platforms/docker
@@ -114,6 +140,19 @@ sections:
             title: Cassandra
             description: Setting up Cassandra with persistent storage.
             module: platforms/docker/examples/cassandra
+      - 
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/docker/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/docker/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/docker/troubleshoot/volumes
   - title: Azure
     description: Azure
     module: platforms/azure

@@ -76,6 +76,11 @@ tags:
     x-displayName: "Nodes"
     description: |
       Create and manage nodes.
+  - name: "Auth"
+    x-displayName: "Auth"
+    description: |
+      Manage login and logout.
+
 
 
 definitions:
@@ -197,6 +202,15 @@ definitions:
         x-nullable: false
         additionalProperties:
           type: "string"
+
+  LoginRequest:
+    type: "object"
+    description: "request object for login"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
 
   # VolumeMountOptions:
   #   type: "object"
@@ -1595,6 +1609,41 @@ paths:
           description: "Unauthorized"
         407:
           description: "Pool in use"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /auth/login:
+    post:
+      summary: "Login"
+      description: "Log into the StorageOS cluster"
+      produces:
+        - "application/json"
+      tags: ["Auth"]
+      parameters:
+        - $ref: "#/definitions/LoginRequest"
+      responses:
+        200:
+          description: "Success"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Server error"
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+  /auth/logout:
+    post:
+      summary: "Logout"
+      description: "Log out of the StorageOS cluster"
+      produces:
+        - "application/json"
+      tags: ["Auth"]
+      responses:
+        200:
+          description: "Success"
         500:
           description: "Server error"
           schema:

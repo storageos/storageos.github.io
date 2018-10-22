@@ -13,9 +13,9 @@ offer either a Developer (free with registration - 500GB) license or an
 Enterprise (unlimited capacity - see below) license. This document explains how
 to upgrade your license using either the GUI or CLI.
 
-## Obtaining a developer licence via the GUI
+## Obtaining a Developer licence via the GUI
 
-You can obtain and apply a developer licence in web GUI automatically by
+You can obtain and apply a Developer licence in web GUI automatically by
 creating or logging in with a StorageOS account on the licence page of the
 StorageOS web GUI: `http://ADVERTISE_IP:5707/#/licence`.
 
@@ -27,7 +27,7 @@ point your license will be visible. To inspect your license, click on the
 
 ![Developer Licence](/images/docs/operations/licencing/developer-licence.png)
 
-## Obtaining a developer licence via the CLI
+## Obtaining a Developer licence via the CLI
 
 Before getting a licence, you need to know the ID of your StorageOS cluster.
 

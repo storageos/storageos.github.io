@@ -27,6 +27,17 @@ point your license will be visible. To inspect your license, click on the
 
 ![Developer Licence](/images/docs/operations/licencing/developer-licence.png)
 
+## Applying a previously obtained licence via the GUI
+
+Occasionally we will issue licenses directly, e.g. by email or some other
+off-line meanst status
+. Too apply such keys, via the web GUI, visit
+`http://ADVERTISE_IP:5705/#/licence` and click on the tab "ENTER KEY", then
+paste the licence key and click on "UPLOAD KEY TO CLUSTER". Note that you could
+also view your cluster ID on the same page.
+
+![Apply Licence Key](/images/docs/operations/licencing/apply-licence-key.png)
+
 ## Obtaining a Developer licence via the CLI
 
 Before getting a licence, you need to know the ID of your StorageOS cluster.
@@ -59,13 +70,5 @@ Read the [licence CLI command reference]({% link _docs/reference/cli/licence.md
 Please contact [info@storageos.com](mailto:info@storageos.com) to discuss
 pricing for our Enterprise license.
 
-## Applying a previously obtained licence via the GUI
-
-If you would like to apply a previous obtained licence to a StorageOS cluster
-via the web GUI, visit `http://ADVERTISE_IP:5705/#/licence` and click on the
-tab "ENTER KEY", then paste the licence key and click on "UPLOAD KEY TO
-CLUSTER". Note that you could also view your cluster ID on the same page.
-
-![Apply Licence Key](/images/docs/operations/licencing/apply-licence-key.png)
 
 

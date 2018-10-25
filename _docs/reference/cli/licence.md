@@ -65,5 +65,3 @@ To delete the previously applied licence from the system, run:
 ```bash
 $ storageos licence rm
 ```
-
-The licence is now deleted.

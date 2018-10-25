@@ -5,7 +5,7 @@ anchor: operations
 module: operations/licensing
 ---
 
-# Licencing
+# Licensing
 
 A newly installed StorageOS cluster includes an unregistered Basic licence,
 which caps usable storage space at 100GB.  To utilise more storage space, we

@@ -67,7 +67,7 @@ Read the [licence CLI command reference]({% link _docs/reference/cli/licence.md
 
 ## Obtaining an Enterprise licence
 
-Please contact [info@storageos.com](mailto:info@storageos.com) to discuss
+Please contact [sales@storageos.com](mailto:sales@storageos.com) to discuss
 pricing for our Enterprise licence.
 
 

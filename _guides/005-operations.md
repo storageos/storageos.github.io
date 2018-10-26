@@ -25,7 +25,7 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
-    title: Licencing
+    title: Licensing
     description: StorageOS licensing
     module: operations/licensing
   -

@@ -18,7 +18,7 @@ to upgrade your licence using either the GUI or CLI.
 You can obtain and apply a Developer licence in the StorageOS web GUI
 automatically by creating or logging in with a StorageOS account on the
 StorageOS portal via the licence page of the StorageOS web GUI:
-`http://ADVERTISE_IP:5707/#/licence`.
+`http://ADVERTISE_IP:5705/#/licence`.
 
 ![Licence Login](/images/docs/operations/licensing/licence-login.png)
 

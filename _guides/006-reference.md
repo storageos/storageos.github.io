@@ -14,6 +14,10 @@ sections:
         description: Create and manage cluster
         module: reference/cli/cluster
       -
+        title: licence
+        description: Manage the licence for a cluster
+        module: reference/cli/licence
+      -
         title: login
         description: Store credentials for known cluster hosts
         module: reference/cli/login

@@ -25,6 +25,10 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
+    title: Licensing
+    description: StorageOS licensing
+    module: operations/licensing
+  -
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting

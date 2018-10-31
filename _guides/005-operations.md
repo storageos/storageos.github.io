@@ -21,6 +21,10 @@ sections:
     description: Extend physical capacity
     module: operations/extend-storage
   -
+    title: External Key/Value 
+    description: External Key/Value
+    module: operations/external-kv
+  -
     title: Rules
     description: StorageOS rules
     module: operations/rules

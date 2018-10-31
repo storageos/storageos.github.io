@@ -47,6 +47,24 @@ sections:
             title: Production deployment tips
             description: Production deployments
             module: platforms/kubernetes/howto/production
+      -
+        title: Use cases
+        description: Examples for operations
+        module: platforms/kubernetes/examples
+        subitems:
+          -
+            title: MySQL
+            description: Create a MySQL stateful set
+            module: platforms/kubernetes/examples/mysql
+          -
+            title: Monitor volumes
+            description: Monitor volumes
+            module: platforms/kubernetes/howto/monitor
+          -
+            title: Production deployment tips
+            description: Production deployments
+            module: platforms/kubernetes/howto/production
+
       - 
         title: Troubleshooting
         description: Troubleshooting

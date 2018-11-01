@@ -36,8 +36,13 @@ cluster.
 1. Run a MySQL container using the StorageOS volume driver.
 
    ```bash
-   docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos \
-       -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found --explicit_defaults_for_timestamp
+   docker run --name mysql-dev       \
+   -v mysqldata:/var/lib/mysql       \
+   --volume-driver=storageos         \
+   -e MYSQL_ROOT_PASSWORD=storageos  \
+   -d mysql                          \
+   --ignore-db-dir=lost+found        \
+   --explicit_defaults_for_timestamp
    ```
 
    * After MySQL version 5.6 the `--ignore-db-dir=lost+found` parameter needs to
@@ -102,9 +107,14 @@ cluster.
 1. Add some data.
 
    ```bash
-   mysql> INSERT INTO fruit (id, inventory, quantity) VALUES (NULL, 'Apples', '99'), (NULL, 'Bananas', '128'), (NULL, 'Oranges', '337');
+   mysql> INSERT INTO fruit (id, inventory, quantity) \
+   VALUES (NULL, 'Apples', '99'),                     \
+   (NULL, 'Bananas', '128'),                          \
+   (NULL, 'Oranges', '337');
+
    Query OK, 3 rows affected (0.00 sec)
    Records: 3  Duplicates: 0  Warnings: 0
+
    mysql> SELECT * FROM fruit;
    +----+-----------+----------+
    | id | inventory | quantity |
@@ -142,8 +152,12 @@ container has exited.
    instance and mount the same StorageOS `mysqldata` volume.
 
    ```bash
-   docker run --name mysql-dev -v mysqldata:/var/lib/mysql --volume-driver=storageos \
-       -e MYSQL_ROOT_PASSWORD=storageos -d mysql --ignore-db-dir=lost+found
+   docker run --name mysql-dev      \
+   -v mysqldata:/var/lib/mysql      \
+   --volume-driver=storageos        \
+   -e MYSQL_ROOT_PASSWORD=storageos \
+   -d mysql                         \
+   --ignore-db-dir=lost+found
    ```
 
 1. Connect to the MySQL container and connect to the testdb database.
@@ -169,7 +183,9 @@ container has exited.
 1. Insert some more data to the table
 
    ```bash
-   mysql> INSERT INTO fruit (id, inventory, quantity) VALUES (NULL, 'Peaches', '117');
+   mysql> INSERT INTO fruit (id, inventory, quantity) \
+   VALUES (NULL, 'Peaches', '117');
+   
    Query OK, 1 row affected (0.04 sec)
    ```
 

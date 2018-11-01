@@ -21,16 +21,82 @@ Options:
       --help   Print usage
 
 Commands:
-  cordon      Put one or more nodes into an unschedulable state
-  drain       Migrate volumes from one or more nodes.
-  health      Display detailed information on a given node
-  inspect     Display detailed information on one or more nodes
-  ls          List nodes
-  uncordon    Restore one or more nodes from an unschedulable state
-  undrain     Stop drain on one or more nodes.
-  update      Update a node
+  connectivity Display detailed connectivity information on one or more nodes
+  cordon       Put one or more nodes into an unschedulable state
+  delete       Remove an offline node from the cluster.
+  drain        Migrate volumes from one or more nodes.
+  health       Display detailed information on a given node
+  inspect      Display detailed information on one or more nodes
+  ls           List nodes
+  uncordon     Restore one or more nodes from an unschedulable state
+  undrain      Stop drain on one or more nodes.
+  update       Update a node
 
 Run 'storageos node COMMAND --help' for more information on a command.
+```
+
+### `storageos node connectivity`
+
+Display the latency and status of the connection between different nodes of the
+cluster and the services attached to the network started by StorageOS. It shows
+whether any node or service can't be connected.
+
+The output can be for all permutations of nodes in the cluster or for one
+specific node. 
+
+```bash
+$ storageos node connectivity 
+SOURCE            NAME                       ADDRESS             LATENCY     STATUS  MESSAGE
+ip-172-20-88-241  ip-172-20-100-61.api       172.20.100.61:5705  1.172108ms  OK  
+ip-172-20-88-241  ip-172-20-100-61.directfs  172.20.100.61:5703  1.238443ms  OK  
+ip-172-20-88-241  ip-172-20-100-61.nats      172.20.100.61:5708  1.088224ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.api        172.20.32.38:5705   1.201392ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.directfs   172.20.32.38:5703   1.225196ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.nats       172.20.32.38:5708   1.097115ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.api       172.20.39.233:5705  1.190318ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.directfs  172.20.39.233:5703  1.222903ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.nats      172.20.39.233:5708  1.286556ms  OK  
+ip-172-20-39-233  ip-172-20-100-61.api       172.20.100.61:5705  1.257497ms  OK  
+ip-172-20-39-233  ip-172-20-100-61.directfs  172.20.100.61:5703  1.102858ms  OK  
+ip-172-20-39-233  ip-172-20-100-61.nats      172.20.100.61:5708  1.240308ms  OK  
+ip-172-20-39-233  ip-172-20-32-38.api        172.20.32.38:5705   1.169309ms  OK  
+ip-172-20-39-233  ip-172-20-32-38.directfs   172.20.32.38:5703   1.238169ms  OK  
+ip-172-20-39-233  ip-172-20-32-38.nats       172.20.32.38:5708   1.120058ms  OK  
+ip-172-20-39-233  ip-172-20-88-241.api       172.20.88.241:5705  1.285212ms  OK  
+ip-172-20-39-233  ip-172-20-88-241.directfs  172.20.88.241:5703  1.274576ms  OK  
+ip-172-20-39-233  ip-172-20-88-241.nats      172.20.88.241:5708  1.257659ms  OK  
+ip-172-20-100-61  ip-172-20-32-38.api        172.20.32.38:5705   1.136496ms  OK  
+ip-172-20-100-61  ip-172-20-32-38.directfs   172.20.32.38:5703   1.200905ms  OK  
+ip-172-20-100-61  ip-172-20-32-38.nats       172.20.32.38:5708   1.227956ms  OK  
+ip-172-20-100-61  ip-172-20-39-233.api       172.20.39.233:5705  1.075072ms  OK  
+ip-172-20-100-61  ip-172-20-39-233.directfs  172.20.39.233:5703  1.279988ms  OK  
+ip-172-20-100-61  ip-172-20-39-233.nats      172.20.39.233:5708  1.239564ms  OK  
+ip-172-20-100-61  ip-172-20-88-241.api       172.20.88.241:5705  1.240107ms  OK  
+ip-172-20-100-61  ip-172-20-88-241.directfs  172.20.88.241:5703  1.219858ms  OK  
+ip-172-20-100-61  ip-172-20-88-241.nats      172.20.88.241:5708  1.309962ms  OK  
+ip-172-20-32-38   ip-172-20-100-61.api       172.20.100.61:5705  1.08306ms   OK  
+ip-172-20-32-38   ip-172-20-100-61.directfs  172.20.100.61:5703  1.186921ms  OK  
+ip-172-20-32-38   ip-172-20-100-61.nats      172.20.100.61:5708  1.233717ms  OK  
+ip-172-20-32-38   ip-172-20-39-233.api       172.20.39.233:5705  1.272816ms  OK  
+ip-172-20-32-38   ip-172-20-39-233.directfs  172.20.39.233:5703  1.215386ms  OK  
+ip-172-20-32-38   ip-172-20-39-233.nats      172.20.39.233:5708  1.272102ms  OK  
+ip-172-20-32-38   ip-172-20-88-241.api       172.20.88.241:5705  1.276441ms  OK  
+ip-172-20-32-38   ip-172-20-88-241.directfs  172.20.88.241:5703  1.248265ms  OK  
+ip-172-20-32-38   ip-172-20-88-241.nats      172.20.88.241:5708  1.328679ms  OK  
+```
+
+```bash
+$ storageos node connectivity ip-172-20-88-241
+SOURCE             NAME                      ADDRESS             LATENCY     STATUS  MESSAGE
+ip-172-20-88-241  ip-172-20-100-61.api       172.20.100.61:5705  2.804153ms  OK  
+ip-172-20-88-241  ip-172-20-100-61.directfs  172.20.100.61:5703  2.77249ms   OK  
+ip-172-20-88-241  ip-172-20-100-61.nats      172.20.100.61:5708  2.791746ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.api        172.20.32.38:5705   2.755615ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.directfs   172.20.32.38:5703   2.815147ms  OK  
+ip-172-20-88-241  ip-172-20-32-38.nats       172.20.32.38:5708   2.526776ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.api       172.20.39.233:5705  2.817432ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.directfs  172.20.39.233:5703  2.839914ms  OK  
+ip-172-20-88-241  ip-172-20-39-233.nats      172.20.39.233:5708  2.894249ms  OK  
 ```
 
 ### `storageos node cordon`
@@ -40,6 +106,19 @@ decommisioning a node.
 
 ```bash
 $ storageos node cordon storageos-1
+storageos-1
+```
+
+### `storageos node delete`
+
+> Only applicable for installations with `KV_BACKEND=etcd`.
+
+Removes a StorageOS node from the cluster. It will only succeed if the node is
+`Offline`. All data in that node will be lost, hence it is recommended to drain
+the node before decomissioning it.
+
+```bash
+$ storageos node delete storageos-1
 storageos-1
 ```
 

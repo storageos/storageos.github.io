@@ -30,7 +30,13 @@ cluster.
 1. Run a Redis container using the StorageOS volume driver.
 
    ```bash
-   docker run -d --name redis-test -v redis-data:/data --volume-driver=storageos redis redis-server --appendonly yes --tcp-backlog 128
+   docker run -d --name redis-test \
+   -v redis-data:/data             \
+   --volume-driver=storageos       \
+   redis                           \
+   redis-server                    \
+   --appendonly yes                \
+   --tcp-backlog 128
    ```
 
    * Using `--appendonly yes` with a volume mount starts Redis in persistent
@@ -45,7 +51,7 @@ cluster.
    ```bash
    $ docker logs redis-test
    1:C 24 Aug 14:37:44.565 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
-   1:C 24 Aug 14:37:44.565 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid=1, just started
+   1:C 24 Aug 14:37:44.565 # Redis version=4.0.1, bits=64, commit=00000000, modified=0, pid =1, just started
    1:C 24 Aug 14:37:44.565 # Configuration loaded
    1:M 24 Aug 14:37:44.566 * Running mode=standalone, port=6379.
    1:M 24 Aug 14:37:44.566 # Server initialized
@@ -89,7 +95,8 @@ cluster.
 * The following warning refers to the container itself:
 
    ```bash
-   WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+   WARNING: The TCP backlog setting of 511 cannot be enforced because
+   /proc/sys/net/core/somaxconn is set to the lower value of 128.
    ```
 
    Increasing the TCP backlog setting needs to be done from the container
@@ -101,11 +108,19 @@ cluster.
   on:
 
    ```bash
-   WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+   WARNING overcommit_memory is set to 0! Background save may fail under low
+   memory condition. To fix this issue add 'vm.overcommit_memory = 1' to
+   /etc/sysctl.conf and then reboot or run the command 'sysctl
+   vm.overcommit_memory=1' for this to take effect.
    ```
 
    ```bash
-   WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+   WARNING you have Transparent Huge Pages (THP) support enabled in your
+   kernel. This will create latency and memory usage issues with Redis. To fix
+   this issue run the command 'echo never >
+   /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your
+   /etc/rc.local in order to retain the setting after a reboot. Redis must be
+   restarted after THP is disabled.
    ```
 
    These can be resolved by adding the following lines to`/etc/rc.local` on the

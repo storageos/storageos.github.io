@@ -19,8 +19,8 @@ requirements include:
 * Minimum of 4 GB of disk space
 * Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
-Before you start, ensure you have StorageOS installed and ready on a Linux
-cluster.
+[Before you start, ensure you have StorageOS installed and ready on a Linux
+cluster.]({%link _docs/platforms/docker/install.md %})
 
 ## Install MS SQL Server with StorageOS
 
@@ -28,9 +28,13 @@ cluster.
    StorageOS persistent volume:
 
    ```bash
-   docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
-       --name mssql -v mssql:/var/opt/mssql --volume-driver=storageos \
-       -d microsoft/mssql-server-linux
+   docker run -e 'ACCEPT_EULA=Y' \
+   -e 'SA_PASSWORD=p@ssw0rd'     \
+   -p 1433:1433                  \
+   --name mssql                  \
+   -v mssql:/var/opt/mssql       \
+   --volume-driver=storageos     \
+   -d microsoft/mssql-server-linux
    ```
 
 1. Confirm a StorageOS volume was created successfully:
@@ -118,9 +122,13 @@ cluster.
 1. Start up a new application container:
 
    ```bash
-   docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=p@ssw0rd' -p 1433:1433 \
-       --name mssql -v mssql:/var/opt/mssql --volume-driver=storageos \
-       -d microsoft/mssql-server-linux
+   docker run -e 'ACCEPT_EULA=Y'   \
+   -e 'SA_PASSWORD=p@ssw0rd'       \
+   -p 1433:1433                    \
+   --name mssql                    \
+   -v mssql:/var/opt/mssql         \
+   --volume-driver=storageos       \
+   -d microsoft/mssql-server-linux
    ```
 
 ## Open Database to Read and Write Rows

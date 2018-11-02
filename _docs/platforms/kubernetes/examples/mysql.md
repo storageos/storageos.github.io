@@ -10,14 +10,6 @@ module: platforms/kubernetes/examples/mysql
 MySQL is a popular SQL open source database for a wide range of popular
 web-based applications including WordPress.
 
-## MySQL and StorageOS
-
-There are several benefits with deploying MySQL with StorageOS:
-
-* Easy to setup, configure and maintain MySQL instances
-* Instant, stateless MySQL application containers on demand
-* Persistent, highly available storage to mount stateful database data
-
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
 information]({% link _docs/platforms/kubernetes/install/index.md %})

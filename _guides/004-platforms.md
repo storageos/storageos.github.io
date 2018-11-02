@@ -57,6 +57,14 @@ sections:
             description: Create a MySQL stateful set
             module: platforms/kubernetes/examples/mysql
           -
+            title: PostgreSQL
+            description: Create a PostgreSQL stateful set
+            module: platforms/kubernetes/examples/postgres
+          -
+            title: Microsoft SQL Server
+            description: Create a Microsoft SQL server stateful set
+            module: platforms/kubernetes/examples/mssql
+          -
             title: Monitor volumes
             description: Monitor volumes
             module: platforms/kubernetes/howto/monitor

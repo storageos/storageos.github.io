@@ -32,12 +32,12 @@ cluster.
 1. Run a Postgres container using the StorageOS volume driver.
 
    ```bash
-   $ docker run -d --name postgres-dev \
-   --volume-driver=storageos \
-   -v pgdata:/var/lib/postgresql/data \
+   $ docker run -d --name postgres-dev       \
+   --volume-driver=storageos                 \
+   -v pgdata:/var/lib/postgresql/data        \
    -e PGDATA=/var/lib/postgresql/data/pgdata \
-   -e POSTGRES_PASSWORD=storageos postgres
-   a9a77832df4e0b220ca6c0184f8e2e2ce933a6cdfa83ba2a2810243c7bf0e53c
+   -e POSTGRES_PASSWORD=storageos postgres   \
+   a10a77832df4e0b220ca6c0184f8e2e2ce933a6cdfa83ba2a2810243c7bf0e53c
    ```
 
    * The StorageOS volume appears as a file system mount, so we need to mount the
@@ -149,8 +149,11 @@ container has exited.
    instance and mount the same StorageOS `pgdata` volume.
 
    ```bash
-   docker run -d --name postgres-dev -v pgdata:/var/lib/postgresql/data --volume-driver=storageos \
-       -e POSTGRES_PASSWORD=storageos -e PGDATA=/var/lib/postgresql/data/pgdata postgres
+   docker run -d --name postgres-dev                  \
+   -v pgdata:/var/lib/postgresql/data                 \
+   --volume-driver=storageos                          \
+   -e POSTGRES_PASSWORD=storageos                     \
+   -e PGDATA=/var/lib/postgresql/data/pgdata postgres
    ```
 
 1. Connect to the Postgres database
@@ -212,16 +215,3 @@ container has exited.
    root@bdea733192b7:/# exit
    exit
    ```
-
-<!---
-## Performance Regression Testing with pgBench
-
-Pgbench 9.0 is a simple tool for running benchmark tests on PostgreSQL. It runs
-a sequence of SQL commands concurrently using worker threads and calculates an
-average transaction rate per second loosely based on the old TPC-B benchmark.
-This involves five SELECT, UPDATE, and INSERT commands per transaction.
-
->**Note**: Running `pgbench -i` creates four tables `pgbench_accounts`,
-`pgbench_branches`, `pgbench_history`, and `pgbench_tellers`, destroying any
-existing tables with these names.
---->

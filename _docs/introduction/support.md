@@ -51,12 +51,13 @@ Report](/docs/introduction/support#storageos-cluster-report).
 
 StorageOS has a `cluster report` functionality that aggregates cluster
 information. For every node the information collected is: StorageOS logs, lshw
-and storageos inspect node. 
+and storageos inspect node. StorageOS engineers might ask to generate a report
+during support cases.
 
-That bundle is created only under a user action. The bundle is
-cyphered and then uploaded after a user confirmation to a StorageOS location.
-Support engineers can access that data when the user contacts support and
-explicitly give the StorageOS cluster id.
+That bundle is created only under a user action. The bundle is uploaded from a
+StorageOS node using TLS to a StorageOS GCP encrypted bucket. The upload takes
+place only after user confirmation. Support engineers can access that data when
+the user contacts support and explicitly give the StorageOS cluster id.
 
 The information given in the cluster report is only for support purposes and it
 will be removed once the data is no longer needed for such purposes. In case the

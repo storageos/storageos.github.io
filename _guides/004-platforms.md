@@ -64,14 +64,14 @@ sections:
             title: Microsoft SQL Server
             description: Create a Microsoft SQL server stateful set
             module: platforms/kubernetes/examples/mssql
-          -
-            title: Monitor volumes
-            description: Monitor volumes
-            module: platforms/kubernetes/howto/monitor
-          -
-            title: Production deployment tips
-            description: Production deployments
-            module: platforms/kubernetes/howto/production
+      -
+        title: Monitor volumes
+        description: Monitor volumes
+        module: platforms/kubernetes/howto/monitor
+      -
+        title: Production deployment tips
+        description: Production deployments
+        module: platforms/kubernetes/howto/production
 
       - 
         title: Troubleshooting

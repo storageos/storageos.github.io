@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Decomissioning of nodes
+title: StorageOS Docs - Decommissioning of nodes
 anchor: operations
 module: operations/remove-nodes
 ---
@@ -8,17 +8,16 @@ module: operations/remove-nodes
 # Remove StorageOS nodes
 
 StorageOS nodes can be decommissioned and removed from the cluster using the
-StorageOS cli.
+StorageOS CLI.
 
 > This functionality is only available when StorageOS is deployed with
-> `KV_BACKEND=etcd`, so the kv store is external to StorageOS.
+> `KV_BACKEND=etcd`, so the KV store is external to StorageOS.
 
 The deletion of a node has safeguards to make sure data is not lost
-unwillingly. Only nodes in state: `Offline` can be removed from the StorageOS
-cluster. Mind that any physical host or VM that doesn't have StorageOS
-container running will not only be able to use its storage backend to provision
-volumes but it wont be able to mount StorageOS volumes into the containers
-scheduled in that node.
+unwillingly. Only nodes in state `Offline` can be removed from the StorageOS
+cluster. Note that once removed from the cluster, nodes may not partake in
+StorageOS operations, and may not run container applications that require
+persistent storage.
 
 The recommended procedure is as follows. 
 

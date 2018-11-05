@@ -51,7 +51,7 @@ volumeClaimTemplates:
        requests:
          storage: 5Gi
    ```
-   This excerpt is from the Stateful Set definition. This file contains the
+   This excerpt is from the StatefulSet definition. This file contains the
    VolumeClaim template that will dynamically provision storage, using the
    StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
    been declared with the same name as a Volume Claim.

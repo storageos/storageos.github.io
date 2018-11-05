@@ -11,19 +11,19 @@ sections:
     items:
       -
         title: Microsoft SQL Server
-        description: Create a Microsoft SQL server stateful set with persistent storage
+        description: Create a Microsoft SQL server StatefulSet with persistent storage
         module: usecases/kubernetes/mssql
       -
         title: MySQL
-        description: Create a MySQL stateful set with persistent storage
+        description: Create a MySQL StatefulSet with persistent storage
         module: usecases/kubernetes/mysql
       -
         title: PostgreSQL
-        description: Create a PostgreSQL stateful set with persistent storage
+        description: Create a PostgreSQL StatefulSet with persistent storage
         module: usecases/kubernetes/postgres
       -
         title: Redis
-        description: Create a Redis stateful set with persistent storage
+        description: Create a Redis StatefulSet with persistent storage
         module: usecases/kubernetes/redis
   -
     title: Using Docker

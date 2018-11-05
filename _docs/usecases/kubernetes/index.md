@@ -20,7 +20,7 @@ stateful applications into a Kubernetes cluster. These examples are not
 production ready but have been provided to give you some insight into how to
 use StorageOS with stateful applications.
 
-The examples we have provided use [Stateful sets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+The examples we have provided use [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
 as a way to deploy these applications. 
 
 The StorageOS specific part of the Kubernetes manifests for these examples lies

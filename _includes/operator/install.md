@@ -1,8 +1,12 @@
 ## Install StorageOS operator
 
-The StorageOS cluster operator is a [Kubernetes native application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/) developed to
-deploy and configure StorageOS clusters, and assist with maintenance
-operations.
+The StorageOS cluster operator is the recommended installation procedure to
+deploy a StorageOS cluster.
+
+The StorageOS cluster operator is a [Kubernetes native
+application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
+developed to deploy and configure StorageOS clusters, and assist with
+maintenance operations.
 
 The StorageOS operator can be installed with Helm.
 
@@ -15,6 +19,9 @@ helm install storageos/storageoscluster-operator --namespace storageos-operator
 
 > The Helm chart can be found in the [Charts public
 > repository](https://github.com/storageos/charts).
+
+> The StorageOS Cluster Operator source code can be found in the
+> [cluster-operator repository](https://github.com/storageos/cluster-operator).
 
 The operator is a Pod manged by a Deployment Controller. Once the Pod is ready,
 a StorageOS cluster definition can be created. The operator will deploy a

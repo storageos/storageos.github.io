@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: StorageOS Docs - Decommissioning of nodes
+title: StorageOS Docs - Decommissioning of Nodes
 anchor: operations
-module: operations/remove-nodes
+module: operations/decommission-nodes
 ---
 
-# Remove StorageOS nodes
+# Decommissioning StorageOS Nodes
 
 StorageOS nodes can be decommissioned and removed from the cluster using the
 StorageOS CLI.

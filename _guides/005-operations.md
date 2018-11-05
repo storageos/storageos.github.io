@@ -21,7 +21,7 @@ sections:
     description: Extend physical capacity
     module: operations/extend-storage
   -
-    title: Decomission node
+    title: Decommission node
     description: StorageOS remove node
     module: operations/remove-nodes
   -

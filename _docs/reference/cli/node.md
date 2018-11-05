@@ -102,7 +102,7 @@ ip-172-20-88-241  ip-172-20-39-233.nats      172.20.39.233:5708  2.894249ms  OK
 ### `storageos node cordon`
 
 Puts one or more nodes into an unschedulable state, in preparation for upgrading or
-decommisioning a node.
+decommissioning a node.
 
 ```bash
 $ storageos node cordon storageos-1
@@ -115,7 +115,7 @@ storageos-1
 
 Removes a StorageOS node from the cluster. It will only succeed if the node is
 `Offline`. All data in that node will be lost, hence it is recommended to drain
-the node before decomissioning it.
+the node before decommissioning it.
 
 ```bash
 $ storageos node delete storageos-1

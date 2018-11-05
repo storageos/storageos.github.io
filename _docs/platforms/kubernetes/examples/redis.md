@@ -54,7 +54,7 @@ volumeClaimTemplates:
    This excerpt is from the StatefulSet definition. This file contains the
    VolumeClaim template that will dynamically provision storage, using the
    StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
-   been declared with the same name as a Volume Claim.
+   been declared with the same name as a VolumeClaim.
 
 1. Move into the Redis examples folder and create the objects
 

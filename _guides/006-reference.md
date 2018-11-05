@@ -71,6 +71,10 @@ sections:
     description:  StorageOS special labels to apply features
     module: reference/labels
   -
+    title: Prometheus Endpoint
+    description: Describes the metrics exposed by our Prometheus endpoint
+    module: reference/prometheus
+  -
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes

@@ -8,10 +8,12 @@ module: usecases/kubernetes/examples
 # Kubernetes
 
 StorageOS can be used to provide permanent storage for other applications
-running in [Kubernetes](https://kubernetes.io). This is useful for running
-stateful applications, such as databases or CI/CD applications, under the
-control of Kubernetes as Kubernetes can make scheduling decisions without
-the application data being lost.
+running in [Kubernetes](https://kubernetes.io) or other Orchestrators that are
+derived from Kubernetes such as [OpenShift](https://openshift.com) or
+[Rancher](https://rancher.com). This is useful for running stateful
+applications, such as databases or CI/CD applications, under the control of
+Kubernetes as Kubernetes can make scheduling decisions withoutthe application
+data being lost.
 
 What we have outlined in the cookbooks below are some quick deployments of
 stateful applications into a Kubernetes cluster. These examples are not

@@ -47,15 +47,6 @@ sections:
             title: Production deployment tips
             description: Production deployments
             module: platforms/kubernetes/howto/production
-      -
-        title: Monitor volumes
-        description: Monitor volumes
-        module: platforms/kubernetes/howto/monitor
-      -
-        title: Production deployment tips
-        description: Production deployments
-        module: platforms/kubernetes/howto/production
-
       - 
         title: Troubleshooting
         description: Troubleshooting

@@ -93,4 +93,4 @@ volumeClaimTemplates:
 
 ## Configuration
 
-If you need custom startup options, you can edit the ConfigMap with your desired MS SQL configuration settings.
+If you need custom startup options, you can edit the ConfigMap file (15-mssql-configmap.yaml) with your desired MS SQL configuration settings.

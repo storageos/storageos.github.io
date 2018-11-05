@@ -96,5 +96,6 @@ _docs/platforms/kubernetes/install/index.md %})
 
 ## Configuration
 
-If you need custom startup options, you can edit the ConfigMap with your
-desired PostgreSQL configuration settings.
+If you need custom startup options, you can edit the ConfigMap file
+(15-postgresd-configmap.yaml) with your desired PostgreSQL configuration
+settings.

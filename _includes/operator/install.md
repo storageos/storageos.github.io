@@ -74,5 +74,5 @@ metadata:
 END
 ```
 
-You can find more examples such as deploy with CSI or deploy a non embedded kv
+You can find more examples such as deploy with CSI or deploy referencing a external etcd kv store.
 store for StorageOS in this [repo](TODO).

@@ -25,6 +25,10 @@ sections:
         title: Redis
         description: Create a Redis StatefulSet with persistent storage
         module: usecases/kubernetes/redis
+      -
+        title: Nginx
+        description: Use an Nginx pod to exfiltrate data from StorageOS volumes
+        module: usecases/kubernetes/nginx
   -
     title: Using Docker
     description: Docker Use Cases

@@ -9,20 +9,20 @@ module: operations/external-kv
 
 StorageOS uses a key-value store to keep cluster metadata across the
 distributed platform. The key-value backend can be `embedded` or `etcd`. The
-`embedded` option is set by default and it enforces StorageOS to start internal
-processes of etcd. The first 1 or 3 nodes that start StorageOS have an embedded
-etcd server. The rest of the nodes act as etcd clients keeping consistency of
-the cluster by communicating with the servers. The role of the embedded etcd
-cannot be changed once a StorageOS container has started. Therefore, etcd
-embedded is only recommended for testing and clusters with low amount of nodes
-where zero config deployments are convenient.
+`embedded` option is our default for ease of deployment and in this mode we run
+an internal etcd cluster. The first 1 or 3 nodes that start StorageOS act as
+etcd servers, and the rest of the nodes act as etcd clients keeping consistency
+of the cluster by communicating with the servers. The role of the embedded etcd
+cannot be changed once a StorageOS container has started.  Therefore, embedded
+etcd is only recommended for testing and clusters with low node counts where
+zero config deployments are convenient.
 
 &nbsp; <!-- this is a blank line -->
 
 __It is recommended to use an external etcd cluster for production deployments__, where high
 availability and fault tolerance are mandatory. To use an etcd cluster
 provisioned and maintained outside the scope of StorageOS, StorageOS will
-reference the etcd endpoint using env variables.
+locate the etcd endpoint using environment variables.
 
 The specific env variables are (both are needed):
 
@@ -31,9 +31,11 @@ The specific env variables are (both are needed):
 
 &nbsp; <!-- this is a blank line -->
 
-Etcd availability is mandatory for proper functioning of StorageOS. Relevant
-operations such as create, mount, delete or unmount volumes require access to
-the etcd cluster.
+Etcd availability is mandatory for proper functioning of StorageOS. In
+particular, changes to the cluster (adding or removing volumes or replicas,
+etc.) require access to the etcd cluster. In the event that etcd becomes
+unavailable, StorageOS clusters become read only, allowing access to data but
+preventing metadata changes.
 
 When using an external `etcd`, the user must maintain the availability and
 integrity of the etcd cluster, so StorageOS can use it as a service.
@@ -41,20 +43,17 @@ integrity of the etcd cluster, so StorageOS can use it as a service.
 It is highly recommended to keep the cluster backed up and ensure high availability
 of its data. It is also important to keep the latency between StorageOS nodes
 and the etcd replicas low. Deploying an etcd cluster in a different datacenter
-or region can make StorageOS detect etcd nodes as lost because of latency.
+or region can make StorageOS detect etcd nodes as unavilable because of latency.
 
-> It is out of the scope of StorageOS to maintain the integrity and availability of the etcd
-> cluster. The user must ensure a proper function of that cluster. However,
-> StorageOS will try its best to mitigate, for as long as possible, any etcd
-> outage. Volumes mounted will keep working and read-write operations will keep
-> operating as normal.
+*StorageOS cannot be held responsible for supporting an external etcd cluster.*
 
 &nbsp; <!-- this is a blank line -->
 
 # Suggested Deployment Models
 
-> According to the StorageOS installation procedure, the examples might differ.
-> The following examples are available for both Kubernetes and Openshift.
+> Depending on the orchestrator used, ways of supplying environment variables
+> to StorageOS containers differ. The following examples work with both
+> Kubernetes and Openshift.
 
 ## Etcd cluster-operator
 Etcd can be deployed in Kubernetes using the official [etcd-operator](

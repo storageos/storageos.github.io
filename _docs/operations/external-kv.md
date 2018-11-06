@@ -61,8 +61,8 @@ https://github.com/coreos/etcd-operator).
 
 You can find an example on how to deploy the etcd cluster with 3 replicas along
 a StorageOS installation procedure that uses that cluster in the following
-[repository](
-https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-as-svc).
+repository. For [Kubernetes](
+https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-as-svc) and for [OpenShift](https://github.com/storageos/deploy/tree/master/openshift/deploy-storageos/etcd-as-svc).
 
 The official etcd-operator repository also has a backup deployment operator
 that comes in hand to keep your metadata persisted.

@@ -12,4 +12,3 @@ module: platforms/openshift/troubleshoot
 
 {% include troubleshoot/index-{{ page.platform | downcase }}-install-issues.md %}
 {% include troubleshoot/index-{{ page.platform | downcase }}-volume-issues.md %}
-

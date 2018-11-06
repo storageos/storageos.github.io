@@ -11,7 +11,7 @@ module: reference/cli/volume
 ```bash
 $ storageos volume
 
-Usage:	storageos volume COMMAND
+Usage:  storageos volume COMMAND
 
 Manage volumes
 
@@ -86,13 +86,12 @@ $ storageos volume inspect default/volume-name
 ]
 ```
 
-
 ### `storageos volume ls`
 
 To view all volumes in all namespaces:
 
 ```bash
-$ storageos volume ls 
+$ storageos volume ls
 NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
 default/volume-name  15GB                   active  0/0       storageos-1 (healthy)
 ```
@@ -105,7 +104,7 @@ To mount a volume on the current node into `/mnt` (note this requires root):
 sudo -E storageos volume mount default/volume-name /mnt
 ```
 
-*(Important: use the `sudo -E` option to preserve the storageos environment credentials)*
+_(Important: use the `sudo -E` option to preserve the storageos environment credentials)_
 
 ### `storageos volume rm`
 
@@ -124,4 +123,4 @@ To unmount a volume on the current node (note this requires root):
 sudo -E storageos volume unmount default/volume-name
 ```
 
-*(Important: use the `sudo -E` option to preserve the storageos environment credentials)*
+_(Important: use the `sudo -E` option to preserve the storageos environment credentials)_

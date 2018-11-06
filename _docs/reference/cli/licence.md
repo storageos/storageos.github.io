@@ -8,9 +8,9 @@ module: reference/cli/licence
 # Licence
 
 ```bash
-$ storageos licence 
+$ storageos licence
 
-Usage:	storageos licence COMMAND
+Usage:  storageos licence COMMAND
 
 Manage the licence
 
@@ -19,8 +19,8 @@ Options:
 
 Commands:
   apply       Apply a new licence, Either provide the filename of the licence file or write to stdin.
-		E.g. "storageos licence apply --filename=licence"
-		E.g. "cat licence | storageos licence apply --stdin"
+        E.g. "storageos licence apply --filename=licence"
+        E.g. "cat licence | storageos licence apply --stdin"
   inspect     Display detailed information on the licence
   rm          Remove the current licence
 
@@ -28,6 +28,7 @@ Run 'storageos licence COMMAND --help' for more information on a command.
 ```
 
 ### `storageos licence apply`
+
 To apply a new licence from a licence file to override the existing one, run:
 
 ```bash
@@ -41,6 +42,7 @@ $ echo PASTE-THE-LICENCE-KEY-HERE | storageos licence apply --stdin
 ```
 
 ### `storageos licence inspect`
+
 To display detailed information on the current licence, run:
 
 ```bash
@@ -60,6 +62,7 @@ $ storageos licence inspect
 ```
 
 ### `storageos licence rm`
+
 To delete the previously applied licence from the system, run:
 
 ```bash

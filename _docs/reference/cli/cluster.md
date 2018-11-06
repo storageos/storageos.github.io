@@ -10,7 +10,7 @@ module: reference/cli/cluster
 ```bash
 $ storageos cluster
 
-Usage:	storageos cluster COMMAND
+Usage: storageos cluster COMMAND
 
 Manage clusters
 
@@ -61,6 +61,7 @@ options which can be given to the `--format` flag:
 ### `storageos cluster inspect`
 
 To inspect a cluster:
+
 ```bash
 $ storageos cluster inspect 207f0026-3844-40e0-884b-729d79c124b8
 [
@@ -76,6 +77,7 @@ $ storageos cluster inspect 207f0026-3844-40e0-884b-729d79c124b8
 ### `storageos cluster rm`
 
 To remove a cluster:
+
 ```bash
 storageos cluster rm 207f0026-3844-40e0-884b-729d79c124b8
 207f0026-3844-40e0-884b-729d79c124b8

@@ -39,11 +39,11 @@ cluster.
    --tcp-backlog 128
    ```
 
-   * Using `--appendonly yes` with a volume mount starts Redis in persistent
+   - Using `--appendonly yes` with a volume mount starts Redis in persistent
      mode.
-   * Using `--tcp-backlog 128` resolves a Redis TCP backlog warning as it
+   - Using `--tcp-backlog 128` resolves a Redis TCP backlog warning as it
      attempts to use 511.
-   * This image includes EXPOSE 6379 (the redis port), making it automatically
+   - This image includes EXPOSE 6379 (the redis port), making it automatically
      available to linked containers.
 
 1. Confirm there are no errors or warnings.
@@ -85,48 +85,48 @@ cluster.
 ## Configuration
 
 1. For more details on configuring and linking this container image please visit
-   the  [Redis Docker Hub Repository](https://hub.docker.com/_/redis/).
+   the [Redis Docker Hub Repository](https://hub.docker.com/_/redis/).
 1. For more information about managing persistence with Redis, see
    [Redis Persistence](https://redis.io/topics/persistence/).
 1. Depending on the host Linux system configuration there may be additional
    system settings that need to be applied - refer to the docker logs for more
    details.
 
-* The following warning refers to the container itself:
+- The following warning refers to the container itself:
 
-   ```bash
-   WARNING: The TCP backlog setting of 511 cannot be enforced because
-   /proc/sys/net/core/somaxconn is set to the lower value of 128.
-   ```
+  ```bash
+  WARNING: The TCP backlog setting of 511 cannot be enforced because
+  /proc/sys/net/core/somaxconn is set to the lower value of 128.
+  ```
 
-   Increasing the TCP backlog setting needs to be done from the container
-   (increase the value for `/proc/sys/net/core/somaxconn`), alternatively add
-   `--tcp-backlog 128` to the end of the Docker command line if this is
-   sufficient.
+  Increasing the TCP backlog setting needs to be done from the container
+  (increase the value for `/proc/sys/net/core/somaxconn`), alternatively add
+  `--tcp-backlog 128` to the end of the Docker command line if this is
+  sufficient.
 
-* The following two warnings apply to the host system the container is running
+- The following two warnings apply to the host system the container is running
   on:
 
-   ```bash
-   WARNING overcommit_memory is set to 0! Background save may fail under low
-   memory condition. To fix this issue add 'vm.overcommit_memory = 1' to
-   /etc/sysctl.conf and then reboot or run the command 'sysctl
-   vm.overcommit_memory=1' for this to take effect.
-   ```
+  ```bash
+  WARNING overcommit_memory is set to 0! Background save may fail under low
+  memory condition. To fix this issue add 'vm.overcommit_memory = 1' to
+  /etc/sysctl.conf and then reboot or run the command 'sysctl
+  vm.overcommit_memory=1' for this to take effect.
+  ```
 
-   ```bash
-   WARNING you have Transparent Huge Pages (THP) support enabled in your
-   kernel. This will create latency and memory usage issues with Redis. To fix
-   this issue run the command 'echo never >
-   /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your
-   /etc/rc.local in order to retain the setting after a reboot. Redis must be
-   restarted after THP is disabled.
-   ```
+  ```bash
+  WARNING you have Transparent Huge Pages (THP) support enabled in your
+  kernel. This will create latency and memory usage issues with Redis. To fix
+  this issue run the command 'echo never >
+  /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your
+  /etc/rc.local in order to retain the setting after a reboot. Redis must be
+  restarted after THP is disabled.
+  ```
 
-   These can be resolved by adding the following lines to`/etc/rc.local` on the
-   host and restarting:
+  These can be resolved by adding the following lines to`/etc/rc.local` on the
+  host and restarting:
 
-   ```bash
-   echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
-   sudo sysctl vm.overcommit_memory=1
-   ```
+  ```bash
+  echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+  sudo sysctl vm.overcommit_memory=1
+  ```

@@ -19,7 +19,6 @@ curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/{{ si
 curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/{{ site.latest_cli_version }}/storageos_darwin_amd64 && chmod +x storageos && sudo mv storageos /usr/local/bin/
 ```
 
-
 You will need to provide the correct credentials to connect to the API. The
 default installation creates a single user with username `storageos` and
 password `storageos`:
@@ -37,7 +36,7 @@ export STORAGEOS_HOST=10.1.5.249
 ```bash
 $ storageos
 
-Usage:	storageos COMMAND
+Usage: storageos COMMAND
 
 Converged storage for containers.
 
@@ -76,19 +75,19 @@ Run 'storageos COMMAND --help' for more information on a command.
 
 ## Cheatsheet
 
-| Command     | Subcommand                    | Description                                                    |
-|-------------|-------------------------------|----------------------------------------------------------------|
-| `cluster`   | `create health inspect rm`    | Cluster information.                                           |
-| `logs`      | `view`                        | View and manage node logs.                                     |
-| `login`     |                               | Store login credentials for a given StorageOS host.            |
-| `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
-| `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `node`      | `cordon drain health inspect ls uncordon undrain update` | Node information.                                 |
-| `policy`    | `create inspect ls rm`        | Define how resources are accessed by users and groups.         |
-| `pool`      | `create inspect ls rm`        | A collection of storage resources for provisioning volumes.    |
-| `rule`      | `create inspect ls rm update` | Rules define label-based policies to apply to volumes.         |
-| `user`      | `create inspect ls rm update` | User and group management.                                     |
-| `version`   |                               | Display the version.                                           |
-| `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
+| Command     | Subcommand                                               | Description                                                   |
+| ----------- | -------------------------------------------------------- | ------------------------------------------------------------- |
+| `cluster`   | `create health inspect rm`                               | Cluster information.                                          |
+| `logs`      | `view`                                                   | View and manage node logs.                                    |
+| `login`     |                                                          | Store login credentials for a given StorageOS host.           |
+| `logout`    |                                                          | Delete stored login credentials for a given StorageOS host.   |
+| `namespace` | `create inspect ls rm update`                            | Namespaces help different projects or teams organize volumes. |
+| `node`      | `cordon drain health inspect ls uncordon undrain update` | Node information.                                             |
+| `policy`    | `create inspect ls rm`                                   | Define how resources are accessed by users and groups.        |
+| `pool`      | `create inspect ls rm`                                   | A collection of storage resources for provisioning volumes.   |
+| `rule`      | `create inspect ls rm update`                            | Rules define label-based policies to apply to volumes.        |
+| `user`      | `create inspect ls rm update`                            | User and group management.                                    |
+| `version`   |                                                          | Display the version.                                          |
+| `volume`    | `create inspect ls rm update`                            | StorageOS data volumes.                                       |
 
 [Source is available on Github](https://github.com/storageos/go-cli).

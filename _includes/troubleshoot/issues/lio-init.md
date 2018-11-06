@@ -3,6 +3,7 @@
 ### Issue:
 
 StorageOS pods not starting with `Init:Error`
+
 ```bash
 {{ page.cmd }} -n storageos get pod
 NAME              READY     STATUS              RESTARTS   AGE
@@ -13,12 +14,14 @@ storageos-nhq7m   0/1       Init:Err             0          6s
 ```
 
 ### Reason:
+
 This indicates that since the Linux open source SCSI drivers are not enabled,
-StorageOS cannot start.  The StorageOS DaemonSet enables the required kernel
+StorageOS cannot start. The StorageOS DaemonSet enables the required kernel
 modules from the host system. If you are seeing these errors it is because that
 container couldn't load the modules.
 
 ### Doublecheck
+
 Check the logs of the init container.
 
 ```bash
@@ -39,9 +42,9 @@ modprobe: FATAL: Module tcm_loop not found.
 ```
 
 ### Solution:
+
 Install the required kernel modules (usually found in the
 `linux-image-extra-$(uname -r)` package of your distribution) on your nodes
 following this [prerequisites page]({%link
 _docs/prerequisites/systemconfiguration.md %}) and delete StorageOS pods,
 allowing the DaemonSet to create the pods again.
-

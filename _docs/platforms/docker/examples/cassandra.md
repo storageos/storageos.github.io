@@ -14,9 +14,9 @@ Apache Cassandra is a free and open-source distributed NoSQL database management
 There are several benefits with deploying Cassandra instances as Docker
 application containers with StorageOS:
 
-* Create easy to maintain, configurable Cassandra instances
-* Instant, stateless Cassandra application containers on demand
-* Persistent, highly available storage to mount stateful database data
+- Create easy to maintain, configurable Cassandra instances
+- Instant, stateless Cassandra application containers on demand
+- Persistent, highly available storage to mount stateful database data
 
 Before you start, ensure you have StorageOS installed and ready on a Linux
 cluster.
@@ -39,7 +39,7 @@ cluster.
    docker run --name cassandra-dev -v cassandradata:/var/lib/cassandra --volume-driver=storageos -d cassandra
    ```
 
-   * Note that the Cassandra container image includes `EXPOSE 9042` making the default Cassandra
+   - Note that the Cassandra container image includes `EXPOSE 9042` making the default Cassandra
      TCP port automatically available to linked containers.
 
 1. Confirm Cassandra is up and running.
@@ -48,10 +48,10 @@ cluster.
    $ docker logs cassandra-dev
    ...
    INFO  [main] 2017-09-07 19:50:10,026 Server.java:156 - Starting listening for CQL clients o
-n /0.0.0.0:9042 (unencrypted)...
+   n /0.0.0.0:9042 (unencrypted)...
    ...
    INFO  [OptionalTasks:1] 2017-09-07 19:50:11,986 CassandraRoleManager.java:355 - Created def
-ault superuser role 'cassandra'
+   ault superuser role 'cassandra'
    ```
 
 ## Create a test database

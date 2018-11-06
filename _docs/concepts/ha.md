@@ -44,11 +44,11 @@ is created and synced on an available node. While a new replica is created and
 being synced, the volume's health will be marked as degraded and the failure
 mode will determine whether the volume can be used during recovery:
 
-| Failure mode       | On loss of replica   | Example |
-|:-------------------|:---------------------| --------|
-| Hard               | If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail. |`storageos.com/failure.mode=hard` |
-| Always On           | As long as any copy of the volume is available, the volume will be usable.                   |`storageos.com/failure.mode=alwayson` |
-| Soft               | Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica.                  |`storageos.com/failure.mode=soft storageos.com/failure.tolerance=2` |
+| Failure mode | On loss of replica                                                                                                                                       | Example                                                             |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Hard         | If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail.                                     | `storageos.com/failure.mode=hard`                                   |
+| Always On    | As long as any copy of the volume is available, the volume will be usable.                                                                               | `storageos.com/failure.mode=alwayson`                               |
+| Soft         | Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica. | `storageos.com/failure.mode=soft storageos.com/failure.tolerance=2` |
 
 ## Enforcing replication policies
 

@@ -10,7 +10,7 @@ module: reference/cli/login
 ```bash
 $ storageos login --help
 
-Usage:	storageos login [HOST]
+Usage: storageos login [HOST]
 
 Store login credentials for a given storageos host
 
@@ -20,7 +20,6 @@ Options:
                           --password)
   -u, --username string   The username to use for this host (will override value of the global option
                           --username)
-
 ```
 
 The storageos CLI provides a simple credentials helper to aid in cluster management.
@@ -40,12 +39,12 @@ These credentials are then stored in the file `$HOMEDIR/.storageos/config.json`
 
 ```json
 {
-	"knownHosts": {
-		"10.1.5.249:5705": {
-			"username": "storageos",
-			"password": "c3RvcmFnZW9z"
-		}
-	}
+  "knownHosts": {
+    "10.1.5.249:5705": {
+      "username": "storageos",
+      "password": "c3RvcmFnZW9z"
+    }
+  }
 }
 ```
 
@@ -54,12 +53,12 @@ On the Mac platform, osx-keychain integration is provided, enabling secure crede
 
 ```json
 {
-	"knownHosts": {
-		"10.1.5.249:5705": {
-			"username": "storageos",
-			"useKeychain": true
-		}
-	}
+  "knownHosts": {
+    "10.1.5.249:5705": {
+      "username": "storageos",
+      "useKeychain": true
+    }
+  }
 }
 ```
 

@@ -13,17 +13,17 @@ SCSI target.
 
 We require the following modules to be loaded:
 
-* `target_core_mod`
-* `tcm_loop`
-* `target_core_file`
-* `configfs`
+- `target_core_mod`
+- `tcm_loop`
+- `target_core_file`
+- `configfs`
 
 Depending on the distribution, the modules are sometimes shipped as part of the
 base kernel package, and sometimes in a kernel extras package which requires
 installation.
 
 ## Distribution Specifics
- 
+
 **RHEL 7.5, CentOS 7** and **Debian 9** are fully supported.
 
 **Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
@@ -47,6 +47,7 @@ sudo shutdown -r now
 ```
 
 ## Automatic Configuration
+
 Once required kernel modules are installed on the system, for convenience we
 provide a container which will ensure the appropriate modules are loaded and
 ready for use at runtime. On Docker installations, you will need to run the
@@ -65,8 +66,9 @@ docker run --name enable_lio                  \
 ```
 
 ## Manual Configuration
+
 For those wishing to manage their own kernel configuration, rather than using
 the init container, perform the following steps:
 
-* Ensure kernel modules are all loaded per list above
-* Ensure configfs is loaded and mounted at /sys/kernel/config
+- Ensure kernel modules are all loaded per list above
+- Ensure configfs is loaded and mounted at /sys/kernel/config

@@ -14,9 +14,9 @@ web-based applications including WordPress.
 
 There are several benefits with deploying MySQL with StorageOS:
 
-* Easy to setup, configure and maintain MySQL instances
-* Instant, stateless MySQL application containers on demand
-* Persistent, highly available storage to mount stateful database data
+- Easy to setup, configure and maintain MySQL instances
+- Instant, stateless MySQL application containers on demand
+- Persistent, highly available storage to mount stateful database data
 
 Before you start, ensure you have StorageOS installed and ready on a Linux
 cluster.
@@ -45,10 +45,10 @@ cluster.
    --explicit_defaults_for_timestamp
    ```
 
-   * After MySQL version 5.6 the `--ignore-db-dir=lost+found` parameter needs to
-     be used to ignore the   presence of the UNIX lost+found directory when
+   - After MySQL version 5.6 the `--ignore-db-dir=lost+found` parameter needs to
+     be used to ignore the presence of the UNIX lost+found directory when
      initialising the database.
-   * The MySQL container image includes `EXPOSE 3306` making the default MySQL
+   - The MySQL container image includes `EXPOSE 3306` making the default MySQL
      TCP port automatically available to linked containers.
 
 1. Confirm MySQL is up and running.
@@ -185,7 +185,7 @@ container has exited.
    ```bash
    mysql> INSERT INTO fruit (id, inventory, quantity) \
    VALUES (NULL, 'Peaches', '117');
-   
+
    Query OK, 1 row affected (0.04 sec)
    ```
 
@@ -218,9 +218,9 @@ managed and mounted to `/etc/mysql/conf.d` inside the mysql container.
 
 Alternatively, configuration options can be passed as flags to mysqld. This will
 provide the added flexibility to customize the container without having to
-maintain a `.cnf` file in a separate mount.  To get a full list of available
+maintain a `.cnf` file in a separate mount. To get a full list of available
 options, type `docker run -it --rm mysql --verbose --help` from a terminal
 window.
 
 For more details on configuring and linking this container image please visit
-the  [MySQL Docker Hub Repository](https://hub.docker.com/_/mysql/).
+the [MySQL Docker Hub Repository](https://hub.docker.com/_/mysql/).

@@ -22,14 +22,12 @@ default/replicator
 
 Rules also accept the optional parameters `--action` and `--weight`.
 
-`-a, --action string        Rule action (add|remove) (default "add")`
+`-a, --action string Rule action (add|remove) (default "add")`
 
 Where multiple rules apply to the same label, a weight is used to determine the
 order of evaluation. Rules are evaluated starting at the lowest weight.
 
-`-w, --weight int           Rule weight determines processing order, any integer`
-
-
+`-w, --weight int Rule weight determines processing order, any integer`
 
 ## Using rules
 
@@ -53,7 +51,7 @@ default/uat-marker   storageos.com/replicas<2  add     env=uat
 
 Inspect a rule:
 
-```
+```bash
 $ storageos rule inspect default/replicator
 [
     {
@@ -77,7 +75,6 @@ Then, create a volume:
     storageos volume create -n default -s 1 --label env=prod prodVolume
 
 Once it's created, inspect it:
-
 
     storageos volume inspect default/prodvolume
 
@@ -111,7 +108,7 @@ storageos rule create --namespace default --selector '!storageos.com/replicas' -
 ```
 
 This rule will be matching volumes that do not have (`!`) label `storageos.com/replicas` and will add `env=dev`
-label.  Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
+label. Now, create a second rule to select volumes that have 1 replica (`< 2`) and add `uat` env label to them:
 
 ```bash
 storageos rule create --namespace default --selector 'storageos.com/replicas<2' --action add --label env=uat uat-marker

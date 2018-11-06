@@ -50,7 +50,7 @@ whenever they are saved.
 
 ## Contributing
 
-All contributions welcome, from major updates to typos.  If you're unsure, jump
+All contributions welcome, from major updates to typos. If you're unsure, jump
 into our [Slack channel](https://slack.storageos.com/) to discuss.
 
 Please make sure to pull the latest changes from the original repo before
@@ -82,7 +82,7 @@ On VS Code, install markdownlinter and follow recommendations where appropriate.
 ### Avoid HTML in markdown
 
 HTML should not be included in Markdown unless the team agrees there is
-appropriate need and no better alternative.  Ask on the Slack channel for other
+appropriate need and no better alternative. Ask on the Slack channel for other
 suggestions or agreement to proceed before adding HTML.
 
 ### Use link syntax to respect permalinks

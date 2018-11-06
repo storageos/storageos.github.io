@@ -3,6 +3,7 @@
 ### Issue:
 
 StorageOS init container failure log.
+
 ```bash
 ~# {{ page.cmd }} logs enable-lio
 Checking configfs
@@ -15,13 +16,13 @@ modprobe: FATAL: Module tcm_loop not found.
 ```
 
 ### Reason:
+
 This error indicates that one or more kernel modules cannot be loaded because
 they are not installed on the system.
 
-
 ### Solution:
-Install the appropriate kernel modules (usually found in the `linux-image-extra-$(uname
--r)` package of your distribution) on your nodes following this [prerequisites
+
+Install the appropriate kernel modules (usually found in the `linux-image-extra-$(uname -r)` package of your distribution) on your nodes following this [prerequisites
 page]({%link _docs/prerequisites/systemconfiguration.md %}) and delete
 StorageOS pods, causing the DaemonSet to create the pods again.
 

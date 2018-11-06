@@ -12,9 +12,9 @@ namespaces are created by default, and users can have any number of namespaces.
 
 Namespaces apply to volumes and rules.
 
->**Note**: Docker does not support namespaces, so you should avoid mixing
-volumes created by `docker volume create` (which does not allow namespaces) with
-volumes created by `storageos volume create` (which requires a namespace).
+> **Note**: Docker does not support namespaces, so you should avoid mixing
+> volumes created by `docker volume create` (which does not allow namespaces) with
+> volumes created by `storageos volume create` (which requires a namespace).
 
 ## Create a namespace
 

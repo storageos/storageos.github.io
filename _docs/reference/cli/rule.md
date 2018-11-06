@@ -10,7 +10,7 @@ module: reference/cli/rule
 ```bash
 $ storageos rule
 
-Usage:	storageos rule COMMAND
+Usage:  storageos rule COMMAND
 
 Manage rules
 

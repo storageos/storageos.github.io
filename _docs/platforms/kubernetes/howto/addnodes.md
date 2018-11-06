@@ -20,6 +20,7 @@ the node from the list.
 The next release will provide functionality to cleanly remove a node.
 
 To drain the node:
+
 ```bash
 storageos node drain storageos-1
 ```

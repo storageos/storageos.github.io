@@ -40,11 +40,11 @@ cluster.
    a10a77832df4e0b220ca6c0184f8e2e2ce933a6cdfa83ba2a2810243c7bf0e53c
    ```
 
-   * The StorageOS volume appears as a file system mount, so we need to mount the
+   - The StorageOS volume appears as a file system mount, so we need to mount the
      `pgdata` volume to the internal container path `/var/lib/postgresql/data`, and
      set the environment variable `PGDATA` to the `/var/lib/postgresql/data/pgdata`
      subdirectory. See [Postgres docs](https://hub.docker.com/_/postgres/).
-   * The Postgres container image includes `EXPOSE 5432` making the default
+   - The Postgres container image includes `EXPOSE 5432` making the default
      Postgres TCP port automatically available to linked containers.
 
 1. Confirm Postgres is up and running.

@@ -3,7 +3,7 @@
 When trying out StorageOS in Dev/POC environments it is common to change the
 value of the `JOIN` variable between installs. However, if a node has
 previously participated in a cluster, the old `JOIN` value is cached and used
-in preference.  When re-installing StorageOS, you should clear the old cached
+in preference. When re-installing StorageOS, you should clear the old cached
 data:
 
 ```

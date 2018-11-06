@@ -4,24 +4,19 @@ title: Concepts
 anchor: concepts
 
 sections:
-  -
-    title: Architecture
+  - title: Architecture
     description: Architecture
     module: concepts/architecture
-  -
-    title: High availability
+  - title: High availability
     description: StorageOS high availability
     module: concepts/ha
-  -
-    title: Multitenancy
+  - title: Multitenancy
     description: Multitenancy
     module: concepts/multitenancy
-  -
-    title: Production deployments
+  - title: Production deployments
     description: Production deployments
     module: concepts/production
-  -
-    title: Maintenance
+  - title: Maintenance
     description: Maintenance
     module: concepts/maintenance
 ---

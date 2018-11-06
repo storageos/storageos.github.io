@@ -23,14 +23,14 @@ As your cluster scales, you may wish to reserve specific nodes for storage and
 other nodes for application workloads.
 
 By default, StorageOS nodes both present and consume storage
- (`storageos.com/deployment=mixed`). You can specify that a node should only
- consume storage by setting the `storageos.com/deployment=computeonly` label.
+(`storageos.com/deployment=mixed`). You can specify that a node should only
+consume storage by setting the `storageos.com/deployment=computeonly` label.
 
- You can specify that a node should only consume storage by setting the
- `storageos.com/deployment=computeonly` label on the node. This can be done by
- setting the label on the StorageOS container at startup
- (LABELS='storageos.com/deployment=computeonly'), or by applying the label once
- it is running. Note that volumes must be drained off the node first.
+You can specify that a node should only consume storage by setting the
+`storageos.com/deployment=computeonly` label on the node. This can be done by
+setting the label on the StorageOS container at startup
+(LABELS='storageos.com/deployment=computeonly'), or by applying the label once
+it is running. Note that volumes must be drained off the node first.
 
 ## Rules
 

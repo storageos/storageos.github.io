@@ -2,8 +2,7 @@
 
 ### Issue:
 
-The output of `{{ page.cmd }} describe pod $POD_ID` contains `no such file or
-directory` and references the StorageOS volume device file.
+The output of `{{ page.cmd }} describe pod $POD_ID` contains `no such file or directory` and references the StorageOS volume device file.
 
 ```bash
 root@node1:~# {{ page.cmd }} -n storageos describe $POD_ID
@@ -15,15 +14,17 @@ Events:
 ```
 
 ### Reason:
+
 Mount propagation is not enabled.
 
 ### Doublecheck:
+
 SSH into the one of the nodes and check if `/var/lib/storageos/volumes` is
 empty. If so, exec into any StorageOS pod and check the same directory.
 
 ```bash
 root@node1:~# ls /var/lib/storageos/volumes/
-root@node1:~# 
+root@node1:~#
 root@node1:~# {{ page.cmd }} exec $POD_ID -c storageos -- ls -l /var/lib/storageos/volumes
 bst-196004
 d529b340-0189-15c7-f8f3-33bfc4cf03fa
@@ -32,7 +33,6 @@ ff537c5b-e295-e518-a340-0b6308b69f74
 
 If the directory inside the container and the device files are visible,
 disabled mount propagation is the cause.
-
 
 ### Solution:
 

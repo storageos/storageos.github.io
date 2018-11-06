@@ -15,46 +15,48 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying Redis on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS example deployment repository
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
    StatefulSet defintion
-  ```yaml
+
+```yaml
 kind: StatefulSet
 metadata:
- name: redis
+name: redis
 spec:
- selector:
-   matchLabels:
-     app: redis
-     env: prod
- serviceName: redis
- replicas: 1
+selector:
+ matchLabels:
+   app: redis
+   env: prod
+serviceName: redis
+replicas: 1
+...
+spec:
+   serviceAccountName: redis
+    ...
+    volumeMounts:
+     - name: data
+       mountPath: /bitnami/redis/data
  ...
- spec:
-     serviceAccountName: redis
-      ...
-      volumeMounts:
-       - name: data
-         mountPath: /bitnami/redis/data
-   ...
 volumeClaimTemplates:
- - metadata:
-     name: data
-     labels:
-       env: prod
-   spec:
-     accessModes: ["ReadWriteOnce"]
-     storageClassName: "fast" # StorageOS storageClass 
-     resources:
-       requests:
-         storage: 5Gi
-   ```
-   This excerpt is from the StatefulSet definition. This file contains the
-   VolumeClaim template that will dynamically provision storage, using the
-   StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
-   been declared with the same name as a Volume Claim.
+- metadata:
+   name: data
+   labels:
+     env: prod
+ spec:
+   accessModes: ["ReadWriteOnce"]
+   storageClassName: "fast" # StorageOS storageClass
+   resources:
+     requests:
+       storage: 5Gi
+```
+
+This excerpt is from the StatefulSet definition. This file contains the
+VolumeClaim template that will dynamically provision storage, using the
+StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
+been declared with the same name as a Volume Claim.
 
 1. Move into the Redis examples folder and create the objects
 
@@ -79,7 +81,7 @@ volumeClaimTemplates:
     127.0.0.1:6379> CONFIG GET maxmemory
     1) "maxmemory"
     2) "0"
-    ```
+   ```
 
 ## Configuration
 

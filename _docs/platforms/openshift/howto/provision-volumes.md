@@ -41,21 +41,21 @@ The following parameters can be set only if CSI credentials are
 enabled:
 
 - `csiProvisionerSecretName`: The name of the secret to use for obtaining the
-CSI provisioner credentials.
+  CSI provisioner credentials.
 - `csiProvisionerSecretNamespace`: The namespace where the CSI provisioner
-credentials secret are located.
+  credentials secret are located.
 - `csiControllerPublishSecretName`: The name of the secret to use for obtaining
-the CSI controller publish credentials.
+  the CSI controller publish credentials.
 - `csiControllerPublishSecretNamespace`: The namespace where the CSI controller
-publish credentials secret is located.
+  publish credentials secret is located.
 - `csiNodeStageSecretName`: The name of the secret to use for obtaining the CSI
-node stage credentials.
+  node stage credentials.
 - `csiNodeStageSecretNamespace`: The namespace where the CSI node stage
-credentials secret is located.
+  credentials secret is located.
 - `csiNodePublishSecretName`: The name of the secret to use for obtaining the
-CSI node publish credentials.
+  CSI node publish credentials.
 - `csiNodePublishSecretNamespace`: The namespace where the CSI node publish
-credentials secret is located.
+  credentials secret is located.
 
 ## Create persistent volume
 

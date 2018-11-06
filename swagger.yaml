@@ -1,4 +1,3 @@
-
 # A Swagger 2.0 (a.k.a. OpenAPI) definition of the StorageOS API.
 #
 # This is used for generating API documentation and the types used by the
@@ -81,10 +80,7 @@ tags:
     description: |
       Manage login and logout.
 
-
-
 definitions:
-
   ErrorResponse:
     description: "Represents an error."
     type: "object"
@@ -599,7 +595,7 @@ definitions:
         description: ""
         type: "string"
       labels:
-        $ref: '#/definitions/Labels'
+        $ref: "#/definitions/Labels"
       logLevel:
         type: string
         description: "the level of the logs to outout"
@@ -624,7 +620,7 @@ definitions:
       devices:
         type: array
         items:
-          $ref: '#/definitions/Device'
+          $ref: "#/definitions/Device"
       inK8SCluster:
         type: boolean
         description: "indicate if the node is deployed within k8s cluster"
@@ -637,11 +633,11 @@ definitions:
       csiEndpoint:
         type: string
         description: "specify CSI driver unix socket path."
-      
+
       hostID:
         type: string
       meta:
-        $ref: '#/definitions/ObjectMeta'
+        $ref: "#/definitions/ObjectMeta"
       name:
         type: string
       description:
@@ -688,14 +684,14 @@ definitions:
         type: string
       revision:
         type: string
-      
+
       scheduler:
         type: boolean
       cordon:
         type: boolean
       drain:
         type: boolean
-      
+
       volumeStats:
         type: object
         properties:
@@ -712,7 +708,7 @@ definitions:
             type: integer
           availableCapacityBytes:
             type: integer
-  
+
   Device:
     type: object
     properties:
@@ -720,7 +716,7 @@ definitions:
         type: "string"
         description: "Random UUID generated for each device"
       labels:
-        $ref: '#/definitions/Labels'
+        $ref: "#/definitions/Labels"
       status:
         type: integer
       identifier:
@@ -766,14 +762,14 @@ definitions:
         type: "object"
         properties:
           Namespace:
-              type: "string"
-              description: "The name or ID of the namspace the policy grants access to"
+            type: "string"
+            description: "The name or ID of the namspace the policy grants access to"
           User:
-              type: "string"
-              description: "The username or ID of the user the policy permissions"
+            type: "string"
+            description: "The username or ID of the user the policy permissions"
           Group:
-              type: "string"
-              description: "The name of the user group the policy permissions"
+            type: "string"
+            description: "The name of the user group the policy permissions"
 
   DriverInstances:
     type: "object"
@@ -889,7 +885,7 @@ parameters:
     description: "Timeout for the list call."
 
 paths:
-  '/users/{id}':
+  "/users/{id}":
     get:
       summary: "Get user"
       description: "Display a user selected by ID"
@@ -1017,7 +1013,7 @@ paths:
           description: "Server error"
           schema:
             $ref: "#/definitions/ErrorResponse"
-  
+
   /nodes/{id}:
     get:
       summary: "Get node"
@@ -1109,7 +1105,7 @@ paths:
           description: "Server error"
           schema:
             $ref: "#/definitions/ErrorResponse"
-  
+
   /nodes/{id}/devices/{deviceID}:
     put:
       summary: "Set a device of a node"
@@ -1223,11 +1219,11 @@ paths:
             type: "object"
             properties:
               "d313dcb6-a193-77ce-dd34-42b9e2100ee6":
-                  $ref: "#/definitions/Policy"
+                $ref: "#/definitions/Policy"
               "a245deb1-d592-94ab-de12-53b7e1510ba4":
-                  $ref: "#/definitions/Policy"
+                $ref: "#/definitions/Policy"
               "...":
-                  $ref: "#/definitions/Policy"
+                $ref: "#/definitions/Policy"
         401:
           description: "Not authenticated with the API"
           schema:
@@ -1632,7 +1628,6 @@ paths:
           description: "Server error"
           schema:
             $ref: "#/definitions/ErrorResponse"
-
 
   /auth/logout:
     post:

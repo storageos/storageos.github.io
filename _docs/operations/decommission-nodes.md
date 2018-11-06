@@ -19,33 +19,32 @@ cluster. Note that once removed from the cluster, nodes may not partake in
 StorageOS operations, and may not run container applications that require
 persistent storage.
 
-The recommended procedure is as follows. 
+The recommended procedure is as follows.
 
 1. Cordon the node
 
-    ```bash
-    $ storageos node cordon node03
-    node03
-    ```
+   ```bash
+   $ storageos node cordon node03
+   node03
+   ```
 
 1. Drain the node
 
-    ```bash
-    $ storageos node drain node03
-    node03
-    ```
+   ```bash
+   $ storageos node drain node03
+   node03
+   ```
 
-    > Wait until the node drain is finished. Check the volumes living in that
-    > node with `storageos node ls` and wait until there is no Masters or
-    > Replicas in that node. If replicas has no node available to be created
-    > the drained node will keep hosting them.
+   > Wait until the node drain is finished. Check the volumes living in that
+   > node with `storageos node ls` and wait until there is no Masters or
+   > Replicas in that node. If replicas has no node available to be created
+   > the drained node will keep hosting them.
 
 1. Stop the node
 
 1. Delete the node from the cluster
 
-    ```bash
-    $ storageos node delete node03
-    node03
-    ```
-
+   ```bash
+   $ storageos node delete node03
+   node03
+   ```

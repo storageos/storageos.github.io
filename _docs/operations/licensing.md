@@ -8,7 +8,7 @@ module: operations/licensing
 # Licensing
 
 A newly installed StorageOS cluster includes an unregistered Basic licence,
-which caps usable storage space at 100GB.  To utilise more storage space, we
+which caps usable storage space at 100GB. To utilise more storage space, we
 offer either a Developer (free with registration - 500GB) licence or an
 Enterprise (unlimited capacity - see below) licence. This document explains how
 to upgrade your licence using either the GUI or CLI.
@@ -69,6 +69,3 @@ Read the [licence CLI command reference]({% link _docs/reference/cli/licence.md
 
 Please contact [sales@storageos.com](mailto:sales@storageos.com) to discuss
 pricing for our Enterprise licence.
-
-
-

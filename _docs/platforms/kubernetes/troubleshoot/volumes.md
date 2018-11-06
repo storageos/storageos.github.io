@@ -14,4 +14,3 @@ module: platforms/kubernetes/troubleshoot/volumes
 {% include troubleshoot/issues/mount-in-pod-stat.md %}
 {% include troubleshoot/issues/pvc-pending-fail-to-dial.md %}
 {% include troubleshoot/issues/pvc-pending-missing-secret.md %}
-

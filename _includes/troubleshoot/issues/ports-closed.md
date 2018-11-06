@@ -1,6 +1,7 @@
 ## Peer discovery - Networking
 
 ### Issue:
+
 StorageOS nodes can't join the cluster showing the following logs after one
 minute of container uptime.
 
@@ -12,6 +13,7 @@ time="2018-09-24T13:40:20Z" level=info msg="retrying cluster join in 5 seconds..
 ```
 
 ### Reason:
+
 StorageOS uses a gossip protocol to discover the nodes in the cluster. When
 StorageOS starts, one or more nodes can be referenced so new nodes can query
 existing ones for the list of members. This error indicates that the node can't
@@ -23,6 +25,7 @@ connect to any of the nodes in the known list. The known list is defined in the
 It is likely that ports are block by a firewall.
 
 SSH into one of your nodes and check connectivity to the rest of the nodes.
+
 ```bash
 # Successfull execution:
 [root@node06 ~]# nc -zv node04 5705
@@ -31,7 +34,7 @@ Ncat: Connected to 10.0.1.166:5705.
 Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
 ```
 
-StorageOS exposes network diagnostics in its API, viewable from the CLI.  To
+StorageOS exposes network diagnostics in its API, viewable from the CLI. To
 use this feature, the CLI must query the API of a running node. The diagnostics
 show information from all known cluster members. If all the ports are blocked
 during the first bootstrap of the cluster, the diagnostics won't show any data
@@ -90,8 +93,8 @@ node2   node1.etcd      172.28.128.3:5707  1.218522ms   OK
 node2   node1.api       172.28.128.3:5705  1.363071ms   OK
 node2   node1.nats      172.28.128.3:5708  1.349383ms   OK
 ```
+
 ### Solution:
+
 Open ports following the [prerequisites page]({%link
 _docs/prerequisites/firewalls.md %}).
-
-

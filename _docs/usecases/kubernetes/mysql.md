@@ -16,50 +16,52 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying MySQL on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS example deployment repository
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
    StatefulSet defintion
-  ```yaml
+
+```yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
- name: mysql
+name: mysql
 spec:
- selector:
-   matchLabels:
-     app: mysql
-     env: prod
- serviceName: mysql
- replicas: 1
+selector:
+ matchLabels:
+   app: mysql
+   env: prod
+serviceName: mysql
+replicas: 1
+...
+spec:
+   serviceAccountName: mysql
+    ...
+    volumeMounts:
+     - name: data
+       mountPath: /var/lib/mysql
+       subPath: mysql
+     - name: conf
+       mountPath: /etc/mysql/mysql.conf.d
  ...
- spec:
-     serviceAccountName: mysql
-      ...
-      volumeMounts:
-       - name: data
-         mountPath: /var/lib/mysql
-         subPath: mysql
-       - name: conf
-         mountPath: /etc/mysql/mysql.conf.d
-   ...
 volumeClaimTemplates:
- - metadata:
-     name: data
-     labels:
-       env: prod
-   spec:
-     accessModes: ["ReadWriteOnce"]
-     storageClassName: "fast" # StorageOS storageClass 
-     resources:
-       requests:
-         storage: 5Gi
-   ```
-   This excerpt is from the StatefulSet definition. This file contains the
-   VolumeClaim template that will dynamically provision storage, using the
-   StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
-   been declared with the same name as a VolumeClaim.
+- metadata:
+   name: data
+   labels:
+     env: prod
+ spec:
+   accessModes: ["ReadWriteOnce"]
+   storageClassName: "fast" # StorageOS storageClass
+   resources:
+     requests:
+       storage: 5Gi
+```
+
+This excerpt is from the StatefulSet definition. This file contains the
+VolumeClaim template that will dynamically provision storage, using the
+StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
+been declared with the same name as a VolumeClaim.
 
 1. Move into the MySQL examples folder and create the objects
 

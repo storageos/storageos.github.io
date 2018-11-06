@@ -4,24 +4,19 @@ title: Prerequisites
 anchor: prerequisites
 
 sections:
-  -
-    title: Overview
+  - title: Overview
     description: Overview
     module: prerequisites/overview
-  -
-    title: Cluster discovery
+  - title: Cluster discovery
     description: Cluster discovery
     module: prerequisites/clusterdiscovery
-  -
-    title: System Configuration
+  - title: System Configuration
     description: Device presentation
     module: prerequisites/systemconfiguration
-  -
-    title: Ports and firewall settings
+  - title: Ports and firewall settings
     description: Ports and firewall settings
     module: prerequisites/firewalls
-  -
-    title: Mount propagation
+  - title: Mount propagation
     description: Mount propagation for docker, Kubernetes and OpenShift
     module: prerequisites/mountpropagation
 ---

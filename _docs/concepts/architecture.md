@@ -50,13 +50,11 @@ Volumes are provisioned from a storage pool and are thinly provisioned.
 By default, volumes are cached to improve read performance and compressed to
 reduce network traffic.
 
-| Available memory   | % of overall memory reserved by StorageOS for caching |
-|:-------------------|:---------------------|
-| 3 GB or less       | 3%                   |
-| 3-8 GB             | 5%                   |
-| 8-12 GB            | 7%                   |
-| 12 GB or more      | 10%                  |
-
-
+| Available memory | % of overall memory reserved by StorageOS for caching |
+| :--------------- | :---------------------------------------------------- |
+| 3 GB or less     | 3%                                                    |
+| 3-8 GB           | 5%                                                    |
+| 8-12 GB          | 7%                                                    |
+| 12 GB or more    | 10%                                                   |
 
 <!-- Add info on volume auto-follow -->

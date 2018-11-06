@@ -20,32 +20,35 @@ repos](https://github.com/storageos).
 To help us provide effective support, we request that you provide as much
 information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
-entries, that may help us debug your issue. 
+entries, that may help us debug your issue.
 
 Information about the cluster can be automatically send to StorageOS engineers
 as mentioned in the section [StorageOS Cluster
 Report](/docs/introduction/support#storageos-cluster-report).
 
 ## Platform
+
 - Cloud provider/Bare metal
 - OS distribution and version
 - Kernel version
 - docker version and installation procedure (distro packages or docker install)
 
-## StorageOS 
+## StorageOS
+
 - Version of StorageOS
 - `storageos node ls`
 - `storageos volume ls`
 - `storageos volume inspect VOL_ID # in case of issues with a specific volume`
 
 ## Orchestrator related (Kubernetes, OpenShift, etc)
+
 - Version and installation method
 - Managed or self managed?
-- `kubectl -n storageos get pod` 
+- `kubectl -n storageos get pod`
 - `kubectl -n storageos logs -lapp=storageos -c storageos`
 - `kubectl -n storageos get storageclass`
-- Specific for your namespaces: `kubectl describe pvc PVC_NAME` 
-- Specific for your namespaces: `kubectl describe pod POD_NAME` 
+- Specific for your namespaces: `kubectl describe pvc PVC_NAME`
+- Specific for your namespaces: `kubectl describe pod POD_NAME`
 
 ## StorageOS Cluster Report
 
@@ -65,5 +68,4 @@ information is sensitive and can't be given to StorageOS. Please make sure that
 support engineers have as much information about your environment as possible.
 
 You can generate a report through the StorageOS
-[GUI]({%link _docs/reference/gui.md %}) by pressing the `cluster
-diagnostics` button on the left menu.
+[GUI]({%link _docs/reference/gui.md %}) by pressing the `cluster diagnostics` button on the left menu.

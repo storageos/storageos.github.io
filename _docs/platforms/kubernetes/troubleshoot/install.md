@@ -15,4 +15,3 @@ module: platforms/kubernetes/troubleshoot/install
 {% include troubleshoot/issues/join-to-master-node.md %}
 {% include troubleshoot/issues/lio-init.md %}
 {% include troubleshoot/issues/lio-dataplane.md %}
-

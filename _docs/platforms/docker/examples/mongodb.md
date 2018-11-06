@@ -7,7 +7,7 @@ module: platforms/docker/examples/mongodb
 
 # ![image](/images/docs/explore/mongologo.png) MongoDB with StorageOS
 
-MongoDB is an open source NoSQL database.  Instead of using tables and rows it
+MongoDB is an open source NoSQL database. Instead of using tables and rows it
 is built on collections and documents.
 
 ## MongoDB and StorageOS
@@ -15,9 +15,9 @@ is built on collections and documents.
 There are several benefits with deploying MongoDB instances as Docker
 application containers with StorageOS:
 
-* Create easy to maintain, configurable MongoDB instances
-* Instant, stateless MongoDB application containers on demand
-* Persistent, highly available storage to mount stateful database data
+- Create easy to maintain, configurable MongoDB instances
+- Instant, stateless MongoDB application containers on demand
+- Persistent, highly available storage to mount stateful database data
 
 This guide demonstrates running MongoDB in a container with StorageOS. Before
 starting, ensure you have StorageOS installed on a cluster.
@@ -26,40 +26,41 @@ starting, ensure you have StorageOS installed on a cluster.
 
 The Dockerfile that builds the standard MongoDB container supports separate
 volumes to point to `/data/db` and `/data/configdb` so we need to create two
-separate persistent volumes for this exercise.  The best way to do this is
+separate persistent volumes for this exercise. The best way to do this is
 create the volumes first and then start up the container.
 
 1. Create a 2GB volume called `mongodata` and a 1GB volume called `mongoconf`
    in the default namespace.
 
-    ```bash
-    $ docker volume create --driver storageos --opt fstype=xfs --opt size=2 mongodata
-    mongodata
-    $ docker volume create --driver storageos --opt fstype=xfs --opt size=1 mongoconf
-    mongoconf
-    $ docker volume list
-    DRIVER              VOLUME NAME
-    local               b75672a8fcad3720455c860e5a7ba22391639e1d7668ae66d756ea84381a9926
-    storageos:latest    mongoconf
-    storageos:latest    mongodata
-    ```
+   ```bash
+   $ docker volume create --driver storageos --opt fstype=xfs --opt size=2 mongodata
+   mongodata
+   $ docker volume create --driver storageos --opt fstype=xfs --opt size=1 mongoconf
+   mongoconf
+   $ docker volume list
+   DRIVER              VOLUME NAME
+   local               b75672a8fcad3720455c860e5a7ba22391639e1d7668ae66d756ea84381a9926
+   storageos:latest    mongoconf
+   storageos:latest    mongodata
+   ```
 
 1. Run a MongoDB container using the StorageOS volume driver.
 
-    ```bash
-    docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb \
-        --volume-driver=storageos mongo
-    ```
-    * Mongo logs will be available via `docker logs <container-name>`.
-    * The MongoDB container image includes `EXPOSE 27017` making the default MongoDB TCP port automatically available to linked containers.
+   ```bash
+   docker run --name mongo-dev -d -v mongodata:/data/db -v mongoconf:/data/configdb \
+       --volume-driver=storageos mongo
+   ```
+
+   - Mongo logs will be available via `docker logs <container-name>`.
+   - The MongoDB container image includes `EXPOSE 27017` making the default MongoDB TCP port automatically available to linked containers.
 
 1. Connect to the Mongo container and create an admin user called `storageos`.
 
-    ```bash
-    $ docker exec -it mongo-dev mongo admin
-    > db.createUser({ user: 'storageos', pwd: 'storageos', roles: \
-        [{ role: "userAdminAnyDatabase", db: "admin" }] });
-    ```
+   ```bash
+   $ docker exec -it mongo-dev mongo admin
+   > db.createUser({ user: 'storageos', pwd: 'storageos', roles: \
+       [{ role: "userAdminAnyDatabase", db: "admin" }] });
+   ```
 
 1. The following result tells us we were able to successfully create the new
    StorageOS user
@@ -78,9 +79,9 @@ create the volumes first and then start up the container.
 
 1. Exit the MongoDB shell session
 
-    ```bash
-    > quit();
-    ```
+   ```bash
+   > quit();
+   ```
 
 1. Connect externally to the database
 
@@ -146,7 +147,7 @@ create the volumes first and then start up the container.
 
 1. Verify running status of container
 
-   >**Note**: We have a new container ID
+   > **Note**: We have a new container ID
 
    ```bash
    $ docker ps -a -f name=mongo

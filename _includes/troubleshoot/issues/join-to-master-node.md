@@ -1,6 +1,7 @@
 ## Peer discovery - Pod allocation
 
 ### Issue:
+
 StorageOS nodes can't join the cluster and show the following log entries.
 
 ```bash
@@ -11,6 +12,7 @@ time="2018-09-24T13:40:20Z" level=info msg="retrying cluster join in 5 seconds..
 ```
 
 ### Reason:
+
 StorageOS uses a gossip protocol to discover the nodes in the cluster. When
 StorageOS starts, one or more active nodes must be referenced so new nodes can
 query existing ones for the list of members. This error indicates that the node

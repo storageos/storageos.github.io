@@ -14,8 +14,8 @@ Minimum requirements:
 1. Docker 1.10 or later, with [mount propagation]({% link _docs/prerequisites/mountpropagation.md %}) enabled and preferably `CHANNEL=stable`
 1. The necessary ports should be open. See the [ports and firewall settings]({% link _docs/prerequisites/firewalls.md %})
 1. A mechanism for [cluster
-discovery]({% link _docs/prerequisites/clusterdiscovery.md %}), to allow
-StorageOS nodes to contact each other.
+   discovery]({% link _docs/prerequisites/clusterdiscovery.md %}), to allow
+   StorageOS nodes to contact each other.
 1. A mechanism for [device presentation]({% link
    _docs/prerequisites/systemconfiguration.md %})
 

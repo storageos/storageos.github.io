@@ -1,6 +1,7 @@
 ## LIO not enabled
 
 ### Issue:
+
 StorageOS node can't start and shows the following log entries.
 
 ```bash
@@ -9,18 +10,21 @@ time="2018-09-24T14:34:40Z" level=error msg="failed to start dataplane services"
 ```
 
 ### Reason:
+
 This indicates that one or more kernel modules required for StorageOS are
 not loaded.
 
 ### Doublecheck
+
 The following kernel modules must be enabled in the host.
+
 ```bash
 lsmod  | egrep "^tcm_loop|^target_core_mod|^target_core_file|^configfs"
 ```
 
 ### Solution:
+
 Install the required kernel modules (usually found in the
 `linux-image-extra-$(uname -r)` package of your distribution) on your nodes
 following this [prerequisites page]({%link
 _docs/prerequisites/systemconfiguration.md %}) and restart the container.
-

@@ -14,4 +14,3 @@ module: platforms/docker/troubleshoot/install
 {% include troubleshoot/common-install.md %}
 {% include troubleshoot/issues/lio-init-docker.md %}
 {% include troubleshoot/issues/lio-dataplane.md %}
-

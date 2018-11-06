@@ -16,46 +16,48 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying MS SQL on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS example deployment repository
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
    StatefulSet defintion
-  ```yaml
+
+```yaml
 kind: StatefulSet
 metadata:
- name: mssql
+name: mssql
 spec:
- selector:
-   matchLabels:
-     app: mssql
-     env: prod
- serviceName: mssql
- replicas: 1
+selector:
+ matchLabels:
+   app: mssql
+   env: prod
+serviceName: mssql
+replicas: 1
+...
+spec:
+   serviceAccountName: mssql
+    ...
+    volumeMounts:
+     - name: data
+       mountPath: /var/opt/mssql
  ...
- spec:
-     serviceAccountName: mssql
-      ...
-      volumeMounts:
-       - name: data
-         mountPath: /var/opt/mssql
-   ...
 volumeClaimTemplates:
- - metadata:
-     name: data
-     labels:
-       env: prod
-   spec:
-     accessModes: ["ReadWriteOnce"]
-     storageClassName: "fast" # StorageOS storageClass 
-     resources:
-       requests:
-         storage: 5Gi
-   ```
-   This excerpt is from the StatefulSet definition. This file contains the
-   VolumeClaim template that will dynamically provision storage, using the
-   StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
-   been declared with the same name as a VolumeClaim.
+- metadata:
+   name: data
+   labels:
+     env: prod
+ spec:
+   accessModes: ["ReadWriteOnce"]
+   storageClassName: "fast" # StorageOS storageClass
+   resources:
+     requests:
+       storage: 5Gi
+```
+
+This excerpt is from the StatefulSet definition. This file contains the
+VolumeClaim template that will dynamically provision storage, using the
+StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
+been declared with the same name as a VolumeClaim.
 
 1. Move into the MS SQL examples folder and create the objects
 
@@ -74,6 +76,7 @@ volumeClaimTemplates:
 
 1. Connect to the MS SQL client pod and connect to the MS SQL server through the
    service
+
    ```bash
     $ kubectl exec -it mssql-0 -- /opt/mssql-tools/bin/sqlcmd -S mssql-0.mssql -U SA -P 'Password15'
     1> USE master;
@@ -81,7 +84,7 @@ volumeClaimTemplates:
     Changed database context to 'master'.
     1> SELECT name, database_id, create_date FROM sys.databases ;
     2> GO
-    name                        database_id create_date            
+    name                        database_id create_date
     --------------------------- ----------- -----------------------
     master                                1 2003-04-08 09:13:36.390
     tempdb                                2 2018-11-02 16:30:37.907
@@ -89,7 +92,7 @@ volumeClaimTemplates:
     msdb                                  4 2018-10-19 01:18:57.300
 
     (4 rows affected)
-    ```
+   ```
 
 ## Configuration
 

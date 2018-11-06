@@ -10,7 +10,7 @@ module: reference/cli/namespace
 ```bash
 $ storageos namespace
 
-Usage:	storageos namespace COMMAND
+Usage:  storageos namespace COMMAND
 
 Manage namespaces
 

@@ -42,9 +42,8 @@ namespace.
 Policies are a simple Attribute-Based Access Control records that are used to
 permission users (or groups) to namespaces.
 
->**Note**: On initial startup there is only the `storageos` user and no policies
->are in place. If no policies exist, all users can access all namespaces.
-
->**Note**: Admin users (users with their role field set to `admin`) are treated
->as super-users which can perform any action within the system, regardless of
->policies set.
+> **Note**: On initial startup there is only the `storageos` user and no policies
+> are in place. If no policies exist, all users can access all namespaces.
+> **Note**: Admin users (users with their role field set to `admin`) are treated
+> as super-users which can perform any action within the system, regardless of
+> policies set.

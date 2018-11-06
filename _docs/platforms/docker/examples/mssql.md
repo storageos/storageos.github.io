@@ -7,17 +7,17 @@ module: platforms/docker/examples/mssql
 
 # ![image](/images/docs/explore/mssqllogo.png) Microsoft SQL Server 2017 with StorageOS
 
- Microsoft's latest SQL Server release represents a major update with
- availability for Linux platform support and support to run as a container.
+Microsoft's latest SQL Server release represents a major update with
+availability for Linux platform support and support to run as a container.
 
 ## Linux Support
 
-Microsoft SQL Server for Linux runs with any supported Linux distribution.  The
-recommended distribution for testing StorageOS is Ubuntu 16.04.  Additional
+Microsoft SQL Server for Linux runs with any supported Linux distribution. The
+recommended distribution for testing StorageOS is Ubuntu 16.04. Additional
 requirements include:
 
-* Minimum of 4 GB of disk space
-* Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
+- Minimum of 4 GB of disk space
+- Minimum of 4 GB of RAM (has been tested to work with 3.25GB)
 
 [Before you start, ensure you have StorageOS installed and ready on a Linux
 cluster.]({%link _docs/platforms/docker/install.md %})
@@ -61,7 +61,7 @@ cluster.]({%link _docs/platforms/docker/install.md %})
    If you have installed the SQL Server tools separately you can use
    `sqlcmd -S <ip_address> -U SA -P p@ssw0rd` to connect from a remote server,
    alternatively use the `docker exec` command to run directly from the
-   container.  The steps that follow apply to both methods of connecting to SQL
+   container. The steps that follow apply to both methods of connecting to SQL
    Server.
 
    ```bash

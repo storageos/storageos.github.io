@@ -37,7 +37,6 @@ JOIN=172.28.128.3,172.28.128.9,172.28.128.15
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
-
 The `JOIN` command line argument is always required, even in clusters with only
 one node. A blank `JOIN` variable will result in a non-functional cluster. This
 is to prevent non-obvious split-brain scenarios in multi-node clusters, where

@@ -8,7 +8,7 @@ module: reference/cli/logs
 # Logs
 
 ```bash
-Usage:	storageos logs COMMAND
+Usage: storageos logs COMMAND
 
 View and manage node logs
 
@@ -31,22 +31,22 @@ Run 'storageos logs COMMAND --help' for more information on a command.
 The `logs` command is intended to assist with troubleshooting a running cluster.
 
 `--log-level` controls the level of detail shown in the logs with `info` the
-default.  The available options are `debug`, `info`, `warn`, `error` and
-`fatal`.  During normal operation `info` level is recommended.
+default. The available options are `debug`, `info`, `warn`, `error` and
+`fatal`. During normal operation `info` level is recommended.
 
-Filters fine-tune the amount of detail shown.  They allow you to set the log
+Filters fine-tune the amount of detail shown. They allow you to set the log
 level to `debug` level, then set specific categories at a higher level
 (e.g. `info`) so there is less noise while troubleshooting an issue.
 
 For example, the filter `dp=info,cp=info,etcd=debug` would set all dataplane and
 controlplane categories to `info` level, then only enable `debug` on the `etcd`
-category.  Filters are evaluated from left to right.  The log level must also be
+category. Filters are evaluated from left to right. The log level must also be
 set to `debug` to show the `etcd` category at `debug` level.
 
 Categories are tags on log messages that relate to the component that generated
-them.  A typical log message looks like:
+them. A typical log message looks like:
 
-```
+```bash
 time="2018-01-11T12:42:58Z" level=info msg="lost leadership election, waiting" action=election category=leader error="already exists" module=ha
 ```
 

@@ -15,14 +15,16 @@ guide is published, you'll receive $250 per article by PayPal.
 
 A guide contains step by step instructions for how to accomplish a specific
 task using StorageOS. To be accepted, guides must be:
-* Written in English.
-* Relevant, accurate and complete.
-* Technically correct and thoroughly tested.
-* Follow the [writing style guide](https://github.com/storageos/storageos.github.io/blob/master/README.md).
+
+- Written in English.
+- Relevant, accurate and complete.
+- Technically correct and thoroughly tested.
+- Follow the [writing style guide](https://github.com/storageos/storageos.github.io/blob/master/README.md).
 
 Guides should avoid:
-* Duplicating an existing guide or other sources, such as blogs or forum posts.
-* Including irrelevant material.
+
+- Duplicating an existing guide or other sources, such as blogs or forum posts.
+- Including irrelevant material.
 
 ## Submission and review
 
@@ -44,8 +46,8 @@ under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Internation
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require StorageOS
 to use the Work, or any part thereof, in connection with StorageOS Guides &
-Tutorials or otherwise. Credit for the Work shall read, “Contributed by *writer’s
-name*.”
+Tutorials or otherwise. Credit for the Work shall read, “Contributed by _writer’s
+name_.”
 
 PAYMENT. Upon publication of a submission to the StorageOS Guides & Tutorials
 Repository, the writer will be paid the sum of USD $250.00 as an electronic

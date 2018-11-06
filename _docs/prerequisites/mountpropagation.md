@@ -29,7 +29,7 @@ EOF
 
 To confirm behaviour, the following command should run without error
 
-```
+```bash
 docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
 ```
 

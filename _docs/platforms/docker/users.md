@@ -73,8 +73,8 @@ e367ccf0-240d-538f-540f-5013784b5665  awesomeUser  testers  user
 9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos             admin
 ```
 
->**Note**: In this case the `--password` flag is a boolean used to indicate that you wish to update the user's password.
-The password will be prompted for interactively.
+> **Note**: In this case the `--password` flag is a boolean used to indicate that you wish to update the user's password.
+> The password will be prompted for interactively.
 
 # Policies
 
@@ -83,7 +83,6 @@ The password will be prompted for interactively.
 Policies can be added via the CLI using the `storageos policy create` command.
 This command can be controlled either by using flags (`--user` etc.), or policy
 files can be provided to the CLI.
-
 
 ### File format
 
@@ -99,11 +98,12 @@ The rules above will allow any user with the username bob, or in the group compl
 
 Access to a namespace grants the ability to create/update/remove volumes and rules within that namespace.
 
-
 ### Adding using flags
+
 Policies can be added using flags. These flags share the same name as their matching keys in the `spec` field of a policy object.
 
 The following commands add policies (using the flags interface) to:
+
 - Grant the user "foo" access to all namespaces
 - Grant the user "bar" access to the "testing" namespace
 - Grant all users in the group "baz" access to the "restricted" namespace
@@ -121,20 +121,24 @@ c14aa3ff-99f7-d0fb-41e9-ad45b0919851  bar          testing
 ```
 
 ### Adding using jsonl files
+
 Policies can also be added using Kubernetes style policy files (json line format). In this example we use these two files:
 
 p1.jsonl:
+
 ```json
 {"spec":{"user":"foo", "namespace": "*"}}
 {"spec":{"user":"bar", "namespace": "testing"}}
 ```
 
 p2.jsonl:
+
 ```json
-{"spec":{"group":"baz", "namespace": "restricted"}}
+{ "spec": { "group": "baz", "namespace": "restricted" } }
 ```
 
 These files are provided using the optional argument `--policies`
+
 ```bash
 $ storageos policy create --policies='p1.jsonl,p2.jsonl'
 
@@ -145,9 +149,10 @@ ID                                    USER  GROUP  NAMESPACE
 8ced2820-7ad1-bd46-4d9f-d7dab1ba4c67        baz    restricted
 ```
 
->**Note**: It is also possible to consume this file format from stdin using the `--stdin` option.
+> **Note**: It is also possible to consume this file format from stdin using the `--stdin` option.
 
 ## Listing current policies
+
 Policies live in the system can be displayed using the `storageos policy ls` command.
 
 ```bash
@@ -159,6 +164,7 @@ c14aa3ff-99f7-d0fb-41e9-ad45b0919851  bar          testing
 ```
 
 ## Removing policies
+
 Policies can be removed from the system using the `storageos policy rm` command. Multiple policies can be selected at once.
 
 ```bash
@@ -175,5 +181,5 @@ ID                                    USER  GROUP  NAMESPACE
 c14aa3ff-99f7-d0fb-41e9-ad45b0919851  bar          testing
 ```
 
->**Note**: Once `storageos policy rm` has completed, the selected policies will have all been removed from the system.
-However, during this call requests may still be checked against some subset of the policies to be removed.
+> **Note**: Once `storageos policy rm` has completed, the selected policies will have all been removed from the system.
+> However, during this call requests may still be checked against some subset of the policies to be removed.

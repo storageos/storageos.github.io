@@ -3,7 +3,8 @@
 A created PVC remains in pending state making pods that need to mount that PVC
 unable to start.
 
-### Issue: 
+### Issue:
+
 ```bash
 root@node1:~/# {{ page.cmd }} get pvc
 NAME      STATUS        VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -18,6 +19,7 @@ Events:
 ```
 
 ### Reason:
+
 For non CSI installations of StorageOS, {{ page.platform }} uses the StorageOS
 API endpoint to communicate. If that communication fails, relevant actions such
 as create or mount a volume can't be transmitted to StorageOS, hence the PVC
@@ -43,18 +45,19 @@ storageos-w98f5   0/1       Running   0          1m
 
 If the pods are not READY, the service will not forward traffic to the API they
 serve hence PVC will remain in pending state until StorageOS pods are
-available. 
+available.
 
 > {{ page.platform }} keeps trying to execute the action until it succeeds. If
 > a PVC is created before StorageOS finish starting, the PVC will be created
 > eventually.
 
 ### Solution:
+
 - StorageOS health check takes 60 seconds of grace before reporting as READY. If
-StorageOS is starting properly after that period, the volume will be created
-when StorageOS finishes its bootstrap.
+  StorageOS is starting properly after that period, the volume will be created
+  when StorageOS finishes its bootstrap.
 - If StorageOS is not running or is not starting properly, the solution to this
-issue is to make StorageOS start. Check the [troubleshooting
-installation](/docs/platforms/{{ page.platform | downcase
-}}/troubleshoot/install) or follow the [installation procedures]({%link
-_docs/introduction/quickstart.md %})
+  issue is to make StorageOS start. Check the [troubleshooting
+  installation](/docs/platforms/{{ page.platform | downcase
+  }}/troubleshoot/install) or follow the [installation procedures]({%link
+  _docs/introduction/quickstart.md %})

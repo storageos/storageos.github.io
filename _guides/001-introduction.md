@@ -4,16 +4,13 @@ title: Introduction
 anchor: introduction
 
 sections:
-  -
-    title: Overview
+  - title: Overview
     description: StorageOS Overview
     module: introduction/overview
-  -
-    title: Quickstart
+  - title: Quickstart
     description: StorageOS Quickstart
     module: introduction/quickstart
-  -
-    title: Support
+  - title: Support
     description: StorageOS Support
     module: introduction/support
 ---

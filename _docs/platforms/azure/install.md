@@ -15,11 +15,11 @@ location where StorageOS presents volume devices to `kubelet` to see the
 devices.
 
 We expect StorageOS to run on AKS when it supports Kubernetes
-1.10.  Until then, you may deploy your own Kubernetes cluster on Azure using the acs-engine instructions below.
+1.10. Until then, you may deploy your own Kubernetes cluster on Azure using the acs-engine instructions below.
 
 ## acs-engine
 
-`acs-engine` is an open-source tool from Microsoft that can be used to deploy your own Kubernetes cluster on Azure.  It allows
+`acs-engine` is an open-source tool from Microsoft that can be used to deploy your own Kubernetes cluster on Azure. It allows
 you to specify the version of Kubernetes and specific features.
 
 For more information and installation instructions, consult the
@@ -37,12 +37,12 @@ Example definition (saved as `kubernetes.json` for use in the instructions below
       "orchestratorType": "Kubernetes",
       "orchestratorRelease": "1.10",
       "kubernetesConfig": {
-          "addons": [
-              {
-                  "name": "tiller",
-                  "enabled" : true
-              }
-          ]
+        "addons": [
+          {
+            "name": "tiller",
+            "enabled": true
+          }
+        ]
       }
     },
     "masterProfile": {
@@ -116,7 +116,7 @@ for more information.
 
 ### StorageOS installation with Helm
 
->To install StorageOS without Helm, check out the following [page]({%link _docs/platforms/kubernetes/install/1.10.md %}).
+> To install StorageOS without Helm, check out the following [page]({%link _docs/platforms/kubernetes/install/1.10.md %}).
 
 First, make sure the [StorageOS CLI]({%link _docs/reference/cli/index.md %}) has
 been installed on your local machine.
@@ -140,7 +140,7 @@ helm install . --name storageos-test \
 ```
 
 After the `helm install` command completes, finish the installation by running
-the commands suggested.  These will vary depending if custom install options
+the commands suggested. These will vary depending if custom install options
 were specified, otherwise the defaults will work:
 
 ```bash
@@ -154,7 +154,7 @@ CLI was installed into your path.
 
 Since `kubelet` runs in a container in ACS, it's important to set `cluster.sharedDir`
 to `/var/lib/kubelet/plugins/kubernetes.io~storageos`, which is available to the
-`kubelet`.  The StorageOS container will use this directory to publish its
+`kubelet`. The StorageOS container will use this directory to publish its
 devices in.
 
 See the [StorageOS Helm Chart](https://github.com/storageos/helm-chart) for more

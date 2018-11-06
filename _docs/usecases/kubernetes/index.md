@@ -21,12 +21,13 @@ production ready but have been provided to give you some insight into how to
 use StorageOS with stateful applications.
 
 The examples we have provided use [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
-as a way to deploy these applications. 
+as a way to deploy these applications.
 
 The StorageOS specific part of the Kubernetes manifests for these examples lies
-in the VolumeClaimTemplate that's part of the statefulset definition. 
+in the VolumeClaimTemplate that's part of the statefulset definition.
 
-VolumeClaimTemplate 
+VolumeClaimTemplate
+
 ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
@@ -47,27 +48,27 @@ spec:
     spec:
       serviceAccountName: mssql
       containers:
-      - name: foo
-        image: bar
-        volumeMounts:
-          - name: baz
-            mountPath: /var/opt/bar
-        envFrom:
-        - configMapRef:
-            name: mssql
+        - name: foo
+          image: bar
+          volumeMounts:
+            - name: baz
+              mountPath: /var/opt/bar
+          envFrom:
+            - configMapRef:
+                name: mssql
   volumeClaimTemplates:
-  - metadata:
-      name: baz
-      labels:
-        env: prod
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      storageClassName: "fast" # StorageOS storageClass 
-      resources:
-        requests:
-          storage: 5Gi
-
+    - metadata:
+        name: baz
+        labels:
+          env: prod
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: "fast" # StorageOS storageClass
+        resources:
+          requests:
+            storage: 5Gi
 ```
+
 In the StatefulSet definition above the container has a volume mount
 defined called baz. The definition for this volume is found in the
 VolumeClaimTemplate where the fast storageClass will be used to dynamically

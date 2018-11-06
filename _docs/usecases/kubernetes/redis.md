@@ -16,9 +16,11 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 ## Deploying Redis on Kubernetes
 
 1. You can find the latest files in the StorageOS example deployment repository
+
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
+
    StatefulSet defintion
 
 ```yaml
@@ -65,7 +67,7 @@ been declared with the same name as a Volume Claim.
    kubectl create -f ./k8s/examples/redis
    ```
 
-1. Confirm Redis is up and running.
+2. Confirm Redis is up and running.
 
    ```bash
    $ kubectl get pods -w -l app=redis
@@ -73,8 +75,9 @@ been declared with the same name as a Volume Claim.
    redis-0     1/1      Running    0          1m
    ```
 
-1. Connect to the Redis client pod and connect to the Redis server through the
+3. Connect to the Redis client pod and connect to the Redis server through the
    service
+
    ```bash
     $ kubectl exec -it redis-0 -- redis-cli -a password
     Warning: Using a password with '-a' option on the command line interface may not be safe.

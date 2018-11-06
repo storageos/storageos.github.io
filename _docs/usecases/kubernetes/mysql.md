@@ -17,9 +17,11 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 ## Deploying MySQL on Kubernetes
 
 1. You can find the latest files in the StorageOS example deployment repository
+
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
+
    StatefulSet defintion
 
 ```yaml
@@ -70,7 +72,7 @@ been declared with the same name as a VolumeClaim.
    kubectl create -f ./k8s/examples/mysql
    ```
 
-1. Confirm MySQL is up and running.
+2. Confirm MySQL is up and running.
 
    ```bash
    $ kubectl get pods -w -l app=mysql
@@ -78,8 +80,9 @@ been declared with the same name as a VolumeClaim.
    mysql-0     1/1      Running    0          1m
    ```
 
-1. Connect to the MySQL client pod and connect to the MySQL server through the
+3. Connect to the MySQL client pod and connect to the MySQL server through the
    service
+
    ```bash
    $ kubectl exec client -- mysql -h mysql-0.mysql -e "show databases;"
    Database

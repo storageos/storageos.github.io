@@ -17,9 +17,11 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 ## Deploying MS SQL on Kubernetes
 
 1. You can find the latest files in the StorageOS example deployment repository
+
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
+
    StatefulSet defintion
 
 ```yaml
@@ -66,7 +68,7 @@ been declared with the same name as a VolumeClaim.
    kubectl create -f ./k8s/examples/mssql
    ```
 
-1. Confirm MS SQL is up and running.
+2. Confirm MS SQL is up and running.
 
    ```bash
    $ kubectl get pods -w -l app=mssql
@@ -74,7 +76,7 @@ been declared with the same name as a VolumeClaim.
    mssql-0     1/1      Running    0          1m
    ```
 
-1. Connect to the MS SQL client pod and connect to the MS SQL server through the
+3. Connect to the MS SQL client pod and connect to the MS SQL server through the
    service
 
    ```bash

@@ -21,7 +21,7 @@ sections:
     description: Extend physical capacity
     module: operations/extend-storage
   -
-    title: External Key/Value 
+    title: Using an external etcd
     description: External Key/Value
     module: operations/external-kv
   -

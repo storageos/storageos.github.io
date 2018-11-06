@@ -26,7 +26,7 @@ especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
 To create a volume with a feature labels:
 
 ```bash
-storageos volume create --label storageos.com/throttle=true
+storageos volume create --label storageos.com/throttle=true --label storageos.com/replicas=1 
 ```
 
 ## Deprecated labels

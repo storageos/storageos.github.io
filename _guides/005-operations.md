@@ -25,6 +25,10 @@ sections:
     description: External Key/Value
     module: operations/external-kv
   -
+    title: Decommission nodes
+    description: Decommission nodes
+    module: operations/decommission-nodes
+  -
     title: Rules
     description: StorageOS rules
     module: operations/rules

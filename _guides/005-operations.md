@@ -21,6 +21,10 @@ sections:
     description: Extend physical capacity
     module: operations/extend-storage
   -
+    title: Decommission nodes
+    description: Decommission nodes
+    module: operations/decommission-nodes
+  -
     title: Rules
     description: StorageOS rules
     module: operations/rules

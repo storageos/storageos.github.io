@@ -21,6 +21,10 @@ sections:
     description: Extend physical capacity
     module: operations/extend-storage
   -
+    title: Using an external etcd
+    description: External Key/Value
+    module: operations/external-kv
+  -
     title: Decommission nodes
     description: Decommission nodes
     module: operations/decommission-nodes

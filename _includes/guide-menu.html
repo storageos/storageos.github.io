@@ -1,46 +1,58 @@
-<div id="side-menu" class="guide-list">
-    <ul>
-        {% for guide in site.guides %}
-        <li>
-            <a class="guide-link title " href="javascript:void(0);" data-toggle="collapse" data-target="#{{ guide.anchor }}">{{ guide.title }}</a>
-            <div id="{{ guide.anchor }}" class="guide-child collapse {% if guide.anchor == anchor %}in{% endif %}">
-                <div class="section-list">
-                    <ul>
-                        {% for section in guide.sections %}
-                        <li>
-                            {% if section.items or anchor == section.module %}
-                            <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
-                            <div id="{{ section.title }}" class="guide-child-two collapse {% if title contains section.module %}in{% endif %}">
-                                <ul>
-                                    {% for item in section.items %}
-                                        {% if item.subitems or anchor == item.module %}
-                                        <ul>
-                                            <li>
-                                               <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a>
-                                               <div id="{{ item.title }}" class="guide-child-two collapse {% if title contains item.module %}in{% endif %}">
-                                                    <ul>
-                                                        {% for subitem in item.subitems %}
-                                                        <li><a class="section-link clickable title {% if subitem.module == title  or section.anchor == anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ subitem.module }}">{{ subitem.title }}</a></li>
-                                                        {% endfor %}
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        {% else %}
-                                        <li><a class="section-link clickable title {% if item.module == title  or section.anchor == anchor %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a></li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            {% else %}
-                            <a class="section-link clickable title {% if title contains section.module %}active{% endif %}" href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
-                            {% endif %}
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
+<div id="side-menu"
+     class="guide-list">
+  <ul>
+    {% for guide in site.guides %}
+    <li>
+      <a class="guide-link title "
+         href="javascript:void(0);"
+         data-toggle="collapse"
+         data-target="#{{ guide.anchor }}">{{ guide.title }}</a>
+      <div id="{{ guide.anchor }}"
+           class="guide-child collapse {% if guide.anchor == anchor %}in{% endif %}">
+        <div class="section-list">
+          <ul>
+            {% for section in guide.sections %}
+            <li>
+              {% if section.items or anchor == section.module %}
+              <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}"
+                 href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
+              <div id="{{ section.title }}"
+                   class="guide-child-two collapse {% if title contains section.module %}in{% endif %}">
+                <ul>
+                  {% for item in section.items %}
+                  {% if item.subitems or anchor == item.module %}
+                  <ul>
+                    <li>
+                      <a class="guide-link clickable title {% if title contains section.module %}active{% endif %}"
+                         href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a>
+                      <div id="{{ item.title }}"
+                           class="guide-child-two collapse {% if title contains item.module %}in{% endif %}">
+                        <ul>
+                          {% for subitem in item.subitems %}
+                          <li><a class="section-link clickable title {% if subitem.module == title  or section.anchor == anchor %}active{% endif %}"
+                               href="{{ site.baseurl }}/docs/{{ subitem.module }}">{{ subitem.title }}</a></li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                  {% else %}
+                  <li><a class="section-link clickable title {% if item.module == title  or section.anchor == anchor %}active{% endif %}"
+                       href="{{ site.baseurl }}/docs/{{ item.module }}">{{ item.title }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              {% else %}
+              <a class="section-link clickable title {% if title contains section.module %}active{% endif %}"
+                 href="{{ site.baseurl }}/docs/{{ section.module }}">{{ section.title }}</a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
 </div>

@@ -19,11 +19,15 @@ sections:
             description: Install on 1.12
             module: platforms/kubernetes/install/1.12
           - 
-            title: 1.10, 1.11
+            title: 1.11
             description: Install on 1.10 and 1.11
+            module: platforms/kubernetes/install/1.11
+          - 
+            title: 1.10 <br>
+            description: Install on 1.10
             module: platforms/kubernetes/install/1.10
           -
-            title: 1.8, v1.9
+            title: 1.8, 1.9
             description: Install on 1.8, 1.9
             module: platforms/kubernetes/install/1.8
           -

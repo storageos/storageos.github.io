@@ -23,10 +23,10 @@ helm install storageos/storageoscluster-operator --namespace storageos-operator
 > The StorageOS Cluster Operator source code can be found in the
 > [cluster-operator repository](https://github.com/storageos/cluster-operator).
 
-The operator is a Pod manged by a Deployment Controller. Once the Pod is ready,
-a StorageOS cluster definition can be created. The operator will deploy a
-StorageOS cluster based on the configuration specified in the cluster
-definition. 
+The operator is a Kubernetes controller that watches the `StorageOSCluster`
+CRD. Once the controller is ready, a StorageOS cluster definition can be
+created. The operator will deploy a StorageOS cluster based on the
+configuration specified in the cluster definition.
 
 ### Create a Secret
 
@@ -74,5 +74,5 @@ metadata:
 END
 ```
 
-You can find more examples such as deploy with CSI or deploy referencing a external etcd kv store.
+You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
 store for StorageOS in this [repo](TODO).

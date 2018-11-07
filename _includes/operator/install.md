@@ -62,15 +62,15 @@ apiVersion: "storageos.com/v1alpha1"
 kind: "StorageOSCluster"
 metadata:
   name: "example-storageos"
-    namespace: "default"
-    spec:
-      secretRefName: "storageos-api" # Reference from the Secret created in the previous step
-      secretRefNamespace: "default"  # Namespace of the Secret
-      images:
-        nodeContainer: "storageos/node:1.0.0-rc5" # StorageOS version
-      resources:
-        requests:
-          memory: "128Mi"
+  namespace: "default"
+spec:
+  secretRefName: "storageos-api" # Reference from the Secret created in the previous step
+  secretRefNamespace: "default"  # Namespace of the Secret
+  images:
+  nodeContainer: "storageos/node:1.0.0-rc5" # StorageOS version
+  resources:
+    requests:
+    memory: "128Mi"
 END
 ```
 

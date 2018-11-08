@@ -62,7 +62,6 @@ apiVersion: "storageos.com/v1alpha1"
 kind: "StorageOSCluster"
 metadata:
   name: "example-storageos"
-  namespace: "default"
 spec:
   secretRefName: "storageos-api" # Reference from the Secret created in the previous step
   secretRefNamespace: "default"  # Namespace of the Secret

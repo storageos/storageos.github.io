@@ -50,7 +50,7 @@ data:
 END
 ```
 
-## Trigger a StorageOS installation
+### Trigger a StorageOS installation
 
 > This is a Cluster Definition example. Checkout the `spec` parameters
 > available in the [Resource Configuration

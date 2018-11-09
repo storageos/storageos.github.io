@@ -17,6 +17,10 @@ sections:
     description: Namespaces
     module: operations/namespaces
   -
+    title: Storage Host configuration
+    description: Storage host setup 
+    module: operations/storage-host-config
+  -
     title: Extend storage capacity
     description: Extend physical capacity
     module: operations/extend-storage

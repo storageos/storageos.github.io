@@ -9,7 +9,7 @@ module: usecases/kubernetes/nginx
 
 Nginx is a popular web server that can be used as a reverse proxy, load
 balancer or even as a
-[Kubernetes ingress controller.]{https://github.com/kubernetes/ingress-nginx}
+[Kubernetes ingress controller.](https://github.com/kubernetes/ingress-nginx)
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
@@ -21,7 +21,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
-   StatefulSet defintion
+   StatefulSet definition
   ```yaml
    apiVersion: apps/v1
    kind: StatefulSet

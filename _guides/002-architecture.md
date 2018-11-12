@@ -29,6 +29,10 @@ sections:
     description: Volumes
     module: concepts/volumes
   - 
+    title: Policies
+    description: Policies
+    module: concepts/policies
+  - 
     title: Pools
     description: Pools
     module: concepts/pools

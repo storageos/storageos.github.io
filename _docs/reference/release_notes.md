@@ -18,31 +18,103 @@ The latest tagged release is `{{ site.latest_node_version }}`, available from th
 The latest CLI release is `{{ site.latest_cli_version }}`, available from
 [Github](https://github.com/storageos/go-cli/releases)
 
-## Upgrades
+## 1.0.0
 
-Upgrades can be performed by restarting the StorageOS node container with the
-new version.
+1.0.0 is suitable for production workloads.
 
-Before a node is upgraded, applications local to the node that mount StorageOS
-volumes should be migrated to other cluster nodes or their data volumes will be
-unavailable while the StorageOS container restarts.
+### Breaking changes
 
-See [Node maintenance]({%link _docs/concepts/maintenance.md %}) for commands to help
-with online migration of volumes.
+There should not be any breaking changes since `1.0.0-rc5`.
 
-The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
-updated when upgrading the cluster version.
+### New
 
-Where there are special considerations they are described below.
+- Offline nodes can now be removed from management either by using the CLI `node
+  leave` command, or in the UI. This is only available when external etcd is
+  used as the KV store.
+- Nodes can now be placed into "Maintenance mode" to disable volume recovery on
+  the node while it is offline for maintenance. This allows nodes to be
+  upgraded without triggering potentially unwanted data migrations. Note that
+  applications accessing StorageOS volumes on the node should also be shutdown.
+  Alternatively, you may move applications off the node and use
+  `stoageos node drain` to migrate data prior to taking the node offline.
+- 5% of backend volume capacity is now reserved for indexes and recovery.  This
+  helps ensure that there is enough remaining capacity to perform recovery
+  operations such as deleting or moving frontend volumes.
+- Prometheus metrics for volume used capacity, and added to the API volume
+  objects and the UI. A placeholder for actual used capacity (after
+  compression) has also been added but is not yet provided.
+- In the UI, storage pools now have an additional details page.
+- Added group management to the UI.
+- The overprovisioning ratio can now be configured on pools by applying the
+  label `storageos.com/overcommit` to a positive integer representing the
+  overcommit percentage. By default, overcommit is set to 0.
 
-### 0.10.x - 1.0.x
+### Improved
 
-Due to breaking changes between 0.10.x and 1.0.x upgrading is not possible.  We
-will now endeavour to allow upgrades between versions.
+- Updated Prometheus metrics names to follow best practices.
+- Added process name to dataplane log messages.
+- Removed excessive heartbeat messages from debug logging.
+- Removed an unneeded mutex from the dataplane debug logging.
+- Added protection against a potential hard hang while cleaning up devices by
+  instructing the kernel to abort any IO on the device prior to removing.
+- Add `createdAt` and `updatedAt` fields in volume replica API objects.
+- All API errors now return JSON content type (content remains the same).
+- UI improvements to remember state when validation fails.
+- UI feedback and help text while requesting a developer licence is more
+  intuitive.
+- Better error message when manually applying an invalid licence.
+- Volume detail page in the UI has numerous improvements to improve usability,
+  including on smaller screen sizes.
+- When the UI was accessed before the node was fully online it would show a
+  blank page. It now shows the message `Cluster API not yet available, waiting
+  for nodes to join`.
+- The browser "back" button on the UI now works as expected.
+- Label management in the UI now gives context-sensitive examples and improves
+  validation.
+- Added network diagnostics and Prometheus metrics to support diagnostics
+  bundle.
+- Updated container labels.
 
-If you are installing on a node that has had a previous version installed, make
-sure that the contents of `/var/lib/storageos` has been removed, and that you
-provision with a new cluster discovery token (if using).
+### Fixed
+
+- When a replica is auto-promoted to master because the application container
+  moved, a cache reset for the volume is now triggered prior to updating the
+  presentation to ensure the cache can never serve stale data.
+- Fixed a crash in the replication server during shutdown when a volume scrub
+  operation was taking place on a deleted volume with a non-trivial amount of
+  data.
+- In a cluster with hundreds of volumes and nodes continuously rebooting, a race
+  condition could cause a volume to be "stuck" in syncing state if the sync
+  started before the dataplane was ready for operation.  New replicas are now
+  created with their health set to `provisioned`, and only enter the `syncing`
+  state once the sync is underway. This allows the operation to be retried if
+  required.
+- After a restart, a write pointer was starting at the end of the current 64MB
+  chunk. This would waste space if the chunk was not fully used. The pointer
+  is now set to the end of the written data to ensure full utilisation.
+- Check-and-set operations in the internal key-value store library were not
+  honouring the TTL requested. This could cause CAS updates to fail when there
+  was above average latency between nodes.
+- If a non-admin user tried to cordon/drain a node in the UI it would fail
+  silently. Now the action is disabled for non-admins and the API returns the
+  correct error.
+- In the UI, if a previous licensing operation failed, cached data could make it
+  difficult to re-request a licence.
+- If a volume was requested but failed due to validation (e.g. not enough
+  capacity), it would be marked as `failed` and an attempt to re-create would
+  fail with the message `Volume with name 'foo' already exists`. Now the second
+  operation will replace the first and will be re-evaluated.
+- After startup, pool capacity would only be calculated after the API was ready
+  for use.  This caused provisioning requests immediately after startup to fail.
+  Capacity is now calculated prior to the API accepting provisioning requests.
+- Slow/broken DNS responses could cause cloud provider detection to delay
+  startup for up to 30 seconds while waiting for a timeout.
+- Cluster health CLI and API endpoint no longer report an error when external
+  etcd is used for the KV store.
+- When creating new users, usernames are now validated to disallow names in the
+  UUID format used internally.
+- In the UI, non-admin users can now view and update their information,
+  including changing their own password.
 
 ## 1.0.0-rc5
 

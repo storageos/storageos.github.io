@@ -1,12 +1,9 @@
 ## Install StorageOS operator
 
-The StorageOS cluster operator is the recommended installation procedure to
-deploy a StorageOS cluster.
-
-The StorageOS cluster operator is a [Kubernetes native
+Our cluster operator is a [Kubernetes native
 application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
 developed to deploy and configure StorageOS clusters, and assist with
-maintenance operations.
+maintenance operations. We recommend its use for standard installations. 
 
 The StorageOS operator can be installed with Helm.
 
@@ -50,12 +47,12 @@ data:
 END
 ```
 
+This example contains a default password, for production installations, use a
+unique, strong password.
+
 ### Trigger a StorageOS installation
 
-> This is a Cluster Definition example. Checkout the `spec` parameters
-> available on the [Resource Configuration
-> page](https://github.com/storageos/cluster-operator#storageoscluster-resource-configuration).
-
+> This is a Cluster Definition example. 
 ```bash
 kubectl create -f - <<END
 apiVersion: "storageos.com/v1alpha1"
@@ -72,6 +69,7 @@ spec:
     memory: "128Mi"
 END
 ```
+> `spec` parameters available on the [Cluster Operator configuration]({%link _docs/reference/cluster-operator/configuration.md %}) page.
 
-You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
-store for StorageOS in this [repo](TODO).
+> You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
+store for StorageOS in the [Cluster Operator examples]({%link _docs/reference/cluster-operator/examples.md %}) page.

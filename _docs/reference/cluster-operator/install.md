@@ -5,6 +5,8 @@ anchor: reference
 module: reference/cluster-operator/install
 ---
 
+# Install
+
 To install the operator follow the installation page for your orchestrator.
 
 1. [Kubernetes]({%link _docs/platforms/kubernetes/install/index.md %})

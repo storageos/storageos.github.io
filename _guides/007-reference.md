@@ -68,6 +68,10 @@ sections:
         description: Install operator
         module: reference/cluster-operator/install
       -
+        title: Configuration
+        description: CRD spec options
+        module: reference/cluster-operator/configuration
+      -
         title: Examples
         description: Examples of use for operator
         module: reference/cluster-operator/examples

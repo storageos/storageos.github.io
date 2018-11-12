@@ -1,8 +1,5 @@
 # Cluster Operator examples
 
-> You can find the source code in the [cluster-operator
-> repository](https://github.com/storageos/cluster-operator).
-
 Before deploying a StorageOS cluster, create a Secret to define the StorageOS
 API Username and Password in base64 encoding.
 
@@ -23,13 +20,24 @@ data:
 END
 ```
 
+
+Create a `cluster-config.yaml` according to your needs from the examples below.
+
+```bash
+kubectl create -f cluster-config.yaml
+```
+
+Note that StorageOS will be deployed in the storageos NameSpace, irrespective
+of any NameSpace defined within the CR yaml.
+
+
 &nbsp; <!-- this is a blank line -->
 
 # Examples
 
-> You can checkout all the parameters configurable in the [StorageOSCluster
-> Resource
-> Configuration](https://github.com/storageos/cluster-operator#storageoscluster-resource-configuration) page.
+> You can checkout all the parameters configurable in the
+> [configuration]({%link _docs/reference/cluster-operator/configuration.md %})
+> page.
 
 All examples must reference the `storageos-api` Secret.
 

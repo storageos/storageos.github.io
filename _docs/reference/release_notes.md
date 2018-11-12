@@ -18,32 +18,6 @@ The latest tagged release is `{{ site.latest_node_version }}`, available from th
 The latest CLI release is `{{ site.latest_cli_version }}`, available from
 [Github](https://github.com/storageos/go-cli/releases)
 
-## Upgrades
-
-Upgrades can be performed by restarting the StorageOS node container with the
-new version.
-
-Before a node is upgraded, applications local to the node that mount StorageOS
-volumes should be migrated to other cluster nodes or their data volumes will be
-unavailable while the StorageOS container restarts.
-
-See [Node maintenance]({%link _docs/concepts/maintenance.md %}) for commands to help
-with online migration of volumes.
-
-The [StorageOS CLI](https://github.com/storageos/go-cli) should normally be
-updated when upgrading the cluster version.
-
-Where there are special considerations they are described below.
-
-### 0.10.x - 1.0.x
-
-Due to breaking changes between 0.10.x and 1.0.x upgrading is not possible.  We
-will now endeavour to allow upgrades between versions.
-
-If you are installing on a node that has had a previous version installed, make
-sure that the contents of `/var/lib/storageos` has been removed, and that you
-provision with a new cluster discovery token (if using).
-
 ## 1.0.0
 
 1.0.0 is suitable for production workloads.
@@ -55,25 +29,25 @@ There should not be any breaking changes since `1.0.0-rc5`.
 ### New
 
 - Offline nodes can now be removed from management either by using the CLI `node
-  leave` command, or in the UI.  This is only available when external etcd is
+  leave` command, or in the UI. This is only available when external etcd is
   used as the KV store.
 - Nodes can now be placed into "Maintenance mode" to disable volume recovery on
-  the node while it is offline for maintenance.  This allows nodes to be
-  upgraded without triggering potentially unwanted data migrations.  Note that
+  the node while it is offline for maintenance. This allows nodes to be
+  upgraded without triggering potentially unwanted data migrations. Note that
   applications accessing StorageOS volumes on the node should also be shutdown.
-  Alternatively, you may move the application off the node and use
+  Alternatively, you may move applications off the node and use
   `stoageos node drain` to migrate data prior to taking the node offline.
 - 5% of backend volume capacity is now reserved for indexes and recovery.  This
   helps ensure that there is enough remaining capacity to perform recovery
   operations such as deleting or moving frontend volumes.
-- Promethues metrics for volume used capacity, and added to the API volume
-  objects and the UI.  A placeholder for actual used capacity (after
+- Prometheus metrics for volume used capacity, and added to the API volume
+  objects and the UI. A placeholder for actual used capacity (after
   compression) has also been added but is not yet provided.
 - In the UI, storage pools now have an additional details page.
 - Added group management to the UI.
 - The overprovisioning ratio can now be configured on pools be applying the
   label `storageos.com/overcommit` to a positive integer representing the
-  overcommit percentage.  By default, overcommit is set to 0.
+  overcommit percentage. By default, overcommit is set to 0.
 
 ### Improved
 
@@ -92,7 +66,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - Volume detail page in the UI has numerous improvements to improve usability,
   including on smaller screen sizes.
 - When the UI was accessed before the node was fully online it would show a
-  blank page.  It now shows the message `Cluster API not yet available, waiting
+  blank page. It now shows the message `Cluster API not yet available, waiting
   for nodes to join`.
 - The browser "back" button on the UI now works as expected.
 - Label management in the UI now gives context-sensitive examples and improves
@@ -112,24 +86,23 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - In a cluster with hundreds of volumes and nodes continuously rebooting, a race
   condition could cause a volume to be "stuck" in syncing state if the sync
   started before the dataplane was ready for operation.  New replicas are now
-  created with thier health set to `provisioned`, and only enter the `syncing`
-  state once the sync is underway.  This allows the operation to be retried if
+  created with their health set to `provisioned`, and only enter the `syncing`
+  state once the sync is underway. This allows the operation to be retried if
   required.
 - After a restart, a write pointer was starting at the end of the current 64MB
-  chunk.  This would waste space if the chunk was not fully used.  The pointer
+  chunk. This would waste space if the chunk was not fully used. The pointer
   is now set to the end of the written data to ensure full utilisation.
 - Check-and-set operations in the internal key-value store library were not
-  honouring the TTL requested.  This could cause CAS updates to fail when there
+  honouring the TTL requested. This could cause CAS updates to fail when there
   was above average latency between nodes.
 - If a non-admin user tried to cordon/drain a node in the UI it would fail
-  silently.  Now the action is disabled for non-admins and the API returns the
+  silently. Now the action is disabled for non-admins and the API returns the
   correct error.
-- `read |0: file already closed` error when extracting internal binaries fixed.
 - In the UI, if a previous licensing operation failed, cached data could make it
   difficult to re-request a licence.
 - If a volume was requested but failed due to validation (e.g. not enough
   capacity), it would be marked as `failed` and an attempt to re-create would
-  fail with the message `Volume with name 'foo' already exists`.  Now the second
+  fail with the message `Volume with name 'foo' already exists`. Now the second
   operation will replace the first and will be re-evaluated.
 - After startup, pool capacity would only be calculated after the API was ready
   for use.  This caused provisioning requests immediately after startup to fail.

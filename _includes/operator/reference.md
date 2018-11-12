@@ -1,15 +1,12 @@
 # Cluster Operator
 
-The StorageOS cluster operator is the recommended installation procedure to
-deploy a StorageOS cluster.
-
-The StorageOS cluster operator is a [Kubernetes native
+Our cluster operator is a [Kubernetes native
 application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
 developed to deploy and configure StorageOS clusters, and assist with
-maintenance operations.
+maintenance operations. We recommend its use for standard installations. 
 
 The operator acts as a Kubernetes controller that watches the `StorageOSCluster`
-CR. Once the controller is ready, a StorageOS cluster definition can be
+CR (Custom Resource). Once the controller is ready, a StorageOS cluster definition can be
 created. The operator will deploy a StorageOS cluster based on the
 configuration specified in the cluster definition.
 
@@ -47,7 +44,10 @@ data:
 END
 ```
 
-## 3. Create a CR to deploy StorageOS
+This example contains a default password, for production installations, use a
+unique, strong password
+
+## 3. Create a CR (Custom Resource) to deploy StorageOS
 
 Create a `cluster-config.yaml` according to your needs from the
 [examples]({%link _docs/reference/cluster-operator/examples.md %}).
@@ -58,5 +58,5 @@ CR_DEFINITION= # Your CR file based on examples from this DIR
 kubectl create -f $CR_DEFINITION
 ```
 
-Even the CR.yaml file is deployed in a different NS, StorageOS will be deployed
-in the `storageos` NameSpace.
+Note that StorageOS will be deployed in the storageos NameSpace, irrespective
+of any NameSpace defined within the CR yaml.

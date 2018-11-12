@@ -50,7 +50,7 @@ spec:
 Check out [Cluster Definition
 examples](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/cluster-operator) for full CR files.
 
-### External etcd 
+## Installing with an external etcd
 
 ```bash
 spec:
@@ -60,7 +60,7 @@ spec:
     backend: 'etcd'
 ```
 
-### Select nodes where StorageOS will deploy
+## Installing to a subset of nodes
 
 In this case we select nodes that are workers. To make sure that StorageOS doesn't start in Master nodes. 
 
@@ -87,7 +87,7 @@ spec:
 > variable is defined by the operator by selecting all the nodes that match the
 > `nodeSelectorTerms`.
 
-### Enabled CSI
+## Enabling CSI
 
 ```bash
 spec:
@@ -98,7 +98,7 @@ spec:
   # enableNodePublishCreds: false
 ```
 
-The Creds must be defined in the `storageos-api` Secret
+The credentials must be defined in the `storageos-api` Secret
 
 ```bash
 apiVersion: v1
@@ -122,14 +122,14 @@ data:
   # csiNodePublishPassword:
 ```
 
-### Shared Dir for Kubelet as a container
+## Specifying a shared directory for use with kubelet as a container
 
 ```bash
 spec:
   sharedDir: '/var/lib/kubelet/plugins/kubernetes.io~storageos'
 ```
 
-### Define Pod resources
+## Defining pod resource requests and reservations
 
 ```bash
 spec:
@@ -141,6 +141,7 @@ spec:
   #   memory: "4Gi"
 ```
 
-Limiting StorageOS can cause malfunction for Read/Write to StorageOS volumes,
-hence it is not recommended to tightly restrict Pod resources.
+Limiting StorageOS can cause malfunction for IO to StorageOS volumes, therefore
+we do not currently recommend applying upper limits to resources for StorageOS
+pods.
 

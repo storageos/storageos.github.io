@@ -50,7 +50,7 @@ END
 This example contains a default password, for production installations, use a
 unique, strong password.
 
-### Trigger a StorageOS installation
+## Trigger a StorageOS installation
 
 > This is a Cluster Definition example. 
 ```bash

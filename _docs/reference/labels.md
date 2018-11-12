@@ -45,7 +45,9 @@ To add overcommit labels to a pool:
 storageos pool update --label-add storageos.com/overcommit=20 default
 ```
 This would result in being able to create volumes whose total capacity exceeds
-the default pool capacity by 20%
+the capacity of the underlying node by 20%. It is not possible to create a 
+volume whose capacity exceeds the capacity of underlying nodes as StorageOS
+volumes must always be able to fit on an underlying node. 
 
 ## Deprecated labels
 

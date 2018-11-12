@@ -45,7 +45,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
   compression) has also been added but is not yet provided.
 - In the UI, storage pools now have an additional details page.
 - Added group management to the UI.
-- The overprovisioning ratio can now be configured on pools be applying the
+- The overprovisioning ratio can now be configured on pools by applying the
   label `storageos.com/overcommit` to a positive integer representing the
   overcommit percentage. By default, overcommit is set to 0.
 

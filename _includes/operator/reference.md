@@ -17,7 +17,7 @@ You can find the source code in the [cluster-operator
 repository](https://github.com/storageos/cluster-operator).
 
 
-Follow next steps to deploy a StorageOS cluster with the `Cluster Operator`.
+Follow these steps to deploy a StorageOS cluster with the `Cluster Operator`.
 
 ## 1. Install operator
 

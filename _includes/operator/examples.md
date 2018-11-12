@@ -35,7 +35,7 @@ All examples must reference the `storageos-api` Secret.
 
 ```bash
 spec:
-  secretRefName: "storageos-api" # Reference from the Secret created in the previous step
+  secretRefName: "storageos-api" # Reference to the Secret created in the previous step
   secretRefNamespace: "default"  # Namespace of the Secret
 ```
 
@@ -134,5 +134,5 @@ spec:
 ```
 
 Limiting StorageOS can cause malfunction for Read/Write to StorageOS volumes,
-hence it is recommended to not restrict tightly the Pod resources.
+hence it is not recommended to tightly restrict Pod resources.
 

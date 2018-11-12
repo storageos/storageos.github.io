@@ -17,6 +17,10 @@ sections:
     description: Namespaces
     module: operations/namespaces
   -
+    title: Policies
+    description: Policies
+    module: operations/policies
+  -
     title: Extend storage capacity
     description: Extend physical capacity
     module: operations/extend-storage

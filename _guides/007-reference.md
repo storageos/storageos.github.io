@@ -59,6 +59,19 @@ sections:
     description: Describes the HTTP API
     module: reference/api
   -
+    title: Cluster Operator
+    description: Cluster Operator details
+    module: reference/cluster-operator
+    items:
+      -
+        title: Install
+        description: Install operator
+        module: reference/cluster-operator/install
+      -
+        title: Examples
+        description: Examples of use for operator
+        module: reference/cluster-operator/examples
+  -
     title: GUI
     description: Describes the graphical user interface
     module: reference/gui

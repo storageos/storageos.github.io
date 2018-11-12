@@ -21,10 +21,6 @@ sections:
     description: Storage host setup 
     module: operations/storage-host-config
   -
-    title: Extend storage capacity
-    description: Extend physical capacity
-    module: operations/extend-storage
-  -
     title: Using an external etcd
     description: External Key/Value
     module: operations/external-kv

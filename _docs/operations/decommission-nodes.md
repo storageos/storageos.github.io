@@ -11,13 +11,15 @@ StorageOS nodes can be decommissioned and removed from the cluster using the
 StorageOS CLI.
 
 > This functionality is only available when StorageOS is deployed with
-> `KV_BACKEND=etcd`, so the KV store is external to StorageOS.
+> `KV_BACKEND=etcd`, so the KV store is external to StorageOS. Please see the
+> [deploy etc-as-svc example for more information](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-as-svc)
+> for more information.
 
-The deletion of a node has safeguards to make sure data is not lost
-unwillingly. Only nodes in state `Offline` can be removed from the StorageOS
-cluster. Note that once removed from the cluster, nodes may not partake in
-StorageOS operations, and may not run container applications that require
-persistent storage.
+There are safeguards to make sure data is not lost unintentionally. Only nodes
+in state `Offline` can be removed from the StorageOS cluster. Note that once
+removed from the cluster, nodes may not partake in StorageOS operations, and
+may not run container applications that require StorageOS backed persistent
+storage.
 
 The recommended procedure is as follows. 
 
@@ -35,10 +37,10 @@ The recommended procedure is as follows.
     node03
     ```
 
-    > Wait until the node drain is finished. Check the volumes living in that
-    > node with `storageos node ls` and wait until there is no Masters or
-    > Replicas in that node. If replicas has no node available to be created
-    > the drained node will keep hosting them.
+    > Wait until the node drain is finished. Check the volumes located on that
+    > node with `storageos node ls` and wait until there are no Masters or
+    > Replicas on the drained node. If there are no eligible nodes for 
+    > replicas to be created on, the drained node will keep hosting them.
 
 1. Stop the node
 

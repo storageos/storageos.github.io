@@ -19,16 +19,16 @@ may be on the same or different hosts.
 Volumes are formatted using the linux standard ext4 filesystem as standard.
 Different filesystems may be supported in the future.
 
-# On Disk Format
+## On Disk Format
 
 StorageOS represents files on disk as... (fill in with Alex)
 
-# Maximum Volume Size
+## Maximum Volume Size
 
 Because volumes need to fit on a single node, the maximum volume size a cluster
 can support depends on the available space on individual nodes.
 
-# Metrics
+## Metrics
 
 We present various metrics regarding StorageOS volumes, including used capacity
 and throughput, via our [Prometheus Endpoint]({% link

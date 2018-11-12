@@ -11,6 +11,15 @@ toleration is added by default. To avoid collocation in master nodes, you can
 add an arbitrary taint to them for which the StorageOS daemonset won't have a
 toleration.
 
+StorageOS uses a variable to facilitate the [discovery]({%link
+docs/prerequisites/clusterdiscovery.md %}) of peers in the cluster. This
+variable must not point to nodes where StorageOS is not running.
+
+The StorageOS Cluster Operator can handle the discovery and Pod collocation by
+setting node affinity selectors. Other installation methods require to build
+the `JOIN` variable. It is recommended to label your {{ page.platform }} nodes
+to select where StorageOS must run.
+
 ## StorageOS API username/password
 
 StorageOS uses a Kubernetes secret to define the API credentials. For standard

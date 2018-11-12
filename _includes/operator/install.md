@@ -28,7 +28,7 @@ configuration specified in the cluster definition.
 ### Create a Secret
 
 Before deploying a StorageOS cluster, create a Secret to define the StorageOS
-API Username and Password in base64 encoding.
+API Username and Password in base64 encoding. 
 
 ```bash
 kubectl create -f - <<END
@@ -49,6 +49,10 @@ END
 
 This example contains a default password, for production installations, use a
 unique, strong password.
+
+> Make sure that the encoding of the credentials doesn't have special characters such as '\n'.
+
+> You can define a base64 value by `echo -n "mystring" | base64`.
 
 ## Trigger a StorageOS installation
 

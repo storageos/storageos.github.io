@@ -12,5 +12,5 @@ StorageOS policies are a way to control user and group access to StorageOS
 to a namespace, other than the default namespace, if a policy is created
 mapping the user or group to the namespace. 
 
-For more information on how to use polcies, see the [Policies
-operations]({LINK TO DO}) page
+For more information on how to use policies, see the [Policies operations]({%link _docs/operations/policies.md %})
+page

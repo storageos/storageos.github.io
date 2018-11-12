@@ -48,4 +48,8 @@ sections:
     title: Clusters
     description: Clusters
     module: concepts/clusters
+  - 
+    title: Namespaces
+    description: Namespaces
+    module: concepts/namespaces
 ---

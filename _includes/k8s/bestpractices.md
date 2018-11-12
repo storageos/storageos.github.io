@@ -37,4 +37,13 @@ external etcd cluster. For more details about why and how to run this
 application in {{ page.platform }}, check the [External kv store]({%link
 _docs/operations/external-kv.md %}) page.
 
+
+## Setup of storage in the hosts
+
+It is recommended to create an independent partition for the StorageOS directory
+to avoid filling the `/` filesystem. This has to be done for each node in the
+cluster.
+
+Follow the [host configuration]({%link _docs/operations/storage-host-config.md %}) best practices page for more details.
+
 ## Resource reservations

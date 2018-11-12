@@ -56,3 +56,21 @@ cluster.
 Follow the [host configuration]({%link _docs/operations/storage-host-config.md %}) best practices page for more details.
 
 ## Resource reservations
+
+StorageOS resource consumption depends on the workloads and the StorageOS
+features in use. Therefore the requirements vary according to the dimension of
+the problem.
+
+For production environments, it is recommended to test StorageOS under
+realistic workloads and tune the resources accordingly.
+
+The recommended minimum memory reservation for the StorageOS Pods is 235Mb.
+However it is recommended to prepare nodes so StorageOS can operate at least
+with 1-2Gi of memory.
+
+StorageOS Pods resource allocation will impact directly on the availability of
+the volumes in case of eviction or limit triggered restart. It is recommended
+to not limit StorageOS Pods.
+
+StorageOS implements a storage engine, therefore limiting CPU consumption might
+affect the I/O throughput of your volumes.

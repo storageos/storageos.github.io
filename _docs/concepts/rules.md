@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - Architecture
+title: StorageOS Docs - Rules
 anchor: concepts
-module: concepts/architecture
+module: concepts/rules
 ---
 
 # Rules

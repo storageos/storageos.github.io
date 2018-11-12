@@ -9,9 +9,9 @@ sections:
     description: Architecture
     module: concepts/architecture
   -
-    title: High availability
-    description: StorageOS high availability
-    module: concepts/ha
+    title: Replication
+    description: StorageOS Replication
+    module: concepts/replication
   -
     title: Multitenancy
     description: Multitenancy
@@ -24,4 +24,24 @@ sections:
     title: Maintenance
     description: Maintenance
     module: concepts/maintenance
+  -
+    title: Volumes
+    description: Volumes
+    module: concepts/volumes
+  - 
+    title: Pools
+    description: Pools
+    module: concepts/pools
+  - 
+    title: Rules
+    description: Rules
+    module: concepts/rules
+  - 
+    title: Nodes
+    description: Nodes
+    module: concepts/nodes
+  - 
+    title: Clusters
+    description: Clusters
+    module: concepts/clusters
 ---

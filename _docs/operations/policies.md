@@ -7,14 +7,13 @@ module: operations/policies
 
 # Policies
 
-Policies are a way to manage access to different StorageOS namespaces. 
-Policies can be configured at the group or user level so access can be 
-controlled granularly.
+Policies are a way to grant access to StorageOS namespaces. Policies can be
+configured at the group or user level so access can be controlled granularly.
 
 Users can belong to one or more groups to control their Namespace permissions.
 Additionally user specific policies can be created to grant a user access to a
-namespace. Users can belong to any number of groups and have access to any
-number of individual namespaces configured.
+namespace. Users can belong to any number of groups and have any number of
+user level policies configured.
 
 >Note: Users are created with access to the default namespace. Policies cannot
 be applied to the default namespace.

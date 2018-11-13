@@ -1,37 +1,44 @@
 ---
 layout: guide
-title: StorageOS Docs - Update StorageOS version
+title: StorageOS Docs - Upgrade StorageOS version
 anchor: operations
-module: operations/updates
+module: operations/upgrades
 ---
 
-# Update StorageOS version
+# Upgrade StorageOS version
 
 > Before upgrading, check the 
 > [release notes]({%link _docs/reference/release_notes.md %}) to confirm
 > whether there is a safe upgrade path between versions.
 
 
-StorageOS version upgrades must be planned and executed taking in consideration
+StorageOS version upgrades must be planned and executed taking into consideration
 that data will remain inaccessible during the process. It is recommended to
 schedule a maintenance window.
 
-There are two strategies to update StorageOS.
+There are two strategies to upgrade StorageOS for now. And both keep data
+consistency during the upgrade process. StorageOS keeps the data in the host
+where it is running. When the new version of StorageOS starts, the volumes from
+the previous version are available.
 
 1. Full stop of the cluster
 1. Rolling update
 
+> More upgrade procedures will be released that will automate the main part of
+> the process and fulfil use cases not covered currently.
+
 ## Option 1. Full stop of the cluster
 
-This option consists on downscaling all applications using StorageOS volumes
-to 0, stop all StorageOS pods, start StorageOS with new version and rescale
-applications to previous size.
+This option consists of downscaling all applications using StorageOS volumes to
+0 (only those mounting volumes), stop all StorageOS pods, start StorageOS with
+new version and rescale applications to previous size. Deployments that don't
+use StorageOS volumes remain unaffected.
 
 This option will not require moving data across nodes, therefore it is
-recommended for clusters with large data sets. However, __it implies downtime__ of
-the stateful applications.
+recommended for clusters with large data sets. However, __it implies downtime__ for
+stateful applications.
 
-Follow next steps to perform this upgrade
+Execute the following instructions:
 
 1. Make sure all nodes have the new StorageOS image pulled, so the new
    containers will start promptly (optional). 
@@ -43,12 +50,12 @@ Follow next steps to perform this upgrade
     > Any mount points will hang while StorageOS Pods are not present if the
     > application Pods haven't been stopped.
 
-1. Set the StorageOS cluster in maintenance mode.
+1. Put the StorageOS cluster in maintenance mode.
 
     StorageOS implements a maintenance mode that freezes the cluster. When in
-    maintenance mode, StorageOS operations are limited. Functionalities such volume
-    provisioning, failover of primary volumes or managing nodes is disabled. For
-    more details see the [Maintenance]<!-- todo --> page.
+    maintenance mode, StorageOS operations are limited. Functionalities such as
+    volume provisioning, failover of primary volumes or managing nodes are
+    disabled. For more details see the [Maintenance]<!-- todo --> page.
 1. Make sure the update strategy of StorageOS is `OnDelete`.
     ```bash
    $ export NAMESPACE=storageos
@@ -75,7 +82,7 @@ Follow next steps to perform this upgrade
    $ kubectl -n $NAMESPACE get pods
     ```
 
-1. Scale up the applications that where using StorageOS volumes, once StorageOS
+1. Scale up the applications that were using StorageOS volumes, once StorageOS
    is up and running.
 
 

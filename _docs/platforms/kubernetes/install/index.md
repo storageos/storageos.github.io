@@ -22,15 +22,15 @@ socket is handled by the Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the future standard that enables storage drivers to release on their
-schedule. This allows storage vendors to upgrade, update, and enhance their
-drivers without the need to update Kubernetes source code, or follow
-Kubernetes release cycles.
+CSI is the future standard that enables storage drivers to release on their own
+schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
+without the need to update Kubernetes source code, or follow Kubernetes release
+cycles.
 
-CSI is available from Kubernetes 1.9 alpha. Because CSI is still not GA in
-Kubernetes, StorageOS recommends only its use if the user is aware of its
-limitations and understands that non-GA versions of an active project
-might contain breaking changes.
+CSI is available from Kubernetes 1.9 alpha. As CSI is still not GA in
+Kubernetes, StorageOS recommends it only be used if the user is aware of its
+limitations and understands that non-GA versions of an active project might contain
+breaking changes.
 
 Check out the status of the CSI release cycle in relation with Kubernetes in
 the [CSI project](https://kubernetes-csi.github.io/docs/) page.

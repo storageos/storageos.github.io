@@ -30,12 +30,11 @@ StorageOS needs a filesystem formatted and mounted to
 `/var/lib/storageos/data`. It is possible to use different disks or partitions
 to expand StorageOS' available space. By default, the directory
 `/var/lib/storageos/data/dev1` will be created when volumes are used. However,
-it is possible to shard the data files by creating more directories alike.
-StorageOS will save data in any directory that follows the name `dev[0-9]+`,
-such as `/var/lib/storageos/data/dev2` or `/var/lib/storageos/data/dev5`. This
-functionality enables operators to mount different devices into devX
-directories and StorageOS will recognise them as available storage
-automatically.
+it is possible to shard the data files by creating more directories. StorageOS
+will save data in any directory that follows the name `dev[0-9]+`, such as
+`/var/lib/storageos/data/dev2` or `/var/lib/storageos/data/dev5`. This functionality 
+enables operators to mount different devices into devX directories and StorageOS
+will recognise them as available storage automatically.
 
 These are 2 possible options to expand the available disk space for StorageOS
 to allocate (combinations of these options are also possible):
@@ -47,17 +46,17 @@ to allocate (combinations of these options are also possible):
 ## Option 1: Mount filesystem (available on next release)
 
 This option enables operators to expand the cluster's available space at any
-time without having to stop any service or forcing operational downtime. The
-expansion of disk is transparent for applications or StorageOS Volumes.
-StorageOS will use the new available space to create new data files in case
-that the node run out of disk space. By expanding the number of disks that
-serve data, the throughput also increases as the data of one StorageOS volume
-can be segmented in different physical devices.
+time without having to stop services or forcing operational downtime. The
+expansion of disk is transparent for applications and StorageOS Volumes. StorageOS
+will use the newly available space to create new data files in case that the node
+run out of disk space. By expanding the number of disks that serve data, the throughput
+also increases as the data of one StorageOS volume can be segmented in different
+physical devices.
 
 1. Context
 
     We assume that there is a disk available in our Linux system without
-    formatting in additin to the root filesystem. StorageOS data dir dev1
+    formatting in addition to the root filesystem. StorageOS data dir dev1
     (`/var/lib/storageos/data/dev1`) is using `/dev/xvda1`. We will use the
     device `/dev/xvdf` to expand StorageOS available space.
 
@@ -131,7 +130,7 @@ can be segmented in different physical devices.
 
 This option enables operators to take advantage of LVM features to manage
 disks. Even though, it is recommended to prepare the block devices and disks
-before deploying StorageOS in that node for better maintainability, it is
+before deploying StorageOS on a node for better maintainability, it is
 possible to use Option 1 to mount LVM logical volumes into `devX` directories
 for ongoing installations. The best approach would be to create a LVM logical
 volume and mount it to `/var/lib/storageos` so it can be expanded in case that
@@ -141,7 +140,7 @@ input/output operations.
 1. Context
 
     We assume that `/var/lib/storageos/data/` is mounted from a LVM logical
-    volume before StorageOS initialise in that node. We are using a volumegroup
+    volume before StorageOS was initialise on the node. We are using a volumegroup
     named `storageos` and logical volume called `data`. There is a second
     physical disk `/dev/xvdg` unused.
 

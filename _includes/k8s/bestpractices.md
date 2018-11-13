@@ -1,9 +1,9 @@
 
 ## StorageOS Pod placement
 
-StorageOS must run in nodes that will contribute with storage capacity to the
-cluster, and the nodes that will host Pods which use StorageOS volumes. For
-production environments, it is recommended to not place StorageOS Pods in
+StorageOS must run on nodes that will contribute storage capacity to the
+cluster, and on nodes that will host Pods which use StorageOS volumes. For
+production environments, it is recommended to not place StorageOS Pods on
 Master nodes.
 
 StorageOS is deployed with a DaemonSet controller. Therefore, the NoSchedule
@@ -27,10 +27,10 @@ installations (non CSI), the API credentials are used by {{ page.platform }} to
 communicate with StorageOS.
 
 The API grants full access to StorageOS functionalities, therefore it is
-recommended to don't use default credentials. 
+recommended to set custom credentials.
 
 You can change the default parameters by defining the `apiUsername` and
-`apiPassword` values (in base64) into the `storageos-api` secret.
+`apiPassword` values (in base64) adding them to the `storageos-api` secret.
 
 > Make sure the base64 encoding doesn't have special characters
 > For instance: `echo -n "myusername" | base64`
@@ -40,7 +40,7 @@ when the cluster first starts.
 
 ## KV store 
 
-StorageOS uses a key-value store to keep cluster metadata across the
+StorageOS uses a key-value store to store cluster metadata across the
 distributed platform. For production environments, it is recommended to use a
 external etcd cluster. For more details about why and how to run this
 application in {{ page.platform }}, check the [External kv store]({%link
@@ -58,7 +58,7 @@ Follow the [host configuration]({%link _docs/operations/storage-host-config.md %
 ## Resource reservations
 
 StorageOS resource consumption depends on the workloads and the StorageOS
-features in use. Therefore the requirements vary according to the dimension of
+features in use. Therefore the requirements vary according to each dimension of
 the problem.
 
 For production environments, it is recommended to test StorageOS under

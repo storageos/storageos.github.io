@@ -24,9 +24,10 @@ centric applications and other nodes for compute application workloads.
 
 By default, StorageOS nodes both present and consume storage
 (`storageos.com/deployment=mixed`). You can specify that a node should only
-consume storage by setting the `storageos.com/deployment=computeonly` label.
-A compute only node will always present data to application containers using a
-remote link to the node that hosts the data.
+consume storage by setting the `storageos.com/deployment=computeonly`
+[label]({%link _docs/reference/labels.md %}). A compute only node will always
+present data to application containers using a remote link to the node that hosts
+the data.
 
 You can specify that a node should only consume storage by setting the
 `storageos.com/deployment=computeonly` label on the node. This can be done by

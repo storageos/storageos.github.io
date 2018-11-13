@@ -44,20 +44,23 @@ To add overcommit labels to a pool:
 ```bash
 storageos pool update --label-add storageos.com/overcommit=20 default
 ```
-This would result in the total pool volume being increased by 20% and the
-maximum possible volume size being increased by 20%. If you have 120GB pool
-spread over 3 nodes with 40GB disks then the maximum volume size is 40GB. If
-you overcommit by 20% then the new pool is 144GB and the new maximum volume
+This would result in the total pool size being increased by 20% and the
+maximum volume size per node being increased by 20%.
+
+If you have 120GB pool comprised of 3 nodes with 40GB disks then the maximum
+volume size is 40GB. To ensure predictable performance and high levels of
+consistency, StorageOS volumes must fit on a single node. Therefore if you
+overcommit by 20% then the new pool size is 144GB and the new maximum volume
 size is 48GB.
 
 If you have hetrogenous node capacities then it is important to keep in mind
-that a volume cannot be provisioned on a node without a capacity that
-is equal to, or larger than the volume size.
+that a volume cannot be provisioned on a node without capacity that is equal
+to, or larger than the volume size.
 
-For example if you have a 250GB pool, which is made up of a 200GB node and a 50GB
-node then you cannot schedule volumes larger than 50GB on the 50GB node. If you
-overcommit by 10% then you can schedule volumes up to 55GB on the 50GB node,
-and volumes up to 220GB on the 200GB node.
+For example if you have a 250GB pool, which is made up of a 200GB node and a
+50GB node then StorageOS will not collocate volumes larger than 50GB on the
+50GB node. If you overcommit by 10% then you can schedule volumes up to 55GB
+on the 50GB node, and volumes up to 220GB on the 200GB node.
 
 ## Deprecated labels
 

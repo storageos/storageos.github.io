@@ -7,9 +7,12 @@ module: reference/labels
 
 # StorageOS Feature labels
 
-Applying specific feature labels to volumes or pools triggers compression,
-replication and other storage features. No feature labels are present by
-default.
+Feature labels are a powerful and flexible way to control storage features,
+especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
+
+Labels can be applied to various StorageOS artefacts. Applying specific feature
+labels triggers compression, replication and other storage features. No feature
+labels are present by default.
 
 ## StorageOS Volume labels
 
@@ -25,9 +28,6 @@ Volumes do not have any feature labels present by default
 | QoS                 | `storageos.com/throttle`            | true / false                         | Deprioritizes traffic by reducing the rate of disk I/O, when true.                                                                                                                                                                 |
 | Placement           | `storageos.com/hint.master`         | Node hostname or uuid                | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied.                                                                                                                      |
 
-Feature labels are a powerful and flexible way to control storage features,
-especially when combined with [rules]({% link _docs/reference/cli/rule.md %}).
-
 To create a volume with a feature labels:
 
 ```bash
@@ -40,7 +40,7 @@ Pools do not have any labels present by default.
 
 | Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
 | :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
-| Overcommitment      | `storageos.com/overcommit`          | integers [+]                         | Sets the percentage of overcommitment allowed for the pool.                                                                                                                                                                        |
+| Overcommitment      | `storageos.com/overcommit`          | integers [+]                         | Sets the percentage of overcommitment allowed for the pool (see [here]({%link _docs/operations/labels.md %})).                                                                                                                                                                        |
 
 To add overcommit labels to a pool: 
 
@@ -48,11 +48,3 @@ To add overcommit labels to a pool:
 storageos pool update --label-add storageos.com/overcommit=20 default
 ```
 
-For more information on Overcommitment please see the
-[Overcommitment operations]({%link _docs/operations/labels.md %}) page.
-
-## Deprecated labels
-
-In releases 0.9.0 and before, the labels `nocache`, `nocompress`, `replicas`,
-`throttle` and `hint.master` were prefixed by `storageos.feature.` instead of
-`storageos.com/`. This format has been deprecated from 0.10.0 onwards.

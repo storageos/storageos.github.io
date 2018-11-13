@@ -5,7 +5,7 @@ anchor: reference
 
 sections:
   -
-    title: CLI (storageos)
+    title: CLI
     description: Describes the command line tools
     module: reference/cli
     items:
@@ -67,7 +67,7 @@ sections:
     description: Describes the support environment variables for StorageOS
     module: reference/envvars
   -
-    title: Labels (features)
+    title: Labels
     description:  StorageOS special labels to apply features
     module: reference/labels
   -

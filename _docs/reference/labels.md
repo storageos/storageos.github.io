@@ -58,9 +58,10 @@ that a volume cannot be provisioned on a node without capacity that is equal
 to, or larger than the volume size.
 
 For example if you have a 250GB pool, which is made up of a 200GB node and a
-50GB node then StorageOS will not collocate volumes larger than 50GB on the
-50GB node. If you overcommit by 10% then you can schedule volumes up to 55GB
-on the 50GB node, and volumes up to 220GB on the 200GB node.
+50GB node then StorageOS will not collocate volumes whose total size is larger
+than 50GB on the 50GB node. If you overcommit by 10% then you can schedule
+volumes up to 55GB on the 50GB node, and volumes up to 220GB on the 200GB
+node.
 
 ## Deprecated labels
 

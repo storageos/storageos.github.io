@@ -22,7 +22,7 @@ information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue. 
 
-Information about the cluster can be automatically send to StorageOS engineers
+Information about the cluster can be automatically sent to StorageOS engineers
 as mentioned in the section [StorageOS Cluster
 Report](/docs/introduction/support#storageos-cluster-report).
 
@@ -49,20 +49,23 @@ Report](/docs/introduction/support#storageos-cluster-report).
 
 ## StorageOS Cluster Report
 
-StorageOS has a `cluster report` functionality that aggregates cluster
-information. For every node the information collected is: StorageOS logs, lshw
-and storageos inspect node. StorageOS engineers might ask to generate a report
-during support cases.
+StorageOS has a cluster report functionality that aggregates cluster information.
+For each node the following is collected: StorageOS logs, lshw, and storageos
+inspect node. StorageOS engineers might ask for a report to be generated during
+support cases.
 
-That bundle is created only under a user action. The bundle is uploaded from a
-StorageOS node using TLS to a StorageOS GCP encrypted bucket. The upload takes
-place only after user confirmation. Support engineers can access that data when
-the user contacts support and explicitly give the StorageOS cluster id.
+The cluster report is created only when a user chooses to do so. The report
+is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket using a
+TLS encrypted connection. The upload takes place only after user confirmation.
+Furthermore, StorageOS engineers can only access an uploaded report when a
+user contacts support and supplies the StorageOS cluster ID with which the
+report is encrypted.
 
-The information given in the cluster report is only for support purposes and it
-will be removed once the data is no longer needed for such purposes. In case the
-information is sensitive and can't be given to StorageOS. Please make sure that
-support engineers have as much information about your environment as possible.
+The information given in the cluster report is only used for support purposes
+and it will be removed once the data is no longer needed for such purposes.
+In case the information is sensitive and can't be given to StorageOS, please
+make sure that support engineers have as much information about your
+environment as possible.
 
 You can generate a report through the StorageOS
 [GUI]({%link _docs/reference/gui.md %}) by pressing the `cluster

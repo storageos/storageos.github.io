@@ -7,20 +7,22 @@ module: operations/external-kv
 
 # External key-value store
 
-StorageOS uses a key-value store to keep cluster metadata across the
+StorageOS uses a key-value store to hold cluster metadata across the
 distributed platform. The key-value backend can be `embedded` or `etcd`. The
-`embedded` option is our default for ease of deployment and in this mode we run
-an internal etcd cluster. The first 1 or 3 nodes that start StorageOS act as
-etcd servers, and the rest of the nodes act as etcd clients keeping consistency
-of the cluster by communicating with the servers. The role of the embedded etcd
-cannot be changed once a StorageOS container has started.  Therefore, embedded
-etcd is only recommended for testing and clusters with low node counts where
-zero config deployments are convenient.
+`embedded` option is the default for ease of deployment and in this mode
+StorageOS uses an internal etcd cluster. The first StorageOS nodes that start,
+either the first node or first three nodes, act as etcd servers. This is done 
+in order to establish [quorum](https://en.wikipedia.org/wiki/Quorum_(distributed_computing)).
+The rest of the nodes act as etcd clients, keeping consistency of the cluster
+by communicating with the servers. Whether a StorageOS node acts as a etcd
+server or client  cannot be changed once a StorageOS container has started.
+Therefore, embedded etcd is only recommended for testing and clusters with
+low node counts where zero config deployments are convenient.
 
 &nbsp; <!-- this is a blank line -->
 
-__It is recommended to use an external etcd cluster for production deployments__, where high
-availability and fault tolerance are mandatory. To use an etcd cluster
+__It is recommended to use an external etcd cluster for production deployments__, 
+where high availability and fault tolerance are mandatory. To use an etcd cluster
 provisioned and maintained outside the scope of StorageOS, StorageOS will
 locate the etcd endpoint using environment variables.
 
@@ -51,7 +53,7 @@ or region can make StorageOS detect etcd nodes as unavilable because of latency.
 
 # Suggested Deployment Models
 
-> Depending on the orchestrator used, ways of supplying environment variables
+> Depending on the orchestrator used, methods of passing environment variables
 > to StorageOS containers differ. The following examples work with both
 > Kubernetes and Openshift.
 
@@ -66,7 +68,7 @@ https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-as-svc
 
 The official etcd-operator repository also has a backup deployment operator
 that comes in hand to keep your metadata persisted.
-Make sure you keep frequent backups of the etcd cluster.
+Make sure you take frequent backups of the etcd cluster.
 
 ## External etcd
 

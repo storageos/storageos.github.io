@@ -1,24 +1,24 @@
 
 ## StorageOS Pod placement
 
-StorageOS must run in nodes that will contribute with storage capacity to the
+StorageOS must run on nodes that will contribute storage capacity to the
 cluster, and the nodes that will host Pods which use StorageOS volumes. For
-production environments, it is recommended to not place StorageOS Pods in
+production environments, it is recommended to not place StorageOS Pods on
 Master nodes.
 
-StorageOS is deployed with a DaemonSet controller. Therefore, the NoSchedule
-toleration is added by default. To avoid collocation in master nodes, you can
+StorageOS is deployed with a DaemonSet controller, and therefore tolerates the
+standard unschedulable taint placed on master nodes, and cordoned nodes (see
+the Kubernetes
+[docs](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)
+for more details. To avoid scheduling StorageOS pods on master nodes, you can
 add an arbitrary taint to them for which the StorageOS daemonset won't have a
 toleration.
 
-StorageOS uses a variable to facilitate the [discovery]({%link
-_docs/prerequisites/clusterdiscovery.md %}) of peers in the cluster. This
-variable must not point to nodes where StorageOS is not running.
-
-The StorageOS Cluster Operator can handle the discovery and Pod collocation by
-setting node affinity selectors. Other installation methods require to build
-the `JOIN` variable. It is recommended to label your {{ page.platform }} nodes
-to select where StorageOS must run.
+Be sure to appropriately modify the [JOIN]({%link
+_docs/prerequisites/clusterdiscovery.md %}) variable defined for the DaemonSet
+to avoid newly bootstrapping nodes trying to contact non-existant pods on
+Kubernetes master node. If installing with our [Cluster Operator]({% link
+_docs/reference/cluster-operator %}), this is handled for you automatically. 
 
 ## StorageOS API username/password
 
@@ -26,34 +26,40 @@ StorageOS uses a Kubernetes secret to define the API credentials. For standard
 installations (non CSI), the API credentials are used by {{ page.platform }} to
 communicate with StorageOS.
 
-The API grants full access to StorageOS functionalities, therefore it is
-recommended to don't use default credentials. 
+The API grants full access to StorageOS functionality, therefore we recommend
+that the default administrative password of 'storageos' is reset to something
+unique and strong.
 
-You can change the default parameters by defining the `apiUsername` and
+You can change the default parameters by encoding the `apiUsername` and
 `apiPassword` values (in base64) into the `storageos-api` secret.
 
-> Make sure the base64 encoding doesn't have special characters
-> For instance: `echo -n "myusername" | base64`
+To generate a unique password, a technique such as the following, which
+generates a pseudo-random 24 character string, may be used:
 
-Multiple installation procedures use this Secret to create a StorageOS account
-when the cluster first starts.
+```bash
+cat /dev/urandom | tr -dc 'a-zA-Z0-9-!@#$%^&*()_+~' | fold -w 24 | head -n 1
+```
 
-## KV store 
+Note that the Kubernetes secret containing a strong password *must* be created
+before bootstrapping the cluster. Multiple installation procedures use this
+Secret to create a StorageOS account when the cluster first starts.
 
-StorageOS uses a key-value store to keep cluster metadata across the
-distributed platform. For production environments, it is recommended to use a
-external etcd cluster. For more details about why and how to run this
-application in {{ page.platform }}, check the [External kv store]({%link
-_docs/operations/external-kv.md %}) page.
+## Use an external etcd cluster
 
+StorageOS uses the `etcd` distributed key-value store to store essential
+cluster metadata and manage distributed consensus. For production environments,
+we recommended to use a external etcd cluster. For more details about why and
+how to run this application in {{ page.platform }}, check the [External Etcd
+Operations]({%link _docs/operations/external-kv.md %}) page.
 
-## Setup of storage in the hosts
+## Setup of storage on the hosts
 
-It is recommended to create an independent partition for the StorageOS directory
-to avoid filling the `/` filesystem. This has to be done for each node in the
-cluster.
+We recommend creating a separate filesystem for StorageOS to mitigate
+risk of filling the root filesystem on nodes. This has to be done for each node
+in the cluster.
 
-Follow the [host configuration]({%link _docs/operations/storage-host-config.md %}) best practices page for more details.
+Follow the [host configuration]({%link _docs/operations/storage-host-config.md
+%}) best practices page for more details.
 
 ## Resource reservations
 
@@ -75,15 +81,3 @@ to not limit StorageOS Pods.
 StorageOS implements a storage engine, therefore limiting CPU consumption might
 affect the I/O throughput of your volumes.
 
-### Caching
-
-By default, volumes are cached to improve read performance and compressed to
-reduce network traffic. The size of StorageOS's cache is determined according
-to the available memory in the node.
-
-| Available memory   | % of overall memory reserved by StorageOS for caching |
-|:-------------------|:---------------------|
-| 3 GB or less       | 3%                   |
-| 3-8 GB             | 5%                   |
-| 8-12 GB            | 7%                   |
-| 12 GB or more      | 10%                  |

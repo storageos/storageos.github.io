@@ -17,6 +17,10 @@ sections:
     description: Namespaces
     module: operations/namespaces
   -
+    title: Policies
+    description: Policies
+    module: operations/policies
+  - 
     title: Storage Host configuration
     description: Storage host setup 
     module: operations/storage-host-config

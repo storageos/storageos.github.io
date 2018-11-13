@@ -173,11 +173,4 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/docker/troubleshoot/volumes
-  - title: Azure
-    description: Azure
-    module: platforms/azure
-    items:
-      - title: Install
-        description: Install
-        module: platforms/azure/install
 ---

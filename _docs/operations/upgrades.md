@@ -101,8 +101,9 @@ Only Pods using StorageOS nodes will need to be evicted.
 
 This option requires the promotion of replicas and data to be rebuilt on new nodes
 at least once per volume. It is possible to wait for volumes without replicas
-to be evicted from a node, alternatively follow the steps below. Please note that
-it is recommended to create at least one replica per node for the purpose of the upgrade.
+to be evicted from a node, however we recomend that a replica is created as per
+the steps below. Please note that it is recommended to create at least one replica
+per node for the purpose of the upgrade.
 
 Clusters with large data sets or a large number nodes might take a long time to
 finish the procedure.

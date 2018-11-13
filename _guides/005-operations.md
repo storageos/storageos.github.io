@@ -21,13 +21,13 @@ sections:
     description: Policies
     module: operations/policies
   - 
-    title: Storage Host configuration
-    description: Storage host setup 
-    module: operations/storage-host-config
+    title: Managing Host Storage
+    description: Managing Host Storage
+    module: operations/managing-host-storage
   -
     title: Using an external etcd
-    description: External Key/Value
-    module: operations/external-kv
+    description: Using an external etcd
+    module: operations/external-etcd
   -
     title: Decommission nodes
     description: Decommission nodes

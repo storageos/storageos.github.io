@@ -13,13 +13,13 @@ module: operations/upgrades
 
 
 StorageOS version upgrades must be planned and executed taking into consideration
-that data will remain inaccessible during the process. It is recommended to
+that data will be inaccessible during the process. It is recommended to
 schedule a maintenance window.
 
-There are two strategies to upgrade StorageOS for now. And both keep data
-consistency during the upgrade process. StorageOS keeps the data in the host
-where it is running. When the new version of StorageOS starts, the volumes from
-the previous version are available.
+Currently there are two strategies to upgrade StorageOS and both maintain data
+consistency during the upgrade process. StorageOS keeps the data in the hosts
+where the StorageOS container is running. When the new version of StorageOS starts,
+the volumes from the previous version are available.
 
 1. Full stop of the cluster
 1. Rolling update
@@ -96,30 +96,30 @@ Execute update:
 
 
 This option consists of moving stateful applications and StorageOS volumes from
-a node, apply the version upgrade and repeat for every node. Only Pods using
-StorageOS nodes will need to be evicted.
+a node, applying the version upgrade and repeating this process for every node.
+Only Pods using StorageOS nodes will need to be evicted.
 
-This option requires to promote replicas and rebuild the data in new nodes at
-least once per volume. It is possible to wait for volumes without replicas to
-be evicted from a node or follow the steps below for which it is recommended to
-create at least one replica per node for the purpose of the upgrade.
+This option requires the promotion of replicas and data to be rebuilt on new nodes
+at least once per volume. It is possible to wait for volumes without replicas
+to be evicted from a node, alternatively follow the steps below. Please note that
+it is recommended to create at least one replica per node for the purpose of the upgrade.
 
-Clusters with large data sets or large number nodes might take a long time to
+Clusters with large data sets or a large number nodes might take a long time to
 finish the procedure.
 
-This procedure implies __a restart of the stateful pods__ at least twice during
+This procedure requires __a restart of the stateful pods__ at least twice during
 the procedure.
 
 The amount of nodes you can upgrade at the same time will depend on the amount
 of replicas the volumes have. With 2 replicas per volume, it is possible to
-update 2 nodes at a time without causing unavailability of data further than
+update 2 nodes at a time without causing unavailability of data apart from the
 the application stop/start. It is recommended to upgrade one node at a time.
 
 Execute the following instructions:
 
 Prepare upgrade:
 
-1. Prepare an etcd back if using external etcd.
+1. Prepare an etcd backup if using external etcd.
 1. Make sure all nodes have the new StorageOS image pulled, so the new
    containers will start promptly (optional). 
    ```bash

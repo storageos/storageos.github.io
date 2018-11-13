@@ -1,9 +1,10 @@
 
 ## StorageOS Pod placement
 
-StorageOS must run on all nodes that will contribute storage capacity to
-the cluster or that will host Pods which use StorageOS volumes. For production
-environments, it is recommended not to place StorageOS Pods on Master nodes.
+StorageOS must run on all nodes that will contribute storage capacity to the
+cluster or that will host Pods which use StorageOS volumes. For production
+environments, it is recommended to avoid placing StorageOS Pods on Master
+nodes.
 
 StorageOS is deployed with a DaemonSet controller, and therefore tolerates the
 standard unschedulable taint placed on master nodes, and cordoned nodes (see
@@ -40,7 +41,7 @@ generates a pseudo-random 24 character string, may be used:
 PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-!@#$%^&*()_+~' | fold -w 24 | head -n 1)
 
 # Convert password to base64 representation for embedding in a K8S secret
-BASE64PASSWORD=$(echo $PASSWORD | base64)
+BASE64PASSWORD=$(echo -n $PASSWORD | base64)
 ```
 
 Note that the Kubernetes secret containing a strong password *must* be created
@@ -71,7 +72,7 @@ features in use. Therefore the requirements vary according to each dimension of
 the problem.
 
 For production environments, it is recommended to test StorageOS under
-realistic workloads and tune the resources accordingly.
+realistic workloads and tune resources accordingly.
 
 The recommended minimum memory reservation for the StorageOS Pods is 235Mb.
 However it is recommended to prepare nodes so StorageOS can operate at least

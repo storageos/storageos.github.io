@@ -36,8 +36,8 @@ to allocate:
 ## Option 1: Mount Additional Devices
 
 This option enables operators to expand the cluster's available space at any
-time without having to stop any service or forcing operational downtime. The
-expansion of disk is transparent for applications or StorageOS Volumes.
+time without having to stop applications or forcing operational downtime. The
+expansion of disk is transparent for applications and StorageOS Volumes.
 StorageOS will use the new available space to create new data files.
 
 1. Context

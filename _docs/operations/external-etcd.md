@@ -1,8 +1,8 @@
 ---
 layout: guide
-title: StorageOS Docs - External Key/Value
+title: StorageOS Docs - External Etcd
 anchor: operations
-module: operations/external-kv
+module: operations/external-etcd
 ---
 
 # External key-value store

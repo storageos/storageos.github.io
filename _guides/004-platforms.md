@@ -72,6 +72,10 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/kubernetes/troubleshoot/volumes
+      - 
+        title: Best Practices
+        description: Kubernetes best practices
+        module: platforms/kubernetes/bestpractices
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -115,6 +119,10 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/openshift/troubleshoot/volumes
+      - 
+        title: Best Practices
+        description: OpenShift best practices
+        module: platforms/openshift/bestpractices
   - title: Docker
     description: Docker
     module: platforms/docker

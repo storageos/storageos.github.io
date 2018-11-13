@@ -33,6 +33,10 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
+    title: Overcommitment
+    description: Overcommitment
+    module: operations/labels
+  -
     title: Licensing
     description: StorageOS licensing
     module: operations/licensing

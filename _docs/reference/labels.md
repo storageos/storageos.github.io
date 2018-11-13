@@ -5,12 +5,15 @@ anchor: reference
 module: reference/labels
 ---
 
-# StorageOS labels
+# StorageOS Feature labels
+
+Applying specific feature labels to volumes or pools triggers compression,
+replication and other storage features. No feature labels are present by
+default.
 
 ## StorageOS Volume labels
 
-Applying specific labels to volumes triggers compression, replication and other
-storage features. No feature labels are present by default.
+Volumes do not have any feature labels present by default
 
 | Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
 | :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
@@ -33,7 +36,7 @@ storageos volume create --label storageos.com/throttle=true --label storageos.co
 
 ## StorageOS Pool labels
 
-Pools do not have any labels present on them by default.
+Pools do not have any labels present by default.
 
 | Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
 | :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
@@ -44,24 +47,9 @@ To add overcommit labels to a pool:
 ```bash
 storageos pool update --label-add storageos.com/overcommit=20 default
 ```
-This would result in the total pool size being increased by 20% and the
-maximum volume size per node being increased by 20%.
 
-If you have 120GB pool comprised of 3 nodes with 40GB disks then the maximum
-volume size is 40GB. To ensure predictable performance and high levels of
-consistency, StorageOS volumes must fit on a single node. Therefore if you
-overcommit by 20% then the new pool size is 144GB and the new maximum volume
-size is 48GB.
-
-If you have hetrogenous node capacities then it is important to keep in mind
-that a volume cannot be provisioned on a node without capacity that is equal
-to, or larger than the volume size.
-
-For example if you have a 250GB pool, which is made up of a 200GB node and a
-50GB node then StorageOS will not collocate volumes whose total size is larger
-than 50GB on the 50GB node. If you overcommit by 10% then you can schedule
-volumes up to 55GB on the 50GB node, and volumes up to 220GB on the 200GB
-node.
+For more information on Overcommitment please see the
+[Overcommitment operations]({%link _docs/operations/labels.md %}) page.
 
 ## Deprecated labels
 

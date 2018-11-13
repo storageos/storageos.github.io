@@ -5,7 +5,7 @@ anchor: operations
 module: operations/upgrades
 ---
 
-# Upgrade StorageOS version
+# Upgrading StorageOS version
 
 > Before upgrading, check the 
 > [release notes]({%link _docs/reference/release_notes.md %}) to confirm
@@ -13,11 +13,11 @@ module: operations/upgrades
 
 
 StorageOS version upgrades must be planned and executed taking into consideration
-that data will be inaccessible during the process. It is recommended to
+that volumes will be inaccessible during the process. It is recommended to
 schedule a maintenance window.
 
 Currently there are two strategies to upgrade StorageOS and both maintain data
-consistency during the upgrade process. StorageOS keeps the data in the hosts
+integrity during the upgrade process. StorageOS keeps the data on the hosts
 where the StorageOS container is running. When the new version of StorageOS starts,
 the volumes from the previous version are available.
 
@@ -32,11 +32,11 @@ the volumes from the previous version are available.
 ## Option 1. Full stop of the cluster
 
 This option consists of downscaling all applications using StorageOS volumes to
-0 (only those mounting volumes), stop all StorageOS pods, start StorageOS with
-new version and rescale applications to previous size. Deployments that don't
+0, stopping all StorageOS pods, starting StorageOS with a
+new version and rescaling applications to previous size. Deployments that don't
 use StorageOS volumes remain unaffected.
 
-This option will not require moving data across nodes, therefore it is
+This option does not require moving data across nodes, therefore it is
 recommended for clusters with large data sets. However, __it implies downtime__ for
 stateful applications.
 
@@ -44,8 +44,9 @@ Execute the following instructions:
 
 Prepare upgrade:
 
-1. Make sure all nodes have the new StorageOS image pulled, so the new
-   containers will start promptly (optional). 
+1. Prepare an etcd backup if using external etcd.
+1. Optionally make sure all nodes have the new StorageOS image pulled, so the new
+   containers will start promptly. 
    ```bash
 docker pull storageos/node:$NEW_VERSION
    ```

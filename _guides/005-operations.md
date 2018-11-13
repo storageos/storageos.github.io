@@ -37,7 +37,7 @@ sections:
     description: StorageOS licensing
     module: operations/licensing
   -
-    title: Version upgrade
+    title: StorageOS Upgrade
     description: StorageOS upgrade
     module: operations/upgrades
   -

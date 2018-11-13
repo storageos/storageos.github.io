@@ -34,7 +34,8 @@ it is possible to shard the data files by creating more directories. StorageOS
 will save data in any directory that follows the name `dev[0-9]+`, such as
 `/var/lib/storageos/data/dev2` or `/var/lib/storageos/data/dev5`. This functionality 
 enables operators to mount different devices into devX directories and StorageOS
-will recognise them as available storage automatically.
+will recognise them as available storage automatically. As soon as any of these
+directories exists, StorageOS will be able to use it.
 
 These are 2 possible options to expand the available disk space for StorageOS
 to allocate (combinations of these options are also possible):

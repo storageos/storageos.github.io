@@ -45,6 +45,10 @@ sections:
     description: StorageOS licensing
     module: operations/licensing
   -
+    title: StorageOS Upgrade
+    description: StorageOS upgrade
+    module: operations/upgrades
+  -
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting

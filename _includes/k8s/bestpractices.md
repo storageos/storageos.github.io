@@ -67,7 +67,7 @@ Follow the [managing host storage]({%link _docs/operations/managing-host-storage
 ## Resource reservations
 
 StorageOS resource consumption depends on the workloads and the StorageOS
-features in use. Therefore the requirements vary according to the dimension of
+features in use. Therefore the requirements vary according to each dimension of
 the problem.
 
 For production environments, it is recommended to test StorageOS under

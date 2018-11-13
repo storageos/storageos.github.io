@@ -59,4 +59,3 @@ reduce network traffic.
 
 
 
-<!-- Add info on volume auto-follow -->

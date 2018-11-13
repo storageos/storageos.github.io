@@ -7,14 +7,12 @@ module: operations/managing-host-storage
 
 # Managing Host Storage
 
-StorageOS uses the storage available in the nodes where it is installed to
+StorageOS uses the storage available on the nodes where it is installed to
 present as available for volumes.
 
-It is recommended to isolate the `/var/lib/storageos` directory from the root
-filesystem. Default installations of StorageOS will use `/` as a data store. In
-the event that the `/` partition is filled, the host OS can malfunction.
-Therefore, it is best to mount a different device or partition for the
-StorageOS directory. StorageOS is agnostic to the type of filesystem mounted in
+In order to mitigate against problems caused by filling the host root disk, we
+recommend mounting a separate device into the `/var/lib/storageos` directory.
+StorageOS is agnostic to the type of filesystem mounted in
 `/var/lib/storageos`.
 
 ## Extending Available Storage
@@ -30,10 +28,9 @@ directories and StorageOS will recognise them as available storage
 automatically.
 
 There are two possible options to expand the available disk space for StorageOS
-to allocate (combinations of these options are also possible):
+to allocate:
 
-1. Mount filesystem in `/var/lib/storageos/data/devX` (available on next
-   release)
+1. Mount filesystem in `/var/lib/storageos/data/devX`
 1. Use LVM to expand the logical volume available to StorageOS
 
 ## Option 1: Mount Additional Devices
@@ -46,7 +43,7 @@ StorageOS will use the new available space to create new data files.
 1. Context
 
     We assume that there is a disk available in our Linux system without
-    formatting in additin to the root filesystem. StorageOS data dir dev1
+    formatting in addition to the root filesystem. StorageOS data dir dev1
     (`/var/lib/storageos/data/dev1`) is using `/dev/xvda1`. We will use the
     device `/dev/xvdf` to expand StorageOS available space.
 
@@ -119,16 +116,12 @@ StorageOS will use the new available space to create new data files.
 ## Option 2: Expand Existing Devices Backed by LVM
 
 This option enables operators to take advantage of LVM to manage disks.
-Although it possible to combine the two approaches to present multiple
-`/var/lib/storageos/data/dev[0-9]` volumes, for simplicity we recommend picking
-a single approach.
 
 1. Context
 
-    We assume that `/var/lib/storageos` is mounted from a LVM logical
-    volume before StorageOS initialise in that node. We are using a volumegroup
-    named `storageos` and logical volume called `data`. There is a second
-    physical disk `/dev/xvdg` unused.
+    We assume that `/var/lib/storageos` is mounted onto an LVM volume. We are
+    using a volumegroup named `storageos` and logical volume called `data`. There
+    is a second physical disk `/dev/xvdg` unused.
 
 
     List available block devices in the host.

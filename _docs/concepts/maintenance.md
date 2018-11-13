@@ -53,10 +53,11 @@ the StorageOS mount making the data transparently available to the client, with
 zero downtime.
 
 >**Warning**:  It is currently not possible for a node to leave the cluster
-*completely, for clusters using embedded kv store. If the StorageOS container is stopped and/or removed from a node
-*then the node will be detected as failed and it will be marked offline, but
-*there is no way to remove the node from the list. For installations that use an external etcd
-cluster, the cli must be used to delete a node.
+*completely, for clusters using embedded kv store. If the StorageOS container is
+stopped and/or removed from a node *then the node will be detected as failed and
+it will be marked offline, but *there is no way to remove the node from the list.
+For installations that use an external etcd cluster, the cli must be used to
+[delete a node]({%link _docs/reference/cli/node.md %}).
 
 ## Upgrades
 

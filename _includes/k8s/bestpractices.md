@@ -66,7 +66,7 @@ realistic workloads and tune the resources accordingly.
 
 The recommended minimum memory reservation for the StorageOS Pods is 235Mb.
 However it is recommended to prepare nodes so StorageOS can operate at least
-with 1-2Gi of memory.
+with 1-2Gi of memory. StorageOS frees memory when possible.
 
 StorageOS Pods resource allocation will impact directly on the availability of
 the volumes in case of eviction or limit triggered restart. It is recommended
@@ -74,3 +74,16 @@ to not limit StorageOS Pods.
 
 StorageOS implements a storage engine, therefore limiting CPU consumption might
 affect the I/O throughput of your volumes.
+
+### Caching
+
+By default, volumes are cached to improve read performance and compressed to
+reduce network traffic. The size of StorageOS's cache is determined according
+to the available memory in the node.
+
+| Available memory   | % of overall memory reserved by StorageOS for caching |
+|:-------------------|:---------------------|
+| 3 GB or less       | 3%                   |
+| 3-8 GB             | 5%                   |
+| 8-12 GB            | 7%                   |
+| 12 GB or more      | 10%                  |

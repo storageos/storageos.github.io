@@ -16,5 +16,5 @@ selectors look for labels on host nodes and will aggregate storage from nodes
 whose labels match into the specific pool.
 
 Pools can have feature labels applied to them such as
-`storageos.com/overcommit` which allows the pool to have it's storage
-[overcommited]({% link_docs/reference/labels.md %})
+`storageos.com/overcommit` which allows the pool to have its storage
+[overcommited]({% link _docs/reference/labels.md %}).

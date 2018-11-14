@@ -20,7 +20,7 @@ into containers.
 It is agnostic to the underlying storage and runs equally on
 bare metal, in virtual machines or on cloud providers.
 
-![StorageOS architecture](/images/docs/concepts/architecture.png)
+![StorageOS architecture](/images/docs/concepts/storageos-cluster.png)
 
 StorageOS is deployed as one container on each node that presents or consumes
 storage, available as `storageos/node` on the Docker Hub. In Kubernetes,

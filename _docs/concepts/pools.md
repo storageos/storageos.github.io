@@ -8,7 +8,7 @@ module: concepts/pools
 # Pools
 
 StorageOS aggregates host storage from all nodes where the StorageOS container
-runs into a storage pool. A Pool is a collection of storage based on host
+runs into a storage pool. A pool is a collection of storage based on host
 attributes such as class of server, storage or location.
 
 Node storage can be allocated to a specific pool using Node selectors. Pool node

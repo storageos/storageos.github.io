@@ -48,7 +48,7 @@ Prepare upgrade:
 1. Optionally make sure all nodes have the new StorageOS image pulled, so the new
    containers will start promptly. 
    ```bash
-docker pull storageos/node:$NEW_VERSION
+  docker pull storageos/node:$NEW_VERSION
    ```
 1. Downscale any applications using StorageOS volumes to 0.
 
@@ -71,7 +71,7 @@ docker pull storageos/node:$NEW_VERSION
 
 Execute update:
 
-1. Change the StorageOS version for the StorageOS node container
+1. Change the StorageOS node container image for the new version of StorageOS
 
     ```bash
    kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION
@@ -80,7 +80,7 @@ Execute update:
 1. Delete StorageOS Pods.
 
     ```bash
-   kubectl -n $NAMESPACE delete --selector app=storageos 
+   kubectl -n $NAMESPACE delete pods --selector app=storageos 
     ```
 
 1. Check that StorageOS is starting and wait until the Pods are in `ready` state.
@@ -102,7 +102,7 @@ Only Pods using StorageOS nodes will need to be evicted.
 
 This option requires the promotion of replicas and data to be rebuilt on new nodes
 at least once per volume. It is possible to wait for volumes without replicas
-to be evicted from a node, however we recomend that a replica is created as per
+to be evicted from a node, however we recommend that a replica is created as per
 the steps below. Please note that it is recommended to create at least one replica
 per node for the purpose of the upgrade.
 
@@ -166,7 +166,7 @@ Prepare upgrade:
     ```
 
 Execute the upgrade:
-1. Change the StorageOS version for the StorageOS node container
+1. Change the StorageOS node container image for the new version of StorageOS
 
     ```bash
    kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION

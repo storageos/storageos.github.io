@@ -138,6 +138,7 @@ Prepare upgrade:
     ```
 1. Make sure that all volumes have at least one replica
 
+    {% raw %}
     ```bash
     # Save what volumes had 0 replicas to restore to that state later
     $ storageos volume ls --format "table {{.Name}}\t{{.Replicas}}"  | grep '0/0' | awk '{ print $1  }' > /var/tmp/volume-0-replicas.txt
@@ -145,7 +146,7 @@ Prepare upgrade:
     # Update volumes to enable 1 replica
     $ storageos volume ls --format "table {{.Name}}\t{{.Replicas}}"  | grep '0/0' | awk '{ print $1  }' | xargs -I{} storageos volume update --label-add storageos.com/replicas=1 {}
     ```
-
+    {% endraw %}
 1. Wait until all replicas are synced (1/1)
 
     ```bash

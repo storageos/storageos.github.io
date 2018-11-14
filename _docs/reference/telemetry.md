@@ -22,7 +22,7 @@ node counts and license information. The crash report contains
 the crash dumps that were generated. 
 
 All StorageOS clusters with a routable connection to the internet will send crash
-dumps to Sentry over tcp/443. StorageOS respects environment variables that
+dumps to sentry.io over tcp/443. StorageOS respects environment variables that
 [ProxyFromEnvironment](https://golang.org/pkg/net/http/#ProxyFromEnvironment)
 uses.
 
@@ -63,7 +63,7 @@ You can use the following environmental variables to disable or enable telemetry
 ```bash
 DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io
 reporting
-DISABLE_ERROR_REPORTING # Disable SentryIO crash dump reports
+DISABLE_ERROR_REPORTING # Disable sentry.io crash dump reports
 ```
 
 You can find more information about StorageOS environment variables

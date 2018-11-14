@@ -12,17 +12,18 @@ different methods for two different purposes.
 
 ## sentry.io
 
-StorageOS sends crash dumps and information about the StorageOS cluster to
-[sentry.io](https://sentry.io). This information helps our developers monitor
-and fix crashes.
+StorageOS sends information about the StorageOS clusters and crash information
+to [sentry.io](https://sentry.io). This information helps our developers monitor
+and fix crashes. Information is sent to sentry.io once per day or when a process
+inside the StorageOS container crashes.
 
-Information is sent to sentry.io once per day or when a process inside the
-StorageOS container crashes. The once per day report includes the cluster version,
-node counts and license information. The crash report contains
-the crash dumps that were generated. 
+* The once per day report includes the cluster version, node counts and license
+information.
+* The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV),
+the exit code and whether or not the crash generated a core dump.
 
 All StorageOS clusters with a routable connection to the internet will send crash
-dumps to sentry.io over tcp/443. StorageOS respects environment variables that
+reports to sentry.io over tcp/443. StorageOS respects environment variables that
 [ProxyFromEnvironment](https://golang.org/pkg/net/http/#ProxyFromEnvironment)
 uses.
 
@@ -30,7 +31,7 @@ uses.
 
 StorageOS will also send anonymized node ids, cluster id and StorageOS version
 information to StorageOS using a DNS query. The information that we send in the
-query is encrypted as well as being anonymized. This query allows us to inform
+query is encoded as well as being anonymized. This query allows us to inform
 Cluster admins when StorageOS upgrades are available in the StorageOS GUI.
 
 ## Disabling Telemetry
@@ -39,7 +40,7 @@ It is possible to disable telemetry using the CLI, API or environment
 variables.
 
 * Telemetry is the DNS query and sentry.io once per day reporting. 
-* Error reporting is the sentry.io crash dump reporting. 
+* Error reporting is the sentry.io crash reporting. 
 
 ## API
 
@@ -61,9 +62,8 @@ The example above shows how you can disable and enable reporting.
 You can use the following environmental variables to disable or enable telemetry.
 
 ```bash
-DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io
-reporting
-DISABLE_ERROR_REPORTING # Disable sentry.io crash dump reports
+DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io reporting
+DISABLE_ERROR_REPORTING # Disable sentry.io crash reports
 ```
 
 You can find more information about StorageOS environment variables

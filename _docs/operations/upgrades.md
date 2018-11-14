@@ -27,7 +27,7 @@ the volumes from the previous version are available.
 > More upgrade procedures will be released that will automate the main part of
 > the process and fulfil use cases not covered currently.
 
-> The [StorageOS cli]({%link _docs/reference/cli/index.md %}) is required to perform an upgrade.
+> The [StorageOS CLI]({%link _docs/reference/cli/index.md %}) is required to perform an upgrade.
 
 ## Option 1. Full stop of the cluster
 

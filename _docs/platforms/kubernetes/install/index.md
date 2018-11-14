@@ -40,6 +40,6 @@ StorageOS leverages labels in PVCs to apply [features]
 doesn't have these labels set when using CSI. Therefore, default feature labels
 (`storageos.com/*`) must be defined on the Kubernetes StorageClass parameters.
 Multiple StorageClasses can be defined with different parameters. The [StorageOS
-cli]({%link _docs/reference/cli/index.md %}) can also manipulate volume labels
+CLI]({%link _docs/reference/cli/index.md %}) can also manipulate volume labels
 or create [rules]({%link _docs/reference/cli/rule.md %}) to add/delete labels
 on StorageOS volumes.

@@ -17,6 +17,10 @@ sections:
     description: Maintenance
     module: operations/maintenance
   -
+    title: User Management
+    description: Users
+    module: operations/users
+  -
     title: Namespace Management
     description: Namespaces
     module: operations/namespaces

@@ -12,8 +12,9 @@ different methods for two different purposes.
 
 ## Sentry.io
 
-StorageOS sends crash dumps and information about the StorageOS cluster to [sentry.io]
-(https://sentry.io). This information helps our developers monitor and fix crashes.
+StorageOS sends crash dumps and information about the StorageOS cluster to
+[sentry.io](https://sentry.io). This information helps our developers monitor
+and fix crashes.
 
 Information is sent to Sentry.io once per day or when a process inside the
 StorageOS container crashes. The once per day report includes the cluster version,
@@ -30,7 +31,7 @@ uses.
 StorageOS will also send anonymized node ids, cluster id and StorageOS version
 information to StorageOS using a DNS query. The information that we send in the
 query is encrypted as well as being anonymized. This query allows us to inform
-Cluster admins when StorageOS upgrades are avaliable in the StorageOS GUI.
+Cluster admins when StorageOS upgrades are available in the StorageOS GUI.
 
 ## Disabling Telemetry
 
@@ -66,4 +67,4 @@ DISABLE_ERROR_REPORTING # Disable SentryIO crash dump reports
 ```
 
 You can find more information about StorageOS environment variables
-[here]({%link _docs/reference/envvars.md %})
+[here]({%link _docs/reference/envvars.md %}).

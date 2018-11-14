@@ -51,9 +51,10 @@ Secret to create a StorageOS account when the cluster first starts.
 ## Use an external etcd cluster
 
 StorageOS uses the `etcd` distributed key-value store to store essential
-cluster metadata and manage distributed configuration state. For production
-environments, we recommend deploying using a external etcd cluster. For more
-details about and an example of how to run etcd in {{ page.platform }}, see
+cluster metadata and manage distributed configuration state. An embedded etcd
+ instance is included in the StorageOS container, but for production environments,
+ we recommend deploying using a external etcd cluster. For more details about
+ and an example of how to run etcd in {{ page.platform }}, see
 the [External Etcd Operations]({%link _docs/operations/external-etcd.md %})
 page.
 
@@ -69,8 +70,7 @@ Follow the [managing host storage]({%link _docs/operations/managing-host-storage
 ## Resource reservations
 
 StorageOS resource consumption depends on the workloads and the StorageOS
-features in use. Therefore the requirements vary according to each dimension of
-the problem.
+features in use. 
 
 For production environments, it is recommended to test StorageOS under
 realistic workloads and tune resources accordingly.

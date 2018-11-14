@@ -14,10 +14,10 @@ appropriate guide. Other documents in this section are version agnostic.
 
 ## Kubernetes with StorageOS
 
-Kubernetes and StorageOS communicate to each other to perform actions such as
+Kubernetes and StorageOS communicate with each other to perform actions such as
 create, delete or mount volumes. The standard communication procedure uses REST
 API calls. However, StorageOS also implements communication using CSI. By 
-using CSI, Kubernetes and StorageOS communicates via a Linux socket. That
+using CSI, Kubernetes and StorageOS communicate over a Unix domain socket. That
 socket is handled by the Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note

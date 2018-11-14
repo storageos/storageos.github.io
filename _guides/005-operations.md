@@ -45,8 +45,8 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
-    title: Overcommitment
-    description: Overcommitment
+    title: Pool Overcommit
+    description: Overcommit
     module: operations/overcommitment
   -
     title: License Management

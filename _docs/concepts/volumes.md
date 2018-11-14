@@ -17,7 +17,9 @@ on-disk format. Depending on the configuration, frontend and backend components
 may be on the same or different hosts.
 
 Volumes are formatted using the linux standard ext4 filesystem as standard.
-Different filesystems may be supported in the future.
+Kubernetes users may change the default filesystem type to ext2, ext3, ext4, 
+btrfs or xfs by setting the fsType parameter in their StorageClass. Different
+ filesystems may be supported in the future.
 
 ## On Disk Format
 

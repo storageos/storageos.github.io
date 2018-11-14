@@ -55,7 +55,8 @@ docker pull storageos/node:$NEW_VERSION
     > Any mount points will hang while StorageOS Pods are not present if the
     > application Pods haven't been stopped.
 
-1. Put the StorageOS cluster in maintenance mode.
+1. Put the StorageOS cluster in [maintenance]({%link
+   _docs/operations/maintenance.md %}) mode.
 
     StorageOS implements a maintenance mode that freezes the cluster. When in
     maintenance mode, StorageOS operations are limited. Functionalities such as

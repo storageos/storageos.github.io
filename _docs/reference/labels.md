@@ -40,7 +40,7 @@ Pools do not have any labels present by default.
 
 | Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
 | :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
-| Overcommitment      | `storageos.com/overcommit`          | integers [+]                         | Sets the percentage of overcommitment allowed for the pool (see [here]({%link _docs/operations/labels.md %})).                                                                                                                                                                        |
+| Overcommitment      | `storageos.com/overcommit`          | integers [+]                         | Sets the percentage of overcommitment allowed for the pool (see [here]({%link _docs/operations/overcommitment.md %})).                                                                                                                                                                        |
 
 To add overcommit labels to a pool: 
 

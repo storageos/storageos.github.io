@@ -43,7 +43,7 @@ sections:
   -
     title: Overcommitment
     description: Overcommitment
-    module: operations/labels
+    module: operations/overcommitment
   -
     title: Licensing
     description: StorageOS licensing

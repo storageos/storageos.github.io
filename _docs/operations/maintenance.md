@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Maintenance
-anchor: concepts
-module: concepts/maintenance
+anchor: operations
+module: operations/maintenance
 ---
 
 # Maintenance

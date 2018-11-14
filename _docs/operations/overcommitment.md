@@ -28,5 +28,26 @@ than 50GB on the 50GB node. If the pool is overcommited by 10% then volumes up
 to 55GB could be scheduled on the 50GB node, and volumes up to 220GB on the 200GB
 node.
 
-For more information on how to add a overcommitment feature label to a pool
-lease see [here](/docs/reference/labels#storageos-pool-labels).
+## Adding an Overcommit label to a pool
+
+To add a overcommit label to a pool you can use the CLI or GUI. 
+
+With the CLI:
+
+```bash
+$ storageos pool update --label-add storageos.com/overcommit=20 default
+```
+The command above would set overcommit to 20% on the default pool.
+
+```bash
+$ storageos pool update --label-rm storageos.com/overcommit default
+```
+The command above removes the overcommit label from the default pool.
+
+With the GUI: 
+
+Navigate to Pools and click on the labels row of the volume you would like to
+edit. In the popup menu you can add and remove labels.
+![image](/images/docs/gui/pool-label.png)
+
+For more information on feature labels please see [here](/docs/reference/labels#storageos-pool-labels).

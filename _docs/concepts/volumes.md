@@ -53,7 +53,7 @@ compression defined on the volume.
 ## Maximum Volume Size
 
 To ensure deterministic performance, individual StorageOS volumes must fit on a single
-node. In situations where [overcommit]({% link _docs/operations/labels.md
+node. In situations where [overcommit]({% link _docs/operations/overcommitment.md
 %}) is applied, a scaling factor is applied when determining whether to place a
 volume on a node.
 

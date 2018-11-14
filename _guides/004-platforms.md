@@ -119,10 +119,6 @@ sections:
         title: Install
         description: Install
         module: platforms/docker/install
-      -
-        title: Users and policies
-        description: Creating and managing users
-        module: platforms/docker/users
       - 
         title: Troubleshooting
         description: Troubleshooting

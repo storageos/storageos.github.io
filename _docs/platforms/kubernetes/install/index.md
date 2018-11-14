@@ -28,7 +28,7 @@ without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.
 
 CSI is available from Kubernetes 1.9 alpha. As CSI is still not GA in
-Kubernetes, StorageOS recommends it only be used if the user is aware of its
+Kubernetes, StorageOS recommends it is only used if the user is aware of its
 limitations and understands that non-GA versions of an active project might contain
 breaking changes.
 

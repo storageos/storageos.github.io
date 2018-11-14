@@ -3,7 +3,7 @@ layout: guide
 title: StorageOS Docs - OpenShit
 platform: OpenShift
 anchor: platforms
-module: platforms/kubernetes/bestpractices
+module: platforms/openshift/bestpractices
 ---
 
 # StorageOS with {{ page.platform }} best practices

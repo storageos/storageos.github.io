@@ -17,11 +17,11 @@ sections:
     description: Maintenance
     module: operations/maintenance
   -
-    title: Namespaces
+    title: Namespace Management
     description: Namespaces
     module: operations/namespaces
   -
-    title: Policies
+    title: Policy Management
     description: Policies
     module: operations/policies
   - 
@@ -37,7 +37,7 @@ sections:
     description: Decommission nodes
     module: operations/decommission-nodes
   -
-    title: Rules
+    title: Rules Management
     description: StorageOS rules
     module: operations/rules
   -
@@ -45,7 +45,7 @@ sections:
     description: Overcommitment
     module: operations/overcommitment
   -
-    title: Licensing
+    title: License Management
     description: StorageOS licensing
     module: operations/licensing
   -

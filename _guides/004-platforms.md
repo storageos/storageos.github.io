@@ -47,18 +47,6 @@ sections:
             title: Provision volumes
             description: Provision StorageClasses and PVCs
             module: platforms/kubernetes/howto/provision-volumes
-          -
-            title: Monitor volumes
-            description: Monitor volumes
-            module: platforms/kubernetes/howto/monitor
-          -
-            title: Add and remove nodes
-            description: Add and remove nodes
-            module: platforms/kubernetes/howto/addnodes
-          -
-            title: Production deployment tips
-            description: Production deployments
-            module: platforms/kubernetes/howto/production
       - 
         title: Troubleshooting
         description: Troubleshooting

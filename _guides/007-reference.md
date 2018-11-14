@@ -96,6 +96,10 @@ sections:
     description: StorageOS release notes
     module: reference/release_notes
   -
+    title: Telemetry
+    description: Telemetry
+    module: reference/telemetry
+  -
     title: Contributing to the docs
     description: How to contribute to the docs
     module: reference/contributing

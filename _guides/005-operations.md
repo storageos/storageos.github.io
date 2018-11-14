@@ -13,6 +13,10 @@ sections:
     description: Monitor volumes
     module: operations/monitor
   -
+    title: Maintenance
+    description: Maintenance
+    module: operations/maintenance
+  -
     title: Namespaces
     description: Namespaces
     module: operations/namespaces

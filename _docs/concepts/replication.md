@@ -1,11 +1,12 @@
 ---
 layout: guide
-title: StorageOS Docs - Highly available volumes
+title: StorageOS Docs - Replication
 anchor: concepts
-module: concepts/havolumes
+module: concepts/replication
+redirect_from: /docs/concepts/ha
 ---
 
-# High Availability
+# Replication
 
 StorageOS replicates volumes across nodes for data protection and high
 availability. Synchronous replication ensures strong consistency for

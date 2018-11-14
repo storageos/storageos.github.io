@@ -21,7 +21,9 @@ node counts and license information. The crash report contains
 the crash dumps that were generated. 
 
 All StorageOS clusters with a routable connection to the internet will send crash
-dumps to Sentry over tcp/443.
+dumps to Sentry over tcp/443. StorageOS respects environment variables that
+[ProxyFromEnvironment](https://golang.org/pkg/net/http/#ProxyFromEnvironment)
+uses.
 
 ## DNS Query
 

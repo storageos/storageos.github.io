@@ -29,4 +29,4 @@ to 55GB could be scheduled on the 50GB node, and volumes up to 220GB on the 200G
 node.
 
 For more information on how to add a overcommitment feature label to a pool
-please see [here]({%link _docs/reference/labels.md %})
+lease see [here](/docs/reference/labels#storageos-pool-labels).

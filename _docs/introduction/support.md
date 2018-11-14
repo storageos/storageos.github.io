@@ -36,7 +36,7 @@ Report](/docs/introduction/support#storageos-cluster-report).
 - Version of StorageOS
 - `storageos node ls`
 - `storageos volume ls`
-- `storageos volume inspect VOL_ID # in case of issues with a specific volume`
+- `storageos volume inspect VOL_ID` # in case of issues with a specific volume
 
 ## Orchestrator related (Kubernetes, OpenShift, etc)
 - Version and installation method

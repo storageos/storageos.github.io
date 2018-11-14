@@ -13,7 +13,7 @@ different methods for two different purposes.
 ## Sentry.io
 
 StorageOS sends crash dumps and information about the StorageOS cluster to [sentry.io]
-(https://sentry.io). This information helps our devleopers monitor and fix crashes.
+(https://sentry.io). This information helps our developers monitor and fix crashes.
 
 Information is sent to Sentry.io once per day or when a process inside the
 StorageOS container crashes. The once per day report includes the cluster version,
@@ -21,7 +21,7 @@ node counts and license information. The crash report contains
 the crash dumps that were generated. 
 
 All StorageOS clusters with a routable connection to the internet will send crash
-dumps to Sentry using an HTTPS connection.
+dumps to Sentry over tcp/443.
 
 ## DNS Query
 

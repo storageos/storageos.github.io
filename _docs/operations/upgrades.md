@@ -22,7 +22,7 @@ where the StorageOS container is running. When the new version of StorageOS star
 the volumes from the previous version are available.
 
 1. Full stop of the cluster
-1. Rolling update
+1. Rolling upgrade
 
 > More upgrade procedures will be released that will automate the main part of
 > the process and fulfil use cases not covered currently.
@@ -47,9 +47,9 @@ Prepare upgrade:
 1. Prepare an etcd backup if using external etcd.
 1. Optionally make sure all nodes have the new StorageOS image pulled, so the new
    containers will start promptly. 
-   ```bash
-  docker pull storageos/node:$NEW_VERSION
-   ```
+  ```bash
+docker pull storageos/node:$NEW_VERSION
+  ```
 1. Downscale any applications using StorageOS volumes to 0.
 
     > Any mount points will hang while StorageOS Pods are not present if the
@@ -93,7 +93,7 @@ Execute update:
    is up and running.
 
 
-## Option 2. Manual rolling update
+## Option 2. Manual rolling upgrade
 
 
 This option consists of moving stateful applications and StorageOS volumes from
@@ -114,7 +114,7 @@ the procedure.
 
 The amount of nodes you can upgrade at the same time will depend on the amount
 of replicas the volumes have. With 2 replicas per volume, it is possible to
-update 2 nodes at a time without causing unavailability of data apart from the
+upgrade 2 nodes at a time without causing unavailability of data apart from
 the application stop/start. It is recommended to upgrade one node at a time.
 
 Execute the following instructions:

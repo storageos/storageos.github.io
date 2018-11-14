@@ -13,18 +13,6 @@ sections:
     description: StorageOS Replication
     module: concepts/replication
   -
-    title: Multitenancy
-    description: Multitenancy
-    module: concepts/multitenancy
-  -
-    title: Production deployments
-    description: Production deployments
-    module: concepts/production
-  -
-    title: Maintenance
-    description: Maintenance
-    module: concepts/maintenance
-  -
     title: Volumes
     description: Volumes
     module: concepts/volumes

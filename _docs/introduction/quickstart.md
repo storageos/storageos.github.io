@@ -19,3 +19,7 @@ _docs/platforms/docker/install.md %})
    [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}) or
   [OpenShift]({% link _docs/platforms/openshift/install/3.9.md %})
 
+* Dive into our Use Case documentation for for [Docker]({% link
+  _docs/usecases/docker/index.md %}) or [Kubernetes]({% link
+_docs/usecases/kubernetes/index.md %})
+

@@ -90,7 +90,7 @@ sections:
         description: Examples for operations
         module: platforms/openshift/howto
         subitems:
-          -
+        -
             title: Provision volumes
             description: Provision volumes
             module: platforms/openshift/howto/provision-volumes
@@ -123,31 +123,6 @@ sections:
         title: Users and policies
         description: Creating and managing users
         module: platforms/docker/users
-      -
-        title: Use cases
-        description: Application examples
-        module: platforms/docker/examples
-        subitems:
-          -
-            title: MySQL
-            description: Setting up MySQL with persistent storage.
-            module: platforms/docker/examples/mysql
-          -
-            title: PostgreSQL
-            description: Setting up PostgreSQL with persistent storage.
-            module: platforms/docker/examples/postgres
-          -
-            title: MSSQL
-            description: Setting up Microsoft SQL with persistent storage.
-            module: platforms/docker/examples/mssql
-          -
-            title: Redis
-            description: Setting up Redis with persistent storage.
-            module: platforms/docker/examples/redis
-          -
-            title: Cassandra
-            description: Setting up Cassandra with persistent storage.
-            module: platforms/docker/examples/cassandra
       - 
         title: Troubleshooting
         description: Troubleshooting

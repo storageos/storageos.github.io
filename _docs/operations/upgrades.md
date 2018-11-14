@@ -90,6 +90,9 @@ Execute update:
    kubectl -n $NAMESPACE get pods
     ```
 
+1. Remove [maintenance
+   mode](/docs/operations/maintenance#cluster-maintenance-mode) of the
+StorageOS cluster.
 1. Scale up the applications that were using StorageOS volumes, once StorageOS
    is up and running.
 

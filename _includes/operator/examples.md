@@ -27,8 +27,8 @@ Create a `cluster-config.yaml` according to your needs from the examples below.
 kubectl create -f cluster-config.yaml
 ```
 
-Note that StorageOS will be deployed in the storageos NameSpace, irrespective
-of any NameSpace defined within the CR yaml.
+Note that StorageOS will be deployed in `spec.namespace` (storageos by
+default), irrespective of what NameSpace the CR is defined in.
 
 
 &nbsp; <!-- this is a blank line -->

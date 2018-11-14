@@ -24,14 +24,14 @@ sections:
     title: Policies
     description: Policies
     module: operations/policies
-  -
-    title: Extend storage capacity
-    description: Extend physical capacity
-    module: operations/extend-storage
+  - 
+    title: Managing Host Storage
+    description: Managing Host Storage
+    module: operations/managing-host-storage
   -
     title: Using an external etcd
-    description: External Key/Value
-    module: operations/external-kv
+    description: Using an external etcd
+    module: operations/external-etcd
   -
     title: Decommission nodes
     description: Decommission nodes
@@ -41,9 +41,17 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
+    title: Overcommitment
+    description: Overcommitment
+    module: operations/labels
+  -
     title: Licensing
     description: StorageOS licensing
     module: operations/licensing
+  -
+    title: StorageOS Upgrade
+    description: StorageOS upgrade
+    module: operations/upgrades
   -
     title: Troubleshooting
     description: Troubleshooting

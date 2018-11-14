@@ -23,3 +23,6 @@ Recommended:
 
 1. At least three nodes for replication and high availability.
 1. [Install the storageos CLI]({% link _docs/reference/cli/index.md %}).
+1. If using Helm, make sure the tiller ServiceAccount has enough privileges to
+   create resources such as Namespaces, ClusterRoles, etc. For instance, following this [installation
+   procedure](https://github.com/helm/helm/blob/master/docs/rbac.md#example-service-account-with-cluster-admin-role).

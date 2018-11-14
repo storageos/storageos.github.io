@@ -37,8 +37,8 @@ features are controlled by Kubernetes-style labels and selectors, prefixed with
 StorageOS uses the storage capacity from the nodes where it is installed to
 provide thinly-provisioned volumes. That space is selected from the mount point
 of `/var/lib/storageos/data` on the host. It is recommended that disk devices
-are used exclusively for StorageOS, as described in [Extend available storage
-]({%link _docs/operations/extend-storage.md %})
+are used exclusively for StorageOS, as described in [Setup storage in host
+]({%link _docs/operations/managing-host-storage.md %})
 
 Any container may mount a StorageOS virtual volume from any node, regardless of
 whether the container and volume are colocated on the same node or the volume is
@@ -59,4 +59,3 @@ reduce network traffic.
 
 
 
-<!-- Add info on volume auto-follow -->

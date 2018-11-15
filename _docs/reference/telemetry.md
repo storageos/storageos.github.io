@@ -18,7 +18,8 @@ and fix crashes. Information is sent to sentry.io once per day or when a process
 StorageOS container crashes. 
 
 * The once per day report includes the cluster version, node counts and license information.
-* The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV), the exit code and whether or not the crash generated a core dump.
+* The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV),
+the exit code and whether or not the crash generated a core dump.
 
 All StorageOS clusters with a routable connection to the internet will send crash
 reports to sentry.io over tcp/443. StorageOS respects environment variables that
@@ -27,8 +28,8 @@ uses.
 
 An exhaustive list of information included in the once per day report is below:
 * API version
-* CPU architechture
 * Cluster ID
+* CPU architechture
 * Go version
 * Healthy volume count
 * Logging level
@@ -52,6 +53,7 @@ An exhaustive list of information included in the once per day report is below:
 
 An exhaustive list of information included in the crash report is below:
 * API version
+* Cluster ID
 * CPU architechture
 * Crashed component name
 * Error level
@@ -64,7 +66,6 @@ An exhaustive list of information included in the crash report is below:
 * OS type
 * License type
 * Logging user
-* Sentry user ID
 * Server name
 * Stacktrace
 * StorageOS build information (CI pipeline reference)

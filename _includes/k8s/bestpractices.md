@@ -52,10 +52,10 @@ Secret to create a StorageOS account when the cluster first starts.
 
 StorageOS uses the `etcd` distributed key-value store to store essential
 cluster metadata and manage distributed configuration state. An embedded etcd
- instance is included in the StorageOS container, but for production environments,
- we recommend deploying using a external etcd cluster. For more details about
- and an example of how to run etcd in {{ page.platform }}, see
-the [External Etcd Operations]({%link _docs/operations/external-etcd.md %})
+instance is included in the StorageOS container, but for production environments,
+we recommend deploying using a external etcd cluster. For more details about
+and an example of how to run etcd in {{ page.platform }}, see the
+[External Etcd Operations]({%link _docs/operations/external-etcd.md %})
 page.
 
 ## Setup of storage on the hosts

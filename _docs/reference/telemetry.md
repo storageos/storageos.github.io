@@ -12,19 +12,64 @@ different methods for two different purposes.
 
 ## sentry.io
 
-StorageOS sends crash dumps and information about the StorageOS cluster to
+StorageOS sends crash reports and information about the StorageOS cluster to
 [sentry.io](https://sentry.io). This information helps our developers monitor
-and fix crashes.
+and fix crashes. Information is sent to sentry.io once per day or when a process inside the
+StorageOS container crashes. 
 
-Information is sent to sentry.io once per day or when a process inside the
-StorageOS container crashes. The once per day report includes the cluster version,
-node counts and license information. The crash report contains
-the crash dumps that were generated. 
+* The once per day report includes the cluster version, node counts and license information.
+* The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV), the exit code and whether or not the crash generated a core dump.
 
 All StorageOS clusters with a routable connection to the internet will send crash
-dumps to sentry.io over tcp/443. StorageOS respects environment variables that
+reports to sentry.io over tcp/443. StorageOS respectsenvironment variables that
 [ProxyFromEnvironment](https://golang.org/pkg/net/http/#ProxyFromEnvironment)
 uses.
+
+An exhaustive list of information included in the once per day report is below:
+* API version
+* CPU architechture
+* Environment - The StorageOS build environment
+* Go version
+* Healthy volume count
+* Logging level
+* Logging user
+* License type
+* Namespace count
+* Node count
+* Pool count
+* OS type
+* Rule count
+* Sentry user ID
+* Server name
+* Sentry version
+* StorageOS version
+* Suspect volume count
+* Total volume size
+* Volume count
+* Volume degraded count
+* Volume offline count
+* Volume syncing count
+
+An exhaustive list of information included in the crash report is below:
+* API version
+* CPU architechture
+* Crashed component name
+* Environment - The StorageOS build environment
+* Error level
+* Error message
+* Exceptions
+* Exit code
+* Datetime of crash
+* Go version
+* Kernel signal
+* OS type
+* License type
+* Logging user
+* Sentry user ID
+* Server name*
+* Stacktrace
+* StorageOS version
+* Whether a core dump occured
 
 ## DNS Query
 
@@ -32,6 +77,11 @@ StorageOS will also send anonymized node ids, cluster id and StorageOS version
 information to StorageOS using a DNS query. The information that we send in the
 query is encrypted as well as being anonymized. This query allows us to inform
 Cluster admins when StorageOS upgrades are available in the StorageOS GUI.
+
+The DNS query includes:
+* Anonymized StorageOS Cluster ID
+* Anonymized StorageOS node ID
+* StorageOS version number
 
 ## Disabling Telemetry
 

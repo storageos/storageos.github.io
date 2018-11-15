@@ -16,6 +16,6 @@ orchestrator) cluster, and we expect our container to run on all of the worker
 nodes within that cluster.
 
 Clusters use etcd to maintain state and manage distributed consensus between
-nodes. We offer a choice between an internally managed etcd suitable for test
-deployments, or the ability to interface with an external etcd, suitable for
-production deployments.
+nodes. We offer a choice between an internally managed etcd suitable for small
+or test deployments, or the ability to interface with an external etcd, suitable for
+larger clusters or where nodes are frequently changing.

@@ -66,7 +66,7 @@ Management Commands:
   volume                  Manage volumes
 
 Commands:
-  install-bash-completion Install bash completion for the storageos cli
+  install-bash-completion Install bash completion for the storageos CLI
   login                   Store login credentials for a given storageos host
   logout                  Delete stored login credentials for a given storageos host
   version                 Show the StorageOS version information

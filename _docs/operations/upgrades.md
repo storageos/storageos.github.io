@@ -27,7 +27,7 @@ the volumes from the previous version are available.
 > More upgrade procedures will be released that will automate the main part of
 > the process and fulfil use cases not covered currently.
 
-> The [StorageOS cli]({%link _docs/reference/cli/index.md %}) is required to perform an upgrade.
+> The [StorageOS CLI]({%link _docs/reference/cli/index.md %}) is required to perform an upgrade.
 
 ## Option 1. Full stop of the cluster
 
@@ -55,13 +55,13 @@ docker pull storageos/node:$NEW_VERSION
     > Any mount points will hang while StorageOS Pods are not present if the
     > application Pods haven't been stopped.
 
-1. Put the StorageOS cluster in [maintenance]({%link
-   _docs/operations/maintenance.md %}) mode.
+1. Put the StorageOS cluster in
+   [maintenance](/docs/operations/maintenance#cluster-maintenance-mode) mode.
 
     StorageOS implements a maintenance mode that freezes the cluster. When in
     maintenance mode, StorageOS operations are limited. Functionalities such as
     volume provisioning, failover of primary volumes or managing nodes are
-    disabled. For more details see the [Maintenance]<!-- todo --> page.
+    disabled.
 1. Make sure the update strategy of StorageOS is `OnDelete`.
     ```bash
    $ export NAMESPACE=storageos
@@ -90,6 +90,9 @@ Execute update:
    kubectl -n $NAMESPACE get pods
     ```
 
+1. Remove [maintenance
+   mode](/docs/operations/maintenance#cluster-maintenance-mode) of the
+StorageOS cluster.
 1. Scale up the applications that were using StorageOS volumes, once StorageOS
    is up and running.
 
@@ -138,6 +141,7 @@ Prepare upgrade:
     ```
 1. Make sure that all volumes have at least one replica
 
+    {% raw %}
     ```bash
     # Save what volumes had 0 replicas to restore to that state later
     $ storageos volume ls --format "table {{.Name}}\t{{.Replicas}}"  | grep '0/0' | awk '{ print $1  }' > /var/tmp/volume-0-replicas.txt
@@ -145,7 +149,7 @@ Prepare upgrade:
     # Update volumes to enable 1 replica
     $ storageos volume ls --format "table {{.Name}}\t{{.Replicas}}"  | grep '0/0' | awk '{ print $1  }' | xargs -I{} storageos volume update --label-add storageos.com/replicas=1 {}
     ```
-
+    {% endraw %}
 1. Wait until all replicas are synced (1/1)
 
     ```bash

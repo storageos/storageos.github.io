@@ -20,7 +20,7 @@ into containers.
 It is agnostic to the underlying storage and runs equally on
 bare metal, in virtual machines or on cloud providers.
 
-![StorageOS architecture](/images/docs/concepts/architecture.png)
+![StorageOS architecture](/images/docs/concepts/storageos-cluster.png)
 
 StorageOS is deployed as one container on each node that presents or consumes
 storage, available as `storageos/node` on the Docker Hub. In Kubernetes,
@@ -37,7 +37,7 @@ features are controlled by Kubernetes-style labels and selectors, prefixed with
 StorageOS uses the storage capacity from the nodes where it is installed to
 provide thinly-provisioned volumes. That space is selected from the mount point
 of `/var/lib/storageos/data` on the host. It is recommended that disk devices
-are used exclusively for StorageOS, as described in [Setup storage in host
+are used exclusively for StorageOS, as described in [Managing Host Storage
 ]({%link _docs/operations/managing-host-storage.md %})
 
 Any container may mount a StorageOS virtual volume from any node, regardless of

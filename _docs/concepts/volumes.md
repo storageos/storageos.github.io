@@ -17,7 +17,9 @@ on-disk format. Depending on the configuration, frontend and backend components
 may be on the same or different hosts.
 
 Volumes are formatted using the linux standard ext4 filesystem as standard.
-Different filesystems may be supported in the future.
+Kubernetes users may change the default filesystem type to ext2, ext3, ext4, 
+btrfs or xfs by setting the fsType parameter in their StorageClass. Different
+ filesystems may be supported in the future.
 
 ## On Disk Format
 
@@ -40,10 +42,10 @@ distributed evenly across the blob files.
 
 ### Metadata
 
-Metadata is kept in directories named /var/lib/storageos/data/db[\d+]. We
+Metadata is kept in directories named `/var/lib/storageos/data/db[\d+]`. We
 maintain an index of all blocks written to the blob file inside the metadata
 store, including checksums. These checksums allow us to detect bitrot, and
-return errors on writes, rather than serve bad data. In future versions we may
+return errors on reads, rather than serve bad data. In future versions we may
 implement recovery from replicas for volumes with one or more replicas defined.
 
 StorageOS metadata requires approximately 2.7GB of storage per 1TB of allocated

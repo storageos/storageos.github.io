@@ -36,7 +36,7 @@ Report](/docs/introduction/support#storageos-cluster-report).
 - Version of StorageOS
 - `storageos node ls`
 - `storageos volume ls`
-- `storageos volume inspect VOL_ID # in case of issues with a specific volume`
+- `storageos volume inspect VOL_ID` # in case of issues with a specific volume
 
 ## Orchestrator related (Kubernetes, OpenShift, etc)
 - Version and installation method
@@ -49,9 +49,14 @@ Report](/docs/introduction/support#storageos-cluster-report).
 
 ## StorageOS Cluster Report
 
-StorageOS has a cluster report functionality that aggregates cluster information.
-For each node the following is collected: StorageOS logs, lshw, and storageos
-inspect node. StorageOS engineers might ask for a report to be generated during
+StorageOS has a cluster diagnostic function that aggregates cluster information.
+For each node the following is collected:
+
+- StorageOS logs
+- output of `lshw`
+- output of `storageos inspect node`
+
+StorageOS engineers might ask for a report to be generated during
 support cases.
 
 The cluster report is created only when a user chooses to do so. The report

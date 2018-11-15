@@ -75,7 +75,7 @@ An exhaustive list of information included in the crash report is below:
 
 StorageOS will also send anonymized node ids, cluster id and StorageOS version
 information to StorageOS using a DNS query. The information that we send in the
-query is encrypted as well as being anonymized. This query allows us to inform
+query is encoded as well as being anonymized. This query allows us to inform
 Cluster admins when StorageOS upgrades are available in the StorageOS GUI and
 in the logs.
 
@@ -113,7 +113,8 @@ You can use the following environmental variables to disable or enable telemetry
 
 ```bash
 DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io reporting
-DISABLE_ERROR_REPORTING # Disable sentry.io crash dump reports
+DISABLE_ERROR_REPORTING # Disable sentry.io crash reports
+
 ```
 
 You can find more information about StorageOS environment variables

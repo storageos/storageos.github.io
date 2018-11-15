@@ -7,7 +7,7 @@ redirect_from: /docs/install/docker/container
 redirect_from: install/docker/container
 ---
 
-# Installation
+# Installation with DockerCE
 
 * Ensure that our prerequisites are met, paying particular attention to [system
   configuration]({% link _docs/prerequisites/systemconfiguration.md %}) and [mount

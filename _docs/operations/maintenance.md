@@ -29,7 +29,7 @@ node. Any volume mounted in that specific node will be evicted but still hold
 the StorageOS mount making the data transparently available to the client, with
 zero downtime.
 
-To drain a node you can use the GUI (see the image below) or the StorageOS cli
+To drain a node you can use the GUI (see the image below) or the StorageOS CLI
 ```bash
 $ storageos node drain node01
 node01
@@ -41,7 +41,7 @@ Cordoning a node marks the node as unschedulable without rescheduling any
 volumes running on the node. New volumes are unable to be scheduled nor can replicas
 be promoted on cordoned nodes.
 
-To cordon a node you can use the StorageOS cli
+To cordon a node you can use the StorageOS CLI
 ```bash
 $ storageos node cordon node01
 node01

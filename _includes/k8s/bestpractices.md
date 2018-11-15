@@ -38,7 +38,7 @@ generates a pseudo-random 24 character string, may be used:
 
 ```bash
 # Generate strong password
-PASSWORD=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9-!@#$%^&*()_+~' | fold -w 24 | head -n 1)
+PASSWORD=$(cat -e /dev/urandom | tr -dc 'a-zA-Z0-9-!@#$%^&*()_+~' | fold -w 24 | head -n 1)
 
 # Convert password to base64 representation for embedding in a K8S secret
 BASE64PASSWORD=$(echo -n $PASSWORD | base64)
@@ -51,10 +51,12 @@ Secret to create a StorageOS account when the cluster first starts.
 ## Use an external etcd cluster
 
 StorageOS uses the `etcd` distributed key-value store to store essential
-cluster metadata and manage distributed consensus. For production environments,
+cluster metadata and manage distributed configuration state. An embedded etcd
+instance is included in the StorageOS container, but for production environments,
 we recommend deploying using a external etcd cluster. For more details about
-and an example of how to run etcd in {{ page.platform }}, see the [External
-Etcd Operations]({%link _docs/operations/external-etcd.md %}) page.
+and an example of how to run etcd in {{ page.platform }}, see the
+[External Etcd Operations]({%link _docs/operations/external-etcd.md %})
+page.
 
 ## Setup of storage on the hosts
 
@@ -68,8 +70,7 @@ Follow the [managing host storage]({%link _docs/operations/managing-host-storage
 ## Resource reservations
 
 StorageOS resource consumption depends on the workloads and the StorageOS
-features in use. Therefore the requirements vary according to each dimension of
-the problem.
+features in use. 
 
 For production environments, it is recommended to test StorageOS under
 realistic workloads and tune resources accordingly.

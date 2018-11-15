@@ -1,16 +1,19 @@
 ---
 layout: guide
-title: StorageOS Docs - Overcommitment
+title: StorageOS Docs - Pool Overcommitment
 anchor: operations
 module: operations/overcommitment
 ---
 
-# Overcommitment
+# Pool Overcommit
 
-Overcommitment is a way of creating volumes whose size exceeds the actual
-storage presented by underlying nodes. It can be useful if you anticipate
-writing a lot of data to a volume eventually but you do not wish to pay for
-storage that is not currently being used.
+All volumes in StorageOS are thinly provisioned and support inline compression.
+Therefore volumes only occupy capacity in the pool based on the data actually
+written to the StorageOS volume. StorageOS allows pools to be overcommitted.
+This allows the creation of volumes whose size exceeds the actual storage presented
+by underlying nodes. It can be useful if you anticipate writing a lot of data
+to a volume eventually but you do not wish to pay for storage that is not currently
+being used.
 
 Given a 120GB pool comprised of 3 nodes with 40GB disks, then the maximum
 volume size is 40GB. To ensure deterministic performance and replication of writes,

@@ -39,26 +39,10 @@ sections:
             description: Install on 1.7 and prior
             module: platforms/kubernetes/install/1.7
       - 
-        title: HowTo
+        title: StorageOS Volume Guide
         description: Examples for operations
-        module: platforms/kubernetes/howto
+        module: platforms/kubernetes/firstvolume
         subitems:
-          -
-            title: Provision volumes
-            description: Provision StorageClasses and PVCs
-            module: platforms/kubernetes/howto/provision-volumes
-          -
-            title: Monitor volumes
-            description: Monitor volumes
-            module: platforms/kubernetes/howto/monitor
-          -
-            title: Add and remove nodes
-            description: Add and remove nodes
-            module: platforms/kubernetes/howto/addnodes
-          -
-            title: Production deployment tips
-            description: Production deployments
-            module: platforms/kubernetes/howto/production
       - 
         title: Troubleshooting
         description: Troubleshooting
@@ -72,6 +56,10 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/kubernetes/troubleshoot/volumes
+      - 
+        title: Best Practices
+        description: Kubernetes best practices
+        module: platforms/kubernetes/bestpractices
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -94,14 +82,10 @@ sections:
             description: Install on 3.7 and prior
             module: platforms/openshift/install/3.7
       -
-        title: HowTo
+        title: StorageOS Volume Guide
         description: Examples for operations
-        module: platforms/openshift/howto
+        module: platforms/openshift/firstvolume
         subitems:
-          -
-            title: Provision volumes
-            description: Provision volumes
-            module: platforms/openshift/howto/provision-volumes
       - 
         title: Troubleshooting
         description: Troubleshooting
@@ -115,6 +99,10 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/openshift/troubleshoot/volumes
+      - 
+        title: Best Practices
+        description: OpenShift best practices
+        module: platforms/openshift/bestpractices
   - title: Docker
     description: Docker
     module: platforms/docker
@@ -123,35 +111,6 @@ sections:
         title: Install
         description: Install
         module: platforms/docker/install
-      -
-        title: Users and policies
-        description: Creating and managing users
-        module: platforms/docker/users
-      -
-        title: Use cases
-        description: Application examples
-        module: platforms/docker/examples
-        subitems:
-          -
-            title: MySQL
-            description: Setting up MySQL with persistent storage.
-            module: platforms/docker/examples/mysql
-          -
-            title: PostgreSQL
-            description: Setting up PostgreSQL with persistent storage.
-            module: platforms/docker/examples/postgres
-          -
-            title: MSSQL
-            description: Setting up Microsoft SQL with persistent storage.
-            module: platforms/docker/examples/mssql
-          -
-            title: Redis
-            description: Setting up Redis with persistent storage.
-            module: platforms/docker/examples/redis
-          -
-            title: Cassandra
-            description: Setting up Cassandra with persistent storage.
-            module: platforms/docker/examples/cassandra
       - 
         title: Troubleshooting
         description: Troubleshooting
@@ -165,11 +124,4 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/docker/troubleshoot/volumes
-  - title: Azure
-    description: Azure
-    module: platforms/azure
-    items:
-      - title: Install
-        description: Install
-        module: platforms/azure/install
 ---

@@ -21,4 +21,6 @@ we list install guides and other platform specific operations here.
 
 **Operations** - Platform agnostic operations.
 
+**Use Cases** - A set of examples to get up and running with StorageOS quickly.
+
 **Reference** - Information on our GUI, CLI, and other important information.

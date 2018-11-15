@@ -13,21 +13,49 @@ sections:
     description: Monitor volumes
     module: operations/monitor
   -
-    title: Namespaces
+    title: Maintenance
+    description: Maintenance
+    module: operations/maintenance
+  -
+    title: User Management
+    description: Users
+    module: operations/users
+  -
+    title: Namespace Management
     description: Namespaces
     module: operations/namespaces
   -
-    title: Extend storage capacity
-    description: Extend physical capacity
-    module: operations/extend-storage
+    title: Policy Management
+    description: Policies
+    module: operations/policies
+  - 
+    title: Managing Host Storage
+    description: Managing Host Storage
+    module: operations/managing-host-storage
   -
-    title: Rules
+    title: Using an external etcd
+    description: Using an external etcd
+    module: operations/external-etcd
+  -
+    title: Decommission nodes
+    description: Decommission nodes
+    module: operations/decommission-nodes
+  -
+    title: Rules Management
     description: StorageOS rules
     module: operations/rules
   -
-    title: Licensing
+    title: Pool Overcommit
+    description: Overcommit
+    module: operations/overcommitment
+  -
+    title: License Management
     description: StorageOS licensing
     module: operations/licensing
+  -
+    title: StorageOS Upgrade
+    description: StorageOS upgrade
+    module: operations/upgrades
   -
     title: Troubleshooting
     description: Troubleshooting

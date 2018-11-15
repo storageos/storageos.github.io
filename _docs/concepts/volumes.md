@@ -42,10 +42,10 @@ distributed evenly across the blob files.
 
 ### Metadata
 
-Metadata is kept in directories named /var/lib/storageos/data/db[\d+]. We
+Metadata is kept in directories named `/var/lib/storageos/data/db[\d+]`. We
 maintain an index of all blocks written to the blob file inside the metadata
 store, including checksums. These checksums allow us to detect bitrot, and
-return errors on writes, rather than serve bad data. In future versions we may
+return errors on reads, rather than serve bad data. In future versions we may
 implement recovery from replicas for volumes with one or more replicas defined.
 
 StorageOS metadata requires approximately 2.7GB of storage per 1TB of allocated

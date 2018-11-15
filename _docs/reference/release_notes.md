@@ -29,8 +29,10 @@ There should not be any breaking changes since `1.0.0-rc5`.
 ### New
 
 - Offline nodes can now be removed from management either by using the CLI `node
-  leave` command, or in the UI. This is only available when external etcd is
-  used as the KV store.
+  delete` command, or in the UI. This is only available when external etcd is
+  used as the KV store.  See
+  [decommissioning nodes](http://docs.storageos.com/docs/operations/decommission-nodes)
+  for more information.
 - Nodes can now be placed into "Maintenance mode" to disable volume recovery on
   the node while it is offline for maintenance. This allows nodes to be
   upgraded without triggering potentially unwanted data migrations. Note that
@@ -43,11 +45,21 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - Prometheus metrics for volume used capacity, and added to the API volume
   objects and the UI. A placeholder for actual used capacity (after
   compression) has also been added but is not yet provided.
-- In the UI, storage pools now have an additional details page.
+- In the UI, storage pools and nodes now have an additional details page.
 - Added group management to the UI.
 - The overprovisioning ratio can now be configured on pools by applying the
   label `storageos.com/overcommit` to a positive integer representing the
   overcommit percentage. By default, overcommit is set to 0.
+- At startup and every 24 hours, each cluster will make a DNS request to query
+  the latest StorageOS version and log if a new version is available.  The UI
+  will also notify administrators.  This check can be disabled by setting
+  `DISABLE_TELEMETRY=true`.  For more information see
+  [telemetry](http://docs.storageos.com/docs/reference/telemetry).
+- Since data scrub operations can be intensive, we now limit to 5 concurrent
+  volume scrubs.  This does not affect the number of volumes that may be deleted
+  in a batch as the scrubs occur asyncronously.  Volumes will remain in
+  `deleted` state until the data is scrubbed, then they will not be reported at
+  all.
 
 ### Improved
 
@@ -115,6 +127,10 @@ There should not be any breaking changes since `1.0.0-rc5`.
   UUID format used internally.
 - In the UI, non-admin users can now view and update their information,
   including changing their own password.
+- Password resets now work correctly and can be used to create a licence for a
+  portal account that was created with a social login.
+- If there was an error deleting a rule, the API returned an Internal Server
+  Error rather than a more helpful contextual error.
 
 ## 1.0.0-rc5
 

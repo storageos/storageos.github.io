@@ -39,14 +39,10 @@ sections:
             description: Install on 1.7 and prior
             module: platforms/kubernetes/install/1.7
       - 
-        title: HowTo
+        title: StorageOS Volume Guide
         description: Examples for operations
-        module: platforms/kubernetes/howto
+        module: platforms/kubernetes/firstvolume
         subitems:
-          -
-            title: Provision volumes
-            description: Provision StorageClasses and PVCs
-            module: platforms/kubernetes/howto/provision-volumes
       - 
         title: Troubleshooting
         description: Troubleshooting
@@ -86,14 +82,10 @@ sections:
             description: Install on 3.7 and prior
             module: platforms/openshift/install/3.7
       -
-        title: HowTo
+        title: StorageOS Volume Guide
         description: Examples for operations
-        module: platforms/openshift/howto
+        module: platforms/openshift/firstvolume
         subitems:
-        -
-            title: Provision volumes
-            description: Provision volumes
-            module: platforms/openshift/howto/provision-volumes
       - 
         title: Troubleshooting
         description: Troubleshooting

@@ -89,3 +89,7 @@ END
 
 > You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
 store for StorageOS in the [Cluster Operator examples]({%link _docs/reference/cluster-operator/examples.md %}) page.
+
+If this is your first installation you may wish to follow the [StorageOS
+Volume guide](/docs/platforms/{{ page.platform }}/firstvolume/) for an example of how
+to mount a StorageOS volume in a Pod. 

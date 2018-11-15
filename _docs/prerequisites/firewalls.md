@@ -12,16 +12,10 @@ between all nodes in the cluster:
 
 | Port Number | TCP/UDP   | Use                    |
 |:-----------:|:---------:|:---------------------- |
-| 5701        | tcp       | gRPC                   |
-| 5702        | tcp       | Prometheus             |
 | 5703        | tcp       | DirectFS               |
-| 5704        | tcp       | Dataplane health check |
 | 5705        | tcp       | REST API               |
 | 5706        | tcp       | ETCD service           |
 | 5707        | tcp       | ETCD service           |
-| 5708        | tcp       | NATS service           |
-| 5709        | tcp       | NATS service           |
-| 5710        | tcp       | NATS service           |
 | 5711        | tcp & udp | Gossip service         |
 
 StorageOS also uses [ephemeral](https://en.wikipedia.org/wiki/Ephemeral_port) ports to dial-out to these ports on other StorageOS nodes. For this reason, outgoing traffic should be enabled.

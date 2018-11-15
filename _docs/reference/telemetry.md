@@ -21,14 +21,14 @@ StorageOS container crashes.
 * The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV), the exit code and whether or not the crash generated a core dump.
 
 All StorageOS clusters with a routable connection to the internet will send crash
-reports to sentry.io over tcp/443. StorageOS respectsenvironment variables that
+reports to sentry.io over tcp/443. StorageOS respects environment variables that
 [ProxyFromEnvironment](https://golang.org/pkg/net/http/#ProxyFromEnvironment)
 uses.
 
 An exhaustive list of information included in the once per day report is below:
 * API version
 * CPU architechture
-* Environment - The StorageOS build environment
+* Cluster ID
 * Go version
 * Healthy volume count
 * Logging level
@@ -39,9 +39,9 @@ An exhaustive list of information included in the once per day report is below:
 * Pool count
 * OS type
 * Rule count
-* Sentry user ID
 * Server name
 * Sentry version
+* StorageOS build information (CI pipeline reference)
 * StorageOS version
 * Suspect volume count
 * Total volume size
@@ -54,7 +54,6 @@ An exhaustive list of information included in the crash report is below:
 * API version
 * CPU architechture
 * Crashed component name
-* Environment - The StorageOS build environment
 * Error level
 * Error message
 * Exceptions
@@ -66,8 +65,9 @@ An exhaustive list of information included in the crash report is below:
 * License type
 * Logging user
 * Sentry user ID
-* Server name*
+* Server name
 * Stacktrace
+* StorageOS build information (CI pipeline reference)
 * StorageOS version
 * Whether a core dump occured
 
@@ -76,7 +76,8 @@ An exhaustive list of information included in the crash report is below:
 StorageOS will also send anonymized node ids, cluster id and StorageOS version
 information to StorageOS using a DNS query. The information that we send in the
 query is encrypted as well as being anonymized. This query allows us to inform
-Cluster admins when StorageOS upgrades are available in the StorageOS GUI.
+Cluster admins when StorageOS upgrades are available in the StorageOS GUI and
+in the logs.
 
 The DNS query includes:
 * Anonymized StorageOS Cluster ID
@@ -88,8 +89,8 @@ The DNS query includes:
 It is possible to disable telemetry using the CLI, API or environment
 variables.
 
-* Telemetry is the DNS query and sentry.io once per day reporting. 
-* Error reporting is the sentry.io crash dump reporting. 
+* Telemetry is the DNS query and sentry.io once per day reporting.
+* Error reporting is the sentry.io crash dump reporting.
 
 ## API
 
@@ -111,8 +112,7 @@ The example above shows how you can disable and enable reporting.
 You can use the following environmental variables to disable or enable telemetry.
 
 ```bash
-DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io
-reporting
+DISABLE_TELEMETRY       # Disable the DNS query and once per day sentry.io reporting
 DISABLE_ERROR_REPORTING # Disable sentry.io crash dump reports
 ```
 

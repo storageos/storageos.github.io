@@ -3,11 +3,10 @@
 There are a variety of flavours, versions and particularities in the container
 orchestrator scope. Because of this, StorageOS installation procedures aim to
 be flexible so they can fit different needs depending on the environment,
-preferences or requirements. The StorageOS cluster operator makes the
-installation easier by delegating the responsibility of the installation to its
-logic. If you want to see and alter the installation of StorageOS, the
-following examples give you that capacity. Feel free to extend and modify the
-publicly available examples.
+preferences or requirements. The StorageOS cluster operator simplifies the installation
+by implementing automated install. You can review and adapt the StorageOS install
+in the following examples. Feel free to extend and modify the publicly available
+examples.
 
 ### Installation with Native Drivers (default)
 

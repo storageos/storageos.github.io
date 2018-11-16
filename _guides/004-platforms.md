@@ -9,7 +9,7 @@ sections:
     description: Kubernetes
     module: platforms/kubernetes
     items:
-      - 
+      -
         title: Install
         description: Install K8S
         module: platforms/kubernetes/install
@@ -38,12 +38,7 @@ sections:
             title: 1.7
             description: Install on 1.7 and prior
             module: platforms/kubernetes/install/1.7
-      - 
-        title: StorageOS Volume Guide
-        description: Examples for operations
-        module: platforms/kubernetes/firstvolume
-        subitems:
-      - 
+      -
         title: Troubleshooting
         description: Troubleshooting
         module: platforms/kubernetes/troubleshoot
@@ -56,7 +51,11 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/kubernetes/troubleshoot/volumes
-      - 
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/kubernetes/firstvolume
+      -
         title: Best Practices
         description: Kubernetes best practices
         module: platforms/kubernetes/bestpractices
@@ -81,11 +80,6 @@ sections:
             title: 3.7 and prior
             description: Install on 3.7 and prior
             module: platforms/openshift/install/3.7
-      -
-        title: StorageOS Volume Guide
-        description: Examples for operations
-        module: platforms/openshift/firstvolume
-        subitems:
       - 
         title: Troubleshooting
         description: Troubleshooting
@@ -99,7 +93,11 @@ sections:
             title: Volume Provisioning
             description: Troubleshooting volumes
             module: platforms/openshift/troubleshoot/volumes
-      - 
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/openshift/firstvolume
+      -
         title: Best Practices
         description: OpenShift best practices
         module: platforms/openshift/bestpractices

@@ -79,7 +79,7 @@ spec:
   secretRefName: "storageos-api" # Reference from the Secret created in the previous step
   secretRefNamespace: "default"  # Namespace of the Secret
   images:
-    nodeContainer: "storageos/node:1.0.0-rc5" # StorageOS version
+    nodeContainer: "storageos/node:1.0.0" # StorageOS version
   resources:
     requests:
     memory: "512Mi"

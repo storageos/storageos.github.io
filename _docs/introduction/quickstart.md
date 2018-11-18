@@ -16,8 +16,9 @@ _docs/concepts/architecture.md %}) and [playing with a demo](http://play.storage
 _docs/platforms/docker/install.md %})
 
 * For production deployments, follow our installation guides for
-   [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}) or
-  [OpenShift]({% link _docs/platforms/openshift/install/3.9.md %})
+   [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}),
+  [OpenShift]({% link _docs/platforms/openshift/install/3.9.md %}) or 
+  [Azure AKS]({% link _docs/platforms/azure-aks/install/1.11.md %}).
 
 * Dive into our Use Case documentation for for [Docker]({% link
   _docs/usecases/docker/index.md %}) or [Kubernetes]({% link

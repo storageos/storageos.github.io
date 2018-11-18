@@ -101,6 +101,32 @@ sections:
         title: Best Practices
         description: OpenShift best practices
         module: platforms/openshift/bestpractices
+  -
+    title: Azure AKS
+    description: Kubernetes in AKS
+    module: platforms/azure-aks
+    items:
+      -
+        title: Install
+        description: Install K8S
+        module: platforms/azure-aks/install
+        subitems:
+          - 
+            title: 1.11
+            description: Install on 1.11
+            module: platforms/azure-aks/install/1.11
+          - 
+            title: 1.10 <br>
+            description: Install on 1.10
+            module: platforms/azure-aks/install/1.10
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/azure-aks/firstvolume
+      -
+        title: Best Practices
+        description: Kubernetes best practices
+        module: platforms/azure-aks/bestpractices
   - title: Docker
     description: Docker
     module: platforms/docker

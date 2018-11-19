@@ -3,7 +3,7 @@ layout: guide
 title: StorageOS Docs - Kubernetes
 anchor: platforms
 cmd: kubectl
-platform: "AKS Kubernetes"
+platform: "azure-aks"
 platformUC: Kubernetes
 module: platforms/azure-aks/firstvolume
 ---

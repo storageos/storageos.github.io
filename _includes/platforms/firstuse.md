@@ -6,48 +6,40 @@ a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
 
 ## Creating the PersistentVolumeClaim
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS example deployment repository
     ```bash 
     git clone https://github.com/storageos/deploy.git storageos
     ```
     PVC definition
-    ```yaml
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: my-vol-1
-      annotations:
-        volume.beta.kubernetes.io/storage-class: fast
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 5Gi
-    ```
+
+    {% include platforms/pvc.md %}
+
     The above PVC will dynamically provision a 5GB volume using the fast
     StorageClass. This StorageClass was created during the StorageOS install
     and causes StorageOS to provision a PersistentVolume. 
 
-    ```yaml
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: my-vol-1
-      labels:
-        storageos.com/replicas: "1"
-      annotations:
-        volume.beta.kubernetes.io/storage-class: fast
-    spec:
-      accessModes:
-      - ReadWriteOnce
-      resources:
-        requests:
-          storage: 5Gi
-    ```
+{% if page.platform == "azure-aks" %}
+
+    For installations with CSI, you can create multiple StorageClasses to
+    specify default labels.
+
+    {% include platforms/csi-sc.md %}
+
+    The above StorageClass has the `storageos.com/replicas` label set. This label tells
+    StorageOS to create a replica for the volume that is created. For the sake
+    of keeping this example simple the unreplicated volume will be used.
+
+    {% include platforms/csi-pvc.md %}
+
+{% else %}
+
+    {% include platforms/pvc-replica.md %}
+
     The above PVC has the `storageos.com/replicas` label set. This label tells
     StorageOS to create a replica for the volume that is created. For the sake
     of keeping this example simple the unreplicated volume will be used.
+
+{% endif %}
 
 1.  Move into the examples folder and create a PVC using the PVC definition above. 
     ```bash
@@ -60,7 +52,7 @@ a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
     NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
     my-vol-1     Bound    pvc-f8ffa027-e821-11e8-bc0b-0ac77ccc61fa   5Gi        RWO            fast           1m
     ```
-1. Create a pod that mounts the PV created in step 2. 
+1. Create a pod that mounts the PVC created in step 2. 
 
     ```bash
     $ {{ page.cmd }} create -f ./k8s/examples/debian-pvc.yaml
@@ -108,7 +100,7 @@ a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
     the PVC is being written to. If you were to kill the pod and start it again
     on a new node, the helloworld file would still be avaliable.
 
-{% if page.platformUC == "Kubernetes" %}
+{% if page.platformUC == "Kubernetes" || page.platforme == "azure-aks" %}
     If you wish to see more use cases with actual applications please see our
     [Use Cases]({% link _docs/usecases/kubernetes/index.md %}) documentation.
 {% endif %}

@@ -15,18 +15,18 @@ _docs/platforms/kubernetes/install/index.md %}) procedure.
 
 AKS deployment of Kubernetes uses Ubuntu by default with an optimized kernel.
 All versions of Ubuntu with a kernel version later than`4.15.0-1029-azure`
-meets the StorageOS prerequisites.
+meet the StorageOS prerequisites.
 
 ## Kubernetes with StorageOS
 
 Kubernetes and StorageOS communicate with each other to perform actions such as
 creation, deletion or mounting of volumes. StorageOS implements communication 
 using CSI. By using CSI, Kubernetes and StorageOS communicate over a Unix domain
-socket, handled by the Kubelet in the Host.
+socket, handled by the Kubelet on the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the future standard that enables storage drivers to release on their own
+CSI is the burgeoning standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
 without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.

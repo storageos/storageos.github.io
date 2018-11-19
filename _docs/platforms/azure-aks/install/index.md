@@ -22,8 +22,9 @@ the StorageOS prerequisites.
 
 ## Best practices
 
-Visit the [best practices] section to install StorageOS for production
-clusters.
+Visit the [best practices]({%link
+_docs/platforms/azure-aks/bestpractices/index.md %}) section to install
+StorageOS for production clusters.
 
 ## Kubernetes with StorageOS
 

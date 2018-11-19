@@ -14,8 +14,8 @@ VMs, please refer to the [Kubernetes standard installation]({%link
 _docs/platforms/kubernetes/install/index.md %}) procedure.
 
 AKS deployment of Kubernetes uses Ubuntu by default with an optimized kernel.
-All versions of Ubuntu with a kernel version > `4.15.0-1029-azure` meets
-the StorageOS prerequisites.
+All versions of Ubuntu with a kernel version later than`4.15.0-1029-azure`
+meets the StorageOS prerequisites.
 
 ## Kubernetes with StorageOS
 
@@ -36,11 +36,11 @@ StorageOS communicates with AKS Kubernetes Master nodes using CSI only.
 Check out the status of the CSI release cycle in relation to Kubernetes on
 the [CSI project](https://kubernetes-csi.github.io/docs/) page.
 
-StorageOS leverages labels on PVCs to apply [features]
-({%link _docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS
-doesn't have these labels set when using CSI. Therefore, default feature labels
+StorageOS leverages labels on PVCs to apply [features]({%link
+_docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS doesn't
+have these labels set when using CSI. Therefore, default feature labels
 (`storageos.com/*`) must be defined on the Kubernetes StorageClass parameters.
-Multiple StorageClasses can be defined with different parameters. The [StorageOS
-CLI]({%link _docs/reference/cli/index.md %}) can also manipulate volume labels
-or create [rules]({%link _docs/reference/cli/rule.md %}) to add/delete labels
-on StorageOS volumes.
+Multiple StorageClasses can be defined with different parameters. The
+[StorageOS CLI]({%link _docs/reference/cli/index.md %}) can also manipulate
+volume labels or create [rules]({%link _docs/reference/cli/rule.md %}) to
+add/delete labels on StorageOS volumes.

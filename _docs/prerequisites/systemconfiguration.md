@@ -24,7 +24,7 @@ installation.
 
 ## Distribution Specifics
  
-**RHEL 7.5, CentOS 7** and **Debian 9** are fully supported.
+**RHEL 7.5, CentOS 7*, **Debian 9** and Ubuntu Azure are fully supported.
 
 **Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
 
@@ -33,7 +33,7 @@ sudo apt -y update
 sudo apt -y install linux-image-extra-$(uname -r)
 ```
 
-**Ubuntu 16.04/18.04 AWS, Ubuntu 16.04/18.04 Azure** and **Ubuntu 18.04 GCE** do
+**Ubuntu 16.04/18.04 AWS and **Ubuntu 18.04 GCE** do
 *not yet provide the linux-image-extra package. You should either use Debian,
 *CentOS or RHEL, or install the non-cloud-provider optimised Ubuntu kernel:
 

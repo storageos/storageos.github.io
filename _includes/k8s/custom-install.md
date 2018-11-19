@@ -12,15 +12,15 @@ examples.
 
 The following github repository hosts installation examples.
 
-{% if page.platform == "kubernetes" %}
-```bash
-git clone https://github.com/storageos/deploy.git storageos
-cd storageos/k8s/deploy-storageos
-```
-{% elsif page.platform == "openshift" %}
+{% if page.platform == "openshift" %}
 ```bash
 git clone https://github.com/storageos/deploy.git storageos
 cd storageos/openshift/deploy-storageos
+```
+{% else %}
+```bash
+git clone https://github.com/storageos/deploy.git storageos
+cd storageos/k8s/deploy-storageos
 ```
 {% endif %}
 

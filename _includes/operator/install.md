@@ -68,27 +68,11 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storage
 
 ## Trigger a StorageOS installation
 
-> This is a Cluster Definition example. 
-```bash
-{{ page.cmd }} create -f - <<END
-apiVersion: "storageos.com/v1alpha1"
-kind: "StorageOSCluster"
-metadata:
-  name: "example-storageos"
-spec:
-  secretRefName: "storageos-api" # Reference from the Secret created in the previous step
-  secretRefNamespace: "default"  # Namespace of the Secret
-  images:
-    nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
-  resources:
-    requests:
-    memory: "512Mi"
-END
-```
-> `spec` parameters available on the [Cluster Operator configuration]({%link _docs/reference/cluster-operator/configuration.md %}) page.
-
-> You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
-store for StorageOS in the [Cluster Operator examples]({%link _docs/reference/cluster-operator/examples.md %}) page.
+{% if page.platform == "azure-aks" %}
+{% include operator/cr-csi-example.md %}
+{% else %}
+{% include operator/cr-basic-example.md %}
+{% endif %}
 
 If this is your first installation you may wish to follow the [StorageOS
 Volume guide](/docs/platforms/{{ page.platform }}/firstvolume/) for an example of how

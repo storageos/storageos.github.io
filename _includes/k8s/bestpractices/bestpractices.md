@@ -22,9 +22,11 @@ _docs/reference/cluster-operator/index.md %}), this is handled for you automatic
 
 ## StorageOS API username/password
 
+{% if page.platform != "azure-aks" %}
 StorageOS uses a Kubernetes secret to define the API credentials. For standard
 installations (non CSI), the API credentials are used by {{ page.platform }} to
 communicate with StorageOS.
+{% endif %}
 
 The API grants full access to StorageOS functionality, therefore we recommend
 that the default administrative password of 'storageos' is reset to something

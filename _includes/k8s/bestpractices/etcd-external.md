@@ -9,5 +9,5 @@ and an example of how to run etcd, see the
 page.
 
 It is highly recommended to use external etcd for __cloud environments__ and
-place the etcd cluster in stable nodes. Placing the etcd in nodes that are
+place the etcd cluster on stable nodes. Placing the etcd on nodes that are
 recycled often might affect the normal operations of StorageOS.

@@ -26,7 +26,7 @@ socket, handled by the Kubelet on the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the burgeoning standard that enables storage drivers to release on their own
+CSI is the new standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
 without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.

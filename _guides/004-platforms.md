@@ -111,12 +111,12 @@ sections:
         description: Install K8S
         module: platforms/azure-aks/install
         subitems:
-          - 
-            title: 1.11
+          -
+            title: K8s 1.11
             description: Install on 1.11
             module: platforms/azure-aks/install/1.11
-          - 
-            title: 1.10 <br>
+          -
+            title: K8s 1.10 <br>
             description: Install on 1.10
             module: platforms/azure-aks/install/1.10
       -

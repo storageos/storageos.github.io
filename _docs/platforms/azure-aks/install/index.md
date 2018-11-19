@@ -7,15 +7,24 @@ module: platforms/azure-aks/install
 
 # AKS
 
-This section of documentation covers the use of the managed Kubernetes Azure
-service [AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service/).
-For the installation of StorageOS with vanilla Kubernetes in Azure VMs, visit
-the [Kubernetes standard installation]({%link
+This section of documentation covers the installation of StorageOS in the
+managed Kubernetes Azure service
+[AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service/). For the
+installation of StorageOS with vanilla Kubernetes in Azure VMs, visit the
+[Kubernetes standard installation]({%link
 _docs/platforms/kubernetes/install/index.md %}) procedure.
+
+
+## AKS and StorageOS
 
 AKS deployment of Kubernetes uses Ubuntu by default with a kernel optimized.
 All versions of Ubuntu with the kernel version post `4.15.0-1029-azure` meets
 the StorageOS prerequisites by default.
+
+## Best practices
+
+Visit the [best practices] section to install StorageOS for production
+clusters.
 
 ## Kubernetes with StorageOS
 

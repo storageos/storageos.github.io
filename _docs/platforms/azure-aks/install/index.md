@@ -7,19 +7,18 @@ module: platforms/azure-aks/install
 
 # AKS
 
-This section of documentation covers the installation of StorageOS in the
-managed Kubernetes Azure service
-[AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service/). For the
-installation of StorageOS with vanilla Kubernetes in Azure VMs, visit the
-[Kubernetes standard installation]({%link
+This section of documentation covers the use of the managed Kubernetes Azure
+service [AKS](https://azure.microsoft.com/en-gb/services/kubernetes-service/).
+For information on the installation of StorageOS with vanilla Kubernetes in Azure
+VMs, please refer to the [Kubernetes standard installation]({%link
 _docs/platforms/kubernetes/install/index.md %}) procedure.
 
 
 ## AKS and StorageOS
 
-AKS deployment of Kubernetes uses Ubuntu by default with a kernel optimized.
-All versions of Ubuntu with the kernel version post `4.15.0-1029-azure` meets
-the StorageOS prerequisites by default.
+AKS deployment of Kubernetes uses Ubuntu by default with an optimized kernel.
+All versions of Ubuntu with the kernel version > `4.15.0-1029-azure` meets
+the StorageOS prerequisites.
 
 ## Best practices
 
@@ -29,9 +28,9 @@ clusters.
 ## Kubernetes with StorageOS
 
 Kubernetes and StorageOS communicate with each other to perform actions such as
-create, delete or mount volumes. StorageOS implements communication using CSI. By
-using CSI, Kubernetes and StorageOS communicate over a Unix domain socket. That
-socket is handled by the Kubelet in the Host.
+creation, deletion or mounting of volumes. StorageOS implements communication 
+using CSI. By using CSI, Kubernetes and StorageOS communicate over a Unix domain
+socket, handled by the Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
@@ -40,12 +39,12 @@ schedule. This allows storage vendors to upgrade, update, and enhance their driv
 without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.
 
-StorageOS communicates with AKS Kubernetes Master nodes using only CSI.
+StorageOS communicates with AKS Kubernetes Master nodes using CSI only.
 
-Check out the status of the CSI release cycle in relation with Kubernetes in
+Check out the status of the CSI release cycle in relation with Kubernetes on
 the [CSI project](https://kubernetes-csi.github.io/docs/) page.
 
-StorageOS leverages labels in PVCs to apply [features]
+StorageOS leverages labels on PVCs to apply [features]
 ({%link _docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS
 doesn't have these labels set when using CSI. Therefore, default feature labels
 (`storageos.com/*`) must be defined on the Kubernetes StorageClass parameters.

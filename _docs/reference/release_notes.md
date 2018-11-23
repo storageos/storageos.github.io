@@ -46,7 +46,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - The cluster diagnostics bundle can now be downloaded via the Web UI in
   addition to uploading for StorageOS support.
 - The volume list in the Web UI now shows more detailed volume health.
-- Dataplane metrics now uses less memory.
+- Dataplane metrics now use less memory.
 
 ### Fixed
 

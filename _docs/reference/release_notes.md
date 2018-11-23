@@ -18,6 +18,47 @@ The latest tagged release is `{{ site.latest_node_version }}`, available from th
 The latest CLI release is `{{ site.latest_cli_version }}`, available from
 [Github](https://github.com/storageos/go-cli/releases)
 
+# Upgrading
+
+See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
+
+## 1.0.1
+
+This is primarily a bugfix release to better handle node recovery behaviour when
+network connectivity is re-established.  There are alsp a few minor bugfixes and
+general improvements.
+
+### Breaking changes
+
+There should not be any breaking changes since `1.0.0-rc5`.
+
+### Improvements
+
+- Upgraded UI to use [Vue CLI 3](https://cli.vuejs.org/).
+- It is no longer possible for a user to delete their own account, or for an
+  administrator to downgrade their access to a normal user.  This ensures that
+  there is always at least one cluster administrator.
+- When making volume placement decisions, the scheduler will now apply a lower
+  ranking score to nodes that have come online less than 5 minutes ago.  This
+  allows the node to perform most recovery operations prior to accepting new
+  volumes.  This will not cause volume placement to be delayed, only that
+  non-recovering nodes will be preferred.
+- The cluster diagnostics bundle can now be downloaded via the Web UI in
+  addition to uploading for StorageOS support.
+- The volume list in the Web UI now shows more detailed volume health.
+- Dataplane metrics now uses less memory.
+
+### Fixed
+
+- If a node was partitioned as a result of a network failure, it would not
+  always rejoin the cluster when the network was restored.  Nodes now
+  attempt to reconnect via gossip every 2 seconds.
+- Dataplane process metrics (e.g. memory usage) were not being exposed via
+  the Prometheus `/metrics` endpoint.
+- `storageos logs -f` CLI command was incorrectly reporting all log entries at
+  `fatal` level, overwriting the correct log level.
+- Fixed errors in Web UI when API not yet available.
+
 ## 1.0.0
 
 1.0.0 is suitable for production workloads.
@@ -31,7 +72,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - Offline nodes can now be removed from management either by using the CLI `node
   delete` command, or in the UI. This is only available when external etcd is
   used as the KV store.  See
-  [decommissioning nodes](http://docs.storageos.com/docs/operations/decommission-nodes)
+  [decommissioning nodes]({%link _docs/operations/decommission-nodes.md %})
   for more information.
 - Nodes can now be placed into "Maintenance mode" to disable volume recovery on
   the node while it is offline for maintenance. This allows nodes to be
@@ -54,7 +95,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
   the latest StorageOS version and log if a new version is available.  The UI
   will also notify administrators.  This check can be disabled by setting
   `DISABLE_TELEMETRY=true`.  For more information see
-  [telemetry](http://docs.storageos.com/docs/reference/telemetry).
+  [telemetry]({%link _docs/reference/telemetry.md %}).
 - Since data scrub operations can be intensive, we now limit to 5 concurrent
   volume scrubs.  This does not affect the number of volumes that may be deleted
   in a batch as the scrubs occur asyncronously.  Volumes will remain in

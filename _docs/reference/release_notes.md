@@ -25,7 +25,7 @@ See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 ## 1.0.1
 
 This is primarily a bugfix release to better handle node recovery behaviour when
-network connectivity is re-established.  There are alsp a few minor bugfixes and
+network connectivity is re-established.  There are also a few minor bugfixes and
 general improvements.
 
 ### Breaking changes

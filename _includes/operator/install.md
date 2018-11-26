@@ -5,10 +5,20 @@ application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluste
 developed to deploy and configure StorageOS clusters, and assist with
 maintenance operations. We recommend its use for standard installations. 
 
-The StorageOS operator can be installed with Helm.
+The operator is a Kubernetes controller that watches the `StorageOSCluster`
+CRD. Once the controller is ready, a StorageOS cluster definition can be
+created. The operator will deploy a StorageOS cluster based on the
+configuration specified in the cluster definition.
 
 ### Install
 
+The StorageOS Cluster Operator can be installed with two options.
+
+* Using Helm
+* Standard yaml manifests
+
+
+### (Option 1) Using Helm
 ```bash
 helm repo add storageos https://charts.storageos.com
 helm install storageos/storageoscluster-operator --namespace storageos-operator
@@ -24,10 +34,32 @@ helm install storageos/storageoscluster-operator --namespace storageos-operator
 > Cluster Operator. You can add the service account to the cluster-admin role
 > for simplicity or create a role that matches the cluster-operator requirements.
 
-The operator is a Kubernetes controller that watches the `StorageOSCluster`
-CRD. Once the controller is ready, a StorageOS cluster definition can be
-created. The operator will deploy a StorageOS cluster based on the
-configuration specified in the cluster definition.
+
+### (Option 2) Standard yaml manifests
+
+{% if page.platform == "openshift" %}
+```bash
+git clone https://github.com/storageos/deploy.git storageos
+cd storageos/openshift/deploy-storageos/cluster-operator
+./deploy-operator.sh
+```
+{% else %}
+```bash
+git clone https://github.com/storageos/deploy.git storageos
+cd storageos/k8s/deploy-storageos/cluster-operator
+./deploy-operator.sh
+```
+{% endif %}
+
+
+### Verify the Cluster Operator Pod
+```bash
+[root@master03]# {{ page.cmd }} -n storageos-operator get pod
+NAME                                         READY     STATUS    RESTARTS   AGE
+storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
+```
+
+> The READY 1/1 indicates that `stos` resources can be created.
 
 ### Create a Secret
 

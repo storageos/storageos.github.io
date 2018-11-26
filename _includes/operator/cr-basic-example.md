@@ -1,4 +1,4 @@
-This is a Cluster Definition example. 
+This is a Cluster Definition example.
 
 ```bash
 {{ page.cmd }} create -f - <<END
@@ -7,7 +7,7 @@ kind: "StorageOSCluster"
 metadata:
   name: "example-storageos"
 spec:
-  secretRefName: "storageos-api" # Reference from the Secret created in the previous step
+  secretRefName: "storageos-api" # Reference the Secret created in the previous step
   secretRefNamespace: "default"  # Namespace of the Secret
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version

@@ -25,9 +25,13 @@ cd storageos/k8s/deploy-storageos
 {% endif %}
 
 You can see various installation examples are available such as `standard`, 
-`CSI (Container StorageInterface)` or `etcd-as-svc`. All of them have a
+`CSI (Container Storage Interface)` or `etcd-as-svc`. All of them have a
 `deploy-storageos.sh` that serves as a wrapper to trigger the manifest
 creation. Follow the according `README.md` for each one of them for more
-details. For advanced installations, it is recommended to use `etcd-as-svc`
-that will guide the user to deploy StorageOS using a etcd cluster deployed by
-the official Kubernetes [etcd operator](https://github.com/coreos/etcd-operator).
+details.
+
+For advanced installations, it is recommended to refer to `etcd-as-svc` that
+will guide the user to deploy an etcd cluster deployed by the official
+Kubernetes [etcd operator](https://github.com/coreos/etcd-operator). Once an
+external etcd cluster has been created, then use the StorageOS cluster operator
+to finish the installation.

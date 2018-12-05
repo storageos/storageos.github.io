@@ -46,5 +46,15 @@ you are using the discovery service, it is necessary to ensure that the
 DaemonSet won't allocate Pods on the masters. This can be achieved with taints,
 node selectors or labels.
 
-An [example of deployment](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/labeled-deployment)
-is available to see how to run StorageOS with node labels.
+For installations with the StorageOS operator you can specify which nodes to
+deploy StorageOS on using {% if page.platform == "OpenShift" %}[node
+labels.](https://github.com/storageos/deploy/tree/master/openshift/deploy-storageos/cluster-operator#select-nodes-where-storageos-will-deploy)
+{% else %}[node
+labels.](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/cluster-operator#select-nodes-where-storageos-will-deploy)
+{% endif %}
+
+{% if page.platform == "Kubernetes" %} For more advanced installations using
+compute-only and storage nodes our [example
+deployment](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/labeled-deployment)
+is available as an example of how to run StorageOS with node labels. {% else
+%}{% endif %}

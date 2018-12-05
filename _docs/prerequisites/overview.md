@@ -7,7 +7,9 @@ module: prerequisites/overview
 
 # Prerequisites
 
-Minimum requirements:
+## Minimum requirements:
+
+One machine with the following:
 
 1. Minimum one core with 2GB RAM.
 1. Linux with a 64-bit architecture.
@@ -19,7 +21,8 @@ StorageOS nodes to contact each other.
 1. A mechanism for [device presentation]({% link
    _docs/prerequisites/systemconfiguration.md %})
 
-Recommended:
+
+## Recommended:
 
 1. At least three nodes for replication and high availability.
 1. [Install the storageos CLI]({% link _docs/reference/cli/index.md %}).

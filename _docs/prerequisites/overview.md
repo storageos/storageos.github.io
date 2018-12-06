@@ -29,3 +29,6 @@ StorageOS nodes to contact each other.
 1. If using Helm, make sure the tiller ServiceAccount has enough privileges to
    create resources such as Namespaces, ClusterRoles, etc. For instance, following this [installation
    procedure](https://github.com/helm/helm/blob/master/docs/rbac.md#example-service-account-with-cluster-admin-role).
+1. System clocks synchronized using NTP or similar methods. While our
+   distributed consensus algorithm does not require synchronised clocks, it
+   does help to more easily correlate logs across multiple nodes.

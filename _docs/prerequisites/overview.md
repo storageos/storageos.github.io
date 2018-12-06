@@ -20,6 +20,7 @@ discovery]({% link _docs/prerequisites/clusterdiscovery.md %}), to allow
 StorageOS nodes to contact each other.
 1. A mechanism for [device presentation]({% link
    _docs/prerequisites/systemconfiguration.md %})
+1. Accurately synchronized clocks (using NTP or similar tools)
 
 
 ## Recommended:

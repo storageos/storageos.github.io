@@ -29,10 +29,9 @@ improvements, many to help with running on low-memory or heavily loaded servers.
 
 ### Improvements
 
-- Reduced the default in-memory cache size to 1MB from 256MB.  This default was
-  too high for low-memory systems and will be automatically increased on systems
-  with more memory.  The cache size will never be set to more than 1/3rd of free
-  memory.
+- Cache allocation has been adjusted for lower memory systems.  Allocation sizes
+  are described in [architecture]({%link _docs/reference/telemetry.md %}).
+  The cache size will never be set to more than 1/3rd of free memory.
 - Increased the maximum number of replicas from 4 to 5.
 - Increased the timeout for the device presentation shutdown to 9 seconds before
   sending a `SIGKILL`.

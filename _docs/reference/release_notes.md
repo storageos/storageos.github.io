@@ -30,7 +30,7 @@ improvements, many to help with running on low-memory or heavily loaded servers.
 ### Improvements
 
 - Cache allocation has been adjusted for lower memory systems.  Allocation sizes
-  are described in [architecture]({%link _docs/reference/telemetry.md %}).
+  are described in [architecture]({%link _docs/concepts/architecture.md %}).
   The cache size will never be set to more than 1/3rd of free memory.
 - Increased the maximum number of replicas from 4 to 5.
 - Increased the timeout for the device presentation shutdown to 9 seconds before
@@ -68,7 +68,7 @@ improvements, many to help with running on low-memory or heavily loaded servers.
 
 - On Azure AKS, StorageOS could fail to restart.  This was caused by an error in
   the system device capabilities verification incorrectly determining that the
-  node didn't meet pre-requisites.
+  node didn't meet prerequisites.
 - During startup, it was possible to retrieve an uninitialized value from a
   dataplane status endpoint, which caused startup to fail.  This was only seen
   on heavily-loaded systems.

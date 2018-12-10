@@ -22,6 +22,65 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.0.2 - Released 10/12/2018
+
+1.0.2 includes a fix required for Azure AKS and several other fixes and
+improvements, many to help with running on low-memory or heavily loaded servers.
+
+### Improvements
+
+- Cache allocation has been adjusted for lower memory systems.  Allocation sizes
+  are described in [architecture]({%link _docs/concepts/architecture.md %}).
+  The cache size will never be set to more than 1/3rd of free memory.
+- Increased the maximum number of replicas from 4 to 5.
+- Increased the timeout for the device presentation shutdown to 9 seconds before
+  sending a `SIGKILL`.
+- Increased the wait timeout for dataplane startup from 10 to 30 seconds.  
+- Added colour-coded health labels in the UI.
+- Rules can now be enabled and disabled in the UI.
+- Improved input validation in the UI.
+- IO error handling log messages are now more informative.
+
+  Non-fatal (re-tryable) errors:
+
+  - `Can't resolve replica inode configuration on local director`
+  - `Can't resolve master inode configuration on the remote director`
+  - `Can't resolve replica inode configuration on the remote director`
+  - `The client does not have the appropriate configuration`
+  - `No connection could be found`
+
+  Fatal errors:
+
+  - `Generic fatal error (use this if there is no need to be specific)`
+  - `Can't resolve master inode configuration on the local director`
+  - `ENOSPC error`
+  - `Blobs corrupt/missing/not-sane etc`
+  - `A shm-pipe operation fatally failed`
+  - `Read only volume`
+  - `Sentinel value`
+
+- Corrected confusing log message: `poll() returned error on network socket: Success`.
+  We now log: `connection closed`.
+- Better logging when testing system device capabilities.
+- Better logging for dataplane status errors.
+
+### Fixed
+
+- On Azure AKS, StorageOS could fail to restart.  This was caused by an error in
+  the system device capabilities verification incorrectly determining that the
+  node didn't meet prerequisites.
+- During startup, it was possible to retrieve an uninitialized value from a
+  dataplane status endpoint, which caused startup to fail.  This was only seen
+  on heavily-loaded systems.
+- Potential deadlock in dynamic cache resize.  This is not known to have
+  occured.
+- During a scheduler failover, it was possible to miss a node recovery gossip
+  message and the node would never be marked as recovered.
+- It was possible for a volume to get a volume stuck in `syncing` state if a KV
+  watcher was interrupted.  Now, full state from the KV store is re-evaluated
+  every 10 seconds.
+- When creating a volume using CSI, the pool field was ignored.
+
 ## 1.0.1 - Released 23/11/2018
 
 This is primarily a bugfix release to better handle node recovery behaviour when

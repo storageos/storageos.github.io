@@ -95,6 +95,7 @@ unique, strong password.
 
 ```bash
 oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos-daemonset-sa
+oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos-statefulset-sa
 ```
 {% endif %}
 

@@ -76,7 +76,7 @@ spec:
         - "true"
 
 # OpenShift uses "node-role.kubernetes.io/compute=true"
-# Rancher uses "node-role.kubernetes.io/worker="
+# Rancher uses "node-role.kubernetes.io/worker=true"
 # Kops uses "node-role.kubernetes.io/node="
 ```
 

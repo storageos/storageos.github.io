@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - rancher troubleshoot
 anchor: platforms
-cmd: oc
+cmd: kubectl
 platform: Rancher
 module: platforms/rancher/troubleshoot/volumes
 ---

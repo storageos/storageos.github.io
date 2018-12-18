@@ -1,3 +1,5 @@
+- [StorageOS resources not created](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#storageos-resources-not-created)
+- [0/0 Pods in DaemonSet](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#00-pods-in-daemonset)
 - [Node name different from Hostname](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#node-name-different-from-hostname)
 - [One node clusters](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#one-node-clusters)
 - [Peer discovery - Networking](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#peer-discovery---networking)

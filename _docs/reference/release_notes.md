@@ -22,7 +22,66 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
-## 1.0.1
+## 1.0.2 - Released 10/12/2018
+
+1.0.2 includes a fix required for Azure AKS and several other fixes and
+improvements, many to help with running on low-memory or heavily loaded servers.
+
+### Improvements
+
+- Cache allocation has been adjusted for lower memory systems.  Allocation sizes
+  are described in [architecture]({%link _docs/concepts/architecture.md %}).
+  The cache size will never be set to more than 1/3rd of free memory.
+- Increased the maximum number of replicas from 4 to 5.
+- Increased the timeout for the device presentation shutdown to 9 seconds before
+  sending a `SIGKILL`.
+- Increased the wait timeout for dataplane startup from 10 to 30 seconds.  
+- Added colour-coded health labels in the UI.
+- Rules can now be enabled and disabled in the UI.
+- Improved input validation in the UI.
+- IO error handling log messages are now more informative.
+
+  Non-fatal (re-tryable) errors:
+
+  - `Can't resolve replica inode configuration on local director`
+  - `Can't resolve master inode configuration on the remote director`
+  - `Can't resolve replica inode configuration on the remote director`
+  - `The client does not have the appropriate configuration`
+  - `No connection could be found`
+
+  Fatal errors:
+
+  - `Generic fatal error (use this if there is no need to be specific)`
+  - `Can't resolve master inode configuration on the local director`
+  - `ENOSPC error`
+  - `Blobs corrupt/missing/not-sane etc`
+  - `A shm-pipe operation fatally failed`
+  - `Read only volume`
+  - `Sentinel value`
+
+- Corrected confusing log message: `poll() returned error on network socket: Success`.
+  We now log: `connection closed`.
+- Better logging when testing system device capabilities.
+- Better logging for dataplane status errors.
+
+### Fixed
+
+- On Azure AKS, StorageOS could fail to restart.  This was caused by an error in
+  the system device capabilities verification incorrectly determining that the
+  node didn't meet prerequisites.
+- During startup, it was possible to retrieve an uninitialized value from a
+  dataplane status endpoint, which caused startup to fail.  This was only seen
+  on heavily-loaded systems.
+- Potential deadlock in dynamic cache resize.  This is not known to have
+  occured.
+- During a scheduler failover, it was possible to miss a node recovery gossip
+  message and the node would never be marked as recovered.
+- It was possible for a volume to get a volume stuck in `syncing` state if a KV
+  watcher was interrupted.  Now, full state from the KV store is re-evaluated
+  every 10 seconds.
+- When creating a volume using CSI, the pool field was ignored.
+
+## 1.0.1 - Released 23/11/2018
 
 This is primarily a bugfix release to better handle node recovery behaviour when
 network connectivity is re-established.  There are also a few minor bugfixes and
@@ -59,7 +118,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
   `fatal` level, overwriting the correct log level.
 - Fixed errors in Web UI when API not yet available.
 
-## 1.0.0
+## 1.0.0 - Released 15/11/2018
 
 1.0.0 is suitable for production workloads.
 
@@ -173,7 +232,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
 - If there was an error deleting a rule, the API returned an Internal Server
   Error rather than a more helpful contextual error.
 
-## 1.0.0-rc5
+## 1.0.0-rc5 - Released 01/10/2018
 
 1.0.0-rc5 is a major update, with multiple bug fixes, performance and usability
 improvements as we get closer to removing the RC label.
@@ -354,7 +413,7 @@ improvements as we get closer to removing the RC label.
   stuck in "syncing" state.
 - No longer logs an error when deleting a volume with no data.
 
-## 1.0.0-rc4
+## 1.0.0-rc4 - Released 18/07/2018
 
 Multiple bug fixes and improvements, and improved shutdown handling.
 
@@ -391,7 +450,7 @@ Multiple bug fixes and improvements, and improved shutdown handling.
   provisioned: 1 GB, licenced: 1000 GB".
 
 
-## 1.0.0-rc3
+## 1.0.0-rc3 - Released 02/07/2018
 
 Multiple improvements based on customer feedback.
 
@@ -434,7 +493,7 @@ Multiple improvements based on customer feedback.
   than allocated.
 
 
-## 1.0.0-rc2
+## 1.0.0-rc2 - Released 31/05/2018
 
 Single fix to address provisioning issue in Amazon AWS.
 
@@ -443,7 +502,7 @@ Single fix to address provisioning issue in Amazon AWS.
 - Increased time to wait for device to appear, causing volume creation to fail.
   This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.
 
-## 1.0.0-rc1
+## 1.0.0-rc1 - Released 25/05/2018
 
 The 1.0 release series is focussed on supporting enterprise workloads, with
 numerous new features and improvements to performance, stability and
@@ -542,7 +601,7 @@ Due to the nature the KV Store change there is no upgrade method from 0.7.x to
 new parameters (`CLUSTER_ID` and `INITIAL_CLUSTER`).  Note that `CLUSTER_ID` and
 `INITIAL_CLUSTER` have been replaced by `JOIN` in 0.9.x onwards.
 
-## 0.10.0
+## 0.10.0 - Released 28/02/2018
 
 The 0.10.0 version focusses on stability and usability as we get closer to GA,
 but also adds a number of new features (UI, Prometheus metrics, log streaming).
@@ -734,7 +793,7 @@ scenarios.  Full documentation to be added to the docs site soon.
 - Do not reset node health if internal healthcheck returns invalid response.
   Instead, retry and wait for valid response message.
 
-## 0.9.0
+## 0.9.0 - Released 17/11/2017
 
 This release focusses on usability and backend improvements.  It builds on the
 embedded KV store from 0.8.x and improves the bootstrap process.
@@ -833,7 +892,7 @@ releases will strive to preserve compatibility between versions.
 
 - NBD device numbers now start at 1 instead of 0 to defend against default values
 
-## 0.8.0
+## 0.8.0 - Released 29/08/2017
 
 This is our first feature release since launching our public beta, and it
 focusses on feedback from users.  As always, please let us know how you are using

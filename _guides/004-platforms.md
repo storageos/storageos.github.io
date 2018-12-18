@@ -69,7 +69,15 @@ sections:
         module: platforms/openshift/install
         subitems:
           -
-            title: 3.9+
+            title: 3.11
+            description: Install on 3.11
+            module: platforms/openshift/install/3.11
+          -
+            title: "3.10"
+            description: Install on 3.10
+            module: platforms/openshift/install/3.10
+          -
+            title: 3.9
             description: Install on 3.9+
             module: platforms/openshift/install/3.9
           -

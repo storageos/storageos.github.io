@@ -127,6 +127,40 @@ sections:
         title: Best Practices
         description: Kubernetes best practices
         module: platforms/azure-aks/bestpractices
+  - title: Rancher
+    description: Rancher
+    module: platforms/rancher
+    items:
+      -
+        title: Install
+        description: Install on rancher
+        module: platforms/rancher/install
+        subitems:
+          -
+            title: Kubernetes
+            description: Install on Rancher
+            module: platforms/rancher/install/kubernetes
+      -
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/rancher/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/rancher/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/rancher/troubleshoot/volumes
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/rancher/firstvolume
+      -
+        title: Best Practices
+        description: rancher best practices
+        module: platforms/rancher/bestpractices
   - title: Docker
     description: Docker
     module: platforms/docker

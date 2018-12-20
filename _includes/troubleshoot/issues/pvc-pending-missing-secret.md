@@ -27,7 +27,7 @@ incorrect or missing, the connections won't be established. It is common to see
 that the Secret has been deployed in a different namespace where the
 StorageClass expects it or that is has been deployed with a different name.
 
-### Doublecheck:
+### Assert:
 
 1. Check the StorageClass parameters to know where the Secret is expected to be found. 
 

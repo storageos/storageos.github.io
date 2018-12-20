@@ -28,7 +28,7 @@ In this case, the Event message indicates that StorageOS API is not responding,
 implying that StorageOS is not running. For {{ page.platform }} to define
 StorageOS pods ready, the health check must pass.
 
-### Doublecheck:
+### Assert:
 
 Check the status of StorageOS pods.
 

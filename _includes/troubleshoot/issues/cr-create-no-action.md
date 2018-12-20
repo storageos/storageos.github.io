@@ -15,7 +15,7 @@ Most likely you forgot to create the StorageOS secret before creating the
 CustomResource.
 
 
-### Doublecheck
+### Assert
 Check the events in the NameSpace you created the CR.
 
 ```bash

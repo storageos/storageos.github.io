@@ -13,7 +13,7 @@ storageos-daemonset   0         0         0         0            0         <none
 This indicates that no node in the cluster was selected by the Operator to
 deploy StorageOS.
 
-### Doublecheck
+### Assert
 Check the NodeSelector section of the CustomResource.
 
 ```bash

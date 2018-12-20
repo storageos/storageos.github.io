@@ -18,7 +18,7 @@ StorageOS cannot start.  The StorageOS DaemonSet enables the required kernel
 modules from the host system. If you are seeing these errors it is because that
 container couldn't load the modules.
 
-### Doublecheck
+### Assert
 Check the logs of the init container.
 
 ```bash

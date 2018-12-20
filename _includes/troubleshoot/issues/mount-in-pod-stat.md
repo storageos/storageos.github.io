@@ -56,7 +56,7 @@ spec:
 
 > Applies only if Option 1 is configured properly.
 
-### Doublecheck:
+### Assert:
 SSH into one of the nodes and check if
 `/var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices` is empty. If
 so, exec into any StorageOS pod and check the same directory.
@@ -85,7 +85,7 @@ API" section of your cluster in Rancher. You need to edit the section
 
 Mount propagation is not enabled.
 
-### Doublecheck:
+### Assert:
 SSH into one of the nodes and check if `/var/lib/storageos/volumes` is
 empty. If so, exec into any StorageOS pod and check the same directory.
 

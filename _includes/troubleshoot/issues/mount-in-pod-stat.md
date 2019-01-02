@@ -26,8 +26,8 @@ There are two main reasons this issue may arise:
 
 (Option 1) Misconfiguration of the DeviceDir/SharedDir
 
-Rancher deploys the kubelet as a container, because of that, the device files
-that StorageOS creates to mount into the containers need to be visible by the
+Rancher deploys the kubelet as a container, because of this, the device files
+that StorageOS creates to mount into the containers need to be visible to the
 kubelet. StorageOS can be configured to share the device directory.
 
 ### Assert:
@@ -57,7 +57,6 @@ spec:
 > Applies only if Option 1 is configured properly.
 
 ### Assert:
-
 SSH into one of the nodes and check if
 `/var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices` is empty. If
 so, exec into any StorageOS pod and check the same directory.
@@ -77,8 +76,8 @@ disabled mount propagation is the cause.
 
 ### Solution:
 
-Older versions of Kubernetes require to enable mount propagation in the "View
-in API" section of your cluster in Rancher. You need to edit the section
+Older versions of Kubernetes mount propagation to be enabled in the "View in
+API" section of your cluster in Rancher. You need to edit the section
 "rancherKubernetesEngineConfig" to enable the Kubelet feature gate.
 
 

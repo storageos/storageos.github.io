@@ -21,7 +21,7 @@ This {{ page.platform }} cluster has security context constraint policies
 enabled that forbid any pod, without the explicitly set policy for the service
 account, to be allocated.
 
-### Doublecheck:
+### Assert:
 
 Check if the StorageOS ServiceAccount can create pods with enough permissions 
 ```bash

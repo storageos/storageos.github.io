@@ -37,7 +37,7 @@ Query the nodes based on that NodeSelectorSpec.
 # Empty output --> No nodes match
 ```
 
-> Where the CR name is "storageos"
+> Where the CustomResource name is "storageos"
 
 Because the NodeSelector Expression doesn't match with the node label,
 StorageOS doesn't have candidate nodes where to locate the Pods started by the

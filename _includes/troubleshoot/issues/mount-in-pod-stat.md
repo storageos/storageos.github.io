@@ -18,7 +18,7 @@ Events:
 
 {% if page.platform == "Rancher" %}
 
-There are two main possible reasons for this issue to arise.
+There are two main reasons this issue may arise:
 - The StorageOS `DEVICE_DIR` location is wrongly configured
 - Mount Propagation is not enabled
 
@@ -30,7 +30,7 @@ Rancher deploys the kubelet as a container, because of that, the device files
 that StorageOS creates to mount into the containers need to be visible by the
 kubelet. StorageOS can be configured to share the device directory.
 
-### Doubelcheck:
+### Assert:
 
 ```bash
 root@node1:~# {{ page.cmd }} -n default describe stos | grep "Shared Dir"
@@ -56,7 +56,8 @@ spec:
 
 > Applies only if Option 1 is configured properly.
 
-### Doublecheck:
+### Assert:
+
 SSH into one of the nodes and check if
 `/var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices` is empty. If
 so, exec into any StorageOS pod and check the same directory.
@@ -85,7 +86,7 @@ in API" section of your cluster in Rancher. You need to edit the section
 
 Mount propagation is not enabled.
 
-### Doublecheck:
+### Assert:
 SSH into one of the nodes and check if `/var/lib/storageos/volumes` is
 empty. If so, exec into any StorageOS pod and check the same directory.
 

@@ -12,7 +12,7 @@ time="2018-09-24T14:34:40Z" level=error msg="failed to start dataplane services"
 This indicates that one or more kernel modules required for StorageOS are
 not loaded.
 
-### Doublecheck
+### Assert
 The following kernel modules must be enabled in the host.
 ```bash
 lsmod  | egrep "^tcm_loop|^target_core_mod|^target_core_file|^configfs"

@@ -15,8 +15,8 @@ Most likely you forgot to create the StorageOS secret before creating the
 CustomResource.
 
 
-### Doublecheck
-Check the events in the NameSpace you created the CR.
+### Assert
+Check the events in the NameSpace you created the CustomResource.
 
 ```bash
 {{ page.cmd }} -n default get events

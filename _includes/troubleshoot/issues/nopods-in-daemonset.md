@@ -13,7 +13,7 @@ storageos-daemonset   0         0         0         0            0         <none
 This indicates that no node in the cluster was selected by the Operator to
 deploy StorageOS.
 
-### Doublecheck
+### Assert
 Check the NodeSelector section of the CustomResource.
 
 ```bash
@@ -28,6 +28,13 @@ Match Expressions:
   Values:
     wrongValue <-- No node in the cluster has this label
 ...
+```
+
+Query the nodes based on that NodeSelectorSpec.
+
+```bash
+{{ page.cmd }} get nodes -l node-role.kubernetes.io/worker=wrongValue
+# Empty output --> No nodes match
 ```
 
 > Where the CR name is "storageos"

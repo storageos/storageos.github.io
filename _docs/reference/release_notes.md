@@ -22,6 +22,39 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.0 - Released 04/01/2019
+
+1.1.0 adds support for [CSI 1.0](https://github.com/container-storage-interface/spec)
+and includes some minor bug fixes.
+
+### Breaking changes
+
+There should not be any breaking changes since `1.0.0-rc5`.
+
+### New
+
+- CSI 1.0 (available in Kubernetes 1.13 onwards) is now fully supported.
+  Backwards compatibility with earlier versions of CSI and Kubernetes has been
+  maintained and is the default.  CSI 1.0 support is automatically enabled when
+  using the StorageOS [cluster-operator](https://github.com/storageos/cluster-operator)
+  on Kubernetes 1.13 and above.  If installing manually, set the `CSI_VERSION`
+  environment variable to `v1`.
+
+### Improvements
+
+- In the UI, the namespaces in the dropdown list are now sorted in alphabetical
+  order.
+- Removed spammy log messages for IO size.
+- When creating a volume using CSI, the namespace can be set by adding a
+  `volumenamespace` label to the PVC.
+
+### Fixed
+
+- Cloud provider detection could cause a panic in non-AWS environments that
+  respond on the same metadata ip address that AWS uses.  Fixed in
+  [aws-sdk-go](https://github.com/aws/aws-sdk-go/pull/2380).
+- Refreshing the UI caused the selected namespace to be reset.
+
 ## 1.0.2 - Released 10/12/2018
 
 1.0.2 includes a fix required for Azure AKS and several other fixes and

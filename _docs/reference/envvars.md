@@ -30,3 +30,4 @@ variables. These can be injected in via any of the usual mechanisms such as
 * `LOG_FORMAT`: Logging output format, one of `text` or `json`.  Defaults to `json`.
 * `DISABLE_TELEMETRY`: To disable anonymous usage reporting across the cluster, set to `true`. Defaults to `false`. To help improve the product, data such as API usage and StorageOS configuration information is collected.
 * `DISABLE_ERROR_REPORTING`: To disable error reporting across the cluster, set to `true`. Defaults to `false`. Errors are reported to help identify and resolve potential issues that may occur.
+* `CSI_VERSION`: Added in `1.1.0` to define what version of CSI to use. Can be set to `v0` or `v1`, defaults to `v0`

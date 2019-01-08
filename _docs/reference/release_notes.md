@@ -46,7 +46,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
   order.
 - Removed spammy log messages for IO size.
 - When creating a volume using CSI, the namespace can be set by adding a
-  `volumenamespace` label to the PVC.
+  `volumenamespace` label to the StorageClass.
 
 ### Fixed
 

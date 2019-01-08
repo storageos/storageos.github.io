@@ -14,7 +14,11 @@ sections:
         description: Install K8S
         module: platforms/kubernetes/install
         subitems:
-          - 
+          -
+            title: 1.13
+            description: Install on 1.13
+            module: platforms/kubernetes/install/1.13
+          -
             title: 1.12
             description: Install on 1.12
             module: platforms/kubernetes/install/1.12

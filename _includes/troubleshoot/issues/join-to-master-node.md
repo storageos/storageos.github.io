@@ -28,7 +28,7 @@ the `node-role.kubernetes.io/master:NoSchedule` taint in typical installations.
 In such cases the `JOIN` variable must not contain master nodes or the
 StorageOS cluster will remain unable to start.
 
-### Doublecheck:
+### Assert:
 
 Check that the first node of the `JOIN` variable started properly.
 

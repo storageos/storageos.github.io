@@ -18,7 +18,7 @@ existing ones for the list of members. This error indicates that the node can't
 connect to any of the nodes in the known list. The known list is defined in the
 `JOIN` variable.
 
-### Doublecheck:
+### Assert:
 
 It is likely that ports are block by a firewall.
 

@@ -24,7 +24,7 @@ installation.
 
 ## Distribution Specifics
 
-**RHEL 7.5, CentOS 7**, **Debian 9** and **Ubuntu Azure** are fully supported.
+**RHEL 7.5**, **CentOS 7**, **Debian 9**, **Ubuntu Azure** and **RancherOS** are fully supported.
 
 **Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
 

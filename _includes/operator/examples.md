@@ -20,6 +20,13 @@ data:
 END
 ```
 
+This example contains a default password, for production installations, use a
+unique, strong password.
+
+> Make sure that the encoding of the credentials doesn't have special characters such as '\n'.
+
+> You can define a base64 value by `echo -n "mystring" | base64`.
+
 
 Create a `cluster-config.yaml` according to your needs from the examples below.
 

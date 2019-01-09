@@ -15,15 +15,83 @@ Events:
 ```
 
 ### Reason:
+
+{% if page.platform == "Rancher" %}
+
+There are two main reasons this issue may arise:
+- The StorageOS `DEVICE_DIR` location is wrongly configured
+- Mount Propagation is not enabled
+
+
+
+(Option 1) Misconfiguration of the DeviceDir/SharedDir
+
+Rancher deploys the kubelet as a container, because of this, the device files
+that StorageOS creates to mount into the containers need to be visible to the
+kubelet. StorageOS can be configured to share the device directory.
+
+### Assert:
+
+```bash
+root@node1:~# {{ page.cmd }} -n default describe stos | grep "Shared Dir"
+  Shared Dir:      # <-- Shouldn't be blank
+```
+
+### Solution:
+
+The Cluster Operator Custom Definition should specify the SharedDir option as follows.
+
+```bash
+spec:
+  sharedDir: '/var/lib/kubelet/volumeplugins/kubernetes.io~storageos' # Needed when Kubelet as a container
+  ...
+```
+
+> See example for rancher
+[CustomResource](https://github.com/storageos/deploy/blob/master/k8s/deploy-storageos/cluster-operator/examples/rancher/rancher-embedded-etcd.yaml).
+
+&nbsp; <!-- this is a blank line -->
+
+(Option 2) Mount propagation is not enabled.
+
+> Applies only if Option 1 is configured properly.
+
+### Assert:
+SSH into one of the nodes and check if
+`/var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices` is empty. If
+so, exec into any StorageOS pod and check the same directory.
+
+```bash
+root@node1:~# ls /var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices
+root@node1:~#      # <-- Shouldn't be blank
+root@node1:~# {{ page.cmd }} exec $POD_ID -c storageos -- ls -l /var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices
+bst-196004
+d529b340-0189-15c7-f8f3-33bfc4cf03fa
+ff537c5b-e295-e518-a340-0b6308b69f74
+```
+
+If the directory inside the container and the device files are visible,
+disabled mount propagation is the cause.
+
+
+### Solution:
+
+Older versions of Kubernetes mount propagation to be enabled in the "View in
+API" section of your cluster in Rancher. You need to edit the section
+"rancherKubernetesEngineConfig" to enable the Kubelet feature gate.
+
+
+{% else %}
+
 Mount propagation is not enabled.
 
-### Doublecheck:
-SSH into the one of the nodes and check if `/var/lib/storageos/volumes` is
+### Assert:
+SSH into one of the nodes and check if `/var/lib/storageos/volumes` is
 empty. If so, exec into any StorageOS pod and check the same directory.
 
 ```bash
 root@node1:~# ls /var/lib/storageos/volumes/
-root@node1:~# 
+root@node1:~#     # <-- Shouldn't be blank
 root@node1:~# {{ page.cmd }} exec $POD_ID -c storageos -- ls -l /var/lib/storageos/volumes
 bst-196004
 d529b340-0189-15c7-f8f3-33bfc4cf03fa
@@ -38,3 +106,5 @@ disabled mount propagation is the cause.
 
 Enable mount propagation both for {{ page.platform }} and docker, following the
 [prerequisites page]({%link _docs/prerequisites/mountpropagation.md %})
+
+{% endif %}

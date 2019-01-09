@@ -4,7 +4,10 @@ This documentation is aimed at architects, engineers, developers, sysadmins and
 anybody who wants to understand how to use StorageOS. It assumes some knowledge
 of Docker containers and container orchestrators.
 
-# Sections
+## Current Version
+
+The current StorageOS version is {{ site.latest_node_version }}
+## Sections
 
 Our documentation is arranged into sections, accessible from the navigation bar
 on the left.

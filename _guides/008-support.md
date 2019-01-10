@@ -7,5 +7,5 @@ sections:
   -
    title: Contact Us
    description: Getting StorageOS support
-   module: support/contacts
+   module: support/contactus
 ---

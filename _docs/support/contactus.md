@@ -53,8 +53,9 @@ StorageOS has a cluster diagnostic function that aggregates cluster information.
 For each node the following is collected:
 
 - StorageOS logs
-- output of `lshw`
-- output of `storageos inspect node`
+- Output of `storageos inspect node`
+- Output of `lshw`
+- Output of `dmesg`
 
 StorageOS engineers might ask for a report to be generated during
 support cases.

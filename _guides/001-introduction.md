@@ -15,7 +15,7 @@ sections:
   -
     title: Support
     description: StorageOS Support
-    module: support/index
+    module: support/contactus
   -
     title: Supported Platforms
     description: Supported Platforms and Limitations

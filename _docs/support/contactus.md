@@ -13,9 +13,8 @@ channel.](https://slack.storageos.com) <script async defer
 src="http://slack.storageos.com/slackin.js"></script>
 
 You can file a support ticket via email to [
-support@storageos.com](mailto:support@storageos.com), or file bugs against
-specific components on the [StorageOS Github
-repos](https://github.com/storageos).
+support@storageos.com](mailto:support@storageos.com), or use our [Help Desk
+portal](https://support.storageos.com)
 
 To help us provide effective support, we request that you provide as much
 information as possible when contacting us. The list below is a suggested

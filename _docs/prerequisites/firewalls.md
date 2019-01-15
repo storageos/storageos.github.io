@@ -72,6 +72,6 @@ iptables -I OUTPUT -o lo -m comment --comment 'Permit loopback traffic' -j ACCEP
 iptables -I OUTPUT -d 0.0.0.0/0 -m comment --comment 'Permit outbound traffic' -j ACCEPT
 ```
 
-Please ensure that the iptables rules you have added above come before any DROP
-rules or else the rules will not work.
+Please ensure that the iptables rules you have added above come before any
+default DROP or REJECT rules.
 

@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Support
 anchor: introduction
 module: introduction/support
+redirect_to: /support/contactus
 ---
 
 # Support

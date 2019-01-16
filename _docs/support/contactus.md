@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Support
 anchor: support
 module: support/contact
+redirect_from: /docs/introduction/support
 ---
 
 # Support
@@ -23,7 +24,7 @@ entries, that may help us debug your issue.
 
 Information about the cluster can be automatically sent to StorageOS engineers
 as mentioned in the section [StorageOS Cluster
-Report](/docs/introduction/support#storageos-cluster-report).
+Report](/docs/support/contactus#storageos-cluster-report).
 
 ## Platform
 - Cloud provider/Bare metal

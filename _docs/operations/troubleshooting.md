@@ -20,5 +20,5 @@ We provide platform specific troubleshooting information in the following sectio
 # Getting Help
 
 If our troubleshooting guides do not help resolve your issue, please see our
-[support section]({% link _docs/introduction/support.md %}) for details on how
+[support section]({% link _docs/support/contactus.md %}) for details on how
 to get in touch with us.

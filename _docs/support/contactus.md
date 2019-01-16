@@ -1,8 +1,9 @@
 ---
 layout: guide
 title: StorageOS Docs - Support
-anchor: introduction
-module: introduction/support
+anchor: support
+module: support/contact
+redirect_from: /docs/introduction/support
 ---
 
 # Support
@@ -13,9 +14,8 @@ channel.](https://slack.storageos.com) <script async defer
 src="http://slack.storageos.com/slackin.js"></script>
 
 You can file a support ticket via email to [
-support@storageos.com](mailto:support@storageos.com), or file bugs against
-specific components on the [StorageOS Github
-repos](https://github.com/storageos).
+support@storageos.com](mailto:support@storageos.com), or use our [Help Desk
+portal](https://support.storageos.com)
 
 To help us provide effective support, we request that you provide as much
 information as possible when contacting us. The list below is a suggested
@@ -24,7 +24,7 @@ entries, that may help us debug your issue.
 
 Information about the cluster can be automatically sent to StorageOS engineers
 as mentioned in the section [StorageOS Cluster
-Report](/docs/introduction/support#storageos-cluster-report).
+Report](/docs/support/contactus#storageos-cluster-report).
 
 ## Platform
 - Cloud provider/Bare metal
@@ -53,8 +53,9 @@ StorageOS has a cluster diagnostic function that aggregates cluster information.
 For each node the following is collected:
 
 - StorageOS logs
-- output of `lshw`
 - output of `storageos inspect node`
+- output of `lshw`
+- output of `dmesg`
 
 StorageOS engineers might ask for a report to be generated during
 support cases.

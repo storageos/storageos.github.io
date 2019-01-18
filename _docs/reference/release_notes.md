@@ -52,7 +52,7 @@ There should not be any breaking changes since `1.0.0-rc5`.
   we now verify by sending a TCP handshake from the scheduler to the node's
   replication port.  If the handshake is successful we abort the process to mark
   the node offline.
-- If the StorageOS container was killed, we now log at error lovel instead of
+- If the StorageOS container was killed, we now log at error level instead of
   debug level.
 - The UI now gives user feedback when a diagnostics bundle is being uploaded or
   downloaded.

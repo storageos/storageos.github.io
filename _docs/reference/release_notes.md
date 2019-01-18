@@ -22,11 +22,6 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
-09f3a58f1 Merge pull request #931 in STORAGEOS/control from bugfix/DEV-3008-etcd-client-tight-loops-if-server-is-taken-down-while-watcher-is-running to develop
-<   ab476a830 Merge pull request #929 in STORAGEOS/control from bugfix/DEV-3002-csiv1-add-args-validation-in-nodegetvolumestats to develop
-< |   7d94882b3 Merge pull request #930 in STORAGEOS/control from bugfix/DEV-3004-cp-needs-updated-docker-build-image to develop
-
-
 ## 1.1.1 - Released 21/01/2019
 
 1.1.1 contains a critical bugfix in the etcd client library that could cause

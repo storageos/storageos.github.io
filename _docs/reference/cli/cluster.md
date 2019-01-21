@@ -21,10 +21,10 @@ Options:
       --help   Print usage
 
 Commands:
-  create      Creates a cluster initialization token.
-  health      Displays the cluster's health.  When a cluster id is provided, uses the discovery service to discover nodes.
-  inspect     Display detailed information on one or more cluster
-  rm          Remove one or more clusters
+  connectivity Display connectivity diagnostics for the cluster
+  create       Creates a cluster initialization token.
+  inspect      Display detailed information on one or more cluster
+  rm           Remove one or more clusters
 
 Run 'storageos cluster COMMAND --help' for more information on a command.
 ```

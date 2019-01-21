@@ -22,6 +22,73 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.1 - Released 21/01/2019
+
+1.1.1 contains a critical bugfix in the etcd client library that could cause
+the StorageOS control plane to become unresponsive when etcd is unavailable.
+
+### Breaking changes
+
+There should not be any breaking changes since `1.0.0-rc5`.
+
+### New
+
+- Exposed tuning knobs for node failure detection via two new environment
+  variables:
+
+  - `PROBE_INTERVAL_MS`: the interval in milliseconds between node probes.
+    Setting this lower (more frequent) will cause the cluster to detect failed
+    nodes more quickly at the expense of increased bandwidth usage.  Defaults to
+    1000ms.
+  - `PROBE_TIMEOUT_MS`: the timeout to wait for an ack from a probed node before
+    assuming it is unhealthy.  This should be set to 99-percentile of RTT
+    (round-trip time) on your network.  Defaults to 3000ms.
+
+  The defaults should be appropriate for most environments.
+
+### Improvements
+
+- If a node is determined to be offline by [memberlist](https://github.com/hashicorp/memberlist),
+  we now verify by sending a TCP handshake from the scheduler to the node's
+  replication port.  If the handshake is successful we abort the process to mark
+  the node offline.
+- If the StorageOS container was killed, we now log at error level instead of
+  debug level.
+- The UI now gives user feedback when a diagnostics bundle is being uploaded or
+  downloaded.
+- Volume details and `dmesg` output is now collected in the diagnostics bundle.
+  This information helps our engineers diagnose issues more easily.
+- Internal cleanup of API handlers and middleware.  API errors now follow
+  consistent formatting.
+- Values for CSI parameters `VolumeId` and `VolumePath` are now validated to
+  ensure they are not empty.  This is internal to the interaction between
+  the orchestrator and StorageOS and applies to the `GetVolumeStats()` CSI call.
+- Removed spammy "failed to retrieve volume capacity stats" log message when a
+  volume was in the process of being deleted.
+- When a node is rebuilt and re-added to the cluster, manual steps must be taken
+  to ensure that a previous (now invalid) config is not re-applied to the new
+  node as it may not have the previous backend data.  The log messages now
+  better explain the issue and the steps required to resolve.
+- Better error logging when data plane configuration was not applied.
+
+### Fixed
+
+- Updated the etcd client library to version 3.3.11, which includes a fix for
+  https://github.com/etcd-io/etcd/issues/9578, a tight loop in the reconnect
+  logic when a watch loses its connection to the etcd server.  The loop would
+  cause the control plane to become unresponsive, including not allowing it to
+  respond to healthchecks, which could result in the node being taken offline.
+- Fixed an issue in the etcd watcher when we specify an object version to
+  use as a starting point to watch for change from, but that version no longer
+  exists in etcd due to scheduled compaction of the etcd datastore.  Now, the
+  error is caught and retried from the latest version.  The error was logged as:
+  `etcdserver: mvcc: required revision has been compacted`.
+- The diagnostics bundle was saving with the extension `.tar.gz`, even though
+  it is not compressed.  It now saves as `.tar`.
+- When a node was heavily loaded, it was possible for volume delete requests to
+  get stuck.  The delete result processing is now done in a separate thread from
+  the request so that a long request can't block receiving responses.
+
 ## 1.1.0 - Released 04/01/2019
 
 1.1.0 adds support for [CSI 1.0](https://github.com/container-storage-interface/spec)

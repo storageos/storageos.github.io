@@ -46,8 +46,6 @@ cluster.
    $ docker run -d --name cassandra-docker \
    -v cassandra-data:/var/lib/cassandra    \
    cassandra:3.11
-   e701e4945fb6730127ecfce8459faad5d6a08fbd53dd6f68f336ff8bf092d470
-
    ```
 
    * The Cassandra container image automatically exposes the default Cassandra

@@ -37,7 +37,6 @@ cluster.
    -v pgdata:/var/lib/postgresql/data        \
    -e PGDATA=/var/lib/postgresql/data/pgdata \
    -e POSTGRES_PASSWORD=storageos postgres   \
-   a10a77832df4e0b220ca6c0184f8e2e2ce933a6cdfa83ba2a2810243c7bf0e53c
    ```
 
    * The StorageOS volume appears as a file system mount, so we need to mount the

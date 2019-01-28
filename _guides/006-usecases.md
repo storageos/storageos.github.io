@@ -29,11 +29,19 @@ sections:
         title: Nginx
         description: Use an Nginx pod to exfiltrate data from StorageOS volumes
         module: usecases/kubernetes/nginx
+      -
+        title: Cassandra
+        description: Create a Cassandra cluster with persistent storage
+        module: usecases/kubernetes/cassandra
   -
     title: Using Docker
     description: Docker Use Cases
     module: usecases/docker
     items:
+      -
+        title: Cassandra
+        description: Setting up a Cassandra ring with persistent storage
+        module: usecases/docker/cassandra
       -
         title: Microsoft SQL Server
         description: Setting up Microsoft SQL server with persistent storage

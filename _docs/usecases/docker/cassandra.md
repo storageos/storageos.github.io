@@ -62,13 +62,14 @@ cluster.
 1. Run the other two Cassandra containers
 
    ```bash
-    $ docker run -d --name cassandra-docker2                                                                                    \
-    -v cassandra-data3:/var/lib/cassandra                                                                                       \
-    -e CASSANDRA_SEEDS="$(docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cassandra-docker)" \
+    $ docker run -d --name cassandra-docker2 \
+    -v cassandra-data3:/var/lib/cassandra    \
+    -e CASSANDRA_SEEDS="$(docker inspect --format='{% raw %}{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}{% endraw %}' cassandra-docker)" \
     cassandra:3.11
-    $ docker run -d --name cassandra-docker3                                                                                    \
-    -v cassandra-data3:/var/lib/cassandra                                                                                       \
-    -e CASSANDRA_SEEDS="$(docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' cassandra-docker)" \
+
+    $ docker run -d --name cassandra-docker3 \
+    -v cassandra-data3:/var/lib/cassandra    \
+    -e CASSANDRA_SEEDS="$(docker inspect --format='{% raw %}{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}{% endraw %}' cassandra-docker)" \
     cassandra:3.11
    ```
 1. Confirm that the cluster is working correctly

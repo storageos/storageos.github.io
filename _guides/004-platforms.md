@@ -173,6 +173,40 @@ sections:
         title: Best Practices
         description: rancher best practices
         module: platforms/rancher/bestpractices
+  - title: DockerEE
+    description: DockerEE/K8S
+    module: platforms/dockeree
+    items:
+      -
+        title: Install
+        description: Install on dockeree
+        module: platforms/dockeree/install
+        subitems:
+          -
+            title: Kubernetes
+            description: Install on DockerEE
+            module: platforms/dockeree/install/kubernetes
+      -
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/dockeree/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/dockeree/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/dockeree/troubleshoot/volumes
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/dockeree/firstvolume
+      -
+        title: Best Practices
+        description: dockeree best practices
+        module: platforms/dockeree/bestpractices
   - title: Docker
     description: Docker
     module: platforms/docker

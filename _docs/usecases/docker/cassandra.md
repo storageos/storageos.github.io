@@ -63,7 +63,7 @@ cluster.
 
    ```bash
     $ docker run -d --name cassandra-docker2 \
-    -v cassandra-data3:/var/lib/cassandra    \
+    -v cassandra-data2:/var/lib/cassandra    \
     -e CASSANDRA_SEEDS="$(docker inspect --format='{% raw %}{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}{% endraw %}' cassandra-docker)" \
     cassandra:3.11
 

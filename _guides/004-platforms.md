@@ -187,19 +187,6 @@ sections:
             description: Install on DockerEE
             module: platforms/dockeree/install/kubernetes
       -
-        title: Troubleshooting
-        description: Troubleshooting
-        module: platforms/dockeree/troubleshoot
-        subitems:
-          -
-            title: Installation
-            description: Troubleshooting installation
-            module: platforms/dockeree/troubleshoot/install
-          -
-            title: Volume Provisioning
-            description: Troubleshooting volumes
-            module: platforms/dockeree/troubleshoot/volumes
-      -
         title: StorageOS Volume Guide
         description: Examples for operations
         module: platforms/dockeree/firstvolume

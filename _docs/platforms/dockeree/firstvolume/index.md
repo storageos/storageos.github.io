@@ -1,11 +1,11 @@
 ---
 layout: guide
-title: StorageOS Docs - Rancher
+title: StorageOS Docs - dockeree
 anchor: platforms
 cmd: kubectl
-platform: rancher
-platformUC: Rancher
-module: platforms/rancher/firstvolume
+platform: dockeree
+platformUC: DockerEE
+module: platforms/dockeree/firstvolume
 ---
 
 {%include platforms/firstuse.md %}

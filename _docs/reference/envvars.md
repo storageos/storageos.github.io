@@ -70,10 +70,21 @@ accessible.  Requires StorageOS to be deployed as a DaemonSet or Pod.
 unset
 * `CSI_VERSION`: Added in `1.1.0` to define what version of CSI to use. Can be
   set to `v0` or `v1`, defaults to `v0`
+* `PROBE_INTERVAL`: the interval between node probes. Takes a time duration in
+  string format e.g. `500ms` or `2s`. Setting this lower (more frequent) will
+  cause the cluster to detect failed nodes more quickly at the expense of
+  increased bandwidth usage.  Defaults to 1000ms. Added in `1.1.2` replacing
+  `PROBE_INTERVAL_MS`
 * `PROBE_INTERVAL_MS`: the interval in milliseconds between node probes.
   Setting this lower (more frequent) will cause the cluster to detect failed
-nodes more quickly at the expense of increased bandwidth usage.  Defaults to
-1000ms. Added in `1.1.1`
+  nodes more quickly at the expense of increased bandwidth usage.  Defaults to
+  1000ms. Added in `1.1.1` and deprecated in `1.1.2` See `PROBE_INTERVAL`
+* `PROBE_TIMEOUT`: the timeout to wait for an ack from a probed node before
+  assuming it is unhealthy.  Takes a time duration in string format e.g.
+  `500ms` or `2s`. This should be set to 99-percentile of RTT (round-trip time)
+  on your network.  Defaults to 3000ms. Added in `1.1.2` replacing
+  `PROBE_TIMEOUT_MS`
 * `PROBE_TIMEOUT_MS`: the timeout to wait for an ack from a probed node before
   assuming it is unhealthy.  This should be set to 99-percentile of RTT
-(round-trip time) on your network.  Defaults to 3000ms. Added in `1.1.1`
+  (round-trip time) on your network.  Defaults to 3000ms. Added in `1.1.1` and
+  deprecated in `1.1.2` See `PROBE_TIMEOUT`

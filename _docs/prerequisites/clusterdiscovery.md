@@ -7,6 +7,11 @@ module: prerequisites/clusterdiscovery
 
 # Cluster discovery
 
+> N.B. The StorageOS operator will automatically populate the JOIN variable.
+> The creation of a cluster token or manual population of the JOIN variable is
+> only necessary if you are performing an installation using Helm charts or
+> yaml manifests.
+
 On startup, you will need to specify whether a StorageOS node should bootstrap a
 new cluster or join an existing cluster.
 

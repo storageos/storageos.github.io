@@ -64,6 +64,7 @@ configuration will use this format.
 
 - Added more context to error logs when there is a failure to configure the
   dataplane.
+- Added more logging at debug level when gossip detected a node's health change.
 
 
 ### Fixed
@@ -72,6 +73,8 @@ configuration will use this format.
   already exist, then the create operation would fail.  Now the namespace is
   created as part of the volume create operation.  This matches the behaviour of
   the Kubernetes native driver.
+- When importing Kubernetes ABAC policy files, the jsonl format was incorrectly
+  detected and input was incorrectly parsed as json, which would not validate.
 
 ## 1.1.1 - Released 21/01/2019
 

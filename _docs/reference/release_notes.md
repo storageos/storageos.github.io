@@ -22,14 +22,64 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.2 - Released 03/02/2019
+
+1.1.2 improves stability when nodes lose network connectivity intermittenly by
+introducing a new grace period before performing node recovery operations.
+
+## Breaking changes
+
+The environment variables introduced in version `1.1.1` to tune node failure
+detection have changed. Previously `PROBE_INTERVAL_MS` and `PROBE_TIMEOUT_MS`
+were set to a number of milliseconds.  They have now been replaced with
+`PROBE_INTERVAL` and `PROBE_TIMEOUT`, which takes a time duration in string
+format, e.g. `500ms` or `2s`.  We believe this change gives slightly more
+flexibility and is easier to use.  Going forward, all duration-based
+configuration will use this format.
+
+### New
+
+- When network connectivity to a node is confirmed lost, there is now a
+  configurable grace period before recovery operations begin.  The grace period
+  allows time for the network or node to recover from short interruptions.  The
+  default is set to `30s`.  The minimum duration is `0s`, and the maximum is
+  `90s`.
+- In the UI, a button has been added to re-send the activation email when
+  requesting a Developer licence.
+
+### Improved
+
+- Logs now use nanosecond precision for timestamps.  This helps ensure the
+  correct ordering when logging to an external source such as Elasticsearch.
+- Upgraded Golang compiler to version `1.11.5`.
+- Support diagnostics can now be generated while nodes are waiting to join the
+  cluster.  This can help troubleshoot dependency or network connectivity issues
+  that are blocking successful startup.  This feature is currently only enabled
+  in the API; in a future release it will be exposed in the UI and CLI.  To
+  generate the diagnostics bundle, run:
+
+  ```bash
+  curl -o diagnostics.tar storageos:storageos@localhost:5705/v1/diagnostics/cluster
+  ```
+
+- Added more context to error logs when there is a failure to configure the
+  dataplane.
+- Added more logging at debug level when gossip detected a node's health change.
+
+
+### Fixed
+
+- When CSI is enabled, if a volume was created in a namespace that did not
+  already exist, then the create operation would fail.  Now the namespace is
+  created as part of the volume create operation.  This matches the behaviour of
+  the Kubernetes native driver.
+- When importing Kubernetes ABAC policy files, the jsonl format was incorrectly
+  detected and input was incorrectly parsed as json, which would not validate.
+
 ## 1.1.1 - Released 21/01/2019
 
 1.1.1 contains a critical bugfix in the etcd client library that could cause
 the StorageOS control plane to become unresponsive when etcd is unavailable.
-
-### Breaking changes
-
-There should not be any breaking changes since `1.0.0-rc5`.
 
 ### New
 
@@ -93,10 +143,6 @@ There should not be any breaking changes since `1.0.0-rc5`.
 
 1.1.0 adds support for [CSI 1.0](https://github.com/container-storage-interface/spec)
 and includes some minor bug fixes.
-
-### Breaking changes
-
-There should not be any breaking changes since `1.0.0-rc5`.
 
 ### New
 
@@ -187,10 +233,6 @@ This is primarily a bugfix release to better handle node recovery behaviour when
 network connectivity is re-established.  There are also a few minor bugfixes and
 general improvements.
 
-### Breaking changes
-
-There should not be any breaking changes since `1.0.0-rc5`.
-
 ### Improvements
 
 - Upgraded UI to use [Vue CLI 3](https://cli.vuejs.org/).
@@ -221,10 +263,6 @@ There should not be any breaking changes since `1.0.0-rc5`.
 ## 1.0.0 - Released 15/11/2018
 
 1.0.0 is suitable for production workloads.
-
-### Breaking changes
-
-There should not be any breaking changes since `1.0.0-rc5`.
 
 ### New
 

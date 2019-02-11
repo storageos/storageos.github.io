@@ -7,13 +7,12 @@ module: prerequisites/clusterdiscovery
 
 # Cluster discovery
 
-> N.B. The StorageOS operator will automatically populate the JOIN variable.
-> The creation of a cluster token or manual population of the JOIN variable is
-> only necessary if you are performing an installation using Helm charts or
-> yaml manifests.
-
 On startup, you will need to specify whether a StorageOS node should bootstrap a
 new cluster or join an existing cluster.
+
+> N.B. The StorageOS operator will automatically populate the JOIN variable.
+> Manual population of the JOIN variable, with node IPs or a cluster token, is
+> possible if necessary.
 
 ## Cluster initialization
 
@@ -29,7 +28,12 @@ $ storageos cluster create
 JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-Alternatively, you can specify the IP addresses explicity.
+Alternatively, you can specify the IP addresses of nodes to join. If you
+provide a list of node IPs any new node joining the cluster will attempt to
+contact the node IPs specified. This means that if all the nodes in the JOIN
+are unavailable that new nodes will be unable to join the cluster. Therefore we
+recomend the use of a cluster token when the cluster will be automatically
+scaled.
 
 ```bash
 # Specify a node to connect to in an existing cluster
@@ -41,7 +45,6 @@ JOIN=172.28.128.3,172.28.128.9,172.28.128.15
 # Specify both the discovery service and IP addresses, tried left-to-right
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
-
 
 The `JOIN` command line argument is always required, even in clusters with only
 one node. A blank `JOIN` variable will result in a non-functional cluster. This

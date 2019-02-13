@@ -33,13 +33,13 @@ order from 0-(N-1), if a StatefulSet scales down then pods are deleted in
 reverse order from (N-1)-0.
 
 Secondly, it means that the behaviour of the StatefulSet controller differs
-from that of Deployment and ReplicaSet controllers. For Deployment and ReplicaSet
-controllers "... at many points in the lifetime of a replica set there will be
-2 copies of a pod's processes running concurrently". Having two different pods
-mount a volume at the same time can cause corruption of data. Currently
-Kubernetes accessModes only apply restrictions to nodes mounting volumes rather
-than pods, so it is important that StatefulSets are used with StorageOS
-volumes so the necessary pod uniqueness guarantees are maintained.
+from that of Deployment and ReplicaSet controllers. For Deployment and
+ReplicaSet controllers "... at many points in the lifetime of a replica set
+there will be 2 copies of a pod's processes running concurrently". Having two
+different pods mount a volume at the same time can cause corruption of data.
+Currently Kubernetes accessModes only apply restrictions to nodes mounting
+volumes rather than pods, so it is important that StatefulSets are used with
+StorageOS volumes so the necessary pod uniqueness guarantees are maintained.
 
 ### StatefulSet Manifests
 

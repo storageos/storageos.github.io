@@ -20,8 +20,28 @@ stateful applications into a Kubernetes cluster. These examples are not
 production ready but have been provided to give you some insight into how to
 use StorageOS with stateful applications.
 
-The examples we have provided use [StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
-as a way to deploy these applications. 
+## StatefulSets
+
+The examples we have provided use
+[StatefulSets](https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/)
+as a way to deploy applications into Kubernetes. The reason for this is that
+the StatefulSet controller is designed to manage stateful applications and it
+"provides guarantees about the ordering and uniqueness" of sets of pods.
+
+Practically this means that when a StatefulSet scales, pods are created in
+order from 0-(N-1), if a StatefulSet scales down then pods are deleted in
+reverse order from (N-1)-0.
+
+Secondly, it means that the behaviour of the StatefulSet controller differs
+from that of Deployment and ReplicaSet controllers. For Deployment and
+ReplicaSet controllers "... at many points in the lifetime of a replica set
+there will be 2 copies of a pod's processes running concurrently". Having two
+different pods mount a volume at the same time can cause corruption of data.
+Currently Kubernetes accessModes only apply restrictions to nodes mounting
+volumes rather than pods, so it is important that StatefulSets are used with
+StorageOS volumes so the necessary pod uniqueness guarantees are maintained.
+
+### StatefulSet Manifests
 
 The StorageOS specific part of the Kubernetes manifests for these examples lies
 in the VolumeClaimTemplate that's part of the statefulset definition. 

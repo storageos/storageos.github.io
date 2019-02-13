@@ -2,12 +2,12 @@
 layout: guide
 title: StorageOS Docs - Docker container
 anchor: platforms
-module: platforms/docker/install
-redirect_from: /docs/install/docker/container
-redirect_from: install/docker/container
+module: platforms/dockerce/install
+redirect_from: /docs/install/dockerce/container
+redirect_from: install/dockerce/container
 ---
 
-# Installation with DockerCE
+# Installation with Docker CE
 
 * Ensure that our prerequisites are met, paying particular attention to [system
   configuration]({% link _docs/prerequisites/systemconfiguration.md %}) and [mount

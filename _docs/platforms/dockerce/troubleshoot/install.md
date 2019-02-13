@@ -3,8 +3,8 @@ layout: guide
 title: StorageOS Docs - Docker troubleshoot
 anchor: platforms
 cmd: docker
-platform: Docker
-module: platforms/docker/troubleshoot/install
+platform: DockerCE
+module: platforms/dockerce/troubleshoot/install
 ---
 
 # Troubleshooting

@@ -11,13 +11,15 @@ On startup, you will need to specify whether a StorageOS node should bootstrap
 a new cluster or join an existing cluster. In order for a bootstrapping node to
 join or create a cluster, the node needs to know where to find the other nodes
 in the cluster. The node is informed of other nodes in the cluster via the JOIN
-variable.
+environment variable.
 
-> N.B. The StorageOS operator will automatically populate the JOIN variable.
-> Manual population of the JOIN variable, with node IPs or a cluster token, is
-> possible if necessary.
+## Cluster Initialisation - Using StorageOS Operator
 
-## Cluster initialization
+For standard installs, the StorageOS operator will automatically populate the
+JOIN variable with appropriate values. For users with advanced requirements,
+the operator allows specification of a custom JOIN variable.
+
+## Cluster Initialisation - Advanced/Custom Installations
 
 StorageOS offers a public discovery service, which is a convenient way to
 pass clustering information to the StorageOS node.
@@ -56,3 +58,4 @@ is to prevent non-obvious split-brain scenarios in multi-node clusters, where
 # Create a one-node cluster; note that replicas are unavailable.
 JOIN=$ADVERTISE_IP
 ```
+

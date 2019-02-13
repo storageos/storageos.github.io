@@ -7,40 +7,32 @@ module: usecases/kubernetes/backups
 
 # Backing up files from StorageOS volumes
 
-In this we provide three different strategies for accessing files that an
-application has written to a StorageOS  persistent volume. 
+In this example use case we provide three different strategies for accessing
+files that have been written to a StorageOS  persistent volume.
 
 In the following examples the "application" container is the container `main`,
-which has a rsync, nginx or sftp sidecar container. The StorageOS volume that
+which has a rsync, Nginx or sftp sidecar container. The StorageOS volume that
 the application is writing to will be mounted into the sidecar container so
 files written by the application are available for export. Files can be
 exported using Nginx as a web file server, transferred using rsync or accessed
 via SFTP.
 
 The files create a stateful set that can be used *AFTER* a StorageOS cluster
-has been created. For more information on how to install a StorageOS cluster
-please see [the StorageOS documentation](https://docs.storageos.com/docs/introduction/quickstart).
+has been created. [See our guide on how to install StorageOS on Kubernetes for more
+information]({% link _docs/platforms/kubernetes/install/index.md %})
+
 
 ## Clone Repository
 
-In order to deploy the pod clone this repository and use kubectl to create the
+In order to deploy the examples, clone this repository and use kubectl to create the
 Kubernetes objects.
-
-> Before deploying the backup-example stateful set we highly recommend looking
-> through the examples to understand how the different containers are
-> configured
-
 ```bash
 $ git clone https://github.com/storageos/deploy.git storageos
 $ cd storageos
 ```
-Check that a backup-example pod is running
-
-```bash
-$ kubectl get pods -w -l app=backup-example
-   NAME        READY    STATUS    RESTARTS    AGE
-   backup-example-0     1/1      Running    0          1m
-```
+> Before deploying the backup-example stateful set we recommend looking
+> through the examples to understand how the different containers are
+> configured
 
 ## Exfiltrating files through HTTP
 
@@ -52,18 +44,30 @@ configmap/nginx-config created
 statefulset.apps/backup-example created
 pod/busybox created
 ```
+1. Check that a backup-example pod is running
+```bash
+$ kubectl get pods -w -l app=backup-example-nginx
+   NAME        READY    STATUS    RESTARTS    AGE
+   backup-example-0     1/1      Running    0          1m
+```
 
 1. Exec into the `main` container and write some data to a file
 ```bash
-kubectl exec -it backup-example-0 -c main bash           
+$ kubectl exec -it backup-example-nginx-0 -c main bash
 root@backup-example-0:/# echo $(date) > /data/date.txt
+```
+1. Check that the service exists
+```bash
+$ kubectl get svc backup-example-nginx
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+backup-example-nginx   ClusterIP   100.65.18.199   <none>        80/TCP    46s
 ```
 
 1. Use wget to access the files served by Nginx. Nginx is sharing files from
    the same volume that the `main` application container is writing to. The
    connection to the Nginx container is made via the backup-example service.
 ```bash
-$ kubectl exec -it busybox -- /bin/wget -q -O- http://backup-example
+$ kubectl exec -it busybox -- /bin/wget -q -O- http://backup-example-nginx
     <html>
     <head><title>Index of /</title></head>
     <body>
@@ -74,7 +78,7 @@ $ kubectl exec -it busybox -- /bin/wget -q -O- http://backup-example
     12-Feb-2019 12:49                  29
     </pre><hr></body>
     </html>
-$ kubectl exec -it busybox -- /bin/wget -q -O- http://backup-example/date.txt
+$ kubectl exec -it busybox -- /bin/wget -q -O- http://backup-example-nginx/date.txt
 Tue Feb 12 12:49:15 UTC 2019
 ```
 
@@ -93,21 +97,38 @@ secret/rsync-credentials created
 statefulset.apps/backup-example created
 pod/rsync created
 ```
+1. Check that a backup-example pod is running
+```bash
+$ kubectl get pods -w -l app=backup-example-rsync
+   NAME        READY    STATUS    RESTARTS    AGE
+   backup-example-0     1/1      Running    0          1m
+```
+
+1. Exec into the `main` container and write some data to a file
+```bash
+$ kubectl exec -it backup-example-rsync-0 -c main bash
+root@backup-example-0:/# echo $(date) > /data/date.txt
+```
+1. Check that the service exists
+```bash
+$ kubectl get svc backup-example-rsync
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+backup-example-nginx   ClusterIP   100.65.18.199   <none>        80/TCP    46s
+```
 
 1. Use rsync to access the files shared by the rsync daemon. rsync is sharing
    files from the same volume that the `main` container is writing to. A
    username and password that are set in the rsync-credentials secret. The
    secret supplied in the example has the username and password set to username
    and password.
-
 ```
 $ kubectl exec -it rsync sh
-/ # rsync --list-only rsync://username@backup-example/share
+/ # rsync --list-only rsync://username@backup-example-rsync/share
 Password:
 drwxr-xr-x          4,096 2019/02/12 12:49:15 .
 -rw-r--r--             29 2019/02/12 12:49:15 date.txt
 drwx------         16,384 2019/02/12 12:32:40 lost+found
-/ # rsync -chavzP rsync://username@backup-example/share/date.txt .
+/ # rsync -chavzP rsync://username@backup-example-rsync/share/date.txt .
 Password:
 receiving incremental file list
 date.txt
@@ -127,9 +148,20 @@ date.txt was synchronized to the rsync container.
 ```bash
 $ kubectl create -f sftp/
 ```
+1. Exec into the `main` container and write some data to a file
+```bash
+$ kubectl exec -it backup-example-sftp-0 -c main bash
+root@backup-example-0:/# echo $(date) > /data/date.txt
+```
+1. Check that the service exists
+```bash
+$ kubectl get svc backup-example-sftp
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+backup-example-nginx   ClusterIP   100.65.18.199   <none>        80/TCP    46s
+```
+
 1. Use SFTP to access the files shared by the SFTP container. If you have made
    no changes to the sftp-config secret the password is password.
-
 ```bash
 $ kubectl exec -it sftp -- bash
 root@sftp:/# sftp alex@backup-example-sftp
@@ -146,26 +178,27 @@ root@sftp:/# cat date.txt
 Tue Feb 12 17:51:32 UTC 2019
 ```
 In order to do this a SFTP user needs to be configured. The details for the
-user are stored in the sftp-config secret (see `17-secret.yaml`). The secret
+user are stored in the sftp-config secret (see `sftp/17-secret.yaml`). The secret
 consists of base64 encoded username:password:uid:guid and the user is chroot'ed
 inside their home directory so the mount point for the StorageOS volume in the
-SFTP container in `20-backup-pod.yaml` needs to be configured.
+SFTP container in `sftp/20-backup-pod.yaml` needs to be configured.
 
 ### Using custom SSH Keys
 
-The ConfigMap ssh-key-pub (see `15-configmap.yaml`) needs to be populated with a
+The ConfigMap ssh-key-pub (see `sftp/15-configmap.yaml`) needs to be populated with a
 public key. The corresponding private key needs to be base64 encoded and put
-into the ssh-key-private secret (see `17-secret.yaml`). The user to connect as is
+into the ssh-key-private secret (see `sftp/17-secret.yaml`). The user to connect as is
 determined by the user that is configured in the sftp-config configMap. To
 restrict logins to the SSH key edit the sftp-config secret so it contains no
 password (user::uid:guid).
 
-Connect to the sftp pod and connect through the service to the SFTP container
+1. Connect to the sftp pod and connect through the service to the SFTP container
 running inside the backup-example pod. 
-
 ```bash 
 $ kubectl exec -it sftp -- bash
-root@sftp:/# sftp -i /home/alex/.ssh/id_rsa alex@backup-example
-sftp>
+root@sftp:/# sftp -i /home/alex/.ssh/id_rsa alex@backup-example-sftp
+Connected to backup-example-sftp.
+sftp> ls
+date.txt    lost+found
 ```
 

@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Installing on Kubernetes 1.11
 platform: dockeree
-platformUC: DockerEE
+platformUC: Docker EE
 k8s-version: 1.11
 cmd: kubectl
 anchor: platforms
@@ -11,7 +11,7 @@ redirect_from: /docs/install/schedulers/dockeree
 redirect_from: /docs/install/dockeree
 ---
 
-# Kubernetes on DockerEE
+# Kubernetes on Docker EE
 
 > Make sure the 
 > [prerequisites for StorageOS]({%link  _docs/prerequisites/overview.md %}) are

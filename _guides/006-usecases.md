@@ -33,6 +33,11 @@ sections:
         title: Cassandra
         description: Create a Cassandra cluster with persistent storage
         module: usecases/kubernetes/cassandra
+      -
+        title: Backups
+        description: Exfiltrate files from StorageOS volumes
+        module: usecases/kubernetes/backups
+
   -
     title: Using Docker
     description: Docker Use Cases

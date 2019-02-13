@@ -7,8 +7,11 @@ module: prerequisites/clusterdiscovery
 
 # Cluster discovery
 
-On startup, you will need to specify whether a StorageOS node should bootstrap a
-new cluster or join an existing cluster.
+On startup, you will need to specify whether a StorageOS node should bootstrap
+a new cluster or join an existing cluster. In order for a bootstrapping node to
+join or create a cluster, the node needs to know where to find the other nodes
+in the cluster. The node is informed of other nodes in the cluster via the JOIN
+variable.
 
 > N.B. The StorageOS operator will automatically populate the JOIN variable.
 > Manual population of the JOIN variable, with node IPs or a cluster token, is
@@ -24,16 +27,14 @@ pass clustering information to the StorageOS node.
 $ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 
-# Supply the returned cluster ID token to each node via JOIN
+# Add the returned cluster ID token to the JOIN variable
 JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
 Alternatively, you can specify the IP addresses of nodes to join. If you
 provide a list of node IPs any new node joining the cluster will attempt to
 contact the node IPs specified. This means that if all the nodes in the JOIN
-are unavailable that new nodes will be unable to join the cluster. Therefore we
-recomend the use of a cluster token when the cluster will be automatically
-scaled.
+are unavailable that new nodes will be unable to join the cluster.
 
 ```bash
 # Specify a node to connect to in an existing cluster

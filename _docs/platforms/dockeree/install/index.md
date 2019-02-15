@@ -18,4 +18,4 @@ Therefore, StorageOS volumes can be provisioned and used only by applications
 on those nodes. Therefore, its recommended to use Kubernetes nodes to provision
 Stateful workloads.
 
-> Mixed nodes (Kuberntes + Swarm) are not supported to run StorageOS.
+> Mixed nodes (Kubernetes + Swarm) are not supported to run StorageOS.

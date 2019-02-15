@@ -173,7 +173,7 @@ sections:
         title: Best Practices
         description: rancher best practices
         module: platforms/rancher/bestpractices
-  - title: DockerEE
+  - title: Docker EE
     description: DockerEE/K8S
     module: platforms/dockeree
     items:
@@ -194,7 +194,7 @@ sections:
         title: Best Practices
         description: dockeree best practices
         module: platforms/dockeree/bestpractices
-  - title: DockerCE
+  - title: Docker CE
     description: DockerCE
     module: platforms/dockerce
     items:

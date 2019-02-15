@@ -1,5 +1,5 @@
 ## StorageOS in Docker EE
 
-It is recommended to use Kubernetes nodes to provision Stateful workloads as
-the running of StorageOS is not supported in Swarm nodes. StorageOS volumes have to be
-provisioned and used from Kubernetes nodes.
+StorageOS does not support running on either Swarm nodes or mixed (Kubernetes
+and Swarm) nodes. StorageOS volumes have to be provisioned and used from
+Kubernetes nodes.

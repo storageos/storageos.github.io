@@ -12,5 +12,5 @@ in a standalone [DockerCE](https://www.docker.com) container, and provide
 permanent storage for other containers. This can be useful for testing and
 experimentation with our product.
 
-StorageOS supports Docker EE for production workloads following the
-[page]({%link _docs/platforms/dockeree/index.md %}).
+StorageOS also supports Docker EE for production workloads, documented
+[here]({%link _docs/platforms/dockeree/index.md %}).

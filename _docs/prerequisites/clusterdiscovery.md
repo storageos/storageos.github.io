@@ -7,10 +7,19 @@ module: prerequisites/clusterdiscovery
 
 # Cluster discovery
 
-On startup, you will need to specify whether a StorageOS node should bootstrap a
-new cluster or join an existing cluster.
+On startup, you will need to specify whether a StorageOS node should bootstrap
+a new cluster or join an existing cluster. In order for a bootstrapping node to
+join or create a cluster, the node needs to know where to find the other nodes
+in the cluster. The node is informed of other nodes in the cluster via the JOIN
+environment variable.
 
-## Cluster initialization
+## Cluster Initialisation - Using StorageOS Operator
+
+For standard installs, the StorageOS operator will automatically populate the
+JOIN variable with appropriate values. For users with advanced requirements,
+the operator allows specification of a custom JOIN variable.
+
+## Cluster Initialisation - Advanced/Custom Installations
 
 StorageOS offers a public discovery service, which is a convenient way to
 pass clustering information to the StorageOS node.
@@ -20,11 +29,14 @@ pass clustering information to the StorageOS node.
 $ storageos cluster create
 017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 
-# Supply the returned cluster ID token to each node via JOIN
+# Add the returned cluster ID token to the JOIN variable
 JOIN=017e4605-3c3a-434d-b4b1-dfe514a9cd0f
 ```
 
-Alternatively, you can specify the IP addresses explicity.
+Alternatively, you can specify the IP addresses of nodes to join. If you
+provide a list of node IPs any new node joining the cluster will attempt to
+contact the node IPs specified. This means that if all the nodes in the JOIN
+are unavailable that new nodes will be unable to join the cluster.
 
 ```bash
 # Specify a node to connect to in an existing cluster
@@ -37,7 +49,6 @@ JOIN=172.28.128.3,172.28.128.9,172.28.128.15
 JOIN=d53e9fae-7436-4185-82ea-c0446a52e2cd,172.28.128.3,172.28.128.9
 ```
 
-
 The `JOIN` command line argument is always required, even in clusters with only
 one node. A blank `JOIN` variable will result in a non-functional cluster. This
 is to prevent non-obvious split-brain scenarios in multi-node clusters, where
@@ -47,3 +58,4 @@ is to prevent non-obvious split-brain scenarios in multi-node clusters, where
 # Create a one-node cluster; note that replicas are unavailable.
 JOIN=$ADVERTISE_IP
 ```
+

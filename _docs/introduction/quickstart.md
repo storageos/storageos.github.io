@@ -13,7 +13,7 @@ _docs/concepts/architecture.md %}) and [playing with a demo](http://play.storage
 
 * For test deployments to gain a quick overview of the product, we offer a
    simple method to run Storage OS with [Docker]({% link
-_docs/platforms/docker/install.md %})
+_docs/platforms/dockerce/install.md %})
 
 * For production deployments, follow our installation guides for
    [Kubernetes]({% link _docs/platforms/kubernetes/install/1.10.md %}),

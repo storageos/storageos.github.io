@@ -2,8 +2,8 @@
 layout: guide
 title: StorageOS Docs - Docker troubleshoot
 anchor: platforms
-platform: Docker
-module: platforms/docker/troubleshoot
+platform: DockerCE
+module: platforms/dockerce/troubleshoot
 ---
 
 {% include troubleshoot/troubleshoot-header.md %}

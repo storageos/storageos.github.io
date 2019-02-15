@@ -11,7 +11,7 @@ We provide platform specific troubleshooting information in the following sectio
 
 - [Kubernetes]({%link _docs/platforms/kubernetes/troubleshoot/index.md %})
 - [Openshift]({%link _docs/platforms/openshift/troubleshoot/index.md %})
-- [Docker]({%link _docs/platforms/docker/troubleshoot/index.md %})
+- [Docker]({%link _docs/platforms/dockerce/troubleshoot/index.md %})
 
 # Common Platform Agnostic Issues
 

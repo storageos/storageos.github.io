@@ -66,6 +66,10 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 Before deploying a StorageOS cluster, create a Secret to define the StorageOS
 API Username and Password in base64 encoding. 
 
+The API username and password are used to create the default StorageOS admin
+account, which is used by Kubernetes to authenticate against the StorageOS API.
+The default account can also be used to login to the StorageOS GUI.
+
 ```bash
 {{ page.cmd }} create -f - <<END
 apiVersion: v1
@@ -89,6 +93,9 @@ unique, strong password.
 > Make sure that the encoding of the credentials doesn't have special characters such as '\n'.
 
 > You can define a base64 value by `echo -n "mystring" | base64`.
+
+> If you wish to change the default accounts details post-install please see [Managing
+> Users](/docs/operations/users#altering-the-storageos-api-account)
 
 {% if page.platform == "openshift" %}
 ## Add scc (security context constraint) for StorageOS

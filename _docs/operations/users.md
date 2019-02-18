@@ -72,3 +72,18 @@ To delete a user, run:
 ```bash
 $ storageos user rm jim
 ```
+## Altering the StorageOS API account
+The StorageOS API account is defined by the [storageos-api
+secret](/docs/platforms/kubernetes/install/1.13#create-a-secret) that is
+created when StorageOS is deployed. Kubernetes uses this account to
+authenticate against the StorageOS API, to communicate with StorageOS.
+Therefore if the default account details are changed in StorageOS, the
+Kubernetes storageos-api secret needs to be updated.
+
+In order to update the secret you need to base64 encode the new username/password and
+edit the storageos-api secret to reflect the new account details.
+
+```bash
+echo -n USERNAME | base64
+kubectl edit secret storageos-api
+```

@@ -31,7 +31,7 @@ Volumes do not have any feature labels present by default
 To create a volume with a feature labels:
 
 ```bash
-storageos volume create --label storageos.com/throttle=true --label storageos.com/replicas=1 
+storageos volume create --label storageos.com/throttle=true --label storageos.com/replicas=1 volumename
 ```
 
 ## StorageOS Pool labels

@@ -35,11 +35,11 @@ breaking changes.
 Check out the status of the CSI release cycle in relation with Kubernetes in
 the [CSI project](https://kubernetes-csi.github.io/docs/) page.
 
-StorageOS leverages labels in PVCs to apply [features]
-({%link _docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS
-doesn't have these labels set when using CSI. Therefore, default feature labels
+StorageOS leverages labels in PVCs to apply [features]({%link
+_docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS doesn't
+have these labels set when using CSI. Therefore, default feature labels
 (`storageos.com/*`) must be defined on the Kubernetes StorageClass parameters.
-Multiple StorageClasses can be defined with different parameters. The [StorageOS
-CLI]({%link _docs/reference/cli/index.md %}) can also manipulate volume labels
-or create [rules]({%link _docs/reference/cli/rule.md %}) to add/delete labels
-on StorageOS volumes.
+Multiple StorageClasses can be defined with different parameters. The
+[StorageOS CLI]({%link _docs/reference/cli/index.md %}) can also manipulate
+volume labels or create [rules]({%link _docs/reference/cli/rule.md %}) to
+add/delete labels on StorageOS volumes.

@@ -57,6 +57,10 @@ sections:
     description: StorageOS upgrade
     module: operations/upgrades
   -
+    title: Encrypted Volumes
+    description: StorageOS Encryption
+    module: operations/encrypted-volumes
+  -
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting

@@ -40,4 +40,8 @@ sections:
     title: Namespaces
     description: Namespaces
     module: concepts/namespaces
+  -
+    title: Encryption
+    description: Encryption
+    module: concepts/encryption
 ---

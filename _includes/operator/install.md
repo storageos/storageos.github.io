@@ -63,12 +63,13 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 
 ### Create a Secret
 
-Before deploying a StorageOS cluster, create a Secret to define the StorageOS
+Before deploying a StorageOS cluster, create a Secret defining the StorageOS
 API Username and Password in base64 encoding. 
 
 The API username and password are used to create the default StorageOS admin
-account, which is used by Kubernetes to authenticate against the StorageOS API.
-The default account can also be used to login to the StorageOS GUI.
+account which can be used with the StorageOS CLI and to login to the StorageOS
+GUI. The default account is also used by Kubernetes to authenticate against the
+StorageOS API when installing with the native driver.
 
 ```bash
 {{ page.cmd }} create -f - <<END

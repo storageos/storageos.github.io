@@ -7,7 +7,7 @@ module: usecases/kubernetes/nginx
 
 # ![image](/images/docs/explore/nginxlogo.png) Nginx with StorageOS
 
-Nginx is a popular web server that can be used as a reverse proxy, load
+[Nginx](https://www.nginx.com/) is a popular web server that can be used as a reverse proxy, load
 balancer or even as a
 [Kubernetes ingress controller.](https://github.com/kubernetes/ingress-nginx)
 

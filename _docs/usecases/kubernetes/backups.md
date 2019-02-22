@@ -11,7 +11,7 @@ In this example use case we provide three different strategies for accessing
 files that have been written to a StorageOS  persistent volume.
 
 In the following examples the "application" container is the container `main`,
-which has a rsync, Nginx or sftp sidecar container. The StorageOS volume that
+which has a rsync, [Nginx](https://www.nginx.com/) or sftp sidecar container. The StorageOS volume that
 the application is writing to will be mounted into the sidecar container so
 files written by the application are available for export. Files can be
 exported using Nginx as a web file server, transferred using rsync or accessed

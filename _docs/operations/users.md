@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - Managing Users
+title: StorageOS Docs - User Management
 anchor: operations
 module: operations/users
 ---
@@ -72,3 +72,23 @@ To delete a user, run:
 ```bash
 $ storageos user rm jim
 ```
+## Altering the StorageOS API account
+
+When installing with the StorageOS Operator, the StorageOS API account is
+defined by the [storageos-api
+secret](/docs/platforms/kubernetes/install/1.13#create-a-secret).
+
+For installations using the native driver, Kubernetes uses the account defined
+in the secret to authenticate against the StorageOS API. Therefore if the
+account details are changed, the Kubernetes storageos-api secret needs to be
+updated. In order to update the secret you need to base64 encode the new
+username/password and edit the storageos-api secret to reflect the new account
+details.
+```bash
+echo -n USERNAME | base64
+echo -n PASSWORD | base64
+kubectl edit secret storageos-api
+```
+For installations using CSI the storageos-api secret is used to define the
+default account credentials. However as Kubernetes communicates with StorageOS
+via the CSI socket, the secret is not used after cluster bootstrapping.

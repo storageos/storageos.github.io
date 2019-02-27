@@ -91,9 +91,10 @@ END
 This example contains a default password, for production installations, use a
 unique, strong password.
 
-> Make sure that the encoding of the credentials doesn't have special characters such as '\n'.
-
 > You can define a base64 value by `echo -n "mystring" | base64`.
+
+> Make sure that the encoding of the credentials doesn't have special characters such as '\n'.
+> The `echo -n` ensures that a trailing new line is not appended to the string.
 
 > If you wish to change the default accounts details post-install please see [Managing
 > Users](/docs/operations/users#altering-the-storageos-api-account)

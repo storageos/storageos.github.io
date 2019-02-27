@@ -38,7 +38,8 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
            - containerPort: 80
            volumeMounts:
            - name: nginx-data
-             mountPath: /usr/share/nginx
+             mountPath: /usr/share/nginx/html
+             subPath: html
            - name: nginx-config
              mountPath: /etc/nginx/conf.d
          volumes:
@@ -54,7 +55,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
              resources:
                requests:
                  storage: 5Gi
- ```
+     ```
    This excerpt is from the StatefulSet definition. This file contains the
    VolumeClaim template that will dynamically provision storage, using the
    StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
@@ -75,28 +76,33 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
    nginx-0     1/1      Running    0          1m
    ```
 
-1. Connect to the Busybox pod and connect to the Nginx server through the
-   service
+1. Connect to the nginx pod and write a file to /usr/share/nginx/html that
+   Nginx
+   will serve.
+
    ```bash
-   $ kubectl exec -it busybox -- /bin/sh 
-   / # /bin/busybox wget nginx
-   Connecting to nginx (100.65.25.183:80)
-   index.html           100% |**********************************************************************|   367  0:00:00 ETA
-   / # cat index.html
-   <html>
-   <head><title>Index of /</title></head>
-   <body>
-   <h1>Index of /</h1><hr><pre><a href="../">../</a>
-   <a href="helloworld.txt">helloworld.txt</a>                                     06-Nov-2018 14:42                  12
-   <a href="test.txt">test.txt</a>                                           06-Nov-2018 14:54                  16
-   </pre><hr></body>
-   </html>
+   $ kubectl exec nginx-0 -it -- bash
+   root@nginx-0:/# echo Hello world! > /usr/share/nginx/html/greetings.txt
    ```
 
-Depending on what files you have written to the StorageOS volume the output of
-the index file will be different. In the example above two txt files were
-present on the volume.
-   ```
+1. Connect to the Busybox pod and connect to the Nginx server through the
+   service
+    ```bash
+    $ kubectl exec -it busybox -- /bin/sh
+    / # wget -q -O- nginx
+    <html>
+    <head><title>Index of /</title></head>
+    <body>
+    <h1>Index of /</h1><hr><pre><a href="../">../</a>
+    <a href="greetings.txt">greetings.txt</a>
+    27-Feb-2019 12:04                  13
+    </pre><hr></body>
+    </html>
+    / # wget -q -O- nginx/greetings.txt
+    Hello world!
+    ```
+    The output of the first command shows the greetings.txt file and the second
+    command displays the content of the file.
 
 ## Configuration
 

@@ -86,7 +86,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
    ```
 
 1. Connect to the Busybox pod and connect to the Nginx server through the
-   service
+   service and retrieve the directory index from Nginx.
     ```bash
     $ kubectl exec -it busybox -- /bin/sh
     / # wget -q -O- nginx
@@ -98,11 +98,13 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
     27-Feb-2019 12:04                  13
     </pre><hr></body>
     </html>
+    ```
+
+1. Retrieve and display the contents of the greetings.txt file
+    ```bash
     / # wget -q -O- nginx/greetings.txt
     Hello world!
     ```
-    The output of the first command shows the greetings.txt file and the second
-    command displays the content of the file.
 
 ## Configuration
 

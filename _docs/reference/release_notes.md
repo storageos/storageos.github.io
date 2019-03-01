@@ -22,6 +22,39 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.3 - Released 01/03/2019
+
+Version 1.1.3 is a bugfix and usability release.  Please upgrade if you are
+using external etcd.
+
+### New
+
+- There are no new features.  Look out for 1.2 coming soon!
+
+### Improved
+
+- When using an external etcd KV store and it becomes inaccessible, StorageOS is
+  now more resilient.  All volumes remain online and usable but configuration
+  changes are restricted.
+- Added a warning in the UI if cluster nodes are running different StorageOS
+  versions.  The warning includes a link to the upgrade documentation.
+- The cluster ID is now more prominent in the UI.  The cluster ID is required
+  for licensing and support.
+- UI login failure notifications are now automatically dismissed after a
+  successful login.
+- Improved error handling and logging when configuring volumes in the data
+  plane.
+- Strict dependency checking when configuring volumes.
+
+### Fixed
+
+- When refreshing the volumes page in the UI could return a "volume not found"
+  error.
+- When editing volume labels in the UI, there is now a confirmation check before
+  removing a label.
+- Fixed a bug that might prevent a volume delete request from being actioned.
+  This would appear as a volume that is stuck in deleting state.
+
 ## 1.1.2 - Released 03/02/2019
 
 1.1.2 improves stability when nodes lose network connectivity intermittenly by

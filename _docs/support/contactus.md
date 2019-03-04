@@ -50,6 +50,7 @@ Report](/docs/support/contactus#storageos-cluster-report).
 ## StorageOS Cluster Report
 
 StorageOS has a cluster diagnostic function that aggregates cluster information.
+
 For each node the following is collected:
 
 - StorageOS logs
@@ -60,19 +61,22 @@ For each node the following is collected:
 StorageOS engineers might ask for a report to be generated during
 support cases.
 
-The cluster report is created only when a user chooses to do so. The report
-is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket using a
-TLS encrypted connection. The upload takes place only after user confirmation.
-Furthermore, StorageOS engineers can only access an uploaded report when a
-user contacts support and supplies the StorageOS cluster ID with which the
-report is encrypted.
-
 The information given in the cluster report is only used for support purposes
 and it will be removed once the data is no longer needed for such purposes.
 In case the information is sensitive and can't be given to StorageOS, please
 make sure that support engineers have as much information about your
 environment as possible.
 
-You can generate a report through the StorageOS
-[GUI]({%link _docs/reference/gui.md %}) by pressing the `cluster
-diagnostics` button on the left menu.
+The cluster report is created only when a user chooses to do so. For
+convenience the report can either be uploaded to StorageOS or downloaded to the
+machine running the browser. The report is uploaded from a StorageOS node to a
+StorageOS GCP encrypted bucket using a TLS encrypted connection. The upload
+takes place only after user confirmation.
+
+You can generate a report through the StorageOS [GUI](/docs/reference/gui) by
+navigating to the `Cluster` menu. You can also directly connect to the cluster
+diagnostic API endpoint and retrieve the bundle. Note that only a user with the
+Admin role can create Diagnostic Bundles.
+```bash 
+curl -u <ADMIN_USERNAME>:<ADMIN_PASSWORD> http://<NODE_IP>:5705/v1/diagnostics/cluster -o diagnostic.tar
+```

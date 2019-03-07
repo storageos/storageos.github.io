@@ -22,6 +22,16 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.4 - Released 06/03/2019
+
+Includes a single fix to increase the time we wait for the operating system to
+create a new block device.  On some platforms (cloud providers in particular)
+the variation can be wider than expected.
+
+### Fixed
+
+- Address device creation delays on certain platforms/distributions.
+
 ## 1.1.3 - Released 01/03/2019
 
 Version 1.1.3 is a bugfix and usability release.  Please upgrade if you are

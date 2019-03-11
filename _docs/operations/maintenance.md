@@ -78,5 +78,5 @@ $ curl -u storageos:storageos -X DELETE 10.1.10.165:5705/v1/cluster/maintenance
 
 ## Updates
 
-Please see [Updates operations]({%link _docs/operations/updates.md %}) for
+Please see [Updates operations](/docs/operations/upgrades) for
 more information on how to apply StorageOS updates. 

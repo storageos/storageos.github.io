@@ -22,11 +22,11 @@ sections:
             title: 1.12
             description: Install on 1.12
             module: platforms/kubernetes/install/1.12
-          - 
+          -
             title: 1.11
             description: Install on 1.10 and 1.11
             module: platforms/kubernetes/install/1.11
-          - 
+          -
             title: 1.10 <br>
             description: Install on 1.10
             module: platforms/kubernetes/install/1.10
@@ -63,6 +63,7 @@ sections:
         title: Best Practices
         description: Kubernetes best practices
         module: platforms/kubernetes/bestpractices
+
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -92,7 +93,7 @@ sections:
             title: 3.7 and prior
             description: Install on 3.7 and prior
             module: platforms/openshift/install/3.7
-      - 
+      -
         title: Troubleshooting
         description: Troubleshooting
         module: platforms/openshift/troubleshoot
@@ -139,6 +140,7 @@ sections:
         title: Best Practices
         description: Kubernetes best practices
         module: platforms/azure-aks/bestpractices
+
   - title: Rancher
     description: Rancher
     module: platforms/rancher
@@ -173,6 +175,7 @@ sections:
         title: Best Practices
         description: rancher best practices
         module: platforms/rancher/bestpractices
+
   - title: Docker EE
     description: DockerEE/K8S
     module: platforms/dockeree
@@ -194,6 +197,7 @@ sections:
         title: Best Practices
         description: dockeree best practices
         module: platforms/dockeree/bestpractices
+
   - title: Docker CE
     description: DockerCE
     module: platforms/dockerce
@@ -202,7 +206,7 @@ sections:
         title: Install
         description: Install
         module: platforms/dockerce/install
-      - 
+      -
         title: Troubleshooting
         description: Troubleshooting
         module: platforms/dockerce/troubleshoot

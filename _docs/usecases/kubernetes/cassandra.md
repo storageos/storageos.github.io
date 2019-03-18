@@ -7,7 +7,7 @@ module: usecases/kubernetes/cassandra
 
 # ![image](/images/docs/explore/cassandralogo.png) Cassandra with StorageOS
 
-Cassandra is a popular distributed NoSQL open source database. 
+Cassandra is a popular distributed NoSQL open source database.
 
 Using StorageOS persistent volumes with Cassandra means that if a Cassandra pod
 fails, the cluster is only in a degraded state for as long as it takes
@@ -27,10 +27,13 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 ## Deploying Cassandra on Kubernetes
 
 1. You can find the latest files in the StorageOS example deployment repostiory
+
    ```bash
    git clone https://github.com/storageos/deploy.git storageos
    ```
+
    StatefulSet defintion
+
   ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
@@ -54,11 +57,12 @@ volumeClaimTemplates:
      name: cassandra-data
    spec:
      accessModes: ["ReadWriteOnce"]
-     storageClassName: "fast" # StorageOS storageClass 
+     storageClassName: "fast" # StorageOS storageClass
      resources:
        requests:
          storage: 5Gi
    ```
+
    This excerpt is from the StatefulSet definition. This file contains the
    VolumeClaim template that will dynamically provision storage, using the
    StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
@@ -78,7 +82,7 @@ volumeClaimTemplates:
    NAME          READY   STATUS    RESTARTS   AGE
    cassandra-0   1/1     Running   0          8m32s
    cassandra-1   1/1     Running   0          7m51s
-   cassandra-2   1/1     Running   0          6m36s 
+   cassandra-2   1/1     Running   0          6m36s
    ```
 
 1. Connect to the Cassandra client pod and connect to the Cassandra server through the

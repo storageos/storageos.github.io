@@ -60,4 +60,9 @@ sections:
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting
+  -
+    title: Etcd TLS
+    description: TLS for Etcd Communication
+    module: operations/etcd-tls
+
 ---

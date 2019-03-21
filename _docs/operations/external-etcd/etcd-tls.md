@@ -25,7 +25,8 @@ contain the file paths to the files from the secrets.
 >and the CoreOS guide for [Cluster
 >TLS](https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md)
 >is followed. You can find a worked example of setting up etcd and StorageOS
->with TLS here(Link to deploy repo)
+>with TLS
+>[here](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls)
 
 Once a TLS enabled etcd cluster is running a secret with the Certificate
 Authority (CA) certificate, a client certificate and the client key needs to be

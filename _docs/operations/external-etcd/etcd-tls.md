@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - etcd TLS
 anchor: operations
-module: operations/etcd-tls
+module: operations/external-etcd/etcd-tls
 ---
 
 # Encrypting Communication with etcd

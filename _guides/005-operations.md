@@ -33,13 +33,14 @@ sections:
     description: Managing Host Storage
     module: operations/managing-host-storage
   -
-    title: Using an external etcd
-    description: Using an external etcd
+    title: External Etcd
+    description: Using External Etcd
     module: operations/external-etcd
-  -
-    title: Etcd TLS
-    description: TLS for Etcd Communication
-    module: operations/etcd-tls
+    items:
+      -
+        title: Etcd TLS
+        description: TLS for Etcd Communication
+        module: operations/external-etcd/etcd-tls
   -
     title: Decommission nodes
     description: Decommission nodes

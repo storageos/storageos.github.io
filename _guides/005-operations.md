@@ -28,7 +28,7 @@ sections:
     title: Policy Management
     description: Policies
     module: operations/policies
-  - 
+  -
     title: Managing Host Storage
     description: Managing Host Storage
     module: operations/managing-host-storage
@@ -36,6 +36,10 @@ sections:
     title: Using an external etcd
     description: Using an external etcd
     module: operations/external-etcd
+  -
+    title: Etcd TLS
+    description: TLS for Etcd Communication
+    module: operations/etcd-tls
   -
     title: Decommission nodes
     description: Decommission nodes
@@ -60,9 +64,4 @@ sections:
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting
-  -
-    title: Etcd TLS
-    description: TLS for Etcd Communication
-    module: operations/etcd-tls
-
 ---

@@ -28,9 +28,18 @@ installation.
 
 **Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
 
+Ubuntu 16.04:
+
 ```bash
 sudo apt -y update
 sudo apt -y install linux-image-extra-$(uname -r)
+```
+
+Ubuntu 18.04+:
+
+```bash
+sudo apt -y update
+sudo apt -y install linux-modules-extra-$(uname -r)
 ```
 
 **Ubuntu 16.04/18.04 AWS** and **Ubuntu 18.04 GCE** do not yet provide the

@@ -22,6 +22,28 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.2.0-rc1 - Released 18/03/2019
+
+### New
+
+### Improved
+
+- DirectFS, the network communication layer used by replication and remote
+  volumes, has been re-written and incorporated into the main data plane
+  process.  This has numerous benefits; it reduces context switches, reduces the
+  system memory usage by implementing a connection pool (TODO)
+- The data plane stats engine has been incorporated into the main data plane
+  precess, providing direct access over gRPC to the internal metrics data
+  structures from the control plane. In this release, the control plane still
+  collects data plane stats from the separate stats process.  We expect to
+  migrate to the new method in the next feature release.  The new approach
+  provides real-time metrics granularity (currently 10 seconds), and greater
+  flexibility for configuration.  It also reduces system resource utilisation.
+- Several log formatting and level improvements to provide more relevant and
+  consistent messages.
+
+### Fixed
+
 ## 1.1.4 - Released 06/03/2019
 
 Includes a single fix to increase the time we wait for the operating system to

@@ -15,23 +15,23 @@ points.
 StorageOS uses environment variables to specify the location of the necessary
 certificates and keys. The decision to use file paths instead of the actual
 certificate values was taken to prevent accidentally leaking the values. It is
-therefore required that Kubernetes secrets containing the certificates and keys
+therefore highly recommended that Kubernetes secrets containing the certificates and keys
 are mounted as volumes into the StorageOS container and environment variables
 contain the file paths to the files from the secrets.
 
 ## Setting up mTLS with etcd
 
->In order to setup mTLS it is recomended that the CoreOS etcd operator is used
->and the CoreOS guide for [Cluster
->TLS](https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md)
->is followed. You can find a worked example of setting up etcd and StorageOS
->with TLS
->[here](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls)
+In order to setup mTLS it is recomended that the CoreOS etcd operator is used
+and the CoreOS guide for [Cluster
+TLS](https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md)
+is followed. You can find a worked example of setting up etcd and StorageOS
+with TLS
+[here](https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls).
 
-Once a TLS enabled etcd cluster is running a secret with the Certificate
+Once a TLS enabled etcd cluster is running, a secret with the Certificate
 Authority (CA) certificate, a client certificate and the client key needs to be
 created. The filenames used to create the secret become the key names in the
-secret. These filesnames need to be passed as part of the full file path to the
+secret. These filenames need to be passed as part of the full file path to the
 StorageOS TLS variables.
 
 ```bash
@@ -61,7 +61,7 @@ etcd-client.crt:     798 bytes
 
 Once the `etcd-client-tls` secret has been created it needs to be mounted into
 the pod. The path to each file mounted into the pod from the secret needs to be
-passed as an environment variable as in the table below.
+passed as an [environment variable](/docs/reference/envvars) as in the table below.
 
 | Environement Variable | Value                         |
 | :------------------   | :---------------------------- |
@@ -69,9 +69,9 @@ passed as an environment variable as in the table below.
 | TLSEtcdClientCert     | /etc/pki/etcd-client-ca.crt   |
 | TLSEtcdClientKey      | /etc/pki/etcd-client.crt      |
 
-These environment variables can be passed in the daemonset manifest or as part
-of a configMap. Below you can see an example of a configMap passing the
-required environment variables to the StorageOS container. The configMap also
+These environment variables can be passed in the DaemonSet manifest or as part
+of a ConfigMap. Below you can see an example of a ConfigMap passing the
+required environment variables to the StorageOS container. The ConfigMap also
 contains the environment variables `KV_BACKEND` and `KV_ADDR` that tell
 StorageOS that an external key:value store will be used and the URL to use to
 find the store (see [External etcd](/docs/operations/external-etcd)). The URL

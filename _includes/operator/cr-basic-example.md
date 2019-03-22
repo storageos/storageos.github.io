@@ -25,6 +25,7 @@ END
 ```
 {% elsif page.platform == "rancher" %}
 ```bash
+{{ page.cmd }} create -f - <<END
 apiVersion: "storageos.com/v1alpha1"
 kind: "StorageOSCluster"
 metadata:

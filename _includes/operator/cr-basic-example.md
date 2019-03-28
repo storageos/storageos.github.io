@@ -3,8 +3,8 @@ This is a Cluster Definition example.
 {% if page.platform == "openshift" %}
 ```bash
 {{ page.cmd }} create -f - <<END
-apiVersion: "storageos.com/v1alpha1"
-kind: "StorageOSCluster"
+apiVersion: "storageos.com/v1"
+kind: StorageOSCluster
 metadata:
   name: "example-storageos"
 spec:
@@ -26,8 +26,8 @@ END
 {% elsif page.platform == "rancher" %}
 ```bash
 {{ page.cmd }} create -f - <<END
-apiVersion: "storageos.com/v1alpha1"
-kind: "StorageOSCluster"
+apiVersion: "storageos.com/v1"
+kind: StorageOSCluster
 metadata:
   name: "example-storageos"
 spec:
@@ -50,8 +50,8 @@ END
 {% else %}
 ```bash
 {{ page.cmd }} create -f - <<END
-apiVersion: "storageos.com/v1alpha1"
-kind: "StorageOSCluster"
+apiVersion: "storageos.com/v1"
+kind: StorageOSCluster
 metadata:
   name: "example-storageos"
 spec:

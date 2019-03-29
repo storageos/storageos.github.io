@@ -22,7 +22,7 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
-## 1.1.5 - Released 25/03/2019
+## 1.1.5 - Released 29/03/2019
 
 Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
 1.2 feature release internally.

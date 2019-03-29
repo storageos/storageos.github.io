@@ -22,6 +22,50 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.1.5 - Released 25/03/2019
+
+Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
+1.2 feature release internally.
+
+### Improved
+
+- Previously we would allocate 5% of free memory to use as cache. On larger
+  systems that were being rebooted, we could use more memory than intended if we
+  start before other applications do. We now set a hard upper-bound of 512MB.
+- The cluster ID is now logged more prominently during startup.
+- Labels prefixed with `kubernetes.io/` are now accepted. This allows core
+  Kubernetes labels to be inherited and used for scheduling decisions.
+- A cache flush is now triggered when `fsck` is run on a volume.
+- Removed noisy log messages from the dataplane stats module.
+- Increased log level to `info` for volume create and delete with CSI.
+
+### Fixed
+
+- Mounting a volume while the volume was undergoing a series of configuration
+  updates could cause the mount to hang.
+- When increasing the number of replicas for a mounted volume, the new replica
+  could get stuck in "provisioned" state. Removing the stuck replica and
+  re-trying would normally clear the issue. The root cause has now been fixed.
+- When a volume was being deleted and the data scrub finished, if there was an
+  error removing the volume configuration from the kv store (e.g. kv store
+  unavailable), it would log an error and not retry. Now, the operation is
+  re-tried.
+- The soft and hard mode failure detection was incorrectly using the count of
+  failed replicas in the calculation, not the active replicas. When new replicas
+  are being provisioned it's normal to have more than the requested number of
+  replicas with some of them pending removal. The logic was changed to count
+  healthy replicas instead.
+- Fixed excessive log messages when removing a device for a volume that still
+  exists elsewhere in the cluster.
+- The UI incorrectly counted the replica stuck in "provisioned" state as
+  available when it did not yet have a consistent copy of the the data.
+- When setting the cluster log level via the CLI, an error was returned even
+  though the update suceeded.
+- The UI was displaying storage capacity in GB rather than GiB.
+- In the UI, the volume delete hover was missing, causing the button to appear
+  disabled.
+- Adding a label to a volume in the UI could insert the string "undefined".
+
 ## 1.1.4 - Released 06/03/2019
 
 Includes a single fix to increase the time we wait for the operating system to

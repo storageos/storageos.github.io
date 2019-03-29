@@ -29,11 +29,11 @@ Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
 
 ### Improved
 
-- Previously we would allocate 5% of free memory to use as cache.  On larger
+- Previously we would allocate 5% of free memory to use as cache. On larger
   systems that were being rebooted, we could use more memory than intended if we
-  start before other applications do.  We now set a hard upper-bound of 512MB.
+  start before other applications do. We now set a hard upper-bound of 512MB.
 - The cluster ID is now logged more prominently during startup.
-- Labels prefixed with `kubernetes.io/` are now accepted.  This allows core
+- Labels prefixed with `kubernetes.io/` are now accepted. This allows core
   Kubernetes labels to be inherited and used for scheduling decisions.
 - A cache flush is now triggered when `fsck` is run on a volume.
 - Removed noisy log messages from the dataplane stats module.
@@ -43,17 +43,17 @@ Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
 
 - Mounting a volume while the volume was undergoing a series of configuration
   updates could cause the mount to hang.
-- When increasing the number of replicas for an mounted volume, the new replica
-  could get stuck in "provisioned" state.  Removing the stuck replica and
+- When increasing the number of replicas for a mounted volume, the new replica
+  could get stuck in "provisioned" state. Removing the stuck replica and
   re-trying would normally clear the issue. The root cause has now been fixed.
 - When a volume was being deleted and the data scrub finished, if there was an
   error removing the volume configuration from the kv store (e.g. kv store
-  unavailable), it would log an error and not retry.  Now, the operation is
+  unavailable), it would log an error and not retry. Now, the operation is
   re-tried.
 - The soft and hard mode failure detection was incorrectly using the count of
   failed replicas in the calculation, not the active replicas. When new replicas
   are being provisioned it's normal to have more than the requested number of
-  replicas with some of them pending removal.  The logic was changed to count
+  replicas with some of them pending removal. The logic was changed to count
   healthy replicas instead.
 - Fixed excessive log messages when removing a device for a volume that still
   exists elsewhere in the cluster.

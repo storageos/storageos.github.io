@@ -65,9 +65,9 @@ passed as an [environment variable](/docs/reference/envvars) as in the table bel
 
 | Environement Variable | Value                         |
 | :------------------   | :---------------------------- |
-| TLSEtcdCA             | /etc/pki/etcd-client.key      |
-| TLSEtcdClientCert     | /etc/pki/etcd-client-ca.crt   |
-| TLSEtcdClientKey      | /etc/pki/etcd-client.crt      |
+| TLSEtcdCA             | /etc/pki/etcd-client-ca.crt   |
+| TLSEtcdClientCert     | /etc/pki/etcd-client.crt      |
+| TLSEtcdClientKey      | /etc/pki/etcd-client.key      |
 
 These environment variables can be passed in the DaemonSet manifest or as part
 of a ConfigMap. Below you can see an example of a ConfigMap passing the

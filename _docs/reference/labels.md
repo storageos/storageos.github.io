@@ -14,6 +14,28 @@ Labels can be applied to various StorageOS artefacts. Applying specific feature
 labels triggers compression, replication and other storage features. No feature
 labels are present by default.
 
+## StorageOS Node labels
+
+Nodes do not have any feature labels present by default.  When StorageOS is run
+within Kubernetes with the [Cluster Operator]({% link
+_docs/reference/cluster-operator/index.md %}), any node labels set on Kubernetes
+nodes are available within StorageOS.  Node labels may also be set with the CLI
+or UI.
+
+| Feature             | Label                               | Values                               | Description                                                                                                                                                                                                  |
+| :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                               |
+| Deployment type     | `storageos.com/deployment`          | strings [`computeonly`,`mixed`]      | Specifies whether a node should be `computeonly` where it only acts as a client and does not host volume data locally, or `mixed` (the default), where the node can operate in both client and server modes. |
+| Region              | `iaas/region`                       | string                               | Set automatically in AWS, Azure and GCE.  e.g. `eu-west-1`.  Not currently used by StorageOS but available for use in rules.                                                                         |
+| Failure domain      | `iaas/failure-domain`               | string                               | Used to spread master and replicas across different failure domains.  Set automatically in AWS, Azure and GCE, e.g. `eu-west-1b`                                                                             |
+| Update domain       | `iaas/update-domain`                | string                               | Set by some cloud providers to perform sequential updates/reboots.  Not currently used by StorageOS but available for use in rules.                                                                          |
+| Size                | `iaas/size`                         | string                               | The node hardware configuration, as set by the cloud provider, e.g. `m5d.xlarge`.  Not currently used by StorageOS but available for use in rules.                                                           |
+
+To add a label to a node:
+
+```bash
+storageos node update --label-add storageos.com/deployment=computeonly nodename
+```
+
 ## StorageOS Volume labels
 
 Volumes do not have any feature labels present by default
@@ -47,4 +69,3 @@ To add overcommit labels to a pool:
 ```bash
 storageos pool update --label-add storageos.com/overcommit=20 default
 ```
-

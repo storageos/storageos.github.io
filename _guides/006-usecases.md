@@ -37,6 +37,14 @@ sections:
         title: Backups
         description: Exfiltrate files from StorageOS volumes
         module: usecases/kubernetes/backups
+      -
+        title: Zookeeper
+        description: Create a Zookeeper cluster with persistent storage
+        module: usecases/kubernetes/zookeeper
+      -
+        title: Kafka
+        description: Create a Kafka cluster with persistent storage
+        module: usecases/kubernetes/kafka
 
   -
     title: Using Docker

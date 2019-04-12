@@ -112,6 +112,8 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storage
 
 {% if page.platform == "azure-aks" %}
 {% include operator/cr-csi-example.md %}
+{% elsif page.platform == "rancher" or page.platform == "dockeree" %}
+{% include operator/cr-csi-shareddir.md %}
 {% else %}
 {% include operator/cr-basic-example.md %}
 {% endif %}

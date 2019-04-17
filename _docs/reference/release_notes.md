@@ -31,7 +31,7 @@ documentation expected before `1.2.0` is released.**
 
 - Pod fencing can improve application failover times, particularly for
   applications deployed as StatefulSets.  When the label
-  `storageos.com/fencing=true` is applied to a Pod and StorageOS detects that
+  `storageos.com/fenced=true` is applied to a Pod and StorageOS detects that
   the node running the Pod is offline, it will tell Kubernetes to re-schedule
   the Pod elsewhere.
   

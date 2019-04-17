@@ -5,6 +5,10 @@ anchor: reference
 
 sections:
   -
+    title: API
+    description: Describes the HTTP API
+    module: reference/api
+  -
     title: CLI
     description: Describes the command line tools
     module: reference/cli
@@ -53,11 +57,6 @@ sections:
         title: volume
         description: Create and manage volumes
         module: reference/cli/volume
-
-  -
-    title: API
-    description: Describes the HTTP API
-    module: reference/api
   -
     title: Cluster Operator
     description: Cluster Operator details
@@ -76,17 +75,25 @@ sections:
         description: Examples of use for operator
         module: reference/cluster-operator/examples
   -
-    title: GUI
-    description: Describes the graphical user interface
-    module: reference/gui
+    title: Contributing to the docs
+    description: How to contribute to the docs
+    module: reference/contributing
   -
     title: Environment Variables
     description: Describes the support environment variables for StorageOS
     module: reference/envvars
   -
+    title: GUI
+    description: Describes the graphical user interface
+    module: reference/gui
+  -
     title: Labels
     description:  StorageOS special labels to apply features
     module: reference/labels
+  -
+    title: Open Source Attribution
+    description: StorageOS open source attribution notice
+    module: reference/open_source_attribution
   -
     title: Prometheus Endpoint
     description: Describes the metrics exposed by our Prometheus endpoint
@@ -99,12 +106,4 @@ sections:
     title: Telemetry
     description: Telemetry
     module: reference/telemetry
-  -
-    title: Contributing to the docs
-    description: How to contribute to the docs
-    module: reference/contributing
-  -
-    title: Open Source Attribution
-    description: StorageOS open source attribution notice
-    module: reference/open_source_attribution
 ---

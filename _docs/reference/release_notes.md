@@ -22,24 +22,28 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
-## 1.2.0-rc1 - Released 12/04/2019
+## 1.2.0 - Released 17/04/2019
 
-**The `1.2.0-rc1` release notes are provisional, with further updates and
-documentation expected before `1.2.0` is released.**
+The `1.2.0` release contains significant performance and resource utilisation
+improvements, along with 3 new features:
+
+- Pod fencing
+- Volume Encryption
+- etcd TLS
 
 ### New
 
 - Pod fencing can improve application failover times, particularly for
   applications deployed as StatefulSets.  When the label
-  `storageos.com/fenced=true` is applied to a Pod and StorageOS detects that
-  the node running the Pod is offline, it will tell Kubernetes to re-schedule
-  the Pod elsewhere.
-  
+  `storageos.com/fenced=true` is applied to a Pod, that mounts a replicated
+  StorageOS volume, and StorageOS detects that the node running the Pod is
+  offline, it will tell Kubernetes to re-schedule the Pod elsewhere.
+
   Without this feature, Kubernetes will by default wait 5 minutes before marking
   the node offline and performing remedial actions.  When applications are
-  deployed as StatefulSets then manual confirmation is also required before Pods
-  will be re-scheduled.  This behaviour guards against multiple nodes accessing
-  the same volume concurrently as Kubernetes does not have visibility of the
+  deployed as StatefulSets then manual intervention is also required before Pods
+  will be re-scheduled. This behaviour guards against multiple nodes accessing
+  the same volume concurrently as Kubernetes does not have visibility of
   storage presentations.
 
   Since StorageOS detects and remediates node failure more aggressively (in
@@ -47,9 +51,25 @@ documentation expected before `1.2.0` is released.**
   concurrently, the fencing option gives the ability to override the default
   Kubernetes behaviour.
 
-- Encryption at rest.  See upcoming documentation and blog post.
+  See [fencing]({%link _docs/concepts/fencing.md %}) for more information.
+
+- Volume Encryption can now be enabled by setting the
+  `storageos.com/encryption=true` label on a volume.  When enabled, data will be
+  encrypted prior to being persisted on disk.
+
+  See [encrypted volumes]({%link _docs/concepts/encryption.md %}) for more
+  information.
 
 - Mutual TLS is now supported on external etcd KV backends.
+
+  See [etcd TLS]({%link _docs/operations/external-etcd/etcd-tls.md %}) for more
+  information.
+
+- When deployed using the [StorageOS Cluster
+  Operator](https://github.com/storageos/cluster-operator), node labels from
+  Kubernetes are visible within StorageOS and available for use in rules.  This
+  is particularly useful to mark specific nodes as compute-only.  See
+  [labels]({%link _docs/reference/labels.md %}) for more information.
 
 ### Improved
 
@@ -67,10 +87,16 @@ documentation expected before `1.2.0` is released.**
   memory overhead.
 - Several log formatting and level improvements to provide more relevant and
   consistent messages.
+- Gossip (serf) port added to the network connectivity heath check.
 
 ### Fixed
 
-- Multiple fixes, details to be provided before `1.2.0` final release.
+- The CLI command `storageos cluster health` now returns more useful information
+  about the health of the cluster and does not require the cluster ID or join
+  token to be supplied as a parameter.
+- When changing the cluster log level at run-time using `storageos logs
+  --log-level debug`, the new log level would be applied but an incorrect error
+  would be returned.
 
 ## 1.1.5 - Released 29/03/2019
 

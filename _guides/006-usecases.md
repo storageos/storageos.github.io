@@ -10,6 +10,18 @@ sections:
     module: usecases/kubernetes
     items:
       -
+        title: Backups
+        description: Exfiltrate files from StorageOS volumes
+        module: usecases/kubernetes/backups
+      -
+        title: Cassandra
+        description: Create a Cassandra cluster with persistent storage
+        module: usecases/kubernetes/cassandra
+      -
+        title: Kafka
+        description: Create a Kafka cluster with persistent storage
+        module: usecases/kubernetes/kafka
+      -
         title: Microsoft SQL Server
         description: Create a Microsoft SQL server StatefulSet with persistent storage
         module: usecases/kubernetes/mssql
@@ -17,6 +29,10 @@ sections:
         title: MySQL
         description: Create a MySQL StatefulSet with persistent storage
         module: usecases/kubernetes/mysql
+      -
+        title: Nginx
+        description: Use an Nginx pod to exfiltrate data from StorageOS volumes
+        module: usecases/kubernetes/nginx
       -
         title: PostgreSQL
         description: Create a PostgreSQL StatefulSet with persistent storage
@@ -26,25 +42,9 @@ sections:
         description: Create a Redis StatefulSet with persistent storage
         module: usecases/kubernetes/redis
       -
-        title: Nginx
-        description: Use an Nginx pod to exfiltrate data from StorageOS volumes
-        module: usecases/kubernetes/nginx
-      -
-        title: Cassandra
-        description: Create a Cassandra cluster with persistent storage
-        module: usecases/kubernetes/cassandra
-      -
-        title: Backups
-        description: Exfiltrate files from StorageOS volumes
-        module: usecases/kubernetes/backups
-      -
         title: Zookeeper
         description: Create a Zookeeper cluster with persistent storage
         module: usecases/kubernetes/zookeeper
-      -
-        title: Kafka
-        description: Create a Kafka cluster with persistent storage
-        module: usecases/kubernetes/kafka
 
   -
     title: Using Docker

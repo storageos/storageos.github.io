@@ -3,7 +3,6 @@ layout: guide
 title: StorageOS Docs - Volumes
 anchor: reference
 module: reference/cli/volume
-# Last reviewed by cheryl.hung@storageos.com on 2017-04-13
 ---
 
 # Volumes

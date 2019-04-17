@@ -44,19 +44,22 @@ Converged storage for containers.
 By using this product, you are agreeing to the terms of the the StorageOS Ltd. End
 User Subscription Agreement (EUSA) found at: https://storageos.com/legal/#eusa
 
+To be notified about stable releases and latest features, sign up at https://my.storageos.com.
+
 Options:
-      --config string     Location of client config files (default "/Users/<user>/.storageos")
-  -D, --debug             Enable debug mode
-      --help              Print usage
-  -H, --host list         Node endpoint(s) to connect to (will override STORAGEOS_HOST env variable value)
-                          (default [])
-  -p, --password string   API password (will override STORAGEOS_PASSWORD env variable value)
-  -u, --username string   API username (will override STORAGEOS_USERNAME env variable value)
-  -v, --version           Print version information and quit
+      --config string      Location of client config files (default "/home/$USER/.storageos")
+  -D, --debug              Enable debug mode
+  -d, --discovery string   The discovery endpoint. Defaults to https://discovery.storageos.cloud (will override STORAGEOS_DISCOVERY env variable value)
+      --help               Print usage
+  -H, --host string        Node endpoint(s) to connect to (will override STORAGEOS_HOST env variable value)
+  -p, --password string    API password (will override STORAGEOS_PASSWORD env variable value)
+  -u, --username string    API username (will override STORAGEOS_USERNAME env variable value)
+  -v, --version            Print version information and quit
 
 Management Commands:
   cluster                 Manage clusters
-  logs                    View and manage node logs
+  licence                 Manage the licence
+  logs                    View and manage node logs on the active cluster
   namespace               Manage namespaces
   node                    Manage nodes
   policy                  Manage policies
@@ -66,7 +69,7 @@ Management Commands:
   volume                  Manage volumes
 
 Commands:
-  install-bash-completion Install bash completion for the storageos CLI
+  install-bash-completion Install bash completion for the storageos cli
   login                   Store login credentials for a given storageos host
   logout                  Delete stored login credentials for a given storageos host
   version                 Show the StorageOS version information
@@ -74,21 +77,33 @@ Commands:
 Run 'storageos COMMAND --help' for more information on a command.
 ```
 
+## Formatting CLI Output
+
+StorageOS CLI output can be formatted using the `--format` option. The strings
+that are passed to `--format` are based on [Go
+templates](https://golang.org/pkg/text/template/).
+
+StorageOS CLI v1.2.0 added help for the `--format` option. The help can be
+accessed by passing `--format help` to StorageOS CLI commands to get context
+specific help.
+
+```bash
+$ storageos volume ls --format help
+```
+
 ## Cheatsheet
 
-| Command     | Subcommand                    | Description                                                    |
-|-------------|-------------------------------|----------------------------------------------------------------|
-| `cluster`   | `create health inspect rm`    | Cluster information.                                           |
-| `logs`      | `view`                        | View and manage node logs.                                     |
-| `login`     |                               | Store login credentials for a given StorageOS host.            |
-| `logout`    |                               | Delete stored login credentials for a given StorageOS host.    |
-| `namespace` | `create inspect ls rm update` | Namespaces help different projects or teams organize volumes.  |
-| `node`      | `cordon drain health inspect ls uncordon undrain update` | Node information.                                 |
-| `policy`    | `create inspect ls rm`        | Define how resources are accessed by users and groups.         |
-| `pool`      | `create inspect ls rm`        | A collection of storage resources for provisioning volumes.    |
-| `rule`      | `create inspect ls rm update` | Rules define label-based policies to apply to volumes.         |
-| `user`      | `create inspect ls rm update` | User and group management.                                     |
-| `version`   |                               | Display the version.                                           |
-| `volume`    | `create inspect ls rm update` | StorageOS data volumes.                                        |
+| Command       | Subcommand                                               | Description                                                      |
+| ------------- | -------------------------------                          | ---------------------------------------------------------------- |
+| `cluster`     | `create health inspect rm`                               | Cluster information.                                             |
+| `licence`     | `apply inspect rm`                                       | Manage licences                                                  |
+| `logs`        | `view`                                                   | View and manage node logs.                                       |
+| `namespace`   | `create inspect ls rm update`                            | Namespaces help different projects or teams organize volumes.    |
+| `node`        | `cordon drain health inspect ls uncordon undrain update` | Node information.                                                |
+| `policy`      | `create inspect ls rm`                                   | Define how resources are accessed by users and groups.           |
+| `pool`        | `create inspect ls rm`                                   | A collection of storage resources for provisioning volumes.      |
+| `rule`        | `create inspect ls rm update`                            | Rules define label-based policies to apply to volumes.           |
+| `user`        | `create inspect ls rm update`                            | User and group management.                                       |
+| `volume`      | `create inspect ls rm update`                            | StorageOS data volumes.                                          |
 
 [Source is available on Github](https://github.com/storageos/go-cli).

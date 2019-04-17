@@ -22,6 +22,56 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.2.0-rc1 - Released 12/04/2019
+
+**The `1.2.0-rc1` release notes are provisional, with further updates and
+documentation expected before `1.2.0` is released.**
+
+### New
+
+- Pod fencing can improve application failover times, particularly for
+  applications deployed as StatefulSets.  When the label
+  `storageos.com/fencing=true` is applied to a Pod and StorageOS detects that
+  the node running the Pod is offline, it will tell Kubernetes to re-schedule
+  the Pod elsewhere.
+  
+  Without this feature, Kubernetes will by default wait 5 minutes before marking
+  the node offline and performing remedial actions.  When applications are
+  deployed as StatefulSets then manual confirmation is also required before Pods
+  will be re-scheduled.  This behaviour guards against multiple nodes accessing
+  the same volume concurrently as Kubernetes does not have visibility of the
+  storage presentations.
+
+  Since StorageOS detects and remediates node failure more aggressively (in
+  30-40 seconds) and it protects against multiple nodes accessing volumes
+  concurrently, the fencing option gives the ability to override the default
+  Kubernetes behaviour.
+
+- Encryption at rest.  See upcoming documentation and blog post.
+
+- Mutual TLS is now supported on external etcd KV backends.
+
+### Improved
+
+- Multiple significant performance improvements.
+- Multiple data plane processes were merged into a single `dataplane` binary.
+  This has multiple benefits:
+
+    - Improved performance by reducing context switches when passing data
+      between processes.
+    - Easier to instrument and trace.
+    - Startup and shutdown logic simpler to manage.
+
+- DirectFS, the network communication layer used by replication and remote
+  volumes, has been largely re-written and now uses a connection pool to reduce
+  memory overhead.
+- Several log formatting and level improvements to provide more relevant and
+  consistent messages.
+
+### Fixed
+
+- Multiple fixes, details to be provided before `1.2.0` final release.
+
 ## 1.1.5 - Released 29/03/2019
 
 Version 1.1.5 is an interim bugfix release as we continue to test the upcoming

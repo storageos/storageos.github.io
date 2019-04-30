@@ -41,6 +41,11 @@ sections:
     title: Monitoring StorageOS
     description: Monitoring StorageOS
     module: operations/monitoring
+    items:
+      -
+        title: Prometheus Setup
+        description: Using the Prometheus Operator to set up Prometheus monitoring of StorageOS
+        module: operations/monitoring/prometheus-setup
   -
     title: Namespace Management
     description: Namespaces

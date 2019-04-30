@@ -20,6 +20,9 @@ so collectors such as
 [Sensu](https://sensu.io/)
 can be used. The examples on this page will reference Prometheus semantics.
 
+For an example Prometheus and Grafana setup monitoring StorageOS please see the
+example [here](/docs/operations/monitoring/prometheus-setup).
+
 ## Analysing Metrics
 
 There are many metrics exposed by the Prometheus endpoint, but without a good

@@ -13,6 +13,10 @@ sections:
     description: Clusters
     module: concepts/clusters
   -
+    title: Compression
+    description: Compression
+    module: concepts/compression
+  -
     title: Encryption
     description: Encryption
     module: concepts/encryption

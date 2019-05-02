@@ -18,6 +18,10 @@ sections:
         description: Create a Cassandra cluster with persistent storage
         module: usecases/kubernetes/cassandra
       -
+        title: ElasticSearch
+        description: Create a ElasticSearch cluster with persistent storage
+        module: usecases/kubernetes/elasticsearch
+      -
         title: Kafka
         description: Create a Kafka cluster with persistent storage
         module: usecases/kubernetes/kafka

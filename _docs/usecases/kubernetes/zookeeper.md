@@ -15,7 +15,7 @@ fails, the cluster is only in a degraded state for as long as it takes
 Kubernetes to restart the pod. When the pod comes back up, the pod data is
 immediately avaliable. Should Kubernetes schedule the Zookeeper pod on a
 new node, StorageOS allows for the data to be avaliable to the pod,
-irrespective of whether or not a the original StorageOS master volume
+irrespective of whether or not the original StorageOS master volume
 is located on the same node.
 
 As Zookeeper has features to allow it to handle replication, and as such

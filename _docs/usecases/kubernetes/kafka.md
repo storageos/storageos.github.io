@@ -15,7 +15,7 @@ fails, the cluster is only in a degraded state for as long as it takes
 Kubernetes to restart the pod. When the pod comes back up, the pod data is
 immediately avaliable. Should Kubernetes schedule the kafka pod on a
 new node, StorageOS allows for the data to be avaliable to the pod,
-irrespective of whether or not a the original StorageOS master volume
+irrespective of whether or not the original StorageOS master volume
 is located on the same node.
 
 Kafka has features to allow it to handle replication, and as such careful
@@ -28,7 +28,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying kafka on Kubernetes
 
-### Pre-requisites
+### Prerequisites
 
 - Apache Zookeeper is required by Kafka to function; we assume it to already
 exist and be accessible within the Kubernetes cluster as `zookeeper`, see how

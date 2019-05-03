@@ -8,10 +8,10 @@ module: concepts/compression
 # Compression
 
 StorageOS compression is handled on a per volume basis and is enabled by
-default. Compression is enabled by default, as performance is generally
-increased when compression is enabled due to fewer read/write operations
-needing to take place on the backend store. Compression can be disabled by
-setting the label `storageos.com/nocompress=true` on a volume. 
+default, as performance is generally increased when compression is enabled due
+to fewer read/write operations taking place on the backend store. Compression
+can be disabled by setting the label `storageos.com/nocompress=true` on a
+volume.
 
 StorageOS utilises the [lz4 compression algorithm](https://lz4.github.io/lz4/)
 when writing to the backend store (the volumes' [blob
@@ -20,7 +20,8 @@ traffic](/docs/concepts/replication) before it is sent across the network.
 Compression is granular per 4k block and data will remain
 compressed/uncompressed once written to a volume. Therefore, an individual
 volume can store both compressed data blocks and uncompressed data blocks at
-the same time. As such volume compression can be dynamically enabled/disabled.
+the same time. As such volume compression can be dynamically enabled/disabled
+even while a volume is in use.
 
 StorageOS can detect whether a block can be compressed or not. If a single
 block is uncompressible it is written as is, therefore there is no overhead in

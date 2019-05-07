@@ -7,19 +7,44 @@ module: operations/monitoring/prometheus-setup
 
 # Setting up Prometheus to Monitor StorageOS
 
-CoreOS have created a Kubernetes Operator for installing Prometheus. The
+CoreOS has created a Kubernetes Operator for installing Prometheus. The
 operator uses ServiceMonitor custom resources (CRs) to scrape IP addresses
 defined in Kubernetes Endpoints. This article is intended to provide a quick
 guide to monitoring the StorageOS metrics endpoint and can be used with our
 example [Grafana dashboard](https://grafana.com/dashboards/10093).
 
-## Install the Prometheus Operator
+## Scripted Prometheus Install
+
+There is a `install-prometheus.sh` script that will perform the installation of
+Prometheus using the Prometheus operator and a ServiceMonitor monitoring
+StorageOS. If you wish to use it then follow steps 1 and 2 before skipping to
+[installing
+Grafana](/docs/operations/monitoring/prometheus-setup#install-grafana). If you
+do not wish to use the script then go to the [Prometheus
+Operator](/docs/operations/monitoring/prometheus-setup#install-the-prometheus-operator)
+installation.
+
+> N.B. The standard installation of Prometheus and Grafana does not have
+> persistent storage enabled. If you wish to use persistent storage then please
+> see the README.md in the Prometheus directory from Step 1.
 
 1. Clone the StorageOS deploy repository and move into the
    `prometheus-operator` directory
     ```bash
-    git clone https://github.com/coreos/prometheus-operator.git prometheus-operator
+    git clone https://github.com/storageos/deploy.git storageos
+    cd storageos/k8s/examples/prometheus
     ```
+1. Run the `install-prometheus.sh` script.
+   ```bash
+   ./install-prometheus.sh
+   ```
+
+## Install the Prometheus Operator
+1. Clone the StorageOS deploy repository and move into the
+   `prometheus-operator` directory
+    ```bash
+    git clone https://github.com/coreos/prometheus-operator.git prometheus-operator
+    `````````
 1. Deploy the quick start `bundle.yaml`
     ```bash
     kubectl create -f prometheus-operator/bundle.yaml
@@ -32,7 +57,7 @@ example [Grafana dashboard](https://grafana.com/dashboards/10093).
 ## Install Prometheus
 
 Now that the Prometheus Operator is installed, a Prometheus CR can be created
-which the Prometheus operator will act upon to configure a Prometheus StatefulSet
+which the Prometheus operator will act upon to configure a Prometheus StatefulSet.
 
 1. Clone the StorageOS deploy repo
    ```bash
@@ -64,7 +89,7 @@ which the Prometheus operator will act upon to configure a Prometheus StatefulSe
    from the Graph page. A complete list of StorageOS metrics can be found
    [here](/docs/reference/prometheus)
 
-## Installing Grafana
+## Install Grafana
 
 Grafana is a popular solution for visualising metrics. At the time of writing
 (30/04/2019) there is no Grafana operator so instead a helm installation is

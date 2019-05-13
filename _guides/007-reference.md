@@ -103,6 +103,10 @@ sections:
     description: StorageOS release notes
     module: reference/release_notes
   -
+    title: Supported Filesystems
+    description: Describes filesystems supported by StorageOS
+    module: reference/filesystems
+  -
     title: Telemetry
     description: Telemetry
     module: reference/telemetry

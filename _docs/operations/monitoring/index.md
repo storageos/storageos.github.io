@@ -56,10 +56,11 @@ of both read and write totals is taken they can be summed to give IOPS.
 
 ### Measuring Bandwidth
 
-While IOPS is purely a measure of operations per second, bandwidth provides a measure of
-MB read/written per second. `storageos_volume_frontend_write_bytes_total` and
+While IOPS is a measure of operations per second, bandwidth provides a
+measure of throughput, usually in MB/s.
+`storageos_volume_frontend_write_bytes_total` and
 `storageos_volume_frontend_read_bytes_total` are exposed as a way to calculate
-bandwidth.
+bandwidth from the application's perspective.
 
 These metrics are counters that report the total bytes read from/written to a
 volume. As with IOPS, a rate can be calculated to give the average number of

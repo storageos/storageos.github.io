@@ -98,10 +98,10 @@ To view the status of cluster nodes:
 
 ```bash
 $ storageos cluster health
-NODE         ADDRESS         CP_STATUS  DP_STATUS
-storageos-1  192.168.50.100  Healthy    Healthy
-storageos-2  192.168.50.101  Healthy    Healthy
-storageos-3  192.168.50.102  Healthy    Healthy
+NODE         CP_STATUS  DP_STATUS
+storageos-1  Healthy    Healthy
+storageos-2  Healthy    Healthy
+storageos-3  Healthy    Healthy
 ```
 
 To view the status in more detail there are additional format
@@ -110,6 +110,9 @@ options which can be given to the `--format` flag:
 - `cp` shows the status of control plane components
 - `dp` shows the status of data plane components
 - `detailed` shows the status of control plane and data plane components
+
+All the normal format options are available too. Run `storageos cluster health --format help`
+to see all the options for this command.
 
 ### `storageos cluster inspect`
 

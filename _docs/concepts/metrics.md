@@ -36,9 +36,9 @@ dimensions for a metric to be exposed. For example the
 `storageos_volume_backend_read_bytes_total` metric is given for each volume.
 
 Using Prometheus to scrape metrics endpoints in Kubernetes is quite elegant as
-Prometheus can be configured to scrape metrics from endpoints using Kubernetes
-labels. This is important because StorageOS metrics are intended to be scraped
-from every StorageOS pod in the cluster and then aggregated.
+Prometheus can be configured to scrape metrics from Kubernetes Services. This
+is important because StorageOS metrics are intended to be scraped from every
+StorageOS pod in the cluster and then aggregated.
 
 For an example of how to visualize StorageOS metrics please see our [Monitoring
 StorageOS page](/docs/operations/monitoring#analysing-metrics) for a link to a

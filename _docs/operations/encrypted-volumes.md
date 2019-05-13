@@ -8,9 +8,9 @@ module: operations/encrypted-volumes
 # Encrypted Volumes
 
 Volumes can be encrypted when they are created using the
-`storageos.com/encryption label`. The labels can be passed to StorageOS using
-PVCs or you can directly create volumes using the StorageOS CLI or GUI with the
-encryption label applied. 
+`storageos.com/encryption label`. The [labels](/docs/reference/labels/) can be
+passed to StorageOS using PVCs or you can directly create volumes using the
+StorageOS CLI or GUI with the encryption label applied.
 
 For more in depth discussion of how encryption works please see the [Encryption
 concepts](/docs/concepts/encryption) page.
@@ -42,7 +42,7 @@ spec:
 
 You can also pass the encryption label when creating volumes using the CLI
 ```bash
-$ storageos volume create encrypted --label storageos.com/encryption=true
+$ storageos volume create encrypted-volume --label storageos.com/encryption=true
 ```
 
 You can also add the encryption label when creating a volume with the GUI

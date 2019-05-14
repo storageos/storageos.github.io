@@ -67,7 +67,7 @@ _docs/platforms/kubernetes/install/index.md %})
 1. Confirm PostgreSQL is up and running.
 
    ```bash
-   $ kubectl get pod postgres-0 -w 
+   $ kubectl get pod postgres-0 -w
    NAME         READY   STATUS    RESTARTS   AGE
    postgres-0   1/1     Running   0          1m
    ```
@@ -75,13 +75,12 @@ _docs/platforms/kubernetes/install/index.md %})
 1. Connect to the PostgreSQL client pod and connect to the PostgreSQL server
    through the service.
    ```bash
-   $ kubectl exec -it postgres-0 -- psql -h postgres-0.postgres -U primaryuser
-   postgres -c "\l"
-   Password for user primaryuser: password 
+   $ kubectl exec -it postgres-0 -- psql -h postgres-0.postgres -U primaryuser postgres -c "\l"
+   Password for user primaryuser: password
                            List of Databases
-     Name    |  Owner   | Encoding  | Collate | Ctype |   Access privileges   
+     Name    |  Owner   | Encoding  | Collate | Ctype |   Access privileges
   -----------+----------+-----------+---------+-------+-----------------------
-   postgres  | postgres | SQL_ASCII  | C       | C     | 
+   postgres  | postgres | SQL_ASCII  | C       | C     |
    template0 | postgres | SQL_ASCII | C       | C     | =c/postgres          +
              |          |           |         |       | postgres=CTc/postgres
    template1 | postgres | SQL_ASCII | C       | C     | =c/postgres          +

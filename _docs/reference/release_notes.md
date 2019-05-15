@@ -22,6 +22,41 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.2.1 - Released 15/05/2019
+
+1.2.1 is primarily a bug fix release, but it also includes some performance
+improvements.
+
+### Improved
+
+- Performance tuning on the metadata store, improving performance for sustained
+  writes.
+- Metadata checksums now use a pipelined SSE algorithm to improve performance.
+- Set SCSI timeouts for StorageOS volumes to 120 seconds.
+- More robust handling of devices on first initialisation.
+- Volumes created with CSI are now formatted with lazy initialization enabled,
+  reducing the time taken to provision the volume.
+- Logging for volume detach operations when fencing a Pod.
+- Cluster maintenance logging improved.
+
+### Fixed
+
+- Improved handling of in-memory cache during repeated failover events.
+- When a volume was being deleted while there was IO pending to an offline
+  remote node, the delete would wait until the IO timed out.  IO is now
+  abandoned when a volume is deleted.
+- During shutdown, IO to offline remote nodes would be retried, causing shutdown
+  to take longer than needed. Now, unsuccessful IO is marked as failed
+  immediately if a shutdown has been requested.
+- The network client is now shutdown before the block presentation layer so that
+  threads with pending IO are immediately unblocked. This helps ensure shutdowns
+  can finish gracefully within the 10 second window set by the orchestrator.
+- Node inspect output did not show all configuration information.
+- When CSI is enabled, devices are now created on all nodes instead of on
+  demand. This mitigates a timing issue and allows faster failover.
+- Replication logs could contain incorrect volume identifiers when multiple
+  syncs are in progress.
+
 ## 1.2.0 - Released 17/04/2019
 
 The `1.2.0` release contains significant performance and resource utilisation
@@ -344,7 +379,7 @@ improvements, many to help with running on low-memory or heavily loaded servers.
 - Increased the maximum number of replicas from 4 to 5.
 - Increased the timeout for the device presentation shutdown to 9 seconds before
   sending a `SIGKILL`.
-- Increased the wait timeout for dataplane startup from 10 to 30 seconds.  
+- Increased the wait timeout for dataplane startup from 10 to 30 seconds.
 - Added colour-coded health labels in the UI.
 - Rules can now be enabled and disabled in the UI.
 - Improved input validation in the UI.
@@ -640,8 +675,8 @@ improvements as we get closer to removing the RC label.
 - Explicitly shutdown the data plane gRPC handlers in the replication client
   prior to shutting down the rest of the data plane.  This protects against a
   potential issue that could lead to unclean shutdown.
-- The lun ID is now computed dynamically.  This allows support for devices 
-  across multiple HBAs in the future, which will remove the limitation of 
+- The lun ID is now computed dynamically.  This allows support for devices
+  across multiple HBAs in the future, which will remove the limitation of
   256 volumes on RHEL7/Centos7 clusters and other systems with kernel 3.x.
 - SCSI lun support now supports co-existence with other block storage providers
 - Bulk volume creation could cause excessive validation warning messages in the

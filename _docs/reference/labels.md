@@ -41,14 +41,15 @@ storageos node update --label-add storageos.com/deployment=computeonly nodename
 Volumes do not have any feature labels present by default
 
 | Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
-| :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
-| Caching             | `storageos.com/nocache`             | true / false                         | Switches off caching.                                                                                                                                                                                                              |
-| Compression         | `storageos.com/nocompress`          | true / false                         | Switches off compression of data at rest and in transit.                                                                                                                                                                           |
-| Replication         | `storageos.com/replicas`            | integers [0, 5]                      | Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.                                                                                          |
+| :------------------ | :---------------------------------- | :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| Caching             | `storageos.com/nocache`             | true / false                         | Switches off caching. |
+| Compression         | `storageos.com/nocompress`          | true / false                         | Switches off compression of data at rest and in transit. |
+| Encryption          | `storageos.com/encryption`          | true / false                         | Enables volume encryption, more details [here](/docs/operations/encrypted-volumes) |
+| Replication         | `storageos.com/replicas`            | integers [0, 5]                      | Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.  |
 | Failure mode        | `storageos.com/failure.mode`        | strings [`soft`,`hard`,`alwayson`]   | Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable. |
-| Failure tolerance   | `storageos.com/failure.tolerance`   | integers [0, 4]                      | Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas > 0, so if there are 2 replicas it will default to 1.                                                                                       |
-| QoS                 | `storageos.com/throttle`            | true / false                         | Deprioritizes traffic by reducing the rate of disk I/O, when true.                                                                                                                                                                 |
-| Placement           | `storageos.com/hint.master`         | Node hostname or uuid                | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied.                                                                                                                      |
+| Failure tolerance   | `storageos.com/failure.tolerance`   | integers [0, 4]                      | Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas > 0, so if there are 2 replicas it will default to 1.  |
+| QoS                 | `storageos.com/throttle`            | true / false                         | Deprioritizes traffic by reducing the rate of disk I/O, when true.  |
+| Placement           | `storageos.com/hint.master`         | Node hostname or uuid                | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied.  |
 
 To create a volume with a feature labels:
 
@@ -64,7 +65,7 @@ Pools do not have any labels present by default.
 | :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
 | Overcommitment      | `storageos.com/overcommit`          | integers [+]                         | Sets the percentage of overcommitment allowed for the pool (see [here]({%link _docs/operations/overcommitment.md %})).                                                                                                                                                                        |
 
-To add overcommit labels to a pool: 
+To add overcommit labels to a pool:
 
 ```bash
 storageos pool update --label-add storageos.com/overcommit=20 default

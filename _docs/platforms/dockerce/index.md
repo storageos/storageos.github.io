@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Install applications on Docker
 anchor: platforms
 module: platforms/dockerce
+redirect_from: "/docs/platforms/docker"
 ---
 
 # Docker CE

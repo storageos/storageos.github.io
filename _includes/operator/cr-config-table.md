@@ -2,6 +2,7 @@ The following table lists the configurable spec parameters of the StorageOSClust
 
 | Parameter                                   | Description                                                                                  | Default
 | :----------                                 | :-----------                                                                                 | :-------
+| `csi.deploymentStrategy`                    | CSI helper deployment strategy (`statefulset` or `deployment`)                               | `statefulset`
 | `csi.enable`                                | Enable CSI setup                                                                             | `false`
 | `csi.enableControllerPublishCreds`          | Enable CSI controller publish credentials                                                    | `false`
 | `csi.enableNodePublishCreds`                | Enable CSI node publish credentials                                                          | `false`
@@ -20,6 +21,7 @@ The following table lists the configurable spec parameters of the StorageOSClust
 | `ingress.enable`                            | Enable ingress for the cluster                                                               | `false`
 | `ingress.hostname`                          | Hostname to be used in cluster ingress                                                       | `storageos.local`
 | `ingress.tls`                               | Enable TLS for the ingress                                                                   | `false`
+| `k8sDistro`                                 | The name of the Kubernetes distribution is use, e.g. `rancher` or `eks`                      |
 | `kvBackend.address`                         | Comma-separated list of addresses of external key-value store. (`1.2.3.4:2379,2.3.4.5:2379`) |
 | `kvBackend.backend`                         | Name of the key-value store to use. Set to `etcd` for external key-value store.              | `embedded`
 | `namespace`                                 | Namespace where storageos cluster resources are created                                      | `storageos`

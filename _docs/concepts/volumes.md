@@ -18,8 +18,10 @@ may be on the same or different hosts.
 
 Volumes are formatted using the linux standard ext4 filesystem by default.
 Kubernetes users may change the default filesystem type to ext2, ext3, ext4,
-btrfs or xfs by setting the fsType parameter in their StorageClass. Different
-filesystems may be supported in the future.
+or xfs by setting the fsType parameter in their StorageClass (See
+[Supported
+Filesystems](/docs/reference/filesystems#persistent-volume-filesystems) for
+more information). Different filesystems may be supported in the future.
 
 ## On Disk Format
 

@@ -43,7 +43,7 @@ The Cluster Operator Custom Definition should specify the SharedDir option as fo
 
 ```bash
 spec:
-  sharedDir: '/var/lib/kubelet/volumeplugins/kubernetes.io~storageos' # Needed when Kubelet as a container
+  sharedDir: '/var/lib/kubelet/plugins/kubernetes.io~storageos' # Needed when Kubelet as a container
   ...
 ```
 
@@ -58,13 +58,13 @@ spec:
 
 ### Assert:
 SSH into one of the nodes and check if
-`/var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices` is empty. If
+`/var/lib/kubelet/plugins/kubernetes.io~storageos/devices` is empty. If
 so, exec into any StorageOS pod and check the same directory.
 
 ```bash
-root@node1:~# ls /var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices
+root@node1:~# ls /var/lib/kubelet/plugins/kubernetes.io~storageos/devices
 root@node1:~#      # <-- Shouldn't be blank
-root@node1:~# {{ page.cmd }} exec $POD_ID -c storageos -- ls -l /var/lib/kubelet/volumeplugins/kubernetes.io~storageos/devices
+root@node1:~# {{ page.cmd }} exec $POD_ID -c storageos -- ls -l /var/lib/kubelet/plugins/kubernetes.io~storageos/devices
 bst-196004
 d529b340-0189-15c7-f8f3-33bfc4cf03fa
 ff537c5b-e295-e518-a340-0b6308b69f74

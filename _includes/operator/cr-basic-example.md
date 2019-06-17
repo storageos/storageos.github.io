@@ -38,7 +38,7 @@ spec:
   resources:
     requests:
     memory: "512Mi"
-  sharedDir: '/var/lib/kubelet/volumeplugins/kubernetes.io~storageos'
+  sharedDir: '/var/lib/kubelet/plugins/kubernetes.io~storageos'
   nodeSelectorTerms:
     - matchExpressions:
       - key: "node-role.kubernetes.io/worker"

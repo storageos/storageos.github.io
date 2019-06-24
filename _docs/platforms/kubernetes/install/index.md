@@ -23,7 +23,7 @@ socket is handled by the Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the default de facto standard that enables storage drivers to release on their own
+CSI is the de facto standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
 without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.

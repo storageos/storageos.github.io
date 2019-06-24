@@ -1,2 +1,3 @@
-The above method is the recommended StorageOS install procedure. If that
-doesn't fulfill your requirements or needs, you can use the following.
+The above method is the recommended StorageOS installation procedure. If it
+does not meet your requirements, you can use the following alternative
+installation methods.

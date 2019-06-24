@@ -44,11 +44,11 @@ StorageOS by using the Rancher application install.
 
 1. Define the StorageOS cluster installation
 
-    > The installation can be described by using a Yaml format or filling the Rancher form.
+    > The installation can be described by using a Yaml format or filling out the Rancher form.
 
     &nbsp;
 
-    It is suggested to ensure the right values for the following options:
+    It is suggested to set the values for the following options:
     - [Cluster Operator]({%link _docs/reference/cluster-operator/index.md %}) NameSpace
     - Container Images to be used (if using private registries)
     - Conditional bootstrap of StorageOS after installing the Cluster Operator

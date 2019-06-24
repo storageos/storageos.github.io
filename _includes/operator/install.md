@@ -37,22 +37,13 @@ helm install storageos/storageoscluster-operator --namespace storageos-operator
 
 ### (Option 2) Standard yaml manifests
 
-{% if page.platform == "openshift" %}
-```bash
-git clone https://github.com/storageos/deploy.git storageos
-cd storageos/openshift/deploy-storageos/cluster-operator
-./deploy-operator.sh
-```
-{% else %}
-```bash
-git clone https://github.com/storageos/deploy.git storageos
-cd storageos/k8s/deploy-storageos/cluster-operator
-./deploy-operator.sh
-```
-{% endif %}
+Install the StorageOS operator using yaml manifests
 
+```bash
+{{ page.cmd }} create -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version }}/storageos-operator.yaml
+```
 
-### Verify the Cluster Operator Pod
+### Verify the Cluster Operator Pod Status
 ```bash
 [root@master03]# {{ page.cmd }} -n storageos-operator get pod
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -98,15 +89,6 @@ unique, strong password.
 
 > If you wish to change the default accounts details post-install please see [Managing
 > Users](/docs/operations/users#altering-the-storageos-api-account)
-
-{% if page.platform == "openshift" %}
-## Add scc (security context constraint) for StorageOS
-
-```bash
-oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos-daemonset-sa
-oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos-statefulset-sa
-```
-{% endif %}
 
 ## Trigger a StorageOS installation
 

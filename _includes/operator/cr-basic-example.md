@@ -21,6 +21,7 @@ spec:
         operator: In
         values:
         - "true"
+  k8sDistro: openshift
 END
 ```
 {% elsif page.platform == "rancher" %}

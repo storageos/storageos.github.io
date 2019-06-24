@@ -11,7 +11,7 @@ spec:
   secretRefNamespace: "default"  # Namespace of the Secret
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
-  sharedDir: '/var/lib/kubelet/volumeplugins/kubernetes.io~storageos' # Needed when Kubelet as a container
+  sharedDir: '/var/lib/kubelet/plugins/kubernetes.io~storageos' # Needed when Kubelet as a container
   csi:
     enable: true
   resources:

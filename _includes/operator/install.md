@@ -1,4 +1,12 @@
-## Install StorageOS operator
+
+
+__Steps to install StorageOS:__
+
+- [Install StorageOS Operator](#1-install-storageos-operator)
+- [Create a Secret for default username and password](#2-create-a-secret)
+- [Trigger bootstrap using a CustomResource](#3-trigger-a-storageos-installation)
+
+## 1. Install StorageOS operator
 
 Our cluster operator is a [Kubernetes native
 application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
@@ -61,7 +69,7 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 
 > The READY 1/1 indicates that `stos` resources can be created.
 
-### Create a Secret
+## 2. Create a Secret
 
 Before deploying a StorageOS cluster, create a Secret defining the StorageOS
 API Username and Password in base64 encoding. 
@@ -108,7 +116,7 @@ oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storage
 ```
 {% endif %}
 
-## Trigger a StorageOS installation
+## 3. Trigger a StorageOS installation
 
 {% if page.platform == "azure-aks" %}
 {% include operator/cr-csi-example.md %}

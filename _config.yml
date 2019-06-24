@@ -9,6 +9,7 @@ exclude: ["Dockerfile", "Dockerfile.dapper", "Makefile", "README.md"]
 
 latest_node_version: 1.2.1
 latest_cli_version: 1.2.2
+latest_operator_version: 1.2.0
 
 # Build settings
 permalink: :module

@@ -18,13 +18,26 @@ We require the following modules to be loaded:
 * `target_core_file`
 * `configfs`
 
-Depending on the distribution, the modules are sometimes shipped as part of the
-base kernel package, and sometimes in a kernel extras package which requires
-installation.
+Depending on the distribution, the modules are shipped as part of the
+base kernel package or as part of a kernel extras package which needs to be
+installed.
 
 ## Distribution Specifics
 
-**RHEL 7.5**, **CentOS 7**, **Debian 9**, **Ubuntu Azure** and **RancherOS** are fully supported.
+The following distributions are supported by default:
+* RHEL 7.5 
+* CentOS 7
+* Debian 9
+* Ubuntu Azure 
+* RancherOS 
+
+Ubuntu 16.04/18.04 requires the installation of additional packages.
+
+> N.B. Ubuntu 16.04/18.04 AWS and Ubuntu 18.04 GCE do not provide the
+> necessary linux-image-extra package - [see
+> below](/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce) for more information
+
+## Ubuntu Package Installation
 
 **Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
 
@@ -42,9 +55,10 @@ sudo apt -y update
 sudo apt -y install linux-modules-extra-$(uname -r)
 ```
 
+## Ubuntu on AWS and GCE
+
 **Ubuntu 16.04/18.04 AWS** and **Ubuntu 18.04 GCE** do not yet provide the
-linux-image-extra package.
-As such you should either use **Debian**, **CentOS**
+linux-image-extra package. As such you should either use **Debian**, **CentOS**
 or **RHEL**, or install the non-cloud-provider optimised Ubuntu kernel.
 
 Installing the non-cloud-provider optimised Ubuntu kernel is something that

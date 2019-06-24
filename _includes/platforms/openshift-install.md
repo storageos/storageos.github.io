@@ -1,7 +1,7 @@
 # OpenShift {{ page.oc-version }}
 
 The recommended way to run StorageOS on an OpenShift {{ page.oc-version }}
-cluster is to deploy a the StorageOS Cluster Operator and bootstrap StorageOS
+cluster is to deploy the StorageOS Cluster Operator and bootstrap StorageOS
 using a Custom Resource.
 
 ## Prerequisites

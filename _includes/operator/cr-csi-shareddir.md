@@ -19,7 +19,7 @@ spec:
     memory: "512Mi"
 #  nodeSelectorTerms:
 #    - matchExpressions:
-#      - key: "node-role.kubernetes.io/worker" # Compute nodes label according to your installation
+#      - key: "node-role.kubernetes.io/worker" # Compute node label will vary according to your installation
 #        operator: In
 #        values:
 #        - "true"

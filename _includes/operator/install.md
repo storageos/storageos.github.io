@@ -1,6 +1,22 @@
+The StorageOS Cluster Operator is a [Kubernetes native
+application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
+developed to deploy and configure StorageOS clusters, and assist with
+maintenance operations. We recommend its use for standard installations.
+
+The operator is a Kubernetes controller that watches the `StorageOSCluster`
+CRD. Once the controller is ready, a StorageOS cluster definition can be
+created. The operator will deploy a StorageOS cluster based on the
+configuration specified in the cluster definition.
+
+&nbsp;
+
+**Helm Note:** If you want to use [Helm](https://helm.sh/docs/) to install StorageOS, follow
+the [StorageOS Operator Helm
+Chart](https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart)
+documentation.
 
 
-__Steps to install StorageOS:__
+## __Steps to install StorageOS:__
 
 - [Install StorageOS Operator](#1-install-storageos-operator)
 - [Create a Secret for default username and password](#2-create-a-secret)
@@ -8,43 +24,15 @@ __Steps to install StorageOS:__
 
 ## 1. Install StorageOS operator
 
-Our cluster operator is a [Kubernetes native
-application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
-developed to deploy and configure StorageOS clusters, and assist with
-maintenance operations. We recommend its use for standard installations. 
-
-The operator is a Kubernetes controller that watches the `StorageOSCluster`
-CRD. Once the controller is ready, a StorageOS cluster definition can be
-created. The operator will deploy a StorageOS cluster based on the
-configuration specified in the cluster definition.
-
-### Install
-
-The StorageOS Cluster Operator can be installed with two options.
-
-* Standard yaml manifests
-* Using Helm
-
-
-### (Option 1) Standard yaml manifests
-
-Install the StorageOS operator using yaml manifests
+Install the StorageOS operator using the following yaml manifest.
 
 ```bash
 {{ page.cmd }} create -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version }}/storageos-operator.yaml
 ```
 
-### (Option 2) Using Helm
-
-Install StorageOS following the specific documentation for the [Storageos
-Operator
-Helm Chart](https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart).
-
-> The Chart install permits to bootstrap a StorageOS cluster
-> automatically after the Operator is deployed. If that is your case, no more
-> steps need to be followed.
 
 ### Verify the Cluster Operator Pod Status
+
 ```bash
 [root@master03]# {{ page.cmd }} -n storageos-operator get pod
 NAME                                         READY     STATUS    RESTARTS   AGE

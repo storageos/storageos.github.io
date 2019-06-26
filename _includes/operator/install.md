@@ -22,34 +22,27 @@ configuration specified in the cluster definition.
 
 The StorageOS Cluster Operator can be installed with two options.
 
-* Using Helm
 * Standard yaml manifests
+* Using Helm
 
 
-### (Option 1) Using Helm
-```bash
-helm repo add storageos https://charts.storageos.com
-helm install storageos/storageoscluster-operator --namespace storageos-operator
-```
-
-> The Helm chart can be found in the [Charts public
-> repository](https://github.com/storageos/charts).
-
-> The StorageOS Cluster Operator source code can be found in the
-> [cluster-operator repository](https://github.com/storageos/cluster-operator).
-
-> The helm server, tiller, needs privileges to be able to deploy the StorageOS
-> Cluster Operator. You can add the service account to the cluster-admin role
-> for simplicity or create a role that matches the cluster-operator requirements.
-
-
-### (Option 2) Standard yaml manifests
+### (Option 1) Standard yaml manifests
 
 Install the StorageOS operator using yaml manifests
 
 ```bash
 {{ page.cmd }} create -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version }}/storageos-operator.yaml
 ```
+
+### (Option 2) Using Helm
+
+Install StorageOS following the specific documentation for the [Storageos
+Operator
+Helm Chart](https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart).
+
+> The Chart install permits to bootstrap a StorageOS cluster
+> automatically after the Operator is deployed. If that is your case, no more
+> steps need to be followed.
 
 ### Verify the Cluster Operator Pod Status
 ```bash

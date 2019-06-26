@@ -3,7 +3,7 @@ layout: guide
 title: StorageOS Docs - Manual installing on Rancher
 platform: rancher
 platformUC: Rancher
-k8s-version: 1.11
+k8s-version: 1.13
 cmd: kubectl
 anchor: platforms
 module: platforms/rancher/install/rancher-advanced

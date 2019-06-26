@@ -3,7 +3,7 @@ layout: guide
 title: StorageOS Docs - Installing on Rancher
 platform: rancher
 platformUC: Rancher
-k8s-version: 1.11
+k8s-version: 1.13
 cmd: kubectl
 anchor: platforms
 module: platforms/rancher/install/rancher-catalog
@@ -20,7 +20,8 @@ redirect_from: /docs/install/rancher
 &nbsp;
 
 
-StorageOS is a Certified application in the Rancher Catalog. You can install
+StorageOS is a Certified application in the [Rancher
+Catalog](https://rancher.com/docs/rancher/v2.x/en/catalog/). You can install
 StorageOS by using the Rancher application install.
 
 1. Select the `System` project of your cluster

@@ -51,9 +51,12 @@ StorageOS by using the Rancher application install.
     : Default images are pulled from DockerHub, you can specify the image URLs
     if using private registries.
     - Conditional bootstrap of StorageOS
-    : Deployment of StorageOS after installing the Cluster Operator.
-    If set to `false`, the Operator will be created, but the Custom Resource will
-    not be applied to the cluster. Check the Operator [documentation]({%link _docs/reference/cluster-operator/configuration.md %}) and [CR examples]({%link _docs/reference/cluster-operator/examples.md %}) for more information.
+    : Deployment of StorageOS after installing the Cluster Operator. If set to
+    `false`, the Operator will be created, but the Custom Resource will not be
+    applied to the cluster. Check the Operator [documentation]({%link
+    _docs/reference/cluster-operator/configuration.md %}) and [CR
+    examples]({%link _docs/reference/cluster-operator/examples.md %}) for more
+    information.
     - StorageOS namespace
     : The Kubernetes namespace where StorageOS will be installed. Installing in
     kube-system will add StorageOS to a priority class to ensure proper
@@ -79,8 +82,28 @@ StorageOS by using the Rancher application install.
     ![install-4](/images/rancher-ui-green-bubbles/rancher-4.png)
     ![install-5](/images/rancher-ui-green-bubbles/rancher-5.png)
 
+    > If you set the `conditional bootstrap` to `false`, launch the operator and
+    > proceed to the section [Custom Resource definition](#custom-resource-definition)
+
+
 1. Verify the boostrap of the cluster
 
     ![install-6](/images/rancher-ui-green-bubbles/rancher-6.png)
 
+
 &nbsp;
+
+## Custom Resource definition
+
+If the bootstrap of the StorageOS cluster has been set to `false`, you can now create
+the Custom Resource that describes the StorageOS cluster.
+
+1. Select the `System Workloads` and `Import YAML`
+
+    ![install-7](/images/rancher-ui-green-bubbles/rancher-7.png)
+
+1. Create the `Secret` and `CustomResource`
+    ![install-8](/images/rancher-ui-green-bubbles/rancher-8.png)
+
+
+    {% include operator/cr-rancher-ui.md %}

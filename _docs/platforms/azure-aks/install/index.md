@@ -29,14 +29,14 @@ StorageOS for production clusters.
 ## Kubernetes with StorageOS
 
 Kubernetes and StorageOS communicate with each other to perform actions such as
-creation, deletion or mounting volumes. It is required to use the CSI
-(Container Storage Interface) driver for StorageOS installations on AKS. When
-using CSI, Kubernetes and StorageOS communicate over a Unix domain socket. This
-socket is handled by the Kubelet in the Host.
+creation, deletion or mounting volumes. StorageOS installations on AKS must use
+the CSI (Container Storage Interface) driver. When using CSI, Kubernetes and
+StorageOS communicate over a Unix domain socket. This socket is handled by the
+Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the de facto standard that enables storage drivers to release on their
+CSI is the standard that enables storage drivers to release on their
 own schedule. This allows storage vendors to upgrade, update, and enhance their
 drivers without the need to update Kubernetes source code, or follow Kubernetes
 release cycles.

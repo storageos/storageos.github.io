@@ -39,7 +39,7 @@ NAME                                         READY     STATUS    RESTARTS   AGE
 storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 ```
 
-> The READY 1/1 indicates that `stos` resources can be created.
+> The READY 1/1 indicates that `storageoscluster` resources can be created.
 
 ## 2. Create a Secret
 

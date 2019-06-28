@@ -151,9 +151,13 @@ sections:
         module: platforms/rancher/install
         subitems:
           -
-            title: Kubernetes
-            description: Install on Rancher
-            module: platforms/rancher/install/kubernetes
+            title: Rancher Catalog (default)
+            description: Install as Rancher app
+            module: platforms/rancher/install/rancher-catalog
+          -
+            title: Advanced
+            description: Install on Rancher manually
+            module: platforms/rancher/install/rancher-advanced
       -
         title: Troubleshooting
         description: Troubleshooting

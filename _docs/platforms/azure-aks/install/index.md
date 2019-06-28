@@ -29,31 +29,22 @@ StorageOS for production clusters.
 ## Kubernetes with StorageOS
 
 Kubernetes and StorageOS communicate with each other to perform actions such as
-creation, deletion or mounting volumes. The standard communication procedure uses REST
-API calls. However, StorageOS also implements communication using CSI. By 
-using CSI, Kubernetes and StorageOS communicate over a Unix domain socket. That
-socket is handled by the Kubelet in the Host.
-
+creation, deletion or mounting volumes. StorageOS installations on AKS must use
+the CSI (Container Storage Interface) driver. When using CSI, Kubernetes and
+StorageOS communicate over a Unix domain socket. This socket is handled by the
+Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the future standard that enables storage drivers to release on their own
-schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
-without the need to update Kubernetes source code, or follow Kubernetes release
-cycles.
+CSI is the standard that enables storage drivers to release on their
+own schedule. This allows storage vendors to upgrade, update, and enhance their
+drivers without the need to update Kubernetes source code, or follow Kubernetes
+release cycles.
 
-StorageOS current installation procedure communicates with AKS Kubernetes Master nodes
-using CSI. A native storage driver installation procedure will be released
-shortly.
+CSI is available from Kubernetes 1.9 alpha. CSI is considered GA from
+Kubernetes 1.13, hence StorageOS recommends the use of CSI. In addition, the
+StorageOS Cluster Operator handles the versioning of the API complexity by
+detecting the Kubernetes installed and setting up the appropriate CSI driver.
 
-Check out the status of the CSI release cycle in relation with Kubernetes on
+Check out the status of the CSI release cycle in relation with Kubernetes in
 the [CSI project](https://kubernetes-csi.github.io/docs/) page.
-
-StorageOS leverages labels on PVCs to apply [features]({%link
-_docs/reference/labels.md %}) to StorageOS volumes. However, StorageOS doesn't
-have these labels set when using CSI. Therefore, default feature labels
-(`storageos.com/*`) must be defined on the Kubernetes StorageClass parameters.
-Multiple StorageClasses can be defined with different parameters. The
-[StorageOS CLI]({%link _docs/reference/cli/index.md %}) can also manipulate
-volume labels or create [rules]({%link _docs/reference/cli/rule.md %}) to
-add/delete labels on StorageOS volumes.

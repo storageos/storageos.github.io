@@ -22,17 +22,17 @@ via a Linux socket. That socket is handled by the Kubelet in the Host.
 
 ## CSI (Container Storage Interface) Note
 
-CSI is the future standard that enables storage drivers to release on their own
+CSI is the de facto standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their drivers 
 without the need to update Kubernetes source code, or follow Kubernetes release
 cycles.
 
-CSI 1.0.0 is released with Kubernetes 1.13. Its use is recommended only if
-the user is aware of its particularities. 
+CSI 1.0.0 is released with Kubernetes 1.13. Its use is recommended.
 
 > CSI communication between StorageOS and Kubernetes is currently not possible
 > when using __RancherOS__ because of restricted access to the Linux Socket created by the
-> Kubelet. 
+> Kubelet.
 
 CSI communication is fully supported by StorageOS if the Kubernetes cluster is
-deployed with another supported Linux Distribution.
+deployed with a [supported Linux
+Distribution](/docs/prerequisites/systemconfiguration#distribution-specifics).

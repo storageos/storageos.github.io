@@ -1,58 +1,47 @@
-## Install StorageOS operator
-
-Our cluster operator is a [Kubernetes native
+The StorageOS Cluster Operator is a [Kubernetes native
 application](https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/)
 developed to deploy and configure StorageOS clusters, and assist with
-maintenance operations. We recommend its use for standard installations. 
+maintenance operations. We recommend its use for standard installations.
 
 The operator is a Kubernetes controller that watches the `StorageOSCluster`
 CRD. Once the controller is ready, a StorageOS cluster definition can be
 created. The operator will deploy a StorageOS cluster based on the
 configuration specified in the cluster definition.
 
-### Install
+&nbsp;
 
-The StorageOS Cluster Operator can be installed with two options.
-
-* Using Helm
-* Standard yaml manifests
-
-
-### (Option 1) Using Helm
-```bash
-helm repo add storageos https://charts.storageos.com
-helm install storageos/storageoscluster-operator --namespace storageos-operator
-```
-
-> The Helm chart can be found in the [Charts public
-> repository](https://github.com/storageos/charts).
-
-> The StorageOS Cluster Operator source code can be found in the
-> [cluster-operator repository](https://github.com/storageos/cluster-operator).
-
-> The helm server, tiller, needs privileges to be able to deploy the StorageOS
-> Cluster Operator. You can add the service account to the cluster-admin role
-> for simplicity or create a role that matches the cluster-operator requirements.
+**Helm Note:** If you want to use [Helm](https://helm.sh/docs/) to install StorageOS, follow
+the [StorageOS Operator Helm
+Chart](https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart)
+documentation.
 
 
-### (Option 2) Standard yaml manifests
+## __Steps to install StorageOS:__
 
-Install the StorageOS operator using yaml manifests
+- [Install StorageOS Operator](#1-install-storageos-operator)
+- [Create a Secret for default username and password](#2-create-a-secret)
+- [Trigger bootstrap using a CustomResource](#3-trigger-a-storageos-installation)
+
+## 1. Install StorageOS operator
+
+Install the StorageOS operator using the following yaml manifest.
 
 ```bash
 {{ page.cmd }} create -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version }}/storageos-operator.yaml
 ```
 
+
 ### Verify the Cluster Operator Pod Status
+
 ```bash
 [root@master03]# {{ page.cmd }} -n storageos-operator get pod
 NAME                                         READY     STATUS    RESTARTS   AGE
 storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 ```
 
-> The READY 1/1 indicates that `stos` resources can be created.
+> The READY 1/1 indicates that `storageoscluster` resources can be created.
 
-### Create a Secret
+## 2. Create a Secret
 
 Before deploying a StorageOS cluster, create a Secret defining the StorageOS
 API Username and Password in base64 encoding. 
@@ -90,7 +79,7 @@ unique, strong password.
 > If you wish to change the default accounts details post-install please see [Managing
 > Users](/docs/operations/users#altering-the-storageos-api-account)
 
-## Trigger a StorageOS installation
+## 3. Trigger a StorageOS installation
 
 {% if page.platform == "azure-aks" %}
 {% include operator/cr-csi-example.md %}

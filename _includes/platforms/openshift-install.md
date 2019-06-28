@@ -1,7 +1,8 @@
 # OpenShift {{ page.oc-version }}
 
-The recommended way to run StorageOS on an OpenShift {{ page.oc-version }} cluster is to deploy
-a daemonset with RBAC support.
+The recommended way to run StorageOS on an OpenShift {{ page.oc-version }}
+cluster is to deploy the StorageOS Cluster Operator and bootstrap StorageOS
+using a Custom Resource.
 
 ## Prerequisites
 
@@ -67,6 +68,8 @@ systemctl restart atomic-openshift-node.service
 {% endif %}
 
 
-{% include operator/install.md %}
+&nbsp;
 
-{% include k8s/custom-install.md %}
+# Install
+
+{% include operator/install.md %}

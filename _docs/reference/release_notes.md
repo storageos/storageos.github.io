@@ -924,8 +924,8 @@ Please update to the latest CLI when installing 0.10.x.
 
 ### 0.8.x -> 0.9.x
 
-Start-up scripts should be updated to use the new cluster discovery syntax (See:
-https://docs.storageos.com/docs/install/prerequisites/clusterdiscovery)
+Start-up scripts should be updated to use the new [cluster
+discovery](/docs/reference/clusterdiscovery) syntax 
 
 Do not mix a cluster with 0.8.x and 0.9.x versions as port numbers have changed.
 This may cause cluster instability while nodes are being upgraded.
@@ -1157,7 +1157,7 @@ releases will strive to preserve compatibility between versions.
   nodes can join the cluster.  The `JOIN` environment variable replaces
   `CLUSTER_ID` and `INITIAL_CLUSTER` and is more flexible, allowing
   administrators to combine methods for bootstrapping and discovering clusters.
-  See https://docs.storageos.com/docs/install/prerequisites/clusterdiscovery
+  See https://docs.storageos.com/docs/install/reference/clusterdiscovery
 - Online replica sync for new and replacement replicas.  This allows for writes
   to complete on the required number of replicas immediately instead of
   waiting for a new replica or a replacement replica to be fully synced.

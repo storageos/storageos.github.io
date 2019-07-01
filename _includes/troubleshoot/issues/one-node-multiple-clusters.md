@@ -38,4 +38,4 @@ the node bootstrapping process. It must be set to one or more active nodes.
 
 ### Solution:
 Define the `JOIN` variable according to the [discovery documentation]({%link
-_docs/prerequisites/clusterdiscovery.md %}).
+_docs/reference/clusterdiscovery.md %}).

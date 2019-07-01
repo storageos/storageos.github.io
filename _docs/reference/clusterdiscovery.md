@@ -1,8 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Cluster discovery
-anchor: prerequisites
-module: prerequisites/clusterdiscovery
+anchor: reference
+module: reference/clusterdiscovery
 ---
 
 # Cluster discovery

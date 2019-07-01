@@ -9,10 +9,6 @@ sections:
     description: Overview
     module: prerequisites/overview
   -
-    title: Cluster discovery
-    description: Cluster discovery
-    module: prerequisites/clusterdiscovery
-  -
     title: System Configuration
     description: Device presentation
     module: prerequisites/systemconfiguration

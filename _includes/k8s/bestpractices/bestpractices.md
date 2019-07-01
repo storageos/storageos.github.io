@@ -15,7 +15,7 @@ add an arbitrary taint to them for which the StorageOS DaemonSet won't have a
 toleration.
 
 Be sure to appropriately modify the [JOIN]({%link
-_docs/prerequisites/clusterdiscovery.md %}) variable defined for the DaemonSet
+_docs/reference/clusterdiscovery.md %}) variable defined for the DaemonSet
 to avoid newly bootstrapping nodes trying to contact non-existent pods on
 Kubernetes master nodes. If installing with our [Cluster Operator]({% link
 _docs/reference/cluster-operator/index.md %}), this is handled for you automatically. 

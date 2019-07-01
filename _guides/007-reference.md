@@ -58,6 +58,10 @@ sections:
         description: Create and manage volumes
         module: reference/cli/volume
   -
+    title: Cluster Discovery
+    description: Cluster discovery
+    module: reference/clusterdiscovery
+  -
     title: Cluster Operator
     description: Cluster Operator details
     module: reference/cluster-operator

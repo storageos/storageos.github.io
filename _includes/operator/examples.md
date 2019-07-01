@@ -90,7 +90,7 @@ spec:
 > Different provisioners and Kubernetes distributions use node labels
 > differently to specify master vs workers. Node Taints are not enough to
 > make sure StorageOS doesn't start in a node. The
-> [JOIN](https://docs.storageos.com/docs/prerequisites/clusterdiscovery)
+> [JOIN](https://docs.storageos.com/docs/reference/clusterdiscovery)
 > variable is defined by the operator by selecting all the nodes that match the
 > `nodeSelectorTerms`.
 

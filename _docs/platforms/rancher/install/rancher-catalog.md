@@ -107,3 +107,5 @@ now create a Custom Resource that describes the StorageOS cluster.
 
 
     {% include operator/cr-rancher-ui.md %}
+
+{% include operator/first-volume.md  %}

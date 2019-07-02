@@ -89,6 +89,4 @@ unique, strong password.
 {% include operator/cr-basic-example.md %}
 {% endif %}
 
-If this is your first installation you may wish to follow the [StorageOS
-Volume guide](/docs/platforms/{{ page.platform }}/firstvolume/) for an example of how
-to mount a StorageOS volume in a Pod. 
+{% include operator/first-volume.md %}

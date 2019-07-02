@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - OpenShit
+title: StorageOS Docs - Docker EE
 platform: dockeree
 anchor: platforms
 module: platforms/dockeree/bestpractices

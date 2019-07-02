@@ -1,6 +1,6 @@
 ---
 layout: guide
-title: StorageOS Docs - OpenShit
+title: StorageOS Docs - Rancher
 platform: Rancher
 anchor: platforms
 module: platforms/rancher/bestpractices

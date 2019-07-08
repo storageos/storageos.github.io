@@ -57,7 +57,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: "storageos-api"
-  namespace: "default"
+  namespace: "storageos-operator"
   labels:
     app: "storageos"
 type: "kubernetes.io/storageos"

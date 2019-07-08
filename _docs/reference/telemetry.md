@@ -85,6 +85,10 @@ The DNS query includes:
 * Anonymized StorageOS node ID
 * StorageOS version number
 
+If `k8sDistro` is set then the Kubernetes version and Kubernetes distribution
+will also be reported. This information helps us direct focus onto the most
+relevant platforms.
+
 ## Disabling Telemetry
 
 It is possible to disable telemetry using the CLI, API or environment

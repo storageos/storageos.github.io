@@ -29,7 +29,7 @@ metadata:
   namespace: "default"
 spec:
   images:
-    nodeContainer: "storageos/node:1.2.0"
+    nodeContainer: "storageos/node:{{ site.latest_node_version  }}"
   secretRefName: "storageos-api"
   secretRefNamespace: "default"
   namespace: "storageos"

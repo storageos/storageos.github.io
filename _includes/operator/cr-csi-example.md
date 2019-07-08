@@ -6,9 +6,10 @@ apiVersion: "storageos.com/v1"
 kind: StorageOSCluster
 metadata:
   name: "example-storageos"
+  namespace: "storageos-operator"
 spec:
   secretRefName: "storageos-api" # Reference from the Secret created in the previous step
-  secretRefNamespace: "default"  # Namespace of the Secret
+  secretRefNamespace: "storageos-operator"  # Namespace of the Secret
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
   csi:

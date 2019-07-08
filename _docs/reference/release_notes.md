@@ -22,6 +22,56 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.3.0 - Released 08/07/2019
+
+The `1.3.0` release contains further substantial performance improvements,
+particularly for workloads that can parallelise IO or when multiple volumes are
+performing high rates of IO.
+
+### New
+
+- Switched internal device presentation to FUSE to TCMU when the kernel
+  supports it, and when no conflicting TCMU-based devices already exist.  TCMU
+  improves performance in all use cases, but particularly when queue depths are
+  greater than 1.  TCMU can be disabled by setting `disableTCMU: true`, and it
+  can be forced by setting `forceTCMU: true`.  When `forceTCMU: true` has been
+  set and either the kernel does not support TCMU or there are conflicting
+  devices, then StorageOS will refuse to start.
+- The operator now runs an additional scheduler Pod, which can be disabled by
+  setting `disableScheduler: true` in the StorageOS CR.
+
+### Improved
+
+- The admin user's username and password are no longer stored in the KV store
+  and are now always read from the `ADMIN_USERNAME` and `ADMIN_PASSWORD`
+  environment variables which are populated by the secret from `secretRefName`.
+  Previously, the environment variables were only read on cluster bootstrap.
+  This caused problems when re-installing a cluster as the previous credentials
+  were cached in the KV store and the credentials set in the environment
+  variables would not work.  It is no longer required to clear
+  `/var/lib/storageos` between re-installs.
+- Replication ACK timeouts have be reduced from 15 to 3 seconds to allow
+  retries to be performed sooner.  The overall timeout remains the same.
+- Telemetry now reports the Kubernetes version and the distribution name if set
+  in the `k8sDistro` environment variable.  This information helps us direct
+  focus on the most relevant platforms.  As always, telemetry reporting can be
+  disabled by setting `disableTelemetry: true`.
+- Low-level dataplane configuration is now included in the diagnostics bundle.
+  The bundle can only be created by the cluster administrator and can be
+  uploaded to assist with support.
+- Logging for the Operator has been reworked to allow easier troubleshooting
+  and consistency with other operators using Kubernetes' `controller-runtime`
+  library.
+
+### Fixed
+
+- When creating volumes in stress test conditions, it was possible to be
+  re-allocated the inode of a volume that had not yet finished the deletion
+  process, causing the create to fail.
+- When issuing an unmount request using the CSI driver, the operation would fail
+  if the volume was already unmounted.  The operation now returns success and
+  allows a remount to succeed.
+
 ## 1.2.1 - Released 15/05/2019
 
 1.2.1 is primarily a bug fix release, but it also includes some performance
@@ -925,7 +975,7 @@ Please update to the latest CLI when installing 0.10.x.
 ### 0.8.x -> 0.9.x
 
 Start-up scripts should be updated to use the new [cluster
-discovery](/docs/reference/clusterdiscovery) syntax 
+discovery](/docs/reference/clusterdiscovery) syntax
 
 Do not mix a cluster with 0.8.x and 0.9.x versions as port numbers have changed.
 This may cause cluster instability while nodes are being upgraded.

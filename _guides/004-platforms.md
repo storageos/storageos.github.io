@@ -15,6 +15,14 @@ sections:
         module: platforms/kubernetes/install
         subitems:
           -
+            title: 1.15
+            description: Install on 1.15
+            module: platforms/kubernetes/install/1.15
+          -
+            title: 1.14
+            description: Install on 1.14
+            module: platforms/kubernetes/install/1.14
+          -
             title: 1.13
             description: Install on 1.13
             module: platforms/kubernetes/install/1.13
@@ -124,6 +132,10 @@ sections:
         description: Install K8S
         module: platforms/azure-aks/install
         subitems:
+          -
+            title: K8s 1.12
+            description: Install on 1.12
+            module: platforms/azure-aks/install/1.12
           -
             title: K8s 1.11
             description: Install on 1.11

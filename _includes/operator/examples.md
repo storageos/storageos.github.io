@@ -9,7 +9,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: "storageos-api"
-  namespace: "default"
+  namespace: "storageos-operator"
   labels:
     app: "storageos"
 type: "kubernetes.io/storageos"
@@ -37,7 +37,6 @@ kubectl create -f cluster-config.yaml
 Note that StorageOS will be deployed in `spec.namespace` (storageos by
 default), irrespective of what NameSpace the CR is defined in.
 
-
 &nbsp; <!-- this is a blank line -->
 
 # Examples
@@ -51,7 +50,7 @@ All examples must reference the `storageos-api` Secret.
 ```bash
 spec:
   secretRefName: "storageos-api" # Reference to the Secret created in the previous step
-  secretRefNamespace: "default"  # Namespace of the Secret
+  secretRefNamespace: "storageos-operator"  # Namespace of the Secret
 ```
 
 Check out [Cluster Definition

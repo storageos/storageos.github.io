@@ -17,6 +17,17 @@ We require the following modules to be loaded:
 * `tcm_loop`
 * `target_core_file`
 * `configfs`
+* `target_core_user`
+* `uio`
+
+> N.B. Other applications utilising [TCMU](http://linux-iscsi.org/wiki/LIO)
+> cannot be run concurrently with StorageOS. Doing so may result in corruption
+> of data. On startup, StorageOS will detect if other applications are using
+> TCMU and fall back to FUSE. However if StorageOS is started first there is no
+> mechanism for StorageOS to fallback to FUSE if another application begins to
+> use TCMU. TCMU can be disabled using the
+> [DISABLE_TCMU](/docs/reference/cluster-operator/configuration)
+> StorageOSCluster spec parameter.
 
 Depending on the distribution, the modules are shipped as part of the
 base kernel package or as part of a kernel extras package which needs to be
@@ -55,7 +66,7 @@ sudo apt -y update
 sudo apt -y install linux-modules-extra-$(uname -r)
 ```
 
-## Ubuntu on AWS and GCE
+## Ubuntu With AWS Or GCE Kernels
 
 **Ubuntu 16.04/18.04 AWS** and **Ubuntu 18.04 GCE** do not yet provide the
 linux-image-extra package. As such you should either use **Debian**, **CentOS**

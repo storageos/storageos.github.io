@@ -65,10 +65,18 @@ docker pull storageos/node:$NEW_VERSION
 1. Make sure the update strategy of StorageOS is `OnDelete`.
     ```bash
    $ export NAMESPACE=storageos
-   $ export DAEMONSET_NAME=storageos
+   $ export DAEMONSET_NAME=storageos # or storageos-daemonset
    $ kubectl -n $NAMESPACE get ds/$DAEMONSET_NAME -o {% raw %}go-template='{{.spec.updateStrategy.type}}{{"\n"}}'{% endraw %}
    OnDelete
     ```
+
+   > If the strategy is not `OnDelete`, you can edit the daemonset by running
+   > `kubectl -n $NAMESPACE edit ds/$DAEMONSET_NAME`. This change **does not**
+   > trigger any deployment or restart of Pods.
+    ```yaml
+   updateStrategy:
+     type: OnDelete
+   ```
 
 Execute update:
 
@@ -76,6 +84,12 @@ Execute update:
 
     ```bash
    kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION
+    ```
+
+    > If you are upgrading to StorageOS **1.3.0, you also need to change the init
+    > container version** to `enable-lio=storageos/init:{{ site.latest_init_version  }}`.
+    ```bash
+   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME enable-lio=storageos/init:{{ site.latest_init_version  }}
     ```
 
 1. Delete StorageOS Pods.
@@ -139,6 +153,14 @@ Prepare upgrade:
    $ kubectl -n $NAMESPACE get ds/$DAEMONSET_NAME -o {% raw %}go-template='{{.spec.updateStrategy.type}}{{"\n"}}'{% endraw %}
    OnDelete
     ```
+
+   > If the strategy is not `OnDelete`, you can edit the daemonset by running
+   > `kubectl -n $NAMESPACE edit ds/$DAEMONSET_NAME`. This change **does not**
+   > trigger any deployment or restart of Pods.
+    ```yaml
+   updateStrategy:
+     type: OnDelete
+   ```
 1. Make sure that all volumes have at least one replica
 
     {% raw %}
@@ -175,6 +197,12 @@ Execute the upgrade:
 
     ```bash
    kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION
+    ```
+
+    > If you are upgrading to StorageOS **1.3.0, you also need to change the init
+    > container version** to `enable-lio=storageos/init:{{ site.latest_init_version }}`.
+    ```bash
+   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME enable-lio=storageos/init:{{ site.latest_init_version }}
     ```
 
 1. Cordon and drain node

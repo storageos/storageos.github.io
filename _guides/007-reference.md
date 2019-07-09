@@ -111,6 +111,10 @@ sections:
     description: Describes filesystems supported by StorageOS
     module: reference/filesystems
   -
+    title: TCMU
+    description: TCMU
+    module: reference/tcmu
+  -
     title: Telemetry
     description: Telemetry
     module: reference/telemetry

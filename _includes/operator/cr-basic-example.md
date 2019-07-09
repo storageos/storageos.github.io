@@ -11,6 +11,7 @@ metadata:
 spec:
   secretRefName: "storageos-api" # Reference the Secret created in the previous step
   secretRefNamespace: "storageos-operator"  # Namespace of the Secret
+  k8sDistro: "{{ page.platform }}"
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
   resources:
@@ -36,6 +37,7 @@ metadata:
 spec:
   secretRefName: "storageos-api" # Reference the Secret created in the previous step
   secretRefNamespace: "storageos-operator"  # Namespace of the Secret
+  k8sDistro: "{{ page.platform }}"
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
   resources:
@@ -61,6 +63,7 @@ metadata:
 spec:
   secretRefName: "storageos-api" # Reference the Secret created in the previous step
   secretRefNamespace: "storageos-operator"  # Namespace of the Secret
+  k8sDistro: "{{ page.platform }}"
   images:
     nodeContainer: "storageos/node:{{ site.latest_node_version }}" # StorageOS version
   resources:

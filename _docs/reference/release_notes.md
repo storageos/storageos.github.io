@@ -30,7 +30,7 @@ performing high rates of IO.
 
 ### New
 
-- Switched internal device presentation to FUSE to TCMU when the kernel
+- Switched internal device presentation from FUSE to TCMU when the kernel
   supports it, and when no conflicting TCMU-based devices already exist.  TCMU
   improves performance in all use cases, but particularly when queue depths are
   greater than 1.  TCMU can be disabled by setting `disableTCMU: true`, and it

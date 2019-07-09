@@ -9,9 +9,9 @@ The following table lists the configurable spec parameters of the StorageOSClust
 | `csi.enableProvisionCreds`                  | Enable CSI provision credentials                                                               | `false`
 | `debug`                                     | Enable debug mode for all the cluster nodes                                                    | `false`
 | `disableFencing`                            | Disable Pod fencing                                                                            | `false`
-| `disableTCMU`                               | Disable TCMU to allow co-existence with other TCMU users. Disabling TCMU degrades performance  | `false`
+| `disableTCMU`                               | Disable TCMU to allow co-existence with other TCMU users. Disabling TCMU degrades performance. Incompatible with `forceTCMU` | `false`
 | `disableTelemetry`                          | Disable telemetry reports                                                                      | `false`
-| `forceTCMU`                                 | Forces TCMU to be enabled or causes StorageOS to abort startup                                 | `false`
+| `forceTCMU`                                 | Forces TCMU to be enabled or causes StorageOS to abort startup. Incompatible with `disableTCMU`| `false`
 | `images.csiClusterDriverRegistrarContainer` | CSI Cluster Driver Registrar Container image                                                   | `quay.io/k8scsi/csi-cluster-driver-registrar:v1.0.1`
 | `images.csiExternalAttacherContainer`       | CSI External Attacher Container image                                                          | `quay.io/k8scsi/csi-attacher:v1.0.1`
 | `images.csiExternalProvisionerContainer`    | CSI External Provisioner Container image                                                       | `storageos/csi-provisioner:v1.0.1`

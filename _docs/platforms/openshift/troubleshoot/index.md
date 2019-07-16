@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - OpenShift troubleshoot
 anchor: platforms
 platform: OpenShift
+platform-pretty: "OpenShift"
 module: platforms/openshift/troubleshoot
 ---
 

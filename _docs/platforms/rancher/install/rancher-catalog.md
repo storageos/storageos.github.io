@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Installing on Rancher
 platform: rancher
 platformUC: Rancher
+platform-pretty: "Rancher"
 k8s-version: 1.13
 cmd: kubectl
 anchor: platforms

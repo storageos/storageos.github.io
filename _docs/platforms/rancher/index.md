@@ -1,6 +1,7 @@
 ---
 layout: guide
 title: StorageOS Docs - Rancher
+platform-pretty: "Rancher"
 anchor: platforms
 module: platforms/rancher/install
 ---

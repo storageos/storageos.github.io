@@ -2,6 +2,7 @@
 layout: guide
 title: StorageOS Docs - Kubernetes
 platform: Kubernetes
+platform-pretty: "Kubernetes"
 anchor: platforms
 module: platforms/kubernetes/bestpractices
 ---

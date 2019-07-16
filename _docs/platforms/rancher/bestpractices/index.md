@@ -2,6 +2,7 @@
 layout: guide
 title: StorageOS Docs - Rancher
 platform: Rancher
+platform-pretty: "Rancher"
 anchor: platforms
 module: platforms/rancher/bestpractices
 ---

@@ -2,6 +2,7 @@
 layout: guide
 title: StorageOS Docs - OpenShift
 platform: OpenShift
+platform-pretty: "OpenShift"
 anchor: platforms
 module: platforms/openshift/bestpractices
 ---

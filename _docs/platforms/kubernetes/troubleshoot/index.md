@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Kubernetes troubleshoot
 anchor: platforms
 platform: Kubernetes
+platform-pretty: "Kubernetes"
 module: platforms/kubernetes/troubleshoot
 ---
 

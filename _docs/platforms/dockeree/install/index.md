@@ -1,6 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - DockerEE
+platform: "dockeree"
+platform-pretty: "DockerEE"
 anchor: platforms
 module: platforms/dockeree/install
 ---

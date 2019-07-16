@@ -4,6 +4,7 @@ title: StorageOS Docs - Rancher troubleshoot
 anchor: platforms
 cmd: kubectl
 platform: Rancher
+platform-pretty: "Rancher"
 module: platforms/rancher/troubleshoot/install
 ---
 

@@ -1,6 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Kubernetes
+platform: "kubernetes"
+platform-pretty: "Kubernetes"
 anchor: platforms
 module: platforms/kubernetes
 ---

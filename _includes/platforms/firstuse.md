@@ -1,6 +1,6 @@
 # StorageOS Volume Guide
 
-As a simple first use of StorageOS with {{ page.platformUC }} following the example below will create
+As a simple first use of StorageOS with {{ page.platform-pretty }} following the example below will create
 a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
 (PV) provisioned by the PVC. 
 
@@ -100,7 +100,7 @@ a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
     the PVC is being written to. If you were to kill the pod and start it again
     on a new node, the helloworld file would still be avaliable.
 
-{% if page.platformUC == "Kubernetes" || page.platforme == "azure-aks" %}
+{% if page.platformUC == "Kubernetes" || page.platform == "azure-aks" %}
     If you wish to see more use cases with actual applications please see our
     [Use Cases]({% link _docs/usecases/kubernetes/index.md %}) documentation.
 {% endif %}

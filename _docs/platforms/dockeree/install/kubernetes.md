@@ -2,6 +2,7 @@
 layout: guide
 title: StorageOS Docs - Installing on Kubernetes 1.11
 platform: dockeree
+platform-pretty: "DockerEE"
 platformUC: Docker EE
 k8s-version: 1.11
 cmd: kubectl

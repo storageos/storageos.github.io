@@ -1,13 +1,13 @@
 ---
 layout: guide
 title: StorageOS Docs - Kubernetes
-platform: "azure-aks"
-platform-pretty: "AKS"
+platform: "aws-eks"
+platform-pretty: "EKS"
 anchor: platforms
-module: platforms/azure-aks/bestpractices
+module: platforms/aws-eks/bestpractices
 ---
 
-# StorageOS with AKS Kubernetes best practices
+# StorageOS with EKS Kubernetes best practices
 
 {% include k8s/bestpractices/dedicated-instancegroup.md %}
 {% include k8s/bestpractices/etcd-external.md %}

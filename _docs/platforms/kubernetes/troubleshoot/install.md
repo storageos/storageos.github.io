@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Kubernetes troubleshoot
 anchor: platforms
 cmd: kubectl
+platform-pretty: "Kubernetes"
 platform: Kubernetes
 module: platforms/kubernetes/troubleshoot/install
 ---

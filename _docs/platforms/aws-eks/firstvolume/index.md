@@ -3,10 +3,10 @@ layout: guide
 title: StorageOS Docs - Kubernetes
 anchor: platforms
 cmd: kubectl
-platform: kubernetes
-platform-pretty: "Kubernetes"
+platform: "aws-eks"
+platform-pretty: "EKS"
 platformUC: Kubernetes
-module: platforms/kubernetes/firstvolume
+module: platforms/aws-eks/firstvolume
 ---
 
 {% include platforms/firstuse.md %}

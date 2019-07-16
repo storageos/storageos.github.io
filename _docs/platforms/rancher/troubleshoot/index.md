@@ -3,6 +3,7 @@ layout: guide
 title: StorageOS Docs - Rancher troubleshoot
 anchor: platforms
 platform: Rancher
+platform-pretty: "Rancher"
 module: platforms/rancher/troubleshoot
 ---
 

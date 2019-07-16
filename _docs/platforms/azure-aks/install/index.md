@@ -1,6 +1,8 @@
 ---
 layout: guide
 title: StorageOS Docs - Azure
+platform: azure-aks
+platform-pretty: AKS
 anchor: platforms
 module: platforms/azure-aks/install
 ---
@@ -26,25 +28,5 @@ Visit the [best practices]({%link
 _docs/platforms/azure-aks/bestpractices/index.md %}) section to install
 StorageOS for production clusters.
 
-## Kubernetes with StorageOS
-
-Kubernetes and StorageOS communicate with each other to perform actions such as
-creation, deletion or mounting volumes. StorageOS installations on AKS must use
-the CSI (Container Storage Interface) driver. When using CSI, Kubernetes and
-StorageOS communicate over a Unix domain socket. This socket is handled by the
-Kubelet in the Host.
-
-## CSI (Container Storage Interface) Note
-
-CSI is the standard that enables storage drivers to release on their
-own schedule. This allows storage vendors to upgrade, update, and enhance their
-drivers without the need to update Kubernetes source code, or follow Kubernetes
-release cycles.
-
-CSI is available from Kubernetes 1.9 alpha. CSI is considered GA from
-Kubernetes 1.13, hence StorageOS recommends the use of CSI. In addition, the
-StorageOS Cluster Operator handles the versioning of the API complexity by
-detecting the Kubernetes installed and setting up the appropriate CSI driver.
-
-Check out the status of the CSI release cycle in relation with Kubernetes in
-the [CSI project](https://kubernetes-csi.github.io/docs/) page.
+{% include platforms/kubernetes-with-storageos.md %}
+{% include platforms/csi-note.md %}

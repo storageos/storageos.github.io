@@ -2,6 +2,7 @@
 layout: guide
 title: StorageOS Docs - Docker EE
 platform: dockeree
+platform-pretty: "DockerEE"
 anchor: platforms
 module: platforms/dockeree/bestpractices
 ---

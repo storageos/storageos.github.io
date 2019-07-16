@@ -72,6 +72,45 @@ sections:
         description: Kubernetes best practices
         module: platforms/kubernetes/bestpractices
 
+  - title: Rancher
+    description: Rancher
+    module: platforms/rancher
+    items:
+      -
+        title: Install
+        description: Install on rancher
+        module: platforms/rancher/install
+        subitems:
+          -
+            title: Rancher Catalog (default)
+            description: Install as Rancher app
+            module: platforms/rancher/install/rancher-catalog
+          -
+            title: Advanced
+            description: Install on Rancher manually
+            module: platforms/rancher/install/rancher-advanced
+      -
+        title: Troubleshooting
+        description: Troubleshooting
+        module: platforms/rancher/troubleshoot
+        subitems:
+          -
+            title: Installation
+            description: Troubleshooting installation
+            module: platforms/rancher/troubleshoot/install
+          -
+            title: Volume Provisioning
+            description: Troubleshooting volumes
+            module: platforms/rancher/troubleshoot/volumes
+      -
+        title: StorageOS Volume Guide
+        description: Examples for operations
+        module: platforms/rancher/firstvolume
+      -
+        title: Best Practices
+        description: rancher best practices
+        module: platforms/rancher/bestpractices
+
   - title: OpenShift
     description: Openshift
     module: platforms/openshift
@@ -157,44 +196,28 @@ sections:
         description: Kubernetes best practices
         module: platforms/azure-aks/bestpractices
 
-  - title: Rancher
-    description: Rancher
-    module: platforms/rancher
+  -
+    title: AWS EKS
+    description: Kubernetes in EKS
+    module: platforms/aws-eks
     items:
       -
         title: Install
-        description: Install on rancher
-        module: platforms/rancher/install
+        description: Install K8S
+        module: platforms/aws-eks/install
         subitems:
           -
-            title: Rancher Catalog (default)
-            description: Install as Rancher app
-            module: platforms/rancher/install/rancher-catalog
-          -
-            title: Advanced
-            description: Install on Rancher manually
-            module: platforms/rancher/install/rancher-advanced
-      -
-        title: Troubleshooting
-        description: Troubleshooting
-        module: platforms/rancher/troubleshoot
-        subitems:
-          -
-            title: Installation
-            description: Troubleshooting installation
-            module: platforms/rancher/troubleshoot/install
-          -
-            title: Volume Provisioning
-            description: Troubleshooting volumes
-            module: platforms/rancher/troubleshoot/volumes
+            title: EKS
+            description: Install on EKS
+            module: platforms/aws-eks/install/install
       -
         title: StorageOS Volume Guide
         description: Examples for operations
-        module: platforms/rancher/firstvolume
+        module: platforms/aws-eks/firstvolume
       -
         title: Best Practices
-        description: rancher best practices
-        module: platforms/rancher/bestpractices
+        description: Kubernetes best practices
+        module: platforms/aws-eks/bestpractices
 
   - title: Docker EE
     description: DockerEE/K8S

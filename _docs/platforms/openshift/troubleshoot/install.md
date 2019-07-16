@@ -4,6 +4,7 @@ title: StorageOS Docs - OpenShift troubleshoot
 anchor: platforms
 cmd: oc
 platform: OpenShift
+platform-pretty: "OpenShift"
 module: platforms/openshift/troubleshoot/install
 ---
 

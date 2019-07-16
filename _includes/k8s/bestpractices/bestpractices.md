@@ -22,10 +22,10 @@ _docs/reference/cluster-operator/index.md %}), this is handled for you automatic
 
 ## StorageOS API username/password
 
-{% if page.platform != "azure-aks" %}
-StorageOS uses a Kubernetes secret to define the API credentials. For standard
-installations (non CSI), the API credentials are used by {{ page.platform }} to
-communicate with StorageOS.
+{% if page.platform != "azure-aks" %} StorageOS uses a Kubernetes secret to
+define the API credentials. For standard installations (non CSI), the API
+credentials are used by {{ page.platform-pretty }} to communicate with
+StorageOS.
 {% endif %}
 
 The API grants full access to StorageOS functionality, therefore we recommend
@@ -56,7 +56,7 @@ StorageOS uses the `etcd` distributed key-value store to store essential
 cluster metadata and manage distributed configuration state. An embedded etcd
 instance is included in the StorageOS container, but for production environments,
 we recommend deploying using a external etcd cluster. For more details about
-and an example of how to run etcd in {{ page.platform }}, see the
+and an example of how to run etcd in {{ page.platform-pretty }}, see the
 [External Etcd Operations]({%link _docs/operations/external-etcd.md %})
 page.
 

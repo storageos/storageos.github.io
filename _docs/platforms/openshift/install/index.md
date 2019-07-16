@@ -1,6 +1,7 @@
 ---
 layout: guide
 title: StorageOS Docs - OpenShift
+platform-pretty: "OpenShift"
 anchor: platforms
 module: platforms/openshift/install
 ---

@@ -2,7 +2,8 @@
 layout: guide
 title: StorageOS Docs - Docker troubleshoot
 anchor: platforms
-platform: DockerCE
+platform: dockerce
+platform-pretty: DockerCE
 module: platforms/dockerce/troubleshoot
 ---
 

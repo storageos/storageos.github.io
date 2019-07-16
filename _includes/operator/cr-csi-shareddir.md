@@ -16,6 +16,7 @@ spec:
   sharedDir: '/var/lib/kubelet/plugins/kubernetes.io~storageos' # Needed when Kubelet as a container
   csi:
     enable: true
+    deploymentStrategy: deployment
   resources:
     requests:
     memory: "512Mi"
@@ -28,8 +29,9 @@ spec:
 END
 ```
 
-> `spec` parameters available on the [Cluster Operator configuration](
-> {%link _docs/reference/cluster-operator/configuration.md %}) page.
+> Additional `spec` parameters are available on the [Cluster Operator
+> configuration]( {%link _docs/reference/cluster-operator/configuration.md %})
+> page.
 
 > You can find more examples such as deployments referencing a external etcd kv
 > store for StorageOS in the [Cluster Operator examples](

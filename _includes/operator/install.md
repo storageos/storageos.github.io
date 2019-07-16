@@ -21,6 +21,9 @@ documentation.
 - [Install StorageOS Operator](#1-install-storageos-operator)
 - [Create a Secret for default username and password](#2-create-a-secret)
 - [Trigger bootstrap using a CustomResource](#3-trigger-a-storageos-installation)
+{% if page.oc-version contains '4.' -%}
+- [Set SELinux Permissions](#4-set-selinux-permissions)
+{% endif %}
 
 ## 1. Install StorageOS operator
 
@@ -85,8 +88,15 @@ unique, strong password.
 {% include operator/cr-csi-example.md %}
 {% elsif page.platform == "rancher" or page.platform == "dockeree" %}
 {% include operator/cr-csi-shareddir.md %}
+{% elsif page.oc-version contains '4.' %}
+{% include operator/cr-csi-openshift4.md %}
 {% else %}
 {% include operator/cr-basic-example.md %}
+{% endif %}
+
+{% if page.oc-version contains '4.' %}
+## 4. Set SELinux Permissions
+{% include platforms/openshift4-selinux.md %}
 {% endif %}
 
 {% include operator/first-volume.md %}

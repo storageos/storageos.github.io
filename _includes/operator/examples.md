@@ -99,6 +99,7 @@ spec:
 spec:
   csi:
     enable: true
+    deploymentStrategy: deployment
   # enableProvisionCreds: false
   # enableControllerPublishCreds: false
   # enableNodePublishCreds: false

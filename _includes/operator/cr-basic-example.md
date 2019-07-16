@@ -73,7 +73,9 @@ END
 ```
 {% endif %}
 
-> `spec` parameters available on the [Cluster Operator configuration]({%link _docs/reference/cluster-operator/configuration.md %}) page.
+> Additional `spec` parameters are available on the [Cluster Operator
+> configuration]({%link _docs/reference/cluster-operator/configuration.md %})
+> page.
 
 > You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
 store for StorageOS in the [Cluster Operator examples]({%link _docs/reference/cluster-operator/examples.md %}) page.

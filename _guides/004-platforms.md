@@ -82,6 +82,10 @@ sections:
         module: platforms/openshift/install
         subitems:
           -
+            title: 4.1
+            description: Install on 4.1
+            module: platforms/openshift/install/4.1
+          -
             title: 3.11
             description: Install on 3.11
             module: platforms/openshift/install/3.11

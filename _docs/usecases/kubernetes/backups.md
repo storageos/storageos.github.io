@@ -113,7 +113,7 @@ root@backup-example-0:/# echo $(date) > /data/date.txt
 ```bash
 $ kubectl get svc backup-example-rsync
 NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
-backup-example-nginx   ClusterIP   100.65.18.199   <none>        80/TCP    46s
+backup-example-rsync   ClusterIP   100.65.18.199   <none>        873/TCP    46s
 ```
 
 1. Use rsync to access the files shared by the rsync daemon. rsync is sharing

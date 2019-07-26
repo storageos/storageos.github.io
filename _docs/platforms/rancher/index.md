@@ -13,9 +13,9 @@ This section of documentation covers use of StorageOS in
 that meets the [StorageOS prerequisites]({%link
 _docs/prerequisites/overview.md %}).
 
-StorageOS transparently supports Rancher deployments using RancherOS, CentOS,
-RHEL or Debian and can support other Linux distributions detailed
-in the [systems supported page]({%link
+StorageOS transparently supports Rancher deployments using CentOS, RHEL, Debian
+or RancherOS (CSI is not supported on RancherOS) and can support other
+Linux distributions detailed in the [systems supported page]({%link
 _docs/prerequisites/systemconfiguration.md %}) if the appropriate kernel
 modules are present.
 

@@ -36,11 +36,11 @@ installed.
 ## Distribution Specifics
 
 The following distributions are supported by default:
-* RHEL 7.5 
+* RHEL 7.5
 * CentOS 7
 * Debian 9
-* Ubuntu Azure 
-* RancherOS 
+* Ubuntu Azure
+* RancherOS - Note CSI is not supported on RancherOS
 
 Ubuntu 16.04/18.04 requires the installation of additional packages.
 

@@ -13,7 +13,7 @@ This section of documentation covers the use of StorageOS in Docker Enterprise E
 
 Docker EE and the Universal Control Plane can run on different Linux
 distributions. StorageOS supports RHEL, CentOS, Debian, and selected Ubuntu
-images. For more details, check out the supported OS in the 
+images. For more details, check out the supported OS in the
 [prerequisites page]({%link _docs/prerequisites/systemconfiguration.md %}).
 
 StorageOS only supports Kubernetes nodes managed by Docker Enterprise Edition,

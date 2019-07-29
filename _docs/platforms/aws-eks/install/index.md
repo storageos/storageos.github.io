@@ -32,3 +32,4 @@ StorageOS for production clusters.
 
 {% include platforms/kubernetes-with-storageos.md %}
 {% include platforms/csi-note.md %}
+{% include platforms/managedservices-docker.md %}

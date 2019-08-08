@@ -99,7 +99,7 @@ docker run --name enable_lio                  \
            --cap-add=SYS_ADMIN                \
            -v /lib/modules:/lib/modules       \
            -v /sys:/sys:rshared               \
-           storageos/init:0.1
+           storageos/init:0.2
 ```
 
 ## Manual Configuration

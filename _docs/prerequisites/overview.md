@@ -11,7 +11,7 @@ module: prerequisites/overview
 
 One machine with the following:
 
-1. Minimum one core with 2GB RAM.
+1. Minimum two core with 4GB RAM.
 1. Linux with a 64-bit architecture.
 1. Docker 1.10 or later, with [mount propagation]({% link _docs/prerequisites/mountpropagation.md %}) enabled and preferably `CHANNEL=stable`
 1. The necessary ports should be open. See the [ports and firewall settings]({% link _docs/prerequisites/firewalls.md %})

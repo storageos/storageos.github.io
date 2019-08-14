@@ -11,8 +11,10 @@ StorageOS has published a self evaluation guide that aims to help guide you thro
 installing StorageOS, understanding and using StorageOS features and running
 synthetic and application benchmarks.
 
-The Self Evaluation guide PDF is available to download
-[here](https://resources.storageos.com/hubfs/PRE/storageos-self-evaluation-guide.pdf).
+The Self Evaluation guide PDF is available to download.
+&nbsp;
+
+<!--HubSpot Call-to-Action Code --><span class="hs-cta-wrapper" id="hs-cta-wrapper-932da3c2-2956-484a-b677-d50806463b85"><span class="hs-cta-node hs-cta-932da3c2-2956-484a-b677-d50806463b85" id="hs-cta-932da3c2-2956-484a-b677-d50806463b85"><!--[if lte IE 8]><div id="hs-cta-ie-element"></div><![endif]--><a href="https://cta-redirect.hubspot.com/cta/redirect/3402546/932da3c2-2956-484a-b677-d50806463b85" ><img class="hs-cta-img" id="hs-cta-img-932da3c2-2956-484a-b677-d50806463b85" style="border-width:0px;" src="https://no-cache.hubspot.com/cta/default/3402546/932da3c2-2956-484a-b677-d50806463b85.png"  alt="Download"/></a></span><script charset="utf-8" src="https://js.hscta.net/cta/current.js"></script><script type="text/javascript"> hbspt.cta.load(3402546, '932da3c2-2956-484a-b677-d50806463b85', {}); </script></span><!-- end HubSpot Call-to-Action Code -->
 
 ## Support for Self Evaluations
 

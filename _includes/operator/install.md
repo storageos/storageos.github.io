@@ -47,7 +47,7 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   0          3m
 ## 2. Create a Secret
 
 Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding. 
+API Username and Password in base64 encoding.
 
 The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
@@ -93,6 +93,20 @@ unique, strong password.
 {% else %}
 {% include operator/cr-basic-example.md %}
 {% endif %}
+
+### Verify StorageOS Installation
+
+```bash
+[root@master03]# {{ page.cmd }} -n storageos get pods -w
+NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-daemonset-75f6c               3/3     Running   0          3m
+storageos-daemonset-czbqx               3/3     Running   0          3m
+storageos-daemonset-zv4tq               3/3     Running   0          3m
+storageos-scheduler-6d67b46f67-5c46j    1/1     Running   6          3m
+
+```
+
+> The above command watches the Pods created by the Cluster Definition example. Note that pods typically take approximately 65 seconds to enter the Running Phase.
 
 {% if page.oc-version contains '4.' %}
 ## 4. Set SELinux Permissions

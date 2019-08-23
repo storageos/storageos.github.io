@@ -10,12 +10,17 @@ module: reference/telemetry
 StorageOS collects telemetry and error reports  from StorageOS clusters via two
 different methods for two different purposes.
 
+## Telemetry
+
+* Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day.
+* Error reporting is the sentry.io crash dump reporting.
+
 ## sentry.io
 
 StorageOS sends crash reports and information about the StorageOS cluster to
 [sentry.io](https://sentry.io). This information helps our developers monitor
 and fix crashes. Information is sent to sentry.io once per day or when a process inside the
-StorageOS container crashes. 
+StorageOS container crashes.
 
 * The once per day report includes the cluster version, node counts and license information.
 * The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV),
@@ -89,17 +94,12 @@ If `k8sDistro` is set then the Kubernetes version and Kubernetes distribution
 will also be reported. This information helps us direct focus onto the most
 relevant platforms.
 
-## Disabling Telemetry
+## Disable Telemetry
+It is possible to disable telemetry using the CLI, API, environment
+variables or the StorageOS Cluster Spec.
 
-It is possible to disable telemetry using the CLI, API or environment
-variables.
-
-* Telemetry is the DNS query and sentry.io once per day reporting.
-* Error reporting is the sentry.io crash dump reporting.
-
-## API
-
-You can use the /v1/telemetry API endpoint to disable or enable telemetry. 
+#### API
+The example below shows how you can use the /v1/telemetry API endpoint to disable or enable telemetry.
 
 ```bash
 $ curl -X "PUT" "http://127.0.0.1:5705/v1/telemetry"        \
@@ -110,9 +110,11 @@ $ curl -X "PUT" "http://127.0.0.1:5705/v1/telemetry"        \
              "reportErrors": false
          }'
 ```
-The example above shows how you can disable and enable reporting. 
 
-## Environment Variables
+#### StorageOS Cluster Spec
+Disable telemetry explicitly through the configurable [spec parameters]({% link _docs/reference/cluster-operator/configuration.md %}) of the StorageOSCluster custom resource.
+
+#### Environment Variables
 
 You can use the following environmental variables to disable or enable telemetry.
 

@@ -24,6 +24,7 @@ spec:
         values:
         - "true"
   k8sDistro: "openshift"
+  disableScheduler: true
 END
 ```
 {% elsif page.platform == "rancher" %}

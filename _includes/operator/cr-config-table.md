@@ -17,7 +17,7 @@ The following table lists the configurable spec parameters of the StorageOSClust
 | `images.csiExternalProvisionerContainer`    | CSI External Provisioner Container image                                                       | `storageos/csi-provisioner:v1.0.1`
 | `ìmages.csiLivenessProbeContainer`          | CSI Liveness Probe Container Image                                                             | `quay.io/k8scsi/livenessprobe:v1.0.1`
 | `images.csiNodeDriverRegistrarContainer`    | CSI Node Driver Registrar Container image                                                      | `quay.io/k8scsi/csi-node-driver-registrar:v1.0.1`
-| `images.initContainer`                      | StorageOS init container image                                                                 | `storageos/init:0.2`
+| `images.initContainer`                      | StorageOS init container image                                                                 | `storageos/init:1.0.0`
 | `images.nodeContainer`                      | StorageOS node container image                                                                 | `storageos/node:{{ site.latest_node_version  }}`
 | `ingress.annotations`                       | Annotations of the ingress used by the cluster                                                 |
 | `ingress.enable`                            | Enable ingress for the cluster                                                                 | `false`

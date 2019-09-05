@@ -78,6 +78,10 @@ sections:
         title: Examples
         description: Examples of use for operator
         module: reference/cluster-operator/examples
+      -
+        title: Operator Upgrade
+        description: Cluster Operator Upgrade
+        module: reference/cluster-operator/upgrade
   -
     title: Contributing to the docs
     description: How to contribute to the docs
@@ -90,6 +94,10 @@ sections:
     title: GUI
     description: Describes the graphical user interface
     module: reference/gui
+  - 
+    title: Init Container
+    description: Init Container
+    module: reference/init-container
   -
     title: Labels
     description:  StorageOS special labels to apply features

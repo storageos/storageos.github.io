@@ -22,6 +22,34 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.4.0 - Released 06/09/2019
+
+Version `1.4.0` changes the way metadata keys are stored on disk resulting in
+improved key locality and thus an increase in IO performance.
+
+*IMPORTANT:* Due to the nature of this change, the upgrade process includes an
+automated conversion process. If upgrading from `1.3.0` or below, please ensure
+you follow the [upgrade instructions]({%link _docs/operations/upgrades.md %}).
+If the upgrade process is not followed, version `1.4.0` will refuse to start,
+but you may restart using the previous version. Once the upgrade process has
+been completed it is not possible to revert to an earlier version.
+
+No new features will be added to the `1.4` series and we will instead release a
+`1.5.0-rc1` in the next few weeks.
+
+### Improved
+
+- Improved performance for sequential IO greater than 4k in size by changing
+  the ordering of metadata keys so that the volume inode is in the most
+  significant bits, followed by the offset.
+- Volume deletes are now 5 - 20x faster, and for <10GB volumes should take less
+  than a second.
+
+### Fixed
+
+- The Prometheus metrics endpoint no longer displays statistics for volumes
+  that have been deleted.
+
 ## 1.3.0 - Released 08/07/2019
 
 The `1.3.0` release contains further substantial performance improvements,

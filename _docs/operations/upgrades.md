@@ -11,7 +11,6 @@ module: operations/upgrades
 > [release notes]({%link _docs/reference/release_notes.md %}) to confirm
 > whether there is a safe upgrade path between versions.
 
-
 StorageOS version upgrades must be planned and executed taking into consideration
 that volumes will be inaccessible during the process. It is recommended to
 schedule a maintenance window.
@@ -46,14 +45,15 @@ Prepare upgrade:
 
 1. Prepare an etcd backup if using external etcd.
 1. Optionally make sure all nodes have the new StorageOS image pulled, so the new
-   containers will start promptly. 
+   containers will start promptly.
   ```bash
 docker pull storageos/node:$NEW_VERSION
   ```
 1. Downscale any applications using StorageOS volumes to 0.
 
     > Any mount points will hang while StorageOS Pods are not present if the
-    > application Pods haven't been stopped.
+    > application Pods haven't been stopped. A restart of the Pods mounting
+    > volumes will be necessary if they are not stopped before hand.
 
 1. Put the StorageOS cluster in
    [maintenance](/docs/operations/maintenance#cluster-maintenance-mode) mode.
@@ -62,40 +62,24 @@ docker pull storageos/node:$NEW_VERSION
     maintenance mode, StorageOS operations are limited. Functionalities such as
     volume provisioning, failover of primary volumes or managing nodes are
     disabled.
-1. Make sure the update strategy of StorageOS is `OnDelete`.
+1. Execute the StorageOS Upgrade cluster helper
     ```bash
-   $ export NAMESPACE=storageos
-   $ export DAEMONSET_NAME=storageos # or storageos-daemonset
-   $ kubectl -n $NAMESPACE get ds/$DAEMONSET_NAME -o {% raw %}go-template='{{.spec.updateStrategy.type}}{{"\n"}}'{% endraw %}
-   OnDelete
+curl -Ls https://raw.githubusercontent.com/storageos/deploy/master/k8s/deploy-storageos/upgrade-helper/prepare-upgrade.sh -o prepare-upgrade.sh
+chmod +x ./prepare-upgrade.sh
+./prepare-upgrade.sh
     ```
 
-   > If the strategy is not `OnDelete`, you can edit the daemonset by running
-   > `kubectl -n $NAMESPACE edit ds/$DAEMONSET_NAME`. This change **does not**
-   > trigger any deployment or restart of Pods.
-    ```yaml
-   updateStrategy:
-     type: OnDelete
-   ```
+    > The upgrade helper patches the StorageOS DaemonSet and sets the latest
+    > version of the containers among other tasks.
 
-Execute update:
+    > The `prepare-upgrade.sh` script can be executed as many times as needed
+    > to verify that your cluster is ready to be upgraded.
 
-1. Change the StorageOS node container image for the new version of StorageOS
-
-    ```bash
-   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION
-    ```
-
-    > If you are upgrading to StorageOS **1.3.0, you also need to change the init
-    > container version** to `enable-lio=storageos/init:{{ site.latest_init_version  }}`.
-    ```bash
-   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME enable-lio=storageos/init:{{ site.latest_init_version  }}
-    ```
 
 1. Delete StorageOS Pods.
 
     ```bash
-   kubectl -n $NAMESPACE delete pods --selector app=storageos 
+   kubectl -n $NAMESPACE delete pods --selector app=storageos,kind=daemonset
     ```
 
 1. Check that StorageOS is starting and wait until the Pods are in `ready` state.
@@ -104,11 +88,10 @@ Execute update:
    kubectl -n $NAMESPACE get pods
     ```
 
-1. Remove [maintenance
-   mode](/docs/operations/maintenance#cluster-maintenance-mode) of the
-StorageOS cluster.
-1. Scale up the applications that were using StorageOS volumes, once StorageOS
-   is up and running.
+1. Take the StorageOS cluster out of [maintenance
+   mode](/docs/operations/maintenance#cluster-maintenance-mode).
+1. Scale up applications that were using StorageOS volumes, once StorageOS is
+   up and running.
 
 
 ## Option 2. Manual rolling upgrade
@@ -141,26 +124,11 @@ Prepare upgrade:
 
 1. Prepare an etcd backup if using external etcd.
 1. Make sure all nodes have the new StorageOS image pulled, so the new
-   containers will start promptly (optional). 
+   containers will start promptly (optional).
    ```bash
    docker pull storageos/node:$NEW_VERSION
    ```
 
-1. Make sure the update strategy of StorageOS is `OnDelete`.
-    ```bash
-   $ export NAMESPACE=storageos
-   $ export DAEMONSET_NAME=storageos
-   $ kubectl -n $NAMESPACE get ds/$DAEMONSET_NAME -o {% raw %}go-template='{{.spec.updateStrategy.type}}{{"\n"}}'{% endraw %}
-   OnDelete
-    ```
-
-   > If the strategy is not `OnDelete`, you can edit the daemonset by running
-   > `kubectl -n $NAMESPACE edit ds/$DAEMONSET_NAME`. This change **does not**
-   > trigger any deployment or restart of Pods.
-    ```yaml
-   updateStrategy:
-     type: OnDelete
-   ```
 1. Make sure that all volumes have at least one replica
 
     {% raw %}
@@ -193,17 +161,18 @@ Prepare upgrade:
     ```
 
 Execute the upgrade:
-1. Change the StorageOS node container image for the new version of StorageOS
-
+1. Execute the StorageOS Upgrade cluster helper
     ```bash
-   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME storageos=storageos/node:$NEW_VERSION
+curl -Ls https://raw.githubusercontent.com/storageos/deploy/master/k8s/deploy-storageos/upgrade-helper/prepare-upgrade.sh -o prepare-upgrade.sh
+chmod +x ./prepare-upgrade.sh
+./prepare-upgrade.sh
     ```
 
-    > If you are upgrading to StorageOS **1.3.0, you also need to change the init
-    > container version** to `enable-lio=storageos/init:{{ site.latest_init_version }}`.
-    ```bash
-   kubectl -n $NAMESPACE set image ds/$DAEMONSET_NAME enable-lio=storageos/init:{{ site.latest_init_version }}
-    ```
+    > The upgrade helper patches the StorageOS DaemonSet and sets the latest
+    > version of the containers among other tasks.
+
+    > The `prepare-upgrade.sh` script can be executed as many times as needed
+    > to verify that your cluster is ready to be upgraded.
 
 1. Cordon and drain node
 

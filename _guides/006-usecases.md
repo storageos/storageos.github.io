@@ -22,6 +22,10 @@ sections:
         description: Create a ElasticSearch cluster with persistent storage
         module: usecases/kubernetes/elasticsearch
       -
+        title: Jenkins
+        description: Deploy a persistent Jenkins master with Kubernetes build agents
+        module: usecases/kubernetes/jenkins
+      -
         title: Kafka
         description: Create a Kafka cluster with persistent storage
         module: usecases/kubernetes/kafka

@@ -36,25 +36,16 @@ To add a label to a node:
 storageos node update --label-add storageos.com/deployment=computeonly nodename
 ```
 
-## StorageOS Volume labels
+## StorageOS Pod Labels
 
-Volumes do not have any feature labels present by default
+| Feature             | Label                               | Values           | Description                                                                                                                                                                  |
+| :------------------ | :---------------------------------- | :--------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                               |
+| Fencing             | `storageos.com/fenced`              | true / false     | Enables StorageOS fencing of pods on unavailable nodes. For more information about fencing prerequisites please see the [Fencing](/docs/operations/fencing) operations page. |
 
-| Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
-| :------------------ | :---------------------------------- | :----------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| Caching             | `storageos.com/nocache`             | true / false                         | Switches off caching. |
-| Compression         | `storageos.com/nocompress`          | true / false                         | Switches off compression of data at rest and in transit. |
-| Encryption          | `storageos.com/encryption`          | true / false                         | Enables volume encryption, more details [here](/docs/operations/encrypted-volumes) |
-| Replication         | `storageos.com/replicas`            | integers [0, 5]                      | Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.  |
-| Failure mode        | `storageos.com/failure.mode`        | strings [`soft`,`hard`,`alwayson`]   | Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable. |
-| Failure tolerance   | `storageos.com/failure.tolerance`   | integers [0, 4]                      | Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas > 0, so if there are 2 replicas it will default to 1.  |
-| QoS                 | `storageos.com/throttle`            | true / false                         | Deprioritizes traffic by reducing the rate of disk I/O, when true.  |
-| Placement           | `storageos.com/hint.master`         | Node hostname or uuid                | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied.  |
-
-To create a volume with a feature labels:
-
+To add the fencing label to a pod use kubectl:
 ```bash
-storageos volume create --label storageos.com/throttle=true --label storageos.com/replicas=1 volumename
+kubectl label pod <POD_NAME> key=value
+kubectl label pod mydb-pod storageos.com/fenced=true
 ```
 
 ## StorageOS Pool labels
@@ -69,4 +60,45 @@ To add overcommit labels to a pool:
 
 ```bash
 storageos pool update --label-add storageos.com/overcommit=20 default
+```
+
+## StorageOS Volume labels
+
+Volumes do not have any feature labels present by default
+
+| Feature             | Label                               | Values                               | Description                                                                                                                                                                                                                        |
+| :------------------ | :---------------------------------- | :----------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------                                                                                     |
+| Caching             | `storageos.com/nocache`             | true / false                         | Switches off caching.                                                                                                                                                                                                              |
+| Compression         | `storageos.com/nocompress`          | true / false                         | Switches off compression of data at rest and in transit.                                                                                                                                                                           |
+| Encryption          | `storageos.com/encryption`          | true / false                         | Enables volume encryption, more details [here](/docs/operations/encrypted-volumes)                                                                                                                                                 |
+| Failure mode        | `storageos.com/failure.mode`        | strings [`soft`,`hard`,`alwayson`]   | Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable. |
+| Failure tolerance   | `storageos.com/failure.tolerance`   | integers [0, 4]                      | Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas > 0, so if there are 2 replicas it will default to 1.                                                                                       |
+| Placement           | `storageos.com/hint.master`         | Node hostname or uuid                | Requests master volume placement on the specified node.  Will use another node if request can't be satisfied.                                                                                                                      |
+| QoS                 | `storageos.com/throttle`            | true / false                         | Deprioritizes traffic by reducing the rate of disk I/O, when true.                                                                                                                                                                 |
+| Replication         | `storageos.com/replicas`            | integers [0, 5]                      | Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.                                                                                          |
+
+To create a volume with a feature label:
+
+```bash
+storageos volume create --label storageos.com/throttle=true --label storageos.com/replicas=1 volumename
+```
+
+When using the Kubernetes CSI driver (available from Kubernetes 1.10), volume
+labels can also be added to the parameters section of the StorageClass. This
+means that all volumes created with the specific StorageClass will have
+StorageOS volume labels applied to them.
+
+For example the StorageClass below will create `ext4` formatted volumes with a
+single StorageOS replica, in the `default` [pool]({%link _docs/concepts/pools.md %}).
+
+```yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: storageos-replicated
+  parameters:
+    fsType: ext4
+    pool: default
+    storageos.com/replicas: "1"
+provisioner: storageos
 ```

@@ -30,6 +30,10 @@ sections:
         description: Create a Kafka cluster with persistent storage
         module: usecases/kubernetes/kafka
       -
+        title: Kubevirt
+        description: Create persistent Virtual Machines in Kubernetes
+        module: usecases/kubernetes/kubevirt
+      -
         title: Microsoft SQL Server
         description: Create a Microsoft SQL server StatefulSet with persistent storage
         module: usecases/kubernetes/mssql

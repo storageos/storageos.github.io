@@ -26,7 +26,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying Cassandra on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS example deployment repository
 
    ```bash
    git clone https://github.com/storageos/deploy.git storageos

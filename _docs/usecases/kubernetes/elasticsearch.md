@@ -2,7 +2,7 @@
 layout: guide
 title: StorageOS Docs - Elasticsearch
 anchor: usecases
-module: usecases/kubernetes/Elasticsearch
+module: usecases/kubernetes/elasticsearch
 ---
 
 # ![image](/images/docs/explore/elasticsearch.png) Elasticsearch with StorageOS
@@ -29,42 +29,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 
 ## Deploying Elasticsearch on Kubernetes
 
-### Prerequisites
-
-Some OS tuning is required, which is done automatically when using our example
-from the [deploy](//github.com/storageos/deploy) repository.
-
-Elasticsearch requires `vm.max_map_count` to be increased to a minimum of
-`262144`, which is a system wide setting. One way to achieve this is to
-run `sysctl -w vm.max_map_count=262144` and update `/etc/sysctl.conf`
-to ensure it persists over a reboot. See ElasicSearch reference
-[here](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/vm-max-map-count.html)
-
-Administrators should be aware that this impacts the behaviour of nodes and
-that there may be collisions with other application settings. Administrators
-are advised to centrally collate sysctl settings using the tooling of their
-choice.
-
-### Deployment
-
-&nbsp;
-
-#### Clone the example deployment repo
-
-&nbsp;
-
-You can find the latest files in the StorageOS example deployment repostiory
-in `k8s/examples/elasticsearch/`
-
-  ```bash
-git clone https://github.com/storageos/deploy.git storageos
-```
-
-&nbsp;
-
-#### StatefulSet defintion
-
-&nbsp;
+### StatefulSet definition
 
   ```yaml
 ---
@@ -109,94 +74,106 @@ provision the necessary storage, using the StorageOS storage class.
 Dynamic provisioning occurs as a volumeMount has been declared with the same
 name as a VolumeClaimTemplate.
 
-&nbsp;
+## Prerequisites
 
-#### Create the kubernetes objects
+Some OS tuning is required, which is done automatically when using our example
+from the [deploy](//github.com/storageos/deploy) repository.
 
- &nbsp;
+Elasticsearch requires `vm.max_map_count` to be increased to a minimum of
+`262144`, which is a system wide setting. One way to achieve this is to
+run `sysctl -w vm.max_map_count=262144` and update `/etc/sysctl.conf`
+to ensure it persists over a reboot. See ElasicSearch reference
+[here](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/vm-max-map-count.html)
 
-> NOTE: this will install an ES cluster with 3 master, 3 data and 3
-coordinator nodes. Combined they will require ~ 14 GiB of available memory in
-your cluster, however, more may be used as the application is being used
+Administrators should be aware that this impacts the behaviour of nodes and
+that there may be collisions with other application settings. Administrators
+are advised to centrally collate sysctl settings using the tooling of their
+choice.
 
- &nbsp;
+## Installation
 
-  ```bash
-kubectl apply -f storageos/k8s/examples/elasticsearch/
-  ```
+1. Clone the example deployment repo
 
-Once completed, an internal service object will have been created making the
-cluster available as `http://elasticsearch:9200/` which is the default Kibana
-(when installed via Helm) will be using.
+   You can find the latest files in the StorageOS example deployment repository
+   in `k8s/examples/elasticsearch/`
+   
+   ```bash
+   git clone https://github.com/storageos/deploy.git storageos
+   ```
 
-&nbsp;
+1. Create the kubernetes objects
+   
+   
+   > NOTE: this will install an ES cluster with 3 master, 3 data and 3
+   coordinator nodes. Combined they will require ~ 14 GiB of available memory in
+   your cluster, however, more may be used as the application is being used
+   
+     ```bash
+   kubectl apply -f storageos/k8s/examples/elasticsearch/
+     ```
+   
+   Once completed, an internal service object will have been created making the
+   cluster available as `http://elasticsearch:9200/` which is the default Kibana
+   (when installed via Helm) will be using.
 
-#### Confirm Elasticsearch is up and running
+1. Confirm Elasticsearch is up and running
 
-&nbsp;
 
-  ```bash
-kubectl get pods -l component=elasticsearch
+   ```bash
+   kubectl get pods -l component=elasticsearch
+   
+   NAME                                    READY   STATUS    RESTARTS   AGE
+   elasticsearch-exporter-d86ffd94-zw45l   1/1     Running   0          5m44s
+   es-coordinator-b7b984dd4-7wlz5          1/1     Running   0          5m44s
+   es-coordinator-b7b984dd4-89w26          1/1     Running   0          5m44s
+   es-coordinator-b7b984dd4-b4t6j          1/1     Running   0          5m44s
+   es-master-78dfd5b49f-9gf5c              1/1     Running   0          5m44s
+   es-master-78dfd5b49f-smsbw              1/1     Running   0          5m44s
+   es-master-78dfd5b49f-z4qpj              1/1     Running   0          5m44s
+   esdata-0                                1/1     Running   0          5m44s
+   esdata-1                                1/1     Running   0          4m34s
+   esdata-2                                1/1     Running   0          3m22s
+   ```
 
-NAME                                    READY   STATUS    RESTARTS   AGE
-elasticsearch-exporter-d86ffd94-zw45l   1/1     Running   0          5m44s
-es-coordinator-b7b984dd4-7wlz5          1/1     Running   0          5m44s
-es-coordinator-b7b984dd4-89w26          1/1     Running   0          5m44s
-es-coordinator-b7b984dd4-b4t6j          1/1     Running   0          5m44s
-es-master-78dfd5b49f-9gf5c              1/1     Running   0          5m44s
-es-master-78dfd5b49f-smsbw              1/1     Running   0          5m44s
-es-master-78dfd5b49f-z4qpj              1/1     Running   0          5m44s
-esdata-0                                1/1     Running   0          5m44s
-esdata-1                                1/1     Running   0          4m34s
-esdata-2                                1/1     Running   0          3m22s
-  ```
+1. Connect to ElasticSearch
 
-&nbsp;
+   To connect to ES directly, you can use the following port-forward command
 
-#### Connect to ElasticSearch
+   ```bash
+   kubectl port-forward svc/elasticsearch 9200
+   ```
 
-&nbsp;
+   and then access it via [http://localhost:9200](http://localhost:9200)
 
-To connect to ES directly, you can use the following port-forward command
 
-  ```bash
-kubectl port-forward svc/elasticsearch 9200
-  ```
+## Kibana (optional)
 
-and then access it via [http://localhost:9200](http://localhost:9200)
-
-&nbsp;
-
-#### Kibana (optional)
-
-&nbsp;
 
 One of the most popular uses of ES is to use it for log aggregation and
 indexing, Kibana helps us visualize the data in these indices and can be
 easily used when installed via its Helm chart
 
-  ```bash
-helm install stable/kibana
-  ```
+1. Install the helm chart.
+   ```bash
+   helm install stable/kibana
+   ```
 
-Once installed, use a port-foward to Kibana instead of directly to ES
+1. Once installed, use a port-foward to Kibana instead of directly to ES
+   
+   ```bash
+   kubectl port-forward --namespace default $(kubectl get pods --namespace default -l "app=kibana" -o jsonpath="{.items[0].metadata.name}") 5601
+   ```
+   
+   and then access it via [http://localhost:5601](http://localhost:5601)
 
-  ```bash
- kubectl port-forward --namespace default $(kubectl get pods --namespace default -l "app=kibana" -o jsonpath="{.items[0].metadata.name}") 5601
-  ```
 
-and then access it via [http://localhost:5601](http://localhost:5601)
+## Monitoring (optional)
 
-&nbsp;
-
-#### Monitoring (optional)
-
-&nbsp;
-
-As part of the example deployment, ES metrics are exposed and can be scraped
-by Prometheus on port 9108
-(see [77-es-exporter.yaml](//github.com/storageos/deploy/blob/master/k8s/examples/elasticsearch/77-es-exporter.yaml)).
+As part of the example deployment, ES metrics are exposed and can be scraped by
+Prometheus on port 9108 (see
+[77-es-exporter.yaml](//github.com/storageos/deploy/blob/master/k8s/examples/elasticsearch/77-es-exporter.yaml)).
 This is enabled by default, and should work with the default Prometheus install
-via Helm. If you're using the Prometheus service monitors, you can monitor
-this installation by creating a monitor for the `es-exporter` service. For an
-example of how this is done to monitor StorageOS, please see [prometheus-setup](/docs/operations/monitoring/prometheus-setup).
+via Helm. If you're using the Prometheus service monitors, you can monitor this
+installation by creating a monitor for the `es-exporter` service. For an
+example of how this is done to monitor StorageOS, please see
+[prometheus-setup](/docs/operations/monitoring/prometheus-setup).

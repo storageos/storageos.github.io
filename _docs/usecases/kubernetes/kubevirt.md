@@ -29,7 +29,7 @@ launch a shell inside the KubeVirt VM that's running as a Kubernetes pod.
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Prerequisites
 
@@ -39,22 +39,22 @@ Kubevirt installation instructions
 more information.
 
 As part of this installation it is assumed that you are running a Kubernetes
-cluster on VMs. As such nested virtualization or
-hardware emulation need to be enabled.
+cluster on VMs. As such nested virtualization or hardware emulation need to be
+enabled.
+
+## Deploying KubeVirt on Kubernetes
 
 > For ease of installation we have enabled hardware emulation. If your VMs
 > support nested virtualization then edit the Kubevirt ConfigMap
-> `./kubevirt-install/10-cm.yam` , removing the line `debug.useEmulation:
+> `./kubevirt-install/10-cm.yaml`, removing the line `debug.useEmulation:
 > "true"`.
-
-## Deploying KubeVirt on Kubernetes
 
 1. In order to deploy Kubevirt you just need to clone this repository and use
    kubectl to create the Kubernetes objects.
 
    ```bash
-   $ git clone https://github.com/storageos/deploy.git storageos
-   $ cd storageos/k8s/examples/kubevirt
+   $ git clone https://github.com/storageos/use-cases.git storageos-usecases
+   $ cd storageos-usecases/kubevirt
    $ kubectl create -f ./kubevirt-install
    ```
 1. Check that the Kubevirt pods are running.
@@ -92,10 +92,10 @@ hardware emulation need to be enabled.
 
 1. Now that CDI and Kubevirt are running, VMs can be created. In this example
    VMs running [Cirros](https://launchpad.net/cirros/), a small and lightweight
-   OS, will be created.  The vm-cirros.yaml manifest creates a `VirtualMachine`
-   that uses a DataVolume. This means that CDI will create a StorageOS backed
-   PVC and download the image that the `VirtualMachineInstance` (VMI) will boot
-   from onto the PVC.
+   OS, will be created.  The `vm-cirros.yaml` manifest creates a
+   `VirtualMachine` that uses a DataVolume. This means that CDI will create a
+   StorageOS backed PVC and download the image that the
+   `VirtualMachineInstance` (VMI) will boot from onto the PVC.
 
    ```bash
    $ kubectl create -f ./vm-cirros.yaml
@@ -159,8 +159,8 @@ attempting to clone the volume.
    $ kubectl get pods -w
    ```
 
-   You'll see that a cdi-upload-cloned-datavolume pod is created and then a
-   cdi-clone-source pod is created. The cdi-source pod mounts the original cirros
-   volume and sends the contents of the volume to the cdi-upload pod. The
-   cdi-upload pod creates and mounts a new PVC and writes the contents of the
-   original volume to it.
+   You'll see that a `cdi-upload-cloned-datavolume` pod is created and then a
+   cdi-clone-source pod is created. The cdi-source pod mounts the original
+   cirros volume and sends the contents of the volume to the cdi-upload pod.
+   The cdi-upload pod creates and mounts a new PVC and writes the contents of
+   the original volume to it.

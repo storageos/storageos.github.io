@@ -12,8 +12,8 @@ Cassandra is a popular distributed NoSQL open source database.
 Using StorageOS persistent volumes with Cassandra means that if a Cassandra pod
 fails, the cluster is only in a degraded state for as long as it takes
 Kubernetes to restart the pod. When the pod comes back up the pod data is
-immediately avaliable. Should Kubernetes schedule the Cassandra pod on a
-new node, StorageOS allows for the data to be avaliable to the pod,
+immediately available. Should Kubernetes schedule the Cassandra pod on a
+new node, StorageOS allows for the data to be available to the pod,
 irrespective of whether or not a StorageOS master is located on the same node.
 
 As Cassandra has features to allow it to handle replication careful
@@ -22,19 +22,19 @@ is required.
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying Cassandra on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repository
+1. You can find the latest files in the StorageOS use cases repository
 
    ```bash
-   git clone https://github.com/storageos/deploy.git storageos
+   git clone https://github.com/storageos/use-cases.git storageos-usecases
    ```
 
    StatefulSet defintion
 
-  ```yaml
+   ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -71,8 +71,8 @@ volumeClaimTemplates:
 1. Move into the Cassandra examples folder and create the objects
 
    ```bash
-   cd storageos
-   kubectl create -f ./k8s/examples/cassandra
+   cd storageos-usecases
+   kubectl create -f ./cassandra
    ```
 
 1. Confirm Cassandra is up and running.

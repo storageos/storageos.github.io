@@ -24,7 +24,7 @@ is required.
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 
 ## Prerequisites
@@ -40,22 +40,21 @@ available version [here]({% link _docs/reference/release_notes.md %})
 ### Helm
 
 To simplify the deployment of kafka, we've used this
-[Kafka helm chart (incubator)](//github.com/helm/charts/tree/master/incubator/kafka)
+[Kafka helm chart (incubator)](https://github.com/helm/charts/tree/master/incubator/kafka)
 (version `0.13.8`, app version `5.0.1`) and rendered it into the
 example deployment files you can find in our GitHub
-[repo](//github.com/storageos/deploy/tree/master/k8s/examples/kafka).
+[repo](https://github.com/storageos/use-cases/tree/master/kafka).
 
 
-## Deploying kafka on Kubernetes
+#### Clone the use cases repo
 
-1. Clone the example deployment repo
+You can find the latest files in the StorageOS use cases repository
+in `/kafka/`
 
-   You can find the latest files in the StorageOS example deployment repository
-   in `k8s/examples/kafka/`
-
-   ```bash
-   git clone https://github.com/storageos/deploy.git storageos
-   ```
+  ```bash
+git clone https://github.com/storageos/use-cases.git storageos-usecases
+cd storageos-usecases
+```
 
 StatefulSet definition
 
@@ -111,7 +110,13 @@ spec:
   name as a VolumeClaimTemplate.
 
 
+<<<<<<< HEAD
+  ```bash
+kubectl apply -f ./kafka/
+  ```
+=======
 1. Create the kubernetes objects
+>>>>>>> master
 
    ```bash
    kubectl apply -f storageos/k8s/examples/kafka/

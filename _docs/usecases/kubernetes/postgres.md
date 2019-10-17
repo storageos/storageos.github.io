@@ -17,21 +17,23 @@ with many concurrent users.
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. If you need to setup StorageOS on Kubernetes then please see our guide
 to [installing StorageOS on Kubernetes]({% link
-_docs/platforms/kubernetes/install/index.md %})
+_docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying PostgreSQL on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS use cases repository
    ```bash
-   git clone https://github.com/storageos/deploy.git storageos
+   git clone https://github.com/storageos/use-cases.git storageos-usecases
+
    ```
-   PersistentVolumeClaim and Pod defintion excerpts
+   PersistentVolumeClaim and Pod definition excerpts
   ```yaml
     kind: PersistentVolumeClaim
     metadata:
     name: pg-data
     annotations:
      volume.beta.kubernetes.io/storage-class: fast
+    ...
 
     kind: Pod
     metadata:
@@ -60,8 +62,8 @@ _docs/platforms/kubernetes/install/index.md %})
 1. Move into the PostgreSQL examples folder and create the objects
 
    ```bash
-   cd storageos
-   kubectl create -f ./k8s/examples/postgres
+   cd storageos-usecases
+   kubectl create -f ./postgres
    ```
 
 1. Confirm PostgreSQL is up and running.
@@ -90,11 +92,11 @@ _docs/platforms/kubernetes/install/index.md %})
              |          |           |         |       | testuser=CTc/postgres
    (4 rows)
    ```
-   The password for the primaryuser is password. You can see this is set in
+   The password for the primary user is password. You can see this is set in
    the ConfigMap file.
 
 ## Configuration
 
 If you need custom startup options, you can edit the ConfigMap file
-(15-postgresd-configmap.yaml) with your desired PostgreSQL configuration
-settings.
+[15-postgresd-configmap.yaml](https://github.com/storageos/use-cases/blob/master/postgres/15-postgresd-configmap.yaml)
+with your desired PostgreSQL configuration settings.

@@ -19,7 +19,7 @@ via SFTP.
 
 The files create a stateful set that can be used *AFTER* a StorageOS cluster
 has been created. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 
 ## Clone Repository
@@ -27,8 +27,8 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 In order to deploy the examples, clone this repository and use kubectl to create the
 Kubernetes objects.
 ```bash
-$ git clone https://github.com/storageos/deploy.git storageos
-$ cd storageos
+$ git clone https://github.com/storageos/use-cases.git storageos-usecases
+$ cd storageos-usecases/backup
 ```
 > Before deploying the backup-example stateful set we recommend looking
 > through the examples to understand how the different containers are

@@ -14,8 +14,8 @@ number of different applications.
 Using StorageOS persistent volumes with ElasticSearch (ES) means that if a pod
 fails, the cluster is only in a degraded state for as long as it takes
 Kubernetes to restart the pod. When the pod comes back up, the pod data is
-immediately avaliable. Should Kubernetes schedule the Elasticsearch pod on a
-new node, StorageOS allows for the data to be avaliable to the pod,
+immediately available. Should Kubernetes schedule the Elasticsearch pod on a
+new node, StorageOS allows for the data to be available to the pod,
 irrespective of whether or not the original StorageOS master volume
 is located on the same node.
 
@@ -25,11 +25,34 @@ replication is required.
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying Elasticsearch on Kubernetes
 
-### StatefulSet definition
+### Prerequisites
+
+Some OS tuning is required, which is done automatically when using our example
+from the [use cases](https//github.com/storageos/use-cases.git) repository.
+
+Elasticsearch requires `vm.max_map_count` to be increased to a minimum of
+`262144`, which is a system wide setting. One way to achieve this is to
+run `sysctl -w vm.max_map_count=262144` and update `/etc/sysctl.conf`
+to ensure it persists over a reboot. See ElasicSearch reference
+[here](https://www.elastic.co/guide/en/elasticsearch/reference/7.0/vm-max-map-count.html)
+
+Administrators should be aware that this impacts the behaviour of nodes and
+that there may be collisions with other application settings. Administrators
+are advised to centrally collate sysctl settings using the tooling of their
+choice.
+
+### Deployment
+
+&nbsp;
+
+
+#### StatefulSet defintion
+
+&nbsp;
 
   ```yaml
 ---
@@ -67,7 +90,7 @@ metadata:
 ```
 
 This excerpt is from the StatefulSet definition
-(`k8s/examples/elasticsearch/10-es-data.yaml`). The file contains the
+(`/elasticsearch/10-es-data.yaml`). The file contains the
 PersistentVolumeClaim template that will dynamically
 provision the necessary storage, using the StorageOS storage class.
 
@@ -90,16 +113,21 @@ that there may be collisions with other application settings. Administrators
 are advised to centrally collate sysctl settings using the tooling of their
 choice.
 
+#### Clone the use cases repo
+
+&nbsp;
+
+You can find the latest files in the StorageOS use cases repostiory
+in `/elasticsearch/`
+
+  ```bash
+git clone https://github.com/storageos/use-cases.git storageos-usecases
+cd storageos-usecases
+```
+
+&nbsp;
+
 ## Installation
-
-1. Clone the example deployment repo
-
-   You can find the latest files in the StorageOS example deployment repository
-   in `k8s/examples/elasticsearch/`
-   
-   ```bash
-   git clone https://github.com/storageos/deploy.git storageos
-   ```
 
 1. Create the kubernetes objects
    
@@ -109,7 +137,7 @@ choice.
    your cluster, however, more may be used as the application is being used
    
      ```bash
-   kubectl apply -f storageos/k8s/examples/elasticsearch/
+   kubectl apply -f ./elasticsearch/
      ```
    
    Once completed, an internal service object will have been created making the
@@ -169,11 +197,10 @@ easily used when installed via its Helm chart
 
 ## Monitoring (optional)
 
-As part of the example deployment, ES metrics are exposed and can be scraped by
-Prometheus on port 9108 (see
-[77-es-exporter.yaml](//github.com/storageos/deploy/blob/master/k8s/examples/elasticsearch/77-es-exporter.yaml)).
+As part of the example deployment, ES metrics are exposed and can be scraped
+by Prometheus on port 9108
+(see [77-es-exporter.yaml](https://github.com/storageos/use-cases/blob/master/elasticsearch/77-es-exporter.yaml)).
 This is enabled by default, and should work with the default Prometheus install
-via Helm. If you're using the Prometheus service monitors, you can monitor this
-installation by creating a monitor for the `es-exporter` service. For an
-example of how this is done to monitor StorageOS, please see
-[prometheus-setup](/docs/operations/monitoring/prometheus-setup).
+via Helm. If you're using the Prometheus service monitors, you can monitor
+this installation by creating a monitor for the `es-exporter` service. For an
+example of how this is done to monitor StorageOS, please see [prometheus-setup](/docs/operations/monitoring/prometheus-setup).

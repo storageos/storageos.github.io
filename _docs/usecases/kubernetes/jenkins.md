@@ -31,9 +31,9 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
    repository.
 
    ```bash
-   $ git clone https://github.com/storageos/deploy.git storageos
-   $ cd storageos
-   $ kubectl create -f ./k8s/examples/jenkins
+   $ git clone https://github.com/storageos/use-cases.git storageos-usecases
+   $ cd storageos-usecases
+   $ kubectl create -f ./jenkins
    ```
 
 1. Confirm that Jenkins is up and running
@@ -58,7 +58,7 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
    ```
 
    To login to the Jenkins UI use the credentials specified in
-   [`07-config.yaml`](https://github.com/storageos/deploy/blob/master/k8s/examples/jenkins/07-config.yaml),
+   [`07-config.yaml`](https://github.com/storageos/use-cases/blob/master/jenkins/07-config.yaml),
    unless these have been changed from the defaults the username/password is
    admin/password.
 

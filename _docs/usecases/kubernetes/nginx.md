@@ -13,13 +13,13 @@ balancer or even as a
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying Nginx on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS use cases repostiory
    ```bash
-   git clone https://github.com/storageos/deploy.git storageos
+   git clone https://github.com/storageos/use-cases.git storageos-usecases
    ```
    StatefulSet definition
   ```yaml
@@ -64,8 +64,8 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 1. Move into the Nginx examples folder and create the objects
 
    ```bash
-   cd storageos
-   kubectl create -f ./k8s/examples/nginx
+   cd storageos-usecases
+   kubectl create -f ./nginx
    ```
 
 1. Confirm Nginx is up and running.
@@ -109,4 +109,5 @@ information]({% link _docs/platforms/kubernetes/install/index.md %})
 ## Configuration
 
 If you need custom startup options, you can edit the ConfigMap file
-(15-nginx-configmap.yaml) with your desired Nginx configuration settings.
+[15-nginx-configmap.yaml](https://github.com/storageos/use-cases/blob/master/nginx/15-configmap.yaml)
+with your desired Nginx configuration settings.

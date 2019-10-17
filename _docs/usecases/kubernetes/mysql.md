@@ -12,14 +12,15 @@ web-based applications including WordPress.
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying MySQL on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS use cases repository
    ```bash
-   git clone https://github.com/storageos/deploy.git storageos
+   git clone https://github.com/storageos/use-cases.git storageos-usecases
    ```
+
    StatefulSet defintion
   ```yaml
 apiVersion: apps/v1
@@ -64,8 +65,8 @@ volumeClaimTemplates:
 1. Move into the MySQL examples folder and create the objects
 
    ```bash
-   cd storageos
-   kubectl create -f ./k8s/examples/mysql
+   cd storageos-usecases
+   kubectl create -f ./mysql
    ```
 
 1. Confirm MySQL is up and running.
@@ -89,4 +90,5 @@ volumeClaimTemplates:
 ## Configuration
 
 If you need custom startup options, you can edit the ConfigMap file
-(15-mysqld-configmap.yaml) with your desired MySQL configuration settings.
+[15-mysqld-configmap.yaml](https://github.com/storageos/use-cases/blob/master/mysql/15-mysqld-configmap.yaml)
+with your desired MySQL configuration settings.

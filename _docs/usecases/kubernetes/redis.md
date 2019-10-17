@@ -11,14 +11,15 @@ Redis is a popular networked, in-memory, key-value data store with optional dura
 
 Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. [See our guide on how to install StorageOS on Kubernetes for more
-information]({% link _docs/platforms/kubernetes/install/index.md %})
+information]({% link _docs/platforms/kubernetes/install/index.md %}).
 
 ## Deploying Redis on Kubernetes
 
-1. You can find the latest files in the StorageOS example deployment repostiory
+1. You can find the latest files in the StorageOS use cases repository
    ```bash
-   git clone https://github.com/storageos/deploy.git storageos
+   git clone https://github.com/storageos/use-cases.git storageos-usecases
    ```
+
    StatefulSet defintion
   ```yaml
 kind: StatefulSet
@@ -59,8 +60,8 @@ volumeClaimTemplates:
 1. Move into the Redis examples folder and create the objects
 
    ```bash
-   cd storageos
-   kubectl create -f ./k8s/examples/redis
+   cd storageos-usecases
+   kubectl create -f ./redis
    ```
 
 1. Confirm Redis is up and running.
@@ -84,4 +85,5 @@ volumeClaimTemplates:
 ## Configuration
 
 If you need custom startup options, you can edit the ConfigMap file
-(15-redis-configmap.yaml) with your desired Redis configuration settings.
+[15-redis-configmap.yaml](https://github.com/storageos/use-cases/blob/master/redis/15-redis-configmap.yaml)
+with your desired Redis configuration settings.

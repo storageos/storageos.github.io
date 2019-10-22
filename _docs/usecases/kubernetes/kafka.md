@@ -110,16 +110,9 @@ spec:
   name as a VolumeClaimTemplate.
 
 
-<<<<<<< HEAD
-  ```bash
-kubectl apply -f ./kafka/
-  ```
-=======
 1. Create the kubernetes objects
->>>>>>> master
-
    ```bash
-   kubectl apply -f storageos/k8s/examples/kafka/
+   kubectl apply -f ./kafka/
     ```
 
 1. Confirm kafka is up and running

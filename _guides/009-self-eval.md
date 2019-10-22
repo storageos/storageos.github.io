@@ -7,5 +7,5 @@ sections:
   -
    title: Self Evaluation Guide
    description: Self Evaluation Guide
-   module: self-eval/self-guided
+   module: self-eval/self-evaluation-guide
 ---

@@ -37,6 +37,10 @@ sections:
     description: Nodes
     module: concepts/nodes
   -
+    title: Pod Placement
+    description: Pod locality
+    module: concepts/podlocality
+  -
     title: Policies
     description: Policies
     module: concepts/policies
@@ -52,6 +56,10 @@ sections:
     title: Rules
     description: Rules
     module: concepts/rules
+  -
+    title: Shared Filesystem - RWX
+    description: RWX Volumes
+    module: concepts/sharedfs
   -
     title: Volumes
     description: Volumes

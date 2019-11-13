@@ -5,19 +5,22 @@ anchor: reference
 module: reference/prometheus
 ---
 
-Prometheus
-==========
+# Prometheus
 
 Our [Prometheus](https://prometheus.io) endpoint exposes metrics about
 StorageOS artefacts (such as volumes), as well as internal StorageOS
 components.
 
-Customers may scrape these metrics using Prometheus itself, or any compatible client, such as the popular [Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) agent shipped with InfluxDB.
+Customers may scrape these metrics using Prometheus itself, or any compatible
+client, such as the popular
+[Telegraf](https://www.influxdata.com/time-series-platform/telegraf/) agent
+shipped with InfluxDB.
 
-Artefact Metrics
-----------------
+## Artefact Metrics
 
-Artefact metrics are those which instrument a specific StorageOS artefact. Typically these relate to volumes. These are useful for general purpose monitoring.
+Artefact metrics are those which instrument a specific StorageOS artefact.
+Typically these relate to volumes. These are useful for general purpose
+monitoring.
 
 Volume metrics make use of the following StorageOS logical concepts:
 
@@ -52,11 +55,11 @@ Volume metrics make use of the following StorageOS logical concepts:
 | storageos_volume_utilisation_apparent_bytes | Backend storage size | Total blob file size on the host machine|
 
 
-Node Metrics
-------------
+## Node Metrics
 
-Our node metrics instrument various aspects of our container operation. These are illustrative of the health of your cluster, and we may ask you to
-provide them during a support engagement.
+Our node metrics instrument various aspects of our container operation. These
+are illustrative of the health of your cluster, and we may ask you to provide
+them during a support engagement.
 
 | Name                                                   | Explanation                                                                                 | Additional Notes                       |
 | ---                                                    | ---                                                                                         | ---                                    |
@@ -143,3 +146,32 @@ provide them during a support engagement.
 | storageos_store_query_seconds_bucket                   | Data store query latency by operation type                                                  | May reveal problems with external etcd |
 | storageos_store_query_seconds_count                    | Total number of storageos_store_query_seconds                                               |                                        |
 | storageos_store_query_seconds_sum                      | Total of all storageos_store_query_seconds                                                  |                                        |
+
+
+## NFS Metrics
+
+StorageOS implements [RWX Volumes]({% link _docs/concepts/sharedfs.md %})
+based on nfs ganesha. The StorageOS nfs Pod exposes Prometheus metrics
+accessible at the port 80 of the Kubernetes Service for each `RWX` PVC.
+
+StorageOS automatically creates a Prometheus Service Monitor for each `RWX` PVC
+created. If the Prometheus Operator is installed on the Kubernetes cluster, the
+following metrics are scrapped by the Prometheus server without user manual
+intervention.
+
+| Name                                                  | Explanation                                            | Additional Notes |
+| ---                                                   | ---                                                    | ---              |
+| storageos_nfs_v42_operations_errors_total             | Number of operations in error for NFSv4.2              | |
+| storageos_nfs_v42_operations_latency_seconds_total    | Cumulative time consumed by operations for NFSv4.2     | |
+| storageos_nfs_v42_operations_queue_wait_seconds_total | Cumulative time spent in rpc wait queue for NFSv4.2    | |
+| storageos_nfs_v42_operations_total                    | Number of operations for NFSv4.2                       | |
+| storageos_nfs_v42_requested_bytes_total               | Number of requested bytes for NFSv4.2 operations       | |
+| storageos_nfs_v42_transfered_bytes_total              | Number of transfered bytes for NFSv4.2 operations      | |
+
+IO Operation metrics are segmented between reads and writes using labels in
+the metric. For instance:
+
+```
+storageos_nfs_v42_operations_total{name="pvc-ab9a2569-055e-11ea-b38e-02d96845c97e",namespace="default",op="read"} 0
+storageos_nfs_v42_operations_total{name="pvc-ab9a2569-055e-11ea-b38e-02d96845c97e",namespace="default",op="write"} 99
+```

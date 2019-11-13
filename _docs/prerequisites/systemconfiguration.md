@@ -108,3 +108,13 @@ the init container, perform the following steps:
 
 * Ensure kernel modules are all loaded per list above
 * Ensure configfs is loaded and mounted at /sys/kernel/config
+
+
+## Shared FileSystem volumes
+
+StorageOS ReadWriteMany volumes are implemented using a nfs-ganesha server over
+StorageOS ReadWriteOnce volumes. To be able to mount nfs shares, the hosts
+require that nfs client drivers are installed. StorageOS along with the kubelet
+handle the volume mount. RHEL based distributions use the package `nfs-utils`
+which is very often present with the default installation image, while Debian
+family distributions require the package `nfs-common`.

@@ -8,7 +8,7 @@ module: operations/licensing
 # Licensing
 
 A newly installed StorageOS cluster includes an unregistered Basic licence,
-which caps usable storage space at 100GB.  To utilise more storage space, we
+which caps usable storage space at 50GB.  To utilise more storage space, we
 offer either a Developer (free with registration - 500GB) licence or an
 Enterprise (unlimited capacity - see below) licence. This document explains how
 to upgrade your licence using either the GUI or CLI.
@@ -45,7 +45,7 @@ Before getting a licence, you need to know the ID of your StorageOS cluster.
 This CLI command can print the cluster ID:
 
 ```bash
-storageos licence inspect | jq -r .[].clusterID
+storageos licence inspect | jq -r .[].arrayUUID
 ```
 
 To obtain a licence for your StorageOS cluster, create a new StorageOS account

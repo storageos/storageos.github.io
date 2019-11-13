@@ -22,6 +22,90 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.5.0 - Released 12/11/2019
+
+Along with a 10x improvement in sequential read performance, version `1.5.0`
+adds two much-requested features; Pod Locality and Shared Filesytems (RWX).
+
+### New
+
+- Pod Locality improves application performance by placing workloads in close
+  proximity to its data.  In the default configuration, and when resources
+  permit, StorageOS will instruct Kubernetes to prefer placing the workload on
+  the node holding the master copy of the data, and then prefer the replicas.
+  Where this is not possible, any other healthy node running StorageOS will be
+  considered.
+
+  Pod Locality is enabled by default.
+
+  See [Pod locality]({%link _docs/concepts/podlocality.md %}) for more
+  information.
+
+- Shared Filesystem support allows StorageOS volumes to be provisioned for read
+  & write access by multiple Pods concurrently.  Using the same StorageOS
+  StorageClass, PVC requests can now specify
+  [AccessMode](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
+  `ReadWriteMany` (RWX) for shared filesystem, or `ReadWriteOnce` (RWO) for a
+  standard volume.
+
+  Volume features such as replication, encryption and caching can be applied to
+  RWX volumes by using PVC labels and StorageClass parameters in the same way as
+  with RWO volumes.
+
+  Each shared filesystem is exposed via a dedicated service, named after the PVC
+  name.  The service also exposes Prometheus metrics for the shared volume on
+  `http://<service>:80/metrics`.  When Prometheus has been deployed using the
+  [Prometheus Operator](https://github.com/coreos/prometheus-operator),
+  [ServiceMonitor](https://github.com/coreos/prometheus-operator/blob/master/Documentation/user-guides/getting-started.md#related-resources)
+  resources are automatically created for each endpoint.
+
+  Shared filesystem support is only available when using the CSI driver, which
+  is the recommended deployment method from Kubernetes 1.12 onwards.
+
+  Although Shared Filesystem support has been tested by customers in our Beta
+  Programme and we are not aware of any critical issues, we are releasing the
+  feature as a Technology Preview.  We encourage all users to test Shared
+  Filesystem support and let us know of any issues or how it can be improved
+  before we recommend it for production workloads.
+
+  See [Shared filesystems]({%link _docs/concepts/sharedfs.md %}) for more
+  information.
+
+### Improved
+
+- Read performance for all workload types and block sizes have been improved,
+  with sequential workloads now 10x faster than version `1.4.0`.
+- Remote read performance for large block sizes has also been substantially
+  improved with optimizations to reduce round trips, increasing throughput and
+  lowering overall latency. Remote writes for large block sizes have already
+  been optimized.
+- Block checksums are now stored with the volume metadata.  While not exposed as
+  features in `1.5.0`, replica consistency can now be quickly proven and
+  corruptions corrected.  Existing volumes will not be affected, only newly
+  created volumes.
+- The dataplane log parser has been replaced and is now more efficient, and
+  handles embedded quotes.
+- Telemetry now uses gRPC over TLS.  The existing Sentry-based telemetry will be
+  phased out.  Telemetry can be disabled by setting `DISABLE_TELEMETRY=true`.
+
+### Fixed
+
+- Encrypted volumes did not always respect the compression setting, resulting in
+  capacity savings being lower than expected.  Unlike most storage systems,
+  StorageOS is able to compress data prior to encrypting it.
+
+### Other
+
+- The maximum provisioned capacity of an unregistered cluster (default install)
+  has been reduced from 100GB to 50GB.  We have made this change to encourage
+  users to register for the free Developer licence, which grants 500GB of
+  provisioned capacity.
+
+  Through cluster registrations we are able to get a better understanding of who
+  is using StorageOS and which events or referrals are most effective.  We would
+  love to understand your challenges and any ideas you may have to improve
+  StorageOS.  You may unsubscribe from our mailing list at any time.
+
 ## 1.4.0 - Released 06/09/2019
 
 Version `1.4.0` changes the way metadata keys are stored on disk resulting in

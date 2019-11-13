@@ -111,6 +111,19 @@ sections:
     description: Describes the metrics exposed by our Prometheus endpoint
     module: reference/prometheus
   -
+    title: Scheduler
+    description: Scheduler details
+    module: reference/scheduler
+    items:
+      -
+        title: Admission Controller
+        description: Admission Controller
+        module: reference/scheduler/admission-controller
+      -
+        title: Examples
+        description: Examples
+        module: reference/scheduler/examples
+  -
     title: Release notes
     description: StorageOS release notes
     module: reference/release_notes

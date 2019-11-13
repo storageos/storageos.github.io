@@ -67,6 +67,10 @@ sections:
     description: StorageOS rules
     module: operations/rules
   -
+    title: Shared Filesystem - RWX
+    description: RWX Volumes
+    module: operations/sharedfs
+  -
     title: Troubleshooting
     description: Troubleshooting
     module: operations/troubleshooting

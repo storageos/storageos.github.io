@@ -229,7 +229,7 @@ Note that if the etcd pod is stopped for any reason the etcd cluster will cease 
 In order to install the StorageOS operator download the requisite yaml manifests or apply them with kubectl.
 
 ```bash
-$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.4.0/storageos-operator.yaml
+$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version  }}/storageos-operator.yaml
 ```
 
 You can verify the operator is running using the following command
@@ -275,7 +275,7 @@ A StorageOSCluster resource describes the state of the StorageOS cluster that is
      secretRefName: "storageos-api"
      secretRefNamespace: "default"
      images:
-       nodeContainer: "storageos/node:1.4.0" # StorageOS version
+       nodeContainer: "storageos/node:{{ site.latest_node_version  }}" # StorageOS version
      resources:
        requests:
        memory: "512Mi"
@@ -300,7 +300,7 @@ A StorageOSCluster resource describes the state of the StorageOS cluster that is
 
     ```bash
     $ kubectl -n storageos run         \
-    --image storageos/cli:1.2.2        \
+    --image storageos/cli:{{ site.latest_cli_version }}\
     --restart=Never                    \
     --env STORAGEOS_HOST=storageos     \
     --env STORAGEOS_USERNAME=storageos \
@@ -418,7 +418,7 @@ A StorageOSCluster resource describes the state of the StorageOS cluster that is
     Hello World!
     ```
 
-Now that StorageOS has been successfully installed, the cluster has a standard license by default which allows for the creation of 100GB of persistent volumes. If you register the cluster then a developer license will be applied and 500GB of persistent volumes can be created. Replicas do not count towards the license total so a 500GB license could be used to created a 500GB volume with 5 replicas. For the purposes of this self-evaluation the standard license is sufficient.
+Now that StorageOS has been successfully installed, the cluster has a standard license by default which allows for the creation of 50GB of persistent volumes. If you register the cluster then a developer license will be applied and 500GB of persistent volumes can be created. Replicas do not count towards the license total so a 500GB license could be used to created a 500GB volume with 5 replicas. For the purposes of this self-evaluation the standard license is sufficient.
 
 ## <a name='SetupaMonitoringStack'></a>Setup a Monitoring Stack
 
@@ -644,11 +644,9 @@ Even when volumes are replicated co-location of pod and master volume is still d
 
 When testing applications, such as databases, it is also necessary to run benchmarks for a sufficiently long time to account for caching, and cache flushing that databases do. We recommend running application benchmarks over a 20-30min period for this reason.
 
-#### <a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node
+### <a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node
 
-StorageOS has an automatic co-location feature on our development roadmap that we are calling pod locality. Until the feature is GA co-location of a master volume and a pod can be achieved by leveraging existing StorageOS and Kubernetes features.
-
-`storageos.com/hint.master` is a volume label that influences the placement of a StorageOS master volume. By setting this label to the same value as a `nodeSelector` on a StatefulSet or Pod the master volume and the pod should co-locate on the same node. You can reference our [FIO local volumes job](https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml) for an example of how to do this.
+StorageOS 1.5.0 added an automatic co-location feature called pod locality. The feature implements an [AdmissionController]({%link _docs/reference/scheduler/admission-controller.md %}) and a [Kubernetes Scheduler extension]({%link _docs/concepts/podlocality.md %}) to automatically schedule pods on nodes that hold pod data. The `storageos.com/hint.master` [label]({%link _docs/reference/labels.md %}) influences placement of a master volume onto a specific node. By combining pod locality and `storageos.com/hint.master` labels pods and volumes can be targeted to specific nodes. You can reference our [FIO local volumes job](https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml) for an example of how to do this.
 
 StorageOS [Pools](https://docs.storageos.com/docs/concepts/pools) can be used to restrict volume placement to a subset of nodes. Nodes can be included in a specific pool by matching a pools `nodeSelector`. Pools can be created using the StorageOS GUI or [CLI](https://docs.storageos.com/docs/reference/cli/pool). The pool that a volume will be created from is specified in the StorageClass `pool` [parameter](https://github.com/storageos/deploy/blob/master/k8s/examples/000-storageclass.yaml).
 

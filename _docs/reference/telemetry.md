@@ -32,29 +32,61 @@ reports to sentry.io over tcp/443. StorageOS respects environment variables that
 uses.
 
 An exhaustive list of information included in the once per day report is below:
+
 * API version
 * Cluster ID
 * CPU architechture
 * Go version
 * Healthy volume count
+* IAAS failure domain
+* IAAS name
+* IAAS region
+* IAAS size
+* Kubernetes csi version
+* Kubernetes distribution
+* Kubernetes version
+* KV Backend
+* License capacity
+* License type
 * Logging level
 * Logging user
-* License type
+* Maintenance ON/OFF
 * Namespace count
+* Node capacity available
+* Node capacity total
+* Node capacity used
+* Node Cordoned
 * Node count
-* Pool count
+* Node Drained
+* Node failed count
+* Node frontend devices
+* Node Health
+* Node ID
+* Node in Compute-Only
+* Node recovered count
 * OS type
+* Pool count
 * Rule count
-* Server name
 * Sentry version
+* Server name
 * StorageOS build information (CI pipeline reference)
+* StorageOS namespace in Kubernetes
 * StorageOS version
 * Suspect volume count
 * Total volume size
 * Volume count
 * Volume degraded count
+* Volume features enabled
+* Volume FS Type
+* Volume Health
+* Volume ID
+* Volume mounted
 * Volume offline count
+* Volume replicas count
+* Volume Size
+* Volume Status
 * Volume syncing count
+
 
 An exhaustive list of information included in the crash report is below:
 * API version

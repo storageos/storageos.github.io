@@ -5,9 +5,8 @@ metadata:
   name: my-vol-1
   labels:
       storageos.com/replicas: "1"
-  annotations:
-    volume.beta.kubernetes.io/storage-class: fast
 spec:
+  storageClassName: "fast"
   accessModes:
     - ReadWriteOnce
   resources:

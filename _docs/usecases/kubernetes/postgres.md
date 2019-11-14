@@ -22,17 +22,19 @@ _docs/platforms/kubernetes/install/index.md %}).
 ## Deploying PostgreSQL on Kubernetes
 
 1. You can find the latest files in the StorageOS use cases repository
+
    ```bash
    git clone https://github.com/storageos/use-cases.git storageos-usecases
 
    ```
    PersistentVolumeClaim and Pod definition excerpts
-  ```yaml
+
+   ```yaml
     kind: PersistentVolumeClaim
     metadata:
-    name: pg-data
-    annotations:
-     volume.beta.kubernetes.io/storage-class: fast
+      name: pg-data
+    spec:
+      storageClassName: "fast" # StorageOS StorageClass
     ...
 
     kind: Pod
@@ -40,7 +42,7 @@ _docs/platforms/kubernetes/install/index.md %}).
     name: postgress
     spec:
     securityContext:
-     fsGroup: 26
+      fsGroup: 26
     containers:
      - name: pg
        image: crunchydata/crunchy-postgres:centos7-10.4-1.8.3
@@ -52,12 +54,13 @@ _docs/platforms/kubernetes/install/index.md %}).
      - name: data
        persistentVolumeClaim:
          claimName: pg-data
-  ```
-  This excerpt is from the PersistentVolumeClaim and Pod definition. The pod
-  definition references the pg-data VolumeClaim so storage is dynamically
-  provision storage, using the StorageOS storage class. Dynamic provisioning
-  occurs as a volumeMount has been declared with the same name as a Volume
-  Claim.
+   ```
+
+   This excerpt is from the PersistentVolumeClaim and Pod definition. The pod
+   definition references the pg-data VolumeClaim so storage is dynamically
+   provision storage, using the StorageOS storage class. Dynamic provisioning
+   occurs as a volumeMount has been declared with the same name as a Volume
+   Claim.
 
 1. Move into the PostgreSQL examples folder and create the objects
 

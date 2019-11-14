@@ -3,9 +3,8 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: my-vol-1
-  annotations:
-    volume.beta.kubernetes.io/storage-class: fast
 spec:
+  storageClassName: "fast"
   accessModes:
     - ReadWriteOnce
   resources:

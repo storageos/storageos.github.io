@@ -30,9 +30,8 @@ metadata:
   name: pvc0002
   labels:
     "storageos.com/encryption": "true"
-  annotations:
-    volume.beta.kubernetes.io/storage-class: fast
 spec:
+  storageClassName: "fast"
   accessModes:
     - ReadWriteOnce
   resources:

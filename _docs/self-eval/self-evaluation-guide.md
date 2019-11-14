@@ -191,7 +191,7 @@ Note that if the etcd pod is stopped for any reason the etcd cluster will cease 
      pod:
        etcdEnv:
        - name: ETCD_QUOTA_BACKEND_BYTES
-         value: "2147483648"  # 2 GB 
+         value: "2147483648"  # 2 GB
        - name: ETCD_AUTO_COMPACTION_RETENTION
          value: "100" # Keep 100 revisions
        - name: ETCD_AUTO_COMPACTION_MODE
@@ -317,9 +317,8 @@ A StorageOSCluster resource describes the state of the StorageOS cluster that is
    kind: PersistentVolumeClaim
    metadata:
      name: pvc-1
-     annotations:
-       volume.beta.kubernetes.io/storage-class: fast
    spec:
+     storageClassName: "fast"
      accessModes:
        - ReadWriteOnce
      resources:
@@ -490,9 +489,8 @@ See our [replication documentation](https://docs.storageos.com/docs/concepts/rep
     name: pvc-replicated
     labels:
       storageos.com/replicas: "1"
-    annotations:
-      volume.beta.kubernetes.io/storage-class: fast
    spec:
+    storageClassName: "fast"
     accessModes:
       - ReadWriteOnce
     resources:

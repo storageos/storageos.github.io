@@ -145,7 +145,7 @@ Note that if the etcd pod is stopped for any reason the etcd cluster will cease 
 1. Download repo
 
     ```bash
-    $ git clone https://github.com/coreos/etcd-operator.git
+    $ git clone https://github.com/storageos/etcd-operator.git
     ```
 
 1. Configure NS, Role and RoleBinding

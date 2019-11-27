@@ -22,6 +22,55 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.5.1 - Released 26/11/2019
+
+Fixes a permission error on Kubernetes 1.16 and improves reporting of
+Pod scheduling failures.
+
+### New
+
+- The [cluster-operator] now reports internal metrics suitable for scraping with
+  Prometheus on `http://0.0.0.0:8686/metrics`.  If Prometheus has been installed
+  in the cluster using the [prometheus-operator], then `ServiceMonitor`
+  resources will be created to register the endpoint automatically.  See
+  [prometheus-setup] for an example Prometheus installation.  Currently only the
+  default process metrics are reported but we intend to improve coverage over
+  the next few releases.
+
+### Improved
+
+- Pod scheduling failures are now registered as Pod events to provide
+  contextual error messages.  Before, only HTTP status codes could be reported
+  since that was the only information that could be passed via `kube-scheduler`.
+- Leader election has been added to [cluster-operator] and "leader-for-life"
+  enabled by default.  In the future, this will allow multiple instances of the
+  operator to be running simultaneously.  For now, only a single instance is
+  supported.  See [leader-election] for more information.
+- The [cluster-operator] now fully implements status phases.  This means that
+  Kubernetes and `kubectl` now report the following statuses for
+  `StorageOSCluster` resources:
+
+  - `Pending` cluster status when the requirements are unmet.  New clusters may
+    wait in `Pending` state while there is an existing cluster running.
+  - `Creating` cluster status when the provisioning has started.
+  - `Running` cluster status for a provisioned cluster.
+  - `Terminating` cluster status when a cluster delete has been initiated.
+
+- Updated the [cluster-operator] base image to latest `ubi8/ubi-minimal`.
+
+### Fixed
+
+- Fixed permission errors in Kubernetes 1.16:
+
+  - `Failed to list *v1beta1.CSINode: csinodes.storage.k8s.io is forbidden`
+  - `'events.events.k8s.io is forbidden`
+
+- Deployments using embedded etcd could fail to bootstrap when Kubernetes
+  returns multiple addresses for a node.  Previously, the first address in the
+  list was assumed to be the address that the nodes should communicate on.
+  Instead, we now prefer to use the `InternalIP` address, and if that is not
+  found, the first address used as before.
+
 ## 1.5.0 - Released 12/11/2019
 
 Along with a 10x improvement in sequential read performance, version `1.5.0`
@@ -1536,3 +1585,8 @@ growing suite of platforms and usage scenarios.
 ## 0.7.3 and earlier
 
 - Unreleased private betas
+
+[cluster-operator]: https://docs.storageos.com/docs/reference/cluster-operator
+[prometheus-operator]: https://github.com/coreos/prometheus-operator
+[prometheus-setup]: https://github.com/storageos/cluster-operator/tree/master/docs/operator-prometheus-metrics
+[leader-election]: https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md#leader-election

@@ -1588,5 +1588,5 @@ growing suite of platforms and usage scenarios.
 
 [cluster-operator]: https://docs.storageos.com/docs/reference/cluster-operator
 [prometheus-operator]: https://github.com/coreos/prometheus-operator
-[prometheus-setup]: https://github.com/storageos/cluster-operator/tree/master/docs/operator-prometheus-metrics
+[prometheus-setup]: https://github.com/storageos/cluster-operator/tree/1.5.1/docs/operator-prometheus-metrics
 [leader-election]: https://github.com/operator-framework/operator-sdk/blob/master/doc/user-guide.md#leader-election

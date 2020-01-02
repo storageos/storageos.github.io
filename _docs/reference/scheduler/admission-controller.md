@@ -77,5 +77,5 @@ You can check your Kubernetes cluster compatibility by checking if the
 following object exists.
 
 ```bash
-kubectl get api-versions | grep admissionregistration.k8s.io
+kubectl api-versions | grep admissionregistration.k8s.io
 ```

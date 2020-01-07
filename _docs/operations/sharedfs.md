@@ -8,8 +8,8 @@ module: operations/sharedfs-rwx
 # Shared Filesystem
 
 > Shared filesystems in the {{ site.latest_node_version }} release are
-> currently in Technology Preview. This __experimental feature__ is not yet
-> intended for production use.
+> currently in Technology Preview, and are only available using the CSI driver.
+> This __experimental feature__ is not yet intended for production use.
 
 Shared Filesystem support allows volumes to be mounted for read & write access
 by multiple containers simultaneously, even from different nodes.  In

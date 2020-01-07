@@ -22,6 +22,31 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.5.2 - Released 18/12/2019
+
+Adds support for Kubernetes 1.17 and CSI 1.2.  Also reduces node container size
+by 70%.
+
+### New
+
+- `storageos/node` container size reduced by removing extraneous contents.  This
+  reduces the amount of time required to install and boostrap a new cluster.
+- Kubernetes 1.17.0 supported, resolving `cannot get resource "leases" in API
+  group "coordination.k8s.io"` permission issue.
+- Now supports version 1.2.0 of the CSI specification.
+
+### Improved
+
+- CSI helpers updated to latest versions.
+- `operator-sdk` dependency updated to version 0.12.
+- Downgraded some log messages for transient failures from error to info.
+
+### Fixed
+
+- Resolved documentation inconsistency between Openshift Marketplace and
+  docs.storageos.com.
+- Node label update now retries if the node is not yet known to StorageOS.
+
 ## 1.5.1 - Released 26/11/2019
 
 Fixes a permission error on Kubernetes 1.16 and improves reporting of

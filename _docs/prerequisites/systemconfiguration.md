@@ -35,22 +35,16 @@ installed.
 
 ## Distribution Specifics
 
-The following distributions are supported by default:
+The following distributions are supported:
 * RHEL 7.5
 * CentOS 7
 * Debian 9
-* Ubuntu Azure
+* Ubuntu - May require additional packages
 * RancherOS - Note CSI is not supported on RancherOS
-
-Ubuntu 16.04/18.04 requires the installation of additional packages.
-
-> N.B. Ubuntu 16.04/18.04 AWS and Ubuntu 18.04 GCE do not provide the
-> necessary linux-image-extra package - [see
-> below](/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce) for more information
 
 ## Ubuntu Package Installation
 
-**Ubuntu 16.04/18.04 Generic** and **Ubuntu 16.04 GCE** require extra packages:
+Ubuntu 16.04 and 18.04 standard may require extra packages:
 
 Ubuntu 16.04:
 
@@ -59,32 +53,24 @@ sudo apt -y update
 sudo apt -y install linux-image-extra-$(uname -r)
 ```
 
-Ubuntu 18.04+:
+Ubuntu 18.04+ standard and AWS Ubuntu 16.04, 18.04:
 
 ```bash
 sudo apt -y update
 sudo apt -y install linux-modules-extra-$(uname -r)
 ```
 
-## Ubuntu With AWS Or GCE Kernels
+## Cloud Provider Optimized Kernels
 
-**Ubuntu 16.04/18.04 AWS** and **Ubuntu 18.04 GCE** do not yet provide the
-linux-image-extra package. As such you should either use **Debian**, **CentOS**
-or **RHEL**, or install the non-cloud-provider optimised Ubuntu kernel.
-
-Installing the non-cloud-provider optimised Ubuntu kernel is something that
-should only be done with full understanding of potential ramifications.
-
-```bash
-sudo apt -y update
-sudo apt install -y linux-virtual linux-image-extra-virtual
-sudo apt purge -y linux*aws
-
-# Reboot the machine
-sudo shutdown -r now
-```
+Most cloud provider optimized kernels provide the necessary packages, either by
+default or as extra packages. If you are using a cloud provider optimised
+kernel that does not provide the extra packages required you can install a
+non-cloud-provider optimised kernel. However installing a non-cloud-provider
+optimised kernel is something that should only be done with full understanding
+of potential ramifications.
 
 ## Automatic Configuration
+
 Once required kernel modules are installed on the system, for convenience we
 provide a container which will ensure the appropriate modules are loaded and
 ready for use at runtime. On Docker installations, you will need to run the
@@ -103,6 +89,7 @@ docker run --name enable_lio                  \
 ```
 
 ## Manual Configuration
+
 For those wishing to manage their own kernel configuration, rather than using
 the init container, perform the following steps:
 

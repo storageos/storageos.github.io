@@ -90,6 +90,13 @@ unique, strong password.
 {% include operator/cr-csi-shareddir.md %}
 {% elsif page.oc-version contains '4.' %}
 {% include operator/cr-csi-openshift4.md %}
+{% elsif page.platform == "kubernetes" %}
+{% assign k8s-version = page.k8s-version | plus: 0 %}
+{% if k8s-version >= 1.13 %}
+{% include operator/cr-csi-example.md %}
+{% else %}
+{% include operator/cr-basic-example.md %}
+{% endif %}
 {% else %}
 {% include operator/cr-basic-example.md %}
 {% endif %}

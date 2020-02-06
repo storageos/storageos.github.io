@@ -15,6 +15,14 @@ sections:
         module: platforms/kubernetes/install
         subitems:
           -
+            title: 1.17
+            description: Install on 1.17
+            module: platforms/kubernetes/install/1.17
+          -
+            title: 1.16
+            description: Install on 1.16
+            module: platforms/kubernetes/install/1.16
+          -
             title: 1.15
             description: Install on 1.15
             module: platforms/kubernetes/install/1.15

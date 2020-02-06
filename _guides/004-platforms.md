@@ -129,6 +129,10 @@ sections:
         module: platforms/openshift/install
         subitems:
           -
+            title: 4.2
+            description: Install on 4.2
+            module: platforms/openshift/install/4.2
+          -
             title: 4.1
             description: Install on 4.1
             module: platforms/openshift/install/4.1

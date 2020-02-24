@@ -84,7 +84,7 @@ unique, strong password.
 
 ## 3. Trigger a StorageOS installation
 
-{% if page.platform == "azure-aks" %}
+{% if page.platform == "azure-aks" or page.platform == "aws-eks" %}
 {% include operator/cr-csi-example.md %}
 {% elsif page.platform == "rancher" or page.platform == "dockeree" %}
 {% include operator/cr-csi-shareddir.md %}

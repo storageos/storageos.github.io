@@ -22,6 +22,12 @@ The latest CLI release is `{{ site.latest_cli_version }}`, available from
 
 See [upgrades]({%link _docs/operations/upgrades.md %}) for upgrade strategies.
 
+## 1.5.3 - Released 25/01/2020
+
+### Fixed
+
+- Resolved misrepresentation of internal metrics for licensed clusters.
+
 ## 1.5.2 - Released 18/12/2019
 
 Adds support for Kubernetes 1.17 and CSI 1.2.  Also reduces node container size

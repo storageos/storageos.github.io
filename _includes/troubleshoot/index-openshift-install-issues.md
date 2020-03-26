@@ -1,5 +1,0 @@
-- [Node name different from Hostname](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#node-name-different-from-hostname)
-- [One node clusters](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#one-node-clusters)
-- [Peer discovery - Networking](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#peer-discovery---networking)
-- [Peer discovery - Pod allocation](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#peer-discovery---pod-allocation)
-- [StorageOS pods missing – DaemonSet error](/docs/platforms/{{ page.platform | downcase }}/troubleshoot/install#storageos-pods-missing--daemonset-error)

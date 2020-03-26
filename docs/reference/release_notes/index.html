@@ -1,0 +1,2848 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.63.2" />
+
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
+
+<title>Release notes | </title><meta property="og:title" content="Release notes" />
+<meta property="og:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
+The latest tagged release is 1.5.3, available from Docker Hub as storageos/node:1.5.3, or via the Helm Chart
+The latest CLI release is 1.2.2, available from Github
+Upgrading See upgrades for upgrade strategies.
+1.4.0 - Released 06/09/2019 Version 1.4.0 changes the way metadata keys are stored on disk resulting in improved key locality and thus an increase in IO performance." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.storageos.com/docs/reference/release_notes/" />
+<meta property="article:modified_time" content="2020-02-20T14:30:55+00:00" />
+<meta itemprop="name" content="Release notes">
+<meta itemprop="description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
+The latest tagged release is 1.5.3, available from Docker Hub as storageos/node:1.5.3, or via the Helm Chart
+The latest CLI release is 1.2.2, available from Github
+Upgrading See upgrades for upgrade strategies.
+1.4.0 - Released 06/09/2019 Version 1.4.0 changes the way metadata keys are stored on disk resulting in improved key locality and thus an increase in IO performance.">
+<meta itemprop="dateModified" content="2020-02-20T14:30:55&#43;00:00" />
+<meta itemprop="wordCount" content="9805">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Release notes"/>
+<meta name="twitter:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
+The latest tagged release is 1.5.3, available from Docker Hub as storageos/node:1.5.3, or via the Helm Chart
+The latest CLI release is 1.2.2, available from Github
+Upgrading See upgrades for upgrade strategies.
+1.4.0 - Released 06/09/2019 Version 1.4.0 changes the way metadata keys are stored on disk resulting in improved key locality and thus an increase in IO performance."/>
+
+
+
+
+
+<link rel="preload" href="/scss/main.min.f756d06bf015089574ec734bc20c403411466ed8e4cace0da5ceffb0aa317037.css" as="style">
+<link href="/scss/main.min.f756d06bf015089574ec734bc20c403411466ed8e4cace0da5ceffb0aa317037.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+<link href="/css/storageos.css" rel="stylesheet">
+<script> (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1025326,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); </script>
+<script src="/js/enable-link-tab.js"></script>
+
+    <title>Release notes | </title>
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="js-navbar-scroll navbar navbar-expand navbar-dark flex-column flex-md-row td-navbar">
+        <a class="navbar-brand" href="/">
+		<span class="navbar-logo"><svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="476.964" height="141.732" viewBox="0 0 476.964 141.732" enable-background="new 0 0 476.964 141.732"><g><g><path fill="#4f5263" d="M34.74 89.882H3.477v-9.34h31.264c1.538.0 2.704-.356 3.476-1.062.744-.693 1.118-1.655 1.118-2.853.0-1.319-.363-2.293-1.078-2.896-.778-.661-1.959-.996-3.515-.996H16.346c-2.017.0-3.873-.302-5.538-.905-1.681-.627-3.113-1.499-4.277-2.605-1.164-1.098-2.073-2.428-2.708-3.96-.63-1.521-.954-3.196-.954-4.966.0-1.743.293-3.379.884-4.864.592-1.499 1.489-2.828 2.67-3.938 1.181-1.097 2.635-1.957 4.316-2.572 1.657-.604 3.578-.917 5.707-.917h30.002v9.341H16.446c-1.267.0-2.232.312-2.885.928-.63.615-.943 1.487-.943 2.673s.3 2.025.961 2.64c.656.604 1.602.917 2.805.917h18.321c4.36.0 7.757 1.053 10.085 3.144 2.375 2.102 3.579 5.291 3.579 9.462.0 1.812-.284 3.5-.841 5.021-.562 1.567-1.42 2.941-2.561 4.105-1.169 1.163-2.618 2.081-4.328 2.695C38.975 89.556 36.982 89.882 34.74 89.882z"/></g><g><path fill="#4f5263" d="M79.764 89.882h-9.486V57.344H55.081v-9.339h39.878v9.339H79.762v32.537L79.764 89.882z"/></g><g><path fill="#4f5263" d="M129.784 89.882h-9.733c-2.96.0-5.731-.547-8.248-1.654-2.527-1.098-4.742-2.606-6.57-4.509-1.853-1.891-3.306-4.172-4.329-6.755-1.026-2.605-1.544-5.436-1.544-8.422.0-3.029.521-5.849 1.544-8.376 1.033-2.54 2.512-4.731 4.367-6.521 1.864-1.789 4.072-3.198 6.578-4.161 2.509-.984 5.264-1.477 8.201-1.477h9.733c3.043.0 5.878.503 8.422 1.499 2.545.996 4.77 2.415 6.616 4.229 1.846 1.823 3.288 4.015 4.294 6.521 1.01 2.482 1.521 5.278 1.521 8.286.0 3.021-.516 5.852-1.538 8.422-1.039 2.596-2.498 4.877-4.34 6.767-1.84 1.891-4.055 3.411-6.587 4.508C135.634 89.332 132.812 89.882 129.784 89.882zM120.052 57.344c-1.613.0-3.129.28-4.515.853-1.363.57-2.557 1.364-3.521 2.348-.99 1.008-1.772 2.215-2.334 3.624-.563 1.409-.848 2.986-.848 4.688.0 1.687.285 3.275.86 4.729.572 1.442 1.345 2.685 2.323 3.681.988 1.018 2.18 1.835 3.539 2.405 1.356.58 2.873.871 4.497.871h9.733c1.675.0 3.221-.291 4.583-.871 1.385-.57 2.597-1.388 3.596-2.405.982-.996 1.777-2.237 2.35-3.691.568-1.442.853-3.031.853-4.719.0-1.669-.284-3.244-.853-4.677-.561-1.409-1.351-2.629-2.344-3.624-.989-.995-2.198-1.788-3.596-2.372-1.386-.559-2.924-.839-4.589-.839L120.052 57.344z"/></g><path fill="#4f5263" d="M195.707 77.802c1.812-.727 3.38-1.724 4.652-3.009 1.375-1.366 2.432-2.717 3.15-4.642.643-1.711.994-3.611 1.057-5.692.006-.225.012-.6.012-.835v-.111c0-2.349-.356-4.483-1.068-6.388-.719-1.923-1.774-3.59-3.149-4.965-1.362-1.365-3.044-2.428-5.016-3.154-1.937-.716-4.139-1.085-6.786-1.007h-29.509-.483v41.882h9.706V78.975h16.071l10.03 10.904h13.561L195.707 77.802zM193.617 68.821c-1.039 1.085-2.661 1.645-4.827 1.645h-20.513V57.26h20.53c2.077.0 3.69.516 4.781 1.521 1.079 1.008 1.624 2.64 1.624 4.842C195.213 65.85 194.669 67.702 193.617 68.821z"/><path fill="#4f5263" d="M243.355 50.3c-.5-.839-1.086-1.499-1.723-1.968-1.441-1.106-3.906-1.12-5.438-.034-.693.515-1.277 1.187-1.75 1.992l-24.148 39.592h10.889l5.967-9.933h23.068l6.008 9.933h11.322L243.355 50.3zM230.384 72.812l8.275-13.757 8.311 13.757H230.384z"/><g><path fill="#4f5263" d="M314.21 89.882h-25.385c-2.959.0-5.727-.547-8.23-1.654-2.533-1.098-4.738-2.616-6.557-4.497-1.846-1.901-3.299-4.171-4.33-6.767s-1.549-5.424-1.549-8.422c0-3.041.527-5.849 1.561-8.376 1.023-2.526 2.49-4.731 4.354-6.521 1.861-1.789 4.076-3.198 6.594-4.161 2.506-.984 5.264-1.477 8.184-1.477h22.941v9.341h-22.941c-1.613.0-3.123.291-4.51.851-1.34.56-2.525 1.354-3.531 2.359-.973.994-1.754 2.201-2.318 3.61-.557 1.398-.84 2.978-.84 4.688.0 1.687.283 3.275.846 4.729.574 1.442 1.352 2.685 2.322 3.681 1 1.018 2.191 1.835 3.533 2.416 1.352.568 2.863.872 4.498.872h15.883v-7.817h-18.064v-8.232h27.543v25.377L314.21 89.882z"/></g><g><path fill="#4f5263" d="M363.412 57.344h-38.285v-9.339h38.285V57.344z"/></g><g><path fill="#4f5263" d="M363.472 89.882h-38.346V64.504h36.75v8.231h-27.277v7.807h28.875v9.34H363.472z"/></g><g><path fill="#61c202" d="M402.357 89.882h-9.75c-2.961.0-5.725-.547-8.234-1.654-2.514-1.086-4.725-2.606-6.572-4.509-1.859-1.901-3.326-4.183-4.328-6.767-1.02-2.604-1.553-5.436-1.553-8.41.0-3.021.52-5.838 1.553-8.376 1.035-2.54 2.5-4.731 4.355-6.521 1.871-1.789 4.084-3.198 6.584-4.161 2.512-.984 5.271-1.477 8.195-1.477h9.75c3.033.0 5.859.503 8.416 1.499 2.568 1.008 4.799 2.438 6.611 4.238 1.84 1.801 3.285 3.994 4.291 6.497 1.012 2.517 1.523 5.304 1.523 8.3.012 3.009-.514 5.838-1.545 8.422-1.023 2.583-2.479 4.864-4.336 6.767-1.846 1.9-4.064 3.422-6.594 4.508C408.193 89.332 405.38 89.882 402.357 89.882zM392.607 57.344c-1.619.0-3.135.291-4.498.853-1.361.57-2.549 1.364-3.531 2.348-.984.996-1.768 2.215-2.314 3.613-.57 1.397-.859 2.986-.859 4.698.0 1.697.289 3.286.852 4.719.566 1.442 1.35 2.685 2.328 3.691.984 1.018 2.17 1.835 3.535 2.405 1.354.58 2.859.871 4.482.871h9.76c1.654.0 3.199-.291 4.574-.871 1.375-.57 2.594-1.388 3.6-2.405.971-.996 1.766-2.228 2.354-3.691.553-1.453.842-3.042.842-4.719.0-1.656-.289-3.234-.852-4.678-.557-1.422-1.352-2.628-2.34-3.623-1.01-.995-2.209-1.801-3.59-2.358-1.379-.561-2.934-.853-4.588-.853H392.607z"/></g><g><path fill="#61c202" d="M461.541 89.882h-31.258v-9.329h31.258c1.537.0 2.707-.356 3.475-1.072.756-.704 1.125-1.646 1.119-2.853.006-1.342-.346-2.28-1.074-2.907-.777-.649-1.961-.984-3.52-.984H443.15c-2.033.0-3.896-.302-5.539-.905-1.684-.627-3.129-1.499-4.285-2.605-1.158-1.118-2.078-2.438-2.713-3.96-.621-1.53-.934-3.196-.934-4.966.0-1.731.293-3.365.875-4.864.607-1.521 1.51-2.854 2.682-3.949 1.186-1.084 2.635-1.944 4.303-2.549 1.682-.616 3.602-.93 5.715-.93h29.984v9.34h-29.984c-1.271.0-2.25.312-2.885.928-.615.604-.943 1.51-.943 2.673.0 1.187.312 2.025.965 2.641.648.604 1.6.917 2.803.917h18.311c4.377.0 7.771 1.052 10.105 3.143 2.371 2.103 3.559 5.292 3.559 9.462.0 1.789-.271 3.468-.826 5.01-.592 1.6-1.459 2.987-2.588 4.116-1.137 1.163-2.594 2.069-4.312 2.696C465.765 89.567 463.775 89.882 461.541 89.882z"/></g></g></svg></span><span class="text-uppercase font-weight-bold"></span>
+	</a>
+	<div class="td-navbar-nav-scroll ml-md-auto" id="main_navbar">
+		<ul class="navbar-nav mt-2 mt-lg-0">
+            <li class="nav-item dropdown d-none d-lg-block">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Product
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="https://storageos.com/product">Overview</a>
+        <a class="dropdown-item" href="https://storageos.com/features">Features</a>
+        <a class="dropdown-item" href="https://storageos.com/use-cases">Use cases</a>
+        <a class="dropdown-item" href="https://storageos.com/why-storageos">Why StorageOS</a>
+        <a class="dropdown-item" href="https://storageos.com/how-it-works">How it works</a>
+    </div>
+</li>
+
+<li class="nav-item dropdown d-none d-lg-block">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Solutions
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="https://storageos.com/developers">Developers</a>
+        <a class="dropdown-item" href="https://storageos.com/infrastructure-managers">Infrastructure Managers</a>
+        <a class="dropdown-item" href="https://storageos.com/cloud">Cloud</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="#">
+        Docs
+    </a>
+</li>
+
+<li class="nav-item dropdown d-none d-lg-block">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Company
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="https://storageos.com/company">About us</a>
+        <a class="dropdown-item" href="https://storageos.com/leadership">Leadership</a>
+        <a class="dropdown-item" href="https://storageos.com/news">News</a>
+        <a class="dropdown-item" href="https://storageos.com/events">Events</a>
+        <a class="dropdown-item" href="https://storageos.com/contact">Contact</a>
+    </div>
+</li>
+
+<li class="nav-item dropdown d-none d-lg-block">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Learn
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="https://storageos.com/blog">Blog</a>
+        <a class="dropdown-item" href="https://play.storageos.com/main">Play with StorageOS</a>
+        <a class="dropdown-item" href="https://storageos.com/resources/">Resources</a>
+        <a class="dropdown-item" href="https://resources.storageos.com/demo-request">Get a demo</a>
+    </div>
+</li>
+
+
+
+			
+			<li class="nav-item dropdown d-none d-lg-block">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	Releases
+</a>
+<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+	
+	<a class="dropdown-item" href="/">v1.x</a>
+	
+</div>
+
+			</li>
+			
+			
+		</ul>
+	</div>
+	<div class="navbar-nav d-none d-lg-block">
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="&#xf002; Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/offline-search-index.b6abc6b9f81e65e8015e8bc90ba7aef387712354dd43b05d8bf03cbb3295ffd202e97f039d8f6b1a5b4bcae2dcaf96da6560bacb8d6bc2d869e23c8baaeb99e3.json"
+  data-offline-search-base-href="/"
+>
+
+</div>
+</nav>
+
+    </header>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docs">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/introduction/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Introduction</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsintroduction">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionquickstart" href="/docs/introduction/quickstart/">Quickstart</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionplatforms" href="/docs/introduction/platforms/">Supported Platforms</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsconcepts">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsarchitecture" href="/docs/concepts/architecture/">Architecture</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsclusters" href="/docs/concepts/clusters/">Clusters</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscompression" href="/docs/concepts/compression/">Compression</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnamespaces" href="/docs/concepts/namespaces/">Namespaces</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsnodes" href="/docs/concepts/nodes/">Nodes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsvolumes" href="/docs/concepts/volumes/">Volumes</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/prerequisites/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Prerequisites</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsprerequisites">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitessystemconfiguration" href="/docs/prerequisites/systemconfiguration/">System Configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesfirewalls" href="/docs/prerequisites/firewalls/">Ports and Firewall settings</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/install/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Install</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsinstall">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsinstallkubernetes" href="/docs/install/kubernetes/">Kubernetes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsinstallopenshift" href="/docs/install/openshift/">OpenShift</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsinstallrancher" href="/docs/install/rancher/">Rancher</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsbest-practices" href="/docs/best-practices/">Best Practices</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/operations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Operations</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsoperations">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">ETCD</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsoperationsexternal-etcd">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsexternal-etcdetcd-tls" href="/docs/operations/external-etcd/etcd-tls/">mTLS</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationshealth" href="/docs/operations/health/">Health</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmanaging-host-storage" href="/docs/operations/managing-host-storage/">Host Storage</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationslicensing" href="/docs/operations/licensing/">Licensing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsoperationsmonitoring">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsusers" href="/docs/operations/users/">User Management</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/usecases/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Use Cases</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsusecases">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesbackups" href="/docs/usecases/backups/">Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasescassandra" href="/docs/usecases/cassandra/">Cassandra</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecaseselasticsearch" href="/docs/usecases/elasticsearch/">Elasticsearch</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesjenkins" href="/docs/usecases/jenkins/">Jenkins</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecaseskafka" href="/docs/usecases/kafka/">Kafka</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecaseskubevirt" href="/docs/usecases/kubevirt/">Kubevirt</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesmssql" href="/docs/usecases/mssql/">MS SQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesmysql" href="/docs/usecases/mysql/">MySQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesnginx" href="/docs/usecases/nginx/">Nginx</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasespostgres" href="/docs/usecases/postgres/">PostgreSQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesredis" href="/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecaseszookeeper" href="/docs/usecases/zookeeper/">Zookeeper</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Reference</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="docsreference">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapi" href="/docs/reference/api/">API Reference</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/cli/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">CLI</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencecli">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/cluster-operator/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Cluster Operator</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencecluster-operator">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecluster-operatorinstall" href="/docs/reference/cluster-operator/install/">Install</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecluster-operatorconfiguration" href="/docs/reference/cluster-operator/configuration/">Configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecluster-operatorexamples" href="/docs/reference/cluster-operator/examples/">Examples</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecluster-operatorupgrade" href="/docs/reference/cluster-operator/upgrade/">Operator upgrade</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecontributing" href="/docs/reference/contributing/">Contributing to the docs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceinit-container" href="/docs/reference/init-container/">Init container</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelabels" href="/docs/reference/labels/">Labels</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/platforms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Platforms</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferenceplatforms">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsaws-eks" href="/docs/reference/platforms/aws-eks/">AWS EKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsazure-aks" href="/docs/reference/platforms/azure-aks/">Azure AKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsdockeree" href="/docs/reference/platforms/dockeree/">DockerEE</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsopenshift" href="/docs/reference/platforms/openshift/">OpenShift</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsrancher" href="/docs/reference/platforms/rancher/">Rancher</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsreferencerelease_notes" href="/docs/reference/release_notes/">Release notes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencefilesystems" href="/docs/reference/filesystems/">Supported File systems</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docssupport" href="/docs/support/">Support</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsself-eval" href="/docs/self-eval/">Self Evaluation Guide</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
+
+
+
+
+
+<a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/reference/release_notes.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Release%20notes" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+
+
+<a href="https://github.com/storageos/storageos.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
+
+</div>
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#140---released-06092019">1.4.0 - Released 06/09/2019</a>
+      <ul>
+        <li><a href="#improved">Improved</a></li>
+        <li><a href="#fixed">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#130---released-08072019">1.3.0 - Released 08/07/2019</a>
+      <ul>
+        <li><a href="#new">New</a></li>
+        <li><a href="#improved-1">Improved</a></li>
+        <li><a href="#fixed-1">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#121---released-15052019">1.2.1 - Released 15/05/2019</a>
+      <ul>
+        <li><a href="#improved-2">Improved</a></li>
+        <li><a href="#fixed-2">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#120---released-17042019">1.2.0 - Released 17/04/2019</a>
+      <ul>
+        <li><a href="#new-1">New</a></li>
+        <li><a href="#improved-3">Improved</a></li>
+        <li><a href="#fixed-3">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#115---released-29032019">1.1.5 - Released 29/03/2019</a>
+      <ul>
+        <li><a href="#improved-4">Improved</a></li>
+        <li><a href="#fixed-4">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#114---released-06032019">1.1.4 - Released 06/03/2019</a>
+      <ul>
+        <li><a href="#fixed-5">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#113---released-01032019">1.1.3 - Released 01/03/2019</a>
+      <ul>
+        <li><a href="#new-2">New</a></li>
+        <li><a href="#improved-5">Improved</a></li>
+        <li><a href="#fixed-6">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#112---released-03022019">1.1.2 - Released 03/02/2019</a></li>
+    <li><a href="#breaking-changes">Breaking changes</a>
+      <ul>
+        <li><a href="#new-3">New</a></li>
+        <li><a href="#improved-6">Improved</a></li>
+        <li><a href="#fixed-7">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#111---released-21012019">1.1.1 - Released 21/01/2019</a>
+      <ul>
+        <li><a href="#new-4">New</a></li>
+        <li><a href="#improvements">Improvements</a></li>
+        <li><a href="#fixed-8">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#110---released-04012019">1.1.0 - Released 04/01/2019</a>
+      <ul>
+        <li><a href="#new-5">New</a></li>
+        <li><a href="#improvements-1">Improvements</a></li>
+        <li><a href="#fixed-9">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#102---released-10122018">1.0.2 - Released 10/12/2018</a>
+      <ul>
+        <li><a href="#improvements-2">Improvements</a></li>
+        <li><a href="#fixed-10">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#101---released-23112018">1.0.1 - Released 23/11/2018</a>
+      <ul>
+        <li><a href="#improvements-3">Improvements</a></li>
+        <li><a href="#fixed-11">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100---released-15112018">1.0.0 - Released 15/11/2018</a>
+      <ul>
+        <li><a href="#new-6">New</a></li>
+        <li><a href="#improved-7">Improved</a></li>
+        <li><a href="#fixed-12">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100-rc5---released-01102018">1.0.0-rc5 - Released 01/10/2018</a>
+      <ul>
+        <li><a href="#breaking-changes-1">Breaking changes</a></li>
+        <li><a href="#new-7">New</a></li>
+        <li><a href="#improved-8">Improved</a></li>
+        <li><a href="#fixed-13">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100-rc4---released-18072018">1.0.0-rc4 - Released 18/07/2018</a>
+      <ul>
+        <li><a href="#new-8">New</a></li>
+        <li><a href="#improved-9">Improved</a></li>
+        <li><a href="#fixed-14">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100-rc3---released-02072018">1.0.0-rc3 - Released 02/07/2018</a>
+      <ul>
+        <li><a href="#new-9">New</a></li>
+        <li><a href="#improved-10">Improved</a></li>
+        <li><a href="#fixed-15">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100-rc2---released-31052018">1.0.0-rc2 - Released 31/05/2018</a>
+      <ul>
+        <li><a href="#fixed-16">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#100-rc1---released-25052018">1.0.0-rc1 - Released 25/05/2018</a>
+      <ul>
+        <li><a href="#breaking-changes-2">Breaking changes</a></li>
+        <li><a href="#new-10">New</a></li>
+        <li><a href="#improved-11">Improved</a></li>
+        <li><a href="#fixed-17">Fixed</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#upgrades">Upgrades</a>
+      <ul>
+        <li><a href="#08x---09x">0.8.x -> 0.9.x</a></li>
+        <li><a href="#07x---08x">0.7.x -> 0.8.x</a></li>
+      </ul>
+    </li>
+    <li><a href="#0100---released-28022018">0.10.0 - Released 28/02/2018</a>
+      <ul>
+        <li><a href="#breaking-changes-3">Breaking changes</a></li>
+        <li><a href="#new-11">New</a></li>
+        <li><a href="#improved-12">Improved</a></li>
+        <li><a href="#fixed-18">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#092">0.9.2</a>
+      <ul>
+        <li><a href="#new-12">New</a></li>
+        <li><a href="#improved-13">Improved</a></li>
+        <li><a href="#fixed-19">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#091">0.9.1</a>
+      <ul>
+        <li><a href="#new-13">New</a></li>
+        <li><a href="#improved-14">Improved</a></li>
+        <li><a href="#fixed-20">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#090---released-17112017">0.9.0 - Released 17/11/2017</a>
+      <ul>
+        <li><a href="#deprecation-notices">Deprecation notices</a></li>
+        <li><a href="#new-14">New</a></li>
+        <li><a href="#improved-15">Improved</a></li>
+        <li><a href="#fixed-21">Fixed</a></li>
+        <li><a href="#known-issues">Known issues</a></li>
+      </ul>
+    </li>
+    <li><a href="#081">0.8.1</a>
+      <ul>
+        <li><a href="#improved-16">Improved</a></li>
+      </ul>
+    </li>
+    <li><a href="#080---released-29082017">0.8.0 - Released 29/08/2017</a>
+      <ul>
+        <li><a href="#new-15">New</a></li>
+        <li><a href="#improved-17">Improved</a></li>
+        <li><a href="#fixed-22">Fixed</a></li>
+        <li><a href="#known-issues-1">Known issues</a></li>
+      </ul>
+    </li>
+    <li><a href="#0710">0.7.10</a>
+      <ul>
+        <li><a href="#new-16">New</a></li>
+        <li><a href="#improved-18">Improved</a></li>
+        <li><a href="#fixed-23">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#079">0.7.9</a>
+      <ul>
+        <li><a href="#new-17">New</a></li>
+        <li><a href="#improved-19">Improved</a></li>
+        <li><a href="#fixed-24">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#078">0.7.8</a>
+      <ul>
+        <li><a href="#new-18">New</a></li>
+        <li><a href="#improved-20">Improved</a></li>
+        <li><a href="#fixed-25">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#077">0.7.7</a></li>
+    <li><a href="#076">0.7.6</a></li>
+    <li><a href="#075">0.7.5</a></li>
+    <li><a href="#074">0.7.4</a></li>
+    <li><a href="#073-and-earlier">0.7.3 and earlier</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://docs.storageos.com/docs/">Documentation</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://docs.storageos.com/docs/reference/">Reference</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://docs.storageos.com/docs/reference/release_notes/">Release notes</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Release notes</h1>
+	
+	<p>We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;,
+and to perform upgrades only after reading the release notes.</p>
+<p>The latest tagged release is <code>1.5.3</code>, available from
+<a href="https://hub.docker.com/r/storageos/node/">Docker Hub</a> as <code>storageos/node:1.5.3</code>, or via the <a href="https://github.com/storageos/charts">Helm
+Chart</a></p>
+<p>The latest CLI release is <code>1.2.2</code>, available from
+<a href="https://github.com/storageos/go-cli/releases">Github</a></p>
+<h1 id="upgrading">Upgrading</h1>
+<p>See <a href="https://docs.storageos.com/docs/operations/upgrades/">upgrades</a> for upgrade strategies.</p>
+<h2 id="140---released-06092019">1.4.0 - Released 06/09/2019</h2>
+<p>Version <code>1.4.0</code> changes the way metadata keys are stored on disk resulting in
+improved key locality and thus an increase in IO performance.</p>
+<p><em>IMPORTANT:</em> Due to the nature of this change, the upgrade process includes an
+automated conversion process. If upgrading from <code>1.3.0</code> or below, please ensure
+you follow the <a href="https://docs.storageos.com/docs/operations/upgrades/">upgrade instructions</a>.
+If the upgrade process is not followed, version <code>1.4.0</code> will refuse to start,
+but you may restart using the previous version. Once the upgrade process has
+been completed it is not possible to revert to an earlier version.</p>
+<p>No new features will be added to the <code>1.4</code> series and we will instead release a
+<code>1.5.0-rc1</code> in the next few weeks.</p>
+<h3 id="improved">Improved</h3>
+<ul>
+<li>Improved performance for sequential IO greater than 4k in size by changing
+the ordering of metadata keys so that the volume inode is in the most
+significant bits, followed by the offset.</li>
+<li>Volume deletes are now 5 - 20x faster, and for &lt;10GB volumes should take less
+than a second.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>The Prometheus metrics endpoint no longer displays statistics for volumes
+that have been deleted.</li>
+</ul>
+<h2 id="130---released-08072019">1.3.0 - Released 08/07/2019</h2>
+<p>The <code>1.3.0</code> release contains further substantial performance improvements,
+particularly for workloads that can parallelise IO or when multiple volumes are
+performing high rates of IO.</p>
+<h3 id="new">New</h3>
+<ul>
+<li>Switched internal device presentation from FUSE to TCMU when the kernel
+supports it, and when no conflicting TCMU-based devices already exist.  TCMU
+improves performance in all use cases, but particularly when queue depths are
+greater than 1.  TCMU can be disabled by setting <code>disableTCMU: true</code>, and it
+can be forced by setting <code>forceTCMU: true</code>.  When <code>forceTCMU: true</code> has been
+set and either the kernel does not support TCMU or there are conflicting
+devices, then StorageOS will refuse to start.</li>
+<li>The operator now runs an additional scheduler Pod, which can be disabled by
+setting <code>disableScheduler: true</code> in the StorageOS CR.</li>
+</ul>
+<h3 id="improved-1">Improved</h3>
+<ul>
+<li>The admin user&rsquo;s username and password are no longer stored in the KV store
+and are now always read from the <code>ADMIN_USERNAME</code> and <code>ADMIN_PASSWORD</code>
+environment variables which are populated by the secret from <code>secretRefName</code>.
+Previously, the environment variables were only read on cluster bootstrap.
+This caused problems when re-installing a cluster as the previous credentials
+were cached in the KV store and the credentials set in the environment
+variables would not work.  It is no longer required to clear
+<code>/var/lib/storageos</code> between re-installs.</li>
+<li>Replication ACK timeouts have be reduced from 15 to 3 seconds to allow
+retries to be performed sooner.  The overall timeout remains the same.</li>
+<li>Telemetry now reports the Kubernetes version and the distribution name if set
+in the <code>k8sDistro</code> environment variable.  This information helps us direct
+focus on the most relevant platforms.  As always, telemetry reporting can be
+disabled by setting <code>disableTelemetry: true</code>.</li>
+<li>Low-level dataplane configuration is now included in the diagnostics bundle.
+The bundle can only be created by the cluster administrator and can be
+uploaded to assist with support.</li>
+<li>Logging for the Operator has been reworked to allow easier troubleshooting
+and consistency with other operators using Kubernetes&rsquo; <code>controller-runtime</code>
+library.</li>
+</ul>
+<h3 id="fixed-1">Fixed</h3>
+<ul>
+<li>When creating volumes in stress test conditions, it was possible to be
+re-allocated the inode of a volume that had not yet finished the deletion
+process, causing the create to fail.</li>
+<li>When issuing an unmount request using the CSI driver, the operation would fail
+if the volume was already unmounted.  The operation now returns success and
+allows a remount to succeed.</li>
+</ul>
+<h2 id="121---released-15052019">1.2.1 - Released 15/05/2019</h2>
+<p>1.2.1 is primarily a bug fix release, but it also includes some performance
+improvements.</p>
+<h3 id="improved-2">Improved</h3>
+<ul>
+<li>Performance tuning on the metadata store, improving performance for sustained
+writes.</li>
+<li>Metadata checksums now use a pipelined SSE algorithm to improve performance.</li>
+<li>Set SCSI timeouts for StorageOS volumes to 120 seconds.</li>
+<li>More robust handling of devices on first initialisation.</li>
+<li>Volumes created with CSI are now formatted with lazy initialization enabled,
+reducing the time taken to provision the volume.</li>
+<li>Logging for volume detach operations when fencing a Pod.</li>
+<li>Cluster maintenance logging improved.</li>
+</ul>
+<h3 id="fixed-2">Fixed</h3>
+<ul>
+<li>Improved handling of in-memory cache during repeated failover events.</li>
+<li>When a volume was being deleted while there was IO pending to an offline
+remote node, the delete would wait until the IO timed out.  IO is now
+abandoned when a volume is deleted.</li>
+<li>During shutdown, IO to offline remote nodes would be retried, causing shutdown
+to take longer than needed. Now, unsuccessful IO is marked as failed
+immediately if a shutdown has been requested.</li>
+<li>The network client is now shutdown before the block presentation layer so that
+threads with pending IO are immediately unblocked. This helps ensure shutdowns
+can finish gracefully within the 10 second window set by the orchestrator.</li>
+<li>Node inspect output did not show all configuration information.</li>
+<li>When CSI is enabled, devices are now created on all nodes instead of on
+demand. This mitigates a timing issue and allows faster failover.</li>
+<li>Replication logs could contain incorrect volume identifiers when multiple
+syncs are in progress.</li>
+</ul>
+<h2 id="120---released-17042019">1.2.0 - Released 17/04/2019</h2>
+<p>The <code>1.2.0</code> release contains significant performance and resource utilisation
+improvements, along with 3 new features:</p>
+<ul>
+<li>Pod fencing</li>
+<li>Volume Encryption</li>
+<li>etcd TLS</li>
+</ul>
+<h3 id="new-1">New</h3>
+<ul>
+<li>
+<p>Pod fencing can improve application failover times, particularly for
+applications deployed as StatefulSets.  When the label
+<code>storageos.com/fenced=true</code> is applied to a Pod, that mounts a replicated
+StorageOS volume, and StorageOS detects that the node running the Pod is
+offline, it will tell Kubernetes to re-schedule the Pod elsewhere.</p>
+<p>Without this feature, Kubernetes will by default wait 5 minutes before marking
+the node offline and performing remedial actions.  When applications are
+deployed as StatefulSets then manual intervention is also required before Pods
+will be re-scheduled. This behaviour guards against multiple nodes accessing
+the same volume concurrently as Kubernetes does not have visibility of
+storage presentations.</p>
+<p>Since StorageOS detects and remediates node failure more aggressively (in
+30-40 seconds) and it protects against multiple nodes accessing volumes
+concurrently, the fencing option gives the ability to override the default
+Kubernetes behaviour.</p>
+<p>See <a href="https://docs.storageos.com/docs/concepts/fencing/">fencing</a> for more information.</p>
+</li>
+<li>
+<p>Volume Encryption can now be enabled by setting the
+<code>storageos.com/encryption=true</code> label on a volume.  When enabled, data will be
+encrypted prior to being persisted on disk.</p>
+<p>See <a href="https://docs.storageos.com/docs/concepts/encryption/">encrypted volumes</a> for more
+information.</p>
+</li>
+<li>
+<p>Mutual TLS is now supported on external etcd KV backends.</p>
+<p>See <a href="https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/">etcd TLS</a> for more
+information.</p>
+</li>
+<li>
+<p>When deployed using the <a href="https://github.com/storageos/cluster-operator">StorageOS Cluster
+Operator</a>, node labels from
+Kubernetes are visible within StorageOS and available for use in rules.  This
+is particularly useful to mark specific nodes as compute-only.  See
+<a href="https://docs.storageos.com/docs/reference/labels/">labels</a> for more information.</p>
+</li>
+</ul>
+<h3 id="improved-3">Improved</h3>
+<ul>
+<li>
+<p>Multiple significant performance improvements.</p>
+</li>
+<li>
+<p>Multiple data plane processes were merged into a single <code>dataplane</code> binary.
+This has multiple benefits:</p>
+<ul>
+<li>Improved performance by reducing context switches when passing data
+between processes.</li>
+<li>Easier to instrument and trace.</li>
+<li>Startup and shutdown logic simpler to manage.</li>
+</ul>
+</li>
+<li>
+<p>DirectFS, the network communication layer used by replication and remote
+volumes, has been largely re-written and now uses a connection pool to reduce
+memory overhead.</p>
+</li>
+<li>
+<p>Several log formatting and level improvements to provide more relevant and
+consistent messages.</p>
+</li>
+<li>
+<p>Gossip (serf) port added to the network connectivity heath check.</p>
+</li>
+</ul>
+<h3 id="fixed-3">Fixed</h3>
+<ul>
+<li>The CLI command <code>storageos cluster health</code> now returns more useful information
+about the health of the cluster and does not require the cluster ID or join
+token to be supplied as a parameter.</li>
+<li>When changing the cluster log level at run-time using <code>storageos logs --log-level debug</code>, the new log level would be applied but an incorrect error
+would be returned.</li>
+</ul>
+<h2 id="115---released-29032019">1.1.5 - Released 29/03/2019</h2>
+<p>Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
+1.2 feature release internally.</p>
+<h3 id="improved-4">Improved</h3>
+<ul>
+<li>Previously we would allocate 5% of free memory to use as cache. On larger
+systems that were being rebooted, we could use more memory than intended if we
+start before other applications do. We now set a hard upper-bound of 512MB.</li>
+<li>The cluster ID is now logged more prominently during startup.</li>
+<li>Labels prefixed with <code>kubernetes.io/</code> are now accepted. This allows core
+Kubernetes labels to be inherited and used for scheduling decisions.</li>
+<li>A cache flush is now triggered when <code>fsck</code> is run on a volume.</li>
+<li>Removed noisy log messages from the dataplane stats module.</li>
+<li>Increased log level to <code>info</code> for volume create and delete with CSI.</li>
+</ul>
+<h3 id="fixed-4">Fixed</h3>
+<ul>
+<li>Mounting a volume while the volume was undergoing a series of configuration
+updates could cause the mount to hang.</li>
+<li>When increasing the number of replicas for a mounted volume, the new replica
+could get stuck in &ldquo;provisioned&rdquo; state. Removing the stuck replica and
+re-trying would normally clear the issue. The root cause has now been fixed.</li>
+<li>When a volume was being deleted and the data scrub finished, if there was an
+error removing the volume configuration from the kv store (e.g. kv store
+unavailable), it would log an error and not retry. Now, the operation is
+re-tried.</li>
+<li>The soft and hard mode failure detection was incorrectly using the count of
+failed replicas in the calculation, not the active replicas. When new replicas
+are being provisioned it&rsquo;s normal to have more than the requested number of
+replicas with some of them pending removal. The logic was changed to count
+healthy replicas instead.</li>
+<li>Fixed excessive log messages when removing a device for a volume that still
+exists elsewhere in the cluster.</li>
+<li>The UI incorrectly counted the replica stuck in &ldquo;provisioned&rdquo; state as
+available when it did not yet have a consistent copy of the the data.</li>
+<li>When setting the cluster log level via the CLI, an error was returned even
+though the update suceeded.</li>
+<li>The UI was displaying storage capacity in GB rather than GiB.</li>
+<li>In the UI, the volume delete hover was missing, causing the button to appear
+disabled.</li>
+<li>Adding a label to a volume in the UI could insert the string &ldquo;undefined&rdquo;.</li>
+</ul>
+<h2 id="114---released-06032019">1.1.4 - Released 06/03/2019</h2>
+<p>Includes a single fix to increase the time we wait for the operating system to
+create a new block device.  On some platforms (cloud providers in particular)
+the variation can be wider than expected.</p>
+<h3 id="fixed-5">Fixed</h3>
+<ul>
+<li>Address device creation delays on certain platforms/distributions.</li>
+</ul>
+<h2 id="113---released-01032019">1.1.3 - Released 01/03/2019</h2>
+<p>Version 1.1.3 is a bugfix and usability release.  Please upgrade if you are
+using external etcd.</p>
+<h3 id="new-2">New</h3>
+<ul>
+<li>There are no new features.  Look out for 1.2 coming soon!</li>
+</ul>
+<h3 id="improved-5">Improved</h3>
+<ul>
+<li>When using an external etcd KV store and it becomes inaccessible, StorageOS is
+now more resilient.  All volumes remain online and usable but configuration
+changes are restricted.</li>
+<li>Added a warning in the UI if cluster nodes are running different StorageOS
+versions.  The warning includes a link to the upgrade documentation.</li>
+<li>The cluster ID is now more prominent in the UI.  The cluster ID is required
+for licensing and support.</li>
+<li>UI login failure notifications are now automatically dismissed after a
+successful login.</li>
+<li>Improved error handling and logging when configuring volumes in the data
+plane.</li>
+<li>Strict dependency checking when configuring volumes.</li>
+</ul>
+<h3 id="fixed-6">Fixed</h3>
+<ul>
+<li>When refreshing the volumes page in the UI could return a &ldquo;volume not found&rdquo;
+error.</li>
+<li>When editing volume labels in the UI, there is now a confirmation check before
+removing a label.</li>
+<li>Fixed a bug that might prevent a volume delete request from being actioned.
+This would appear as a volume that is stuck in deleting state.</li>
+</ul>
+<h2 id="112---released-03022019">1.1.2 - Released 03/02/2019</h2>
+<p>1.1.2 improves stability when nodes lose network connectivity intermittenly by
+introducing a new grace period before performing node recovery operations.</p>
+<h2 id="breaking-changes">Breaking changes</h2>
+<p>The environment variables introduced in version <code>1.1.1</code> to tune node failure
+detection have changed. Previously <code>PROBE_INTERVAL_MS</code> and <code>PROBE_TIMEOUT_MS</code>
+were set to a number of milliseconds.  They have now been replaced with
+<code>PROBE_INTERVAL</code> and <code>PROBE_TIMEOUT</code>, which takes a time duration in string
+format, e.g. <code>500ms</code> or <code>2s</code>.  We believe this change gives slightly more
+flexibility and is easier to use.  Going forward, all duration-based
+configuration will use this format.</p>
+<h3 id="new-3">New</h3>
+<ul>
+<li>When network connectivity to a node is confirmed lost, there is now a
+configurable grace period before recovery operations begin.  The grace period
+allows time for the network or node to recover from short interruptions.  The
+default is set to <code>30s</code>.  The minimum duration is <code>0s</code>, and the maximum is
+<code>90s</code>.</li>
+<li>In the UI, a button has been added to re-send the activation email when
+requesting a Developer licence.</li>
+</ul>
+<h3 id="improved-6">Improved</h3>
+<ul>
+<li>
+<p>Logs now use nanosecond precision for timestamps.  This helps ensure the
+correct ordering when logging to an external source such as Elasticsearch.</p>
+</li>
+<li>
+<p>Upgraded Golang compiler to version <code>1.11.5</code>.</p>
+</li>
+<li>
+<p>Support diagnostics can now be generated while nodes are waiting to join the
+cluster.  This can help troubleshoot dependency or network connectivity issues
+that are blocking successful startup.  This feature is currently only enabled
+in the API; in a future release it will be exposed in the UI and CLI.  To
+generate the diagnostics bundle, run:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -o diagnostics.tar storageos:storageos@localhost:5705/v1/diagnostics/cluster
+</code></pre></div></li>
+<li>
+<p>Added more context to error logs when there is a failure to configure the
+dataplane.</p>
+</li>
+<li>
+<p>Added more logging at debug level when gossip detected a node&rsquo;s health change.</p>
+</li>
+</ul>
+<h3 id="fixed-7">Fixed</h3>
+<ul>
+<li>When CSI is enabled, if a volume was created in a namespace that did not
+already exist, then the create operation would fail.  Now the namespace is
+created as part of the volume create operation.  This matches the behaviour of
+the Kubernetes native driver.</li>
+<li>When importing Kubernetes ABAC policy files, the jsonl format was incorrectly
+detected and input was incorrectly parsed as json, which would not validate.</li>
+</ul>
+<h2 id="111---released-21012019">1.1.1 - Released 21/01/2019</h2>
+<p>1.1.1 contains a critical bugfix in the etcd client library that could cause
+the StorageOS control plane to become unresponsive when etcd is unavailable.</p>
+<h3 id="new-4">New</h3>
+<ul>
+<li>
+<p>Exposed tuning knobs for node failure detection via two new environment
+variables:</p>
+<ul>
+<li><code>PROBE_INTERVAL_MS</code>: the interval in milliseconds between node probes.
+Setting this lower (more frequent) will cause the cluster to detect failed
+nodes more quickly at the expense of increased bandwidth usage.  Defaults to
+1000ms.</li>
+<li><code>PROBE_TIMEOUT_MS</code>: the timeout to wait for an ack from a probed node before
+assuming it is unhealthy.  This should be set to 99-percentile of RTT
+(round-trip time) on your network.  Defaults to 3000ms.</li>
+</ul>
+<p>The defaults should be appropriate for most environments.</p>
+</li>
+</ul>
+<h3 id="improvements">Improvements</h3>
+<ul>
+<li>If a node is determined to be offline by <a href="https://github.com/hashicorp/memberlist">memberlist</a>,
+we now verify by sending a TCP handshake from the scheduler to the node&rsquo;s
+replication port.  If the handshake is successful we abort the process to mark
+the node offline.</li>
+<li>If the StorageOS container was killed, we now log at error level instead of
+debug level.</li>
+<li>The UI now gives user feedback when a diagnostics bundle is being uploaded or
+downloaded.</li>
+<li>Volume details and <code>dmesg</code> output is now collected in the diagnostics bundle.
+This information helps our engineers diagnose issues more easily.</li>
+<li>Internal cleanup of API handlers and middleware.  API errors now follow
+consistent formatting.</li>
+<li>Values for CSI parameters <code>VolumeId</code> and <code>VolumePath</code> are now validated to
+ensure they are not empty.  This is internal to the interaction between
+the orchestrator and StorageOS and applies to the <code>GetVolumeStats()</code> CSI call.</li>
+<li>Removed spammy &ldquo;failed to retrieve volume capacity stats&rdquo; log message when a
+volume was in the process of being deleted.</li>
+<li>When a node is rebuilt and re-added to the cluster, manual steps must be taken
+to ensure that a previous (now invalid) config is not re-applied to the new
+node as it may not have the previous backend data.  The log messages now
+better explain the issue and the steps required to resolve.</li>
+<li>Better error logging when data plane configuration was not applied.</li>
+</ul>
+<h3 id="fixed-8">Fixed</h3>
+<ul>
+<li>Updated the etcd client library to version 3.3.11, which includes a fix for
+<a href="https://github.com/etcd-io/etcd/issues/9578,">https://github.com/etcd-io/etcd/issues/9578,</a> a tight loop in the reconnect
+logic when a watch loses its connection to the etcd server.  The loop would
+cause the control plane to become unresponsive, including not allowing it to
+respond to healthchecks, which could result in the node being taken offline.</li>
+<li>Fixed an issue in the etcd watcher when we specify an object version to
+use as a starting point to watch for change from, but that version no longer
+exists in etcd due to scheduled compaction of the etcd datastore.  Now, the
+error is caught and retried from the latest version.  The error was logged as:
+<code>etcdserver: mvcc: required revision has been compacted</code>.</li>
+<li>The diagnostics bundle was saving with the extension <code>.tar.gz</code>, even though
+it is not compressed.  It now saves as <code>.tar</code>.</li>
+<li>When a node was heavily loaded, it was possible for volume delete requests to
+get stuck.  The delete result processing is now done in a separate thread from
+the request so that a long request can&rsquo;t block receiving responses.</li>
+</ul>
+<h2 id="110---released-04012019">1.1.0 - Released 04/01/2019</h2>
+<p>1.1.0 adds support for <a href="https://github.com/container-storage-interface/spec">CSI 1.0</a>
+and includes some minor bug fixes.</p>
+<h3 id="new-5">New</h3>
+<ul>
+<li>CSI 1.0 (available in Kubernetes 1.13 onwards) is now fully supported.
+Backwards compatibility with earlier versions of CSI and Kubernetes has been
+maintained and is the default.  CSI 1.0 support is automatically enabled when
+using the StorageOS <a href="https://github.com/storageos/cluster-operator">cluster-operator</a>
+on Kubernetes 1.13 and above.  If installing manually, set the <code>CSI_VERSION</code>
+environment variable to <code>v1</code>.</li>
+</ul>
+<h3 id="improvements-1">Improvements</h3>
+<ul>
+<li>In the UI, the namespaces in the dropdown list are now sorted in alphabetical
+order.</li>
+<li>Removed spammy log messages for IO size.</li>
+<li>When creating a volume using CSI, the namespace can be set by adding a
+<code>volumenamespace</code> label to the StorageClass.</li>
+</ul>
+<h3 id="fixed-9">Fixed</h3>
+<ul>
+<li>Cloud provider detection could cause a panic in non-AWS environments that
+respond on the same metadata ip address that AWS uses.  Fixed in
+<a href="https://github.com/aws/aws-sdk-go/pull/2380">aws-sdk-go</a>.</li>
+<li>Refreshing the UI caused the selected namespace to be reset.</li>
+</ul>
+<h2 id="102---released-10122018">1.0.2 - Released 10/12/2018</h2>
+<p>1.0.2 includes a fix required for Azure AKS and several other fixes and
+improvements, many to help with running on low-memory or heavily loaded servers.</p>
+<h3 id="improvements-2">Improvements</h3>
+<ul>
+<li>
+<p>Cache allocation has been adjusted for lower memory systems.  Allocation sizes
+are described in <a href="https://docs.storageos.com/docs/concepts/architecture/">architecture</a>.
+The cache size will never be set to more than 1/3rd of free memory.</p>
+</li>
+<li>
+<p>Increased the maximum number of replicas from 4 to 5.</p>
+</li>
+<li>
+<p>Increased the timeout for the device presentation shutdown to 9 seconds before
+sending a <code>SIGKILL</code>.</p>
+</li>
+<li>
+<p>Increased the wait timeout for dataplane startup from 10 to 30 seconds.</p>
+</li>
+<li>
+<p>Added colour-coded health labels in the UI.</p>
+</li>
+<li>
+<p>Rules can now be enabled and disabled in the UI.</p>
+</li>
+<li>
+<p>Improved input validation in the UI.</p>
+</li>
+<li>
+<p>IO error handling log messages are now more informative.</p>
+<p>Non-fatal (re-tryable) errors:</p>
+<ul>
+<li><code>Can't resolve replica inode configuration on local director</code></li>
+<li><code>Can't resolve master inode configuration on the remote director</code></li>
+<li><code>Can't resolve replica inode configuration on the remote director</code></li>
+<li><code>The client does not have the appropriate configuration</code></li>
+<li><code>No connection could be found</code></li>
+</ul>
+<p>Fatal errors:</p>
+<ul>
+<li><code>Generic fatal error (use this if there is no need to be specific)</code></li>
+<li><code>Can't resolve master inode configuration on the local director</code></li>
+<li><code>ENOSPC error</code></li>
+<li><code>Blobs corrupt/missing/not-sane etc</code></li>
+<li><code>A shm-pipe operation fatally failed</code></li>
+<li><code>Read only volume</code></li>
+<li><code>Sentinel value</code></li>
+</ul>
+</li>
+<li>
+<p>Corrected confusing log message: <code>poll() returned error on network socket: Success</code>.
+We now log: <code>connection closed</code>.</p>
+</li>
+<li>
+<p>Better logging when testing system device capabilities.</p>
+</li>
+<li>
+<p>Better logging for dataplane status errors.</p>
+</li>
+</ul>
+<h3 id="fixed-10">Fixed</h3>
+<ul>
+<li>On Azure AKS, StorageOS could fail to restart.  This was caused by an error in
+the system device capabilities verification incorrectly determining that the
+node didn&rsquo;t meet prerequisites.</li>
+<li>During startup, it was possible to retrieve an uninitialized value from a
+dataplane status endpoint, which caused startup to fail.  This was only seen
+on heavily-loaded systems.</li>
+<li>Potential deadlock in dynamic cache resize.  This is not known to have
+occured.</li>
+<li>During a scheduler failover, it was possible to miss a node recovery gossip
+message and the node would never be marked as recovered.</li>
+<li>It was possible for a volume to get a volume stuck in <code>syncing</code> state if a KV
+watcher was interrupted.  Now, full state from the KV store is re-evaluated
+every 10 seconds.</li>
+<li>When creating a volume using CSI, the pool field was ignored.</li>
+</ul>
+<h2 id="101---released-23112018">1.0.1 - Released 23/11/2018</h2>
+<p>This is primarily a bugfix release to better handle node recovery behaviour when
+network connectivity is re-established.  There are also a few minor bugfixes and
+general improvements.</p>
+<h3 id="improvements-3">Improvements</h3>
+<ul>
+<li>Upgraded UI to use <a href="https://cli.vuejs.org/">Vue CLI 3</a>.</li>
+<li>It is no longer possible for a user to delete their own account, or for an
+administrator to downgrade their access to a normal user.  This ensures that
+there is always at least one cluster administrator.</li>
+<li>When making volume placement decisions, the scheduler will now apply a lower
+ranking score to nodes that have come online less than 5 minutes ago.  This
+allows the node to perform most recovery operations prior to accepting new
+volumes.  This will not cause volume placement to be delayed, only that
+non-recovering nodes will be preferred.</li>
+<li>The cluster diagnostics bundle can now be downloaded via the Web UI in
+addition to uploading for StorageOS support.</li>
+<li>The volume list in the Web UI now shows more detailed volume health.</li>
+<li>Dataplane metrics now use less memory.</li>
+</ul>
+<h3 id="fixed-11">Fixed</h3>
+<ul>
+<li>If a node was partitioned as a result of a network failure, it would not
+always rejoin the cluster when the network was restored.  Nodes now
+attempt to reconnect via gossip every 2 seconds.</li>
+<li>Dataplane process metrics (e.g. memory usage) were not being exposed via
+the Prometheus <code>/metrics</code> endpoint.</li>
+<li><code>storageos logs -f</code> CLI command was incorrectly reporting all log entries at
+<code>fatal</code> level, overwriting the correct log level.</li>
+<li>Fixed errors in Web UI when API not yet available.</li>
+</ul>
+<h2 id="100---released-15112018">1.0.0 - Released 15/11/2018</h2>
+<p>1.0.0 is suitable for production workloads.</p>
+<h3 id="new-6">New</h3>
+<ul>
+<li>Offline nodes can now be removed from management either by using the CLI <code>node delete</code> command, or in the UI. This is only available when external etcd is
+used as the KV store.  See
+<a href="https://docs.storageos.com/docs/operations/decommission-nodes/">decommissioning nodes</a>
+for more information.</li>
+<li>Nodes can now be placed into &ldquo;Maintenance mode&rdquo; to disable volume recovery on
+the node while it is offline for maintenance. This allows nodes to be
+upgraded without triggering potentially unwanted data migrations. Note that
+applications accessing StorageOS volumes on the node should also be shutdown.
+Alternatively, you may move applications off the node and use
+<code>stoageos node drain</code> to migrate data prior to taking the node offline.</li>
+<li>5% of backend volume capacity is now reserved for indexes and recovery.  This
+helps ensure that there is enough remaining capacity to perform recovery
+operations such as deleting or moving frontend volumes.</li>
+<li>Prometheus metrics for volume used capacity, and added to the API volume
+objects and the UI. A placeholder for actual used capacity (after
+compression) has also been added but is not yet provided.</li>
+<li>In the UI, storage pools and nodes now have an additional details page.</li>
+<li>Added group management to the UI.</li>
+<li>The overprovisioning ratio can now be configured on pools by applying the
+label <code>storageos.com/overcommit</code> to a positive integer representing the
+overcommit percentage. By default, overcommit is set to 0.</li>
+<li>At startup and every 24 hours, each cluster will make a DNS request to query
+the latest StorageOS version and log if a new version is available.  The UI
+will also notify administrators.  This check can be disabled by setting
+<code>DISABLE_TELEMETRY=true</code>.  For more information see
+<a href="https://docs.storageos.com/docs/reference/telemetry/">telemetry</a>.</li>
+<li>Since data scrub operations can be intensive, we now limit to 5 concurrent
+volume scrubs.  This does not affect the number of volumes that may be deleted
+in a batch as the scrubs occur asyncronously.  Volumes will remain in
+<code>deleted</code> state until the data is scrubbed, then they will not be reported at
+all.</li>
+</ul>
+<h3 id="improved-7">Improved</h3>
+<ul>
+<li>Updated Prometheus metrics names to follow best practices.</li>
+<li>Added process name to dataplane log messages.</li>
+<li>Removed excessive heartbeat messages from debug logging.</li>
+<li>Removed an unneeded mutex from the dataplane debug logging.</li>
+<li>Added protection against a potential hard hang while cleaning up devices by
+instructing the kernel to abort any IO on the device prior to removing.</li>
+<li>Add <code>createdAt</code> and <code>updatedAt</code> fields in volume replica API objects.</li>
+<li>All API errors now return JSON content type (content remains the same).</li>
+<li>UI improvements to remember state when validation fails.</li>
+<li>UI feedback and help text while requesting a developer licence is more
+intuitive.</li>
+<li>Better error message when manually applying an invalid licence.</li>
+<li>Volume detail page in the UI has numerous improvements to improve usability,
+including on smaller screen sizes.</li>
+<li>When the UI was accessed before the node was fully online it would show a
+blank page. It now shows the message <code>Cluster API not yet available, waiting for nodes to join</code>.</li>
+<li>The browser &ldquo;back&rdquo; button on the UI now works as expected.</li>
+<li>Label management in the UI now gives context-sensitive examples and improves
+validation.</li>
+<li>Added network diagnostics and Prometheus metrics to support diagnostics
+bundle.</li>
+<li>Updated container labels.</li>
+</ul>
+<h3 id="fixed-12">Fixed</h3>
+<ul>
+<li>When a replica is auto-promoted to master because the application container
+moved, a cache reset for the volume is now triggered prior to updating the
+presentation to ensure the cache can never serve stale data.</li>
+<li>Fixed a crash in the replication server during shutdown when a volume scrub
+operation was taking place on a deleted volume with a non-trivial amount of
+data.</li>
+<li>In a cluster with hundreds of volumes and nodes continuously rebooting, a race
+condition could cause a volume to be &ldquo;stuck&rdquo; in syncing state if the sync
+started before the dataplane was ready for operation.  New replicas are now
+created with their health set to <code>provisioned</code>, and only enter the <code>syncing</code>
+state once the sync is underway. This allows the operation to be retried if
+required.</li>
+<li>After a restart, a write pointer was starting at the end of the current 64MB
+chunk. This would waste space if the chunk was not fully used. The pointer
+is now set to the end of the written data to ensure full utilisation.</li>
+<li>Check-and-set operations in the internal key-value store library were not
+honouring the TTL requested. This could cause CAS updates to fail when there
+was above average latency between nodes.</li>
+<li>If a non-admin user tried to cordon/drain a node in the UI it would fail
+silently. Now the action is disabled for non-admins and the API returns the
+correct error.</li>
+<li>In the UI, if a previous licensing operation failed, cached data could make it
+difficult to re-request a licence.</li>
+<li>If a volume was requested but failed due to validation (e.g. not enough
+capacity), it would be marked as <code>failed</code> and an attempt to re-create would
+fail with the message <code>Volume with name 'foo' already exists</code>. Now the second
+operation will replace the first and will be re-evaluated.</li>
+<li>After startup, pool capacity would only be calculated after the API was ready
+for use.  This caused provisioning requests immediately after startup to fail.
+Capacity is now calculated prior to the API accepting provisioning requests.</li>
+<li>Slow/broken DNS responses could cause cloud provider detection to delay
+startup for up to 30 seconds while waiting for a timeout.</li>
+<li>Cluster health CLI and API endpoint no longer report an error when external
+etcd is used for the KV store.</li>
+<li>When creating new users, usernames are now validated to disallow names in the
+UUID format used internally.</li>
+<li>In the UI, non-admin users can now view and update their information,
+including changing their own password.</li>
+<li>Password resets now work correctly and can be used to create a licence for a
+portal account that was created with a social login.</li>
+<li>If there was an error deleting a rule, the API returned an Internal Server
+Error rather than a more helpful contextual error.</li>
+</ul>
+<h2 id="100-rc5---released-01102018">1.0.0-rc5 - Released 01/10/2018</h2>
+<p>1.0.0-rc5 is a major update, with multiple bug fixes, performance and usability
+improvements as we get closer to removing the RC label.</p>
+<h3 id="breaking-changes-1">Breaking changes</h3>
+<ul>
+<li>Between rc4 and rc5 the location of the lock that governs configuration
+changes has moved.  For maximum safety, shutdown StorageOS on all nodes
+prior to upgrading to rc5.  If this is not feasible, contact
+<a href="mailto:support@storageos.com">support@storageos.com</a> for further instructions.</li>
+<li>Prometheus metric names and types have changed to adhere to best practices.
+If you have existing dashboards they will need to be updated.</li>
+</ul>
+<h3 id="new-7">New</h3>
+<ul>
+<li>User, group and policy management added to the Web UI.</li>
+<li>A custom or self-hosted cluster discovery service can now be specified by
+setting the <code>DISCOVERY_HOST</code> environment variable to the hostname or ip of the
+running service.  The source code for the discovery service is open and
+available on <a href="https://github.com/storageos/discovery">GitHub</a>.  Note that the
+cluster discovery service is optional and supplied as a convenience.</li>
+<li>The <code>KV_ADDR</code> environment variable now supports specifying multiple hostnames
+or addresses of external etcd servers.  Hostnames and addresses should be
+comma-separated and can include the port number (required if not <code>2379</code>, the
+etcd default).</li>
+<li>Passes CSI 0.3 (latest) <a href="https://github.com/kubernetes-csi/csi-test">conformance tests</a>.</li>
+<li>RHEL/Centos has a limit of 256 devices per HBA.  The API now returns
+<code>cannot create new volume, active volumes at maximum</code> when this limit has been
+reached.</li>
+<li>New network connectivity diagnostics to help diagnose potential firewall
+issues.  With the CLI (<code>storageos cluster connectivity</code>) or API
+(<code>GET /v1/diagnostics/network</code>), all required connectivity will be verified.</li>
+<li>Without a licence, StorageOS has all features enabled but provisioned capacity
+is now limited to 100GB.  Once registered (for free, via the Web UI), capacity
+increases to 500GB.</li>
+</ul>
+<h3 id="improved-8">Improved</h3>
+<ul>
+<li>
+<p>Increased overall performance by reducing context switches in the IO path,
+resulting in lower latency for all IO.</p>
+</li>
+<li>
+<p>Increased replication performance by optimising the parallel writes to
+multiple destinations.  With &gt;1 replicas this will roughly double replication
+performance, but it also reduces the overhead of adding additional replicas to
+a volume.</p>
+</li>
+<li>
+<p>Time taken to detect and recover from a node failure reduced from 45-70
+seconds to &lt;15 seconds.</p>
+</li>
+<li>
+<p>Improved the internal distributed lock mechanism to ensure correct and
+deterministic behaviour in the majority of failure scenarios.</p>
+</li>
+<li>
+<p>Implemented basic check-and-set (CAS) on control plane operations where
+consistency is required.</p>
+</li>
+<li>
+<p>Stop all control plane state evaluations if KV store is unavailable for more
+than the distributed lock TTL (5 seconds).</p>
+</li>
+<li>
+<p>Ensure node does not participate in state evaluations when it has been set as
+unschedulable with <code>storageos node cordon</code> or <code>storageos node drain</code>.</p>
+</li>
+<li>
+<p>Internal library change from <a href="https://github.com/hashicorp/serf">Serf</a> to
+<a href="https://github.com/hashicorp/memberlist">Memberlist</a>.  This helps simplify
+node failure detection.</p>
+</li>
+<li>
+<p>Control plane state evaluations are now performed serially with an interval of
+once per second.  This reduces the load on the cluster during bulk or recovery
+operations.  Previously, multiple workers may try to apply the same changes,
+causing unnessessary validation to take place.  A Prometheus histogram has
+been added to track duration of each state evaluation.  Under normal operation
+it takes 10-50ms.</p>
+</li>
+<li>
+<p>Node capacity now includes capacity from all devices made available for use by
+StorageOS.</p>
+</li>
+<li>
+<p>Volume health management and reporting is improved.  Health is now defined as:</p>
+<ul>
+<li><code>healthy</code>: Only if the volume master and requested number of replicas are
+healthy.</li>
+<li><code>syncing</code>: If any replicas are in the process of re-syncing.</li>
+<li><code>suspect</code>: The master is healthy, but at least one replica is suspect or
+degraded.</li>
+<li><code>degraded</code>: If the master is suspect/degraded or the master is healthy
+but at least one replica is dead.</li>
+<li><code>offline</code>: If the volume is offline, typically because the master is not
+available and there were no healthy replicas to failover to.</li>
+<li><code>decommissioned</code>: If a volume is being deleted the health will be marked as
+decommissioned.</li>
+</ul>
+</li>
+<li>
+<p>Prometheus metrics have been overhauled to provide more friendly and useful
+statistics.</p>
+</li>
+<li>
+<p>Internal library change from <a href="https://github.com/pagekit/vue-resource">vue-resource</a>
+(<a href="https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4">deprecation notice</a>)
+to <a href="https://github.com/axios/axios">Axios</a> for handling ajax requests in the
+Web UI.</p>
+</li>
+<li>
+<p>Warnings are now logged when volumes can not be provisioned due to licensing
+constraints.</p>
+</li>
+<li>
+<p>Internal logging improvements to ensure that runtime changes to log levels or
+filters maintain consistency across multiple consumers.</p>
+</li>
+<li>
+<p>Diagnostic requests now support JSON requests via the &ldquo;Accepts&rdquo; header,
+defaulting to the current tar archive response.  Internally, collection from
+multiple nodes is now streamed with a timeout of 10 seconds to prevent an
+unresponsive node from blocking the response.</p>
+</li>
+<li>
+<p>Improved description and flow of cluster diagnostics upload.</p>
+</li>
+<li>
+<p>Web UI volume detail page re-designed.</p>
+</li>
+<li>
+<p>Web UI theme tweaks: list view, pagination, headers, in-place edit.</p>
+</li>
+<li>
+<p>Upgrade version of internal messaging library (nats) and restructure
+implementation.</p>
+</li>
+<li>
+<p>Ensure the API supports label selectors on all object listings and improve
+internal code consistency and tests.</p>
+</li>
+<li>
+<p>Ensure control plane workers and gRPC connection pool are shutdown cleanly
+prior to shutting down the data plane to ensure operations have completed and
+to reduce warnings in logs.</p>
+</li>
+<li>
+<p>Explicitly shutdown the data plane gRPC handlers in the replication client
+prior to shutting down the rest of the data plane.  This protects against a
+potential issue that could lead to unclean shutdown.</p>
+</li>
+<li>
+<p>The lun ID is now computed dynamically.  This allows support for devices
+across multiple HBAs in the future, which will remove the limitation of
+256 volumes on RHEL7/Centos7 clusters and other systems with kernel 3.x.</p>
+</li>
+<li>
+<p>SCSI lun support now supports co-existence with other block storage providers</p>
+</li>
+<li>
+<p>Bulk volume creation could cause excessive validation warning messages in the
+logs do to concurrent configuration requests to the data plane.  Now, if the
+volume already exists or a CAS update fails, a conflict error (rather than
+generic error) is returned to the control plane.  This allows the control
+plane to only log a warning or error message if the intended action failed.</p>
+</li>
+<li>
+<p>Ongoing log message readability and tuning of log levels.</p>
+</li>
+</ul>
+<h3 id="fixed-13">Fixed</h3>
+<ul>
+<li>Filesystems now behave correctly when the underlying data store is out of
+capacity.  Previously the filesystem would appear to hang as it would retry
+the operation indefinitely.  Now, the filesystem will receive a fatal error
+and will typically become read-only.</li>
+<li>Listing volumes bypassed policy evaluation so a user in one namespace was able
+to view volume details in another namespace.  Create, update and delete were
+not affected and required correct authorization.</li>
+<li>Deletion of encrypted volumes did not work correctly.</li>
+<li>Product version details were not always displayed correctly.</li>
+<li>Licence upload could fail with error: <code>licence and actual array UUIDs do not match</code>.</li>
+<li>Erroneously reported an error when removing data for a volume that was already
+deleted.</li>
+<li>Web UI icons no longer load from the Internet and now display in disconnected
+environments.</li>
+<li>Web UI capacity now uses gigabytes to be consistent with CLI.</li>
+<li>API error when running <code>storageos cluster health</code> was suggesting to use
+<code>storageos cluster health</code> to diagnose the errror.</li>
+<li>API for retrieving the Cluster ID is no longer restricted to administrators
+only, but any authenticated user.</li>
+<li>Rules against namespaces with common prefixes no longer clash.</li>
+<li>It was possible to create more than one namespace with the same name.</li>
+<li>Fixed <code>fork/exec /usr/sbin/symmetra: text file busy</code>, caused by the operating
+system not having closed the file for writing before it is executed.</li>
+<li>Fixed <code>docker volume rm &lt;volname&gt;</code> returning 0 but not deleting the volume
+correctly.</li>
+<li>If a volume has a single replica and the master fails when the replica is in
+<code>syncing</code> state, the volume is now marked as <code>offline</code> until the master
+recovers.  Previously, the volume remained in <code>syncing</code> state indefinitely.</li>
+<li>If a volume with no replicas goes offline and then recovers, the volume was
+not marked as <code>healthy</code>.</li>
+<li>The CLI was reporting replicas that were not active, creating inaccurate
+volume counts.</li>
+<li>On a new volume with no replicas with the master on node1, if the volume was
+mounted on a node that does not hold the volume master (node2) and then node1
+drained, then the new volume created on another node will not be mountable.</li>
+<li>Prometheus <code>/metrics</code> endpoint always returns text format with correct text
+encoding, even if binary output was requested.  This matches the Prometheus
+2.0 policy to deprecate the binary format, and allows the endpoint to work
+with other collectors that support the text format, e.g. Telegraf.</li>
+<li>Fixed an unclean shutdown issue in the data plane volume presentation where
+configuration of a volume could still be attempted while a shutdown was in
+progress.  A lock is now taken to ensure order and to refuse configuration
+while a shutdown is in progress.  This only occured during shutdown and did
+not affect data consistency.</li>
+<li>Fixed an unclean shutdown issue in the replication client where references to
+the client configuration could be cleared while IO was still in progress.  A
+reference counter has been implemented to ensure that all operations have
+completed prior to the server entry being removed.  This only occured during
+shutdown and did not affect data consistency.</li>
+<li>Ensure all internal IO acknowledgements are received or a timeout reached
+prior to shutting down the replication server.  This fixes an issue where
+a shutdown or fatal error could cause the server to crash as it was being
+shutdown cleanly.  This only occured during shutdown and did not affect data
+consistency.</li>
+<li>Fixed an issue in the replication client connection handler that in some
+situations could allow the client to re-use a connection while it was still
+being prepared for re-use.  This could lead to a replication error or volumes
+stuck in &ldquo;syncing&rdquo; state.</li>
+<li>No longer logs an error when deleting a volume with no data.</li>
+</ul>
+<h2 id="100-rc4---released-18072018">1.0.0-rc4 - Released 18/07/2018</h2>
+<p>Multiple bug fixes and improvements, and improved shutdown handling.</p>
+<h3 id="new-8">New</h3>
+<ul>
+<li>Available capacity is now used in volume placement decisions.  This should
+allow for a more even distribution of capacity across the cluster, especially
+in clusters with large volumes.</li>
+<li>Licenses can now be applied from the Web UI.</li>
+</ul>
+<h3 id="improved-9">Improved</h3>
+<ul>
+<li>The shutdown process has been improved within the data plane, speeding up
+the removal of devices and reducing the risk that the container runtime or
+orchestrator will forcefully stop StorageOS.</li>
+<li>IO operations on volumes being deleted now return a fatal error so that the
+operation is not retried and can fail immediately.</li>
+<li>During node filtering for volume scheduling decisions, it was possible to
+return duplicate nodes as candidates for the volume placement.  This resulted
+in slightly unbalanced placement across the cluster.</li>
+<li>Volume replica removal didn&rsquo;t prioritise syncing volumes over healthy.  This
+meant that a fully-synced replica might be removed instead of one that is not
+yet synced, in cases where the number of replicas was increased and then
+immediately reduced.</li>
+<li>Log verbosity has been reduced at info level.  Set <code>LOG_LEVEL=debug</code> for more
+verbose logging.</li>
+</ul>
+<h3 id="fixed-14">Fixed</h3>
+<ul>
+<li>UI labels overlapped when window resized in Firefox.</li>
+<li>You can now provision the licenced amount, rather than up to the licenced
+amount fixing: &ldquo;cannot provision volume with size 999 GB, currently
+provisioned: 1 GB, licenced: 1000 GB&rdquo;.</li>
+</ul>
+<h2 id="100-rc3---released-02072018">1.0.0-rc3 - Released 02/07/2018</h2>
+<p>Multiple improvements based on customer feedback.</p>
+<h3 id="new-9">New</h3>
+<ul>
+<li>StorageOS can now be installed alongside other storage products that make use
+of the Linux SCSI Target driver.</li>
+<li>The CLI now checks for version compatibility with the API.</li>
+</ul>
+<h3 id="improved-10">Improved</h3>
+<ul>
+<li>Volume deletion now uses the scheduler&rsquo;s desired state processing rather than
+the previous imperative operation.  This fixes an issue where deletes could be
+stuck in pending state if the scheduler loses state (e.g. from a restart)
+while the operation is in progress.  Now the operation is idempotent and will
+be retried until successful.</li>
+<li>Volume placement now distributes volumes across nodes more evenly.</li>
+<li>CSI version 0.3 (latest) is now fully supported.  Additionally, improvements
+to CSI include how the default filesystem is determined, read-only mounts, and
+better checking for volume capabilities.</li>
+<li>Internal communication now times out after 5 seconds instead of 60.  This
+allows retry or recovery steps to initiate much quicker than before.  This
+timeout only affects inter-process communication on the same host, not over
+the network to remote hosts.</li>
+<li>Added a &ldquo;degraded&rdquo; state to the internal health monitoring.  This allows a
+recovery period before marking a node offline, which then triggers a restart.
+This improves stability when the KV store (internal or external) is undergoing
+a leadership change.</li>
+<li>Minor improvements to the UI notifications and error messages.</li>
+<li>Upgraded controlplane compiler to Golang 10.0.3 (from 1.9.1).</li>
+</ul>
+<h3 id="fixed-15">Fixed</h3>
+<ul>
+<li>Online device resizing now works with SCSI devices.  Note that <code>resize2fs</code>
+still needs to be run manually on the filesystem, and we are working on making
+this step automated.</li>
+<li>When deleting data from a volume, some metadata was not always being removed.
+This meant that volumes with frequently changing data could use more capacity
+than allocated.</li>
+</ul>
+<h2 id="100-rc2---released-31052018">1.0.0-rc2 - Released 31/05/2018</h2>
+<p>Single fix to address provisioning issue in Amazon AWS.</p>
+<h3 id="fixed-16">Fixed</h3>
+<ul>
+<li>Increased time to wait for device to appear, causing volume creation to fail.
+This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.</li>
+</ul>
+<h2 id="100-rc1---released-25052018">1.0.0-rc1 - Released 25/05/2018</h2>
+<p>The 1.0 release series is focussed on supporting enterprise workloads, with
+numerous new features and improvements to performance, stability and
+maintainability.</p>
+<h3 id="breaking-changes-2">Breaking changes</h3>
+<ul>
+<li>Several internal data structures were changed and are not compatible with
+previous versions.  For this reason upgrades from version 0.10.x and earlier
+are not supported.</li>
+<li>The API endpoint <code>/v1/metrics</code> has been replaced with <code>/metrics</code> to conform
+with Prometheus best practices.</li>
+</ul>
+<h3 id="new-10">New</h3>
+<ul>
+<li>Volume presentation has changed to use the SCSI subsystem via the
+Linux SCSI Target driver. Previous versions used NBD where available, or FUSE
+where it wasn&rsquo;t.  Using the new volume presentation improves performance on
+the RHEL platform where NBD is not available.  This feature is available for
+all major distributions and is widely used.  For more information, see
+<a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">system configuration</a></li>
+<li>Internally, the StorageOS scheduler has switched to using level-based state
+handling and the gRPC protocol.  This allows the scheduler to make assertions
+about the current state, rather than relying on events that can be missed.
+The scheduler now behaves in the same way as Kubernetes controllers do; by
+evaluating the current state, calculating adjustments, sharing desired state
+and allowing individual components to apply differences.  For more information
+on level triggered logic, see
+<a href="https://speakerdeck.com/thockin/edge-vs-level-triggered-logic">Edge vs Level triggerd logic</a></li>
+<li>Encyption at-rest is available on a per-volume level by setting the label
+<code>storageos.com/encryption=true</code>.  In Kubernetes, volume encryption keys are
+stored in Secrets.  Elsewhere, keys are stored in etcd, the key-value store
+used internally within StorageOS.  No other configuration is required.</li>
+<li>Container Storage Interface (CSI) version 0.2 compatibility.  CSI is a
+specification for storage providers that enables StorageOS to support any
+orchestrator that supports CSI.  Currently this includes Kubernetes and
+derivatives, Mesos and Docker.  Over time CSI will replace the native driver
+in Kubernetes, though the existing v1 API will remain.</li>
+<li>Multiple devices on a node can now be used, and StorageOS will shard data
+across them.</li>
+<li>Node maintenance command such as <code>storageos node cordon</code> and <code>storageos node drain</code> aid upgrades by live-migrating active volumes prior to node maintenance.</li>
+<li>Node labels can now be used for volume anti-affinity, allowing StorageOS to
+make sure a master volume and its replicas are in separate failure domains.</li>
+<li>Cloud provider failure domains are now auto-set as labels for nodes deployed
+in Azure, AWS or GCE.</li>
+<li>Administrators can download or upload to Storageos, support, cluster
+information and log files.  This is currently only available via the Web
+interfce or the API.</li>
+<li>Kubernetes mount option support (requires Kubernetes 1.10).</li>
+</ul>
+<h3 id="improved-11">Improved</h3>
+<ul>
+<li>Performance has improved significantly throughout and has been thoroughly
+tested on a variety of workloads.  Specific areas include optimisations for
+larger block sizes and improvements to the caching engine.</li>
+<li>Volumes will go read-only shortly before the underlying device runs out of
+space.  This allows the filesystem to handle errors gracefully and can protect
+against corruption.</li>
+<li>Pools have been overhauled to be dynamic, making use of label selectors.</li>
+<li>Increased number of volumes per node.</li>
+<li>Invalid labels now generate a validation error.</li>
+<li><code>storageos.com/</code> namespaced labels must validate against known labels.</li>
+</ul>
+<h3 id="fixed-17">Fixed</h3>
+<ul>
+<li>Mapping of compression and throttle labels.</li>
+<li>Remove hard connection limit on replication services.</li>
+<li><code>docker ps</code> shows unhealthy when everything is fine.</li>
+<li>Throttle impact was too small to be noticed.</li>
+<li>Volume size &lsquo;0&rsquo; produced 10GB volume.</li>
+<li>Re-adding user to a group creates a duplicate entry.</li>
+<li>Node and pool capacity stats were sometimes wrong.</li>
+</ul>
+<h1 id="previous-releases">Previous Releases</h1>
+<h2 id="upgrades">Upgrades</h2>
+<p>Due to breaking changes between 0.9.x and 0.10.x upgrading is not possible.
+Instead we recommend that you provision a new cluster and migrate data.</p>
+<p>Please update to the latest CLI when installing 0.10.x.</p>
+<h3 id="08x---09x">0.8.x -&gt; 0.9.x</h3>
+<p>Start-up scripts should be updated to use the new <a href="/docs/reference/clusterdiscovery">cluster
+discovery</a> syntax</p>
+<p>Do not mix a cluster with 0.8.x and 0.9.x versions as port numbers have changed.
+This may cause cluster instability while nodes are being upgraded.</p>
+<h3 id="07x---08x">0.7.x -&gt; 0.8.x</h3>
+<p>Due to the nature the KV Store change there is no upgrade method from 0.7.x to
+0.8.x+.  Our recommendation is to create a new cluster, paying attention to the
+new parameters (<code>CLUSTER_ID</code> and <code>INITIAL_CLUSTER</code>).  Note that <code>CLUSTER_ID</code> and
+<code>INITIAL_CLUSTER</code> have been replaced by <code>JOIN</code> in 0.9.x onwards.</p>
+<h2 id="0100---released-28022018">0.10.0 - Released 28/02/2018</h2>
+<p>The 0.10.0 version focusses on stability and usability as we get closer to GA,
+but also adds a number of new features (UI, Prometheus metrics, log streaming).</p>
+<h3 id="breaking-changes-3">Breaking changes</h3>
+<p>We took the decision to bundle as many known breaking changes into this release
+in order to reduce pain later.</p>
+<ul>
+<li>
+<p>The API endpoint <code>/v1/controllers</code> has been replaced with <code>/v1/nodes</code>.  This
+removes the concept of storage controllers being different objects from
+storage clients.  Now both are simply nodes, with the
+<code>storageos.com/deployment</code> label used to configure the deployment type.
+Deployment types can be <code>computeonly</code> and <code>mixed</code> are supported, with <code>mixed</code>
+being the default.</p>
+<p>Older versions of the CLI should be mostly backwards compatible but some
+features such as node and pool capacity will not work.</p>
+</li>
+<li>
+<p>The label format for configuring StorageOS features has changed from
+<code>storageos.feature.xyz</code> to <code>storageos.com/xyz</code>.  This format is more familiar
+to Kubernetes users.  Using the old format will still work until 0.11 when
+conversion will be removed.  In 0.10 a deprecation notice will be issued.</p>
+</li>
+<li>
+<p>The environment variable used to add labels to nodes at startup time has
+changed from <code>LABEL_ADD</code> to <code>LABELS</code>.  Multiple labels can be comma-separated:
+<code>LABELS=storageos.com/deployment=computeonly,region=us-west-1</code></p>
+</li>
+</ul>
+<h3 id="new-11">New</h3>
+<ul>
+<li>
+<p>There is now a Web interface, available on all cluster nodes on the API port
+(<code>5705</code>).  To access, point your web browser to http://ADVERTISE_IP:5705.
+where ADVERTISE_IP is the public ip address of a StorageOS node.  Unless you
+have changed the default credentials, login with user <code>storageos</code>, password
+<code>storageos</code>.  See: https://docs.storageos.com/docs/reference/gui/</p>
+</li>
+<li>
+<p>Prometheus stats are exported on each cluster node at
+http://ADVERTISE_IP:5705/v1/metrics.  Prometheus 2.x is required.</p>
+</li>
+<li>
+<p>The CLI can now stream realtime logs from the active StorageOS cluster with
+<code>storageos logs -f</code>.  Logs are aggregated from all cluster nodes over a single
+connection to the API.  Future releases will add support for filtering and
+controlling the log level.  See: https://docs.storageos.com/docs/reference/cli/logs/</p>
+</li>
+<li>
+<p>The location of the StorageOS volumes can now be configured on a per-node
+basis by setting the <code>DEVICE_DIR</code> environment variable on the StorageOS node
+container.</p>
+<p>This is especially useful when running Kubernetes in a container
+and you are unable or unwilling to share the default <code>/var/lib/storageos/volumes</code>
+location into the <code>kubelet</code> container.  Instead, share the <code>kubelet</code> plugin
+directory into the StorageOS container, and set <code>DEVICE_DIR</code> to use it.
+Hovever, Kubernetes 1.10 will be required in order for <code>kubelet</code> to use a
+directory other than <code>/var/lib/storageos/volumes</code>.</p>
+<p>For example:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">JOIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>storageos cluster create<span style="color:#204a87;font-weight:bold">)</span>
+docker run --rm --name storageos <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -e HOSTNAME <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -e <span style="color:#000">DEVICE_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span>/var/lib/kubelet/plugins/kubernetes.io~storageos/devices <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -e <span style="color:#000">JOIN</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">${</span><span style="color:#000">JOIN</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --pid host <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --privileged --cap-add SYS_ADMIN <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  -v /var/lib/kubelet/plugins/kubernetes.io~storageos:/var/lib/kubelet/plugins/kubernetes.io~storageos:rshared <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --device /dev/fuse <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  --net host <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>  storageos server
+</code></pre></div></li>
+</ul>
+<h3 id="improved-12">Improved</h3>
+<ul>
+<li><code>soft</code> volume failure mode will now tolerate the replica being offline (for
+example during a node reboot), if there is only one replica configured.  To
+ensure there are always two copies of the data, use <code>hard</code> mode with a single
+replica, or use two replicas with <code>soft</code> mode.</li>
+<li>Ensure volumes can only be mounted with the correct underlying filesystem.
+You will now get a validation error if you try to mount an ext3 formatted
+filesystem as ext4.  <code>ext4</code> is the default if not specified when mounting an
+unformatted volume.</li>
+</ul>
+<h3 id="fixed-18">Fixed</h3>
+<ul>
+<li>Ensure cache is invalidated after mkfs.  Fixes mount error 32 that could occur
+with Kubernetes or OpenShift on Centos/RHEL.</li>
+<li>Memory leak in replication client led to excessive use over time.</li>
+<li>Standardised all paths to 256 byte length to support user-configurable
+<code>DEVICE_DIR</code>.</li>
+<li>Fixed clean shutdown issue where filesystem could start new threads while
+shutting down.  This was only observed in stress tests.</li>
+<li>Shutdown signal handling improved, fixing <code>Transport endpoint is not connected</code>
+on Centos / RHEL in certain restart situations.</li>
+</ul>
+<h2 id="092">0.9.2</h2>
+<p>The 0.9.2 fixes a memory leak, so upgrading is recommended.  It also reduces
+the time taken to delete volumes.</p>
+<p>More work has gone into logging, with API endpoints to control verbosity and
+log filtering of running nodes individually or cluster-wide.  Version 0.9.4 of
+the CLI provides the <code>storageos logs</code> subcommand to control settings remotely.</p>
+<h3 id="new-12">New</h3>
+<ul>
+<li>API endpoints for logging configuration</li>
+</ul>
+<h3 id="improved-13">Improved</h3>
+<ul>
+<li>Remove cgo dependencies from controlplane</li>
+<li>Better error message when the KV store is unavailable</li>
+<li>Reduced memory footprint of controlplane by 67%.</li>
+</ul>
+<h3 id="fixed-19">Fixed</h3>
+<ul>
+<li>Memory leak introduced in 0.9.0 fixed</li>
+</ul>
+<h2 id="091">0.9.1</h2>
+<p>The 0.9.1 release includes a fix for the <code>mount deadline exceeded</code> error, where
+a volume mount fails after a long delay.</p>
+<p>The logging susbsystem has also been overhauled to reduce noise and to allow
+filtering messages by log level and component.  We expect to build on this in
+upcoming releases to further improve diagnostics.</p>
+<h3 id="new-13">New</h3>
+<ul>
+<li>
+<p>Failure modes can be specified to control behaviour in specific failure
+scenarios.  Full documentation to be added to the docs site soon.</p>
+<ul>
+<li><code>hard</code> will enforce the desired number of replicas and take a volume offline
+if the replica count is not met.  In practice, the volume should only go
+offline if there isn&rsquo;t a suitable node to place a new replica on.  For
+example, if you have configured 2 replicas in a 3 node cluster and a node
+goes offline.</li>
+<li><code>alwayson</code> will optimise for availability and will keep a volume online even
+if all replicas have failed.</li>
+<li><code>soft</code> is set by default, and will only take a volume offline if the number
+of replicas falls below the Failure tolerance (default: number of
+replicas - 1).  This will allow a volume with 2 replicas in a 3 node cluster
+to remain active while a node reboots.</li>
+</ul>
+<p>You can select the failure mode through the labels:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos volume create --label storageos.com/replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">2</span> --label storageos.com/failure.mode<span style="color:#ce5c00;font-weight:bold">=</span>alwayson volume-name
+</code></pre></div></li>
+<li>
+<p>Log filtering allows finer-grained control of log messages so that debug-level
+messages can be enabled only on some components.  Filtering is controlled by
+setting <code>LOG_FILTER=cat1=level1,catN=LevelN</code>.  For example, to enable
+debugging on only the etcd category:</p>
+<ol>
+<li>Set <code>LOG_LEVEL=debug</code> to enable debug logs.  This must be set to the lowest
+level requested in the filter.</li>
+<li>Set <code>LOG_FILTER=cp=info,dp=info,etcd=debug</code> to set controlplane and
+dataplane logs back to <code>info</code> level, then <code>etcd</code> to <code>debug</code>.</li>
+</ol>
+</li>
+<li>
+<p>Enabled profiling of the controlplane when DEBUG=true is set.  The endpoint is
+availble at http://localhost:5705/debug/pprof.</p>
+</li>
+<li>
+<p>Debug endpoints to monitor and control KV store leadership (DEBUG=true must be
+set).</p>
+<ul>
+<li>HTTP GET on http://localhost:5705/debug/leader returns true/false if the
+node is the cluster leader.</li>
+<li>HTTP PUT on http://localhost:5705/debug/leader/resign will cause leader to
+resign, triggering a new election.</li>
+<li>HTTP PUT on http://localhost:5705/debug/leader/run will cause node to run
+for cluster leadership.</li>
+</ul>
+<p>These actions are used primarily for automated testing where we introduce
+instability into the cluster to ensure there is no service disruption.</p>
+</li>
+</ul>
+<h3 id="improved-14">Improved</h3>
+<ul>
+<li>More instructive log messages if unable to create filesystem.</li>
+<li>Improve check for whether a device is using NBD for presentation.</li>
+<li>Log whenever a dataplane process restarts.</li>
+<li>Updated etcd libraries to v3.3.0-rc.0.</li>
+<li>Etcd tuning (TickMs = 200, ElectionMs = 5000)</li>
+<li>Updated other dependencies to latest stable releases.</li>
+<li>Dataplane, etcd, gRPC and NATS now use same log format as the controlplane.</li>
+<li>More user-friendly error message when <code>ADVERTISE_IP</code> is invalid.</li>
+</ul>
+<h3 id="fixed-20">Fixed</h3>
+<ul>
+<li>Fixed a bug that caused mounts to fail with <code>Failed to mount: exit status 32</code>.
+This was caused by the volume being marked as ready before the device was
+fully initialised, and the mount starting before the initialization completed.</li>
+<li>Volume names are no longer lowercased and keep the requested case.  This
+fixes an issue with Docker EE with mixed-case volume names.</li>
+<li>Volume delete on non-existent volume now returns HTTP 404 instead of 500.</li>
+<li>Do not reset node health if internal healthcheck returns invalid response.
+Instead, retry and wait for valid response message.</li>
+</ul>
+<h2 id="090---released-17112017">0.9.0 - Released 17/11/2017</h2>
+<p>This release focusses on usability and backend improvements.  It builds on the
+embedded KV store from 0.8.x and improves the bootstrap process.</p>
+<p>Enhanced stress testing and performance benchmarking have also led to a number
+of improvements and better failure handling and recovery.</p>
+<h3 id="deprecation-notices">Deprecation notices</h3>
+<p>While in Beta there may be changes that break backwards compatibility.  GA
+releases will strive to preserve compatibility between versions.</p>
+<ul>
+<li>The <code>INITIAL_CLUSTER</code> and <code>CLUSTER_ID</code> environment variables have been
+replaced with <code>JOIN</code> and they should no longer be used to bootstrap a new
+cluster.  <code>JOIN</code> provides a more flexible mechanism for creating new clusters
+and expanding existing clusters.  Errors or deprecation notices in the log at
+startup will help verify that the correct environment variables are used.</li>
+<li>The API object format for users has changed to make it consistent with other
+objects.  Version 0.9.0+ of the StorageOS CLI must be used to manage users on
+a version 0.9.x cluster.</li>
+</ul>
+<h3 id="new-14">New</h3>
+<ul>
+<li>Cluster can now start as soon as the first node starts, and any number of
+nodes can join the cluster.  The <code>JOIN</code> environment variable replaces
+<code>CLUSTER_ID</code> and <code>INITIAL_CLUSTER</code> and is more flexible, allowing
+administrators to combine methods for bootstrapping and discovering clusters.
+See <a href="https://docs.storageos.com/docs/install/reference/clusterdiscovery">https://docs.storageos.com/docs/install/reference/clusterdiscovery</a></li>
+<li>Online replica sync for new and replacement replicas.  This allows for writes
+to complete on the required number of replicas immediately instead of
+waiting for a new replica or a replacement replica to be fully synced.</li>
+<li>Network ports now use a contiguous range (5701-5711/tcp, 5711/udp)</li>
+<li>State-tracker added to frontend filesystem.  This allows greater flexibilty
+for backend failure recovery.</li>
+<li>Prometheus endpoint for exposing internal metrics.  This version includes
+API usage metrics, but will be extended in an upcoming release to include
+detailed volume, pool and node metrics.</li>
+<li>Reports are sent to Sentry if processes within the StorageOS container are
+stopped unexpectantly.  These reports help us improve the stability of the
+product, but they can be disabled by setting the setting the
+<code>DISABLE_TELEMETRY</code> environment variable to true.</li>
+</ul>
+<h3 id="improved-15">Improved</h3>
+<ul>
+<li>Enforced ordering for some types of read/write operations to ensure
+deterministic behaviour</li>
+<li>Ensured all components shutdown cleanly in normal situations and recover
+properly when clean shutdown not done.</li>
+<li>Added gRPC to dataplane for synchronous internal messaging</li>
+<li>User API endpoint now has a format consistent with other endpoints.  <code>/users</code>
+now returns a list of users, and a POST/PUT to <code>/users/{id}</code> accepts a user
+object.</li>
+<li>Document minimum server requirements</li>
+<li>Document node selector for volume create operations</li>
+<li>Document quality of service (QoS) and protection from noisy neighbors</li>
+<li>Document volume placement hints</li>
+<li>Separate usage metric endpoints for internal (Dev/QA) and release (Public)</li>
+<li>Health endpoints show <code>changedAt</code> and <code>updatedAt</code> to help detect flapping
+services</li>
+<li>Unmount volumes through CLI and API</li>
+<li>Removed false-postive errors and warning from logs</li>
+<li>Improve signal handling</li>
+<li><code>LOG_LEVEL</code> passed to dataplane components</li>
+</ul>
+<h3 id="fixed-21">Fixed</h3>
+<ul>
+<li>Clear mount lock after ungraceful node shutdown</li>
+<li>etcd error: <code>mvcc: database space exceeded</code></li>
+<li>NBD cleanup during ungraceful node shutdown</li>
+<li>No longer possible to have two default pools</li>
+<li><code>storageos cluster health</code> did not return useful information while the cluster
+was bootstrapping</li>
+<li>Node master and replica statistics were not getting updated after a node
+failure</li>
+</ul>
+<h3 id="known-issues">Known issues</h3>
+<ul>
+<li>It is currently not possible for a node to leave the cluster completely.  If
+the StorageOS container is stopped and/or removed from a node then the node
+will be detected as failed and it will be marked offline, but there is no way
+to remove the node from the list.  <code>storageos node rm</code> will be added before GA
+along with <code>storageos node cordon</code> to disable scheduling new volumes on the
+node, and <code>storageos node drain</code> to move volumes to other nodes prior to
+maintenance or removing the node from the cluster.</li>
+<li><code>storageos volume mount &lt;vol&gt; &lt;mountpoint&gt;</code> does not work on Managed Plugin
+installs.  Volumes mount into containers correctly using Docker.</li>
+<li>Docker can only access volumes created in the <code>default</code> namespace.</li>
+<li>Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
+performance due to the absence of the
+<a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">NBD kernel module</a>
+on those platforms.</li>
+</ul>
+<h2 id="081">0.8.1</h2>
+<h3 id="improved-16">Improved</h3>
+<ul>
+<li>NBD device numbers now start at 1 instead of 0 to defend against default values</li>
+</ul>
+<h2 id="080---released-29082017">0.8.0 - Released 29/08/2017</h2>
+<p>This is our first feature release since launching our public beta, and it
+focusses on feedback from users.  As always, please let us know how you are using
+StorageOS, what problems it is solving for you and how it can improve.  Join our
+<a href="http://slack.storageos.com">Slack channel!</a></p>
+<h3 id="new-15">New</h3>
+<ul>
+<li>Embedded KV Store based on etcd to further simplify deployment and ongoing
+cluster management.  Support for external Consul KV clusters has been
+deprecated, though external etcd clusters are now possible, but not yet
+documented and supported.</li>
+<li>Cluster discovery service to help bootstrap clusters.  Allocate a new cluster
+with <code>storageos cluster create</code> and pass the cluster identifier to each
+StorageOS node in the <code>CLUSTER_ID</code> environment variable to allow nodes to
+discover the cluster without specifying hostnames or ip addresses.</li>
+<li>Access control policies can restrict access to volumes and rules created
+within a namespace.</li>
+<li>User and group management allows multiple users to be created and then used to
+apply access policy by group membership or named account.</li>
+<li>Anonymized usage metrics are collected and sent to StorageOS to help us better
+understand usage patterns so we can focus our efforts accordingly.  Metrics
+can be disabled by setting the <code>DISABLE_TELEMETRY</code> environment variable to
+<code>true</code>.</li>
+<li>Location-based scheduling allows administrators to specify scheduling
+constraints on volumes at creation time.  This provides a simple mechanism to
+influence data placement.  (e.g. The volume&rsquo;s data may only be stored on nodes
+which have their environment label set to <code>production</code>)</li>
+<li>Cluster health reporting with CLI (<code>storageos cluster health</code>)</li>
+</ul>
+<h3 id="improved-17">Improved</h3>
+<ul>
+<li>Graceful behaviour when communication blocked by firewalls</li>
+<li>Docker integration now supports ext2/3/4, btrfs and xfs</li>
+<li>Environment variable validation</li>
+<li>Selectors for rules</li>
+<li>Use default namespace when not specified</li>
+<li>Internal volume performance counters</li>
+<li>API can report health while waiting for cluster to initialize</li>
+</ul>
+<h3 id="fixed-22">Fixed</h3>
+<ul>
+<li>Better behaviour when communication blocked by firewalls</li>
+<li>Ensure namespaces are unique when creating</li>
+<li>Volume create should give error when size=0</li>
+<li>CLI/API filters not working as expected</li>
+<li>Can&rsquo;t edit a pool with the CLI</li>
+<li>Excessive logging on network timeouts</li>
+</ul>
+<h3 id="known-issues-1">Known issues</h3>
+<ul>
+<li>Once a 0.8.0 cluster has been established, it is currently not possible to add
+or remove members.  We expect this functionality to come in 0.8.1, and welcome
+feedback on how this should behave.</li>
+<li><code>storageos volume mount &lt;vol&gt; &lt;mountpoint&gt;</code> does not work on Managed Plugin
+installs.  Volumes mount into containers correctly using Docker.</li>
+<li>Docker can only access volumes created in the <code>default</code> namespace.</li>
+<li>Clients mounting volumes from RHEL7/CentOS 7 will experience degraded
+performance due to the absence of the
+<a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">NBD kernel module</a>
+on those platforms.</li>
+</ul>
+<h2 id="0710">0.7.10</h2>
+<p>This release continues our focus on stability and better test coverage across a
+growing suite of platforms and usage scenarios.</p>
+<h3 id="new-16">New</h3>
+<ul>
+<li>Keepalives for replication though firewalls</li>
+</ul>
+<h3 id="improved-18">Improved</h3>
+<ul>
+<li>Graceful shutdown internal cleanup</li>
+<li>User authentication internals made extensible to other auth providers</li>
+<li>Internal changes to allow different log levels per module</li>
+</ul>
+<h3 id="fixed-23">Fixed</h3>
+<ul>
+<li>Removed log entries where events are raised and logged again</li>
+<li>Consolidated log messages when KV store is not available</li>
+</ul>
+<h2 id="079">0.7.9</h2>
+<h3 id="new-17">New</h3>
+<ul>
+<li>Maintenance mode to allow partial startup when the KV store is not ready</li>
+</ul>
+<h3 id="improved-19">Improved</h3>
+<ul>
+<li>Better write parallelization performance</li>
+</ul>
+<h3 id="fixed-24">Fixed</h3>
+<ul>
+<li>Issue with volume deletion</li>
+</ul>
+<h2 id="078">0.7.8</h2>
+<h3 id="new-18">New</h3>
+<ul>
+<li>Node statistics reporting</li>
+<li>Compression (in-transit and at-rest) enabled by default</li>
+</ul>
+<h3 id="improved-20">Improved</h3>
+<ul>
+<li>Refactored startup process</li>
+<li>Better volume distribution across cluster</li>
+<li>Relaxed volume naming requirements to support Docker dynamic volumes</li>
+<li>More instrumentation counters for volume stats</li>
+<li>Improved data plane error handling and retry logic</li>
+<li>Replication enhancements</li>
+<li>Ongoing log-level tuning to reduce noise</li>
+</ul>
+<h3 id="fixed-25">Fixed</h3>
+<ul>
+<li>Issue removing metadata on volume destroy</li>
+<li>Improved compression performance</li>
+<li>Default volume size now consistent across CLI/API/Docker/Kubernetes</li>
+<li>KV Store documentation (thanks @wcgcoder)</li>
+</ul>
+<h2 id="077">0.7.7</h2>
+<ul>
+<li>Fix issue with replication after node failure</li>
+</ul>
+<h2 id="076">0.7.6</h2>
+<ul>
+<li>Log formatting improvements</li>
+<li>Do not mark a recovered controller available immediately, wait to detect
+flapping</li>
+<li>Mount lock improvements</li>
+<li>Docker should use ext4 as default filesystem</li>
+</ul>
+<h2 id="075">0.7.5</h2>
+<ul>
+<li>Remove bash</li>
+</ul>
+<h2 id="074">0.7.4</h2>
+<ul>
+<li>Log formatting improvements</li>
+<li>Add support for ext2, ext3, xfs and btrfs filesystem types</li>
+<li>Don&rsquo;t allow pool delete with active volumes</li>
+</ul>
+<h2 id="073-and-earlier">0.7.3 and earlier</h2>
+<ul>
+<li>Unreleased private betas</li>
+</ul>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top">Last modified February 20, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/886156a85dd59cfdb2a060b20bdb7bbb056b4a54">Reference latest versions of node container and cli (886156a)</a>
+</div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+      
+<footer class="row d-print-none">
+  <div class="container-fluid mx-sm-5">
+    <div class="row">
+      <div class="col-2">
+      </div>
+      <div class="col">
+          <div class="footer-nav-column">
+              <h3 class="widget-title">Product</h3>
+              <ul>
+                <li><a href="https://storageos.com/product">Overview</a></li>
+                <li><a href="https://storageos.com/features">Features</a></li>
+                <li><a href="https://storageos.com/use-cases">Use cases</a></li>
+                <li><a href="https://storageos.com/why-storageos">Why StorageOS</a></li>
+                <li><a href="https://storageos.com/how-it-works">How it works</a></li>
+                <li><a href="https://storageos.com/how-it-works/#faq">FAQ</a></li>
+            </ul>
+          </div>
+      </div>
+      <div class="col">
+          <div class="footer-nav-column">
+              <h3 class="widget-title">Solutions</h3>
+              <ul>
+                  <li><a href="https://storageos.com/developers">Developers</a></li>
+                  <li><a href="https://storageos.com/infrastructure-managers">Infrastructure
+                          Managers</a></li>
+                  <li><a href="https://storageos.com/cloud">Cloud</a></li>
+              </ul>
+
+          </div>
+      </div>
+      <div class="col">
+          <div class="footer-nav-column">
+              <h3 class="widget-title">Docs</h3>
+              <ul id="menu-footer-docs" class="menu">
+                  <li><a href="https://docs.storageos.com">Overview</a></li>
+                  <li><a href="https://support.storageos.com">Support</a></li>
+              </ul>
+          </div>
+      </div>
+      <div class="col">
+          <h3 class="widget-title">Company</h3>
+          <ul>
+              <li><a href="https://storageos.com/company">About</a></li>
+              <li><a href="https://storageos.com/leadership">Leadership</a></li>
+              <li><a href="https://storageos.com/careers">Careers</a></li>
+              <li><a href="https://storageos.com/news">News</a></li>
+              <li><a href="https://storageos.com/events">Events</a></li>
+              <li><a href="https://storageos.com/contact">Contact</a></li>
+              <li><a href="https://storageos.com/media">Media</a></li>
+              <li><a href="https://storageos.com/privacy">Legal</a></li>
+          </ul>
+      </div>
+      <div class="col">
+          <h3 class="widget-title">Learn</h3>
+          <ul>
+              <li><a href="https://storageos.com/blog">Blog</a></li>
+              <li><a href="https://play.storageos.com">play.storageos.com</a></li>
+              <li><a href="https://storageos.com/resources">Resources</a></li>
+              <li><a href="https://resources.storageos.com/demo-request">Get a
+                      demo</a></li>
+          </ul>
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="/js/main.min.07381cb6406f1d15281f85a6dea05a3c2e9460f063c7e8dcc39b41f18db3aad0.js" integrity="sha256-BzgctkBvHRUoH4Wm3qBaPC6UYPBjx&#43;jcw5tB8Y2zqtA=" crossorigin="anonymous"></script>
+
+
+
+  </body>
+</html>

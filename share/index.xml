@@ -1,0 +1,1445 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Shares</title>
+    <link>https://docs.storageos.com/share/</link>
+    <description>Recent content in Shares on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/share/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-basic-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-basic-example/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This is a Cluster Definition example.&lt;/p&gt;
+&lt;p&gt;{% if page.platform == &amp;ldquo;openshift&amp;rdquo; %}&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: &amp;#34;storageos.com/v1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: StorageOSCluster
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;example-storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefName: &amp;#34;storageos-api&amp;#34; # Reference the Secret created in the previous step
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefNamespace: &amp;#34;storageos-operator&amp;#34;  # Namespace of the Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;{{ page.platform }}&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  images:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    nodeContainer: &amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34; # StorageOS version
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    requests:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    memory: &amp;#34;512Mi&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  nodeSelectorTerms:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    - matchExpressions:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;      - key: &amp;#34;node-role.kubernetes.io/compute&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        operator: In
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        values:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        - &amp;#34;true&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;openshift&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  disableScheduler: true
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;{% elsif page.platform == &amp;ldquo;rancher&amp;rdquo; %}&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: &amp;#34;storageos.com/v1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: StorageOSCluster
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;example-storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefName: &amp;#34;storageos-api&amp;#34; # Reference the Secret created in the previous step
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefNamespace: &amp;#34;storageos-operator&amp;#34;  # Namespace of the Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;{{ page.platform }}&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  images:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    nodeContainer: &amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34; # StorageOS version
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    requests:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    memory: &amp;#34;512Mi&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  sharedDir: &amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  nodeSelectorTerms:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    - matchExpressions:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;      - key: &amp;#34;node-role.kubernetes.io/worker&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        operator: In
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        values:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        - &amp;#34;true&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;{% else %}&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: &amp;#34;storageos.com/v1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: StorageOSCluster
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;example-storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefName: &amp;#34;storageos-api&amp;#34; # Reference the Secret created in the previous step
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefNamespace: &amp;#34;storageos-operator&amp;#34;  # Namespace of the Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;{{ page.platform }}&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  images:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    nodeContainer: &amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34; # StorageOS version
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    requests:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    memory: &amp;#34;512Mi&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;{% endif %}&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the [Cluster Operator
+configuration]({%link _docs/reference/cluster-operator/configuration.md %})
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can find more examples such as deployments with CSI or deployments referencing a external etcd kv store.
+store for StorageOS in the [Cluster Operator examples]({%link _docs/reference/cluster-operator/examples.md %}) page.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-config-table/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-config-table/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Parameter&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Default&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.deploymentStrategy&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI helper deployment strategy (&lt;code&gt;statefulset&lt;/code&gt; or &lt;code&gt;deployment&lt;/code&gt;)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;statefulset&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableControllerPublishCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI controller publish credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableNodePublishCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI node publish credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableProvisionCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI provision credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;debug&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable debug mode for all the cluster nodes&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableFencing&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable Pod fencing&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableScheduler&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable StorageOS scheduler&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableTCMU&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable TCMU to allow co-existence with other TCMU users. Disabling TCMU degrades performance&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableTelemetry&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable telemetry reports&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;forceTCMU&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Forces TCMU to be enabled or causes StorageOS to abort startup&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiClusterDriverRegistrarContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Cluster Driver Registrar Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-cluster-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiExternalAttacherContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI External Attacher Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-attacher:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiExternalProvisionerContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI External Provisioner Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/csi-provisioner:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ìmages.csiLivenessProbeContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Liveness Probe Container Image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/livenessprobe:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiNodeDriverRegistrarContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Node Driver Registrar Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-node-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.initContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS init container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS node container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:{{ site.latest_node_version  }}&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.annotations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Annotations of the ingress used by the cluster&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable ingress for the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.hostname&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Hostname to be used in cluster ingress&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.local&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.tls&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable TLS for the ingress&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;k8sDistro&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The name of the Kubernetes distribution is use, e.g. &lt;code&gt;rancher&lt;/code&gt; or &lt;code&gt;eks&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.address&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Comma-separated list of addresses of external key-value store. (&lt;code&gt;1.2.3.4:2379,2.3.4.5:2379&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.backend&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Name of the key-value store to use. Set to &lt;code&gt;etcd&lt;/code&gt; for external key-value store.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;embedded&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;namespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace where storageos cluster resources are created&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;nodeSelectorTerms&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set node selector for storageos pod placement&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;pause&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Pause the operator for cluster maintenance&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;resources&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set resource requirements for the containers&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;secretRefName&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Reference name of storageos secret&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;secretRefNamespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace of storageos secret&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.annotations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Annotations of the Service used by the cluster&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.externalPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;External port of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;5705&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.internalPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Internal port of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;5705&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.name&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Name of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.type&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Type of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ClusterIP&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;sharedDir&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Path to be shared with kubelet container when deployed as a pod&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;/var/lib/kubelet/plugins/kubernetes.io~storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tlsEtcdSecretRefName&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Secret containing etcd client certificates&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tlsEtcdSecretRefNamespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace of the tlsEtcdSecretRefName&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tolerations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set pod tolerations for storageos pod placement&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-csi-example/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-csi-example/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This is a Cluster Definition example.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos.com/v1&amp;#34;&lt;/span&gt;
+kind: StorageOSCluster
+metadata:
+  name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;example-storageos&amp;#34;&lt;/span&gt;
+  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;
+spec:
+  secretRefName: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reference from the Secret created in the previous step&lt;/span&gt;
+  secretRefNamespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Namespace of the Secret&lt;/span&gt;
+  k8sDistro: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{{ page.platform }}&amp;#34;&lt;/span&gt;
+  images:
+    nodeContainer: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS version&lt;/span&gt;
+  csi:
+    enable: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    deploymentStrategy: deployment
+  resources:
+    requests:
+    memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the [Cluster Operator
+configuration]( {%link _docs/reference/cluster-operator/configuration.md %})
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
+store for StorageOS in the [Cluster Operator examples](
+{%link _docs/reference/cluster-operator/examples.md %}) page.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-csi-openshift4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-csi-openshift4/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This is a Cluster Definition example.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: &amp;#34;storageos.com/v1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: StorageOSCluster
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;example-storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefName: &amp;#34;storageos-api&amp;#34; # Reference from the Secret created in the previous step
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefNamespace: &amp;#34;storageos-operator&amp;#34;  # Namespace of the Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  images:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    nodeContainer: &amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34; # StorageOS version
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csi:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    enable: true
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    deploymentStrategy: deployment
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    requests:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    memory: &amp;#34;512Mi&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;openshift&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the [Cluster Operator
+configuration]( {%link _docs/reference/cluster-operator/configuration.md %})
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
+store for StorageOS in the [Cluster Operator examples](
+{%link _docs/reference/cluster-operator/examples.md %}) page.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-csi-shareddir/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-csi-shareddir/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This is a Cluster Definition example.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: &amp;#34;storageos.com/v1&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: StorageOSCluster
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;example-storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefName: &amp;#34;storageos-api&amp;#34; # Reference from the Secret created in the previous step
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  secretRefNamespace: &amp;#34;storageos-operator&amp;#34;  # Namespace of the Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  k8sDistro: &amp;#34;{{ page.platform }}&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  images:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    nodeContainer: &amp;#34;storageos/node:{{ site.latest_node_version }}&amp;#34; # StorageOS version
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  sharedDir: &amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39; # Needed when Kubelet as a container
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csi:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    enable: true
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    deploymentStrategy: deployment
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  resources:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    requests:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    memory: &amp;#34;512Mi&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#  nodeSelectorTerms:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#    - matchExpressions:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#      - key: &amp;#34;node-role.kubernetes.io/worker&amp;#34; # Compute node label will vary according to your installation
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#        operator: In
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#        values:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;#        - &amp;#34;true&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the [Cluster Operator
+configuration]( {%link _docs/reference/cluster-operator/configuration.md %})
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
+store for StorageOS in the [Cluster Operator examples](
+{%link _docs/reference/cluster-operator/examples.md %}) page.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/cr-rancher-ui/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/cr-rancher-ui/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This is an example.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;apipassword-c3rvcmfnzw9z&#34;&gt;apiVersion: v1
+kind: Secret
+metadata:
+name: &amp;ldquo;storageos-api&amp;rdquo;
+namespace: &amp;ldquo;storageos-operator&amp;rdquo;
+labels:
+app: &amp;ldquo;storageos&amp;rdquo;
+type: &amp;ldquo;kubernetes.io/storageos&amp;rdquo;
+data:
+# echo -n &amp;lsquo;&lt;secret&gt;&amp;rsquo; | base64
+apiUsername: c3RvcmFnZW9z # Define your own user and password
+apiPassword: c3RvcmFnZW9z&lt;/h2&gt;
+&lt;p&gt;apiVersion: &amp;ldquo;storageos.com/v1&amp;rdquo;
+kind: StorageOSCluster
+metadata:
+name: &amp;ldquo;storageos&amp;rdquo;
+spec:
+k8sDistro: &amp;ldquo;rancher&amp;rdquo;
+namespace: &amp;ldquo;kube-system&amp;rdquo;
+secretRefName: &amp;ldquo;storageos-api&amp;rdquo; # Reference from the Secret created in the previous step
+secretRefNamespace: &amp;ldquo;storageos-operator&amp;rdquo;  # Namespace of the Secret
+csi:
+enable: true
+deploymentStrategy: &amp;ldquo;deployment&amp;rdquo;
+images:
+nodeContainer: &amp;ldquo;storageos/node:{{ site.latest_node_version }}&amp;rdquo; # StorageOS version&lt;/p&gt;
+&lt;h1 id=&#34;kvbackend&#34;&gt;kvBackend:&lt;/h1&gt;
+&lt;h1 id=&#34;address-storageos-etcd-clientetcd2379--example-address-change-for-your-etcd-endpoint&#34;&gt;address: &amp;lsquo;storageos-etcd-client.etcd:2379&amp;rsquo; # Example address, change for your etcd endpoint&lt;/h1&gt;
+&lt;h1 id=&#34;backend-etcd&#34;&gt;backend: &amp;lsquo;etcd&amp;rsquo;&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt; sharedDir: &#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&#39; # Needed when Kubelet as a container
+ resources:
+   requests:
+     memory: &amp;quot;512Mi&amp;quot;
+ nodeSelectorTerms:
+   - matchExpressions:
+     - key: &amp;quot;node-role.kubernetes.io/worker&amp;quot;
+       operator: In
+       values:
+       - &amp;quot;true&amp;quot;
+```
+
+&amp;gt; `spec` parameters available on the [Cluster Operator configuration](
+&amp;gt; {%link _docs/reference/cluster-operator/configuration.md %}) page.
+
+&amp;gt; You can find more examples such as deployments referencing a external etcd kv
+&amp;gt; store for StorageOS in the [Cluster Operator examples](
+&amp;gt; {%link _docs/reference/cluster-operator/examples.md %}) page.
+&lt;/code&gt;&lt;/pre&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/examples/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;cluster-operator-examples&#34;&gt;Cluster Operator examples&lt;/h1&gt;
+&lt;p&gt;Before deploying a StorageOS cluster, create a Secret to define the StorageOS
+API Username and Password in base64 encoding.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;storageos-api&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  labels:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    app: &amp;#34;storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;type: &amp;#34;kubernetes.io/storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;data:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  # echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
+unique, strong password.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure that the encoding of the credentials doesn&amp;rsquo;t have special characters such as &amp;lsquo;\n&amp;rsquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can define a base64 value by &lt;code&gt;echo -n &amp;quot;mystring&amp;quot; | base64&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create a &lt;code&gt;cluster-config.yaml&lt;/code&gt; according to your needs from the examples below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f cluster-config.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that StorageOS will be deployed in &lt;code&gt;spec.namespace&lt;/code&gt; (storageos by
+default), irrespective of what NameSpace the CR is defined in.&lt;/p&gt;
+&lt;p&gt;  &lt;!-- this is a blank line --&gt;&lt;/p&gt;
+&lt;h1 id=&#34;examples&#34;&gt;Examples&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can checkout all the parameters configurable in the
+[configuration]({%link _docs/reference/cluster-operator/configuration.md %})
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All examples must reference the &lt;code&gt;storageos-api&lt;/code&gt; Secret.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  secretRefName: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reference to the Secret created in the previous step&lt;/span&gt;
+  secretRefNamespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Namespace of the Secret&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Check out &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/cluster-operator&#34;&gt;Cluster Definition
+examples&lt;/a&gt; for full CR files.&lt;/p&gt;
+&lt;h2 id=&#34;installing-with-an-external-etcd&#34;&gt;Installing with an external etcd&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  kvBackend:
+    address: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;10.43.93.95:2379&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# IP of the SVC that exposes ETCD&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# address: &amp;#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&amp;#39; # You can specify individual IPs of the etcd servers&lt;/span&gt;
+    backend: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;etcd&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-to-a-subset-of-nodes&#34;&gt;Installing to a subset of nodes&lt;/h2&gt;
+&lt;p&gt;In this case we select nodes that are workers. To make sure that StorageOS doesn&amp;rsquo;t start in Master nodes.&lt;/p&gt;
+&lt;p&gt;You can see the labels in the nodes by &lt;code&gt;kubectl get node --show-labels&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  nodeSelectorTerms:
+    - matchExpressions:
+      - key: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node-role.kubernetes.io/worker&amp;#34;&lt;/span&gt;
+        operator: In
+        values:
+        - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# OpenShift uses &amp;#34;node-role.kubernetes.io/compute=true&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Rancher uses &amp;#34;node-role.kubernetes.io/worker=true&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Kops uses &amp;#34;node-role.kubernetes.io/node=&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Different provisioners and Kubernetes distributions use node labels
+differently to specify master vs workers. Node Taints are not enough to
+make sure StorageOS doesn&amp;rsquo;t start in a node. The
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/clusterdiscovery&#34;&gt;JOIN&lt;/a&gt;
+variable is defined by the operator by selecting all the nodes that match the
+&lt;code&gt;nodeSelectorTerms&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;enabling-csi&#34;&gt;Enabling CSI&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  csi:
+    enable: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    deploymentStrategy: deployment
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableProvisionCreds: false&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableControllerPublishCreds: false&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableNodePublishCreds: false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The credentials must be defined in the &lt;code&gt;storageos-api&lt;/code&gt; Secret&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt;
+  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;
+  labels:
+    app: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
+type: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubernetes.io/storageos&amp;#34;&lt;/span&gt;
+data:
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64&lt;/span&gt;
+  apiUsername: c3RvcmFnZW9z
+  apiPassword: c3RvcmFnZW9z
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add base64 encoded creds below for CSI credentials.&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionPassword:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishPassword:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishPassword:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;Specifying a shared directory for use with kubelet as a container&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  sharedDir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;defining-pod-resource-requests-and-reservations&#34;&gt;Defining pod resource requests and reservations&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  resources:
+    requests:
+      memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;256Mi&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   cpu: &amp;#34;1&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# limits:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   memory: &amp;#34;4Gi&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Limiting StorageOS can cause malfunction for IO to StorageOS volumes, therefore
+we do not currently recommend applying upper limits to resources for StorageOS
+pods.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/first-volume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/first-volume/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
+&lt;p&gt;If this is your first installation you may wish to follow the [StorageOS
+Volume guide](/docs/platforms/{{ page.platform }}/firstvolume/) for an example of how
+to mount a StorageOS volume in a Pod.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/install/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The StorageOS Cluster Operator is a &lt;a href=&#34;https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/&#34;&gt;Kubernetes native
+application&lt;/a&gt;
+developed to deploy and configure StorageOS clusters, and assist with
+maintenance operations. We recommend its use for standard installations.&lt;/p&gt;
+&lt;p&gt;The operator is a Kubernetes controller that watches the &lt;code&gt;StorageOSCluster&lt;/code&gt;
+CRD. Once the controller is ready, a StorageOS cluster definition can be
+created. The operator will deploy a StorageOS cluster based on the
+configuration specified in the cluster definition.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Helm Note:&lt;/strong&gt; If you want to use &lt;a href=&#34;https://helm.sh/docs/&#34;&gt;Helm&lt;/a&gt; to install StorageOS, follow
+the &lt;a href=&#34;https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart&#34;&gt;StorageOS Operator Helm
+Chart&lt;/a&gt;
+documentation.&lt;/p&gt;
+&lt;h2 id=&#34;__steps-to-install-storageos__&#34;&gt;&lt;strong&gt;Steps to install StorageOS:&lt;/strong&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-install-storageos-operator&#34;&gt;Install StorageOS Operator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-create-a-secret&#34;&gt;Create a Secret for default username and password&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-trigger-a-storageos-installation&#34;&gt;Trigger bootstrap using a CustomResource&lt;/a&gt;
+{% if page.oc-version contains &amp;lsquo;4.&amp;rsquo; -%}&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-set-selinux-permissions&#34;&gt;Set SELinux Permissions&lt;/a&gt;
+{% endif %}&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;1-install-storageos-operator&#34;&gt;1. Install StorageOS operator&lt;/h2&gt;
+&lt;p&gt;Install the StorageOS operator using the following yaml manifest.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f https://github.com/storageos/cluster-operator/releases/download/&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; site.latest_operator_version &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;/storageos-operator.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;verify-the-cluster-operator-pod-status&#34;&gt;Verify the Cluster Operator Pod Status&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# {{ page.cmd }} -n storageos-operator get pod&lt;/span&gt;
+NAME                                         READY     STATUS    RESTARTS   AGE
+storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;The READY 1/1 indicates that &lt;code&gt;storageoscluster&lt;/code&gt; resources can be created.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
+&lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
+API Username and Password in base64 encoding.&lt;/p&gt;
+&lt;p&gt;The API username and password are used to create the default StorageOS admin
+account which can be used with the StorageOS CLI and to login to the StorageOS
+GUI. The account defined in the secret is also used by Kubernetes to
+authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;storageos-api&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  labels:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    app: &amp;#34;storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;type: &amp;#34;kubernetes.io/storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;data:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  # echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
+unique, strong password.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can define a base64 value by &lt;code&gt;echo -n &amp;quot;mystring&amp;quot; | base64&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure that the encoding of the credentials doesn&amp;rsquo;t have special characters such as &amp;lsquo;\n&amp;rsquo;.
+The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+Users&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3. Trigger a StorageOS installation&lt;/h2&gt;
+&lt;p&gt;{% if page.platform == &amp;ldquo;azure-aks&amp;rdquo; %}
+{% include operator/cr-csi-example.md %}
+{% elsif page.platform == &amp;ldquo;rancher&amp;rdquo; or page.platform == &amp;ldquo;dockeree&amp;rdquo; %}
+{% include operator/cr-csi-shareddir.md %}
+{% elsif page.oc-version contains &amp;lsquo;4.&amp;rsquo; %}
+{% include operator/cr-csi-openshift4.md %}
+{% elsif page.platform == &amp;ldquo;kubernetes&amp;rdquo; %}
+{% assign k8s-version = page.k8s-version | plus: 0 %}
+{% if k8s-version &amp;gt;= 1.13 %}
+{% include operator/cr-csi-example.md %}
+{% else %}
+{% include operator/cr-basic-example.md %}
+{% endif %}
+{% else %}
+{% include operator/cr-basic-example.md %}
+{% endif %}&lt;/p&gt;
+&lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# {{ page.cmd }} -n storageos get pods -w&lt;/span&gt;
+NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
+storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
+storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
+storageos-scheduler-6d67b46f67-5c46j    1/1     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;6&lt;/span&gt;          3m
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;The above command watches the Pods created by the Cluster Definition example. Note that pods typically take approximately 65 seconds to enter the Running Phase.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;{% if page.oc-version contains &amp;lsquo;4.&amp;rsquo; %}&lt;/p&gt;
+&lt;h2 id=&#34;4-set-selinux-permissions&#34;&gt;4. Set SELinux Permissions&lt;/h2&gt;
+&lt;p&gt;{% include platforms/openshift4-selinux.md %}
+{% endif %}&lt;/p&gt;
+&lt;p&gt;{% include operator/first-volume.md %}&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/manual-install-disclaimer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/manual-install-disclaimer/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This installation procedure is available in case of the default method is not
+suited to your requirements. The following procedure requires a higher
+number of actions to fulfil the installation of the StorageOS cluster in
+comparison with the default procedure. There is also a higher number of
+configuration parameters to be tuned.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/reference/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;cluster-operator&#34;&gt;Cluster Operator&lt;/h1&gt;
+&lt;p&gt;Our cluster operator is a &lt;a href=&#34;https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/&#34;&gt;Kubernetes native
+application&lt;/a&gt;
+developed to deploy and configure StorageOS clusters, and assist with
+maintenance operations. We recommend its use for standard installations.&lt;/p&gt;
+&lt;p&gt;The operator acts as a Kubernetes controller that watches the &lt;code&gt;StorageOSCluster&lt;/code&gt;
+CR (Custom Resource). Once the controller is ready, a StorageOS cluster definition can be
+created. The operator will deploy a StorageOS cluster based on the
+configuration specified in the cluster definition.&lt;/p&gt;
+&lt;p&gt;You can find the source code in the &lt;a href=&#34;https://github.com/storageos/cluster-operator&#34;&gt;cluster-operator
+repository&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Install the operator following orchestrator specific procedure.&lt;/p&gt;
+&lt;p&gt;To deploy a StorageOS cluster you will need to fulfil the following steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Install operator&lt;/li&gt;
+&lt;li&gt;Create &lt;code&gt;storageos-api&lt;/code&gt; Secret&lt;/li&gt;
+&lt;li&gt;Create a CR (Custom Resource) to deploy StorageOS&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/secret/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/secret/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt;
+  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;
+  labels:
+    app: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
+type: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubernetes.io/storageos&amp;#34;&lt;/span&gt;
+data:
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64&lt;/span&gt;
+  apiUsername: c3RvcmFnZW9z
+  apiPassword: c3RvcmFnZW9z
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/upgrade-helm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/upgrade-helm/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;upgrade-storageos-operator-using-helm&#34;&gt;Upgrade StorageOS Operator using Helm&lt;/h2&gt;
+&lt;p&gt;If you have installed the StorageOS Operator using the &lt;a href=&#34;https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart&#34;&gt;Helm Chart&lt;/a&gt;, then you can upgrade the operator using the following commands.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm list
+
+NAME            REVISION        STATUS          CHART                           APP VERSION     NAMESPACE   
+storageos-v1   4               DEPLOYED        storageos-operator-0.2.11       1.3.0           storageos-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;$ helm repo update
+$ helm upgrade $NAME storageos/storageos-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
+Since, the Update Strategy of the StorageOS Operator Deployment is set to
+rolling update, a new StorageOS Operator Pod will be created. Only when
+the new Pod enters the Running Phase will the old Pod be deleted.
+Your StorageOS Cluster will not be affected while the StorageOS
+Operator is upgrading.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/operator/upgrade-uber-yaml/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/operator/upgrade-uber-yaml/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;upgrade-storageos-operator-from-yaml-manifest&#34;&gt;Upgrade StorageOS operator from yaml manifest&lt;/h2&gt;
+&lt;p&gt;Upgrade the StorageOS operator using the following yaml manifest.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/{{ site.latest_operator_version}}/storageos-operator.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
+Since, the Update Strategy of the StorageOS Operator Deployment is set to
+rolling update, a new StorageOS Operator Pod will be created. Only when
+the new Pod enters the Running Phase will the old Pod be deleted.
+Your StorageOS Cluster will not be affected while the StorageOS
+Operator is upgrading.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/csi-note/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/csi-note/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;csi-container-storage-interface-note&#34;&gt;CSI (Container Storage Interface) Note&lt;/h2&gt;
+&lt;p&gt;CSI is the standard method of communication that enables storage drivers to
+release on their own schedule. This allows storage vendors to upgrade, update,
+and enhance their drivers without the need to update Kubernetes source code, or
+follow Kubernetes release cycles.&lt;/p&gt;
+&lt;p&gt;CSI is available from Kubernetes 1.9 alpha. CSI is considered GA from
+Kubernetes 1.13, hence StorageOS recommends the use of CSI. In addition, the
+StorageOS Cluster Operator handles the configuration of the CSI driver and its
+complexity by detecting the version of the Kubernetes installed.&lt;/p&gt;
+&lt;p&gt;Check out the status of the CSI release cycle in relation with Kubernetes in
+the &lt;a href=&#34;https://kubernetes-csi.github.io/docs/&#34;&gt;CSI project&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;CSI communication is fully supported by StorageOS if the cluster is deployed
+with any &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration#distribution-specifics&#34;&gt;supported Linux
+Distribution&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/csi-pvc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/csi-pvc/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast-replica&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/csi-sc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/csi-sc/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storage.k8s.io/v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StorageClass&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;fast-replica&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;fsType&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;ext4&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;pool&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;default&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/firstuse/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/firstuse/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;storageos-volume-guide&#34;&gt;StorageOS Volume Guide&lt;/h1&gt;
+&lt;p&gt;As a simple first use of StorageOS with {{ page.platform-pretty }} following the example below will create
+a PersistentVolumeClaim (PVC) and schedule a Pod to mount the PersistentVolume
+(PV) provisioned by the PVC.&lt;/p&gt;
+&lt;h2 id=&#34;creating-the-persistentvolumeclaim&#34;&gt;Creating the PersistentVolumeClaim&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;You can find the latest files in the StorageOS example deployment repository&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/deploy.git storageos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;PVC definition&lt;/p&gt;
+&lt;p&gt;{% include platforms/pvc.md %}&lt;/p&gt;
+&lt;p&gt;The above PVC will dynamically provision a 5GB volume using the fast
+StorageClass. This StorageClass was created during the StorageOS install
+and causes StorageOS to provision a PersistentVolume.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;{% if page.platform == &amp;ldquo;azure-aks&amp;rdquo; %}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;For installations with CSI, you can create multiple StorageClasses to
+specify default labels.
+
+{% include platforms/csi-sc.md %}
+
+The above StorageClass has the `storageos.com/replicas` label set. This label tells
+StorageOS to create a replica for the volume that is created. For the sake
+of keeping this example simple the unreplicated volume will be used.
+
+{% include platforms/csi-pvc.md %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;{% else %}&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% include platforms/pvc-replica.md %}
+
+The above PVC has the `storageos.com/replicas` label set. This label tells
+StorageOS to create a replica for the volume that is created. For the sake
+of keeping this example simple the unreplicated volume will be used.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;{% endif %}&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Move into the examples folder and create a PVC using the PVC definition above.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos
+$ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f ./k8s/examples/pvc.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can view the PVC that you have created with the command below&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; get pvc
+NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+my-vol-1     Bound    pvc-f8ffa027-e821-11e8-bc0b-0ac77ccc61fa   5Gi        RWO            fast           1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a pod that mounts the PVC created in step 2.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; create -f ./k8s/examples/debian-pvc.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The command above creates a Pod that uses the PVC that was created in step 1.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Pod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;d1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;containers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9&lt;/span&gt;-slim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;command&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/bin/sleep&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;args&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3600&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeMounts&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountPath&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;/mnt&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;persistentVolumeClaim&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;claimName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In the Pod definition above the volume v1, which references the PVC created
+in step 2, is mounted in the pod at /mnt. In this example a debian image is
+used for the container but any container image with a shell would work for
+this example.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confirm that the pod is up and running&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; get pods
+NAME      READY   STATUS    RESTARTS   AGE
+d1        1/1     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Execute a shell inside the container and write some contents to a file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt; page.cmd &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; -it d1 -- bash 
+root@d1:/# &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt; &amp;gt; /mnt/helloworld
+root@d1:/# cat /mnt/helloworld
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By writing to /mnt inside the container, the StorageOS volume created by
+the PVC is being written to. If you were to kill the pod and start it again
+on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;{% if page.platformUC == &amp;ldquo;Kubernetes&amp;rdquo; || page.platform == &amp;ldquo;azure-aks&amp;rdquo; %}
+If you wish to see more use cases with actual applications please see our
+[Use Cases]({% link _docs/usecases/kubernetes/index.md %}) documentation.
+{% endif %}&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/kubernetes-with-storageos/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/kubernetes-with-storageos/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;kubernetes-with-storageos&#34;&gt;Kubernetes with StorageOS&lt;/h2&gt;
+&lt;p&gt;Kubernetes and StorageOS communicate with each other to perform actions such as
+creation, deletion or mounting of volumes. The CSI (Container Storage
+Interface) driver is the standard communication method. Using CSI, Kubernetes
+and StorageOS communicate over a Unix domain socket.&lt;/p&gt;
+&lt;p&gt;{% if page.platform == &amp;ldquo;azure-aks&amp;rdquo; or page.platform == &amp;ldquo;aws-eks&amp;rdquo; %}
+For this platform the &lt;strong&gt;only supported&lt;/strong&gt; setup for communication is &lt;strong&gt;CSI&lt;/strong&gt;.
+{% else %}
+The former communication procedure, although still in use, uses REST API calls.
+StorageOS still maintains support for it.
+{% endif %}&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/managedservices-docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/managedservices-docker/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;docker&#34;&gt;Docker&lt;/h2&gt;
+&lt;p&gt;Some managed Kubernetes platforms enable the &amp;lsquo;Live-Restore&amp;rsquo; Docker feature,
+enabling containers to continue running while Docker is stopped or upgraded.
+This feature can cause nodes to hang while shutting-down or rebooting, as
+rather than going through an orderly shutdown, StorageOS (and other processes)
+are killed before the disks are synced and unmounted.  Devices in this
+inaccessible state will log a warning similar to:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Transport endpoint not connected
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To prevent this behaviour, we advise disabling this feature by setting&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    ...
+    &amp;quot;live-restore&amp;quot;: false
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;in &lt;code&gt;/etc/docker/daemon.json&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s an example Ansible snippet that might achieve this&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;...
+- name: configure /etc/docker/daemon.json
+  lineinfile:
+      path: /etc/docker/daemon.json
+      regexp: &#39;^.*&amp;quot;live-restore&amp;quot;: true,$&#39;
+      line: &#39;  &amp;quot;live-restore&amp;quot;: false,&#39;
+      backrefs: yes
+  notify: restart docker
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Use at own risk; you may need to adapt the example to work in your
+environment&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/managedservices-upgrades/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/managedservices-upgrades/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;kubernetes-upgrades&#34;&gt;Kubernetes Upgrades&lt;/h2&gt;
+&lt;p&gt;Currently upgrading the Kubernetes version on {{ page.platform-pretty }}
+&lt;strong&gt;is not supported&lt;/strong&gt;. This is because nodes are replaced rather than being upgraded
+in place. As such manual relocation of data and etcd members is required. We
+are working with the {{ page.platform-pretty }} team to improve the
+upgrade process to create a better user experience.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/openshift-install-4.x/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/openshift-install-4.x/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;openshift--pageoc-version-&#34;&gt;OpenShift {{ page.oc-version }}&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure the
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+satisfied before proceeding.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If you have installed OpenShift {{ page.oc-version  }} in AWS ensure that the
+requisite ports are opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;Installing StorageOS on OpenShift {{ page.oc-version }} has fewer prerequisites
+as compared to previous OpenShift 3.x versions.&lt;/p&gt;
+&lt;p&gt;The recommended way to run StorageOS on OpenShift {{ page.oc-version }} is to
+deploy the StorageOS Cluster Operator using the OperatorHub and bootstrap
+StorageOS using a Custom Resource.&lt;/p&gt;
+&lt;p&gt;Options:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#operatorhub-install&#34;&gt;OperatorHub (Recommended)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#manual-install&#34;&gt;Manual install&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;operatorhub-install&#34;&gt;OperatorHub install&lt;/h2&gt;
+&lt;p&gt;StorageOS has a RedHat OpenShift certified operator in the OpenShift
+OperatorHub. You can install the StorageOS operator through the OperatorHub.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Select the &lt;code&gt;OperatorHub&lt;/code&gt; from the Catalog sub menu and search for StorageOS&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/operatorhub.png&#34; alt=&#34;install-1&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Select StorageOS and click install&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-storageos-operator.png&#34; alt=&#34;install-2&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create the Operator subscription by clicking subscribe&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-operator-subscription.png&#34; alt=&#34;install-3&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wait until the Upgrade Status shows 1 installed&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-complete.png&#34; alt=&#34;install-4&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a secret containing an &lt;code&gt;apiUsername&lt;/code&gt; and an &lt;code&gt;apiPassword&lt;/code&gt; key. The
+username and password defined in the secret will be used to authenticate
+when using the StorageOS CLI and GUI. Take note of which project you created
+the secret in.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-secret.png&#34; alt=&#34;install-5&#34;&gt;
+ 
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-inputs.png&#34; alt=&#34;install-6&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Go to &lt;code&gt;Installed Operators&lt;/code&gt; and select the StorageOS operator. Select
+StorageOS Cluster and create a StorageOS cluster.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-stos.png&#34; alt=&#34;install-7&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The StorageOS cluster resource describes the StorageOS cluster that will be
+created. The &lt;code&gt;secretRefName&lt;/code&gt; and &lt;code&gt;secretRefNamespace&lt;/code&gt; should reference the secret
+containing the &lt;code&gt;apiUsername&lt;/code&gt; and &lt;code&gt;apiPassword&lt;/code&gt; that was previously created.&lt;/p&gt;
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;Cluster Operator
+configuration&lt;/a&gt; page.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; apiVersion: storageos.com/v1
+ kind: StorageOSCluster
+ metadata:
+   name: storageos
+   namespace: openshift-operators
+ spec:
+   secretRefName: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reference the Secret created in the previous step&lt;/span&gt;
+   secretRefNamespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;openshift-operators&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Namespace of the Secret created in the previous step&lt;/span&gt;
+   namespace: kube-system
+   csi:
+     enable: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+     deploymentStrategy: deployment
+   resources:
+     requests:
+     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
+   k8sDistro: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;openshift&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify that the StorageOS Resource enters a running state.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-running.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;{% include platforms/openshift4-selinux.md %}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt; 
+If this is your first installation you may wish to follow the [StorageOS
+Volume guide](/docs/platforms/{{ page.platform }}/firstvolume/) for an example of how
+to mount a StorageOS volume in a Pod.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;h2 id=&#34;manual-install&#34;&gt;Manual install&lt;/h2&gt;
+&lt;p&gt;{% include operator/manual-install-disclaimer.md %}&lt;/p&gt;
+&lt;p&gt;{% include operator/install.md %}&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/openshift-install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/openshift-install/</guid>
+      <description>
+        
+        
+        &lt;h1 id=&#34;openshift--pageoc-version-&#34;&gt;OpenShift {{ page.oc-version }}&lt;/h1&gt;
+&lt;p&gt;The recommended way to run StorageOS on an OpenShift {{ page.oc-version }}
+cluster is to deploy the StorageOS Cluster Operator and bootstrap StorageOS
+using a Custom Resource.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Ensure any firewalls permit the [appropriate ports]({% link
+_docs/prerequisites/firewalls.md %})&lt;/li&gt;
+&lt;li&gt;If your cluster enables SELinux, add the following permissions for each of
+the nodes that run StorageOS.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;setsebool -P virt_sandbox_use_fusefs on
+setsebool -P virt_use_fusefs on
+```
+&amp;gt; The &lt;code&gt;-P&lt;/code&gt; option makes the change persistent after reboots.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ensure that your docker installation has mount propagation enabled per our
+[mount propagation prerequisites]({% link _docs/prerequisites/mountpropagation.md %})&lt;/li&gt;
+&lt;li&gt;Enable the &lt;code&gt;MountPropagation&lt;/code&gt; flag by appending feature gates to the api and
+controller (you can apply these changes using the Ansible Playbooks)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: If you are using atomic installation rather than origin, the location of
+the yaml config files and service names might change.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add to the KubernetesMasterConfig section (/etc/origin/master/master-config.yaml):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;kubernetesMasterConfig:
+apiServerArguments:
+feature-gates:
+- MountPropagation=true
+controllerArguments:
+feature-gates:
+- MountPropagation=true
+```&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add to the feature-gates to the kubelet arguments (/etc/origin/node/node-config.yaml):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;kubeletArguments:
+feature-gates:
+- MountPropagation=true
+```&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Warning:&lt;/strong&gt; Restarting OpenShift services can cause downtime in the cluster.
+{% if page.oc-version == &amp;lsquo;3.10&amp;rsquo; or page.oc-version == &amp;lsquo;3.11&amp;rsquo; %}&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Restart services in the MasterNode/s
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;master-restart api
+master-restart controllers&lt;/p&gt;
+&lt;h1 id=&#34;restart-kubelet&#34;&gt;Restart kubelet&lt;/h1&gt;
+&lt;p&gt;systemctl restart atomic-openshift-node.service&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+- Restart service in all Nodes 
+```bash
+# Restart kubelet
+systemctl restart atomic-openshift-node.service
+ ```
+{% else %}
+- Restart services in the MasterNode `origin-master-api.service`,
+`origin-master-controllers.service` and `origin-node.service`
+- Restart service in all Nodes `origin-node.service`
+
+&amp;gt; Usually through `systemctl restart (origin-node.service|atomic-openshift-node.service)`
+{% endif %}
+
+
+&amp;amp;nbsp;
+
+# Install
+
+{% include operator/install.md %}
+&lt;/code&gt;&lt;/pre&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/openshift4-selinux/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/openshift4-selinux/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The StorageOS CSI helper needs to mount a CSI Socket into the container so
+on each node add the &lt;code&gt;svirt_sandbox_file_t&lt;/code&gt; flag to the CSI socket directory
+and CSI socket.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; chcon -Rt svirt_sandbox_file_t /var/lib/kubelet/plugins_registry/storageos
+ &lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;`&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/pvc-replica/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/pvc-replica/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Share: </title>
+      <link>https://docs.storageos.com/share/platforms/pvc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/share/platforms/pvc/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+  </channel>
+</rss>

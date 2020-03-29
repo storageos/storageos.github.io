@@ -1532,13 +1532,13 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you have installed OpenShift 4.2 in AWS ensure that the
+&lt;p&gt;If you have installed OpenShift 4.3 in AWS ensure that the
 requisite ports are opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt; &lt;/p&gt;
-&lt;p&gt;Installing StorageOS on OpenShift 4.2 has fewer prerequisites
+&lt;p&gt;Installing StorageOS on OpenShift 4.3 has fewer prerequisites
 as compared to previous OpenShift 3.x versions.&lt;/p&gt;
-&lt;p&gt;The recommended way to run StorageOS on OpenShift 4.2 is to
+&lt;p&gt;The recommended way to run StorageOS on OpenShift 4.3 is to
 deploy the StorageOS Cluster Operator using the OperatorHub and bootstrap
 StorageOS using a Custom Resource.&lt;/p&gt;
 &lt;p&gt;Options:&lt;/p&gt;

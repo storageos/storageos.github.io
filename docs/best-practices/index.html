@@ -25,11 +25,11 @@
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/best-practices/" />
-<meta property="article:modified_time" content="2020-03-18T18:14:56+00:00" />
+<meta property="article:modified_time" content="2020-03-27T12:44:42+00:00" />
 <meta itemprop="name" content="StorageOS Best Practices">
 <meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
-<meta itemprop="dateModified" content="2020-03-18T18:14:56&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-27T12:44:42&#43;00:00" />
 <meta itemprop="wordCount" content="645">
 
 
@@ -155,7 +155,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6601cd4bd01fb6bc7202dfc26aeef3411b9e2b81743043fc58ad97ed4e0f9a16a0db522268853be094e021ef545d73c45a8274da4136706964b8afbfb43c512a.json"
+  data-offline-search-index-json-src="/offline-search-index.b126f79748b6c3f3c0a456dee9cd2d0c3d02bc4c0f5e0834d801b8ace8a983d83ed6c9f5cb6253497d989e79a0b8dc2abab6a707f80216713d54b20acc9474f9.json"
   data-offline-search-base-href="/"
 >
 
@@ -402,6 +402,59 @@ It is highly recommended to use external etcd for cloud environments and place t
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsinstallrancher" href="/docs/install/rancher/">Rancher</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/platforms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Platforms</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsplatforms">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsplatformsaws-eks" href="/docs/platforms/aws-eks/">AWS EKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsplatformsazure-aks" href="/docs/platforms/azure-aks/">Azure AKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsplatformsdockeree" href="/docs/platforms/dockeree/">DockerEE</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsplatformsopenshift" href="/docs/platforms/openshift/">OpenShift</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsplatformsrancher" href="/docs/platforms/rancher/">Rancher</a>
       
       
     </li>
@@ -891,59 +944,6 @@ It is highly recommended to use external etcd for cloud environments and place t
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/platforms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Platforms</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferenceplatforms">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsaws-eks" href="/docs/reference/platforms/aws-eks/">AWS EKS</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsazure-aks" href="/docs/reference/platforms/azure-aks/">Azure AKS</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsdockeree" href="/docs/reference/platforms/dockeree/">DockerEE</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsopenshift" href="/docs/reference/platforms/openshift/">OpenShift</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceplatformsrancher" href="/docs/reference/platforms/rancher/">Rancher</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
@@ -1147,7 +1147,7 @@ nodes.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/c2b5b0f0d50f666db5730c7a2af3868ace6173e7">Best practices in its own section (c2b5b0f)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 27, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/70560736050c80123819b261862d9ff6eda36618">Move platforms supported to its own section (7056073)</a>
 </div>
 </div>
 

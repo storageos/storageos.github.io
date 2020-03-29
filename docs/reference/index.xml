@@ -5581,21 +5581,6 @@ limitations under the License.
     </item>
     
     <item>
-      <title>Docs: Platforms</title>
-      <link>https://docs.storageos.com/docs/reference/platforms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/platforms/</guid>
-      <description>
-        
-        
-        &lt;p&gt;While StorageOS is platform agnostic, there are certain configurations
-or operations that relate to a specific platform.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>Docs: Prometheus</title>
       <link>https://docs.storageos.com/docs/reference/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

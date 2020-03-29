@@ -3987,14 +3987,15 @@ reduce network traffic.&lt;/p&gt;
     
     <item>
       <title>Docs: AWS EKS</title>
-      <link>https://docs.storageos.com/docs/reference/platforms/aws-eks/</link>
+      <link>https://docs.storageos.com/docs/platforms/aws-eks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/platforms/aws-eks/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/aws-eks/</guid>
       <description>
         
         
-        &lt;p&gt;StorageOS is fully compatible with AWS EKS.&lt;/p&gt;
+        &lt;p&gt;StorageOS is fully compatible with AWS EKS. To install StorageOS on EKS, please
+follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An EKS deployment of Kubernetes uses AWS Linux by default with an optimized
 kernel. As the requisite kernel modules are not available for StorageOS to use
 TCMU, FUSE will be used as a fallback. Using FUSE instead of TCMU has
@@ -4008,14 +4009,15 @@ page.&lt;/p&gt;
     
     <item>
       <title>Docs: Azure AKS</title>
-      <link>https://docs.storageos.com/docs/reference/platforms/azure-aks/</link>
+      <link>https://docs.storageos.com/docs/platforms/azure-aks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/platforms/azure-aks/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/azure-aks/</guid>
       <description>
         
         
-        &lt;p&gt;StorageOS is fully compatible with Azure AKS.&lt;/p&gt;
+        &lt;p&gt;StorageOS is fully compatible with Azure AKS. To install StorageOS on AKS
+please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An AKS deployment of Kubernetes uses Ubuntu by default with an optimized
 kernel. All versions of Ubuntu with a kernel version later
 than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.&lt;/p&gt;
@@ -4645,14 +4647,16 @@ node03
     
     <item>
       <title>Docs: Docker Enterprise Edition</title>
-      <link>https://docs.storageos.com/docs/reference/platforms/dockeree/</link>
+      <link>https://docs.storageos.com/docs/platforms/dockeree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/platforms/dockeree/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/dockeree/</guid>
       <description>
         
         
-        &lt;p&gt;Docker EE and the Universal Control Plane can run on different Linux
+        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation
+instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;Docker EE and the Universal Control Plane can run on different Linux
 distributions. StorageOS supports RHEL, CentOS, Debian, and selected Ubuntu
 images. For more details, check out the supported OSs in the
 &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;

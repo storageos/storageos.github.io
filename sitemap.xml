@@ -458,6 +458,16 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/concepts/sharedfs/</loc>
+    <lastmod>2020-03-30T09:40:24+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/sharedfs/</loc>
+    <lastmod>2020-03-30T09:40:24+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/</loc>
     <lastmod>2020-02-07T17:59:40+00:00</lastmod>
   </url>

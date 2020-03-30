@@ -554,6 +554,95 @@ action would be to add the label &lt;code&gt;storageos.com/replicas=2&lt;/code&g
     </item>
     
     <item>
+      <title>Docs: Shared Filesystem</title>
+      <link>https://docs.storageos.com/docs/concepts/sharedfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/concepts/sharedfs/</guid>
+      <description>
+        
+        
+        &lt;blockquote&gt;
+&lt;p&gt;Shared filesystems in the 1.5.3 release are
+currently in Technology Preview. This &lt;strong&gt;experimental feature&lt;/strong&gt; is not yet
+intended for production use.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Shared Filesystem support allows volumes to be mounted for read &amp;amp; write access
+by multiple containers simultaneously, even from different nodes.  In
+Kubernetes, shared filesystems are referred to as &lt;code&gt;ReadWriteMany&lt;/code&gt; or RWX
+volumes.&lt;/p&gt;
+&lt;p&gt;Follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/sharedfs/&#34;&gt;Operations page&lt;/a&gt; to learn
+how to deploy and use &lt;code&gt;ReadWriteMany&lt;/code&gt; PersistentVolumeClaims (PVCs).&lt;/p&gt;
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;The default StorageOS StorageClass can create volumes with either
+&lt;code&gt;ReadWriteOnce&lt;/code&gt; (RWO) or &lt;code&gt;ReadWriteMany&lt;/code&gt; (RWX)
+&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes&#34;&gt;AccessModes&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When requesting a RWX PVC, StorageOS will provision a standard RWO volume
+and mount the volume into an NFS server instance dedicated to this volume.&lt;/p&gt;
+&lt;p&gt;The NFS server is provisioned as a StatefulSet, which is created by the
+StorageOS Cluster Operator using an &lt;code&gt;NFSServer&lt;/code&gt; Custom Resource Definition. The
+configuration of the NFS server is stored in a ConfigMap. The ConfigMap defines
+the export location matching the RWO volume that StorageOS dynamically
+provisioned to back the NFS server.&lt;/p&gt;
+&lt;p&gt;Separate Services are defined for the NFS traffic and for HTTP-based health and
+metrics traffic.&lt;/p&gt;
+&lt;p&gt;The NFS traffic Service is on port &lt;code&gt;2049&lt;/code&gt; and uses TCP only to allow simple
+exposure to clients outside the Kubernetes cluster.  Clients must be capable of
+NFS version 4.2 which has numerous (primarily performance) advantages over
+previous revisions.&lt;/p&gt;
+&lt;p&gt;The StorageOS NFS server exposes a health endpoint on
+&lt;code&gt;http://&amp;lt;PodIP&amp;gt;:80/healthz&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;HTTP 200/OK&lt;/code&gt; will be returned when the server is
+operational and sending heartbeat messages.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;HTTP 503/Service Unavailable&lt;/code&gt; will be returned if the server hasn&amp;rsquo;t sent a
+heartbeat message within 10 seconds.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Prometheus metrics for the NFS server, clients and IO activity are available on
+&lt;code&gt;http://&amp;lt;PodIP&amp;gt;:80/metrics&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Details of the StorageOS NFS Server implementation are available on
+&lt;a href=&#34;https://github.com/storageos/nfs&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/rwx/rwx.png&#34; alt=&#34;rwx&#34;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;The NFS server Pod and the RWO StorageOS volume are placed in the same
+Namespace as the RWX PVC.&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/rwx/rwx-ns.png&#34; alt=&#34;rwx&#34;&gt;&lt;/p&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;The NFS server StatefulSet is named after the RWO Persistent Volume.
+Therefore the NFS Pod will be named in the form of &lt;code&gt;pvc-${UID}-0&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Once the NFS server is healthy and sharing the RWO volume&amp;rsquo;s filesystem, the
+RWX volume is available for use.  It takes slightly longer to provision a
+RWX volume for the first time as the NFS server image has to be pulled.&lt;/p&gt;
+&lt;p&gt;The StorageOS RWO backing volume will be updated with labels:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;storageos.com/nfs.server&lt;/code&gt;: NFS server endpoint.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;storageos.com/nfs.share&lt;/code&gt;: NFS share path.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The RWX Volume is a Kubernetes construct backed by StorageOS Volumes,
+therefore the StorageOS API will not report on shared volumes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;labels&#34;&gt;Labels&lt;/h2&gt;
+&lt;p&gt;StorageOS uses labels to apply behaviour regarding the Volumes. &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;Feature
+labels&lt;/a&gt; can be passed to the RWX PVC to
+ensure that the underlying StorageOS volume backing the NFS server implements
+those features&lt;/p&gt;
+&lt;p&gt;For instance, to enable replication, set the label &lt;code&gt;storageos.com/replicas: 1&lt;/code&gt;
+in the RWX PVC metadata.&lt;/p&gt;
+&lt;h2 id=&#34;fencing&#34;&gt;Fencing&lt;/h2&gt;
+&lt;p&gt;StorageOS implements &lt;a href=&#34;https://docs.storageos.com/docs/concepts/fencing/&#34;&gt;fencing&lt;/a&gt; for
+StatefulSet based pods. When replication has been enabled, the NFS server will
+use the fencing feature to ensure rapid failover when the node fails.&lt;/p&gt;
+&lt;h2 id=&#34;csi&#34;&gt;CSI&lt;/h2&gt;
+&lt;p&gt;Shared Filesystems / RWX volumes are only supported by StorageOS when using CSI
+(Container Storage Interface).&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Volumes</title>
       <link>https://docs.storageos.com/docs/concepts/volumes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

@@ -1122,6 +1122,130 @@ default/prod-marker
     </item>
     
     <item>
+      <title>Docs: Shared Filesystem</title>
+      <link>https://docs.storageos.com/docs/operations/sharedfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/sharedfs/</guid>
+      <description>
+        
+        
+        &lt;blockquote&gt;
+&lt;p&gt;Shared filesystems in the 1.5.3 release are
+currently in Technology Preview, and are only available using the CSI driver.
+This &lt;strong&gt;experimental feature&lt;/strong&gt; is not yet intended for production use.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Shared Filesystem support allows volumes to be mounted for read &amp;amp; write access
+by multiple containers simultaneously, even from different nodes.  In
+Kubernetes, shared filesystems are referred to as &lt;code&gt;ReadWriteMany&lt;/code&gt; or RWX
+volumes.&lt;/p&gt;
+&lt;p&gt;See the &lt;a href=&#34;https://docs.storageos.com/docs/concepts/sharedfs/&#34;&gt;architecture&lt;/a&gt; for more
+information about the Shared Filesystem components.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-provision-readwritemany-volumes&#34;&gt;How to provision ReadWriteMany Volumes&lt;/h2&gt;
+&lt;p&gt;RWX Volumes are dynamically provisioned by StorageOS when using a StorageOS
+Kubernetes StorageClass. To create an RWX volume set the AccessMode
+for the PVC to &lt;code&gt;ReadWriteMany&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;An example of a RWX PersistentVolumeClaim is shown below:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: shared-vol
+  labels:
+    storageos.com/replicas: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Enable features using Labels&lt;/span&gt;
+                                &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# You can enable replication in the&lt;/span&gt;
+                                &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageClass params to set defaults&lt;/span&gt;
+spec:
+  storageClassName: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS StorageClass&lt;/span&gt;
+  accessModes:
+    - ReadWriteMany &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# AccessMode that triggers creation of an NFS based StorageOS Volume&lt;/span&gt;
+  resources:
+    requests:
+      storage: 20Gi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The following Deployment example shows how multiple Nginx Pods can mount the
+same shared filesystem PVC.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  replicas: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;80&lt;/span&gt;
+        volumeMounts:
+        - name: docroot
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: docroot
+        persistentVolumeClaim:
+          claimName: shared-vol
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Only installations of StorageOS using CSI support RWX Volumes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;volume-deletion&#34;&gt;Volume Deletion&lt;/h2&gt;
+&lt;p&gt;Shared volumes can be deleted through standard Kubernetes PVC deletion. When
+a RWX PVC is deleted, StorageOS acts differently according to the
+&lt;code&gt;ReclaimPolicy&lt;/code&gt; of the PVC. For more information about the &lt;code&gt;ReclaimPolicy&lt;/code&gt;
+field see the &lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#reclaiming&#34;&gt;Kubernetes
+Documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;reclaim-policy&#34;&gt;Reclaim Policy&lt;/h3&gt;
+&lt;p&gt;The default reclaim policy for a PVC, PV pair is defined in the StorageClass.
+All PVs created by a StorageClass inherit the &lt;code&gt;reclaimPolicy&lt;/code&gt; set
+in the StorageClass.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  labels:
+    app: storageos
+  name: storageos
+parameters:
+  csi.storage.k8s.io/fstype: ext4
+  pool: default
+provisioner: storageos
+reclaimPolicy: Delete &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;lt;----- Default reclaim policy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Delete (default)&lt;/p&gt;
+&lt;p&gt;If the RWX PVC is deleted then the RWX PV is deleted along with the NFS server
+StatefulSet and its underlying RWO volume. As such data written to the RWX
+volume is non-recoverable after deletion.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Retain&lt;/p&gt;
+&lt;p&gt;The RWX PVC is deleted but the PV remains available. The NFS server StatefulSet
+remains untouched along with its associated RWO PVC. Hence, it is possible to
+reuse the volume and have access to data written to the RWX volume after the
+RWX PVC has been deleted.&lt;/p&gt;
+&lt;p&gt;In order to reuse the NFS server to serve a different RWX PVC, it is is
+necessary to &amp;ldquo;unlock&amp;rdquo; the PV, which only Kubernetes administrators with
+privileges can do. The PV is &amp;ldquo;unlocked&amp;rdquo; by deleteing the &lt;code&gt;spec.claimRef&lt;/code&gt; field
+from the PV.&lt;/p&gt;
+&lt;p&gt;For instance given a RWX PVC,&lt;code&gt;pvc-1&lt;/code&gt; was bound to the PV &lt;code&gt;pv-1&lt;/code&gt;, before
+&lt;code&gt;pvc-1&lt;/code&gt; was deleted. Then in order to reuse &lt;code&gt;pv-1&lt;/code&gt; edit the PV, i.e &lt;code&gt;kubectl edit pv pv-1&lt;/code&gt; and delete the &lt;code&gt;spec.claimRef&lt;/code&gt; attribute.&lt;/p&gt;
+&lt;p&gt;Deletion of the &lt;code&gt;spec.claimRef&lt;/code&gt; field makes the PV available for any new PVC
+whose requirements are met by the PV. Therefore creating a new RWX volume
+with the previously used; StorageClass, capacity, access type and filesystem
+will make the PVC bind to the previously used RWX PV, even if the new PVC is
+provisioned in a different namespace.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Troubleshooting</title>
       <link>https://docs.storageos.com/docs/operations/troubleshooting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

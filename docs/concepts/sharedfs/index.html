@@ -20,27 +20,27 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Decommissioning StorageOS Nodes | </title><meta property="og:title" content="Decommissioning StorageOS Nodes" />
-<meta property="og:description" content="StorageOS nodes can be decommissioned and removed from the cluster using the StorageOS CLI.
- This functionality is only available when StorageOS is deployed with KV_BACKEND=etcd, so the KV store is external to StorageOS.
- There are safeguards to make sure data is not lost unintentionally. Only nodes in state Offline can be removed from the StorageOS cluster. Note that once removed from the cluster, nodes may not partake in StorageOS operations, and may not run container applications that require StorageOS backed persistent storage." />
+<title>Shared Filesystem | </title><meta property="og:title" content="Shared Filesystem" />
+<meta property="og:description" content="Shared filesystems in the 1.5.3 release are currently in Technology Preview. This experimental feature is not yet intended for production use.
+ Shared Filesystem support allows volumes to be mounted for read &amp; write access by multiple containers simultaneously, even from different nodes. In Kubernetes, shared filesystems are referred to as ReadWriteMany or RWX volumes.
+Follow the Operations page to learn how to deploy and use ReadWriteMany PersistentVolumeClaims (PVCs)." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://docs.storageos.com/docs/operations/decommission-nodes/" />
-<meta property="article:modified_time" content="2020-02-20T13:45:27+00:00" />
-<meta itemprop="name" content="Decommissioning StorageOS Nodes">
-<meta itemprop="description" content="StorageOS nodes can be decommissioned and removed from the cluster using the StorageOS CLI.
- This functionality is only available when StorageOS is deployed with KV_BACKEND=etcd, so the KV store is external to StorageOS.
- There are safeguards to make sure data is not lost unintentionally. Only nodes in state Offline can be removed from the StorageOS cluster. Note that once removed from the cluster, nodes may not partake in StorageOS operations, and may not run container applications that require StorageOS backed persistent storage.">
-<meta itemprop="dateModified" content="2020-02-20T13:45:27&#43;00:00" />
-<meta itemprop="wordCount" content="171">
+<meta property="og:url" content="https://docs.storageos.com/docs/concepts/sharedfs/" />
+<meta property="article:modified_time" content="2020-03-30T09:40:24+01:00" />
+<meta itemprop="name" content="Shared Filesystem">
+<meta itemprop="description" content="Shared filesystems in the 1.5.3 release are currently in Technology Preview. This experimental feature is not yet intended for production use.
+ Shared Filesystem support allows volumes to be mounted for read &amp; write access by multiple containers simultaneously, even from different nodes. In Kubernetes, shared filesystems are referred to as ReadWriteMany or RWX volumes.
+Follow the Operations page to learn how to deploy and use ReadWriteMany PersistentVolumeClaims (PVCs).">
+<meta itemprop="dateModified" content="2020-03-30T09:40:24&#43;01:00" />
+<meta itemprop="wordCount" content="497">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Decommissioning StorageOS Nodes"/>
-<meta name="twitter:description" content="StorageOS nodes can be decommissioned and removed from the cluster using the StorageOS CLI.
- This functionality is only available when StorageOS is deployed with KV_BACKEND=etcd, so the KV store is external to StorageOS.
- There are safeguards to make sure data is not lost unintentionally. Only nodes in state Offline can be removed from the StorageOS cluster. Note that once removed from the cluster, nodes may not partake in StorageOS operations, and may not run container applications that require StorageOS backed persistent storage."/>
+<meta name="twitter:title" content="Shared Filesystem"/>
+<meta name="twitter:description" content="Shared filesystems in the 1.5.3 release are currently in Technology Preview. This experimental feature is not yet intended for production use.
+ Shared Filesystem support allows volumes to be mounted for read &amp; write access by multiple containers simultaneously, even from different nodes. In Kubernetes, shared filesystems are referred to as ReadWriteMany or RWX volumes.
+Follow the Operations page to learn how to deploy and use ReadWriteMany PersistentVolumeClaims (PVCs)."/>
 
 
 
@@ -64,7 +64,7 @@
 <script> (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1025326,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); </script>
 <script src="/js/enable-link-tab.js"></script>
 
-    <title>Decommissioning StorageOS Nodes | </title>
+    <title>Shared Filesystem | </title>
   </head>
   <body class="td-page">
     <header>
@@ -240,10 +240,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
+    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Concepts</a>
   </li>
   <ul>
-    <li class="collapse " id="docsconcepts">
+    <li class="collapse show" id="docsconcepts">
       
       
       
@@ -322,7 +322,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -488,10 +488,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Operations</a>
+    <a  href="/docs/operations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Operations</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsoperations">
+    <li class="collapse " id="docsoperations">
       
       
       
@@ -504,7 +504,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
       
       
       
@@ -1024,8 +1024,8 @@
 
 
 
-<a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/operations/decommission-nodes.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Decommissioning%20StorageOS%20Nodes" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/concepts/sharedfs.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
+<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Shared%20Filesystem" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/storageos/storageos.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -1036,6 +1036,15 @@
 
 
 
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#labels">Labels</a></li>
+    <li><a href="#fencing">Fencing</a></li>
+    <li><a href="#csi">CSI</a></li>
+  </ul>
+</nav>
 
 
 
@@ -1065,14 +1074,14 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/operations/">Operations</a>
+	<a href="https://docs.storageos.com/docs/concepts/">Concepts</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://docs.storageos.com/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
+	<a href="https://docs.storageos.com/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
 </li>
 
 	</ol>
@@ -1080,50 +1089,88 @@
 
             
 <div class="td-content">
-	<h1>Decommissioning StorageOS Nodes</h1>
+	<h1>Shared Filesystem</h1>
 	
-	<p>StorageOS nodes can be decommissioned and removed from the cluster using the
-StorageOS CLI.</p>
+	<blockquote>
+<p>Shared filesystems in the 1.5.3 release are
+currently in Technology Preview. This <strong>experimental feature</strong> is not yet
+intended for production use.</p>
+</blockquote>
+<p>Shared Filesystem support allows volumes to be mounted for read &amp; write access
+by multiple containers simultaneously, even from different nodes.  In
+Kubernetes, shared filesystems are referred to as <code>ReadWriteMany</code> or RWX
+volumes.</p>
+<p>Follow the <a href="https://docs.storageos.com/docs/operations/sharedfs/">Operations page</a> to learn
+how to deploy and use <code>ReadWriteMany</code> PersistentVolumeClaims (PVCs).</p>
+<h2 id="architecture">Architecture</h2>
+<p>The default StorageOS StorageClass can create volumes with either
+<code>ReadWriteOnce</code> (RWO) or <code>ReadWriteMany</code> (RWX)
+<a href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes">AccessModes</a>.</p>
+<p>When requesting a RWX PVC, StorageOS will provision a standard RWO volume
+and mount the volume into an NFS server instance dedicated to this volume.</p>
+<p>The NFS server is provisioned as a StatefulSet, which is created by the
+StorageOS Cluster Operator using an <code>NFSServer</code> Custom Resource Definition. The
+configuration of the NFS server is stored in a ConfigMap. The ConfigMap defines
+the export location matching the RWO volume that StorageOS dynamically
+provisioned to back the NFS server.</p>
+<p>Separate Services are defined for the NFS traffic and for HTTP-based health and
+metrics traffic.</p>
+<p>The NFS traffic Service is on port <code>2049</code> and uses TCP only to allow simple
+exposure to clients outside the Kubernetes cluster.  Clients must be capable of
+NFS version 4.2 which has numerous (primarily performance) advantages over
+previous revisions.</p>
+<p>The StorageOS NFS server exposes a health endpoint on
+<code>http://&lt;PodIP&gt;:80/healthz</code>.</p>
+<ul>
+<li><code>HTTP 200/OK</code> will be returned when the server is
+operational and sending heartbeat messages.</li>
+<li><code>HTTP 503/Service Unavailable</code> will be returned if the server hasn&rsquo;t sent a
+heartbeat message within 10 seconds.</li>
+</ul>
+<p>Prometheus metrics for the NFS server, clients and IO activity are available on
+<code>http://&lt;PodIP&gt;:80/metrics</code>.</p>
+<p>Details of the StorageOS NFS Server implementation are available on
+<a href="https://github.com/storageos/nfs">Github</a>.</p>
+<p> </p>
+<p><img src="/images/rwx/rwx.png" alt="rwx"></p>
+<p> </p>
+<p>The NFS server Pod and the RWO StorageOS volume are placed in the same
+Namespace as the RWX PVC.</p>
+<p> </p>
+<p><img src="/images/rwx/rwx-ns.png" alt="rwx"></p>
+<p> </p>
+<p>The NFS server StatefulSet is named after the RWO Persistent Volume.
+Therefore the NFS Pod will be named in the form of <code>pvc-${UID}-0</code>.</p>
+<p>Once the NFS server is healthy and sharing the RWO volume&rsquo;s filesystem, the
+RWX volume is available for use.  It takes slightly longer to provision a
+RWX volume for the first time as the NFS server image has to be pulled.</p>
+<p>The StorageOS RWO backing volume will be updated with labels:</p>
+<ul>
+<li><code>storageos.com/nfs.server</code>: NFS server endpoint.</li>
+<li><code>storageos.com/nfs.share</code>: NFS share path.</li>
+</ul>
 <blockquote>
-<p>This functionality is only available when StorageOS is deployed with
-<code>KV_BACKEND=etcd</code>, so the KV store is external to StorageOS.</p>
+<p>The RWX Volume is a Kubernetes construct backed by StorageOS Volumes,
+therefore the StorageOS API will not report on shared volumes.</p>
 </blockquote>
-<p>There are safeguards to make sure data is not lost unintentionally. Only nodes
-in state <code>Offline</code> can be removed from the StorageOS cluster. Note that once
-removed from the cluster, nodes may not partake in StorageOS operations, and
-may not run container applications that require StorageOS backed persistent
-storage.</p>
-<p>The recommended procedure is as follows.</p>
-<ol>
-<li>
-<p>Cordon the node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos node cordon node03
-node03
-</code></pre></div></li>
-<li>
-<p>Drain the node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos node drain node03
-node03
-</code></pre></div><blockquote>
-<p>Wait until the node drain is finished. Check the volumes located on that
-node with <code>storageos node ls</code> and wait until there are no Masters or
-Replicas on the drained node. If there are no eligible nodes for
-replicas to be created on, the drained node will keep hosting them.</p>
-</blockquote>
-</li>
-<li>
-<p>Stop the node</p>
-</li>
-<li>
-<p>Delete the node from the cluster</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos node delete node03
-node03
-</code></pre></div></li>
-</ol>
+<h2 id="labels">Labels</h2>
+<p>StorageOS uses labels to apply behaviour regarding the Volumes. <a href="https://docs.storageos.com/docs/reference/labels/">Feature
+labels</a> can be passed to the RWX PVC to
+ensure that the underlying StorageOS volume backing the NFS server implements
+those features</p>
+<p>For instance, to enable replication, set the label <code>storageos.com/replicas: 1</code>
+in the RWX PVC metadata.</p>
+<h2 id="fencing">Fencing</h2>
+<p>StorageOS implements <a href="https://docs.storageos.com/docs/concepts/fencing/">fencing</a> for
+StatefulSet based pods. When replication has been enabled, the NFS server will
+use the fencing feature to ensure rapid failover when the node fails.</p>
+<h2 id="csi">CSI</h2>
+<p>Shared Filesystems / RWX volumes are only supported by StorageOS when using CSI
+(Container Storage Interface).</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 20, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/3412f158d922f0f3cfff9212b3d8e4323c5cc1fe">Remove broken link (3412f15)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 30, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/078bb7d51e72e482e9ae9d329dd08afc9101edd4">Missing RWX notes (078bb7d)</a>
 </div>
 </div>
 

@@ -27,13 +27,13 @@
 $ storageos user create jim --groups qa The above command will create a user named jim and add them to the group qa." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/users/" />
-<meta property="article:modified_time" content="2020-03-15T10:03:20+00:00" />
+<meta property="article:modified_time" content="2020-03-24T16:34:24+00:00" />
 <meta itemprop="name" content="User Management">
 <meta itemprop="description" content="A StorageOS cluster admin can create users and restrict their access rights to StorageOS namespaces using policies.
  Note: Users are created with access to the default namespace. This access is only revoked when a policy is created for the user or their group.
  Creating users To create a user with the CLI, run:
 $ storageos user create jim --groups qa The above command will create a user named jim and add them to the group qa.">
-<meta itemprop="dateModified" content="2020-03-15T10:03:20&#43;00:00" />
+<meta itemprop="dateModified" content="2020-03-24T16:34:24&#43;00:00" />
 <meta itemprop="wordCount" content="338">
 
 
@@ -144,6 +144,8 @@ $ storageos user create jim --groups qa The above command will create a user nam
 	
 	<a class="dropdown-item" href="/">v1.x</a>
 	
+	<a class="dropdown-item" href="/v2">v2.0</a>
+	
 </div>
 
 			</li>
@@ -161,7 +163,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ed184cf569b123e78ae31e9835e050ee998dd9a3b06ce0c9eb750345fa34a414dd45f4b03b981a494c2e9797682b9c48b401bfc85b3186059f50b21b4dc2630c.json"
+  data-offline-search-index-json-src="/offline-search-index.557427c5d98f6866546107c119e52f402b39341a299d5969b86d5fc0a4d9fb80afa4401940acdc4e0073f06999a62708d4158cc7bf4b08d21b2d6436bea3510c.json"
   data-offline-search-base-href="/"
 >
 
@@ -526,7 +528,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">ETCD</a>
+    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
     <li class="collapse " id="docsoperationsexternal-etcd">
@@ -1139,7 +1141,7 @@ update has use the command below:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user rm jim
 </code></pre></div><h2 id="altering-the-storageos-api-account">Altering the StorageOS API account</h2>
 <p>When installing with the StorageOS Operator, the StorageOS API account is
-defined by the <a href="/docs/install/kubernetes/install/1.13#create-a-secret">storageos-api
+defined by the <a href="/docs/install/kubernetes/install/">storageos-api
 secret</a>.</p>
 <p>For installations using the native driver, Kubernetes uses the account defined
 in the secret to authenticate against the StorageOS API. Therefore if the
@@ -1156,7 +1158,7 @@ via the CSI socket, the secret is not used after cluster bootstrapping.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 15, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/6dc4029775ed87366187bd3e4b25d9efc146519c">Add install section instead of platforms (6dc4029)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 24, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/d74acf713d3077771efd254ab2553c5062c58189">Apply structure changes from v1 to v2 (d74acf7)</a>
 </div>
 </div>
 

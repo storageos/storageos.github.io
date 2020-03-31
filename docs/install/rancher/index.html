@@ -32,7 +32,7 @@
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
    Catalog Advanced    Rancher Catalog Install StorageOS is a Certified application in the Rancher Catalog.">
 <meta itemprop="dateModified" content="2020-03-29T19:02:06&#43;01:00" />
-<meta itemprop="wordCount" content="1176">
+<meta itemprop="wordCount" content="1181">
 
 
 
@@ -141,6 +141,8 @@
 	
 	<a class="dropdown-item" href="/">v1.x</a>
 	
+	<a class="dropdown-item" href="/v2">v2.0</a>
+	
 </div>
 
 			</li>
@@ -158,7 +160,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ed184cf569b123e78ae31e9835e050ee998dd9a3b06ce0c9eb750345fa34a414dd45f4b03b981a494c2e9797682b9c48b401bfc85b3186059f50b21b4dc2630c.json"
+  data-offline-search-index-json-src="/offline-search-index.557427c5d98f6866546107c119e52f402b39341a299d5969b86d5fc0a4d9fb80afa4401940acdc4e0073f06999a62708d4158cc7bf4b08d21b2d6436bea3510c.json"
   data-offline-search-base-href="/"
 >
 
@@ -523,7 +525,7 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">ETCD</a>
+    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
     <li class="collapse " id="docsoperationsexternal-etcd">
@@ -1332,8 +1334,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   <span style="co
 </blockquote>
 <h2 id="2-create-a-secret">2. Create a Secret</h2>
 <p>Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.</p>
-<p>The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.</p>
@@ -1399,6 +1401,7 @@ store for StorageOS in the <a href="https://docs.storageos.com/docs/reference/cl
 <h3 id="verify-storageos-installation">Verify StorageOS Installation</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos get pods -w</span>
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-75f6c               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-czbqx               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-zv4tq               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
@@ -1424,7 +1427,7 @@ to mount a StorageOS volume in a Pod.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 29, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/28a54fbecb2273d6443f26a89d13b76262632273">Add more aliases (28a54fb)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 29, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/a3ffe66490ac0884c9d8663bd672971470409735">Add more aliases (a3ffe66)</a>
 </div>
 </div>
 

@@ -21,14 +21,14 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>ETCD | </title><meta property="og:title" content="ETCD" />
+<title>Etcd | </title><meta property="og:title" content="Etcd" />
 <meta property="og:description" content="StorageOS Documentation" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/external-etcd/" />
 
-<meta itemprop="name" content="ETCD">
+<meta itemprop="name" content="Etcd">
 <meta itemprop="description" content="StorageOS Documentation"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="ETCD"/>
+<meta name="twitter:title" content="Etcd"/>
 <meta name="twitter:description" content="StorageOS Documentation"/>
 
 
@@ -53,7 +53,7 @@
 <script> (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1025326,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); </script>
 <script src="/js/enable-link-tab.js"></script>
 
-    <title>ETCD | </title>
+    <title>Etcd | </title>
   </head>
   <body class="td-section">
     <header>
@@ -130,6 +130,8 @@
 	
 	<a class="dropdown-item" href="/">v1.x</a>
 	
+	<a class="dropdown-item" href="/v2">v2.0</a>
+	
 </div>
 
 			</li>
@@ -147,7 +149,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.ed184cf569b123e78ae31e9835e050ee998dd9a3b06ce0c9eb750345fa34a414dd45f4b03b981a494c2e9797682b9c48b401bfc85b3186059f50b21b4dc2630c.json"
+  data-offline-search-index-json-src="/offline-search-index.557427c5d98f6866546107c119e52f402b39341a299d5969b86d5fc0a4d9fb80afa4401940acdc4e0073f06999a62708d4158cc7bf4b08d21b2d6436bea3510c.json"
   data-offline-search-base-href="/"
 >
 
@@ -512,7 +514,7 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">ETCD</a>
+    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
     <li class="collapse show" id="docsoperationsexternal-etcd">
@@ -1014,7 +1016,7 @@
 
 
 <a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/operations/external-etcd/_index.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/storageos/storageos.github.io/issues/new?title=ETCD" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
+<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Etcd" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
 
 
 <a href="https://github.com/storageos/storageos.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
@@ -1028,9 +1030,14 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#suggested-deployment-models">Suggested Deployment Models</a></li>
-    <li><a href="#external-etcd">External etcd</a></li>
-    <li><a href="#etcd-cluster-operator">Etcd cluster-operator</a></li>
+    <li><a href="#installation-options">Installation options</a></li>
+    <li><a href="#storageos-and-etcd">StorageOS and Etcd</a></li>
+    <li><a href="#best-practices">Best practices</a>
+      <ul>
+        <li><a href="#monitoring">Monitoring</a></li>
+        <li><a href="#defragmentation">Defragmentation</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1069,7 +1076,7 @@
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://docs.storageos.com/docs/operations/external-etcd/">ETCD</a>
+	<a href="https://docs.storageos.com/docs/operations/external-etcd/">Etcd</a>
 </li>
 
 	</ol>
@@ -1077,60 +1084,296 @@
 
             
 <div class="td-content">
-	<h1>ETCD</h1>
+	<h1>Etcd</h1>
 	
-	<p>StorageOS uses a key-value store to hold cluster metadata across the
-distributed platform. The key-value backend can be <code>embedded</code> or <code>etcd</code>.</p>
-<p>The <code>embedded</code> option is the default for ease of deployment and in this mode
-StorageOS uses an internal etcd cluster. For testing that approximates a
-real life workload we recommend the use of external etcd.</p>
-<p>When using <code>embedded</code> etcd, the first StorageOS nodes that start, either the
-first node or first three nodes, act as etcd servers. This is done in order to
-establish
-<a href="https://en.wikipedia.org/wiki/Quorum_(distributed_computing)">quorum</a>. The
-rest of the nodes act as etcd clients, keeping consistency of the cluster by
-communicating with the etcd servers. Whether a StorageOS node acts as an etcd server
-or client cannot be changed once a StorageOS container has started.</p>
-<p><strong>It is recommended to use an external etcd cluster for production deployments</strong>. To
-use an etcd cluster provisioned and maintained outside the scope of StorageOS,
-StorageOS will locate the etcd endpoint using environment variables. When
-performing an installation using the StorageOS cluster operator these variables can be
-set in the <a href="/docs/reference/cluster-operator/configuration">StorageOSCluster resource definition</a>. Installations using the Helm
-chart can set the variables in the <a href="https://github.com/storageos/charts/blob/master/stable/storageos/values.yaml">values.yaml
-</a>
-file.</p>
-<p>Etcd availability is mandatory for proper functioning of StorageOS. In
-particular, changes to the cluster; creation/deletion of volumes,
-adding/removing replicas e.g., require access to the etcd cluster. In the event
-that etcd becomes unavailable, StorageOS clusters become read only, allowing
-access to data but preventing metadata changes.</p>
-<p>When using an external <code>etcd</code>, the user must maintain the availability and
-integrity of the etcd cluster, so StorageOS can use it as a service.</p>
-<p>It is highly recommended to keep the cluster backed up and ensure high availability
-of its data. It is also important to keep the latency between StorageOS nodes
-and the etcd replicas low. Deploying an etcd cluster in a different data center
-or region can make StorageOS detect etcd nodes as unavailable because of latency.</p>
-<p><em>StorageOS cannot be held responsible for supporting an external etcd cluster.</em></p>
-<h2 id="suggested-deployment-models">Suggested Deployment Models</h2>
+	<p>StorageOS uses (etcd)[https://etcd.io] to store cluster metadata. Because of
+the strong consistency model that etcd enforces, StorageOS metadata operations
+are guaranteed to be atomic and consistent.</p>
+<h2 id="installation-options">Installation options</h2>
+<p>Before installing StorageOS, an etcd cluster needs to be prepared. There are
+different topologies that fulfil this prerequisite.</p>
+<ol>
+<li>External etcd (<em>Production</em>)</li>
+<li>etcd as Pods (<em>Testing</em>)</li>
+</ol>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		<a class="nav-item nav-link active" id="nav-9" data-toggle="tab" href="#production" role="tab"
+		   aria-controls="nav-home" aria-selected="true">Production</a>
+
+            
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		<a class="nav-item nav-link" id="nav-9" data-toggle="tab" href="#testing" role="tab"
+		   aria-controls="nav-home" aria-selected="false">Testing</a>
+
+            
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="9">
+    <br></br>
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="production" role="tabpanel" aria-labelledby="nav-production">
+    <h2 id="external-etcd">External Etcd</h2>
+<p>The production topology is designed to provide the highest stability for the
+etcd cluster. It is necessary for normal StorageOS function to have a reliable
+metadata cluster. Otherwise, central operations such as provisioning,
+attachment or failover of volumes cannot be performed. In the event that etcd
+becomes unavailable, StorageOS clusters become read only, allowing access to
+data but preventing metadata changes.</p>
+<p>It is recommended to install etcd out of the scope of the orchestrator wherever
+possible. Following CoreOS best practices, a minimum of 3 independent nodes
+should be dedicated to etcd. StorageOS doesn&rsquo;t require a high performance etcd
+cluster as the throughput of metadata to the cluster is low. Depending on the
+level of redundancy you feel comfortable with you can install etcd on the
+Kubernetes Master nodes. <strong>Take extreme care to avoid collisions of the
+StorageOS etcd installation with the Kubernetes etcd when using the Kubernetes
+Master nodes. Precautions such as changing the default configuration for the
+client and peer ports, and ensuring the etcd data directory is modified. The
+ansible playbook below will default the etcd installation directory to
+<code>/var/lib/storageos-etcd</code>.</strong></p>
+<h3 id="installation">Installation</h3>
+<p>If you are familiar with etcd, you can proceed with the CoreOS instructions to
+install etcd, otherwise this section lays out out an example installation using
+Ansible.</p>
+<ol>
+<li>
+<p>Clone StorageOS Helper repository</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/storageos/deploy.git
+<span style="color:#204a87">cd</span> k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd
+</code></pre></div></li>
+<li>
+<p>Edit the inventory file</p>
 <blockquote>
-<p>Depending on the orchestrator used, methods of passing environment variables
-to StorageOS containers differ. The following examples work with both
-Kubernetes and Openshift.</p>
+<p>Target the nodes that install etcd, where the file <code>hosts.example</code> serves
+as an example. The <code>ip</code> parameter is needed for each node.</p>
 </blockquote>
-<h2 id="external-etcd">External etcd</h2>
-<p>To deploy StorageOS on a Kubernetes cluster using an etcd cluster running
-outside Kubernetes, you can look at the following
-<a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd">repository</a>,
-where etcd endpoints are referenced using a Kubernetes external service.</p>
-<h2 id="etcd-cluster-operator">Etcd cluster-operator</h2>
-<p>Etcd can be deployed in Kubernetes using the official <a href="https://github.com/coreos/etcd-operator">etcd-operator</a>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat hosts.example
+<span style="color:#ce5c00;font-weight:bold">[</span>nodes<span style="color:#ce5c00;font-weight:bold">]</span>
+centos-1 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.14
+centos-2 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.15
+centos-3 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.16
+
+<span style="color:#8f5902;font-style:italic"># Edit the inventory file</span>
+$ vi hosts.example <span style="color:#8f5902;font-style:italic"># Or your own inventory file</span>
+</code></pre></div></li>
+<li>
+<p>Edit the etcd configuration</p>
+<blockquote>
+<p><strong>If targeting Kubernetes Master nodes, you must change
+<code>etcd_port_client</code>, <code>etcd_port_peers</code></strong></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat group_vars/all
+etcd_version: <span style="color:#4e9a06">&#34;3.3.18&#34;</span>
+etcd_port_client: <span style="color:#4e9a06">&#34;2379&#34;</span>
+etcd_port_peers: <span style="color:#4e9a06">&#34;2380&#34;</span>
+etcd_quota_bytes: <span style="color:#0000cf;font-weight:bold">8589934592</span>  <span style="color:#8f5902;font-style:italic"># 8 GB</span>
+etcd_auto_compaction_mode: <span style="color:#4e9a06">&#34;revision&#34;</span>
+etcd_auto_compaction_retention: <span style="color:#4e9a06">&#34;100&#34;</span>
+members: <span style="color:#4e9a06">&#34;{{ groups[&#39;nodes&#39;]  }}&#34;</span>
+installation_dir: <span style="color:#4e9a06">&#34;/var/lib/storageos-etcd&#34;</span>
+
+$ vi group_vars/all
+</code></pre></div></li>
+<li>
+<p>Install</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i hosts.example site.yml
+</code></pre></div></li>
+<li>
+<p>Verify installation</p>
+<blockquote>
+<p>The playbook installs the <code>etcdctl</code> binary on the nodes, at
+<code>/usr/local/bin</code>.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh <span style="color:#000">$NODE</span> <span style="color:#8f5902;font-style:italic"># Any node running the new etcd</span>
+$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>127.0.0.1:2379 member list
+66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
+17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
+8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379
+</code></pre></div></li>
+</ol>
+<h2 id="managed-services">Managed Services</h2>
+<p>When running StorageOS on Managed Kubernetes services it may not be possible to
+deploy with the Production etcd topology described above. It is therefore
+recommended to deploy etcd on its own as much as possible, even if that means
+deploying 3 independent VMs for etcd to run on.</p>
+<p>As managed services treat nodes as ephemeral resources, if the orchestration
+deletes the 3 nodes hosting etcd, the result will be catastrophic and a restore
+from a backup will be needed.</p>
+<p>If it is not possible to deploy independent VMs for etcd, etcd can be deployed
+as pods, inside the cluster. This configuration requires an awareness of the
+stability that etcd requires. <strong>You can use the <a href="https://docs.storageos.com/docs/operations/external-etcd/#installation-options">etcd-as-pods</a>
+installation option, but be aware of the precautions that need to be taken.</strong></p>
+<h2 id="why-external-etcd">Why External Etcd</h2>
+<p>etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. In the case that quorum is lost, an etcd node stops and marks its
+contents as read-only. It cannot guarantee that the data being held is valid.
+Another peer might have a newer version that has not been delivered. Quorum is
+fundamental for etcd operations.</p>
+<p>In a Kubernetes environment, applications are scheduled across and in some
+scenarios such as &ldquo;DiskPressure&rdquo; they may need to be evicted from a node, and
+be scheduled onto a different node. With an application such as etcd, the
+scenario described can result in quorum being lost, making the cluster unable
+to recover automatically. Usually a 3 node etcd cluster can survive losing one
+node and recover. However, losing a second node at the same time or even having
+a network partition between them will result in quorum lost.</p>
+<h2 id="bind-etcd-ips-to-kubernetes-service">Bind Etcd IPs to Kubernetes Service</h2>
+<p>Kubernetes external services use a DNS name to reference external endpoints.
+You can use the example from the <a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc">helper github
+repository</a>
+to deploy the external Service. That might be of use when monitoring etcd from
+Prometheus.</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="testing" role="tabpanel" aria-labelledby="nav-testing">
+    <h2 id="etcd-as-pods">Etcd as Pods</h2>
+<p>etcd can be deployed in Kubernetes using the official <a href="https://github.com/coreos/etcd-operator">etcd-operator</a>.</p>
+<p>Deploying etcd in Kubernetes makes the etcd installation very easy, however be
+aware that even though the official etcd-operator is maintained by RedHat, it
+hasn&rsquo;t been under active development since 2019. As such it may be considered
+an archived project. For an actively maintained etcd Operator you might want to
+check the <a href="https://github.com/improbable-eng/etcd-cluster-operator">Improbable etcd
+Operator</a>.</p>
 <p>Examples of deploying etcd clusters using the etcd-operator on <a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example">Kubernetes</a>
 and
 <a href="https://github.com/storageos/deploy/tree/master/openshift/deploy-storageos/etcd-helpers/etcd-operator-example">OpenShift</a>
 are available.</p>
+<p>Since Kubernetes 1.16 the deployment api uses &ldquo;apps/v1&rdquo;. Once you have cloned
+the coreos etcd operator repository, you will need to change the apiVersion of
+the file &ldquo;examples/deployment.yaml&rdquo; from <code>extensions/v1beta1</code> to <code>apps/v1</code>.</p>
 <p>The official etcd-operator repository also has a backup deployment operator
 that can help backup etcd data. Make sure you take frequent backups of the etcd
 cluster as it holds all the StorageOS cluster metadata.</p>
+<h2 id="known-etcd-operator-issues">Known etcd-operator issues</h2>
+<p>This topology is only recommended for deployments where isolated nodes cannot be
+used.</p>
+<p>etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. If quorum is lost, etcd nodes stop and etcd marks its contents as
+read-only. This is because it cannot guarantee that new data will be valid.
+Quorum is fundamental for etcd operations. When running etcd in pods it is
+therefore important to consider that a loss of quorum could arise from etcd
+pods being evicted from nodes.</p>
+<p>Operations such as Kubernetes Upgrades with rolling node pools could cause a
+total failure of the etcd cluster as nodes are discarded in favor of new ones.</p>
+<p>A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
+can survive the loss of two nodes. Loss of further nodes will result in quorum
+being lost.</p>
+<p>The etcd-operator doesn&rsquo;t support a full stop of the cluster. Stopping the etcd
+cluster is not possible unless a backup is restored.</p>
+
+</div>
+
+
+
+
+
+
+</div>
+
+<h2 id="storageos-and-etcd">StorageOS and Etcd</h2>
+<p>When installing StorageOS, the etcd endpoints are passed in a StorageOSCluster Custom
+Resource.</p>
+<p>For instance:</p>
+<pre><code>apiVersion: &quot;storageos.com/v1&quot;
+kind: StorageOSCluster
+metadata:
+  name: &quot;storageos&quot;
+spec:
+  secretRefName: &quot;storageos-api&quot; # Reference from the Secret created in the previous step
+  secretRefNamespace: &quot;default&quot;  # Namespace of the Secret
+
+  (...)
+
+  kvBackend:
+    address: 'storageos-etcd-client.etcd:2379' # Example address, change for your etcd endpoint
+   #address: '10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379' # You can set etcd server ips
+    backend: 'etcd'
+</code></pre><blockquote>
+<p>Note the <code>kvBackend.address</code> section.</p>
+</blockquote>
+<p>For full Custom Resource documentation check <a href="/docs/reference/cluster-operator/configuration">StorageOSCluster resource definition</a>.</p>
+<h2 id="best-practices">Best practices</h2>
+<p>StorageOS uses etcd as a service, whether it is deployed following the above
+instructions or as a custom installation. It is expected that the user
+maintains the availability and integrity of the etcd cluster.</p>
+<p>It is highly recommended to keep the cluster backed up and ensure high
+availability of its data. It is also important to keep the latency between
+StorageOS nodes and the etcd replicas low. Deploying an etcd cluster in a
+different data center or region can make StorageOS detect etcd nodes as
+unavailable due to latency. A 10ms latency between StorageOS and etcd would be
+the maximum threshold for proper functioning of the system.</p>
+<h3 id="monitoring">Monitoring</h3>
+<p>It is highly recommended to add monitoring to the etcd cluster. etcd serves
+Prometheus metrics on the client port <code>http://etc-url:2379/metrics</code>.</p>
+<p>You can use StorageOS developed Grafana Dashboards for etcd. When using etcd
+for production, you can use the
+<a href="https://grafana.com/grafana/dashboards/10322">etcd-cluster-as-service</a>, while
+the <a href="https://grafana.com/grafana/dashboards/10323">etcd-cluster-as-pod</a> can be
+used when using etcd from the operator.</p>
+<h3 id="defragmentation">Defragmentation</h3>
+<p>etcd uses revisions to store multiple versions of keys. Compaction removes all
+key revision prior to a certain revision from etcd. Typically the etcd
+configuration enables the automatic compaction of keys to prevent performance
+degradation and limit the storage required. Compaction of revisions can create
+fragmentation that means space on disk is available for use by etcd but is
+unavailable for use by the file system. In order to reclaim this space, etcd
+can be defragmented.</p>
+<p>Reclaiming space is important because when the etcd database file grows over
+the &ldquo;DB_BACKEND_BYTES&rdquo; parameter, the cluster triggers an alarm and sets itself
+read only and only allows reads and deletes. To avoid hitting the db backend
+bytes limit, compaction and defragmentation are required. How often
+defragmentation is required depends on the churn of key revisions in etcd.</p>
+<p>The Grafana Dashboards mentioned above indicate when nodes require
+defragmentation. Be aware that defragmentation is a blocking operation that is
+performed per node, hence the etcd node will be locked for the duration of the
+defragmentation. Defragmentation usually takes a few milliseconds to complete.</p>
 
         <div class="section-index">
     
@@ -1353,7 +1596,7 @@ cluster as it holds all the StorageOS cluster metadata.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 20, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/44f74215c2ae6aace3cf9533c3e1a6a353d7e695">Fix ETCD deprecated links and references (44f7421)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified March 30, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/e54e2515fbb4b5f3b0b4d45a158466f6a94fd8cb">Apply etcd ops changes to V1 docs (e54e251)</a>
 </div>
 </div>
 

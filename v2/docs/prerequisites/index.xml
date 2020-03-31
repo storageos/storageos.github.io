@@ -1,0 +1,293 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Prerequisites</title>
+    <link>https://docs.storageos.com/v2/docs/prerequisites/</link>
+    <description>Recent content in Prerequisites on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v2/docs/prerequisites/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: System Configuration</title>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS requires certain kernel modules to function, in particular &lt;a href=&#34;http://linux-iscsi.org/wiki/Main_Page&#34;&gt;Linux-IO
+&lt;/a&gt;, an open-source implementation of the
+SCSI target.&lt;/p&gt;
+&lt;p&gt;We require the following modules to be loaded:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;target_core_mod&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tcm_loop&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target_core_file&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;configfs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;target_core_user&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uio&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. Other applications utilising &lt;a href=&#34;http://linux-iscsi.org/wiki/LIO&#34;&gt;TCMU&lt;/a&gt;
+cannot be run concurrently with StorageOS. Doing so may result in corruption
+of data. On startup, StorageOS will detect if other applications are using
+TCMU and fall back to FUSE. However if StorageOS is started first there is no
+mechanism for StorageOS to fallback to FUSE if another application begins to
+use TCMU. TCMU can be disabled using the
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;DISABLE_TCMU&lt;/a&gt;
+StorageOSCluster spec parameter.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Depending on the distribution, the modules are shipped as part of the
+base kernel package or as part of a kernel extras package which needs to be
+installed.&lt;/p&gt;
+&lt;h2 id=&#34;distribution-specifics&#34;&gt;Distribution Specifics&lt;/h2&gt;
+&lt;p&gt;The following distributions are supported by default:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RHEL 7.5&lt;/li&gt;
+&lt;li&gt;CentOS 7&lt;/li&gt;
+&lt;li&gt;Debian 9&lt;/li&gt;
+&lt;li&gt;Ubuntu Azure&lt;/li&gt;
+&lt;li&gt;RancherOS - Note CSI is not supported on RancherOS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Ubuntu 16.04/18.04 requires the installation of additional packages.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. Ubuntu 16.04/18.04 AWS and Ubuntu 18.04 GCE do not provide the
+necessary linux-image-extra package - &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce&#34;&gt;see
+below&lt;/a&gt; for more information&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;ubuntu-package-installation&#34;&gt;Ubuntu Package Installation&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Ubuntu 16.04/18.04 Generic&lt;/strong&gt; and &lt;strong&gt;Ubuntu 16.04 GCE&lt;/strong&gt; require extra packages:&lt;/p&gt;
+&lt;p&gt;Ubuntu 16.04:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt -y update
+sudo apt -y install linux-image-extra-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -r&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Ubuntu 18.04+:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt -y update
+sudo apt -y install linux-modules-extra-&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;$(&lt;/span&gt;uname -r&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;ubuntu-with-aws-or-gce-kernels&#34;&gt;Ubuntu With AWS Or GCE Kernels&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Ubuntu 16.04/18.04 AWS&lt;/strong&gt; and &lt;strong&gt;Ubuntu 18.04 GCE&lt;/strong&gt; do not yet provide the
+linux-image-extra package. As such you should either use &lt;strong&gt;Debian&lt;/strong&gt;, &lt;strong&gt;CentOS&lt;/strong&gt;
+or &lt;strong&gt;RHEL&lt;/strong&gt;, or install the non-cloud-provider optimised Ubuntu kernel.&lt;/p&gt;
+&lt;p&gt;Installing the non-cloud-provider optimised Ubuntu kernel is something that
+should only be done with full understanding of potential ramifications.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt -y update
+sudo apt install -y linux-virtual linux-image-extra-virtual
+sudo apt purge -y linux*aws
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reboot the machine&lt;/span&gt;
+sudo shutdown -r now
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;automatic-configuration&#34;&gt;Automatic Configuration&lt;/h2&gt;
+&lt;p&gt;Once required kernel modules are installed on the system, for convenience we
+provide a container which will ensure the appropriate modules are loaded and
+ready for use at runtime. On Docker installations, you will need to run the
+init container prior to starting StorageOS. Our installation guides for
+Kubernetes and OpenShift include this step.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Load the required kernel modules. The Kubernetes and OpenShift installations include this step.&lt;/span&gt;
+docker run --name enable_lio                  &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           --privileged                       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           --rm                               &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           --cap-add&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;SYS_ADMIN                &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           -v /lib/modules:/lib/modules       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           -v /sys:/sys:rshared               &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;           storageos/init:0.2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;manual-configuration&#34;&gt;Manual Configuration&lt;/h2&gt;
+&lt;p&gt;For those wishing to manage their own kernel configuration, rather than using
+the init container, perform the following steps:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ensure kernel modules are all loaded per list above&lt;/li&gt;
+&lt;li&gt;Ensure configfs is loaded and mounted at /sys/kernel/config&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Firewalls</title>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;port-list&#34;&gt;Port list&lt;/h2&gt;
+&lt;p&gt;StorageOS daemons listen on specific ports, which we require to be accessible
+between all nodes in the cluster:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Port Number&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;TCP/UDP&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Use&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5701&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;gRPC&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5702&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Prometheus&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5703&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;DirectFS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5704&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dataplane health check&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5705&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;REST API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5706&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5707&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5708&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5709&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5710&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5711&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;tcp &amp;amp; udp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Gossip service&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;StorageOS also uses &lt;a href=&#34;https://en.wikipedia.org/wiki/Ephemeral_port&#34;&gt;ephemeral&lt;/a&gt;
+ports to dial-out to these ports on other StorageOS nodes. For this reason,
+outgoing traffic should be enabled.&lt;/p&gt;
+&lt;h2 id=&#34;firewalls-and-vps-providers&#34;&gt;Firewalls and VPS providers&lt;/h2&gt;
+&lt;p&gt;Some VPS providers (such as Digital Ocean) ship default firewall rulesets which
+must be updated to allow StorageOS to run. Some example rules are shown below -
+modify to taste.&lt;/p&gt;
+&lt;h3 id=&#34;ufw&#34;&gt;UFW&lt;/h3&gt;
+&lt;p&gt;For distributions using UFW, such as RHEL and derivatives:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ufw default allow outgoing
+ufw allow 5701:5711/tcp
+ufw allow 5711/udp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;firewalld&#34;&gt;Firewalld&lt;/h3&gt;
+&lt;p&gt;For distributions that enable firewalld to control iptables such as some installations of OpenShift.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;firewall-cmd --permanent  --new-service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos
+firewall-cmd --permanent  --service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos --add-port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;5700-5800/tcp
+firewall-cmd --add-service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos  --zone&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;public --permanent
+firewall-cmd --reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;iptables&#34;&gt;Iptables&lt;/h3&gt;
+&lt;p&gt;For those using plain iptables:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Inbound traffic&lt;/span&gt;
+iptables -I INPUT -i lo -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit loopback traffic&amp;#39;&lt;/span&gt; -j ACCEPT
+iptables -I INPUT -m state --state ESTABLISHED,RELATED -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit established traffic&amp;#39;&lt;/span&gt; -j ACCEPT
+iptables -I INPUT -p tcp --dport 5701:5711 -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;StorageOS&amp;#39;&lt;/span&gt; -j ACCEPT
+iptables -I INPUT -p udp --dport &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5711&lt;/span&gt; -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;StorageOS&amp;#39;&lt;/span&gt; -j ACCEPT
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Outbound traffic&lt;/span&gt;
+iptables -I OUTPUT -o lo -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit loopback traffic&amp;#39;&lt;/span&gt; -j ACCEPT
+iptables -I OUTPUT -d 0.0.0.0/0 -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit outbound traffic&amp;#39;&lt;/span&gt; -j ACCEPT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Please ensure that the iptables rules you have added above come before any
+default DROP or REJECT rules.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Mount Propagation</title>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</guid>
+      <description>
+        
+        
+        &lt;blockquote&gt;
+&lt;p&gt;Modern versions of Kubernetes, Docker or other Container Runtimes enable
+mount propagation by default.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;StorageOS requires mount propagation enabled to present devices as volumes for
+containers (see linux kernel documentation
+&lt;a href=&#34;http://man7.org/linux/man-pages/man2/mount.2.html&#34;&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Certain versions of docker ship with a systemd manifest with
+&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.exec.html#&#34;&gt;MountFlags&lt;/a&gt; set
+to &amp;lsquo;slave&amp;rsquo;, thus preventing StorageOS from working. This can be removed or set
+to &amp;lsquo;shared&amp;rsquo; with a systemd drop in:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;mkdir -p /etc/systemd/system/docker.service.d/
+cat &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;EOF &amp;gt; /etc/systemd/system/docker.service.d/mount_propagation_flags.conf
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;[Service]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;MountFlags=shared
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;EOF&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# systemctl daemon-reload&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# systemctl restart docker.service&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To confirm behaviour, the following command should run without error.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -it --rm -v /mnt:/mnt:shared busybox sh -c /bin/date
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Orchestrators such as Kubernetes or OpenShift have their own ways of exposing
+this setting. Kubernetes 1.10 and OpenShift 3.10 have mount propagation enabled by
+default. Previous versions require that feature gates are enabled on the
+Kubernetes master&amp;rsquo;s &lt;code&gt;controller-manager&lt;/code&gt; and &lt;code&gt;apiserver&lt;/code&gt; services and in the
+&lt;code&gt;kubelet&lt;/code&gt; service on each node.&lt;/p&gt;
+&lt;p&gt;Installations of orchestrators using Docker require that mount propagation is
+enabled for both.&lt;/p&gt;
+&lt;p&gt;Refer to our installation pages for the orchestrators to see details on how to
+check and enable mount propagation where appropriate.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Etcd</title>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/etcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/etcd/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS requires an etcd cluster in order to function.&lt;/p&gt;
+&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
+etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. StorageOS does not recommend using the Kubernetes etcd cluster for
+StorageOS installations&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;using-etcd-with-storageos&#34;&gt;Using Etcd with StorageOS&lt;/h2&gt;
+&lt;p&gt;During installation of StorageOS the &lt;code&gt;kvBackend&lt;/code&gt; parameters of the StorageOS
+operator are used to specify the address of the etcd cluster. See the
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
+configuration&lt;/a&gt; examples for more
+information.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

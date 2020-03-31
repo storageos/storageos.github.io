@@ -44,7 +44,7 @@
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
 &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
-satisfied before proceeding._&lt;/p&gt;
+satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Any Kubernetes managed service such as EKS, AKS, GKE, DO or DockeEE
@@ -202,8 +202,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -366,6 +366,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -419,8 +420,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -583,6 +584,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -636,8 +638,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -800,6 +802,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -853,8 +856,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -1017,6 +1020,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -1070,8 +1074,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -1234,6 +1238,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -1287,8 +1292,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -1439,6 +1444,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -1990,8 +1996,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -2057,6 +2063,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
@@ -2182,8 +2189,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -2358,8 +2365,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -2986,8 +2993,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   &lt;span style=
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;2-create-a-secret&#34;&gt;2. Create a Secret&lt;/h2&gt;
 &lt;p&gt;Before deploying a StorageOS cluster, create a Secret defining the StorageOS
-API Username and Password in base64 encoding.&lt;/p&gt;
-&lt;p&gt;The API username and password are used to create the default StorageOS admin
+API Username and Password in base64 encoding.
+The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
 GUI. The account defined in the secret is also used by Kubernetes to
 authenticate against the StorageOS API when installing with the native driver.&lt;/p&gt;
@@ -3053,6 +3060,7 @@ store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/refer
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
 NAME                                    READY   STATUS    RESTARTS   AGE
+storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-75f6c               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-czbqx               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m
 storageos-daemonset-zv4tq               3/3     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          3m

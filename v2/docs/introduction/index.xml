@@ -1,0 +1,152 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Introduction</title>
+    <link>https://docs.storageos.com/v2/docs/introduction/</link>
+    <description>Recent content in Introduction on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v2/docs/introduction/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: What is StorageOS V2</title>
+      <link>https://docs.storageos.com/v2/docs/introduction/overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/introduction/overview/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Over the past several months, we&amp;rsquo;ve been hard at work on StorageOS V2, which
+contains some significant enhancements over our v1 product. We&amp;rsquo;ve built V2
+based on our observations of trends in the industry, as well as our own
+experience.&lt;/p&gt;
+&lt;p&gt;Many of our customers want to run big clusters - in the tens or hundreds of
+nodes. In these sorts of big environments, the challenges multiply. Not only do
+we need to scale well, but we also need to be more failure tolerant. Bigger
+environments typically suffer higher failure rates (more nodes = greater chance
+of something failing), but are also subject to all sorts of transient
+conditions such as network partitions.&lt;/p&gt;
+&lt;p&gt;The second trend we&amp;rsquo;ve seen become increasingly common is the desire to run
+multiple clusters, and consume storage between them in some way - sometimes to
+implement novel topologies such as a centralised storage cluster with
+satellites consuming the storage, and sometimes to replicate data between those
+clusters for HA or DR purposes.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve built V2 with these architectures and design patterns in mind. Not only
+does it scale well, but it contains the foundations we need to implement a rich
+set of multi-cluster functionality.&lt;/p&gt;
+&lt;h2 id=&#34;refactored-control-plane&#34;&gt;Refactored Control Plane&lt;/h2&gt;
+&lt;p&gt;At the heart of the V2 release is an upgraded control plane. We&amp;rsquo;ve changed a
+lot here. Firstly, our usage of etcd is vastly improved. We&amp;rsquo;ve learnt a lot
+about the subtleties of distributed consensus in the last year, particularly in
+noisy or unpredictable environments. Not only is StorageOS V2 much lighter on
+your etcd cluster, but it&amp;rsquo;s a lot more tolerant of transient failure conditions
+that are often found in cloud environments, or clusters under heavy load.&lt;/p&gt;
+&lt;p&gt;We spent some time describing and testing our internal state machine using the
+&lt;a href=&#34;https://en.wikipedia.org/wiki/TLA%2B&#34;&gt;TLA+&lt;/a&gt; formal verification language. This
+allows us to have a much higher degree of confidence that our algorithms will
+behave correctly, particularly under hard-to-test edge cases and failure
+conditions.&lt;/p&gt;
+&lt;p&gt;Additionally, we&amp;rsquo;ve changed the way volumes behave with respect to centralised
+scheduling. Each volume group (consisting of a master and 0 or more replicas)
+now behaves as a strongly consistent unit allowing it to take action
+independent of the activities of the rest of the cluster. Other state can be
+distributed around the cluster using eventually consistent mechanisms. This
+approach inherently scales better and allows StorageOS V2 to effectively manage
+many more nodes and volumes than before.&lt;/p&gt;
+&lt;p&gt;We&amp;rsquo;ve implemented TLS on all endpoints. Not only does this give you encrypted
+traffic between nodes in your storage cluster, it also protects all endpoints
+with strong, public key based authentication. Today&amp;rsquo;s IT environments can&amp;rsquo;t
+rely on firewalls to keep bad actors out - they must implement security at all
+layers within the stack - defense in depth. While we recognise that this brings
+a welcome relief to many security conscious administrators, we also know that
+managing certificate authorities (CAs) can be an unwelcome source of
+complexity. For this reason, StorageOS V2 implements an internal CA by default,
+to manage this complexity for you. If you&amp;rsquo;d prefer to integrate your own CA, we
+support that too - it&amp;rsquo;s up to you.&lt;/p&gt;
+&lt;p&gt;Finally - our logging has undergone a complete transformation in this edition. We
+know that systems engineers and operators don&amp;rsquo;t just value headline features,
+but that observability and diagnostics are equally important. All logs are now
+decorated with rich context to help you understand what is happening within
+your cluster, and we&amp;rsquo;ll output in json by default, for easy ingestion into log
+aggregators such as Elasticsearch.&lt;/p&gt;
+&lt;h2 id=&#34;refactored-data-plane&#34;&gt;Refactored Data Plane&lt;/h2&gt;
+&lt;p&gt;Not to be outdone, our data plane contains some significant improvements.&lt;/p&gt;
+&lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
+that have been offline or partitioned. Our new algorithm uses a &lt;a href=&#34;https://en.wikipedia.org/wiki/Hash_list&#34;&gt;Hash
+List&lt;/a&gt; to sync only changed sections of
+a volume (similar in some ways to what rsync does). StorageOS maintains these
+hashes during normal operation, meaning that when resyncing a failed replica,
+for example after a node reboot, we can very quickly and efficiently catch this
+replica up, rather than needing to promote and build a new one from scratch.
+This improves resiliency within your cluster, and prevents using excessive
+network bandwidth during failover conditions - at a time when it might be
+needed the most.&lt;/p&gt;
+&lt;p&gt;Secondly, a new threading model, with dynamic pool sizing, means that StorageOS
+is faster, a lot faster. In our tests we observed improvements across the
+board, with improvements in throughput of up to 135% for some scenarios.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Quickstart</title>
+      <link>https://docs.storageos.com/v2/docs/introduction/quickstart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/introduction/quickstart/</guid>
+      <description>
+        
+        
+        &lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Start by &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/architecture/&#34;&gt;understanding the architecture&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Follow our installation guides for
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;,
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt; or
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dive into our Use Case documentation for Workloads deployed in
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Supported Platforms and Orchestrators</title>
+      <link>https://docs.storageos.com/v2/docs/introduction/platforms/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/introduction/platforms/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux X86_64&lt;/li&gt;
+&lt;li&gt;Kernels satisfying our module &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;3.x kernels have a limitation of 256 active volumes per node&lt;/li&gt;
+&lt;li&gt;4.x kernels have a limitation of 4096 active volumes per node&lt;/li&gt;
+&lt;li&gt;We are distribution agnostic as long as our prerequisites are met&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;orchestrators&#34;&gt;Orchestrators&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubernetes 1.7+&lt;/li&gt;
+&lt;li&gt;OpenShift 3.7+&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

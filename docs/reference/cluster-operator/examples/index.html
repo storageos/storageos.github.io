@@ -26,12 +26,12 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
  Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/cluster-operator/examples/" />
-<meta property="article:modified_time" content="2020-02-20T14:39:29+00:00" />
+
 <meta itemprop="name" content="Cluster Operator examples">
 <meta itemprop="description" content="Before deploying a StorageOS cluster, create a Secret to define the StorageOS API Username and Password in base64 encoding.
 kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;storageos-operator&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: # echo -n &#39;&lt;secret&gt;&#39; | base64 apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.
  Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;.">
-<meta itemprop="dateModified" content="2020-02-20T14:39:29&#43;00:00" />
+
 <meta itemprop="wordCount" content="442">
 
 
@@ -1020,20 +1020,6 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
 
 
 
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-
-
-
-
-
-<a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/reference/cluster-operator/examples.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Cluster%20Operator%20examples" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
-
-
-<a href="https://github.com/storageos/storageos.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
-
-</div>
-
 
 
 
@@ -1218,7 +1204,7 @@ pods.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified February 20, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/905d87c16d0328477ae8116147e22ebb11ecdf58">Fix operator reference pages (905d87c)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified January 1, 0001
 </div>
 </div>
 

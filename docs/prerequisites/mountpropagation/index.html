@@ -27,13 +27,13 @@ Certain versions of docker ship with a systemd manifest with MountFlags set to &
 mkdir -p /etc/systemd/system/docker.service.d/ cat &lt;&lt;EOF &gt; /etc/systemd/system/docker." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/prerequisites/mountpropagation/" />
-<meta property="article:modified_time" content="2020-03-18T19:31:40+00:00" />
+
 <meta itemprop="name" content="Mount Propagation">
 <meta itemprop="description" content="Modern versions of Kubernetes, Docker or other Container Runtimes enable mount propagation by default.
  StorageOS requires mount propagation enabled to present devices as volumes for containers (see linux kernel documentation here).
 Certain versions of docker ship with a systemd manifest with MountFlags set to &lsquo;slave&rsquo;, thus preventing StorageOS from working. This can be removed or set to &lsquo;shared&rsquo; with a systemd drop in:
 mkdir -p /etc/systemd/system/docker.service.d/ cat &lt;&lt;EOF &gt; /etc/systemd/system/docker.">
-<meta itemprop="dateModified" content="2020-03-18T19:31:40&#43;00:00" />
+
 <meta itemprop="wordCount" content="183">
 
 
@@ -1023,20 +1023,6 @@ mkdir -p /etc/systemd/system/docker.service.d/ cat &lt;&lt;EOF &gt; /etc/systemd
 
 
 
-<div class="td-page-meta ml-2 pb-1 pt-2 mb-0">
-
-
-
-
-
-<a href="https://github.com/storageos/storageos.github.io/edit/master/content/en/docs/prerequisites/mountpropagation.md" target="_blank"><i class="fa fa-edit fa-fw"></i> Edit this page</a>
-<a href="https://github.com/storageos/storageos.github.io/issues/new?title=Mount%20Propagation" target="_blank"><i class="fab fa-github fa-fw"></i> Create documentation issue</a>
-
-
-<a href="https://github.com/storageos/storageos.github.io/issues/new" target="_blank"><i class="fas fa-tasks fa-fw"></i> Create project issue</a>
-
-</div>
-
 
 
 
@@ -1120,7 +1106,7 @@ check and enable mount propagation where appropriate.</p>
 
 	
 	
-	<div class="text-muted mt-5 pt-3 border-top">Last modified March 18, 2020: <a  href="https://github.com/storageos/storageos.github.io/commit/9a2b4fa770c77bd22cd7d27adb3fee5b51d5a771">Add note about mount prop. on new software (9a2b4fa)</a>
+	<div class="text-muted mt-5 pt-3 border-top">Last modified January 1, 0001
 </div>
 </div>
 

@@ -22,22 +22,22 @@
 
 <title>StorageOS Telemetry | </title><meta property="og:title" content="StorageOS Telemetry" />
 <meta property="og:description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry." />
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2/docs/reference/telemetry/" />
 
 <meta itemprop="name" content="StorageOS Telemetry">
 <meta itemprop="description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.">
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes.">
 
-<meta itemprop="wordCount" content="441">
+<meta itemprop="wordCount" content="423">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Telemetry"/>
 <meta name="twitter:description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry."/>
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes."/>
 
 
 
@@ -157,7 +157,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.840c357a7ae6bfcc0a46f6a38fe073403f775187abe74222b791cd2afe6d2f40b0185f6318cdeacebd038498886a436f5c1948b710710f432a6f7e0c851a47da.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.eac53d10c759de424e536956d6667f8b337fdf753ad03ea431dd0a13da11252a7fe77d0a1c84f01fa185529bb0de14f92f2a4831e2e6bc36b74c474d39b17f4f.json"
   data-offline-search-base-href="/"
 >
 
@@ -810,12 +810,6 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferenceenvvars" href="/v2/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencegui" href="/v2/docs/reference/gui/">GUI</a>
       
       
@@ -847,6 +841,12 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-v2docsreferencetelemetry" href="/v2/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencebundle" href="/v2/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -902,6 +902,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
     <li><a href="#telemetry">Telemetry</a></li>
     <li><a href="#sentryio">sentry.io</a></li>
     <li><a href="#dns-query">DNS Query</a></li>
+    <li><a href="#once-per-day-report">Once Per Day Report</a></li>
     <li><a href="#disable-telemetry">Disable Telemetry</a>
       <ul>
         <li></li>
@@ -959,16 +960,15 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
 different methods for two different purposes.</p>
 <h2 id="telemetry">Telemetry</h2>
 <ul>
-<li>Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day.</li>
+<li>Telemetry is made up a DNS version check query and a once per day report.</li>
 <li>Error reporting is the sentry.io crash dump reporting.</li>
 </ul>
 <h2 id="sentryio">sentry.io</h2>
-<p>StorageOS sends crash reports and information about the StorageOS cluster to
-<a href="https://sentry.io">sentry.io</a>. This information helps our developers monitor
-and fix crashes. Information is sent to sentry.io once per day or when a process inside the
-StorageOS container crashes.</p>
+<p>StorageOS sends crash reports to <a href="https://sentry.io">sentry.io</a>. This
+information helps our developers monitor and fix crashes. Information is sent
+to sentry.io when a process inside the StorageOS container
+crashes.</p>
 <ul>
-<li>The once per day report includes the cluster version, node counts and license information.</li>
 <li>The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV),
 the exit code and whether or not the crash generated a core dump.</li>
 </ul>
@@ -976,6 +976,31 @@ the exit code and whether or not the crash generated a core dump.</li>
 reports to sentry.io over tcp/443. StorageOS respects environment variables that
 <a href="https://golang.org/pkg/net/http/#ProxyFromEnvironment">ProxyFromEnvironment</a>
 uses.</p>
+<p>An exhaustive list of information included in the crash report is below:</p>
+<ul>
+<li>StorageOS version</li>
+<li>Crash description string</li>
+<li>Anonymized Cluster ID</li>
+<li>Anonymized Node ID</li>
+</ul>
+<h2 id="dns-query">DNS Query</h2>
+<p>StorageOS will perform a &ldquo;latest version check&rdquo; using a DNS query in order to
+inform administrators that a new version is available. StorageOS will also send
+anonymized node ids, cluster id and StorageOS version information to StorageOS
+using a DNS query. The information that we send in the query is encoded as well
+as being anonymized. This query allows us to inform Cluster admins when
+StorageOS upgrades are available in the StorageOS GUI and in the logs.</p>
+<p>The DNS query includes:</p>
+<ul>
+<li>Anonymized StorageOS Cluster ID</li>
+<li>Anonymized StorageOS node ID</li>
+<li>StorageOS version number</li>
+</ul>
+<h2 id="once-per-day-report">Once Per Day Report</h2>
+<p>The once per day report contains information about the StorageOS cluster and
+Kubernetes versions to help StorageOS focus our development efforts on the most
+popular platforms. The once per day data is encrypted and sent to a StorageOS
+telemetry server so it is never processed outside of StorageOS assets.</p>
 <p>An exhaustive list of information included in the once per day report is below:</p>
 <ul>
 <li>api_call_metrics</li>
@@ -1027,43 +1052,6 @@ uses.</p>
 <li>volume_replica_trigger_rejoin</li>
 <li>volume_size_bytes</li>
 </ul>
-<p>An exhaustive list of information included in the crash report is below:</p>
-<ul>
-<li>API version</li>
-<li>Cluster ID</li>
-<li>CPU architechture</li>
-<li>Crashed component name</li>
-<li>Error level</li>
-<li>Error message</li>
-<li>Exceptions</li>
-<li>Exit code</li>
-<li>Datetime of crash</li>
-<li>Go version</li>
-<li>Kernel signal</li>
-<li>OS type</li>
-<li>License type</li>
-<li>Logging user</li>
-<li>Server name</li>
-<li>Stacktrace</li>
-<li>StorageOS build information (CI pipeline reference)</li>
-<li>StorageOS version</li>
-<li>Whether a core dump occured</li>
-</ul>
-<h2 id="dns-query">DNS Query</h2>
-<p>StorageOS will also send anonymized node ids, cluster id and StorageOS version
-information to StorageOS using a DNS query. The information that we send in the
-query is encoded as well as being anonymized. This query allows us to inform
-Cluster admins when StorageOS upgrades are available in the StorageOS GUI and
-in the logs.</p>
-<p>The DNS query includes:</p>
-<ul>
-<li>Anonymized StorageOS Cluster ID</li>
-<li>Anonymized StorageOS node ID</li>
-<li>StorageOS version number</li>
-</ul>
-<p>If <code>k8sDistro</code> is set then the Kubernetes version and Kubernetes distribution
-will also be reported. This information helps us direct focus onto the most
-relevant platforms.</p>
 <h2 id="disable-telemetry">Disable Telemetry</h2>
 <p>It is possible to disable telemetry using the GUI, CLI, API, environment
 variables or the StorageOS Cluster Spec.</p>
@@ -1072,11 +1060,10 @@ variables or the StorageOS Cluster Spec.</p>
 StorageOSCluster custom resource.</p>
 <h4 id="environment-variables">Environment Variables</h4>
 <p>You can use the following environmental variables to disable or enable telemetry.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DISABLE_TELEMETRY       <span style="color:#8f5902;font-style:italic"># Disable the DNS query and once per day sentry.io reporting</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DISABLE_VERSION_CHECK   <span style="color:#8f5902;font-style:italic"># Disable the DNS version check</span>
+DISABLE_TELEMETRY       <span style="color:#8f5902;font-style:italic"># Disable the once per day reporting</span>
 DISABLE_ERROR_REPORTING <span style="color:#8f5902;font-style:italic"># Disable sentry.io crash reports</span>
-</code></pre></div><p>You can find more information about StorageOS environment variables
-<a href="https://docs.storageos.com/v2/docs/reference/envvars/">here</a>.</p>
-
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>

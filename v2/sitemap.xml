@@ -183,10 +183,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2/docs/reference/envvars/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/v2/docs/concepts/etcd/</loc>
   </url>
   
@@ -320,6 +316,10 @@
   
   <url>
     <loc>https://docs.storageos.com/v2/docs/reference/telemetry/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2/docs/reference/bundle/</loc>
   </url>
   
   <url>

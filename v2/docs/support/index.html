@@ -30,7 +30,7 @@
 <meta itemprop="description" content="How to ask for StorageOS support.
 ">
 
-<meta itemprop="wordCount" content="372">
+<meta itemprop="wordCount" content="435">
 
 
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.840c357a7ae6bfcc0a46f6a38fe073403f775187abe74222b791cd2afe6d2f40b0185f6318cdeacebd038498886a436f5c1948b710710f432a6f7e0c851a47da.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.eac53d10c759de424e536956d6667f8b337fdf753ad03ea431dd0a13da11252a7fe77d0a1c84f01fa185529bb0de14f92f2a4831e2e6bc36b74c474d39b17f4f.json"
   data-offline-search-base-href="/"
 >
 
@@ -810,12 +810,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferenceenvvars" href="/v2/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencegui" href="/v2/docs/reference/gui/">GUI</a>
       
       
@@ -847,6 +841,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencetelemetry" href="/v2/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencebundle" href="/v2/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -902,7 +902,7 @@
     <li><a href="#platform">Platform</a></li>
     <li><a href="#storageos">StorageOS</a></li>
     <li><a href="#orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</a></li>
-    <li><a href="#storageos-cluster-report">StorageOS Cluster Report</a></li>
+    <li><a href="#storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</a></li>
   </ul>
 </nav>
 
@@ -953,8 +953,8 @@ information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.</p>
 <p>Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-report">StorageOS Cluster
-Report</a>.</p>
+as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-diagnostic-bundle">StorageOS Diagnostic
+Bundle</a>.</p>
 <h2 id="platform">Platform</h2>
 <ul>
 <li>Cloud provider/Bare metal</li>
@@ -979,30 +979,36 @@ Report</a>.</p>
 <li>Specific for your namespaces: <code>kubectl describe pvc PVC_NAME</code></li>
 <li>Specific for your namespaces: <code>kubectl describe pod POD_NAME</code></li>
 </ul>
-<h2 id="storageos-cluster-report">StorageOS Cluster Report</h2>
-<p>StorageOS has a cluster diagnostic function that aggregates cluster information.</p>
-<p>For each node the following is collected:</p>
+<h2 id="storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</h2>
+<p>StorageOS has a cluster diagnostic function that aggregates cluster
+information.</p>
+<p>The cluster diagnostic bundle is created only when a user chooses to do so. For
+convenience the cluster diagnostic bundle can either be uploaded to StorageOS
+or downloaded to the machine running the browser or CLI. The cluster diagnostic
+bundle is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket
+using a TLS encrypted connection. The upload takes place only after user
+confirmation.</p>
+<p>As a general outline the following information is sent to us:</p>
 <ul>
 <li>StorageOS logs</li>
+<li>StorageOS cluster state - node config, volumes and namespaces</li>
 <li>output of <code>storageos describe node</code></li>
 <li>output of <code>lshw</code></li>
 <li>output of <code>dmesg</code></li>
 </ul>
-<p>StorageOS engineers might ask for a report to be generated during
+<p>See <a href="https://docs.storageos.com/v2/docs/reference/bundle/">Support Bundle</a> for an exhaustive list of what is included in the cluster diagnostic bundle.</p>
+<p>StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
 support cases.</p>
-<p>The information given in the cluster report is only used for support purposes
+<p>The information given in the cluster cluster diagnostic bundle is only used for support purposes
 and it will be removed once the data is no longer needed for such purposes.
 In case the information is sensitive and can&rsquo;t be given to StorageOS, please
 make sure that support engineers have as much information about your
 environment as possible.</p>
-<p>The cluster report is created only when a user chooses to do so. For
-convenience the report can either be uploaded to StorageOS or downloaded to the
-machine running the browser. The report is uploaded from a StorageOS node to a
-StorageOS GCP encrypted bucket using a TLS encrypted connection. The upload
-takes place only after user confirmation.</p>
-<p>You can generate a report through the StorageOS <a href="/docs/reference/gui">GUI</a> by
-navigating to the <code>Cluster</code> menu and downloading the StorageOS support Bundle.</p>
-
+<p>You can generate a cluster diagnostic bundle through the StorageOS <a href="/docs/reference/gui">GUI</a> by
+navigating to the <code>Cluster</code> menu and downloading the StorageOS support Bundle.
+The cluster cluster diagnostic bundle can also be generated using the CLI command below.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get diagnostics -o storageos-diagnostic-bundle
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>

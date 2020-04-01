@@ -668,7 +668,7 @@ StorageOS portal via the licence page of the StorageOS web GUI:
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible. To inspect your licence, click on the
 &amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/developer-licence.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
 &lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
 off-line method. To apply such keys, via the web GUI, visit

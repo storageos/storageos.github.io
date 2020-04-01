@@ -62,11 +62,6 @@
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableNodePublishCreds&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Enable CSI node publish credentials&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
@@ -74,6 +69,11 @@
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableProvisionCreds&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Enable CSI provision credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;

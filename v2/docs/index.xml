@@ -1433,7 +1433,7 @@ clusters for HA or DR purposes.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ve built V2 with these architectures and design patterns in mind. Not only
 does it scale well, but it contains the foundations we need to implement a rich
 set of multi-cluster functionality.&lt;/p&gt;
-&lt;h2 id=&#34;refactored-control-plane&#34;&gt;Refactored Control Plane&lt;/h2&gt;
+&lt;h2 id=&#34;upgraded-control-plane&#34;&gt;Upgraded Control Plane&lt;/h2&gt;
 &lt;p&gt;At the heart of the V2 release is an upgraded control plane. We&amp;rsquo;ve changed a
 lot here. Firstly, our usage of etcd is vastly improved. We&amp;rsquo;ve learnt a lot
 about the subtleties of distributed consensus in the last year, particularly in
@@ -1468,7 +1468,7 @@ but that observability and diagnostics are equally important. All logs are now
 decorated with rich context to help you understand what is happening within
 your cluster, and we&amp;rsquo;ll output in json by default, for easy ingestion into log
 aggregators such as Elasticsearch.&lt;/p&gt;
-&lt;h2 id=&#34;refactored-data-plane&#34;&gt;Refactored Data Plane&lt;/h2&gt;
+&lt;h2 id=&#34;upgraded-data-plane&#34;&gt;Upgraded Data Plane&lt;/h2&gt;
 &lt;p&gt;Not to be outdone, our data plane contains some significant improvements.&lt;/p&gt;
 &lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
 that have been offline or partitioned. Our new algorithm uses a &lt;a href=&#34;https://en.wikipedia.org/wiki/Hash_list&#34;&gt;Hash
@@ -1611,11 +1611,6 @@ the init container, perform the following steps:&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableNodePublishCreds&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Enable CSI node publish credentials&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
@@ -1623,6 +1618,11 @@ the init container, perform the following steps:&lt;/p&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableProvisionCreds&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Enable CSI provision credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
@@ -2171,11 +2171,6 @@ between all nodes in the cluster:&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;gRPC&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5702&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Prometheus&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5703&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DirectFS&lt;/td&gt;
@@ -2183,37 +2178,12 @@ between all nodes in the cluster:&lt;/p&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5704&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Dataplane health check&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dataplane Supervisor&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5705&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;REST API&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5706&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5707&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5708&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5709&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5710&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5711&lt;/td&gt;
@@ -2833,8 +2803,8 @@ information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.&lt;/p&gt;
 &lt;p&gt;Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/v2/docs/support/contactus#storageos-cluster-report&#34;&gt;StorageOS Cluster
-Report&lt;/a&gt;.&lt;/p&gt;
+as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/v2/docs/support/contactus#storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Diagnostic
+Bundle&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud provider/Bare metal&lt;/li&gt;
@@ -2859,30 +2829,36 @@ Report&lt;/a&gt;.&lt;/p&gt;
 &lt;li&gt;Specific for your namespaces: &lt;code&gt;kubectl describe pvc PVC_NAME&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Specific for your namespaces: &lt;code&gt;kubectl describe pod POD_NAME&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;storageos-cluster-report&#34;&gt;StorageOS Cluster Report&lt;/h2&gt;
-&lt;p&gt;StorageOS has a cluster diagnostic function that aggregates cluster information.&lt;/p&gt;
-&lt;p&gt;For each node the following is collected:&lt;/p&gt;
+&lt;h2 id=&#34;storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Cluster Diagnostic Bundle&lt;/h2&gt;
+&lt;p&gt;StorageOS has a cluster diagnostic function that aggregates cluster
+information.&lt;/p&gt;
+&lt;p&gt;The cluster diagnostic bundle is created only when a user chooses to do so. For
+convenience the cluster diagnostic bundle can either be uploaded to StorageOS
+or downloaded to the machine running the browser or CLI. The cluster diagnostic
+bundle is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket
+using a TLS encrypted connection. The upload takes place only after user
+confirmation.&lt;/p&gt;
+&lt;p&gt;As a general outline the following information is sent to us:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;StorageOS logs&lt;/li&gt;
+&lt;li&gt;StorageOS cluster state - node config, volumes and namespaces&lt;/li&gt;
 &lt;li&gt;output of &lt;code&gt;storageos describe node&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;output of &lt;code&gt;lshw&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;output of &lt;code&gt;dmesg&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;StorageOS engineers might ask for a report to be generated during
+&lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/bundle/&#34;&gt;Support Bundle&lt;/a&gt; for an exhaustive list of what is included in the cluster diagnostic bundle.&lt;/p&gt;
+&lt;p&gt;StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
 support cases.&lt;/p&gt;
-&lt;p&gt;The information given in the cluster report is only used for support purposes
+&lt;p&gt;The information given in the cluster cluster diagnostic bundle is only used for support purposes
 and it will be removed once the data is no longer needed for such purposes.
 In case the information is sensitive and can&amp;rsquo;t be given to StorageOS, please
 make sure that support engineers have as much information about your
 environment as possible.&lt;/p&gt;
-&lt;p&gt;The cluster report is created only when a user chooses to do so. For
-convenience the report can either be uploaded to StorageOS or downloaded to the
-machine running the browser. The report is uploaded from a StorageOS node to a
-StorageOS GCP encrypted bucket using a TLS encrypted connection. The upload
-takes place only after user confirmation.&lt;/p&gt;
-&lt;p&gt;You can generate a report through the StorageOS &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/gui&#34;&gt;GUI&lt;/a&gt; by
-navigating to the &lt;code&gt;Cluster&lt;/code&gt; menu and downloading the StorageOS support Bundle.&lt;/p&gt;
-
+&lt;p&gt;You can generate a cluster diagnostic bundle through the StorageOS &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/gui&#34;&gt;GUI&lt;/a&gt; by
+navigating to the &lt;code&gt;Cluster&lt;/code&gt; menu and downloading the StorageOS support Bundle.
+The cluster cluster diagnostic bundle can also be generated using the CLI command below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics -o storageos-diagnostic-bundle
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -4412,218 +4388,6 @@ example of how this is done to monitor StorageOS, please see &lt;a href=&#34;htt
     </item>
     
     <item>
-      <title>Docs: Environment Variables</title>
-      <link>https://docs.storageos.com/v2/docs/reference/envvars/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/v2/docs/reference/envvars/</guid>
-      <description>
-        
-        
-        &lt;p&gt;Several aspects of StorageOS behaviour can be controlled via environment
-variables. These can be injected in via any of the usual mechanisms such as
-&lt;a href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/&#34;&gt;ConfigMaps&lt;/a&gt;.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Variable Name&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Valid in versions&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ADVERTISE_IP&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;IP address of the node for incoming connections.  Defaults to first non-loopback address&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;API_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the API to listen on.  Defaults to &lt;code&gt;5705&lt;/code&gt; (&lt;a href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705&#34;&gt;IANA Registered&lt;/a&gt;)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;CSI_ENDPOINT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;If set, CSI compatibility is enabled.  Typically set to &lt;code&gt;unix://var/lib/kubelet/plugins_registry/storageos/csi.sock&lt;/code&gt;.  Default is unset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;CSI_VERSION&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Added in &lt;code&gt;1.1.0&lt;/code&gt; to define what version of CSI to use. Can be set to &lt;code&gt;v0&lt;/code&gt; or &lt;code&gt;v1&lt;/code&gt;, defaults to &lt;code&gt;v0&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DESCRIPTION&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The node description for display purposes only.  Default is unset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DEVICE_DIR&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Where the volumes are exported.  This directory must be shared into the container using the rshared volume mount option. Defaults to &lt;code&gt;/var/lib/storageos/volumes&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DFS_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for DirectFS to listen on.  Defaults to &lt;code&gt;5703&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DISABLE_ERROR_REPORTING&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;To disable error reporting across the cluster, set to &lt;code&gt;true&lt;/code&gt;. Defaults to &lt;code&gt;false&lt;/code&gt;. Errors are reported to help identify and resolve potential issues that may occur&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DISABLE_TCMU&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.3+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Prevents TCMU from being used. On systems where another program is already using TCMU this should be set to &lt;code&gt;true&lt;/code&gt;. See &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration&#34;&gt;System Configuration&lt;/a&gt; for more information.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;DISABLE_TELEMETRY&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;To disable anonymous usage reporting across the cluster, set to &lt;code&gt;true&lt;/code&gt;. Defaults to &lt;code&gt;false&lt;/code&gt;. To help improve the product, data such as API usage and StorageOS configuration information is collected&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;FORCE_TCMU&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.3+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Force the dataplane to use TCMU. If set to &lt;code&gt;true&lt;/code&gt; StorageOS will not start if TCMU fails to start.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;HOSTNAME&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Hostname of the node, only if you wish to override it.  In Kubernetes environments, typically set to &lt;code&gt;spec.nodeName&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;IN_K8S_CLUSTER&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Toggles enhanced Kubernetes integration.  Defaults to &lt;code&gt;true&lt;/code&gt; and will be disabled automatically if Kubernetes API is not accessible.  Requires StorageOS to be deployed as a DaemonSet or Pod.&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;JOIN&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;em&gt;Required&lt;/em&gt; A list of cluster nodes to join.  The first node will bootstrap the cluster. There is no default; this must be set for multiple-node clusters&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;KUBECONFIG&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Path to local kubeconfig file.  Not normally required.  Default is unset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;KV_ADDR&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Comma separated list of etcd targets, in the form ip[:port].  Must be specified with &lt;code&gt;KV_BACKEND=etcd&lt;/code&gt;.  Prefer multiple direct endpoints over a single load-balanced endpoint&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;KV_BACKEND&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Type of KV store to use. Defaults to &lt;code&gt;embedded&lt;/code&gt;. &lt;code&gt;etcd&lt;/code&gt; is supported with &lt;code&gt;KV_ADDR&lt;/code&gt; set to an external etcd instance&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;KV_CLIENT_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the embedded Key/Value store. Defaults to &lt;code&gt;5706&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;KV_PEER_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the embedded Key/Value store. Defaults to &lt;code&gt;5707&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;LABELS&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Comma separated list of node labels.  e.g. &lt;code&gt;LABELS=country=us,env=prod&lt;/code&gt;.  Default is unset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;LOG_FILTER&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Used to discard log messages based on category.  e.g. &lt;code&gt;LOG_FILTER=cp=info,dp=info,etcd=debug&lt;/code&gt;.  Default is unset&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;LOG_FORMAT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Logging output format, one of &lt;code&gt;text&lt;/code&gt; or &lt;code&gt;json&lt;/code&gt;.  Defaults to &lt;code&gt;json&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;LOG_LEVEL&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;One of &lt;code&gt;debug&lt;/code&gt;, &lt;code&gt;info&lt;/code&gt;, &lt;code&gt;warning&lt;/code&gt; or &lt;code&gt;error&lt;/code&gt;.  Defaults to &lt;code&gt;info&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;NAMESPACE&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The orchestrator namespace that StorageOS is running in.  Used as the location to store encryption keys in.  Defaults to &lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;NATS_CLUSTER_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the NATS cluster service to listen on. Defaults to &lt;code&gt;5710&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;NATS_HTTP_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the NATS HTTP server to listen on.  Defaults to &lt;code&gt;5709&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;NATS_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for NATS messaging to listen on.  Defaults to &lt;code&gt;5708&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;PASSWORD&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Password to authenticate to the API with.  Defaults to &lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;PROBE_INTERVAL&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.1.2+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The interval between node probes. Takes a time duration in string format e.g. &lt;code&gt;500ms&lt;/code&gt; or &lt;code&gt;2s&lt;/code&gt;. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in &lt;code&gt;1.1.2&lt;/code&gt; replacing &lt;code&gt;PROBE_INTERVAL_MS&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;PROBE_INTERVAL_MS&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.1.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The interval in milliseconds between node probes. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in &lt;code&gt;1.1.1&lt;/code&gt; and deprecated in &lt;code&gt;1.1.2&lt;/code&gt; See &lt;code&gt;PROBE_INTERVAL&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;PROBE_TIMEOUT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.1.2+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The timeout to wait for an ack from a probed node before assuming it is unhealthy.  Takes a time duration in string format e.g. &lt;code&gt;500ms&lt;/code&gt; or &lt;code&gt;2s&lt;/code&gt;. This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in &lt;code&gt;1.1.2&lt;/code&gt; replacing &lt;code&gt;PROBE_TIMEOUT_MS&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;PROBE_TIMEOUT_MS&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.1.1&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The timeout to wait for an ack from a probed node before assuming it is unhealthy.  This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in &lt;code&gt;1.1.1&lt;/code&gt; and deprecated in &lt;code&gt;1.1.2&lt;/code&gt; See &lt;code&gt;PROBE_TIMEOUT&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;SERF_PORT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Port for the Serf protocol to listen on.  Defaults to &lt;code&gt;5711&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;TLS_ETCD_CA&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.2.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The file path to the etcd server Certificate Authority certificate. The certificate should be mounted into the container using a Secret. See &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls&#34;&gt;etcd TLS&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;TLS_ETCD_CLIENT_CERT&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.2.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The file path to the etcd server client certificate. The certificate should be mounted into the container using a Secret. See &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls&#34;&gt;etcd TLS&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;TLS_ETCD_CLIENT_KEY&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.2.0&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;The file path to the etcd server client key. The certificate should be mounted into the container using a Secret. See &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls&#34;&gt;etcd TLS&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;USERNAME&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1.0+&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Username to authenticate to the API with.  Defaults to &lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>Docs: Etcd</title>
       <link>https://docs.storageos.com/v2/docs/concepts/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -4976,24 +4740,24 @@ Flags:
         
         
         &lt;p&gt;StorageOS provides a GUI for cluster and volume management.&lt;/p&gt;
-&lt;p&gt;The GUI is available at port 5705 on any of the nodes in the cluster. Initally
-you can log in as the default administrator, using the username &lt;code&gt;storageos&lt;/code&gt; and
-password &lt;code&gt;storageos&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;manage-cluster-nodes-and-pools&#34;&gt;Manage cluster nodes and pools&lt;/h2&gt;
-&lt;p&gt;The nodes and pools page allow you to manage cluster nodes and storage pool. In this example, this cluster consists of three nodes with 35.9GB capacity each. The default storage pool contains all three nodes, giving a total of 107.6GB.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/nodes.png&#34; alt=&#34;Managing nodes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/pools.png&#34; alt=&#34;Managing storage pools&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;create-and-view-volumes&#34;&gt;Create and view volumes&lt;/h2&gt;
+&lt;p&gt;The GUI is available at port 5705 on any of the nodes in the cluster. Initially
+you can log in as the default administrator, with the username and password
+from the &lt;code&gt;storageos-api&lt;/code&gt; Secret. By default &lt;code&gt;storageos&lt;/code&gt;, &lt;code&gt;storageos&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nodes&#34;&gt;Nodes&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/node-detail.png&#34; alt=&#34;Node detail&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;volumes&#34;&gt;Volumes&lt;/h2&gt;
 &lt;p&gt;You can create volumes, including replicated volumes, and view volume details:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/create-volume.png&#34; alt=&#34;Creating a volume&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/volume-details.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;managing-volumes-with-namespaces-and-rules&#34;&gt;Managing volumes with namespaces and rules&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volume-detail.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;licensing&#34;&gt;Licensing&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;License&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cluster-info&#34;&gt;Cluster info&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;namespaces&#34;&gt;Namespaces&lt;/h2&gt;
 &lt;p&gt;Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Data policy and placement is enforced using rules:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui/rules.png&#34; alt=&#34;Viewing rules&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -5756,7 +5520,7 @@ StorageOS portal via the licence page of the StorageOS web GUI:
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible. To inspect your licence, click on the
 &amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/developer-licence.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
 &lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
 off-line method. To apply such keys, via the web GUI, visit
@@ -6035,6 +5799,26 @@ performance_schema
 &lt;p&gt;If you need custom startup options, you can edit the ConfigMap file
 &lt;a href=&#34;https://github.com/storageos/use-cases/blob/master/mysql/15-mysqld-configmap.yaml&#34;&gt;15-mysqld-configmap.yaml&lt;/a&gt;
 with your desired MySQL configuration settings.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Namespaces</title>
+      <link>https://docs.storageos.com/v2/docs/concepts/namespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/concepts/namespaces/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS namespaces are an identical concept to Kubernetes namespaces. They
+are intended to allow a StorageOS cluster to be used by multiple teams across
+multiple projects.&lt;/p&gt;
+&lt;p&gt;It is not necessary to create StorageOS namespaces manually, as StorageOS maps
+Kubernetes namespaces on a one-to-one basis when PersistentVolumeClaims using
+the StorageOS StorageClass are created.&lt;/p&gt;
+&lt;p&gt;Access to Namespaces is controlled through user or group level &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>

@@ -40,7 +40,7 @@ clusters for HA or DR purposes.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ve built V2 with these architectures and design patterns in mind. Not only
 does it scale well, but it contains the foundations we need to implement a rich
 set of multi-cluster functionality.&lt;/p&gt;
-&lt;h2 id=&#34;refactored-control-plane&#34;&gt;Refactored Control Plane&lt;/h2&gt;
+&lt;h2 id=&#34;upgraded-control-plane&#34;&gt;Upgraded Control Plane&lt;/h2&gt;
 &lt;p&gt;At the heart of the V2 release is an upgraded control plane. We&amp;rsquo;ve changed a
 lot here. Firstly, our usage of etcd is vastly improved. We&amp;rsquo;ve learnt a lot
 about the subtleties of distributed consensus in the last year, particularly in
@@ -75,7 +75,7 @@ but that observability and diagnostics are equally important. All logs are now
 decorated with rich context to help you understand what is happening within
 your cluster, and we&amp;rsquo;ll output in json by default, for easy ingestion into log
 aggregators such as Elasticsearch.&lt;/p&gt;
-&lt;h2 id=&#34;refactored-data-plane&#34;&gt;Refactored Data Plane&lt;/h2&gt;
+&lt;h2 id=&#34;upgraded-data-plane&#34;&gt;Upgraded Data Plane&lt;/h2&gt;
 &lt;p&gt;Not to be outdone, our data plane contains some significant improvements.&lt;/p&gt;
 &lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
 that have been offline or partitioned. Our new algorithm uses a &lt;a href=&#34;https://en.wikipedia.org/wiki/Hash_list&#34;&gt;Hash

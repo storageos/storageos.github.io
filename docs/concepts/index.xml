@@ -420,6 +420,119 @@ aggregate host storage and present this storage as StorageOS &lt;a href=&#34;htt
     </item>
     
     <item>
+      <title>Docs: Pod Placement</title>
+      <link>https://docs.storageos.com/docs/concepts/podlocality/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/concepts/podlocality/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS has the capacity to influence Kubernetes Pod placement decisions to
+ensure that Pods are scheduled on the same nodes as their data. This
+functionality is known as &lt;code&gt;Pod Locality&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;StorageOS grants access to data by presenting, on local or remote nodes, the
+devices used in a Pod&amp;rsquo;s VolumeMounts. However, it is often the case that it is
+required or preferred to place the Pod on the node where the StorageOS Primary
+Volume is located, because IO operations are fastest as a result of minimized
+network traffic and associated latency. Read operations are served locally and
+writes require fewer round trips to the replicas of the volume.&lt;/p&gt;
+&lt;p&gt;StorageOS automatically enables the use of a custom scheduler for any Pod
+using StorageOS Volumes. Checkout the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/admission-controller/&#34;&gt;Admission Controller reference&lt;/a&gt; for more
+information.&lt;/p&gt;
+&lt;h2 id=&#34;locality-modes&#34;&gt;Locality modes&lt;/h2&gt;
+&lt;p&gt;There are two modes available to set pod locality for StorageOS Volumes.&lt;/p&gt;
+&lt;h3 id=&#34;preferred&#34;&gt;Preferred&lt;/h3&gt;
+&lt;p&gt;The Pod SHOULD be placed alongside its data, if possible. Otherwise, it will be
+placed alongside volume replicas. If neither scenario is possible, the Pod
+will start on another node and StorageOS will grant access to the
+data over the network.&lt;/p&gt;
+&lt;p&gt;Preferred mode is the default behaviour when using the StorageOS scheduler.&lt;/p&gt;
+&lt;h3 id=&#34;strict&#34;&gt;Strict&lt;/h3&gt;
+&lt;p&gt;The Pod MUST be placed alongside its data, i.e. on a node with the master
+volume or a replica. If that is not possible, the Pod will remain in pending
+state until the premise can be fulfilled.&lt;/p&gt;
+&lt;p&gt;The aim of strict mode is to provide the user with the capability to guarantee
+best performance for applications. Some applications are required to give a
+certain level of performance, and for such applications strict co-location of
+application and data is essential.&lt;/p&gt;
+&lt;p&gt;For instance, when running Kafka Pods under heavy load, it may be better to
+avoid scheduling a Pod using a remote volume rather than have clients
+direct traffic at a cluster member which exhibits degraded performance.&lt;/p&gt;
+&lt;p&gt;To see examples on how to set a mode for your Pods, check out the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/examples/&#34;&gt;examples
+reference page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;storageos-kubernetes-scheduler&#34;&gt;Storageos Kubernetes Scheduler&lt;/h2&gt;
+&lt;p&gt;StorageOS achieves Pod locality by implementing a Kubernetes scheduler
+extender. The Kubernetes standard scheduler interacts with the StorageOS
+scheduler when placement decisions need to be made.&lt;/p&gt;
+&lt;p&gt;The Kubernetes standard scheduler selects a set of nodes for a placement
+decision based on nodeSelectors, affinity rules, etc. This list of nodes is
+sent to the StorageOS scheduler which sends back the target node where the Pod
+shall be placed.&lt;/p&gt;
+&lt;p&gt;The StorageOS scheduler logic is provided by a Pod in the Namespace where
+StorageOS Pods are running.&lt;/p&gt;
+&lt;h3 id=&#34;scheduling-process&#34;&gt;Scheduling process&lt;/h3&gt;
+&lt;p&gt;When a Pod needs to be scheduled, the scheduler collects information
+about all available nodes and the requirements of the Pod. The collected
+data is then passed through the Filter phase, during which the scheduler predicates
+are applied to the node data to decide if the given nodes are compatible
+with the Pod requirements. The result of the filter consists of a list of nodes
+that are compatible for the given Pod and a list of nodes that aren&amp;rsquo;t
+compatible.&lt;/p&gt;
+&lt;p&gt;The list of compatible nodes is then passed to the Prioritize phase, in which
+the nodes are scored based on attributes such as the state. The result of the
+Prioritize phase is a list of nodes with their respective scores. The more
+favorable nodes get higher scores than less favorable nodes. The list is then
+used by the scheduler to decide the final node to schedule the Pod on.&lt;/p&gt;
+&lt;p&gt;Once a node has been selected, the third phase, Bind, handles the binding
+of the Pod to the Kubernetes apiserver. Once bound, the kubelet on the node
+provisions the Pod.&lt;/p&gt;
+&lt;p&gt;The StorageOS scheduler implement Filter and Prioritization phases and leaves
+binding to the default Kubernetes scheduler.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    Available         +------------------+                     +------------------+
+  NodeList &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  Filtered NodeList  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;    Scored
+   Information        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod Information  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   NodeList
++--------------------&amp;gt;+      Filter      +--------------------&amp;gt;+    Prioritize    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;---------------&amp;gt;
+                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Predicates&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Priorities&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+                      +------------------+                     +------------------+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;scheduling-rules&#34;&gt;Scheduling Rules&lt;/h3&gt;
+&lt;p&gt;The StorageOS scheduler filters nodes ensuring that the remaining subset
+fulfill the following prerequisites:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The node is running StorageOS&lt;/li&gt;
+&lt;li&gt;The node is healthy&lt;/li&gt;
+&lt;li&gt;The node is not StorageOS Cordoned&lt;/li&gt;
+&lt;li&gt;The node is not in a StorageOS Drained state&lt;/li&gt;
+&lt;li&gt;The node is not a StorageOS compute-only node&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The scoring protocol once the nodes are filtered is as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Node with master volume - 15 points&lt;/li&gt;
+&lt;li&gt;Node with replica volume - 10 points&lt;/li&gt;
+&lt;li&gt;Node with no master or replica volume - 5 points&lt;/li&gt;
+&lt;li&gt;Node with unhealthy volume or unsynced replica - 1 point&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;admission-controller&#34;&gt;Admission Controller&lt;/h2&gt;
+&lt;p&gt;StorageOS implements an &lt;a href=&#34;https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they&#34;&gt;admission
+controller&lt;/a&gt;
+that ensures any Pod using StorageOS Volumes are scheduled by the StorageOS
+Scheduler. This makes the use of the scheduler transparent to the user. Check
+the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/admission-controller/&#34;&gt;reference page&lt;/a&gt;
+to see how to alter this behaviour.&lt;/p&gt;
+&lt;p&gt;The Admission Controller is based on admission webhooks. Therefore, no custom
+admission plugins need to be enabled at bootstrap of your Kubernetes cluster.
+Admission webhooks are HTTP callbacks that receive admission requests and do
+something with them. The StorageOS Cluster Operator serves the admission
+webhook. So when a Pod is in the process of being created, the StorageOS
+Cluster Operator mutates the &lt;code&gt;spec.schedulerName&lt;/code&gt; ensuring the
+&lt;code&gt;storageos-scheduler&lt;/code&gt; is set.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Policies</title>
       <link>https://docs.storageos.com/docs/concepts/policies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

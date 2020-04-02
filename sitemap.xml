@@ -19,6 +19,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/scheduler/admission-controller/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</loc>
   </url>
   
@@ -32,6 +36,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/scheduler/examples/</loc>
   </url>
   
   <url>
@@ -296,6 +304,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/concepts/podlocality/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/concepts/policies/</loc>
   </url>
   
@@ -361,6 +373,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/cli/rule/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/scheduler/</loc>
   </url>
   
   <url>

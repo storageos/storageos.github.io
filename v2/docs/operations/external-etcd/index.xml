@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Etcd</title>
-    <link>https://docs.storageos.com/v2/docs/operations/external-etcd/</link>
+    <link>https://docs.storageos.com/docs/operations/external-etcd/</link>
     <description>Recent content in Etcd on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/operations/external-etcd/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/operations/external-etcd/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Encrypting communication with Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls/</link>
+      <link>https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls/</guid>
+      <guid>https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/</guid>
       <description>
         
         
@@ -26,7 +26,7 @@
 mutual TLS (mTLS). With mTLS both StorageOS and etcd authenticate each other
 ensuring that communication only happens between mutually authenticated end
 points, and that all communication is encrypted.&lt;/p&gt;
-&lt;p&gt;StorageOS uses &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/envvars&#34;&gt;environment variables&lt;/a&gt; to specify the
+&lt;p&gt;StorageOS uses &lt;a href=&#34;https://docs.storageos.com/docs/reference/envvars&#34;&gt;environment variables&lt;/a&gt; to specify the
 location of the necessary certificates and keys. This allows Kubernetes secrets
 to be mounted as volumes, directly into pods.&lt;/p&gt;
 &lt;h2 id=&#34;setting-up-mtls-with-etcd&#34;&gt;Setting up mTLS with Etcd&lt;/h2&gt;
@@ -70,7 +70,7 @@ volume so that the certificate files are avaliable inside the pod. Environment
 variables containing the file paths are passed to the StorageOS process in
 order to use the files from the mounted path.&lt;/p&gt;
 &lt;p&gt;A worked example of settings up StorageOS with external etcd using mTLS is avaliable
-&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls&#34;&gt;here&lt;/a&gt;.
+&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example-with-tls&#34;&gt;here&lt;/a&gt;.
 For ease of use the example uses the CoreOS etcd operator and the CoreOS guide
 for &lt;a href=&#34;https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md&#34;&gt;Cluster
 TLS&lt;/a&gt;

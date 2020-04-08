@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Operations</title>
-    <link>https://docs.storageos.com/v2/docs/operations/</link>
+    <link>https://docs.storageos.com/docs/operations/</link>
     <description>Recent content in Operations on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/operations/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/operations/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/operations/external-etcd/</link>
+      <link>https://docs.storageos.com/docs/operations/external-etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/external-etcd/</guid>
+      <guid>https://docs.storageos.com/docs/operations/external-etcd/</guid>
       <description>
         
         
@@ -174,7 +174,7 @@ deletes the 3 nodes hosting etcd, the result will be catastrophic and a restore
 from a backup will be needed.&lt;/p&gt;
 &lt;p&gt;If it is not possible to deploy independent VMs for etcd, etcd can be deployed
 as pods, inside the cluster. This configuration requires an awareness of the
-stability that etcd requires. &lt;strong&gt;You can use the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/#installation-options&#34;&gt;etcd-as-pods&lt;/a&gt;
+stability that etcd requires. &lt;strong&gt;You can use the &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/#installation-options&#34;&gt;etcd-as-pods&lt;/a&gt;
 installation option, but be aware of the precautions that need to be taken.&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-external-etcd&#34;&gt;Why External Etcd&lt;/h2&gt;
 &lt;p&gt;etcd is a distributed key-value store database focused on strong consistency.
@@ -274,7 +274,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;Note the &lt;code&gt;kvBackend.address&lt;/code&gt; section.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;For full Custom Resource documentation check &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;StorageOSCluster resource definition&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For full Custom Resource documentation check &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;StorageOSCluster resource definition&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;best-practices&#34;&gt;Best practices&lt;/h2&gt;
 &lt;p&gt;StorageOS uses etcd as a service, whether it is deployed following the above
 instructions or as a custom installation. It is expected that the user
@@ -316,10 +316,10 @@ defragmentation. Defragmentation usually takes a few milliseconds to complete.&l
     
     <item>
       <title>Docs: StorageOS Volume Guide</title>
-      <link>https://docs.storageos.com/v2/docs/operations/firstpvc/</link>
+      <link>https://docs.storageos.com/docs/operations/firstpvc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/firstpvc/</guid>
+      <guid>https://docs.storageos.com/docs/operations/firstpvc/</guid>
       <description>
         
         
@@ -446,7 +446,7 @@ Hello World!
 the PVC is being written to. If you were to kill the pod and start it again
 on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;If you wish to see more use cases with actual applications please see our
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/&#34;&gt;Use Cases&lt;/a&gt; documentation.&lt;/strong&gt;&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/usecases/&#34;&gt;Use Cases&lt;/a&gt; documentation.&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -455,15 +455,15 @@ on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
     
     <item>
       <title>Docs: Cluster health</title>
-      <link>https://docs.storageos.com/v2/docs/operations/health/</link>
+      <link>https://docs.storageos.com/docs/operations/health/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/health/</guid>
+      <guid>https://docs.storageos.com/docs/operations/health/</guid>
       <description>
         
         
         &lt;p&gt;Various tools are available for checking on the status of a cluster.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; displays the
+&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; displays the
 status of nodes in the cluster.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get nodes
 NAME        HEALTH  AGE             LABELS
@@ -478,10 +478,10 @@ node5       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4
     
     <item>
       <title>Docs: Managing Host Storage</title>
-      <link>https://docs.storageos.com/v2/docs/operations/managing-host-storage/</link>
+      <link>https://docs.storageos.com/docs/operations/managing-host-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/managing-host-storage/</guid>
+      <guid>https://docs.storageos.com/docs/operations/managing-host-storage/</guid>
       <description>
         
         
@@ -647,10 +647,10 @@ Filesystem                  Size  Used Avail Use% Mounted on
     
     <item>
       <title>Docs: Licensing</title>
-      <link>https://docs.storageos.com/v2/docs/operations/licensing/</link>
+      <link>https://docs.storageos.com/docs/operations/licensing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/licensing/</guid>
+      <guid>https://docs.storageos.com/docs/operations/licensing/</guid>
       <description>
         
         
@@ -664,18 +664,18 @@ to upgrade your licence using either the GUI or CLI.&lt;/p&gt;
 automatically by creating or logging in with a StorageOS account on the
 StorageOS portal via the licence page of the StorageOS web GUI:
 &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible. To inspect your licence, click on the
 &amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
 &lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
 off-line method. To apply such keys, via the web GUI, visit
 &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt; and click on the tab &amp;ldquo;ENTER KEY&amp;rdquo;, then
 paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you could
 also view your cluster ID on the same page.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-cli&#34;&gt;Obtaining a Developer licence via the CLI&lt;/h2&gt;
 &lt;p&gt;Before getting a licence, you need to know the ID of your StorageOS cluster.&lt;/p&gt;
 &lt;p&gt;This CLI command can print the cluster ID:&lt;/p&gt;
@@ -693,10 +693,10 @@ or log into &lt;a href=&#34;https://my.storageos.com&#34;&gt;StorageOS Portal&lt
 page&lt;/a&gt; and follow the instructions on the
 page to get the licence key for your cluster. Make sure that you input the
 correct cluster ID before generating the licence key.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Then copy the licence key to clipboard and apply the licence by the CLI command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; PASTE-THE-LICENCE-KEY-HERE &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos apply licence --from-stdin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;
 &lt;p&gt;Please contact &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt; to discuss
 pricing for our Enterprise licence.&lt;/p&gt;
@@ -706,10 +706,10 @@ pricing for our Enterprise licence.&lt;/p&gt;
     
     <item>
       <title>Docs: Namespaces</title>
-      <link>https://docs.storageos.com/v2/docs/operations/namespaces/</link>
+      <link>https://docs.storageos.com/docs/operations/namespaces/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/namespaces/</guid>
+      <guid>https://docs.storageos.com/docs/operations/namespaces/</guid>
       <description>
         
         
@@ -730,10 +730,10 @@ before the namespace can be deleted.&lt;/p&gt;
     
     <item>
       <title>Docs: Policies</title>
-      <link>https://docs.storageos.com/v2/docs/operations/policies/</link>
+      <link>https://docs.storageos.com/docs/operations/policies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/policies/</guid>
+      <guid>https://docs.storageos.com/docs/operations/policies/</guid>
       <description>
         
         
@@ -750,8 +750,8 @@ be applied to the default namespace.&lt;/p&gt;
 &lt;h2 id=&#34;managing-policies&#34;&gt;Managing Policies&lt;/h2&gt;
 &lt;p&gt;To start creating policies, at least one custom namespace and user are
 required. For more information on how to create namespaces see our
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/namespaces/&#34;&gt;Namespace guide&lt;/a&gt;, for users see
-our &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/create/&#34;&gt;Users CLI reference&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/namespaces/&#34;&gt;Namespace guide&lt;/a&gt;, for users see
+our &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/create/&#34;&gt;Users CLI reference&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;In order to create a policy navigate to &amp;ldquo;Policies&amp;rdquo; in the GUI and select
 &amp;ldquo;Create Policy&amp;rdquo;. A policy controls access to a variety of StorageOS resources
 and is applied to a user, by placing the user in the policies group.&lt;/p&gt;
@@ -763,10 +763,10 @@ before deletion of the policy can be completed.&lt;/p&gt;
     
     <item>
       <title>Docs: Troubleshooting</title>
-      <link>https://docs.storageos.com/v2/docs/operations/troubleshooting/</link>
+      <link>https://docs.storageos.com/docs/operations/troubleshooting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/troubleshooting/</guid>
+      <guid>https://docs.storageos.com/docs/operations/troubleshooting/</guid>
       <description>
         
         
@@ -807,7 +807,7 @@ the kubelet. StorageOS can be configured to share the device directory.&lt;/p&gt
   sharedDir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Needed when Kubelet as a container&lt;/span&gt;
   ...
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;See example on how to configure the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/#specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;StorageOS Custom
+&lt;p&gt;See example on how to configure the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/#specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;StorageOS Custom
 Resource&lt;/a&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt; &lt;/p&gt;
@@ -950,7 +950,7 @@ the right location.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h3 id=&#34;solution-3&#34;&gt;Solution:&lt;/h3&gt;
-&lt;p&gt;Deploy StorageOS following the &lt;a href=&#34;https://docs.storageos.com/v2/docs/introduction/quickstart/&#34;&gt;installation procedures&lt;/a&gt;. If you are using the manifests
+&lt;p&gt;Deploy StorageOS following the &lt;a href=&#34;https://docs.storageos.com/docs/introduction/quickstart/&#34;&gt;installation procedures&lt;/a&gt;. If you are using the manifests
 provided for Kubernetes to deploy StorageOS rather than using automated
 provisioners, make sure that the StorageClass parameters and the Secret
 reference match.&lt;/p&gt;
@@ -996,7 +996,7 @@ Examples
 page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For more advanced installations using compute-only and storage nodes, check the
 &lt;code&gt;storageos.com/deployment=computeonly&lt;/code&gt; label that can be added to the nodes
-through Kubernetes node labels, or StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/&#34;&gt;Labels&lt;/a&gt; page.&lt;/p&gt;
+through Kubernetes node labels, or StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;Labels&lt;/a&gt; page.&lt;/p&gt;
 &lt;h2 id=&#34;lio-initerror&#34;&gt;LIO Init:Error&lt;/h2&gt;
 &lt;h3 id=&#34;issue-4&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS pods not starting with &lt;code&gt;Init:Error&lt;/code&gt;&lt;/p&gt;
@@ -1026,7 +1026,7 @@ modprobe: FATAL: Module tcm_loop not found.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-5&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Install the required kernel modules (usually found in the
 &lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
-following this &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and delete StorageOS
+following this &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and delete StorageOS
 pods, allowing the DaemonSet to create the pods again.&lt;/p&gt;
 &lt;h2 id=&#34;lio-not-enabled&#34;&gt;LIO not enabled&lt;/h2&gt;
 &lt;h3 id=&#34;issue-5&#34;&gt;Issue:&lt;/h3&gt;
@@ -1042,7 +1042,7 @@ not loaded.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-6&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Install the required kernel modules (usually found in the
 &lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
-following this &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and restart the container.&lt;/p&gt;
+following this &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and restart the container.&lt;/p&gt;
 &lt;h2 id=&#34;openshift-storageos-pods-missing----daemonset-error&#34;&gt;(OpenShift) StorageOS pods missing &amp;ndash; DaemonSet error&lt;/h2&gt;
 &lt;p&gt;StorageOS DaemonSet doesn&amp;rsquo;t have any pod replicas. The DaemonSet couldn&amp;rsquo;t
 allocate any Pod due to security issues.&lt;/p&gt;
@@ -1078,7 +1078,7 @@ enough privileges.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;getting-help&#34;&gt;Getting Help&lt;/h2&gt;
 &lt;p&gt;If our troubleshooting guides do not help resolve your issue, please see our
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/support/&#34;&gt;support section&lt;/a&gt; for details on how
+&lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support section&lt;/a&gt; for details on how
 to get in touch with us.&lt;/p&gt;
 
       </description>
@@ -1086,16 +1086,16 @@ to get in touch with us.&lt;/p&gt;
     
     <item>
       <title>Docs: User Management</title>
-      <link>https://docs.storageos.com/v2/docs/operations/users/</link>
+      <link>https://docs.storageos.com/docs/operations/users/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/users/</guid>
+      <guid>https://docs.storageos.com/docs/operations/users/</guid>
       <description>
         
         
         &lt;p&gt;A StorageOS cluster admin can create users and restrict their access rights to
-StorageOS &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/namespaces/&#34;&gt;namespaces&lt;/a&gt; using
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
+StorageOS &lt;a href=&#34;https://docs.storageos.com/docs/operations/namespaces/&#34;&gt;namespaces&lt;/a&gt; using
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Note: Users are created with access to the default namespace. This access is
 only revoked when a policy is created for the user or their group.&lt;/p&gt;

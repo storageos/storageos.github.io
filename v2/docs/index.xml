@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Documentation</title>
-    <link>https://docs.storageos.com/v2/docs/</link>
+    <link>https://docs.storageos.com/docs/</link>
     <description>Recent content in Documentation on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,18 +15,18 @@
     
     <item>
       <title>Docs: Install</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/install/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/install/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/install/</guid>
       <description>
         
         
         &lt;p&gt;To install the operator follow the installation page for your orchestrator.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </description>
@@ -34,16 +34,16 @@
     
     <item>
       <title>Docs: Kubernetes</title>
-      <link>https://docs.storageos.com/v2/docs/install/kubernetes/</link>
+      <link>https://docs.storageos.com/docs/install/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/kubernetes/</guid>
+      <guid>https://docs.storageos.com/docs/install/kubernetes/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
@@ -222,7 +222,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -372,13 +372,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -471,7 +471,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -621,13 +621,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -720,7 +720,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -870,13 +870,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -969,7 +969,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1119,13 +1119,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -1218,7 +1218,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1368,13 +1368,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -1399,7 +1399,7 @@ Phase.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 
@@ -1408,10 +1408,10 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     
     <item>
       <title>Docs: What is StorageOS V2</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/overview/</link>
+      <link>https://docs.storageos.com/docs/introduction/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/overview/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/overview/</guid>
       <description>
         
         
@@ -1470,7 +1470,7 @@ your cluster, and we&amp;rsquo;ll output in json by default, for easy ingestion 
 aggregators such as Elasticsearch.&lt;/p&gt;
 &lt;h2 id=&#34;upgraded-data-plane&#34;&gt;Upgraded Data Plane&lt;/h2&gt;
 &lt;p&gt;Not to be outdone, our data plane contains some significant improvements.&lt;/p&gt;
-&lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
+&lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
 that have been offline or partitioned. Our new algorithm uses a &lt;a href=&#34;https://en.wikipedia.org/wiki/Hash_list&#34;&gt;Hash
 List&lt;/a&gt; to sync only changed sections of
 a volume (similar in some ways to what rsync does). StorageOS maintains these
@@ -1489,10 +1489,10 @@ board, with improvements in throughput of up to 135% for some scenarios.&lt;/p&g
     
     <item>
       <title>Docs: System Configuration</title>
-      <link>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</link>
+      <link>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</guid>
+      <guid>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</guid>
       <description>
         
         
@@ -1515,7 +1515,7 @@ of data. On startup, StorageOS will detect if other applications are using
 TCMU and fall back to FUSE. However if StorageOS is started first there is no
 mechanism for StorageOS to fallback to FUSE if another application begins to
 use TCMU. TCMU can be disabled using the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;DISABLE_TCMU&lt;/a&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;DISABLE_TCMU&lt;/a&gt;
 StorageOSCluster spec parameter.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Depending on the distribution, the modules are shipped as part of the
@@ -1533,7 +1533,7 @@ installed.&lt;/p&gt;
 &lt;p&gt;Ubuntu 16.04/18.04 requires the installation of additional packages.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. Ubuntu 16.04/18.04 AWS and Ubuntu 18.04 GCE do not provide the
-necessary linux-image-extra package - &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce&#34;&gt;see
+necessary linux-image-extra package - &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce&#34;&gt;see
 below&lt;/a&gt; for more information&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;ubuntu-package-installation&#34;&gt;Ubuntu Package Installation&lt;/h2&gt;
@@ -1583,10 +1583,10 @@ the init container, perform the following steps:&lt;/p&gt;
     
     <item>
       <title>Docs: Configuration</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</guid>
       <description>
         
         
@@ -1808,23 +1808,23 @@ the init container, perform the following steps:&lt;/p&gt;
     
     <item>
       <title>Docs: OpenShift</title>
-      <link>https://docs.storageos.com/v2/docs/install/openshift/</link>
+      <link>https://docs.storageos.com/docs/install/openshift/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/openshift/</guid>
+      <guid>https://docs.storageos.com/docs/install/openshift/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding. Including the deployment of an etcd cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you have installed OpenShift in AWS ensure that the requisite ports are
 opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;StorageOS v2 supports OpenShift v4. For more information check the &lt;a href=&#34;https://docs.storageos.com/v2/docs/platforms/openshift/&#34;&gt;OpenShift
+&lt;p&gt;StorageOS v2 supports OpenShift v4. For more information check the &lt;a href=&#34;https://docs.storageos.com/docs/platforms/openshift/&#34;&gt;OpenShift
 platform&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;The recommended way to run StorageOS on OpenShift is to deploy the StorageOS
 Cluster Operator using the Operator Lifecycle Manager (OLM) from the Red Hat
@@ -1891,19 +1891,19 @@ available from the OperatorHub.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Select the &lt;code&gt;OperatorHub&lt;/code&gt; from the Catalog sub menu and search for StorageOS&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/operatorhub.png&#34; alt=&#34;install-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/operatorhub.png&#34; alt=&#34;install-1&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Select StorageOS and click install&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/install-storageos-operator.png&#34; alt=&#34;install-2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-storageos-operator.png&#34; alt=&#34;install-2&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create the Operator subscription by clicking subscribe&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-operator-subscription.png&#34; alt=&#34;install-3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-operator-subscription.png&#34; alt=&#34;install-3&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait until the Upgrade Status shows 1 installed&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/install-complete.png&#34; alt=&#34;install-4&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-complete.png&#34; alt=&#34;install-4&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a secret containing the &lt;code&gt;apiUsername&lt;/code&gt; and an &lt;code&gt;apiPassword&lt;/code&gt; key. The
@@ -1914,11 +1914,11 @@ StorageOS and OpenShift, the CSI credentials  &lt;code&gt;csiProvisionUsername&l
 &lt;code&gt;csiControllerPublishPassword&lt;/code&gt;, &lt;code&gt;csiNodePublishUsername&lt;/code&gt;,
 &lt;code&gt;csiNodePublishPassword&lt;/code&gt; are needed. Take note of which project you created
 the secret in.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-secret.png&#34; alt=&#34;install-5&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-secret.png&#34; alt=&#34;install-5&#34;&gt;
  
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-1.png&#34; alt=&#34;install-6&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-2.png&#34; alt=&#34;install-7&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-3.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-1.png&#34; alt=&#34;install-6&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-2.png&#34; alt=&#34;install-7&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-3.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Alternatively the YAML input can be used with a Secret as follows:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -1941,13 +1941,13 @@ the secret in.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;Go to &lt;code&gt;Installed Operators&lt;/code&gt; and select the StorageOS operator. Select
 StorageOS Cluster and create a StorageOS cluster.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-stos.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-stos.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The StorageOS cluster resource describes the StorageOS cluster that will be
 created. The &lt;code&gt;secretRefName&lt;/code&gt; and &lt;code&gt;secretRefNamespace&lt;/code&gt; should reference the secret
 containing the &lt;code&gt;apiUsername&lt;/code&gt; and &lt;code&gt;apiPassword&lt;/code&gt; that was previously created.&lt;/p&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;Cluster Operator
 configuration&lt;/a&gt; page.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos.com/v1&amp;#34;&lt;/span&gt;
 kind: StorageOSCluster
@@ -1974,11 +1974,11 @@ spec:
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Verify that the StorageOS Resource enters a running state.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/stos-running.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-running.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Set SELinux Permissions&lt;/p&gt;
@@ -2066,7 +2066,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -2101,13 +2101,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        values:&lt;/span&gt;
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc -n storageos get pods -w&lt;/span&gt;
@@ -2137,7 +2137,7 @@ and CSI socket.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 
@@ -2146,10 +2146,10 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     
     <item>
       <title>Docs: Firewalls</title>
-      <link>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</link>
+      <link>https://docs.storageos.com/docs/prerequisites/firewalls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</guid>
+      <guid>https://docs.storageos.com/docs/prerequisites/firewalls/</guid>
       <description>
         
         
@@ -2229,26 +2229,26 @@ default DROP or REJECT rules.&lt;/p&gt;
     
     <item>
       <title>Docs: Quickstart</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/quickstart/</link>
+      <link>https://docs.storageos.com/docs/introduction/quickstart/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/quickstart/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/quickstart/</guid>
       <description>
         
         
         &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Start by &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/architecture/&#34;&gt;understanding the architecture&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Start by &lt;a href=&#34;https://docs.storageos.com/docs/concepts/architecture/&#34;&gt;understanding the architecture&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Follow our installation guides for
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;,
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt; or
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;,
+&lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt; or
+&lt;a href=&#34;https://docs.storageos.com/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Dive into our Use Case documentation for Workloads deployed in
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/usecases/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -2257,10 +2257,10 @@ default DROP or REJECT rules.&lt;/p&gt;
     
     <item>
       <title>Docs: Cluster Operator examples</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/examples/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/examples/</guid>
       <description>
         
         
@@ -2303,7 +2303,7 @@ default), irrespective of what NameSpace the CR is defined in.&lt;/p&gt;
 &lt;h1 id=&#34;examples&#34;&gt;Examples&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can checkout all the parameters configurable in the
-&lt;a href=&#34;https://docs.storageos.com/v2/v2/docs/reference/cluster-operator/configuration/&#34;&gt;configuration&lt;/a&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;All examples must reference the &lt;code&gt;storageos-api&lt;/code&gt; Secret.&lt;/p&gt;
@@ -2388,10 +2388,10 @@ pods.&lt;/p&gt;
     
     <item>
       <title>Docs: Mount Propagation</title>
-      <link>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</link>
+      <link>https://docs.storageos.com/docs/prerequisites/mountpropagation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</guid>
+      <guid>https://docs.storageos.com/docs/prerequisites/mountpropagation/</guid>
       <description>
         
         
@@ -2431,22 +2431,22 @@ check and enable mount propagation where appropriate.&lt;/p&gt;
     
     <item>
       <title>Docs: Rancher</title>
-      <link>https://docs.storageos.com/v2/docs/install/rancher/</link>
+      <link>https://docs.storageos.com/docs/install/rancher/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/rancher/</guid>
+      <guid>https://docs.storageos.com/docs/install/rancher/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;StorageOS transparently supports Rancher deployments on CentOS, RHEL,
 Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can
-support other Linux distributions as detailed on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;System Configuration
+support other Linux distributions as detailed on the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;System Configuration
 page&lt;/a&gt; if the
 appropriate kernel modules are available.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -2556,7 +2556,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -2591,13 +2591,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        values:&lt;/span&gt;
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -2622,7 +2622,7 @@ Phase.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 
@@ -2631,10 +2631,10 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     
     <item>
       <title>Docs: Cluster Operator Upgrade</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/upgrade/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/upgrade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/upgrade/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/upgrade/</guid>
       <description>
         
         
@@ -2671,17 +2671,17 @@ Operator is upgrading.&lt;/p&gt;
     
     <item>
       <title>Docs: Supported Platforms and Orchestrators</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/platforms/</link>
+      <link>https://docs.storageos.com/docs/introduction/platforms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/platforms/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/platforms/</guid>
       <description>
         
         
         &lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Linux X86_64&lt;/li&gt;
-&lt;li&gt;Kernels satisfying our module &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Kernels satisfying our module &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;3.x kernels have a limitation of 256 active volumes per node&lt;/li&gt;
 &lt;li&gt;4.x kernels have a limitation of 4096 active volumes per node&lt;/li&gt;
 &lt;li&gt;We are distribution agnostic as long as our prerequisites are met&lt;/li&gt;
@@ -2697,10 +2697,10 @@ Operator is upgrading.&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Best Practices</title>
-      <link>https://docs.storageos.com/v2/docs/best-practices/</link>
+      <link>https://docs.storageos.com/docs/best-practices/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/best-practices/</guid>
+      <guid>https://docs.storageos.com/docs/best-practices/</guid>
       <description>
         
         
@@ -2710,7 +2710,7 @@ cluster metadata and manage distributed configuration state. An embedded etcd
 instance is included in the StorageOS container, but for production
 environments and testing of production workloads, &lt;strong&gt;we recommend deploying an
 external etcd cluster.&lt;/strong&gt; For more details about, and an example of, how to run
-etcd, see the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd&#34;&gt;External etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+etcd, see the &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd&#34;&gt;External etcd Operations&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;It is highly recommended to use external etcd for &lt;strong&gt;cloud environments&lt;/strong&gt; and
 place the etcd cluster on stable nodes. Placing the etcd on nodes that are
 recycled often might affect the normal operations of StorageOS.&lt;/p&gt;
@@ -2718,7 +2718,7 @@ recycled often might affect the normal operations of StorageOS.&lt;/p&gt;
 &lt;p&gt;We recommend creating a separate filesystem for StorageOS to mitigate the risk
 of filling the root filesystem on nodes. This has to be done for each node in
 the cluster.&lt;/p&gt;
-&lt;p&gt;Follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/managing-host-storage/&#34;&gt;managing host storage&lt;/a&gt; best practices page for more
+&lt;p&gt;Follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;managing host storage&lt;/a&gt; best practices page for more
 details.&lt;/p&gt;
 &lt;h2 id=&#34;resource-reservations&#34;&gt;Resource reservations&lt;/h2&gt;
 &lt;p&gt;StorageOS resource consumption depends on the workloads and the StorageOS
@@ -2772,7 +2772,7 @@ define StorageOS pools based on node selectors to collocate volumes.&lt;/p&gt;
 &lt;p&gt;Losing a few nodes at the same time could cause the loss of data even when
 volume replicas are being used.&lt;/p&gt;
 &lt;h2 id=&#34;port-blocking&#34;&gt;Port blocking&lt;/h2&gt;
-&lt;p&gt;StorageOS exposes ports to operate. It is recommended that the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/firewalls/&#34;&gt;ports&lt;/a&gt; are not accessible from outside
+&lt;p&gt;StorageOS exposes ports to operate. It is recommended that the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/firewalls/&#34;&gt;ports&lt;/a&gt; are not accessible from outside
 the scope of your cluster.&lt;/p&gt;
 &lt;h2 id=&#34;storageos-in-docker-ee&#34;&gt;StorageOS in Docker EE&lt;/h2&gt;
 &lt;p&gt;StorageOS does not support running on Swarm nodes nor on mixed (Kubernetes and
@@ -2784,10 +2784,10 @@ nodes.&lt;/p&gt;
     
     <item>
       <title>Docs: Support</title>
-      <link>https://docs.storageos.com/v2/docs/support/</link>
+      <link>https://docs.storageos.com/docs/support/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/support/</guid>
+      <guid>https://docs.storageos.com/docs/support/</guid>
       <description>
         
         
@@ -2803,7 +2803,7 @@ information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.&lt;/p&gt;
 &lt;p&gt;Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/v2/docs/support/contactus#storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Diagnostic
+as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/docs/support/contactus#storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Diagnostic
 Bundle&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
 &lt;ul&gt;
@@ -2846,7 +2846,7 @@ confirmation.&lt;/p&gt;
 &lt;li&gt;output of &lt;code&gt;lshw&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;output of &lt;code&gt;dmesg&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/bundle/&#34;&gt;Support Bundle&lt;/a&gt; for an exhaustive list of what is included in the cluster diagnostic bundle.&lt;/p&gt;
+&lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/docs/reference/bundle/&#34;&gt;Support Bundle&lt;/a&gt; for an exhaustive list of what is included in the cluster diagnostic bundle.&lt;/p&gt;
 &lt;p&gt;StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
 support cases.&lt;/p&gt;
 &lt;p&gt;The information given in the cluster cluster diagnostic bundle is only used for support purposes
@@ -2854,7 +2854,7 @@ and it will be removed once the data is no longer needed for such purposes.
 In case the information is sensitive and can&amp;rsquo;t be given to StorageOS, please
 make sure that support engineers have as much information about your
 environment as possible.&lt;/p&gt;
-&lt;p&gt;You can generate a cluster diagnostic bundle through the StorageOS &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/gui&#34;&gt;GUI&lt;/a&gt; by
+&lt;p&gt;You can generate a cluster diagnostic bundle through the StorageOS &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui&#34;&gt;GUI&lt;/a&gt; by
 navigating to the &lt;code&gt;Cluster&lt;/code&gt; menu and downloading the StorageOS support Bundle.
 The cluster cluster diagnostic bundle can also be generated using the CLI command below.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics -o storageos-diagnostic-bundle
@@ -2864,10 +2864,10 @@ The cluster cluster diagnostic bundle can also be generated using the CLI comman
     
     <item>
       <title>Docs: Self Evaluation Guide</title>
-      <link>https://docs.storageos.com/v2/docs/self-eval/</link>
+      <link>https://docs.storageos.com/docs/self-eval/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/self-eval/</guid>
+      <guid>https://docs.storageos.com/docs/self-eval/</guid>
       <description>
         
         
@@ -3366,10 +3366,10 @@ Hello World!
     
     <item>
       <title>Docs: Apply licence</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/apply/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/apply/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/apply/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/apply/</guid>
       <description>
         
         
@@ -3404,10 +3404,10 @@ Global Flags:
     
     <item>
       <title>Docs: Architecture</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/architecture/</link>
+      <link>https://docs.storageos.com/docs/concepts/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/architecture/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/architecture/</guid>
       <description>
         
         
@@ -3417,10 +3417,10 @@ applications in Kubernetes.&lt;/p&gt;
 StorageOS cluster to create and present virtual volumes into containers. Space
 on the host is consumed from the mount point &lt;code&gt;/var/lib/storageos/data&lt;/code&gt;, so it
 is therefore recommended that disk devices are used exclusively for StorageOS,
-as described in &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
+as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;StorageOS is agnostic to the underlying storage and runs equally well on
 bare metal, in virtual machines or on cloud providers.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
 StorageOS&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;storageos-on-kubernetes&#34;&gt;StorageOS on Kubernetes&lt;/h3&gt;
@@ -3455,7 +3455,7 @@ storage. The scheduler, CSI helper and Operator run as separate pods and are
 controlled as deployments.&lt;/p&gt;
 &lt;p&gt;StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
 is managed through standard StorageClasses and PersistentVolumeClaims, and
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
 Kubernetes-style labels and selectors, prefixed with &lt;code&gt;storageos.com/&lt;/code&gt;. By
 default, volumes are cached to improve read performance and compressed to
 reduce network traffic.&lt;/p&gt;
@@ -3469,10 +3469,10 @@ restarted on any node and access volumes transparently.&lt;/p&gt;
     
     <item>
       <title>Docs: Attach</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/attach/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/attach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/attach/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/attach/</guid>
       <description>
         
         
@@ -3504,20 +3504,20 @@ Global Flags:
     
     <item>
       <title>Docs: AWS EKS</title>
-      <link>https://docs.storageos.com/v2/docs/platforms/aws-eks/</link>
+      <link>https://docs.storageos.com/docs/platforms/aws-eks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/platforms/aws-eks/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/aws-eks/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS is fully compatible with AWS EKS. To install StorageOS on EKS, please
-follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An EKS deployment of Kubernetes uses AWS Linux by default with an optimized
 kernel. As the requisite kernel modules are not available for StorageOS to use
 TCMU, FUSE will be used as a fallback. Using FUSE instead of TCMU has
 performance implications.&lt;/p&gt;
-&lt;p&gt;For more details about the OS Distributions check the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;System
+&lt;p&gt;For more details about the OS Distributions check the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;System
 Configuration&lt;/a&gt;
 page.&lt;/p&gt;
 
@@ -3526,15 +3526,15 @@ page.&lt;/p&gt;
     
     <item>
       <title>Docs: Azure AKS</title>
-      <link>https://docs.storageos.com/v2/docs/platforms/azure-aks/</link>
+      <link>https://docs.storageos.com/docs/platforms/azure-aks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/platforms/azure-aks/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/azure-aks/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS is fully compatible with Azure AKS. To install StorageOS on AKS
-please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An AKS deployment of Kubernetes uses Ubuntu by default with an optimized
 kernel. All versions of Ubuntu with a kernel version later
 than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.&lt;/p&gt;
@@ -3544,10 +3544,10 @@ than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.
     
     <item>
       <title>Docs: Backing up files from StorageOS volumes</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/backups/</link>
+      <link>https://docs.storageos.com/docs/usecases/backups/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/backups/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/backups/</guid>
       <description>
         
         
@@ -3560,7 +3560,7 @@ files written by the application are available for export. Files can be
 exported using Nginx as a web file server, transferred using rsync or accessed
 via SFTP.&lt;/p&gt;
 &lt;p&gt;The files create a stateful set that can be used &lt;em&gt;AFTER&lt;/em&gt; a StorageOS cluster
-has been created. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+has been created. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;clone-repository&#34;&gt;Clone Repository&lt;/h2&gt;
 &lt;p&gt;In order to deploy the examples, clone this repository and use kubectl to create the
@@ -3731,14 +3731,14 @@ date.txt    lost+found
     
     <item>
       <title>Docs: Cassandra</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/cassandra/</link>
+      <link>https://docs.storageos.com/docs/usecases/cassandra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/cassandra/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/cassandra/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorecassandralogopng-cassandra-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/cassandralogo.png&#34; alt=&#34;image&#34;&gt; Cassandra with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorecassandralogopng-cassandra-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/cassandralogo.png&#34; alt=&#34;image&#34;&gt; Cassandra with StorageOS&lt;/h1&gt;
 &lt;p&gt;Cassandra is a popular distributed NoSQL open source database.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Cassandra means that if a Cassandra pod
 fails, the cluster is only in a degraded state for as long as it takes
@@ -3750,7 +3750,7 @@ irrespective of whether or not a StorageOS master is located on the same node.&l
 consideration of whether to allow StorageOS or Cassandra to handle replication
 is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-cassandra-on-kubernetes&#34;&gt;Deploying Cassandra on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -3824,10 +3824,10 @@ cqlsh&amp;gt; SELECT cluster_name, listen_address FROM system.local&lt;span styl
     
     <item>
       <title>Docs: Clusters</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/clusters/</link>
+      <link>https://docs.storageos.com/docs/concepts/clusters/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/clusters/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/clusters/</guid>
       <description>
         
         
@@ -3844,21 +3844,21 @@ nodes.&lt;/p&gt;
     
     <item>
       <title>Docs: Compression</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/compression/</link>
+      <link>https://docs.storageos.com/docs/concepts/compression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/compression/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/compression/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS compression is handled on a per volume basis and is enabled by
 default, as performance is generally increased when compression is enabled due
 to fewer read/write operations taking place on the backend store (the volumes&amp;rsquo;
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
-by setting the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
+by setting the &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
 on a volume.&lt;/p&gt;
 &lt;p&gt;StorageOS utilises the &lt;a href=&#34;https://lz4.github.io/lz4/&#34;&gt;lz4 compression algorithm&lt;/a&gt;
-when writing to the backend store and when compressing &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/replication&#34;&gt;replication
+when writing to the backend store and when compressing &lt;a href=&#34;https://docs.storageos.com/docs/concepts/replication&#34;&gt;replication
 traffic&lt;/a&gt; before it is sent across the network.
 Compression is granular per 4k block and data will remain
 compressed/uncompressed once written to a volume. Therefore, compression can be
@@ -3874,7 +3874,7 @@ increased and CPU resources are not wasted on attempts to compress
 uncompressible blocks. StorageOS&amp;rsquo; patented on disk format is used to tell
 whether individual blocks are compressed without overhead. As such volume
 compression can be dynamically enabled/disabled even while a volume is in use.&lt;/p&gt;
-&lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled
+&lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled
 for a volume, blocks are compressed then encrypted.&lt;/p&gt;
 
       </description>
@@ -3882,10 +3882,10 @@ for a volume, blocks are compressed then encrypted.&lt;/p&gt;
     
     <item>
       <title>Docs: Contributing to the docs</title>
-      <link>https://docs.storageos.com/v2/docs/reference/contributing/</link>
+      <link>https://docs.storageos.com/docs/reference/contributing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/contributing/</guid>
+      <guid>https://docs.storageos.com/docs/reference/contributing/</guid>
       <description>
         
         
@@ -3931,10 +3931,10 @@ payment.&lt;/p&gt;
     
     <item>
       <title>Docs: Create</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/create/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/create/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/create/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/create/</guid>
       <description>
         
         
@@ -4028,10 +4028,10 @@ Global Flags:
     
     <item>
       <title>Docs: Delete</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/delete/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/delete/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/delete/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/delete/</guid>
       <description>
         
         
@@ -4091,10 +4091,10 @@ Global Flags:
     
     <item>
       <title>Docs: Describe</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/describe/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/describe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/describe/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/describe/</guid>
       <description>
         
         
@@ -4183,10 +4183,10 @@ Global Flags:
     
     <item>
       <title>Docs: Detach Volume</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/detach/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/detach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/detach/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/detach/</guid>
       <description>
         
         
@@ -4219,19 +4219,19 @@ Global Flags:
     
     <item>
       <title>Docs: Docker Enterprise Edition</title>
-      <link>https://docs.storageos.com/v2/docs/platforms/dockeree/</link>
+      <link>https://docs.storageos.com/docs/platforms/dockeree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/platforms/dockeree/</guid>
+      <guid>https://docs.storageos.com/docs/platforms/dockeree/</guid>
       <description>
         
         
-        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation
+        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation
 instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;Docker EE and the Universal Control Plane can run on different Linux
 distributions. StorageOS supports RHEL, CentOS, Debian, and selected Ubuntu
 images. For more details, check out the supported OSs in the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;StorageOS only supports Kubernetes nodes managed by Docker Enterprise Edition,
 not those nodes running Swarm. Mixed nodes (those running Kubernetes and Swarm
 workloads) are not supported. As a consequence, StorageOS volumes can only be
@@ -4243,14 +4243,14 @@ stateful workloads.&lt;/p&gt;
     
     <item>
       <title>Docs: Elasticsearch</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/elasticsearch/</link>
+      <link>https://docs.storageos.com/docs/usecases/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/elasticsearch/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/elasticsearch/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploreelasticsearchpng-elasticsearch-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/elasticsearch.png&#34; alt=&#34;image&#34;&gt; Elasticsearch with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploreelasticsearchpng-elasticsearch-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; alt=&#34;image&#34;&gt; Elasticsearch with StorageOS&lt;/h1&gt;
 &lt;p&gt;Elasticsearch is a distributed, RESTful search and analytics engine, most
 popularly used to aggregate logs, but also to serve as a search backend to a
 number of different applications.&lt;/p&gt;
@@ -4265,7 +4265,7 @@ is located on the same node.&lt;/p&gt;
 careful consideration of whether to allow StorageOS or Elasticsearch to handle
 replication is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-elasticsearch-on-kubernetes&#34;&gt;Deploying Elasticsearch on Kubernetes&lt;/h2&gt;
 &lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
@@ -4382,17 +4382,17 @@ by Prometheus on port 9108
 This is enabled by default, and should work with the default Prometheus install
 via Helm. If you&amp;rsquo;re using the Prometheus service monitors, you can monitor
 this installation by creating a monitor for the &lt;code&gt;es-exporter&lt;/code&gt; service. For an
-example of how this is done to monitor StorageOS, please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/monitoring/prometheus-setup&#34;&gt;prometheus-setup&lt;/a&gt;.&lt;/p&gt;
+example of how this is done to monitor StorageOS, please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/monitoring/prometheus-setup&#34;&gt;prometheus-setup&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/etcd/</link>
+      <link>https://docs.storageos.com/docs/concepts/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/etcd/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/etcd/</guid>
       <description>
         
         
@@ -4408,7 +4408,7 @@ allowing offlined nodes to rejoin the cluster.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. StorageOS v2.0 does not provide an embedded etcd server as previous
 versions did. You will need to setup an etcd server for StorageOS to use
-prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
+prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
 to install and configure etcd.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -4417,16 +4417,16 @@ to install and configure etcd.&lt;/p&gt;
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/prerequisites/etcd/</link>
+      <link>https://docs.storageos.com/docs/prerequisites/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/prerequisites/etcd/</guid>
+      <guid>https://docs.storageos.com/docs/prerequisites/etcd/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS requires an etcd cluster in order to function.&lt;/p&gt;
-&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
-etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
+etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. StorageOS does not recommend using the Kubernetes etcd cluster for
 StorageOS installations&lt;/p&gt;
@@ -4434,7 +4434,7 @@ StorageOS installations&lt;/p&gt;
 &lt;h2 id=&#34;using-etcd-with-storageos&#34;&gt;Using Etcd with StorageOS&lt;/h2&gt;
 &lt;p&gt;During installation of StorageOS the &lt;code&gt;kvBackend&lt;/code&gt; parameters of the StorageOS
 operator are used to specify the address of the etcd cluster. See the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
 configuration&lt;/a&gt; examples for more
 information.&lt;/p&gt;
 
@@ -4443,10 +4443,10 @@ information.&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Volume Guide</title>
-      <link>https://docs.storageos.com/v2/docs/operations/firstpvc/</link>
+      <link>https://docs.storageos.com/docs/operations/firstpvc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/firstpvc/</guid>
+      <guid>https://docs.storageos.com/docs/operations/firstpvc/</guid>
       <description>
         
         
@@ -4573,7 +4573,7 @@ Hello World!
 the PVC is being written to. If you were to kill the pod and start it again
 on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;If you wish to see more use cases with actual applications please see our
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/&#34;&gt;Use Cases&lt;/a&gt; documentation.&lt;/strong&gt;&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/usecases/&#34;&gt;Use Cases&lt;/a&gt; documentation.&lt;/strong&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -4582,10 +4582,10 @@ on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
     
     <item>
       <title>Docs: Get</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/get/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/get/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/get/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/get/</guid>
       <description>
         
         
@@ -4732,10 +4732,10 @@ Flags:
     
     <item>
       <title>Docs: Graphical user interface (GUI)</title>
-      <link>https://docs.storageos.com/v2/docs/reference/gui/</link>
+      <link>https://docs.storageos.com/docs/reference/gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/gui/</guid>
+      <guid>https://docs.storageos.com/docs/reference/gui/</guid>
       <description>
         
         
@@ -4743,36 +4743,36 @@ Flags:
 &lt;p&gt;The GUI is available at port 5705 on any of the nodes in the cluster. Initially
 you can log in as the default administrator, with the username and password
 from the &lt;code&gt;storageos-api&lt;/code&gt; Secret. By default &lt;code&gt;storageos&lt;/code&gt;, &lt;code&gt;storageos&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nodes&#34;&gt;Nodes&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/node-detail.png&#34; alt=&#34;Node detail&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/node-detail.png&#34; alt=&#34;Node detail&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;volumes&#34;&gt;Volumes&lt;/h2&gt;
 &lt;p&gt;You can create volumes, including replicated volumes, and view volume details:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volume-detail.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/volume-detail.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;licensing&#34;&gt;Licensing&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;License&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/license.png&#34; alt=&#34;License&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;cluster-info&#34;&gt;Cluster info&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;namespaces&#34;&gt;Namespaces&lt;/h2&gt;
 &lt;p&gt;Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Cluster health</title>
-      <link>https://docs.storageos.com/v2/docs/operations/health/</link>
+      <link>https://docs.storageos.com/docs/operations/health/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/health/</guid>
+      <guid>https://docs.storageos.com/docs/operations/health/</guid>
       <description>
         
         
         &lt;p&gt;Various tools are available for checking on the status of a cluster.&lt;/p&gt;
-&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; displays the
+&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; displays the
 status of nodes in the cluster.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get nodes
 NAME        HEALTH  AGE             LABELS
@@ -4787,10 +4787,10 @@ node5       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4
     
     <item>
       <title>Docs: Help</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/help/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/help/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/help/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/help/</guid>
       <description>
         
         
@@ -4837,10 +4837,10 @@ Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos [command] --hel
     
     <item>
       <title>Docs: Managing Host Storage</title>
-      <link>https://docs.storageos.com/v2/docs/operations/managing-host-storage/</link>
+      <link>https://docs.storageos.com/docs/operations/managing-host-storage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/managing-host-storage/</guid>
+      <guid>https://docs.storageos.com/docs/operations/managing-host-storage/</guid>
       <description>
         
         
@@ -5006,10 +5006,10 @@ Filesystem                  Size  Used Avail Use% Mounted on
     
     <item>
       <title>Docs: Init container</title>
-      <link>https://docs.storageos.com/v2/docs/reference/init-container/</link>
+      <link>https://docs.storageos.com/docs/reference/init-container/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/init-container/</guid>
+      <guid>https://docs.storageos.com/docs/reference/init-container/</guid>
       <description>
         
         
@@ -5017,7 +5017,7 @@ Filesystem                  Size  Used Avail Use% Mounted on
 StorageOS starts an init container that sets the system configuration for
 StorageOS. The container also manages configuration changes required when
 upgrading StorageOS versions.&lt;/p&gt;
-&lt;p&gt;The container belongs to the DaemonSet that the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/&#34;&gt;StorageOS Cluster
+&lt;p&gt;The container belongs to the DaemonSet that the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;StorageOS Cluster
 Operator&lt;/a&gt; starts when a
 &lt;code&gt;StorageOSCluster&lt;/code&gt; resource is created. The &lt;code&gt;storageos-init&lt;/code&gt; container is
 executed as an
@@ -5054,14 +5054,14 @@ be used:&lt;/p&gt;
     
     <item>
       <title>Docs: Jenkins</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/jenkins/</link>
+      <link>https://docs.storageos.com/docs/usecases/jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/jenkins/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/jenkins/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorejenkinslogopng--jenkins-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/jenkinslogo.png&#34; alt=&#34;image&#34;&gt;  Jenkins with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorejenkinslogopng--jenkins-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkinslogo.png&#34; alt=&#34;image&#34;&gt;  Jenkins with StorageOS&lt;/h1&gt;
 &lt;p&gt;This example shows an example of how to deploy Jenkins on Kubernetes with a
 StorageOS persistent volume being mounted on &lt;code&gt;/var/jenkins_home&lt;/code&gt;. Deploying
 Jenkins using StorageOS offers multiple benefits. Firstly Jenkins can spin up
@@ -5075,7 +5075,7 @@ Lastly by enabling &lt;a href=&#34;https://docs.storageos.com/docs/concepts/fenc
 fencing &lt;/a&gt; Jenkins time to
 recover, in case of node failures, is greatly reduced.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;deploying-jenkins-on-kubernetes&#34;&gt;Deploying Jenkins on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -5128,14 +5128,14 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
     
     <item>
       <title>Docs: Kafka</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/kafka/</link>
+      <link>https://docs.storageos.com/docs/usecases/kafka/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/kafka/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/kafka/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorekafkapng-apache-kafka-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/kafka.png&#34; alt=&#34;image&#34;&gt; Apache Kafka with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorekafkapng-apache-kafka-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; alt=&#34;image&#34;&gt; Apache Kafka with StorageOS&lt;/h1&gt;
 &lt;p&gt;Kafka is a popular stream processing platform combining features from pub/sub
 and traditional queues.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Kafka means that if a pod
@@ -5149,16 +5149,16 @@ is located on the same node.&lt;/p&gt;
 consideration of whether to allow StorageOS or Kafka to handle replication
 is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Apache Zookeeper is required by Kafka to function; we assume it to already
 exist and be accessible within the Kubernetes cluster as &lt;code&gt;zookeeper&lt;/code&gt;, see how
 to run Zookeeper with StorageOS
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/zookeeper/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/usecases/zookeeper/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;StorageOS is assumed to have been installed; please check for the latest
-available version &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+available version &lt;a href=&#34;https://docs.storageos.com/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Kafka pods require 1536 MB of memory for successful scheduling&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;helm&#34;&gt;Helm&lt;/h3&gt;
@@ -5256,14 +5256,14 @@ its service endpoint&lt;/p&gt;
     
     <item>
       <title>Docs: Kubevirt</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/kubevirt/</link>
+      <link>https://docs.storageos.com/docs/usecases/kubevirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/kubevirt/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/kubevirt/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng-kubevirt-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt; Kubevirt with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng-kubevirt-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt; Kubevirt with StorageOS&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://kubevirt.io&#34;&gt;Kubevirt&lt;/a&gt; is a CNCF sandbox project that allows the
 running of virtual machines (VMs) in Kubernetes pods.&lt;/p&gt;
 &lt;p&gt;Deploying Kubevirt using StorageOS offers multiple benefits. Kubevirt can spin
@@ -5282,7 +5282,7 @@ automatically prepared with the disk image.&lt;/p&gt;
 Kubernetes cluster, and create a VM. By the end of the guide you&amp;rsquo;ll be able to
 launch a shell inside the KubeVirt VM that&amp;rsquo;s running as a Kubernetes pod.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;Please ensure you have met the Kubevirt prerequisites, please see the &lt;a href=&#34;https://kubevirt.io/user-guide/docs/latest/administration/intro.html&#34;&gt;
@@ -5403,10 +5403,10 @@ the original volume to it.&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Feature labels</title>
-      <link>https://docs.storageos.com/v2/docs/reference/labels/</link>
+      <link>https://docs.storageos.com/docs/reference/labels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/labels/</guid>
+      <guid>https://docs.storageos.com/docs/reference/labels/</guid>
       <description>
         
         
@@ -5416,7 +5416,7 @@ labels triggers compression, replication and other storage features. No feature
 labels are present by default.&lt;/p&gt;
 &lt;h2 id=&#34;storageos-node-labels&#34;&gt;StorageOS Node labels&lt;/h2&gt;
 &lt;p&gt;Nodes do not have any feature labels present by default.  When StorageOS is run
-within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
+within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
 set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
 CLI or UI.&lt;/p&gt;
 &lt;p&gt;Future versions of StorageOS v2 will allow the use of node labels to set
@@ -5499,10 +5499,10 @@ not be synced to the Kubernetes resource.&lt;/p&gt;
     
     <item>
       <title>Docs: Licensing</title>
-      <link>https://docs.storageos.com/v2/docs/operations/licensing/</link>
+      <link>https://docs.storageos.com/docs/operations/licensing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/licensing/</guid>
+      <guid>https://docs.storageos.com/docs/operations/licensing/</guid>
       <description>
         
         
@@ -5516,18 +5516,18 @@ to upgrade your licence using either the GUI or CLI.&lt;/p&gt;
 automatically by creating or logging in with a StorageOS account on the
 StorageOS portal via the licence page of the StorageOS web GUI:
 &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible. To inspect your licence, click on the
 &amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
 &lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
 off-line method. To apply such keys, via the web GUI, visit
 &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt; and click on the tab &amp;ldquo;ENTER KEY&amp;rdquo;, then
 paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you could
 also view your cluster ID on the same page.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-cli&#34;&gt;Obtaining a Developer licence via the CLI&lt;/h2&gt;
 &lt;p&gt;Before getting a licence, you need to know the ID of your StorageOS cluster.&lt;/p&gt;
 &lt;p&gt;This CLI command can print the cluster ID:&lt;/p&gt;
@@ -5545,10 +5545,10 @@ or log into &lt;a href=&#34;https://my.storageos.com&#34;&gt;StorageOS Portal&lt
 page&lt;/a&gt; and follow the instructions on the
 page to get the licence key for your cluster. Make sure that you input the
 correct cluster ID before generating the licence key.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Then copy the licence key to clipboard and apply the licence by the CLI command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; PASTE-THE-LICENCE-KEY-HERE &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos apply licence --from-stdin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;
 &lt;p&gt;Please contact &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt; to discuss
 pricing for our Enterprise licence.&lt;/p&gt;
@@ -5558,18 +5558,18 @@ pricing for our Enterprise licence.&lt;/p&gt;
     
     <item>
       <title>Docs: MS SQL</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/mssql/</link>
+      <link>https://docs.storageos.com/docs/usecases/mssql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/mssql/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/mssql/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploremssqllogopng-ms-sql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/mssqllogo.png&#34; alt=&#34;image&#34;&gt; MS SQL with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploremssqllogopng-ms-sql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mssqllogo.png&#34; alt=&#34;image&#34;&gt; MS SQL with StorageOS&lt;/h1&gt;
 &lt;p&gt;Beginning with Microsoft SQL Server 2017, Microsoft has supported MSSQL on
 linux.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-ms-sql-on-kubernetes&#34;&gt;Deploying MS SQL on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -5651,10 +5651,10 @@ with your desired MS SQL configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: Encrypting communication with Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls/</link>
+      <link>https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/operations/external-etcd/etcd-tls/</guid>
+      <guid>https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/</guid>
       <description>
         
         
@@ -5662,7 +5662,7 @@ with your desired MS SQL configuration settings.&lt;/p&gt;
 mutual TLS (mTLS). With mTLS both StorageOS and etcd authenticate each other
 ensuring that communication only happens between mutually authenticated end
 points, and that all communication is encrypted.&lt;/p&gt;
-&lt;p&gt;StorageOS uses &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/envvars&#34;&gt;environment variables&lt;/a&gt; to specify the
+&lt;p&gt;StorageOS uses &lt;a href=&#34;https://docs.storageos.com/docs/reference/envvars&#34;&gt;environment variables&lt;/a&gt; to specify the
 location of the necessary certificates and keys. This allows Kubernetes secrets
 to be mounted as volumes, directly into pods.&lt;/p&gt;
 &lt;h2 id=&#34;setting-up-mtls-with-etcd&#34;&gt;Setting up mTLS with Etcd&lt;/h2&gt;
@@ -5706,7 +5706,7 @@ volume so that the certificate files are avaliable inside the pod. Environment
 variables containing the file paths are passed to the StorageOS process in
 order to use the files from the mounted path.&lt;/p&gt;
 &lt;p&gt;A worked example of settings up StorageOS with external etcd using mTLS is avaliable
-&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls&#34;&gt;here&lt;/a&gt;.
+&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example-with-tls&#34;&gt;here&lt;/a&gt;.
 For ease of use the example uses the CoreOS etcd operator and the CoreOS guide
 for &lt;a href=&#34;https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md&#34;&gt;Cluster
 TLS&lt;/a&gt;
@@ -5717,18 +5717,18 @@ is followed.&lt;/p&gt;
     
     <item>
       <title>Docs: MySQL</title>
-      <link>https://docs.storageos.com/v2/docs/usecases/mysql/</link>
+      <link>https://docs.storageos.com/docs/usecases/mysql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/usecases/mysql/</guid>
+      <guid>https://docs.storageos.com/docs/usecases/mysql/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploremysqllogopng-mysql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/mysqllogo.png&#34; alt=&#34;image&#34;&gt; MySQL with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploremysqllogopng-mysql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mysqllogo.png&#34; alt=&#34;image&#34;&gt; MySQL with StorageOS&lt;/h1&gt;
 &lt;p&gt;MySQL is a popular SQL open source database for a wide range of popular
 web-based applications including WordPress.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-mysql-on-kubernetes&#34;&gt;Deploying MySQL on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -5805,10 +5805,10 @@ with your desired MySQL configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: Namespaces</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/namespaces/</link>
+      <link>https://docs.storageos.com/docs/concepts/namespaces/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/namespaces/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/namespaces/</guid>
       <description>
         
         
@@ -5818,7 +5818,7 @@ multiple projects.&lt;/p&gt;
 &lt;p&gt;It is not necessary to create StorageOS namespaces manually, as StorageOS maps
 Kubernetes namespaces on a one-to-one basis when PersistentVolumeClaims using
 the StorageOS StorageClass are created.&lt;/p&gt;
-&lt;p&gt;Access to Namespaces is controlled through user or group level &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Access to Namespaces is controlled through user or group level &lt;a href=&#34;https://docs.storageos.com/docs/concepts/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>

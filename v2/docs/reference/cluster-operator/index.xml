@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Cluster Operator</title>
-    <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/</link>
+    <link>https://docs.storageos.com/docs/reference/cluster-operator/</link>
     <description>Recent content in Cluster Operator on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/reference/cluster-operator/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/reference/cluster-operator/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,18 +15,18 @@
     
     <item>
       <title>Docs: Install</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/install/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/install/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/install/</guid>
       <description>
         
         
         &lt;p&gt;To install the operator follow the installation page for your orchestrator.&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
       </description>
@@ -34,10 +34,10 @@
     
     <item>
       <title>Docs: Configuration</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</guid>
       <description>
         
         
@@ -259,10 +259,10 @@
     
     <item>
       <title>Docs: Cluster Operator examples</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/examples/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/examples/</guid>
       <description>
         
         
@@ -305,7 +305,7 @@ default), irrespective of what NameSpace the CR is defined in.&lt;/p&gt;
 &lt;h1 id=&#34;examples&#34;&gt;Examples&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can checkout all the parameters configurable in the
-&lt;a href=&#34;https://docs.storageos.com/v2/v2/docs/reference/cluster-operator/configuration/&#34;&gt;configuration&lt;/a&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;All examples must reference the &lt;code&gt;storageos-api&lt;/code&gt; Secret.&lt;/p&gt;
@@ -390,10 +390,10 @@ pods.&lt;/p&gt;
     
     <item>
       <title>Docs: Cluster Operator Upgrade</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/upgrade/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/upgrade/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/upgrade/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/upgrade/</guid>
       <description>
         
         

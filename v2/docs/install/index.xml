@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Install</title>
-    <link>https://docs.storageos.com/v2/docs/install/</link>
+    <link>https://docs.storageos.com/docs/install/</link>
     <description>Recent content in Install on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/install/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/install/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,16 +15,16 @@
     
     <item>
       <title>Docs: Kubernetes</title>
-      <link>https://docs.storageos.com/v2/docs/install/kubernetes/</link>
+      <link>https://docs.storageos.com/docs/install/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/kubernetes/</guid>
+      <guid>https://docs.storageos.com/docs/install/kubernetes/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
@@ -203,7 +203,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -353,13 +353,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -452,7 +452,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -602,13 +602,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -701,7 +701,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -851,13 +851,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -950,7 +950,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1100,13 +1100,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -1199,7 +1199,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1349,13 +1349,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -1380,7 +1380,7 @@ Phase.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 
@@ -1389,23 +1389,23 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     
     <item>
       <title>Docs: OpenShift</title>
-      <link>https://docs.storageos.com/v2/docs/install/openshift/</link>
+      <link>https://docs.storageos.com/docs/install/openshift/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/openshift/</guid>
+      <guid>https://docs.storageos.com/docs/install/openshift/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding. Including the deployment of an etcd cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you have installed OpenShift in AWS ensure that the requisite ports are
 opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;StorageOS v2 supports OpenShift v4. For more information check the &lt;a href=&#34;https://docs.storageos.com/v2/docs/platforms/openshift/&#34;&gt;OpenShift
+&lt;p&gt;StorageOS v2 supports OpenShift v4. For more information check the &lt;a href=&#34;https://docs.storageos.com/docs/platforms/openshift/&#34;&gt;OpenShift
 platform&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;The recommended way to run StorageOS on OpenShift is to deploy the StorageOS
 Cluster Operator using the Operator Lifecycle Manager (OLM) from the Red Hat
@@ -1472,19 +1472,19 @@ available from the OperatorHub.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Select the &lt;code&gt;OperatorHub&lt;/code&gt; from the Catalog sub menu and search for StorageOS&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/operatorhub.png&#34; alt=&#34;install-1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/operatorhub.png&#34; alt=&#34;install-1&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Select StorageOS and click install&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/install-storageos-operator.png&#34; alt=&#34;install-2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-storageos-operator.png&#34; alt=&#34;install-2&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create the Operator subscription by clicking subscribe&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-operator-subscription.png&#34; alt=&#34;install-3&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-operator-subscription.png&#34; alt=&#34;install-3&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Wait until the Upgrade Status shows 1 installed&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/install-complete.png&#34; alt=&#34;install-4&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/install-complete.png&#34; alt=&#34;install-4&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Create a secret containing the &lt;code&gt;apiUsername&lt;/code&gt; and an &lt;code&gt;apiPassword&lt;/code&gt; key. The
@@ -1495,11 +1495,11 @@ StorageOS and OpenShift, the CSI credentials  &lt;code&gt;csiProvisionUsername&l
 &lt;code&gt;csiControllerPublishPassword&lt;/code&gt;, &lt;code&gt;csiNodePublishUsername&lt;/code&gt;,
 &lt;code&gt;csiNodePublishPassword&lt;/code&gt; are needed. Take note of which project you created
 the secret in.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-secret.png&#34; alt=&#34;install-5&#34;&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-secret.png&#34; alt=&#34;install-5&#34;&gt;
  
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-1.png&#34; alt=&#34;install-6&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-2.png&#34; alt=&#34;install-7&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/secret-input-3.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-1.png&#34; alt=&#34;install-6&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-2.png&#34; alt=&#34;install-7&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/openshift4/secret-input-3.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Alternatively the YAML input can be used with a Secret as follows:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -1522,13 +1522,13 @@ the secret in.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;Go to &lt;code&gt;Installed Operators&lt;/code&gt; and select the StorageOS operator. Select
 StorageOS Cluster and create a StorageOS cluster.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/create-stos.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/create-stos.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;The StorageOS cluster resource describes the StorageOS cluster that will be
 created. The &lt;code&gt;secretRefName&lt;/code&gt; and &lt;code&gt;secretRefNamespace&lt;/code&gt; should reference the secret
 containing the &lt;code&gt;apiUsername&lt;/code&gt; and &lt;code&gt;apiPassword&lt;/code&gt; that was previously created.&lt;/p&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;Cluster Operator
 configuration&lt;/a&gt; page.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos.com/v1&amp;#34;&lt;/span&gt;
 kind: StorageOSCluster
@@ -1555,11 +1555,11 @@ spec:
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Verify that the StorageOS Resource enters a running state.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/openshift4/stos-running.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/openshift4/stos-running.png&#34; alt=&#34;install-9&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Set SELinux Permissions&lt;/p&gt;
@@ -1647,7 +1647,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1682,13 +1682,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        values:&lt;/span&gt;
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc -n storageos get pods -w&lt;/span&gt;
@@ -1718,7 +1718,7 @@ and CSI socket.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 
@@ -1727,22 +1727,22 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     
     <item>
       <title>Docs: Rancher</title>
-      <link>https://docs.storageos.com/v2/docs/install/rancher/</link>
+      <link>https://docs.storageos.com/docs/install/rancher/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/install/rancher/</guid>
+      <guid>https://docs.storageos.com/docs/install/rancher/</guid>
       <description>
         
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;StorageOS transparently supports Rancher deployments on CentOS, RHEL,
 Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can
-support other Linux distributions as detailed on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;System Configuration
+support other Linux distributions as detailed on the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;System Configuration
 page&lt;/a&gt; if the
 appropriate kernel modules are available.&lt;/p&gt;
 &lt;/blockquote&gt;
@@ -1852,7 +1852,7 @@ unique, strong password.&lt;/p&gt;
 The &lt;code&gt;echo -n&lt;/code&gt; ensures that a trailing new line is not appended to the string.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
+&lt;p&gt;If you wish to change the default accounts details post-install please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/users#altering-the-storageos-api-account&#34;&gt;Managing
 Users&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;3-trigger-a-storageos-installation&#34;&gt;3 Trigger a StorageOS installation&lt;/h2&gt;
@@ -1887,13 +1887,13 @@ spec:
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        values:&lt;/span&gt;
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#        - &amp;#34;true&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
+&lt;p&gt;Additional &lt;code&gt;spec&lt;/code&gt; parameters are available on the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;Cluster Operator
 configuration&lt;/a&gt;
 page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You can find more examples such as deployments referencing a external etcd kv
-store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
+store for StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;Cluster Operator examples&lt;/a&gt; page.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;verify-storageos-installation&#34;&gt;Verify StorageOS Installation&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master03&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# kubectl -n storageos get pods -w&lt;/span&gt;
@@ -1918,7 +1918,7 @@ Phase.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id=&#34;first-storageos-volume&#34;&gt;First StorageOS volume&lt;/h2&gt;
-&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/firstpvc/&#34;&gt;StorageOS
+&lt;p&gt;If this is your first installation you may wish to follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;StorageOS
 Volume guide&lt;/a&gt; for an example of how
 to mount a StorageOS volume in a Pod.&lt;/p&gt;
 

@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Command line interface</title>
-    <link>https://docs.storageos.com/v2/docs/reference/cli/</link>
+    <link>https://docs.storageos.com/docs/reference/cli/</link>
     <description>Recent content in Command line interface on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/reference/cli/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/reference/cli/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Apply licence</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/apply/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/apply/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/apply/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/apply/</guid>
       <description>
         
         
@@ -53,10 +53,10 @@ Global Flags:
     
     <item>
       <title>Docs: Attach</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/attach/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/attach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/attach/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/attach/</guid>
       <description>
         
         
@@ -88,10 +88,10 @@ Global Flags:
     
     <item>
       <title>Docs: Create</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/create/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/create/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/create/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/create/</guid>
       <description>
         
         
@@ -185,10 +185,10 @@ Global Flags:
     
     <item>
       <title>Docs: Delete</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/delete/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/delete/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/delete/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/delete/</guid>
       <description>
         
         
@@ -248,10 +248,10 @@ Global Flags:
     
     <item>
       <title>Docs: Describe</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/describe/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/describe/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/describe/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/describe/</guid>
       <description>
         
         
@@ -340,10 +340,10 @@ Global Flags:
     
     <item>
       <title>Docs: Detach Volume</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/detach/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/detach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/detach/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/detach/</guid>
       <description>
         
         
@@ -376,10 +376,10 @@ Global Flags:
     
     <item>
       <title>Docs: Get</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/get/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/get/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/get/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/get/</guid>
       <description>
         
         
@@ -526,10 +526,10 @@ Flags:
     
     <item>
       <title>Docs: Help</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/help/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/help/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/help/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/help/</guid>
       <description>
         
         
@@ -576,10 +576,10 @@ Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos [command] --hel
     
     <item>
       <title>Docs: Version</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/version/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/version/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/version/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/version/</guid>
       <description>
         
         

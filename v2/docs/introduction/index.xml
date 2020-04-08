@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Introduction</title>
-    <link>https://docs.storageos.com/v2/docs/introduction/</link>
+    <link>https://docs.storageos.com/docs/introduction/</link>
     <description>Recent content in Introduction on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/introduction/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/introduction/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: What is StorageOS V2</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/overview/</link>
+      <link>https://docs.storageos.com/docs/introduction/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/overview/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/overview/</guid>
       <description>
         
         
@@ -77,7 +77,7 @@ your cluster, and we&amp;rsquo;ll output in json by default, for easy ingestion 
 aggregators such as Elasticsearch.&lt;/p&gt;
 &lt;h2 id=&#34;upgraded-data-plane&#34;&gt;Upgraded Data Plane&lt;/h2&gt;
 &lt;p&gt;Not to be outdone, our data plane contains some significant improvements.&lt;/p&gt;
-&lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
+&lt;p&gt;Firstly, we&amp;rsquo;ve completely re-written our sync algorithm (see &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes/&#34;&gt;Delta Sync&lt;/a&gt;, used when seeding or catching up replicas
 that have been offline or partitioned. Our new algorithm uses a &lt;a href=&#34;https://en.wikipedia.org/wiki/Hash_list&#34;&gt;Hash
 List&lt;/a&gt; to sync only changed sections of
 a volume (similar in some ways to what rsync does). StorageOS maintains these
@@ -96,26 +96,26 @@ board, with improvements in throughput of up to 135% for some scenarios.&lt;/p&g
     
     <item>
       <title>Docs: Quickstart</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/quickstart/</link>
+      <link>https://docs.storageos.com/docs/introduction/quickstart/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/quickstart/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/quickstart/</guid>
       <description>
         
         
         &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;Start by &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/architecture/&#34;&gt;understanding the architecture&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Start by &lt;a href=&#34;https://docs.storageos.com/docs/concepts/architecture/&#34;&gt;understanding the architecture&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Follow our installation guides for
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;,
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt; or
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;,
+&lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt; or
+&lt;a href=&#34;https://docs.storageos.com/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Dive into our Use Case documentation for Workloads deployed in
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/usecases/&#34;&gt;Kubernetes&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 
@@ -124,17 +124,17 @@ board, with improvements in throughput of up to 135% for some scenarios.&lt;/p&g
     
     <item>
       <title>Docs: Supported Platforms and Orchestrators</title>
-      <link>https://docs.storageos.com/v2/docs/introduction/platforms/</link>
+      <link>https://docs.storageos.com/docs/introduction/platforms/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/introduction/platforms/</guid>
+      <guid>https://docs.storageos.com/docs/introduction/platforms/</guid>
       <description>
         
         
         &lt;h2 id=&#34;os&#34;&gt;OS&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Linux X86_64&lt;/li&gt;
-&lt;li&gt;Kernels satisfying our module &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Kernels satisfying our module &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;3.x kernels have a limitation of 256 active volumes per node&lt;/li&gt;
 &lt;li&gt;4.x kernels have a limitation of 4096 active volumes per node&lt;/li&gt;
 &lt;li&gt;We are distribution agnostic as long as our prerequisites are met&lt;/li&gt;

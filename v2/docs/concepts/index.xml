@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Concepts</title>
-    <link>https://docs.storageos.com/v2/docs/concepts/</link>
+    <link>https://docs.storageos.com/docs/concepts/</link>
     <description>Recent content in Concepts on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/concepts/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/concepts/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Architecture</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/architecture/</link>
+      <link>https://docs.storageos.com/docs/concepts/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/architecture/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/architecture/</guid>
       <description>
         
         
@@ -28,10 +28,10 @@ applications in Kubernetes.&lt;/p&gt;
 StorageOS cluster to create and present virtual volumes into containers. Space
 on the host is consumed from the mount point &lt;code&gt;/var/lib/storageos/data&lt;/code&gt;, so it
 is therefore recommended that disk devices are used exclusively for StorageOS,
-as described in &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
+as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;StorageOS is agnostic to the underlying storage and runs equally well on
 bare metal, in virtual machines or on cloud providers.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
 StorageOS&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;storageos-on-kubernetes&#34;&gt;StorageOS on Kubernetes&lt;/h3&gt;
@@ -66,7 +66,7 @@ storage. The scheduler, CSI helper and Operator run as separate pods and are
 controlled as deployments.&lt;/p&gt;
 &lt;p&gt;StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
 is managed through standard StorageClasses and PersistentVolumeClaims, and
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
 Kubernetes-style labels and selectors, prefixed with &lt;code&gt;storageos.com/&lt;/code&gt;. By
 default, volumes are cached to improve read performance and compressed to
 reduce network traffic.&lt;/p&gt;
@@ -80,10 +80,10 @@ restarted on any node and access volumes transparently.&lt;/p&gt;
     
     <item>
       <title>Docs: Clusters</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/clusters/</link>
+      <link>https://docs.storageos.com/docs/concepts/clusters/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/clusters/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/clusters/</guid>
       <description>
         
         
@@ -100,21 +100,21 @@ nodes.&lt;/p&gt;
     
     <item>
       <title>Docs: Compression</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/compression/</link>
+      <link>https://docs.storageos.com/docs/concepts/compression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/compression/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/compression/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS compression is handled on a per volume basis and is enabled by
 default, as performance is generally increased when compression is enabled due
 to fewer read/write operations taking place on the backend store (the volumes&amp;rsquo;
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
-by setting the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
+by setting the &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
 on a volume.&lt;/p&gt;
 &lt;p&gt;StorageOS utilises the &lt;a href=&#34;https://lz4.github.io/lz4/&#34;&gt;lz4 compression algorithm&lt;/a&gt;
-when writing to the backend store and when compressing &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/replication&#34;&gt;replication
+when writing to the backend store and when compressing &lt;a href=&#34;https://docs.storageos.com/docs/concepts/replication&#34;&gt;replication
 traffic&lt;/a&gt; before it is sent across the network.
 Compression is granular per 4k block and data will remain
 compressed/uncompressed once written to a volume. Therefore, compression can be
@@ -130,7 +130,7 @@ increased and CPU resources are not wasted on attempts to compress
 uncompressible blocks. StorageOS&amp;rsquo; patented on disk format is used to tell
 whether individual blocks are compressed without overhead. As such volume
 compression can be dynamically enabled/disabled even while a volume is in use.&lt;/p&gt;
-&lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled
+&lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled
 for a volume, blocks are compressed then encrypted.&lt;/p&gt;
 
       </description>
@@ -138,10 +138,10 @@ for a volume, blocks are compressed then encrypted.&lt;/p&gt;
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/etcd/</link>
+      <link>https://docs.storageos.com/docs/concepts/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/etcd/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/etcd/</guid>
       <description>
         
         
@@ -157,7 +157,7 @@ allowing offlined nodes to rejoin the cluster.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. StorageOS v2.0 does not provide an embedded etcd server as previous
 versions did. You will need to setup an etcd server for StorageOS to use
-prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
+prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
 to install and configure etcd.&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -166,10 +166,10 @@ to install and configure etcd.&lt;/p&gt;
     
     <item>
       <title>Docs: Namespaces</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/namespaces/</link>
+      <link>https://docs.storageos.com/docs/concepts/namespaces/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/namespaces/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/namespaces/</guid>
       <description>
         
         
@@ -179,17 +179,17 @@ multiple projects.&lt;/p&gt;
 &lt;p&gt;It is not necessary to create StorageOS namespaces manually, as StorageOS maps
 Kubernetes namespaces on a one-to-one basis when PersistentVolumeClaims using
 the StorageOS StorageClass are created.&lt;/p&gt;
-&lt;p&gt;Access to Namespaces is controlled through user or group level &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Access to Namespaces is controlled through user or group level &lt;a href=&#34;https://docs.storageos.com/docs/concepts/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Nodes</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/nodes/</link>
+      <link>https://docs.storageos.com/docs/concepts/nodes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/nodes/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/nodes/</guid>
       <description>
         
         
@@ -202,32 +202,32 @@ consume and/or present storage.&lt;/p&gt;
     
     <item>
       <title>Docs: Policies</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/policies/</link>
+      <link>https://docs.storageos.com/docs/concepts/policies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/policies/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/policies/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS policies are a way to control user and group access to StorageOS
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/namespaces/&#34;&gt;Namespaces&lt;/a&gt;. To grant a user or group
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/namespaces/&#34;&gt;Namespaces&lt;/a&gt;. To grant a user or group
 access to a namespace, a policy needs to be created mapping the user or group
 to the namespace.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Note: Users always have access to the default namespace&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;For more information on how to use policies, see the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/policies/&#34;&gt;Policies operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/policies/&#34;&gt;Policies operations&lt;/a&gt; page.&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Replication</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/replication/</link>
+      <link>https://docs.storageos.com/docs/concepts/replication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/replication/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/replication/</guid>
       <description>
         
         
@@ -240,7 +240,7 @@ replicas. Each volume can be replicated between 0 and 5 times, which are
 provisioned to 0 to 5 nodes, up to the number of remaining nodes in the cluster.&lt;/p&gt;
 &lt;p&gt;In this diagram, the master volume &lt;code&gt;D&lt;/code&gt; was created on node 1, and two replicas,
 &lt;code&gt;D2&lt;/code&gt; and &lt;code&gt;D3&lt;/code&gt; on nodes 3 and 5.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/concepts/high-availability.png&#34; alt=&#34;StorageOS replication&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/high-availability.png&#34; alt=&#34;StorageOS replication&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Writes that come into &lt;code&gt;D&lt;/code&gt; (step 1) are written in parallel to &lt;code&gt;D2&lt;/code&gt; and &lt;code&gt;D3&lt;/code&gt;
 (step 2). When both replicas and the master acknowledge that the data has been
 written (step 3), the write operation return successfully to the application
@@ -263,7 +263,7 @@ begin to sync. Should the former master come back online it will be demoted to
 a replica and the replica will the smallest difference to the current master
 will be kept.&lt;/p&gt;
 &lt;p&gt;While the replica count is controllable on a per-volume basis, some
-environments may prefer to set &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/#storageos-storageclass-labels&#34;&gt;default labels on the StorageClass&lt;/a&gt;.&lt;/p&gt;
+environments may prefer to set &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/#storageos-storageclass-labels&#34;&gt;default labels on the StorageClass&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;delta-sync&#34;&gt;Delta Sync&lt;/h3&gt;
 &lt;p&gt;StorageOS stores a checksum for every 4KB block of a volume. 256 contiguous
 block hashsums are used to generate a hashsum for a 1MiB region such that 1MiB
@@ -279,10 +279,10 @@ running in public clouds.&lt;/p&gt;
     
     <item>
       <title>Docs: Volumes</title>
-      <link>https://docs.storageos.com/v2/docs/concepts/volumes/</link>
+      <link>https://docs.storageos.com/docs/concepts/volumes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/concepts/volumes/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/volumes/</guid>
       <description>
         
         
@@ -296,7 +296,7 @@ may be on the same or different hosts.&lt;/p&gt;
 &lt;p&gt;Volumes are formatted using the linux standard ext4 filesystem by default.
 Kubernetes users may change the default filesystem type to ext2, ext3, ext4,
 or xfs by setting the fsType parameter in their StorageClass (See
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/filesystems#persistent-volume-filesystems&#34;&gt;Supported
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/filesystems#persistent-volume-filesystems&#34;&gt;Supported
 Filesystems&lt;/a&gt; for
 more information). Different filesystems may be supported in the future.&lt;/p&gt;
 &lt;p&gt;StorageOS volumes are represented on disk in two parts. Actual volume data is

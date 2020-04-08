@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Reference</title>
-    <link>https://docs.storageos.com/v2/docs/reference/</link>
+    <link>https://docs.storageos.com/docs/reference/</link>
     <description>Recent content in Reference on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/v2/docs/reference/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/docs/reference/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: API Reference</title>
-      <link>https://docs.storageos.com/v2/docs/reference/api/</link>
+      <link>https://docs.storageos.com/docs/reference/api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/api/</guid>
+      <guid>https://docs.storageos.com/docs/reference/api/</guid>
       <description>
         
         
@@ -44,10 +44,10 @@ window.onload = function() {
     
     <item>
       <title>Docs: Command line interface</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cli/</link>
+      <link>https://docs.storageos.com/docs/reference/cli/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cli/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/</guid>
       <description>
         
         
@@ -167,10 +167,10 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
     
     <item>
       <title>Docs: Cluster Operator</title>
-      <link>https://docs.storageos.com/v2/docs/reference/cluster-operator/</link>
+      <link>https://docs.storageos.com/docs/reference/cluster-operator/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/cluster-operator/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cluster-operator/</guid>
       <description>
         
         
@@ -198,10 +198,10 @@ repository&lt;/a&gt;.&lt;/p&gt;
     
     <item>
       <title>Docs: Contributing to the docs</title>
-      <link>https://docs.storageos.com/v2/docs/reference/contributing/</link>
+      <link>https://docs.storageos.com/docs/reference/contributing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/contributing/</guid>
+      <guid>https://docs.storageos.com/docs/reference/contributing/</guid>
       <description>
         
         
@@ -247,10 +247,10 @@ payment.&lt;/p&gt;
     
     <item>
       <title>Docs: Graphical user interface (GUI)</title>
-      <link>https://docs.storageos.com/v2/docs/reference/gui/</link>
+      <link>https://docs.storageos.com/docs/reference/gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/gui/</guid>
+      <guid>https://docs.storageos.com/docs/reference/gui/</guid>
       <description>
         
         
@@ -258,31 +258,31 @@ payment.&lt;/p&gt;
 &lt;p&gt;The GUI is available at port 5705 on any of the nodes in the cluster. Initially
 you can log in as the default administrator, with the username and password
 from the &lt;code&gt;storageos-api&lt;/code&gt; Secret. By default &lt;code&gt;storageos&lt;/code&gt;, &lt;code&gt;storageos&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nodes&#34;&gt;Nodes&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/node-detail.png&#34; alt=&#34;Node detail&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/node-detail.png&#34; alt=&#34;Node detail&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;volumes&#34;&gt;Volumes&lt;/h2&gt;
 &lt;p&gt;You can create volumes, including replicated volumes, and view volume details:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
-&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/volume-detail.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/volumes.png&#34; alt=&#34;Viewing storage volumes&#34;&gt;
+&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/volume-detail.png&#34; alt=&#34;Viewing details of a volume&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;licensing&#34;&gt;Licensing&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;License&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/license.png&#34; alt=&#34;License&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;cluster-info&#34;&gt;Cluster info&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/cluster.png&#34; alt=&#34;Cluster&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;namespaces&#34;&gt;Namespaces&lt;/h2&gt;
 &lt;p&gt;Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/namespaces.png&#34; alt=&#34;Viewing namespaces&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Init container</title>
-      <link>https://docs.storageos.com/v2/docs/reference/init-container/</link>
+      <link>https://docs.storageos.com/docs/reference/init-container/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/init-container/</guid>
+      <guid>https://docs.storageos.com/docs/reference/init-container/</guid>
       <description>
         
         
@@ -290,7 +290,7 @@ from the &lt;code&gt;storageos-api&lt;/code&gt; Secret. By default &lt;code&gt;s
 StorageOS starts an init container that sets the system configuration for
 StorageOS. The container also manages configuration changes required when
 upgrading StorageOS versions.&lt;/p&gt;
-&lt;p&gt;The container belongs to the DaemonSet that the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/&#34;&gt;StorageOS Cluster
+&lt;p&gt;The container belongs to the DaemonSet that the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;StorageOS Cluster
 Operator&lt;/a&gt; starts when a
 &lt;code&gt;StorageOSCluster&lt;/code&gt; resource is created. The &lt;code&gt;storageos-init&lt;/code&gt; container is
 executed as an
@@ -327,10 +327,10 @@ be used:&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Feature labels</title>
-      <link>https://docs.storageos.com/v2/docs/reference/labels/</link>
+      <link>https://docs.storageos.com/docs/reference/labels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/labels/</guid>
+      <guid>https://docs.storageos.com/docs/reference/labels/</guid>
       <description>
         
         
@@ -340,7 +340,7 @@ labels triggers compression, replication and other storage features. No feature
 labels are present by default.&lt;/p&gt;
 &lt;h2 id=&#34;storageos-node-labels&#34;&gt;StorageOS Node labels&lt;/h2&gt;
 &lt;p&gt;Nodes do not have any feature labels present by default.  When StorageOS is run
-within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
+within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
 set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
 CLI or UI.&lt;/p&gt;
 &lt;p&gt;Future versions of StorageOS v2 will allow the use of node labels to set
@@ -423,10 +423,10 @@ not be synced to the Kubernetes resource.&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Open Source Software Attribution Notice</title>
-      <link>https://docs.storageos.com/v2/docs/reference/open_source_attribution/</link>
+      <link>https://docs.storageos.com/docs/reference/open_source_attribution/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/open_source_attribution/</guid>
+      <guid>https://docs.storageos.com/docs/reference/open_source_attribution/</guid>
       <description>
         
         
@@ -5214,10 +5214,10 @@ limitations under the License.
     
     <item>
       <title>Docs: Release notes</title>
-      <link>https://docs.storageos.com/v2/docs/reference/release_notes/</link>
+      <link>https://docs.storageos.com/docs/reference/release_notes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/release_notes/</guid>
+      <guid>https://docs.storageos.com/docs/reference/release_notes/</guid>
       <description>
         
         
@@ -5235,10 +5235,10 @@ Chart&lt;/a&gt;&lt;/p&gt;
     
     <item>
       <title>Docs: StorageOS Telemetry</title>
-      <link>https://docs.storageos.com/v2/docs/reference/telemetry/</link>
+      <link>https://docs.storageos.com/docs/reference/telemetry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/telemetry/</guid>
+      <guid>https://docs.storageos.com/docs/reference/telemetry/</guid>
       <description>
         
         
@@ -5342,7 +5342,7 @@ telemetry server so it is never processed outside of StorageOS assets.&lt;/p&gt;
 &lt;p&gt;It is possible to disable telemetry using the GUI, CLI, API, environment
 variables or the StorageOS Cluster Spec.&lt;/p&gt;
 &lt;h4 id=&#34;storageos-cluster-spec&#34;&gt;StorageOS Cluster Spec&lt;/h4&gt;
-&lt;p&gt;Disable telemetry explicitly through the configurable &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/&#34;&gt;spec parameters&lt;/a&gt; of the
+&lt;p&gt;Disable telemetry explicitly through the configurable &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration/&#34;&gt;spec parameters&lt;/a&gt; of the
 StorageOSCluster custom resource.&lt;/p&gt;
 &lt;h4 id=&#34;environment-variables&#34;&gt;Environment Variables&lt;/h4&gt;
 &lt;p&gt;You can use the following environmental variables to disable or enable telemetry.&lt;/p&gt;
@@ -5355,10 +5355,10 @@ DISABLE_ERROR_REPORTING &lt;span style=&#34;color:#8f5902;font-style:italic&#34;
     
     <item>
       <title>Docs: Support bundle</title>
-      <link>https://docs.storageos.com/v2/docs/reference/bundle/</link>
+      <link>https://docs.storageos.com/docs/reference/bundle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/bundle/</guid>
+      <guid>https://docs.storageos.com/docs/reference/bundle/</guid>
       <description>
         
         
@@ -5368,14 +5368,14 @@ team to understand the context of your cluster and begin troubleshooting any
 issues you may be experiencing.&lt;/p&gt;
 &lt;h2 id=&#34;generate-bundle&#34;&gt;Generate Bundle&lt;/h2&gt;
 &lt;h3 id=&#34;cli&#34;&gt;CLI&lt;/h3&gt;
-&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; can generate
+&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; can generate
 the bundle.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;The file generated is in the form of &lt;code&gt;diagnostics-${TIME_STAMP}.gz&lt;/code&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h3 id=&#34;gui&#34;&gt;GUI&lt;/h3&gt;
-&lt;p&gt;Or you can use the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/gui/&#34;&gt;StoregeOS GUI&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Or you can use the &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui/&#34;&gt;StoregeOS GUI&lt;/a&gt;.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Go to section &amp;ldquo;Cluster&amp;rdquo;&lt;/li&gt;
 &lt;li&gt;Press the button &amp;ldquo;DOWNLOAD DIAGNOSTICS&amp;rdquo;.&lt;/li&gt;
@@ -5414,18 +5414,18 @@ helping customers troubleshoot their issues.&lt;/p&gt;
     
     <item>
       <title>Docs: Supported File systems</title>
-      <link>https://docs.storageos.com/v2/docs/reference/filesystems/</link>
+      <link>https://docs.storageos.com/docs/reference/filesystems/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/v2/docs/reference/filesystems/</guid>
+      <guid>https://docs.storageos.com/docs/reference/filesystems/</guid>
       <description>
         
         
         &lt;h2 id=&#34;host-filesystems&#34;&gt;Host Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS will automatically use &lt;code&gt;/var/lib/storageos&lt;/code&gt; on each host as a base
-directory for storing &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes#blob-files&#34;&gt;configuration and blob
+directory for storing &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#blob-files&#34;&gt;configuration and blob
 files&lt;/a&gt;. Recommended host filesystem types
-are &lt;code&gt;ext4&lt;/code&gt; or &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/v2/docs/support/contactus&#34;&gt;contact
+are &lt;code&gt;ext4&lt;/code&gt; or &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/docs/support/contactus&#34;&gt;contact
 StorageOS&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;persistent-volume-filesystems&#34;&gt;Persistent Volume Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS provides a block device on which a file system can be created. The

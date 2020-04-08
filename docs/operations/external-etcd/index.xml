@@ -64,7 +64,7 @@ volume so that the certificate files are avaliable inside the pod. Environment
 variables containing the file paths are passed to the StorageOS process in
 order to use the files from the mounted path.&lt;/p&gt;
 &lt;p&gt;A worked example of settings up StorageOS with external etcd using mTLS is avaliable
-&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-tls&#34;&gt;here&lt;/a&gt;.
+&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example-with-tls&#34;&gt;here&lt;/a&gt;.
 For ease of use the example uses the CoreOS etcd operator and the CoreOS guide
 for &lt;a href=&#34;https://github.com/coreos/etcd-operator/blob/master/doc/user/cluster_tls.md&#34;&gt;Cluster
 TLS&lt;/a&gt;

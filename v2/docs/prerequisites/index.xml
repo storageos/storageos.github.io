@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Prerequisites</title>
-    <link>https://docs.storageos.com/docs/prerequisites/</link>
+    <link>https://docs.storageos.com/v2/docs/prerequisites/</link>
     <description>Recent content in Prerequisites on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/docs/prerequisites/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/v2/docs/prerequisites/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: System Configuration</title>
-      <link>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</link>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</guid>
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/</guid>
       <description>
         
         
@@ -41,7 +41,7 @@ of data. On startup, StorageOS will detect if other applications are using
 TCMU and fall back to FUSE. However if StorageOS is started first there is no
 mechanism for StorageOS to fallback to FUSE if another application begins to
 use TCMU. TCMU can be disabled using the
-&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;DISABLE_TCMU&lt;/a&gt;
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration&#34;&gt;DISABLE_TCMU&lt;/a&gt;
 StorageOSCluster spec parameter.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Depending on the distribution, the modules are shipped as part of the
@@ -59,7 +59,7 @@ installed.&lt;/p&gt;
 &lt;p&gt;Ubuntu 16.04/18.04 requires the installation of additional packages.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. Ubuntu 16.04/18.04 AWS and Ubuntu 18.04 GCE do not provide the
-necessary linux-image-extra package - &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce&#34;&gt;see
+necessary linux-image-extra package - &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration#ubuntu-on-aws-and-gce&#34;&gt;see
 below&lt;/a&gt; for more information&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;ubuntu-package-installation&#34;&gt;Ubuntu Package Installation&lt;/h2&gt;
@@ -109,10 +109,10 @@ the init container, perform the following steps:&lt;/p&gt;
     
     <item>
       <title>Docs: Firewalls</title>
-      <link>https://docs.storageos.com/docs/prerequisites/firewalls/</link>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/prerequisites/firewalls/</guid>
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/firewalls/</guid>
       <description>
         
         
@@ -192,10 +192,10 @@ default DROP or REJECT rules.&lt;/p&gt;
     
     <item>
       <title>Docs: Mount Propagation</title>
-      <link>https://docs.storageos.com/docs/prerequisites/mountpropagation/</link>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/prerequisites/mountpropagation/</guid>
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/mountpropagation/</guid>
       <description>
         
         
@@ -235,16 +235,16 @@ check and enable mount propagation where appropriate.&lt;/p&gt;
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/docs/prerequisites/etcd/</link>
+      <link>https://docs.storageos.com/v2/docs/prerequisites/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/prerequisites/etcd/</guid>
+      <guid>https://docs.storageos.com/v2/docs/prerequisites/etcd/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS requires an etcd cluster in order to function.&lt;/p&gt;
-&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
-etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
+etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. StorageOS does not recommend using the Kubernetes etcd cluster for
 StorageOS installations&lt;/p&gt;
@@ -252,7 +252,7 @@ StorageOS installations&lt;/p&gt;
 &lt;h2 id=&#34;using-etcd-with-storageos&#34;&gt;Using Etcd with StorageOS&lt;/h2&gt;
 &lt;p&gt;During installation of StorageOS the &lt;code&gt;kvBackend&lt;/code&gt; parameters of the StorageOS
 operator are used to specify the address of the etcd cluster. See the
-&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
 configuration&lt;/a&gt; examples for more
 information.&lt;/p&gt;
 

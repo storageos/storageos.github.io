@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Use Cases: Install applications on Kubernetes with StorageOS</title>
-    <link>https://docs.storageos.com/docs/usecases/</link>
+    <link>https://docs.storageos.com/v2/docs/usecases/</link>
     <description>Recent content in Use Cases: Install applications on Kubernetes with StorageOS on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/docs/usecases/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/v2/docs/usecases/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,10 +15,10 @@
     
     <item>
       <title>Docs: Backing up files from StorageOS volumes</title>
-      <link>https://docs.storageos.com/docs/usecases/backups/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/backups/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/backups/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/backups/</guid>
       <description>
         
         
@@ -31,7 +31,7 @@ files written by the application are available for export. Files can be
 exported using Nginx as a web file server, transferred using rsync or accessed
 via SFTP.&lt;/p&gt;
 &lt;p&gt;The files create a stateful set that can be used &lt;em&gt;AFTER&lt;/em&gt; a StorageOS cluster
-has been created. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+has been created. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;clone-repository&#34;&gt;Clone Repository&lt;/h2&gt;
 &lt;p&gt;In order to deploy the examples, clone this repository and use kubectl to create the
@@ -202,14 +202,14 @@ date.txt    lost+found
     
     <item>
       <title>Docs: Cassandra</title>
-      <link>https://docs.storageos.com/docs/usecases/cassandra/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/cassandra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/cassandra/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/cassandra/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorecassandralogopng-cassandra-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/cassandralogo.png&#34; alt=&#34;image&#34;&gt; Cassandra with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorecassandralogopng-cassandra-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/cassandralogo.png&#34; alt=&#34;image&#34;&gt; Cassandra with StorageOS&lt;/h1&gt;
 &lt;p&gt;Cassandra is a popular distributed NoSQL open source database.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Cassandra means that if a Cassandra pod
 fails, the cluster is only in a degraded state for as long as it takes
@@ -221,7 +221,7 @@ irrespective of whether or not a StorageOS master is located on the same node.&l
 consideration of whether to allow StorageOS or Cassandra to handle replication
 is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-cassandra-on-kubernetes&#34;&gt;Deploying Cassandra on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -295,14 +295,14 @@ cqlsh&amp;gt; SELECT cluster_name, listen_address FROM system.local&lt;span styl
     
     <item>
       <title>Docs: Elasticsearch</title>
-      <link>https://docs.storageos.com/docs/usecases/elasticsearch/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/elasticsearch/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/elasticsearch/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploreelasticsearchpng-elasticsearch-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; alt=&#34;image&#34;&gt; Elasticsearch with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploreelasticsearchpng-elasticsearch-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/elasticsearch.png&#34; alt=&#34;image&#34;&gt; Elasticsearch with StorageOS&lt;/h1&gt;
 &lt;p&gt;Elasticsearch is a distributed, RESTful search and analytics engine, most
 popularly used to aggregate logs, but also to serve as a search backend to a
 number of different applications.&lt;/p&gt;
@@ -317,7 +317,7 @@ is located on the same node.&lt;/p&gt;
 careful consideration of whether to allow StorageOS or Elasticsearch to handle
 replication is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-elasticsearch-on-kubernetes&#34;&gt;Deploying Elasticsearch on Kubernetes&lt;/h2&gt;
 &lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
@@ -434,21 +434,21 @@ by Prometheus on port 9108
 This is enabled by default, and should work with the default Prometheus install
 via Helm. If you&amp;rsquo;re using the Prometheus service monitors, you can monitor
 this installation by creating a monitor for the &lt;code&gt;es-exporter&lt;/code&gt; service. For an
-example of how this is done to monitor StorageOS, please see &lt;a href=&#34;https://docs.storageos.com/docs/operations/monitoring/prometheus-setup&#34;&gt;prometheus-setup&lt;/a&gt;.&lt;/p&gt;
+example of how this is done to monitor StorageOS, please see &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/monitoring/prometheus-setup&#34;&gt;prometheus-setup&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
     
     <item>
       <title>Docs: Jenkins</title>
-      <link>https://docs.storageos.com/docs/usecases/jenkins/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/jenkins/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/jenkins/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorejenkinslogopng--jenkins-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkinslogo.png&#34; alt=&#34;image&#34;&gt;  Jenkins with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorejenkinslogopng--jenkins-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/jenkinslogo.png&#34; alt=&#34;image&#34;&gt;  Jenkins with StorageOS&lt;/h1&gt;
 &lt;p&gt;This example shows an example of how to deploy Jenkins on Kubernetes with a
 StorageOS persistent volume being mounted on &lt;code&gt;/var/jenkins_home&lt;/code&gt;. Deploying
 Jenkins using StorageOS offers multiple benefits. Firstly Jenkins can spin up
@@ -462,7 +462,7 @@ Lastly by enabling &lt;a href=&#34;https://docs.storageos.com/docs/concepts/fenc
 fencing &lt;/a&gt; Jenkins time to
 recover, in case of node failures, is greatly reduced.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;deploying-jenkins-on-kubernetes&#34;&gt;Deploying Jenkins on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -515,14 +515,14 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
     
     <item>
       <title>Docs: Kafka</title>
-      <link>https://docs.storageos.com/docs/usecases/kafka/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/kafka/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/kafka/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/kafka/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorekafkapng-apache-kafka-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; alt=&#34;image&#34;&gt; Apache Kafka with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorekafkapng-apache-kafka-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/kafka.png&#34; alt=&#34;image&#34;&gt; Apache Kafka with StorageOS&lt;/h1&gt;
 &lt;p&gt;Kafka is a popular stream processing platform combining features from pub/sub
 and traditional queues.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Kafka means that if a pod
@@ -536,16 +536,16 @@ is located on the same node.&lt;/p&gt;
 consideration of whether to allow StorageOS or Kafka to handle replication
 is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Apache Zookeeper is required by Kafka to function; we assume it to already
 exist and be accessible within the Kubernetes cluster as &lt;code&gt;zookeeper&lt;/code&gt;, see how
 to run Zookeeper with StorageOS
-&lt;a href=&#34;https://docs.storageos.com/docs/usecases/zookeeper/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/usecases/zookeeper/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;StorageOS is assumed to have been installed; please check for the latest
-available version &lt;a href=&#34;https://docs.storageos.com/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+available version &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Kafka pods require 1536 MB of memory for successful scheduling&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;helm&#34;&gt;Helm&lt;/h3&gt;
@@ -643,14 +643,14 @@ its service endpoint&lt;/p&gt;
     
     <item>
       <title>Docs: Kubevirt</title>
-      <link>https://docs.storageos.com/docs/usecases/kubevirt/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/kubevirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/kubevirt/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/kubevirt/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng-kubevirt-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt; Kubevirt with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng-kubevirt-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt; Kubevirt with StorageOS&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://kubevirt.io&#34;&gt;Kubevirt&lt;/a&gt; is a CNCF sandbox project that allows the
 running of virtual machines (VMs) in Kubernetes pods.&lt;/p&gt;
 &lt;p&gt;Deploying Kubevirt using StorageOS offers multiple benefits. Kubevirt can spin
@@ -669,7 +669,7 @@ automatically prepared with the disk image.&lt;/p&gt;
 Kubernetes cluster, and create a VM. By the end of the guide you&amp;rsquo;ll be able to
 launch a shell inside the KubeVirt VM that&amp;rsquo;s running as a Kubernetes pod.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;Please ensure you have met the Kubevirt prerequisites, please see the &lt;a href=&#34;https://kubevirt.io/user-guide/docs/latest/administration/intro.html&#34;&gt;
@@ -790,18 +790,18 @@ the original volume to it.&lt;/p&gt;
     
     <item>
       <title>Docs: MS SQL</title>
-      <link>https://docs.storageos.com/docs/usecases/mssql/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/mssql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/mssql/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/mssql/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploremssqllogopng-ms-sql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mssqllogo.png&#34; alt=&#34;image&#34;&gt; MS SQL with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploremssqllogopng-ms-sql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/mssqllogo.png&#34; alt=&#34;image&#34;&gt; MS SQL with StorageOS&lt;/h1&gt;
 &lt;p&gt;Beginning with Microsoft SQL Server 2017, Microsoft has supported MSSQL on
 linux.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-ms-sql-on-kubernetes&#34;&gt;Deploying MS SQL on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -883,18 +883,18 @@ with your desired MS SQL configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: MySQL</title>
-      <link>https://docs.storageos.com/docs/usecases/mysql/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/mysql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/mysql/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/mysql/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploremysqllogopng-mysql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mysqllogo.png&#34; alt=&#34;image&#34;&gt; MySQL with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploremysqllogopng-mysql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/mysqllogo.png&#34; alt=&#34;image&#34;&gt; MySQL with StorageOS&lt;/h1&gt;
 &lt;p&gt;MySQL is a popular SQL open source database for a wide range of popular
 web-based applications including WordPress.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-mysql-on-kubernetes&#34;&gt;Deploying MySQL on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -971,19 +971,19 @@ with your desired MySQL configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: Nginx</title>
-      <link>https://docs.storageos.com/docs/usecases/nginx/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/nginx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/nginx/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/nginx/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorenginxlogopng-nginx-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/nginxlogo.png&#34; alt=&#34;image&#34;&gt; Nginx with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorenginxlogopng-nginx-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/nginxlogo.png&#34; alt=&#34;image&#34;&gt; Nginx with StorageOS&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.nginx.com/&#34;&gt;Nginx&lt;/a&gt; is a popular web server that can be used as a reverse proxy, load
 balancer or even as a
 &lt;a href=&#34;https://github.com/kubernetes/ingress-nginx&#34;&gt;Kubernetes ingress controller.&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-nginx-on-kubernetes&#34;&gt;Deploying Nginx on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -1076,14 +1076,14 @@ with your desired Nginx configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: PostgreSQL</title>
-      <link>https://docs.storageos.com/docs/usecases/postgres/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/postgres/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/postgres/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/postgres/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorepostgresqllogopng-postgresql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/postgresqllogo.png&#34; alt=&#34;image&#34;&gt; PostgreSQL with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorepostgresqllogopng-postgresql-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/postgresqllogo.png&#34; alt=&#34;image&#34;&gt; PostgreSQL with StorageOS&lt;/h1&gt;
 &lt;p&gt;PostgreSQL or &amp;ldquo;Postgres&amp;rdquo; is an open source object-relational database management
 system (ORDBMS).&lt;/p&gt;
 &lt;p&gt;Postgres is deployed across a wide variety of platforms with a mix of workloads
@@ -1172,17 +1172,17 @@ with your desired PostgreSQL configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: Redis</title>
-      <link>https://docs.storageos.com/docs/usecases/redis/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/redis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/redis/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/redis/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexploreredislogopng-redis-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/redislogo.png&#34; alt=&#34;image&#34;&gt; Redis with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexploreredislogopng-redis-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/redislogo.png&#34; alt=&#34;image&#34;&gt; Redis with StorageOS&lt;/h1&gt;
 &lt;p&gt;Redis is a popular networked, in-memory, key-value data store with optional durability to disk.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-redis-on-kubernetes&#34;&gt;Deploying Redis on Kubernetes&lt;/h2&gt;
 &lt;ol&gt;
@@ -1255,14 +1255,14 @@ with your desired Redis configuration settings.&lt;/p&gt;
     
     <item>
       <title>Docs: Zookeeper</title>
-      <link>https://docs.storageos.com/docs/usecases/zookeeper/</link>
+      <link>https://docs.storageos.com/v2/docs/usecases/zookeeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/usecases/zookeeper/</guid>
+      <guid>https://docs.storageos.com/v2/docs/usecases/zookeeper/</guid>
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorezookeeperpng-apache-zookeeper-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/zookeeper.png&#34; alt=&#34;image&#34;&gt; Apache Zookeeper with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorezookeeperpng-apache-zookeeper-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/explore/zookeeper.png&#34; alt=&#34;image&#34;&gt; Apache Zookeeper with StorageOS&lt;/h1&gt;
 &lt;p&gt;ZooKeeper is a centralized service for maintaining configuration information,
 naming, providing distributed synchronization, and providing group services.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Zookeeper means that if a pod
@@ -1275,13 +1275,13 @@ is located on the same node.&lt;/p&gt;
 &lt;p&gt;As Zookeeper has features to allow it to handle replication, and as such
 careful consideration of whether to allow StorageOS or Zookeeper to handle replication is required.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
+cluster. &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
 information&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;deploying-zookeeper-on-kubernetes&#34;&gt;Deploying Zookeeper on Kubernetes&lt;/h2&gt;
 &lt;h3 id=&#34;pre-requisites&#34;&gt;Pre-requisites&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;StorageOS is assumed to have been installed; please check for the latest
-available version &lt;a href=&#34;https://docs.storageos.com/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+available version &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/release_notes/&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;helm&#34;&gt;Helm&lt;/h3&gt;
 &lt;p&gt;To simplify the deployment of Zookeeper, we&amp;rsquo;ve used this &lt;a href=&#34;https://github.com/helm/charts/tree/master/incubator/zookeeper&#34;&gt;Zookeeper helm chart

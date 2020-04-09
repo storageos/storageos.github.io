@@ -1,11 +1,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title> – Platforms</title>
-    <link>https://docs.storageos.com/docs/platforms/</link>
+    <link>https://docs.storageos.com/v2/docs/platforms/</link>
     <description>Recent content in Platforms on </description>
     <generator>Hugo -- gohugo.io</generator>
     
-	  <atom:link href="https://docs.storageos.com/docs/platforms/index.xml" rel="self" type="application/rss+xml" />
+	  <atom:link href="https://docs.storageos.com/v2/docs/platforms/index.xml" rel="self" type="application/rss+xml" />
     
     
       
@@ -15,20 +15,20 @@
     
     <item>
       <title>Docs: AWS EKS</title>
-      <link>https://docs.storageos.com/docs/platforms/aws-eks/</link>
+      <link>https://docs.storageos.com/v2/docs/platforms/aws-eks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/platforms/aws-eks/</guid>
+      <guid>https://docs.storageos.com/v2/docs/platforms/aws-eks/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS is fully compatible with AWS EKS. To install StorageOS on EKS, please
-follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An EKS deployment of Kubernetes uses AWS Linux by default with an optimized
 kernel. As the requisite kernel modules are not available for StorageOS to use
 TCMU, FUSE will be used as a fallback. Using FUSE instead of TCMU has
 performance implications.&lt;/p&gt;
-&lt;p&gt;For more details about the OS Distributions check the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;System
+&lt;p&gt;For more details about the OS Distributions check the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;System
 Configuration&lt;/a&gt;
 page.&lt;/p&gt;
 
@@ -37,15 +37,15 @@ page.&lt;/p&gt;
     
     <item>
       <title>Docs: Azure AKS</title>
-      <link>https://docs.storageos.com/docs/platforms/azure-aks/</link>
+      <link>https://docs.storageos.com/v2/docs/platforms/azure-aks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/platforms/azure-aks/</guid>
+      <guid>https://docs.storageos.com/v2/docs/platforms/azure-aks/</guid>
       <description>
         
         
         &lt;p&gt;StorageOS is fully compatible with Azure AKS. To install StorageOS on AKS
-please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;An AKS deployment of Kubernetes uses Ubuntu by default with an optimized
 kernel. All versions of Ubuntu with a kernel version later
 than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.&lt;/p&gt;
@@ -55,19 +55,19 @@ than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.
     
     <item>
       <title>Docs: Docker Enterprise Edition</title>
-      <link>https://docs.storageos.com/docs/platforms/dockeree/</link>
+      <link>https://docs.storageos.com/v2/docs/platforms/dockeree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/platforms/dockeree/</guid>
+      <guid>https://docs.storageos.com/v2/docs/platforms/dockeree/</guid>
       <description>
         
         
-        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;installation
+        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/kubernetes/&#34;&gt;installation
 instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;Docker EE and the Universal Control Plane can run on different Linux
 distributions. StorageOS supports RHEL, CentOS, Debian, and selected Ubuntu
 images. For more details, check out the supported OSs in the
-&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;StorageOS only supports Kubernetes nodes managed by Docker Enterprise Edition,
 not those nodes running Swarm. Mixed nodes (those running Kubernetes and Swarm
 workloads) are not supported. As a consequence, StorageOS volumes can only be
@@ -79,10 +79,10 @@ stateful workloads.&lt;/p&gt;
     
     <item>
       <title>Docs: OpenShift</title>
-      <link>https://docs.storageos.com/docs/platforms/openshift/</link>
+      <link>https://docs.storageos.com/v2/docs/platforms/openshift/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/platforms/openshift/</guid>
+      <guid>https://docs.storageos.com/v2/docs/platforms/openshift/</guid>
       <description>
         
         
@@ -102,10 +102,10 @@ only. The native driver has been deprecated&lt;/p&gt;
 &lt;p&gt;The user can provide standard PVC definitions and StorageOS will dynamically
 provision them. StorageOS presents volumes to containers with standard POSIX
 mount targets. This enables the Kubelet to mount StorageOS volumes using
-standard linux device files. Checkout &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;device presentation&lt;/a&gt; for more details.&lt;/p&gt;
+standard linux device files. Checkout &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;device presentation&lt;/a&gt; for more details.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;p&gt;StorageOS v2 supports OpenShift 4.0, 4.1, 4.2 and 4.3.&lt;/p&gt;
-&lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;installation
+&lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/openshift/&#34;&gt;installation
 instructions&lt;/a&gt; page.&lt;/p&gt;
 
       </description>
@@ -113,17 +113,17 @@ instructions&lt;/a&gt; page.&lt;/p&gt;
     
     <item>
       <title>Docs: Rancher</title>
-      <link>https://docs.storageos.com/docs/platforms/rancher/</link>
+      <link>https://docs.storageos.com/v2/docs/platforms/rancher/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/platforms/rancher/</guid>
+      <guid>https://docs.storageos.com/v2/docs/platforms/rancher/</guid>
       <description>
         
         
-        &lt;p&gt;To install StorageOS on Rancher, please follow our &lt;a href=&#34;https://docs.storageos.com/docs/install/rancher/&#34;&gt;installation
+        &lt;p&gt;To install StorageOS on Rancher, please follow our &lt;a href=&#34;https://docs.storageos.com/v2/docs/install/rancher/&#34;&gt;installation
 instructions&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;StorageOS transparently supports Rancher deployments using CentOS, RHEL or
-Debian and can support other Linux distributions detailed in the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;systems
+Debian and can support other Linux distributions detailed in the &lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/systemconfiguration/&#34;&gt;systems
 supported page&lt;/a&gt; if the
 appropriate kernel modules are present.&lt;/p&gt;
 

@@ -1534,7 +1534,7 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
     &lt;h1 id=&#34;install-storageos-on-openshift-v4&#34;&gt;Install StorageOS on OpenShift v4&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;

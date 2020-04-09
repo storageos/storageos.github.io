@@ -1817,7 +1817,7 @@ the init container, perform the following steps:&lt;/p&gt;
         
         &lt;blockquote&gt;
 &lt;p&gt;Make sure the
-&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/overview&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
+&lt;a href=&#34;https://docs.storageos.com/v2/docs/prerequisites/&#34;&gt;prerequisites for StorageOS&lt;/a&gt; are
 satisfied before proceeding. Including the deployment of an etcd cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;

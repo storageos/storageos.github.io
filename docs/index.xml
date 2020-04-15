@@ -2294,6 +2294,7 @@ spec:
   k8sDistro: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;openshift&amp;#34;&lt;/span&gt;
   images:
     nodeContainer: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos/node:1.5.3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS version&lt;/span&gt;
+  disableScheduler: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -2470,6 +2471,7 @@ spec:
   k8sDistro: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;openshift&amp;#34;&lt;/span&gt;
   images:
     nodeContainer: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos/node:1.5.3&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS version&lt;/span&gt;
+  disableScheduler: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;

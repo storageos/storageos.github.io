@@ -34,7 +34,7 @@ The recommended way to run StorageOS on OpenShift 4." />
   Installing StorageOS on OpenShift 4.3 has fewer prerequisites as compared to previous OpenShift 3.x versions.
 The recommended way to run StorageOS on OpenShift 4.">
 
-<meta itemprop="wordCount" content="2299">
+<meta itemprop="wordCount" content="2303">
 
 
 
@@ -163,7 +163,7 @@ The recommended way to run StorageOS on OpenShift 4."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.d6d196b528ada09ea47a9b6e4c7c38c1e5c10bae7b90c5f676a79377875580ff102cb1e579bd4f4b5697bfaf8f8d0c57232edc7b562e6573e62302ddc5560cfe.json"
+  data-offline-search-index-json-src="/offline-search-index.6bdde2f40b361a716dcab94be9f26b82f1c1675d41875683b39b774358e627af2231c3d257969acdc37fcda327371c847f33edaa4e3f4bb128724049f32566a5.json"
   data-offline-search-base-href="/"
 >
 
@@ -1547,6 +1547,7 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;openshift&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:1.5.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+  disableScheduler: <span style="color:#204a87">true</span>
   resources:
     requests:
     memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
@@ -1723,6 +1724,7 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;openshift&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:1.5.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+  disableScheduler: <span style="color:#204a87">true</span>
   resources:
     requests:
     memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>

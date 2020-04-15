@@ -7898,8 +7898,9 @@ application and data is essential.&lt;/p&gt;
 &lt;p&gt;For instance, when running Kafka Pods under heavy load, it may be better to
 avoid scheduling a Pod using a remote volume rather than have clients
 direct traffic at a cluster member which exhibits degraded performance.&lt;/p&gt;
-&lt;p&gt;Enable &lt;code&gt;peferred/strict&lt;/code&gt; modes by setting labels for your Pods. Checkout the [examples
-section]({{ ref &amp;ldquo;docs/reference/scheduler/examples.md&amp;rdquo; &amp;gt;}}) for full details.&lt;/p&gt;
+&lt;p&gt;Enable &lt;code&gt;preferred/strict&lt;/code&gt; modes by setting labels for your Pods. Checkout the
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/examples/&#34;&gt;examples section&lt;/a&gt; for full
+details.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;

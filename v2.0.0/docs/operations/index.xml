@@ -1,0 +1,1115 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Operations</title>
+    <link>https://docs.storageos.com/v2.0.0/docs/operations/</link>
+    <description>Recent content in Operations on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v2.0.0/docs/operations/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Etcd</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/external-etcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/external-etcd/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS uses (etcd)[https://etcd.io] to store cluster metadata. Because of
+the strong consistency model that etcd enforces, StorageOS metadata operations
+are guaranteed to be atomic and consistent.&lt;/p&gt;
+&lt;h2 id=&#34;installation-options&#34;&gt;Installation options&lt;/h2&gt;
+&lt;p&gt;Before installing StorageOS, an etcd cluster needs to be prepared. There are
+different topologies that fulfil this prerequisite.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;External etcd (&lt;em&gt;Production&lt;/em&gt;)&lt;/li&gt;
+&lt;li&gt;etcd as Pods (&lt;em&gt;Testing&lt;/em&gt;)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;nav&gt;
+	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;
+
+		
+		
+		
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		&lt;a class=&#34;nav-item nav-link active&#34; id=&#34;nav-9&#34; data-toggle=&#34;tab&#34; href=&#34;#production&#34; role=&#34;tab&#34;
+		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;true&#34;&gt;Production&lt;/a&gt;
+
+            
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		&lt;a class=&#34;nav-item nav-link&#34; id=&#34;nav-9&#34; data-toggle=&#34;tab&#34; href=&#34;#testing&#34; role=&#34;tab&#34;
+		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;false&#34;&gt;Testing&lt;/a&gt;
+
+            
+		
+
+	&lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;div class=&#34;tab-content&#34; id=&#34;9&#34;&gt;
+    &lt;br&gt;&lt;/br&gt;
+
+
+
+
+
+
+
+
+&lt;div class=&#34;tab-pane fade show active&#34; id=&#34;production&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-production&#34;&gt;
+    &lt;h2 id=&#34;external-etcd&#34;&gt;External Etcd&lt;/h2&gt;
+&lt;p&gt;The production topology is designed to provide the highest stability for the
+etcd cluster. It is necessary for normal StorageOS function to have a reliable
+metadata cluster. Otherwise, central operations such as provisioning,
+attachment or failover of volumes cannot be performed. In the event that etcd
+becomes unavailable, StorageOS clusters become read only, allowing access to
+data but preventing metadata changes.&lt;/p&gt;
+&lt;p&gt;It is recommended to install etcd out of the scope of the orchestrator wherever
+possible. Following CoreOS best practices, a minimum of 3 independent nodes
+should be dedicated to etcd. StorageOS doesn&amp;rsquo;t require a high performance etcd
+cluster as the throughput of metadata to the cluster is low. Depending on the
+level of redundancy you feel comfortable with you can install etcd on the
+Kubernetes Master nodes. &lt;strong&gt;Take extreme care to avoid collisions of the
+StorageOS etcd installation with the Kubernetes etcd when using the Kubernetes
+Master nodes. Precautions such as changing the default configuration for the
+client and peer ports, and ensuring the etcd data directory is modified. The
+ansible playbook below will default the etcd installation directory to
+&lt;code&gt;/var/lib/storageos-etcd&lt;/code&gt;.&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
+&lt;p&gt;If you are familiar with etcd, you can proceed with the CoreOS instructions to
+install etcd, otherwise this section lays out out an example installation using
+Ansible.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Clone StorageOS Helper repository&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/deploy.git
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edit the inventory file&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Target the nodes that install etcd, where the file &lt;code&gt;hosts.example&lt;/code&gt; serves
+as an example. The &lt;code&gt;ip&lt;/code&gt; parameter is needed for each node.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat hosts.example
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;nodes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+centos-1 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.14
+centos-2 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.15
+centos-3 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.16
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Edit the inventory file&lt;/span&gt;
+$ vi hosts.example &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or your own inventory file&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edit the etcd configuration&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;If targeting Kubernetes Master nodes, you must change
+&lt;code&gt;etcd_port_client&lt;/code&gt;, &lt;code&gt;etcd_port_peers&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat group_vars/all
+etcd_version: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.3.18&amp;#34;&lt;/span&gt;
+etcd_port_client: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2379&amp;#34;&lt;/span&gt;
+etcd_port_peers: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2380&amp;#34;&lt;/span&gt;
+etcd_quota_bytes: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8589934592&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 8 GB&lt;/span&gt;
+etcd_auto_compaction_mode: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;revision&amp;#34;&lt;/span&gt;
+etcd_auto_compaction_retention: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;100&amp;#34;&lt;/span&gt;
+members: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{{ groups[&amp;#39;nodes&amp;#39;]  }}&amp;#34;&lt;/span&gt;
+installation_dir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos-etcd&amp;#34;&lt;/span&gt;
+
+$ vi group_vars/all
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ansible-playbook -i hosts.example site.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify installation&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The playbook installs the &lt;code&gt;etcdctl&lt;/code&gt; binary on the nodes, at
+&lt;code&gt;/usr/local/bin&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Any node running the new etcd&lt;/span&gt;
+$ &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;127.0.0.1:2379 member list
+66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
+17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
+8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;managed-services&#34;&gt;Managed Services&lt;/h2&gt;
+&lt;p&gt;When running StorageOS on Managed Kubernetes services it may not be possible to
+deploy with the Production etcd topology described above. It is therefore
+recommended to deploy etcd on its own as much as possible, even if that means
+deploying 3 independent VMs for etcd to run on.&lt;/p&gt;
+&lt;p&gt;As managed services treat nodes as ephemeral resources, if the orchestration
+deletes the 3 nodes hosting etcd, the result will be catastrophic and a restore
+from a backup will be needed.&lt;/p&gt;
+&lt;p&gt;If it is not possible to deploy independent VMs for etcd, etcd can be deployed
+as pods, inside the cluster. This configuration requires an awareness of the
+stability that etcd requires. &lt;strong&gt;You can use the &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/operations/external-etcd/#installation-options&#34;&gt;etcd-as-pods&lt;/a&gt;
+installation option, but be aware of the precautions that need to be taken.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;why-external-etcd&#34;&gt;Why External Etcd&lt;/h2&gt;
+&lt;p&gt;etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. In the case that quorum is lost, an etcd node stops and marks its
+contents as read-only. It cannot guarantee that the data being held is valid.
+Another peer might have a newer version that has not been delivered. Quorum is
+fundamental for etcd operations.&lt;/p&gt;
+&lt;p&gt;In a Kubernetes environment, applications are scheduled across and in some
+scenarios such as &amp;ldquo;DiskPressure&amp;rdquo; they may need to be evicted from a node, and
+be scheduled onto a different node. With an application such as etcd, the
+scenario described can result in quorum being lost, making the cluster unable
+to recover automatically. Usually a 3 node etcd cluster can survive losing one
+node and recover. However, losing a second node at the same time or even having
+a network partition between them will result in quorum lost.&lt;/p&gt;
+&lt;h2 id=&#34;bind-etcd-ips-to-kubernetes-service&#34;&gt;Bind Etcd IPs to Kubernetes Service&lt;/h2&gt;
+&lt;p&gt;Kubernetes external services use a DNS name to reference external endpoints.
+You can use the example from the &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc&#34;&gt;helper github
+repository&lt;/a&gt;
+to deploy the external Service. That might be of use when monitoring etcd from
+Prometheus.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+
+
+
+
+
+
+
+&lt;div class=&#34;tab-pane fade&#34; id=&#34;testing&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-testing&#34;&gt;
+    &lt;h2 id=&#34;etcd-as-pods&#34;&gt;Etcd as Pods&lt;/h2&gt;
+&lt;p&gt;etcd can be deployed in Kubernetes using the official &lt;a href=&#34;https://github.com/coreos/etcd-operator&#34;&gt;etcd-operator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Deploying etcd in Kubernetes makes the etcd installation very easy, however be
+aware that even though the official etcd-operator is maintained by RedHat, it
+hasn&amp;rsquo;t been under active development since 2019. As such it may be considered
+an archived project. For an actively maintained etcd Operator you might want to
+check the &lt;a href=&#34;https://github.com/improbable-eng/etcd-cluster-operator&#34;&gt;Improbable etcd
+Operator&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Examples of deploying etcd clusters using the etcd-operator on &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example&#34;&gt;Kubernetes&lt;/a&gt;
+and
+&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/openshift/deploy-storageos/etcd-helpers/etcd-operator-example&#34;&gt;OpenShift&lt;/a&gt;
+are available.&lt;/p&gt;
+&lt;p&gt;Since Kubernetes 1.16 the deployment api uses &amp;ldquo;apps/v1&amp;rdquo;. Once you have cloned
+the coreos etcd operator repository, you will need to change the apiVersion of
+the file &amp;ldquo;examples/deployment.yaml&amp;rdquo; from &lt;code&gt;extensions/v1beta1&lt;/code&gt; to &lt;code&gt;apps/v1&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The official etcd-operator repository also has a backup deployment operator
+that can help backup etcd data. Make sure you take frequent backups of the etcd
+cluster as it holds all the StorageOS cluster metadata.&lt;/p&gt;
+&lt;h2 id=&#34;known-etcd-operator-issues&#34;&gt;Known etcd-operator issues&lt;/h2&gt;
+&lt;p&gt;This topology is only recommended for deployments where isolated nodes cannot be
+used.&lt;/p&gt;
+&lt;p&gt;etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. If quorum is lost, etcd nodes stop and etcd marks its contents as
+read-only. This is because it cannot guarantee that new data will be valid.
+Quorum is fundamental for etcd operations. When running etcd in pods it is
+therefore important to consider that a loss of quorum could arise from etcd
+pods being evicted from nodes.&lt;/p&gt;
+&lt;p&gt;Operations such as Kubernetes Upgrades with rolling node pools could cause a
+total failure of the etcd cluster as nodes are discarded in favor of new ones.&lt;/p&gt;
+&lt;p&gt;A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
+can survive the loss of two nodes. Loss of further nodes will result in quorum
+being lost.&lt;/p&gt;
+&lt;p&gt;The etcd-operator doesn&amp;rsquo;t support a full stop of the cluster. Stopping the etcd
+cluster is not possible unless a backup is restored.&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+
+
+
+
+&lt;/div&gt;
+
+&lt;h2 id=&#34;storageos-and-etcd&#34;&gt;StorageOS and Etcd&lt;/h2&gt;
+&lt;p&gt;When installing StorageOS, the etcd endpoints are passed in a StorageOSCluster Custom
+Resource.&lt;/p&gt;
+&lt;p&gt;For instance:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: &amp;quot;storageos.com/v1&amp;quot;
+kind: StorageOSCluster
+metadata:
+  name: &amp;quot;storageos&amp;quot;
+spec:
+  secretRefName: &amp;quot;storageos-api&amp;quot; # Reference from the Secret created in the previous step
+  secretRefNamespace: &amp;quot;default&amp;quot;  # Namespace of the Secret
+
+  (...)
+
+  kvBackend:
+    address: &#39;storageos-etcd-client.etcd:2379&#39; # Example address, change for your etcd endpoint
+   #address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set etcd server ips
+    backend: &#39;etcd&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note the &lt;code&gt;kvBackend.address&lt;/code&gt; section.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For full Custom Resource documentation check &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/cluster-operator/configuration&#34;&gt;StorageOSCluster resource definition&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;best-practices&#34;&gt;Best practices&lt;/h2&gt;
+&lt;p&gt;StorageOS uses etcd as a service, whether it is deployed following the above
+instructions or as a custom installation. It is expected that the user
+maintains the availability and integrity of the etcd cluster.&lt;/p&gt;
+&lt;p&gt;It is highly recommended to keep the cluster backed up and ensure high
+availability of its data. It is also important to keep the latency between
+StorageOS nodes and the etcd replicas low. Deploying an etcd cluster in a
+different data center or region can make StorageOS detect etcd nodes as
+unavailable due to latency. A 10ms latency between StorageOS and etcd would be
+the maximum threshold for proper functioning of the system.&lt;/p&gt;
+&lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
+&lt;p&gt;It is highly recommended to add monitoring to the etcd cluster. etcd serves
+Prometheus metrics on the client port &lt;code&gt;http://etc-url:2379/metrics&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can use StorageOS developed Grafana Dashboards for etcd. When using etcd
+for production, you can use the
+&lt;a href=&#34;https://grafana.com/grafana/dashboards/10322&#34;&gt;etcd-cluster-as-service&lt;/a&gt;, while
+the &lt;a href=&#34;https://grafana.com/grafana/dashboards/10323&#34;&gt;etcd-cluster-as-pod&lt;/a&gt; can be
+used when using etcd from the operator.&lt;/p&gt;
+&lt;h3 id=&#34;defragmentation&#34;&gt;Defragmentation&lt;/h3&gt;
+&lt;p&gt;etcd uses revisions to store multiple versions of keys. Compaction removes all
+key revision prior to a certain revision from etcd. Typically the etcd
+configuration enables the automatic compaction of keys to prevent performance
+degradation and limit the storage required. Compaction of revisions can create
+fragmentation that means space on disk is available for use by etcd but is
+unavailable for use by the file system. In order to reclaim this space, etcd
+can be defragmented.&lt;/p&gt;
+&lt;p&gt;Reclaiming space is important because when the etcd database file grows over
+the &amp;ldquo;DB_BACKEND_BYTES&amp;rdquo; parameter, the cluster triggers an alarm and sets itself
+read only and only allows reads and deletes. To avoid hitting the db backend
+bytes limit, compaction and defragmentation are required. How often
+defragmentation is required depends on the churn of key revisions in etcd.&lt;/p&gt;
+&lt;p&gt;The Grafana Dashboards mentioned above indicate when nodes require
+defragmentation. Be aware that defragmentation is a blocking operation that is
+performed per node, hence the etcd node will be locked for the duration of the
+defragmentation. Defragmentation usually takes a few milliseconds to complete.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: StorageOS Volume Guide</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/firstpvc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/firstpvc/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Follow the recipes on this page to create your first PVC (Persistent Volume
+Claim) using StorageOS. StorageOS implements dynamic provisioning, so the
+creation of a PVC will automatically provision a PV (PersistentVolume) that can
+be used to persist data written by a Pod.&lt;/p&gt;
+&lt;h2 id=&#34;create-the-persistentvolumeclaim&#34;&gt;Create the PersistentVolumeClaim&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;You can find the basic examples in the StorageOS use-cases repository, in
+the &lt;code&gt;00-basic&lt;/code&gt; directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/use-cases.git storageos-usecases
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos-usecases/00-basic
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;PVC definition&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS StorageClass&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above PVC will dynamically provision a 5GB volume using the &lt;code&gt;fast&lt;/code&gt;
+StorageClass. This StorageClass was created during the StorageOS install
+and triggers creation of a PeristentVolume by StorageOS.&lt;/p&gt;
+&lt;p&gt;For installations with CSI, you can create multiple StorageClasses in order
+to specify default labels.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storage.k8s.io/v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StorageClass&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos-replicated&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;fsType&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;ext4&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;pool&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;default&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Enforces 1 replica for the Volume&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Provisioner when using CSI&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above StorageClass has the &lt;code&gt;storageos.com/replicas&lt;/code&gt; label set. This
+label tells StorageOS to create a volume with a replica. Adding StorageOS
+feature labels to the StorageClass ensures all volumes created with the
+StorageClass have the same labels. For simplicities sake this example will
+use unreplicated volumes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-replicated&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reference to the StorageClass&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also choose to add the label in the PVC definition rather than the
+StorageClass. The PVC definition takes precedence over the SC.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above PVC has the &lt;code&gt;storageos.com/replicas&lt;/code&gt; label set. This label tells
+StorageOS to add a replica for the volume that is created. For the sake
+of keeping this example simple an unreplicated volume will be used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Move into the examples folder and create a PVC using the PVC definition above.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# from storageos-usecases/00-basic&lt;/span&gt;
+$ kubectl create -f ./pvc-basic.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can view the PVC that you have created with the command below&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get pvc
+NAME         STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc-1     Bound    pvc-f8ffa027-e821-11e8-bc0b-0ac77ccc61fa   5Gi        RWO            fast           1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create a pod that mounts the PVC created in step 2.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl create -f ./pod.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The command above creates a Pod that uses the PVC that was created in step 1.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Pod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;d1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;containers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9&lt;/span&gt;-slim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;command&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/bin/sleep&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;args&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3600&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeMounts&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountPath&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;/mnt&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;persistentVolumeClaim&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;claimName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;pvc&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In the Pod definition above volume v1 references the PVC created in step 2,
+and is mounted in the pod at /mnt. In this example a debian image is used
+for the container but any container image with a shell would work for this
+example.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Confirm that the pod is up and running&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get pods
+NAME      READY   STATUS    RESTARTS   AGE
+d1        1/1     Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Execute a shell inside the container and write some contents to a file&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; -it d1 -- bash
+root@d1:/# &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Hello World!&amp;#34;&lt;/span&gt; &amp;gt; /mnt/helloworld
+root@d1:/# cat /mnt/helloworld
+Hello World!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;By writing to /mnt inside the container, the StorageOS volume created by
+the PVC is being written to. If you were to kill the pod and start it again
+on a new node, the helloworld file would still be avaliable.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If you wish to see more use cases with actual applications please see our
+&lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/usecases/&#34;&gt;Use Cases&lt;/a&gt; documentation.&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Cluster health</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/health/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/health/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Various tools are available for checking on the status of a cluster.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; displays the
+status of nodes in the cluster.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get nodes
+NAME        HEALTH  AGE             LABELS
+node1       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;44&lt;/span&gt; minutes ago
+node2       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;44&lt;/span&gt; minutes ago
+node3       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;44&lt;/span&gt; minutes ago
+node4       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;44&lt;/span&gt; minutes ago
+node5       online  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;44&lt;/span&gt; minutes ago
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Managing Host Storage</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/managing-host-storage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/managing-host-storage/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS uses the storage available on the nodes where it is installed to
+present as available for volumes.&lt;/p&gt;
+&lt;p&gt;In order to mitigate against problems caused by filling the host root disk, we
+recommend mounting a separate device into the &lt;code&gt;/var/lib/storageos&lt;/code&gt; directory.
+StorageOS is agnostic to the type of filesystem mounted in
+&lt;code&gt;/var/lib/storageos&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;extending-available-storage&#34;&gt;Extending Available Storage&lt;/h2&gt;
+&lt;p&gt;StorageOS uses subdirectories of &lt;code&gt;/var/lib/storageos/data&lt;/code&gt; to hold user data.
+By default, the directory &lt;code&gt;/var/lib/storageos/data/dev1&lt;/code&gt; will be created when a
+node is bootstrapped, and used for pool data. It is possible to shard the data
+by creating more directories into this structure. StorageOS will save data in
+any directory that conforms to the pattern &lt;code&gt;/var/lib/storageos/data/dev[0-9]+&lt;/code&gt;,
+such as &lt;code&gt;/var/lib/storageos/data/dev2&lt;/code&gt; or &lt;code&gt;/var/lib/storageos/data/dev5&lt;/code&gt;. This
+functionality enables operators to mount different devices into devX
+directories and StorageOS will recognise them as available storage
+automatically.&lt;/p&gt;
+&lt;p&gt;There are two possible options to expand the available disk space for StorageOS
+to allocate:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Mount filesystem in &lt;code&gt;/var/lib/storageos/data/devX&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Use LVM to expand the logical volume available to StorageOS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;option-1-mount-additional-devices&#34;&gt;Option 1: Mount Additional Devices&lt;/h2&gt;
+&lt;p&gt;This option enables operators to expand the cluster&amp;rsquo;s available space at any
+time without having to stop applications or forcing operational downtime. The
+expansion of disk is transparent for applications and StorageOS Volumes.
+StorageOS will use the new available space to create new data files.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Context&lt;/p&gt;
+&lt;p&gt;We assume that there is a disk available in our Linux system without
+formatting in addition to the root filesystem. StorageOS data dir dev1
+(&lt;code&gt;/var/lib/storageos/data/dev1&lt;/code&gt;) is using &lt;code&gt;/dev/xvda1&lt;/code&gt;. We will use the
+device &lt;code&gt;/dev/xvdf&lt;/code&gt; to expand StorageOS available space.&lt;/p&gt;
+&lt;p&gt;List available block devices in the host.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node0:~# lsblk
+NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+xvda    202:0    0  128G  0 disk
+`-xvda1 202:1    0  128G  0 part /
+xvdf    202:80   0  100G  0 disk
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Check StorageOS cluster&amp;rsquo;s available capacity.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get node -ojson | jq -r &#39;.[] | { name: .name, capacity: .capacity.total  }&#39;
+&amp;quot;node0&amp;quot;
+137,438,953,472
+&amp;quot;node1&amp;quot;
+137,438,953,472
+&amp;quot;node2&amp;quot;
+137,438,953,472
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Format device&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node0:/var/lib/storageos/data# mkfs -t ext4 /dev/xvdf
+mke2fs 1.42.12 (29-Aug-2014)
+Creating filesystem with 26214400 4k blocks and 6553600 inodes
+Filesystem UUID: 380712fa-6f82-477a-81a5-d7466d4c6b7f
+Superblock backups stored on blocks:
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208,
+        4096000, 7962624, 11239424, 20480000, 23887872
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (32768 blocks): done
+Writing superblocks and filesystem accounting information: done
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mount filesystem&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node0:~# mkdir -p /var/lib/storageos/data/dev2
+root@node0:~# mount /dev/xvdf /var/lib/storageos/data/dev2
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify available storage&lt;/p&gt;
+&lt;p&gt;In less than 30 seconds, StorageOS will see the new available capacity.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get node -ojson | jq -r &#39;.[] | { name: .name, capacity: .capacity.total  }&#39;
+&amp;quot;node0&amp;quot;
+244,491,013,324
+&amp;quot;node1&amp;quot;
+137,438,953,472
+&amp;quot;node2&amp;quot;
+137,438,953,472
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note that the node node0 has increased the TOTAL capacity in 100Gi.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Persist the mount at boot by adding the mount endpoint to &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;option-2-expand-existing-devices-backed-by-lvm&#34;&gt;Option 2: Expand Existing Devices Backed by LVM&lt;/h2&gt;
+&lt;p&gt;This option enables operators to take advantage of LVM to manage disks.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Context&lt;/p&gt;
+&lt;p&gt;We assume that &lt;code&gt;/var/lib/storageos&lt;/code&gt; is mounted onto an LVM volume. We are
+using a volumegroup named &lt;code&gt;storageos&lt;/code&gt; and logical volume called &lt;code&gt;data&lt;/code&gt;. There
+is a second physical disk &lt;code&gt;/dev/xvdg&lt;/code&gt; unused.&lt;/p&gt;
+&lt;p&gt;List available block devices in the host.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# lsblk
+NAME             MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+xvda             202:0    0  128G  0 disk
+`-xvda1          202:1    0  128G  0 part /
+xvdf             202:80   0  100G  0 disk
+`-storageos-data 254:0    0   99G  0 lvm  /var/lib/storageos
+xvdg             202:96   0  100G  0 disk
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Check StorageOS cluster&amp;rsquo;s available capacity.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get node -ojson | jq -r &#39;.[] | { name: .name, capacity: .capacity.total  }&#39;
+&amp;quot;node0&amp;quot;
+137,438,953,472
+&amp;quot;node1&amp;quot;
+137,438,953,472
+&amp;quot;node2&amp;quot;
+107,696,304,947 # --&amp;gt; LVM storageos/data volume
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add physical disk to LVM&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# vgextend storageos /dev/xvdg
+  Volume group &amp;quot;storageos&amp;quot; successfully extended
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The volume group &lt;code&gt;storageos&lt;/code&gt; must have 2 physical volumes (#PV)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# vgs
+  VG        #PV #LV #SN Attr   VSize   VFree
+  storageos   2   1   0 wz--n- 199.99g 104.99g
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Extend logical volume &lt;code&gt;data&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# lvextend -L+100G /dev/storageos/data
+  Size of logical volume storageos/data changed from 95.00 GiB (24320 extents) to 195.00 GiB (49920 extents).
+  Logical volume data successfully resized
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Resize the FileSystem&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Your filesystem must support the option to be expanded, and to do so
+while in use. Otherwise, you need to unmount first.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# resize2fs /dev/storageos/data
+resize2fs 1.42.12 (29-Aug-2014)
+Filesystem at /dev/storageos/data is mounted on /var/lib/storageos; on-line resizing required
+old_desc_blocks = 6, new_desc_blocks = 13
+The filesystem on /dev/storageos/data is now 51118080 (4k) blocks long.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check new available space&lt;/p&gt;
+&lt;p&gt;The mounted file system to &lt;code&gt;/var/lib/storageos&lt;/code&gt; has increased its size.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@node2:~# df -h /dev/mapper/storageos-data
+Filesystem                  Size  Used Avail Use% Mounted on
+/dev/mapper/storageos-data  192G   60M  183G   1% /var/lib/storageos
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;StorageOS available storage has increased too.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get node -ojson | jq -r &#39;.[] | { name: .name, capacity: .capacity.total  }&#39;
+&amp;quot;node0&amp;quot;
+137,438,953,472
+&amp;quot;node1&amp;quot;
+137,438,953,472
+&amp;quot;node2&amp;quot;
+206,158,430,208 # --&amp;gt; 100G more available
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Persist the mount at boot by adding the mount point to &lt;code&gt;/etc/fstab&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Licensing</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/licensing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/licensing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;A newly installed StorageOS cluster includes an unregistered Basic licence,
+which caps usable storage space at 100GB.  To utilise more storage space, we
+offer either a Developer (free with registration - 500GB) licence or an
+Enterprise (unlimited capacity - see below) licence. This document explains how
+to upgrade your licence using either the GUI or CLI.&lt;/p&gt;
+&lt;h2 id=&#34;obtaining-a-developer-licence-via-the-gui&#34;&gt;Obtaining a Developer licence via the GUI&lt;/h2&gt;
+&lt;p&gt;You can obtain and apply a Developer licence in the StorageOS web GUI
+automatically by creating or logging in with a StorageOS account on the
+StorageOS portal via the licence page of the StorageOS web GUI:
+&lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2.0.0/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
+point your licence will be visible. To inspect your licence, click on the
+&amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2.0.0/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
+&lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
+off-line method. To apply such keys, via the web GUI, visit
+&lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt; and click on the tab &amp;ldquo;ENTER KEY&amp;rdquo;, then
+paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you could
+also view your cluster ID on the same page.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2.0.0/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;obtaining-a-developer-licence-via-the-cli&#34;&gt;Obtaining a Developer licence via the CLI&lt;/h2&gt;
+&lt;p&gt;Before getting a licence, you need to know the ID of your StorageOS cluster.&lt;/p&gt;
+&lt;p&gt;This CLI command can print the cluster ID:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get cluster
+ID:               704dd165-9580-4da4-a554-0acb96d328cb
+Licence:
+  expiration:     2021-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; year from now&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  capacity:       2.2 TiB
+  kind:           developer
+  customer name:  t2
+Created at:       2020-03-25T13:48:33Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Updated at:       2020-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To obtain a licence for your StorageOS cluster, create a new StorageOS account
+or log into &lt;a href=&#34;https://my.storageos.com&#34;&gt;StorageOS Portal&lt;/a&gt;, go to the &lt;a href=&#34;https://my.storageos.com/licenses&#34;&gt;Licences
+page&lt;/a&gt; and follow the instructions on the
+page to get the licence key for your cluster. Make sure that you input the
+correct cluster ID before generating the licence key.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2.0.0/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Then copy the licence key to clipboard and apply the licence by the CLI command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; PASTE-THE-LICENCE-KEY-HERE &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos apply licence --from-stdin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
+&lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;
+&lt;p&gt;Please contact &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt; to discuss
+pricing for our Enterprise licence.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Namespaces</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/namespaces/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/namespaces/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Namespaces help different projects or teams share a StorageOS cluster. Only the
+default namespace is created by default.&lt;/p&gt;
+&lt;p&gt;Namespaces apply to volumes.&lt;/p&gt;
+&lt;h2 id=&#34;managing-namespaces&#34;&gt;Managing Namespaces&lt;/h2&gt;
+&lt;p&gt;In order to create a new namespace navigate to &amp;ldquo;Namespaces&amp;rdquo; in the GUI, and
+select &amp;ldquo;Create Namespace&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;When a Kubernetes PVC is created in a namespace, StorageOS automatically maps
+the Volume in the same namespace. Namespaces are created by StorageOS to fulfil
+the RBAC rules enforced by Kubernetes roles.&lt;/p&gt;
+&lt;p&gt;In order to delete a namespace, all volumes must be deleted from the namespace
+before the namespace can be deleted.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Policies</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/policies/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/policies/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Policies control access to StorageOS namespaces. Policies can be
+configured at the group or user level so access can be controlled granularly.&lt;/p&gt;
+&lt;p&gt;Users can belong to one or more groups to control their namespace permissions.
+Additionally user specific policies can be created to grant a user access to a
+namespace. Users can belong to any number of groups and have any number of
+user level policies configured.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Users are created with access to the default namespace. Policies cannot
+be applied to the default namespace.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;managing-policies&#34;&gt;Managing Policies&lt;/h2&gt;
+&lt;p&gt;To start creating policies, at least one custom namespace and user are
+required. For more information on how to create namespaces see our
+&lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/operations/namespaces/&#34;&gt;Namespace guide&lt;/a&gt;, for users see
+our &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/cli/create/&#34;&gt;Users CLI reference&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;In order to create a policy navigate to &amp;ldquo;Policies&amp;rdquo; in the GUI and select
+&amp;ldquo;Create Policy&amp;rdquo;. A policy controls access to a variety of StorageOS resources
+and is applied to a user, by placing the user in the policies group.&lt;/p&gt;
+&lt;p&gt;In order to delete a policy, all users must be removed from the policy group
+before deletion of the policy can be completed.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Troubleshooting</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/troubleshooting/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/troubleshooting/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This section is aimed to help you troubleshoot issues in your cluster, whether
+they are related to the StorageOS installation, integration with
+orchestrators or common misconfigurations.&lt;/p&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;p&gt;To be able to troubleshoot issues the &lt;a href=&#34;https://github.com/storageos/go-cli&#34;&gt;StorageOS
+cli&lt;/a&gt; is required.&lt;/p&gt;
+&lt;h2 id=&#34;pod-in-pending-because-of-mount-error&#34;&gt;Pod in pending because of mount error&lt;/h2&gt;
+&lt;h3 id=&#34;issue&#34;&gt;Issue:&lt;/h3&gt;
+&lt;p&gt;The output of &lt;code&gt;kubectl describe pod $POD_ID&lt;/code&gt; contains &lt;code&gt;no such file or directory&lt;/code&gt; and references the StorageOS volume device file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# kubectl -n storageos describe &lt;span style=&#34;color:#000&#34;&gt;$POD_ID&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Events:
+  &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  Normal   Scheduled         11s                default-scheduler  Successfully assigned default/d1 to node3
+  Warning  FailedMount       4s &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;x4 over 9s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;    kubelet, node3     MountVolume.SetUp failed &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volume &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;pvc-f2a49198-c00c-11e8-ba01-0800278dc04d&amp;#34;&lt;/span&gt; : stat /var/lib/storageos/volumes/d9df3549-26c0-4cfc-62b4-724b443069a1: no such file or directory
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;There are two main reasons this issue may arise:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The StorageOS &lt;code&gt;DEVICE_DIR&lt;/code&gt; location is wrongly configured when using Kubelet
+as a container&lt;/li&gt;
+&lt;li&gt;Mount Propagation is not enabled&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;(Option 1) Misconfiguration of the DeviceDir/SharedDir&lt;/p&gt;
+&lt;p&gt;Some Kubernetes distributions such as Rancher, DockerEE or some installations
+of OpenShift deploy the Kubelet as a container, because of this, the device
+files that StorageOS creates to mount into the containers need to be visible to
+the kubelet. StorageOS can be configured to share the device directory.&lt;/p&gt;
+&lt;p&gt;Modern installations use CSI, which handles the complexity internally.&lt;/p&gt;
+&lt;h3 id=&#34;assert&#34;&gt;Assert:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# kubectl -n default describe stos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Shared Dir&amp;#34;&lt;/span&gt;
+  Shared Dir:      &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;amp;lt;-- Shouldn&amp;#39;t be blank&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;The Cluster Operator Custom Definition should specify the SharedDir option as follows.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  sharedDir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Needed when Kubelet as a container&lt;/span&gt;
+  ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;See example on how to configure the &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/cluster-operator/examples/#specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;StorageOS Custom
+Resource&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt; &lt;/p&gt;
+&lt;p&gt;(Option 2) Mount propagation is not enabled.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Applies only if Option 1 is configured properly.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;assert-1&#34;&gt;Assert:&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;If not using the Kubelet as a container&lt;/strong&gt;, SSH into one of the nodes and check if
+&lt;code&gt;/var/lib/storageos/volumes&lt;/code&gt; is empty. If so, exec into any StorageOS pod and
+check the same directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# ls /var/lib/storageos/volumes/
+root@node1:~#     &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;amp;lt;-- Shouldn&amp;#39;t be blank&lt;/span&gt;
+root@node1:~# kubectl &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$POD_ID&lt;/span&gt; -c storageos -- ls -l /var/lib/storageos/volumes
+bst-196004
+d529b340-0189-15c7-f8f3-33bfc4cf03fa
+ff537c5b-e295-e518-a340-0b6308b69f74
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the directory inside the container and the device files are visible,
+disabled mount propagation is the cause.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;If using the Kubelet as a container&lt;/strong&gt;, SSH into one of the nodes and check if
+&lt;code&gt;/var/lib/kubelet/plugins/kubernetes.io~storageos/devices&lt;/code&gt; is empty. If
+so, exec into any StorageOS pod and check the same directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# ls /var/lib/kubelet/plugins/kubernetes.io~storageos/devices
+root@node1:~#      &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;amp;lt;-- Shouldn&amp;#39;t be blank&lt;/span&gt;
+root@node1:~# kubectl &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$POD_ID&lt;/span&gt; -c storageos -- ls -l /var/lib/kubelet/plugins/kubernetes.io~storageos/devices
+bst-196004
+d529b340-0189-15c7-f8f3-33bfc4cf03fa
+ff537c5b-e295-e518-a340-0b6308b69f74
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the directory inside the container and the device files are visible,
+disabled mount propagation is the cause.&lt;/p&gt;
+&lt;h3 id=&#34;solution-1&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Older versions of Kubernetes need to enable mount propagation as it is not
+enabled by default. Most Kubernetes distributions allow MountPropagation to be
+enabled using FeatureGates. Rancher specifically, needs to enable it in the
+&amp;ldquo;View in API&amp;rdquo; section of your cluster. You need to edit the section
+&amp;ldquo;rancherKubernetesEngineConfig&amp;rdquo; to enable the Kubelet feature gate.&lt;/p&gt;
+&lt;h2 id=&#34;pvc-pending-state---failed-to-dial-storageos&#34;&gt;PVC pending state - Failed to dial StorageOS&lt;/h2&gt;
+&lt;p&gt;A created PVC remains in pending state making pods that need to mount that PVC
+unable to start.&lt;/p&gt;
+&lt;h3 id=&#34;issue-1&#34;&gt;Issue:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl get pvc
+NAME      STATUS        VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+vol-1     Pending                                                                            fast           7s
+
+kubectl describe pvc &lt;span style=&#34;color:#000&#34;&gt;$PVC&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Events:
+  Type     Reason              Age               From                         Message
+  ----     ------              ----              ----                         -------
+  Warning  ProvisioningFailed  7s &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;x2 over 18s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;  persistentvolume-controller  Failed to provision volume with StorageClass &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;: Get http://storageos-cluster/version: failed to dial all known cluster members, &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;10.233.59.206:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-1&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;For non CSI installations of StorageOS, Kubernetes uses the StorageOS
+API endpoint to communicate. If that communication fails, relevant actions such
+as create or mount volume can&amp;rsquo;t be transmitted to StorageOS, hence the PVC
+will remain in pending state. StorageOS never received the action to perform,
+so it never sent back an acknowledgement.&lt;/p&gt;
+&lt;p&gt;In this case, the Event message indicates that StorageOS API is not responding,
+implying that StorageOS is not running. For Kubernetes to define StorageOS pods
+ready, the health check must pass.&lt;/p&gt;
+&lt;h3 id=&#34;assert-2&#34;&gt;Assert:&lt;/h3&gt;
+&lt;p&gt;Check the status of StorageOS pods.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n storageos get pod --selector &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# for CSI add --selector kind=daemonset&lt;/span&gt;
+NAME              READY     STATUS    RESTARTS   AGE
+storageos-qrqkj   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+storageos-s4bfv   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+storageos-vcpfx   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+storageos-w98f5   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the pods are not READY, the service will not forward traffic to the API they
+serve hence PVC will remain in pending state until StorageOS pods are
+available.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Kubernetes keeps trying to execute the action until it succeeds. If
+a PVC is created before StorageOS finish starting, the PVC will be created
+eventually.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;solution-2&#34;&gt;Solution:&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;StorageOS health check takes 60 seconds of grace before reporting as READY.
+If StorageOS is starting properly after that period, the volume will be
+created when StorageOS finishes its bootstrap.&lt;/li&gt;
+&lt;li&gt;If StorageOS is not running or is not starting properly, the solution would
+be to troubleshoot the installation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;pvc-pending-state---secret-missing&#34;&gt;PVC pending state - Secret Missing&lt;/h2&gt;
+&lt;p&gt;A created PVC remains in pending state making pods that need to mount that PVC
+unable to start.&lt;/p&gt;
+&lt;h3 id=&#34;issue-2&#34;&gt;Issue:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl describe pvc &lt;span style=&#34;color:#000&#34;&gt;$PVC&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Events:
+  Type     Reason              Age                From                         Message
+  ----     ------              ----               ----                         -------
+  Warning  ProvisioningFailed  13s &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;x2 over 28s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;  persistentvolume-controller  Failed to provision volume with StorageClass &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;: failed to get secret from &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;/&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-2&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;For non CSI installations of StorageOS, Kubernetes uses the StorageOS
+API endpoint to communicate. If that communication fails, relevant actions such
+as create or mount a volume can&amp;rsquo;t be transmitted to StorageOS, and the PVC
+will remain in pending state. StorageOS never received the action to perform,
+so it never sent back an acknowledgement.&lt;/p&gt;
+&lt;p&gt;The StorageClass provisioned for StorageOS references a Secret from where it
+retrieves the API endpoint and the authentication parameters. If that secret is
+incorrect or missing, the connections won&amp;rsquo;t be established. It is common to see
+that the Secret has been deployed in a different namespace where the
+StorageClass expects it or that is has been deployed with a different name.&lt;/p&gt;
+&lt;h3 id=&#34;assert-3&#34;&gt;Assert:&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Check the StorageClass parameters to know where the Secret is expected to be found.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl get storageclass fast -o yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  creationTimestamp: 2018-09-25T08:44:57Z
+  labels:
+    app: storageos
+  name: fast
+  resourceVersion: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;108853&amp;#34;&lt;/span&gt;
+  selfLink: /apis/storage.k8s.io/v1/storageclasses/fast
+  uid: 48490a9b-c09f-11e8-ba01-0800278dc04d
+parameters:
+  adminSecretName: storageos-api
+  adminSecretNamespace: storageos
+  description: Kubernetes volume
+  fsType: ext4
+  pool: default
+provisioner: kubernetes.io/storageos
+reclaimPolicy: Delete
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that the parameters specify &lt;code&gt;adminSecretName&lt;/code&gt; and &lt;code&gt;adminSecretNamespace&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check if the secret exists according to those parameters&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos get secret storageos-api
+No resources found.
+Error from server &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;NotFound&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;: secrets &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; not found
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If no resources are found, it is clear that the Secret doesn&amp;rsquo;t exist or it is not deployed in
+the right location.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;solution-3&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Deploy StorageOS following the &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/introduction/quickstart/&#34;&gt;installation procedures&lt;/a&gt;. If you are using the manifests
+provided for Kubernetes to deploy StorageOS rather than using automated
+provisioners, make sure that the StorageClass parameters and the Secret
+reference match.&lt;/p&gt;
+&lt;p&gt;{% include troubleshoot/issues/nodename-vs-nodehostname.md %}
+{% include troubleshoot/issues/one-node-multiple-clusters.md %}
+{% include troubleshoot/issues/ports-closed.md %}&lt;/p&gt;
+&lt;h2 id=&#34;peer-discovery---pod-allocation&#34;&gt;Peer discovery - Pod allocation&lt;/h2&gt;
+&lt;h3 id=&#34;issue-3&#34;&gt;Issue:&lt;/h3&gt;
+&lt;p&gt;StorageOS nodes can&amp;rsquo;t join the cluster and show the following log entries.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;not first cluster node, joining first node&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;address&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.5 &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;node3 &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp &lt;span style=&#34;color:#000&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.6
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;could not retrieve cluster config from api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;status_code&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;503&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to join existing cluster&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;endpoint&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;172.28.128.3,172.28.128.4,172.28.128.5,172.28.128.6&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;503 Service Unavailable&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;retrying cluster join in 5 seconds...&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-3&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;StorageOS uses a gossip protocol to discover the nodes in the cluster. When
+StorageOS starts, one or more active nodes must be referenced so new nodes can
+query existing nodes for the list of members. This error indicates that the node
+can&amp;rsquo;t connect to any of the nodes in the known list. The known list is defined
+in the &lt;code&gt;JOIN&lt;/code&gt; variable.&lt;/p&gt;
+&lt;p&gt;If there are no active StorageOS nodes, the bootstrap process will elect the
+first node in the &lt;code&gt;JOIN&lt;/code&gt; variable as master, and the rest will try to
+discover from it. In case of that node not starting, the whole cluster will
+remain unable to bootstrap.&lt;/p&gt;
+&lt;p&gt;Installations of StorageOS use a DaemonSet, and by default do not schedule
+StorageOS pods to master nodes, due to the presence of the
+&lt;code&gt;node-role.kubernetes.io/master:NoSchedule&lt;/code&gt; taint that is typically present. In
+such cases the &lt;code&gt;JOIN&lt;/code&gt; variable must not contain master nodes or the StorageOS
+cluster will remain unable to start.&lt;/p&gt;
+&lt;h3 id=&#34;assert-4&#34;&gt;Assert:&lt;/h3&gt;
+&lt;p&gt;Check that the first node of the &lt;code&gt;JOIN&lt;/code&gt; variable started properly.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n storageos describe ds/storageos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep JOIN
+    JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
+root@node1:~/# kubectl -n storageos get pod -o wide &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep 172.28.128.3
+storageos-8zqxl   1/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          2m        172.28.128.3   node1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-4&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Make sure that the &lt;code&gt;JOIN&lt;/code&gt; variable doesn&amp;rsquo;t specify the master nodes. In case
+you are using the discovery service, it is necessary to ensure that the
+DaemonSet won&amp;rsquo;t allocate Pods on the masters. This can be achieved with taints,
+node selectors or labels.&lt;/p&gt;
+&lt;p&gt;For installations with the StorageOS operator you can specify which nodes to
+deploy StorageOS on using nodeSelectors. See examples in the &lt;a href=&#34;docs/reference/cluster-operator/examples/#installing-to-a-subset-of-nodes&#34;&gt;Cluster Operator
+Examples
+page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For more advanced installations using compute-only and storage nodes, check the
+&lt;code&gt;storageos.com/deployment=computeonly&lt;/code&gt; label that can be added to the nodes
+through Kubernetes node labels, or StorageOS in the &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/reference/labels/&#34;&gt;Labels&lt;/a&gt; page.&lt;/p&gt;
+&lt;h2 id=&#34;lio-initerror&#34;&gt;LIO Init:Error&lt;/h2&gt;
+&lt;h3 id=&#34;issue-4&#34;&gt;Issue:&lt;/h3&gt;
+&lt;p&gt;StorageOS pods not starting with &lt;code&gt;Init:Error&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos get pod
+NAME              READY     STATUS              RESTARTS   AGE
+storageos-2kwqx   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
+storageos-cffcr   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
+storageos-d4f69   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
+storageos-nhq7m   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-4&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;This indicates that since the Linux open source SCSI drivers are not enabled,
+StorageOS cannot start. The StorageOS DaemonSet enables the required kernel
+modules on the host system. If you are seeing these errors it is because that
+container couldn&amp;rsquo;t load the modules.&lt;/p&gt;
+&lt;h3 id=&#34;assert-5&#34;&gt;Assert&lt;/h3&gt;
+&lt;p&gt;Check the logs of the init container.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos logs &lt;span style=&#34;color:#000&#34;&gt;$ANY_STORAGEOS_POD&lt;/span&gt; -c storageos-init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In case of failure, it will show the following output, indicating which kernel
+modules couldn&amp;rsquo;t be loaded or that they are not properly configured:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Checking configfs
+configfs mounted on sys/kernel/config
+Module target_core_mod is not running
+executing modprobe -b target_core_mod
+Module tcm_loop is not running
+executing modprobe -b tcm_loop
+modprobe: FATAL: Module tcm_loop not found.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-5&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Install the required kernel modules (usually found in the
+&lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
+following this &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and delete StorageOS
+pods, allowing the DaemonSet to create the pods again.&lt;/p&gt;
+&lt;h2 id=&#34;lio-not-enabled&#34;&gt;LIO not enabled&lt;/h2&gt;
+&lt;h3 id=&#34;issue-5&#34;&gt;Issue:&lt;/h3&gt;
+&lt;p&gt;StorageOS node can&amp;rsquo;t start and shows the following log entries.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T14:34:40Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;liocheck returned error&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;liocheck &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;exit status 1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;dataplane &lt;span style=&#34;color:#000&#34;&gt;stderr&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Sysfs root &amp;#39;/sys/kernel/config/target&amp;#39; is missing, is kernel configfs present and target_core_mod loaded? category=fslio level=warn\nRuntime error checking stage &amp;#39;target_core_mod&amp;#39;: SysFs root missing category=fslio level=warn\nliocheck: FAIL (lio_capable_system() returns failure) category=fslio level=fatal\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;stdout&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T14:34:40Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to start dataplane services&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;system dependency check failed: exit status 1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-5&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;This indicates that one or more kernel modules required for StorageOS are
+not loaded.&lt;/p&gt;
+&lt;h3 id=&#34;assert-6&#34;&gt;Assert&lt;/h3&gt;
+&lt;p&gt;The following kernel modules must be enabled in the host.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;lsmod  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; egrep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;^tcm_loop|^target_core_mod|^target_core_file|^configfs&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-6&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Install the required kernel modules (usually found in the
+&lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
+following this &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and restart the container.&lt;/p&gt;
+&lt;h2 id=&#34;openshift-storageos-pods-missing----daemonset-error&#34;&gt;(OpenShift) StorageOS pods missing &amp;ndash; DaemonSet error&lt;/h2&gt;
+&lt;p&gt;StorageOS DaemonSet doesn&amp;rsquo;t have any pod replicas. The DaemonSet couldn&amp;rsquo;t
+allocate any Pod due to security issues.&lt;/p&gt;
+&lt;h3 id=&#34;issue-6&#34;&gt;Issue:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master02 standard&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc get pod&lt;/span&gt;
+No resources found.
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master02 standard&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc describe daemonset storageos&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Events:
+  Type     Reason        Age                From                  Message
+  ----     ------        ----               ----                  -------
+  Warning  FailedCreate  0s &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;x12 over 10s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;  daemonset-controller  Error creating: pods &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-&amp;#34;&lt;/span&gt; is forbidden: unable to validate against any security context constraint: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;provider restricted: .spec.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used provider restricted: .spec.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;3&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;SYS_ADMIN&amp;#34;&lt;/span&gt;: capability may not be added spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;SYS_ADMIN&amp;#34;&lt;/span&gt;: capability may not be added spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-6&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;The OpenShift cluster has security context constraint policies enabled that
+forbid any pod, without an explicitly set policy for the service account, to
+be allocated.&lt;/p&gt;
+&lt;h3 id=&#34;assert-7&#34;&gt;Assert:&lt;/h3&gt;
+&lt;p&gt;Check if the StorageOS ServiceAccount can create pods with enough permissions&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;oc get scc privileged -o yaml &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or custom scc with enough privileges&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+users:
+- system:admin
+- system:serviceaccount:openshift-infra:build-controller
+- system:serviceaccount:management-infra:management-admin
+- system:serviceaccount:management-infra:inspector-admin
+- system:serviceaccount:storageos:storageos                       &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt;lt&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;--
+- system:serviceaccount:tiller:tiller
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the StorageOS sa system:serviceaccount:storageos:storageos is in the
+privileged scc it will be able to create pods.&lt;/p&gt;
+&lt;h3 id=&#34;solution-7&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Add the ServiceAccount system:serviceaccount:storageos:storageos to a scc with
+enough privileges.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;getting-help&#34;&gt;Getting Help&lt;/h2&gt;
+&lt;p&gt;If our troubleshooting guides do not help resolve your issue, please see our
+&lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/support/&#34;&gt;support section&lt;/a&gt; for details on how
+to get in touch with us.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: User Management</title>
+      <link>https://docs.storageos.com/v2.0.0/docs/operations/users/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.0.0/docs/operations/users/</guid>
+      <description>
+        
+        
+        &lt;p&gt;A StorageOS cluster admin can create users and restrict their access rights to
+StorageOS &lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/operations/namespaces/&#34;&gt;namespaces&lt;/a&gt; using
+&lt;a href=&#34;https://docs.storageos.com/v2.0.0/docs/operations/policies/&#34;&gt;policies&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note: Users are created with access to the default namespace. This access is
+only revoked when a policy is created for the user or their group.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;managing-users&#34;&gt;Managing users&lt;/h2&gt;
+&lt;p&gt;Users can be created and deleted by navigating to the &amp;ldquo;Users&amp;rdquo; section of the GUI.&lt;/p&gt;
+&lt;p&gt;Alternatively users can also be managed using the CLI.&lt;/p&gt;
+&lt;p&gt;To create a user with the CLI, run:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user create jim
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above command will create a user named jim. The command will also prompt
+you to enter a password for the newly created user.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

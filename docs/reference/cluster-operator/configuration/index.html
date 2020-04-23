@@ -21,22 +21,22 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Configuration | </title><meta property="og:title" content="Configuration" />
-<meta property="og:description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+<meta property="og:description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
    Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/cluster-operator/configuration/" />
 
 <meta itemprop="name" content="Configuration">
-<meta itemprop="description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+<meta itemprop="description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
    Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users.">
 
-<meta itemprop="wordCount" content="354">
+<meta itemprop="wordCount" content="385">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configuration"/>
-<meta name="twitter:description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+<meta name="twitter:description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
    Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users."/>
 
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fd6168dae844a59787827901bdcb71e2ec86cad6664586e8fdd4eb9122d0521dd17152ef2d5ed916e4509ad522438db3e7bc97f127197e64d1212774aa8ad641.json"
+  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
   data-offline-search-base-href="/"
 >
 
@@ -1118,7 +1118,8 @@
 <div class="td-content">
 	<h1>Configuration</h1>
 	
-	<p>The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.</p>
+	<h2 id="storageoscluster-resource-configuration">StorageOSCluster Resource Configuration</h2>
+<p>The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.</p>
 <table>
 <thead>
 <tr>
@@ -1209,9 +1210,24 @@
 <td align="left"><code>quay.io/k8scsi/csi-node-driver-registrar:v1.0.1</code></td>
 </tr>
 <tr>
+<td align="left"><code>images.hyperkubeContainer</code></td>
+<td align="left">Deprecated field - HyperKube Container image</td>
+<td align="left">Default dependent on Scheduler version</td>
+</tr>
+<tr>
 <td align="left"><code>images.initContainer</code></td>
 <td align="left">StorageOS init container image</td>
 <td align="left"><code>storageos/init:1.0.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>images.kubeschedulerContainer</code></td>
+<td align="left">Kube scheduler container image</td>
+<td align="left">Default dependent on Scheduler version</td>
+</tr>
+<tr>
+<td align="left"><code>images.nfsContainer</code></td>
+<td align="left">StorageOS nfs container image</td>
+<td align="left"><code>storageos/nfs:1.0.0</code></td>
 </tr>
 <tr>
 <td align="left"><code>images.nodeContainer</code></td>

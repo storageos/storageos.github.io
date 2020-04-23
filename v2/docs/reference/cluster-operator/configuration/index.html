@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.69.1" />
 
 <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
 
@@ -21,30 +21,30 @@
 <link rel="icon" type="image/png" href="/v2/favicons/android-192x192.png" sizes="192x192">
 
 <title>Configuration | </title><meta property="og:title" content="Configuration" />
-<meta property="og:description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
-   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   csi.enable Enable CSI setup false   debug Enable debug mode for all the cluster nodes false   disableScheduler Disable StorageOS scheduler for data locality false   disableTCMU Disable TCMU to allow co-existence with other storage systems but degrades performance false   disableTelemetry Disable telemetry reports false   forceTCMU Forces TCMU to be enabled or causes StorageOS to abort startup false   images." />
+<meta property="og:description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2/docs/reference/cluster-operator/configuration/" />
 
 <meta itemprop="name" content="Configuration">
-<meta itemprop="description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
-   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   csi.enable Enable CSI setup false   debug Enable debug mode for all the cluster nodes false   disableScheduler Disable StorageOS scheduler for data locality false   disableTCMU Disable TCMU to allow co-existence with other storage systems but degrades performance false   disableTelemetry Disable telemetry reports false   forceTCMU Forces TCMU to be enabled or causes StorageOS to abort startup false   images.">
+<meta itemprop="description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users.">
 
-<meta itemprop="wordCount" content="379">
+<meta itemprop="wordCount" content="385">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Configuration"/>
-<meta name="twitter:description" content="The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
-   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   csi.enable Enable CSI setup false   debug Enable debug mode for all the cluster nodes false   disableScheduler Disable StorageOS scheduler for data locality false   disableTCMU Disable TCMU to allow co-existence with other storage systems but degrades performance false   disableTelemetry Disable telemetry reports false   forceTCMU Forces TCMU to be enabled or causes StorageOS to abort startup false   images."/>
+<meta name="twitter:description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
+   Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users."/>
 
 
 
 
 
-<link rel="preload" href="/v2/scss/main.min.f756d06bf015089574ec734bc20c403411466ed8e4cace0da5ceffb0aa317037.css" as="style">
-<link href="/v2/scss/main.min.f756d06bf015089574ec734bc20c403411466ed8e4cace0da5ceffb0aa317037.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v2/scss/main.min.7ba0ae5186ae5e695e59b5fcf043bfb20bdfa0e81d442670a62f22cb28091f3c.css" as="style">
+<link href="/v2/scss/main.min.7ba0ae5186ae5e695e59b5fcf043bfb20bdfa0e81d442670a62f22cb28091f3c.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.d34ab4a1bf6b4061f4f8b3e092b96ae0635f939d2cb798522fd3250a01fcfeb1bde04174b31a386da1591a1d8765aff4fbc7526470a0d4cfa30ccbd491fca19b.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.f0aeaa605e4fc070ae05f001251a5ce1ee6f7f927610ad7ba51daa1e85ac3a445fe9c2d6896cc0ff21b06c6d9ad16bb39fb073b33c296590e00e81f3ac8de150.json"
   data-offline-search-base-href="/"
 >
 
@@ -187,10 +187,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/v2/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
+    <a  href="/v2/docs/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
-    <li class="collapse show" id="v2docs">
+    <li class="collapse " id="v2docs">
       
       
       
@@ -664,10 +664,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/v2/docs/reference/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Reference</a>
+    <a  href="/v2/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
   </li>
   <ul>
-    <li class="collapse show" id="v2docsreference">
+    <li class="collapse " id="v2docsreference">
       
       
       
@@ -952,7 +952,8 @@
 <div class="td-content">
 	<h1>Configuration</h1>
 	
-	<p>The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.</p>
+	<h2 id="storageoscluster-resource-configuration">StorageOSCluster Resource Configuration</h2>
+<p>The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.</p>
 <table>
 <thead>
 <tr>
@@ -966,6 +967,11 @@
 <td align="left"><code>csi.deploymentStrategy</code></td>
 <td align="left">CSI helper deployment strategy (<code>statefulset</code> or <code>deployment</code>)</td>
 <td align="left"><code>statefulset</code></td>
+</tr>
+<tr>
+<td align="left"><code>csi.enable</code></td>
+<td align="left">Enable CSI setup</td>
+<td align="left"><code>false</code></td>
 </tr>
 <tr>
 <td align="left"><code>csi.enableControllerPublishCreds</code></td>
@@ -983,23 +989,23 @@
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
-<td align="left"><code>csi.enable</code></td>
-<td align="left">Enable CSI setup</td>
-<td align="left"><code>false</code></td>
-</tr>
-<tr>
 <td align="left"><code>debug</code></td>
 <td align="left">Enable debug mode for all the cluster nodes</td>
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
+<td align="left"><code>disableFencing</code></td>
+<td align="left">Disable Pod fencing</td>
+<td align="left"><code>false</code></td>
+</tr>
+<tr>
 <td align="left"><code>disableScheduler</code></td>
-<td align="left">Disable StorageOS scheduler for data locality</td>
+<td align="left">Disable StorageOS scheduler</td>
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
 <td align="left"><code>disableTCMU</code></td>
-<td align="left">Disable TCMU to allow co-existence with other storage systems but degrades performance</td>
+<td align="left">Disable TCMU to allow co-existence with other TCMU users. Disabling TCMU degrades performance</td>
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
@@ -1038,9 +1044,24 @@
 <td align="left"><code>quay.io/k8scsi/csi-node-driver-registrar:v1.0.1</code></td>
 </tr>
 <tr>
+<td align="left"><code>images.hyperkubeContainer</code></td>
+<td align="left">Deprecated field - HyperKube Container image</td>
+<td align="left">Default dependent on Scheduler version</td>
+</tr>
+<tr>
 <td align="left"><code>images.initContainer</code></td>
 <td align="left">StorageOS init container image</td>
 <td align="left"><code>storageos/init:1.0.0</code></td>
+</tr>
+<tr>
+<td align="left"><code>images.kubeschedulerContainer</code></td>
+<td align="left">Kube scheduler container image</td>
+<td align="left">Default dependent on Scheduler version</td>
+</tr>
+<tr>
+<td align="left"><code>images.nfsContainer</code></td>
+<td align="left">StorageOS nfs container image</td>
+<td align="left"><code>storageos/nfs:1.0.0</code></td>
 </tr>
 <tr>
 <td align="left"><code>images.nodeContainer</code></td>
@@ -1089,7 +1110,7 @@
 </tr>
 <tr>
 <td align="left"><code>nodeSelectorTerms</code></td>
-<td align="left">Set node selector for storageos pod placement, including NFS pods</td>
+<td align="left">Set node selector for storageos pod placement</td>
 <td></td>
 </tr>
 <tr>
@@ -1143,18 +1164,13 @@
 <td align="left"><code>/var/lib/kubelet/plugins/kubernetes.io~storageos</code></td>
 </tr>
 <tr>
-<td align="left"><code>storageClassName</code></td>
-<td align="left">The name of the default StorageClass created for StorageOS volumes</td>
-<td align="left"><code>fast</code></td>
-</tr>
-<tr>
 <td align="left"><code>tlsEtcdSecretRefName</code></td>
-<td align="left">Name of the secret object that contains the etcd TLS certs.</td>
+<td align="left">Secret containing etcd client certificates</td>
 <td></td>
 </tr>
 <tr>
 <td align="left"><code>tlsEtcdSecretRefNamespace</code></td>
-<td align="left">Namespace of the secret object that contains the etcd TLS certs.</td>
+<td align="left">Namespace of the tlsEtcdSecretRefName</td>
 <td></td>
 </tr>
 <tr>

@@ -41,8 +41,7 @@
       <description>
         
         
-        &lt;h2 id=&#34;storageoscluster-resource-configuration&#34;&gt;StorageOSCluster Resource Configuration&lt;/h2&gt;
-&lt;p&gt;The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.&lt;/p&gt;
+        &lt;p&gt;The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -133,24 +132,9 @@
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-node-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.hyperkubeContainer&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Deprecated field - HyperKube Container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Default dependent on Scheduler version&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.initContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;StorageOS init container image&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:1.0.0&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.kubeschedulerContainer&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Kube scheduler container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Default dependent on Scheduler version&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nfsContainer&lt;/code&gt;&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;StorageOS nfs container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/nfs:1.0.0&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;

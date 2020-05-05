@@ -15,11 +15,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</loc>
+    <loc>https://docs.storageos.com/docs/introduction/overview/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/scheduler/admission-controller/</loc>
+    <loc>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</loc>
   </url>
   
   <url>
@@ -35,11 +35,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cluster-operator/examples/</loc>
+    <loc>https://docs.storageos.com/docs/introduction/quickstart/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/scheduler/examples/</loc>
+    <loc>https://docs.storageos.com/docs/reference/cluster-operator/examples/</loc>
   </url>
   
   <url>
@@ -52,6 +52,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/upgrade/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/introduction/platforms/</loc>
   </url>
   
   <url>
@@ -95,11 +99,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/operations/updates/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/index.json</loc>
   </url>
   
@@ -108,7 +107,15 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/apply/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/concepts/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/attach/</loc>
   </url>
   
   <url>
@@ -132,14 +139,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/cluster/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/clusterdiscovery/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/</loc>
   </url>
   
@@ -156,7 +155,19 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/operations/decommission-nodes/</loc>
+    <loc>https://docs.storageos.com/docs/reference/cli/create/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/delete/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/describe/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/detach/</loc>
   </url>
   
   <url>
@@ -172,15 +183,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/concepts/encryption/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/encrypted-volumes/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/envvars/</loc>
+    <loc>https://docs.storageos.com/docs/concepts/etcd/</loc>
   </url>
   
   <url>
@@ -188,15 +191,15 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/concepts/fencing/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/fencing/</loc>
+    <loc>https://docs.storageos.com/docs/prerequisites/etcd/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/firstpvc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/get/</loc>
   </url>
   
   <url>
@@ -205,6 +208,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/health/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/cli/help/</loc>
   </url>
   
   <url>
@@ -232,31 +239,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/licence/</loc>
+    <loc>https://docs.storageos.com/docs/reference/licence/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/licensing/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/login/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/logs/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/maintenance/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/concepts/metrics/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/monitoring/</loc>
   </url>
   
   <url>
@@ -280,19 +267,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/namespace/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/usecases/nginx/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/concepts/nodes/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/node/</loc>
   </url>
   
   <url>
@@ -304,10 +283,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/concepts/podlocality/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/concepts/policies/</loc>
   </url>
   
@@ -316,35 +291,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/policy/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/overcommitment/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/concepts/pools/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/pool/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/usecases/postgres/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/prometheus/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/monitoring/prometheus-setup/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/introduction/quickstart/</loc>
   </url>
   
   <url>
@@ -364,31 +311,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/concepts/rules/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/rules/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/rule/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/scheduler/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/search/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/concepts/sharedfs/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/operations/sharedfs/</loc>
   </url>
   
   <url>
@@ -400,11 +323,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/filesystems/</loc>
+    <loc>https://docs.storageos.com/docs/reference/bundle/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/introduction/platforms/</loc>
+    <loc>https://docs.storageos.com/docs/reference/filesystems/</loc>
   </url>
   
   <url>
@@ -412,23 +335,15 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/operations/upgrades/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/operations/users/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/user/</loc>
+    <loc>https://docs.storageos.com/docs/reference/cli/version/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/concepts/volumes/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/reference/cli/volume/</loc>
   </url>
   
   <url>

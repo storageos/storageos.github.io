@@ -22,28 +22,25 @@
 
 <title>Cluster health | </title><meta property="og:title" content="Cluster health" />
 <meta property="og:description" content="Various tools are available for checking on the status of a cluster.
-The StorageOS CLI displays the status of the components on nodes in the cluster.
-$ storageos cluster health NODE ADDRESS CP_STATUS DP_STATUS storageos-1 192.168.50.100 Healthy Healthy storageos-2 192.168.50.101 Healthy Healthy storageos-3 192.168.50.102 Healthy Healthy The API server reports its status at the /v1/health endpoint.
-$ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localhost (::1) port 5705 (#0) &gt; GET /v1/health HTTP/1." />
+The StorageOS CLI displays the status of nodes in the cluster.
+$ storageos get nodes NAME HEALTH AGE LABELS node1 online 44 minutes ago node2 online 44 minutes ago node3 online 44 minutes ago node4 online 44 minutes ago node5 online 44 minutes ago " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/health/" />
 
 <meta itemprop="name" content="Cluster health">
 <meta itemprop="description" content="Various tools are available for checking on the status of a cluster.
-The StorageOS CLI displays the status of the components on nodes in the cluster.
-$ storageos cluster health NODE ADDRESS CP_STATUS DP_STATUS storageos-1 192.168.50.100 Healthy Healthy storageos-2 192.168.50.101 Healthy Healthy storageos-3 192.168.50.102 Healthy Healthy The API server reports its status at the /v1/health endpoint.
-$ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localhost (::1) port 5705 (#0) &gt; GET /v1/health HTTP/1.">
+The StorageOS CLI displays the status of nodes in the cluster.
+$ storageos get nodes NAME HEALTH AGE LABELS node1 online 44 minutes ago node2 online 44 minutes ago node3 online 44 minutes ago node4 online 44 minutes ago node5 online 44 minutes ago ">
 
-<meta itemprop="wordCount" content="131">
+<meta itemprop="wordCount" content="56">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cluster health"/>
 <meta name="twitter:description" content="Various tools are available for checking on the status of a cluster.
-The StorageOS CLI displays the status of the components on nodes in the cluster.
-$ storageos cluster health NODE ADDRESS CP_STATUS DP_STATUS storageos-1 192.168.50.100 Healthy Healthy storageos-2 192.168.50.101 Healthy Healthy storageos-3 192.168.50.102 Healthy Healthy The API server reports its status at the /v1/health endpoint.
-$ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localhost (::1) port 5705 (#0) &gt; GET /v1/health HTTP/1."/>
+The StorageOS CLI displays the status of nodes in the cluster.
+$ storageos get nodes NAME HEALTH AGE LABELS node1 online 44 minutes ago node2 online 44 minutes ago node3 online 44 minutes ago node4 online 44 minutes ago node5 online 44 minutes ago "/>
 
 
 
@@ -142,9 +139,9 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -163,7 +160,7 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -193,7 +190,7 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -215,6 +212,12 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -273,19 +276,7 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -303,37 +294,13 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -381,6 +348,12 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -508,24 +481,6 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -556,12 +511,6 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -586,41 +535,6 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -633,31 +547,7 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -810,79 +700,61 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -941,12 +813,6 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -965,13 +831,13 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -982,43 +848,14 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1090,7 +927,7 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1115,32 +952,15 @@ $ curl -v http://localhost:5705/v1/health * Trying ::1... * Connected to localho
 	<h1>Cluster health</h1>
 	
 	<p>Various tools are available for checking on the status of a cluster.</p>
-<p>The <a href="https://docs.storageos.com/docs/reference/cli/">StorageOS CLI</a> displays the status
-of the components on nodes in the cluster.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos cluster health
-NODE         ADDRESS         CP_STATUS  DP_STATUS
-storageos-1  192.168.50.100  Healthy    Healthy
-storageos-2  192.168.50.101  Healthy    Healthy
-storageos-3  192.168.50.102  Healthy    Healthy
-</code></pre></div><p>The API server reports its status at the <code>/v1/health</code> endpoint.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -v http://localhost:5705/v1/health
-*   Trying ::1...
-* Connected to localhost <span style="color:#ce5c00;font-weight:bold">(</span>::1<span style="color:#ce5c00;font-weight:bold">)</span> port <span style="color:#0000cf;font-weight:bold">5705</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#8f5902;font-style:italic">#0)</span>
-&gt; GET /v1/health HTTP/1.1
-&gt; Host: localhost:5705
-&gt; User-Agent: curl/7.47.0
-&gt; Accept: */*
-&gt;
-&lt; HTTP/1.1 <span style="color:#0000cf;font-weight:bold">200</span> OK
-&lt; Access-Control-Allow-Headers: Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization
-&lt; Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE
-&lt; Access-Control-Allow-Origin: *
-&lt; Content-Type: application/json
-&lt; Date: Fri, <span style="color:#0000cf;font-weight:bold">11</span> Aug <span style="color:#0000cf;font-weight:bold">2017</span> 12:07:55 GMT
-&lt; Content-Length: <span style="color:#0000cf;font-weight:bold">539</span>
-&lt;
-* Connection <span style="color:#0000cf;font-weight:bold">0</span> to host localhost left intact
-<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;submodules&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;kv&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;status&#34;</span>:<span style="color:#4e9a06">&#34;alive&#34;</span>,<span style="color:#4e9a06">&#34;message&#34;</span>:<span style="color:#4e9a06">&#34;&#34;</span>,<span style="color:#4e9a06">&#34;updatedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T14:24:59.898288145Z&#34;</span>,<span style="color:#4e9a06">&#34;changedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T13:06:18.672362683Z&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>,<span style="color:#4e9a06">&#34;kv_write&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;status&#34;</span>:<span style="color:#4e9a06">&#34;alive&#34;</span>,<span style="color:#4e9a06">&#34;message&#34;</span>:<span style="color:#4e9a06">&#34;&#34;</span>,<span style="color:#4e9a06">&#34;updatedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T14:24:59.898289093Z&#34;</span>,<span style="color:#4e9a06">&#34;changedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T13:06:27.475859537Z&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>,<span style="color:#4e9a06">&#34;nats&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;status&#34;</span>:<span style="color:#4e9a06">&#34;alive&#34;</span>,<span style="color:#4e9a06">&#34;message&#34;</span>:<span style="color:#4e9a06">&#34;&#34;</span>,<span style="color:#4e9a06">&#34;updatedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T14:24:59.898287588Z&#34;</span>,<span style="color:#4e9a06">&#34;changedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T13:06:27.475858077Z&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>,<span style="color:#4e9a06">&#34;scheduler&#34;</span>:<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#4e9a06">&#34;status&#34;</span>:<span style="color:#4e9a06">&#34;alive&#34;</span>,<span style="color:#4e9a06">&#34;message&#34;</span>:<span style="color:#4e9a06">&#34;&#34;</span>,<span style="color:#4e9a06">&#34;updatedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T14:24:59.898288556Z&#34;</span>,<span style="color:#4e9a06">&#34;changedAt&#34;</span>:<span style="color:#4e9a06">&#34;2017-08-16T13:06:27.475859095Z&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">}</span>
+<p>The <a href="https://docs.storageos.com/docs/reference/cli/">StorageOS CLI</a> displays the
+status of nodes in the cluster.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get nodes
+NAME        HEALTH  AGE             LABELS
+node1       online  <span style="color:#0000cf;font-weight:bold">44</span> minutes ago
+node2       online  <span style="color:#0000cf;font-weight:bold">44</span> minutes ago
+node3       online  <span style="color:#0000cf;font-weight:bold">44</span> minutes ago
+node4       online  <span style="color:#0000cf;font-weight:bold">44</span> minutes ago
+node5       online  <span style="color:#0000cf;font-weight:bold">44</span> minutes ago
 </code></pre></div>
 	
 	

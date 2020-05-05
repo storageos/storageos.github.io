@@ -1,0 +1,441 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Cluster Operator</title>
+    <link>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/</link>
+    <description>Recent content in Cluster Operator on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v1.x/docs/reference/cluster-operator/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Install</title>
+      <link>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/install/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To install the operator follow the installation page for your orchestrator.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v1.x/docs/install/kubernetes/&#34;&gt;Kubernetes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v1.x/docs/install/rancher/&#34;&gt;Rancher&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/v1.x/docs/install/openshift/&#34;&gt;OpenShift&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Configuration</title>
+      <link>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/configuration/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;storageoscluster-resource-configuration&#34;&gt;StorageOSCluster Resource Configuration&lt;/h2&gt;
+&lt;p&gt;The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Parameter&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Default&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.deploymentStrategy&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI helper deployment strategy (&lt;code&gt;statefulset&lt;/code&gt; or &lt;code&gt;deployment&lt;/code&gt;)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;statefulset&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI setup&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableControllerPublishCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI controller publish credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableNodePublishCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI node publish credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;csi.enableProvisionCreds&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable CSI provision credentials&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;debug&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable debug mode for all the cluster nodes&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableFencing&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable Pod fencing&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableScheduler&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable StorageOS scheduler&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableTCMU&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable TCMU to allow co-existence with other TCMU users. Disabling TCMU degrades performance&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;disableTelemetry&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Disable telemetry reports&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;forceTCMU&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Forces TCMU to be enabled or causes StorageOS to abort startup&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiClusterDriverRegistrarContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Cluster Driver Registrar Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-cluster-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiExternalAttacherContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI External Attacher Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-attacher:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiExternalProvisionerContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI External Provisioner Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/csi-provisioner:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ìmages.csiLivenessProbeContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Liveness Probe Container Image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/livenessprobe:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiNodeDriverRegistrarContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;CSI Node Driver Registrar Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-node-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.hyperkubeContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Deprecated field - HyperKube Container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Default dependent on Scheduler version&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.initContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS init container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.kubeschedulerContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Kube scheduler container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Default dependent on Scheduler version&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nfsContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS nfs container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/nfs:1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS node container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:1.5.3&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.annotations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Annotations of the ingress used by the cluster&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.enable&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable ingress for the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.hostname&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Hostname to be used in cluster ingress&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.local&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.tls&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Enable TLS for the ingress&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;k8sDistro&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The name of the Kubernetes distribution is use, e.g. &lt;code&gt;rancher&lt;/code&gt; or &lt;code&gt;eks&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.address&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Comma-separated list of addresses of external key-value store. (&lt;code&gt;1.2.3.4:2379,2.3.4.5:2379&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.backend&lt;/code&gt; (v2 deprecated)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Name of the key-value store to use. Set to &lt;code&gt;etcd&lt;/code&gt; for external key-value store.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;embedded&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;namespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace where storageos cluster resources are created&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kube-system&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;nodeSelectorTerms&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set node selector for storageos pod placement&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;pause&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Pause the operator for cluster maintenance&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;resources&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set resource requirements for the containers&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;secretRefName&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Reference name of storageos secret&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;secretRefNamespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace of storageos secret&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.annotations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Annotations of the Service used by the cluster&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.externalPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;External port of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;5705&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.internalPort&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Internal port of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;5705&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.name&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Name of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;service.type&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Type of the Service used by the cluster&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;ClusterIP&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;sharedDir&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Path to be shared with kubelet container when deployed as a pod&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;/var/lib/kubelet/plugins/kubernetes.io~storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tlsEtcdSecretRefName&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Secret containing etcd client certificates&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tlsEtcdSecretRefNamespace&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace of the tlsEtcdSecretRefName&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;tolerations&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Set pod tolerations for storageos pod placement&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Cluster Operator examples</title>
+      <link>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/examples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/examples/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Before deploying a StorageOS cluster, create a Secret to define the StorageOS
+API Username and Password in base64 encoding.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Secret
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;storageos-api&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  labels:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    app: &amp;#34;storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;type: &amp;#34;kubernetes.io/storageos&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;data:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  # echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
+unique, strong password.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure that the encoding of the credentials doesn&amp;rsquo;t have special characters such as &amp;lsquo;\n&amp;rsquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can define a base64 value by &lt;code&gt;echo -n &amp;quot;mystring&amp;quot; | base64&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Create a &lt;code&gt;cluster-config.yaml&lt;/code&gt; according to your needs from the examples below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f cluster-config.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that StorageOS will be deployed in &lt;code&gt;spec.namespace&lt;/code&gt; (storageos by
+default), irrespective of what NameSpace the CR is defined in.&lt;/p&gt;
+&lt;p&gt;  &lt;!-- this is a blank line --&gt;&lt;/p&gt;
+&lt;h1 id=&#34;examples&#34;&gt;Examples&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can checkout all the parameters configurable in the
+&lt;a href=&#34;https://docs.storageos.com/v1.x/v1.x/docs/reference/cluster-operator/configuration/&#34;&gt;configuration&lt;/a&gt;
+page.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;All examples must reference the &lt;code&gt;storageos-api&lt;/code&gt; Secret.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  secretRefName: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Reference to the Secret created in the previous step&lt;/span&gt;
+  secretRefNamespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Namespace of the Secret&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Check out &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/cluster-operator/examples&#34;&gt;Cluster Definition
+examples&lt;/a&gt; for full CR files.&lt;/p&gt;
+&lt;h2 id=&#34;installing-with-an-external-etcd&#34;&gt;Installing with an external etcd&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  kvBackend:
+    address: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;10.43.93.95:2379&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# IP of the SVC that exposes ETCD&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# address: &amp;#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&amp;#39; # You can specify individual IPs of the etcd servers&lt;/span&gt;
+    backend: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;etcd&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-to-a-subset-of-nodes&#34;&gt;Installing to a subset of nodes&lt;/h2&gt;
+&lt;p&gt;In this case we select nodes that are workers. To make sure that StorageOS doesn&amp;rsquo;t start in Master nodes.&lt;/p&gt;
+&lt;p&gt;You can see the labels in the nodes by &lt;code&gt;kubectl get node --show-labels&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  nodeSelectorTerms:
+    - matchExpressions:
+      - key: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node-role.kubernetes.io/worker&amp;#34;&lt;/span&gt;
+        operator: In
+        values:
+        - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# OpenShift uses &amp;#34;node-role.kubernetes.io/compute=true&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Rancher uses &amp;#34;node-role.kubernetes.io/worker=true&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Kops uses &amp;#34;node-role.kubernetes.io/node=&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Different provisioners and Kubernetes distributions use node labels
+differently to specify master vs workers. Node Taints are not enough to
+make sure StorageOS doesn&amp;rsquo;t start in a node. The
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/clusterdiscovery&#34;&gt;JOIN&lt;/a&gt;
+variable is defined by the operator by selecting all the nodes that match the
+&lt;code&gt;nodeSelectorTerms&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;enabling-csi&#34;&gt;Enabling CSI&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  csi:
+    enable: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    deploymentStrategy: deployment
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableProvisionCreds: false&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableControllerPublishCreds: false&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableNodePublishCreds: false&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The credentials must be defined in the &lt;code&gt;storageos-api&lt;/code&gt; Secret&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt;
+  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;
+  labels:
+    app: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
+type: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubernetes.io/storageos&amp;#34;&lt;/span&gt;
+data:
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64&lt;/span&gt;
+  apiUsername: c3RvcmFnZW9z
+  apiPassword: c3RvcmFnZW9z
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add base64 encoded creds below for CSI credentials.&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionPassword:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishPassword:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishUsername:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishPassword:&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;Specifying a shared directory for use with kubelet as a container&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  sharedDir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;defining-pod-resource-requests-and-reservations&#34;&gt;Defining pod resource requests and reservations&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
+  resources:
+    requests:
+      memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;256Mi&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   cpu: &amp;#34;1&amp;#34;&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# limits:&lt;/span&gt;
+  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   memory: &amp;#34;4Gi&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Limiting StorageOS can cause malfunction for IO to StorageOS volumes, therefore
+we do not currently recommend applying upper limits to resources for StorageOS
+pods.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Cluster Operator Upgrade</title>
+      <link>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/upgrade/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v1.x/docs/reference/cluster-operator/upgrade/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;upgrade-storageos-operator-from-yaml-manifest&#34;&gt;Upgrade StorageOS operator from yaml manifest&lt;/h2&gt;
+&lt;p&gt;Upgrade the StorageOS operator using the following yaml manifest.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.3/storageos-operator.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
+Since, the Update Strategy of the StorageOS Operator Deployment is set to
+rolling update, a new StorageOS Operator Pod will be created. Only when
+the new Pod enters the Running Phase will the old Pod be deleted.
+Your StorageOS Cluster will not be affected while the StorageOS
+Operator is upgrading.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;upgrade-storageos-operator-using-helm&#34;&gt;Upgrade StorageOS Operator using Helm&lt;/h2&gt;
+&lt;p&gt;If you have installed the StorageOS Operator using the &lt;a href=&#34;https://github.com/storageos/charts/tree/master/stable/storageos-operator#installing-the-chart&#34;&gt;Helm Chart&lt;/a&gt;, then you can upgrade the operator using the following commands.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm list
+
+NAME            REVISION        STATUS          CHART                           APP VERSION     NAMESPACE   
+storageos-v1   4               DEPLOYED        storageos-operator-0.2.11       1.3.0           storageos-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;$ helm repo update
+$ helm upgrade $NAME storageos/storageos-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
+Since, the Update Strategy of the StorageOS Operator Deployment is set to
+rolling update, a new StorageOS Operator Pod will be created. Only when
+the new Pod enters the Running Phase will the old Pod be deleted.
+Your StorageOS Cluster will not be affected while the StorageOS
+Operator is upgrading.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

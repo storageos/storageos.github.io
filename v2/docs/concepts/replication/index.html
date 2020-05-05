@@ -30,7 +30,7 @@ The basic model for StorageOS replication is of a master volume with distributed
 <meta itemprop="description" content="StorageOS replicates volumes across nodes for data protection and high availability. Synchronous replication ensures strong consistency for applications such as databases and Elasticsearch, incurring one network round trip on writes.
 The basic model for StorageOS replication is of a master volume with distributed replicas. Each volume can be replicated between 0 and 5 times, which are provisioned to 0 to 5 nodes, up to the number of remaining nodes in the cluster.">
 
-<meta itemprop="wordCount" content="462">
+<meta itemprop="wordCount" content="439">
 
 
 
@@ -136,9 +136,9 @@ The basic model for StorageOS replication is of a master volume with distributed
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -157,7 +157,7 @@ The basic model for StorageOS replication is of a master volume with distributed
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.f0aeaa605e4fc070ae05f001251a5ce1ee6f7f927610ad7ba51daa1e85ac3a445fe9c2d6896cc0ff21b06c6d9ad16bb39fb073b33c296590e00e81f3ac8de150.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.15c8ebe08b9d61619e1c6bb9bf7a2fab63820d9e497c738086f6ac2a92d0faf7db77b1e3ff0aef7fa9888f92c0e5585829640a09377eeabbdb0dd2c5c01bc8c4.json"
   data-offline-search-base-href="/"
 >
 
@@ -828,6 +828,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencelicence" href="/v2/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferenceopen_source_attribution" href="/v2/docs/reference/open_source_attribution/">Open Source Attribution</a>
       
       
@@ -976,14 +982,12 @@ will be kept.</p>
 <p>While the replica count is controllable on a per-volume basis, some
 environments may prefer to set <a href="https://docs.storageos.com/v2/docs/reference/labels/#storageos-storageclass-labels">default labels on the StorageClass</a>.</p>
 <h3 id="delta-sync">Delta Sync</h3>
-<p>StorageOS stores a checksum for every 4KB block of a volume. 256 contiguous
-block hashsums are used to generate a hashsum for a 1MiB region such that 1MiB
-regions are the smallest unit of synchronization. This means that if a replica
-for a volume goes offline, that when the replica comes back online only the
-regions with changed blocks need to be synchronized. This optimization reduces
-the time it takes for replicas to catch up, improving volume resilience.
-Additionally, it reduces network and IO bandwidth which can reduce costs when
-running in public clouds.</p>
+<p>StorageOS implements a delta sync between a volume master and its replicas.
+This means that if a replica for a volume goes offline, that when the replica
+comes back online only the regions with changed blocks need to be synchronized.
+This optimization reduces the time it takes for replicas to catch up, improving
+volume resilience. Additionally, it reduces network and IO bandwidth which can
+reduce costs when running in public clouds.</p>
 
 	
 	

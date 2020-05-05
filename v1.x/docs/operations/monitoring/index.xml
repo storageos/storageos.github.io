@@ -1,0 +1,128 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Monitoring StorageOS</title>
+    <link>https://docs.storageos.com/v1.x/docs/operations/monitoring/</link>
+    <description>Recent content in Monitoring StorageOS on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v1.x/docs/operations/monitoring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: Setting up Prometheus to monitor StorageOS</title>
+      <link>https://docs.storageos.com/v1.x/docs/operations/monitoring/prometheus-setup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v1.x/docs/operations/monitoring/prometheus-setup/</guid>
+      <description>
+        
+        
+        &lt;p&gt;CoreOS has created a Kubernetes Operator for installing Prometheus. The
+operator uses ServiceMonitor custom resources (CRs) to scrape IP addresses
+defined in Kubernetes Endpoints. This article is intended to provide a quick
+guide to monitoring the StorageOS metrics endpoint and can be used with our
+example &lt;a href=&#34;https://grafana.com/dashboards/10093&#34;&gt;Grafana dashboard&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;scripted-prometheus-install&#34;&gt;Scripted Prometheus Install&lt;/h2&gt;
+&lt;p&gt;There is a &lt;code&gt;install-prometheus.sh&lt;/code&gt; script that will perform the installation of
+Prometheus using the Prometheus operator and a ServiceMonitor monitoring
+StorageOS. If you wish to use it then follow steps 1 and 2 before skipping to
+&lt;a href=&#34;https://docs.storageos.com/v1.x/docs/operations/monitoring/prometheus-setup#install-grafana&#34;&gt;installing
+Grafana&lt;/a&gt;. If you
+do not wish to use the script then go to the &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/operations/monitoring/prometheus-setup#install-the-prometheus-operator&#34;&gt;Prometheus
+Operator&lt;/a&gt;
+installation.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. The standard installation of Prometheus and Grafana does not have
+persistent storage enabled. If you wish to use persistent storage then please
+see the README.md in the Prometheus directory from Step 1.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the StorageOS deploy repository and move into the
+&lt;code&gt;prometheus-operator&lt;/code&gt; directory
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/deploy.git storageos
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos/k8s/examples/prometheus
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Run the &lt;code&gt;install-prometheus.sh&lt;/code&gt; script.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;./install-prometheus.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;install-the-prometheus-operator&#34;&gt;Install the Prometheus Operator&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the StorageOS deploy repository and move into the
+&lt;code&gt;prometheus-operator&lt;/code&gt; directory
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/coreos/prometheus-operator.git prometheus-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Deploy the quick start &lt;code&gt;bundle.yaml&lt;/code&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f prometheus-operator/bundle.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Verify that the Prometheus operator is running.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl get pods -l apps.kubernetes.io/name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prometheus-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;install-prometheus&#34;&gt;Install Prometheus&lt;/h2&gt;
+&lt;p&gt;Now that the Prometheus Operator is installed, a Prometheus CR can be created
+which the Prometheus operator will act upon to configure a Prometheus StatefulSet.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Clone the StorageOS deploy repo
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/deploy.git storageos
+&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos/k8s/examples/prometheus
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;If your cluster uses RBAC then create the necessary Cluster role and service
+account for Prometheus.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f prometheus-rbac.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Create a Prometheus CR that defines a Prometheus StatefulSet.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl create -f prometheus-cr.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;Create a ServiceMonitor CR that directs Prometheus to scrape the Endpoints
+defined in the &lt;code&gt;storageos&lt;/code&gt; Endpoints resource. Prometheus will scrape the
+&lt;code&gt;/metrics&lt;/code&gt; URL of the Endpoints and collect the metrics.
+&lt;pre&gt;&lt;code&gt;kubectl create -f storageos-serviceMonitor.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;In order to view the Prometheus UI in the browser port forward the local
+port to the Prometheus pod port.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl port-forward prometheus-prometheus-storageos-0 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;9090&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The Prometheus UI can now be seen in the browser at localhost:9090&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;Now that the Prometheus UI is available StorageOS metrics can be queried
+from the Graph page. A complete list of StorageOS metrics can be found
+&lt;a href=&#34;https://docs.storageos.com/v1.x/docs/reference/prometheus&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;install-grafana&#34;&gt;Install Grafana&lt;/h2&gt;
+&lt;p&gt;Grafana is a popular solution for visualising metrics. At the time of writing
+(30/04/2019) there is no Grafana operator so instead a helm installation is
+used. If a helm installation will not work then the helm generated manifests
+can be used.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install Grafana&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;helm install stable/grafana
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Grafana can query the Prometheus pod for metrics, through a Service. The
+Prometheus operator automatically creates a service in any namespace that a
+Prometheus resource is created in. Setup a Grafana data source that points at
+the Prometheus service that was created. The URL to use will depend on the
+namespace that Grafana is installed into.&lt;/p&gt;
+&lt;p&gt;If the Grafana pod runs in the same namespace as the
+Prometheus pod then the URL is: &lt;code&gt;http://prometheus-operated:9090&lt;/code&gt; otherwise it&amp;rsquo;s
+&lt;code&gt;http://prometheus-operated.$NAMESPACE.svc:9090&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;When creating the data source make sure to set the scrape interval.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Once the Prometheus data source has been created have a look at the &lt;a href=&#34;https://grafana.com/dashboards/10093&#34;&gt;example
+StorageOS dashboard&lt;/a&gt; for ideas about
+how to monitor your cluster.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

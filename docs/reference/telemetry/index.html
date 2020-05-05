@@ -22,22 +22,22 @@
 
 <title>StorageOS Telemetry | </title><meta property="og:title" content="StorageOS Telemetry" />
 <meta property="og:description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry." />
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/telemetry/" />
 
 <meta itemprop="name" content="StorageOS Telemetry">
 <meta itemprop="description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.">
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes.">
 
-<meta itemprop="wordCount" content="487">
+<meta itemprop="wordCount" content="423">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Telemetry"/>
 <meta name="twitter:description" content="StorageOS collects telemetry and error reports from StorageOS clusters via two different methods for two different purposes.
-Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports and information about the StorageOS cluster to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry."/>
+Telemetry  Telemetry is made up a DNS version check query and a once per day report. Error reporting is the sentry.io crash dump reporting.  sentry.io StorageOS sends crash reports to sentry.io. This information helps our developers monitor and fix crashes. Information is sent to sentry.io when a process inside the StorageOS container crashes."/>
 
 
 
@@ -136,9 +136,9 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -157,7 +157,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -187,7 +187,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -209,6 +209,12 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -267,19 +273,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -297,37 +291,13 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -375,6 +345,12 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -502,24 +478,6 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -550,12 +508,6 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -580,41 +532,6 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -627,31 +544,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -804,79 +697,61 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -935,12 +810,6 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -959,13 +828,13 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -976,43 +845,14 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1068,6 +908,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
     <li><a href="#telemetry">Telemetry</a></li>
     <li><a href="#sentryio">sentry.io</a></li>
     <li><a href="#dns-query">DNS Query</a></li>
+    <li><a href="#once-per-day-report">Once Per Day Report</a></li>
     <li><a href="#disable-telemetry">Disable Telemetry</a>
       <ul>
         <li></li>
@@ -1097,7 +938,7 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1121,20 +962,19 @@ Telemetry  Telemetry is made up of the DNS query and crash reports sent to sentr
 <div class="td-content">
 	<h1>StorageOS Telemetry</h1>
 	
-	<p>StorageOS collects telemetry and error reports  from StorageOS clusters via two
+	<p>StorageOS collects telemetry and error reports from StorageOS clusters via two
 different methods for two different purposes.</p>
 <h2 id="telemetry">Telemetry</h2>
 <ul>
-<li>Telemetry is made up of the DNS query and crash reports sent to sentry.io once per day.</li>
+<li>Telemetry is made up a DNS version check query and a once per day report.</li>
 <li>Error reporting is the sentry.io crash dump reporting.</li>
 </ul>
 <h2 id="sentryio">sentry.io</h2>
-<p>StorageOS sends crash reports and information about the StorageOS cluster to
-<a href="https://sentry.io">sentry.io</a>. This information helps our developers monitor
-and fix crashes. Information is sent to sentry.io once per day or when a process inside the
-StorageOS container crashes.</p>
+<p>StorageOS sends crash reports to <a href="https://sentry.io">sentry.io</a>. This
+information helps our developers monitor and fix crashes. Information is sent
+to sentry.io when a process inside the StorageOS container
+crashes.</p>
 <ul>
-<li>The once per day report includes the cluster version, node counts and license information.</li>
 <li>The crash report contains the signal that triggered the shutdown (e.g. SIGSEGV),
 the exit code and whether or not the crash generated a core dump.</li>
 </ul>
@@ -1142,91 +982,94 @@ the exit code and whether or not the crash generated a core dump.</li>
 reports to sentry.io over tcp/443. StorageOS respects environment variables that
 <a href="https://golang.org/pkg/net/http/#ProxyFromEnvironment">ProxyFromEnvironment</a>
 uses.</p>
-<p>An exhaustive list of information included in the once per day report is below:</p>
-<ul>
-<li>API version</li>
-<li>Cluster ID</li>
-<li>CPU architechture</li>
-<li>Go version</li>
-<li>Healthy volume count</li>
-<li>Logging level</li>
-<li>Logging user</li>
-<li>License type</li>
-<li>Namespace count</li>
-<li>Node count</li>
-<li>Pool count</li>
-<li>OS type</li>
-<li>Rule count</li>
-<li>Server name</li>
-<li>Sentry version</li>
-<li>StorageOS build information (CI pipeline reference)</li>
-<li>StorageOS version</li>
-<li>Suspect volume count</li>
-<li>Total volume size</li>
-<li>Volume count</li>
-<li>Volume degraded count</li>
-<li>Volume offline count</li>
-<li>Volume syncing count</li>
-</ul>
 <p>An exhaustive list of information included in the crash report is below:</p>
 <ul>
-<li>API version</li>
-<li>Cluster ID</li>
-<li>CPU architechture</li>
-<li>Crashed component name</li>
-<li>Error level</li>
-<li>Error message</li>
-<li>Exceptions</li>
-<li>Exit code</li>
-<li>Datetime of crash</li>
-<li>Go version</li>
-<li>Kernel signal</li>
-<li>OS type</li>
-<li>License type</li>
-<li>Logging user</li>
-<li>Server name</li>
-<li>Stacktrace</li>
-<li>StorageOS build information (CI pipeline reference)</li>
 <li>StorageOS version</li>
-<li>Whether a core dump occured</li>
+<li>Crash description string</li>
+<li>Anonymized Cluster ID</li>
+<li>Anonymized Node ID</li>
 </ul>
 <h2 id="dns-query">DNS Query</h2>
-<p>StorageOS will also send anonymized node ids, cluster id and StorageOS version
-information to StorageOS using a DNS query. The information that we send in the
-query is encoded as well as being anonymized. This query allows us to inform
-Cluster admins when StorageOS upgrades are available in the StorageOS GUI and
-in the logs.</p>
+<p>StorageOS will perform a &ldquo;latest version check&rdquo; using a DNS query in order to
+inform administrators that a new version is available. StorageOS will also send
+anonymized node ids, cluster id and StorageOS version information to StorageOS
+using a DNS query. The information that we send in the query is encoded as well
+as being anonymized. This query allows us to inform Cluster admins when
+StorageOS upgrades are available in the StorageOS GUI and in the logs.</p>
 <p>The DNS query includes:</p>
 <ul>
 <li>Anonymized StorageOS Cluster ID</li>
 <li>Anonymized StorageOS node ID</li>
 <li>StorageOS version number</li>
 </ul>
-<p>If <code>k8sDistro</code> is set then the Kubernetes version and Kubernetes distribution
-will also be reported. This information helps us direct focus onto the most
-relevant platforms.</p>
+<h2 id="once-per-day-report">Once Per Day Report</h2>
+<p>The once per day report contains information about the StorageOS cluster and
+Kubernetes versions to help StorageOS focus our development efforts on the most
+popular platforms. The once per day data is encrypted and sent to a StorageOS
+telemetry server so it is never processed outside of StorageOS assets.</p>
+<p>An exhaustive list of information included in the once per day report is below:</p>
+<ul>
+<li>api_call_metrics</li>
+<li>cluster_disable_crash_reporting</li>
+<li>cluster_disable_version_check</li>
+<li>cluster_log_format</li>
+<li>cluster_log_level</li>
+<li>cluster_tls_provided</li>
+<li>k8s_distribution</li>
+<li>k8s_in_k8s</li>
+<li>k8s_scheduler_extender_enabled</li>
+<li>k8s_version</li>
+<li>node_available_bytes</li>
+<li>node_capacity</li>
+<li>node_crash_files_on_disk</li>
+<li>node_created_at_time</li>
+<li>node_etcd_config</li>
+<li>node_etcd_namespacing_enabled</li>
+<li>node_etcd_tls_enabled</li>
+<li>node_free_bytes</li>
+<li>node_health</li>
+<li>node_http_tls_enabled</li>
+<li>node_id</li>
+<li>node_labels</li>
+<li>node_status</li>
+<li>node_storageos_version</li>
+<li>node_system_clock_time</li>
+<li>node_total_bytes</li>
+<li>node_version</li>
+<li>volume_fs_type</li>
+<li>volume_id</li>
+<li>volume_labels</li>
+<li>volume_master_attach</li>
+<li>volume_master_delete_deployment</li>
+<li>volume_master_detach</li>
+<li>volume_master_failover_deployment</li>
+<li>volume_master_promote</li>
+<li>volume_master_provision</li>
+<li>volume_master_recover_replica</li>
+<li>volume_master_trigger_rejoin</li>
+<li>volume_metrics</li>
+<li>volume_placement_strategy</li>
+<li>volume_provision_source_user_agent</li>
+<li>volume_replica_delete_deployment</li>
+<li>volume_replica_failover_deployment</li>
+<li>volume_replica_promote</li>
+<li>volume_replica_provision</li>
+<li>volume_replicas</li>
+<li>volume_replica_trigger_rejoin</li>
+<li>volume_size_bytes</li>
+</ul>
 <h2 id="disable-telemetry">Disable Telemetry</h2>
-<p>It is possible to disable telemetry using the CLI, API, environment
+<p>It is possible to disable telemetry using the GUI, CLI, API, environment
 variables or the StorageOS Cluster Spec.</p>
-<h4 id="api">API</h4>
-<p>The example below shows how you can use the /v1/telemetry API endpoint to disable or enable telemetry.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -X <span style="color:#4e9a06">&#34;PUT&#34;</span> <span style="color:#4e9a06">&#34;http://127.0.0.1:5705/v1/telemetry&#34;</span>        <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>         -H <span style="color:#4e9a06">&#39;Content-Type: application/json; charset=utf-8&#39;</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>         -u <span style="color:#4e9a06">&#39;storageos:storageos&#39;</span>                           <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>         -d <span style="color:#4e9a06">$&#39;{
-</span><span style="color:#4e9a06">             &#34;telemetryEnabled&#34;: true,
-</span><span style="color:#4e9a06">             &#34;reportErrors&#34;: false
-</span><span style="color:#4e9a06">         }&#39;</span>
-</code></pre></div><h4 id="storageos-cluster-spec">StorageOS Cluster Spec</h4>
-<p>Disable telemetry explicitly through the configurable <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration/">spec parameters</a> of the StorageOSCluster custom resource.</p>
+<h4 id="storageos-cluster-spec">StorageOS Cluster Spec</h4>
+<p>Disable telemetry explicitly through the configurable <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration/">spec parameters</a> of the
+StorageOSCluster custom resource.</p>
 <h4 id="environment-variables">Environment Variables</h4>
 <p>You can use the following environmental variables to disable or enable telemetry.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DISABLE_TELEMETRY       <span style="color:#8f5902;font-style:italic"># Disable the DNS query and once per day sentry.io reporting</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DISABLE_VERSION_CHECK   <span style="color:#8f5902;font-style:italic"># Disable the DNS version check</span>
+DISABLE_TELEMETRY       <span style="color:#8f5902;font-style:italic"># Disable the once per day reporting</span>
 DISABLE_ERROR_REPORTING <span style="color:#8f5902;font-style:italic"># Disable sentry.io crash reports</span>
-
-</code></pre></div><p>You can find more information about StorageOS environment variables
-<a href="https://docs.storageos.com/docs/reference/envvars/">here</a>.</p>
-
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>

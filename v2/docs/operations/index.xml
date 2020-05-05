@@ -22,7 +22,7 @@
       <description>
         
         
-        &lt;p&gt;StorageOS uses (etcd)[https://etcd.io] to store cluster metadata. Because of
+        &lt;p&gt;StorageOS uses &lt;a href=&#34;https://etcd.io&#34;&gt;etcd&lt;/a&gt; to store cluster metadata. Because of
 the strong consistency model that etcd enforces, StorageOS metadata operations
 are guaranteed to be atomic and consistent.&lt;/p&gt;
 &lt;h2 id=&#34;installation-options&#34;&gt;Installation options&lt;/h2&gt;
@@ -654,27 +654,25 @@ Filesystem                  Size  Used Avail Use% Mounted on
       <description>
         
         
-        &lt;p&gt;A newly installed StorageOS cluster includes an unregistered Basic licence,
-which caps usable storage space at 100GB.  To utilise more storage space, we
-offer either a Developer (free with registration - 500GB) licence or an
-Enterprise (unlimited capacity - see below) licence. This document explains how
-to upgrade your licence using either the GUI or CLI.&lt;/p&gt;
+        &lt;p&gt;A newly installed StorageOS cluster does not include a licence. A cluster can
+run unlicensed for 24 hours. After that, new operations such as volume
+provisioning or adding nodes are not permitted. Normal functioning of the
+cluster can be unlocked by applying for a Free Developer licence.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-gui&#34;&gt;Obtaining a Developer licence via the GUI&lt;/h2&gt;
-&lt;p&gt;You can obtain and apply a Developer licence in the StorageOS web GUI
-automatically by creating or logging in with a StorageOS account on the
-StorageOS portal via the licence page of the StorageOS web GUI:
+&lt;p&gt;You can obtain and apply a free Developer licence in the StorageOS web GUI by
+creating or logging in with a StorageOS account on the StorageOS portal via the
+licence page of the StorageOS web GUI:
 &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
-point your licence will be visible. To inspect your licence, click on the
-&amp;ldquo;DETAILS&amp;rdquo; button as follows:&lt;/p&gt;
+point your licence will be visible.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
-&lt;p&gt;Occasionally we will issue licences directly, e.g. by email or some other
-off-line method. To apply such keys, via the web GUI, visit
-&lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt; and click on the tab &amp;ldquo;ENTER KEY&amp;rdquo;, then
-paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you could
-also view your cluster ID on the same page.&lt;/p&gt;
+&lt;p&gt;Commercial licences are delivered through contact with the StorageOS team.
+To apply such keys, via the web GUI, visit &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;
+and click on the tab &amp;ldquo;Upgrade&amp;rdquo;, for the specific licence level you purchased.
+Then paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you
+can also view your cluster ID on the same page.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-cli&#34;&gt;Obtaining a Developer licence via the CLI&lt;/h2&gt;
 &lt;p&gt;Before getting a licence, you need to know the ID of your StorageOS cluster.&lt;/p&gt;
@@ -699,7 +697,7 @@ correct cluster ID before generating the licence key.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;
 &lt;p&gt;Please contact &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt; to discuss
-pricing for our Enterprise licence.&lt;/p&gt;
+pricing for commercial licences.&lt;/p&gt;
 
       </description>
     </item>
@@ -779,7 +777,7 @@ cli&lt;/a&gt; is required.&lt;/p&gt;
 &lt;h2 id=&#34;pod-in-pending-because-of-mount-error&#34;&gt;Pod in pending because of mount error&lt;/h2&gt;
 &lt;h3 id=&#34;issue&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;The output of &lt;code&gt;kubectl describe pod $POD_ID&lt;/code&gt; contains &lt;code&gt;no such file or directory&lt;/code&gt; and references the StorageOS volume device file.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# kubectl -n storageos describe &lt;span style=&#34;color:#000&#34;&gt;$POD_ID&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~# kubectl -n kube-system describe &lt;span style=&#34;color:#000&#34;&gt;$POD_ID&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 Events:
   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
@@ -869,7 +867,7 @@ implying that StorageOS is not running. For Kubernetes to define StorageOS pods
 ready, the health check must pass.&lt;/p&gt;
 &lt;h3 id=&#34;assert-2&#34;&gt;Assert:&lt;/h3&gt;
 &lt;p&gt;Check the status of StorageOS pods.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n storageos get pod --selector &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# for CSI add --selector kind=daemonset&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n kube-system get pod --selector &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# for CSI add --selector kind=daemonset&lt;/span&gt;
 NAME              READY     STATUS    RESTARTS   AGE
 storageos-qrqkj   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
 storageos-s4bfv   0/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
@@ -942,7 +940,7 @@ reclaimPolicy: Delete
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Check if the secret exists according to those parameters&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos get secret storageos-api
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system get secret storageos-api
 No resources found.
 Error from server &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;NotFound&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;: secrets &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt; not found
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If no resources are found, it is clear that the Secret doesn&amp;rsquo;t exist or it is not deployed in
@@ -981,9 +979,9 @@ such cases the &lt;code&gt;JOIN&lt;/code&gt; variable must not contain master no
 cluster will remain unable to start.&lt;/p&gt;
 &lt;h3 id=&#34;assert-4&#34;&gt;Assert:&lt;/h3&gt;
 &lt;p&gt;Check that the first node of the &lt;code&gt;JOIN&lt;/code&gt; variable started properly.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n storageos describe ds/storageos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep JOIN
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n kube-system describe ds/storageos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep JOIN
     JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
-root@node1:~/# kubectl -n storageos get pod -o wide &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep 172.28.128.3
+root@node1:~/# kubectl -n kube-system get pod -o wide &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep 172.28.128.3
 storageos-8zqxl   1/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          2m        172.28.128.3   node1
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-4&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Make sure that the &lt;code&gt;JOIN&lt;/code&gt; variable doesn&amp;rsquo;t specify the master nodes. In case
@@ -1000,7 +998,7 @@ through Kubernetes node labels, or StorageOS in the &lt;a href=&#34;https://docs
 &lt;h2 id=&#34;lio-initerror&#34;&gt;LIO Init:Error&lt;/h2&gt;
 &lt;h3 id=&#34;issue-4&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS pods not starting with &lt;code&gt;Init:Error&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos get pod
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system get pod
 NAME              READY     STATUS              RESTARTS   AGE
 storageos-2kwqx   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
 storageos-cffcr   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
@@ -1013,7 +1011,7 @@ modules on the host system. If you are seeing these errors it is because that
 container couldn&amp;rsquo;t load the modules.&lt;/p&gt;
 &lt;h3 id=&#34;assert-5&#34;&gt;Assert&lt;/h3&gt;
 &lt;p&gt;Check the logs of the init container.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos logs &lt;span style=&#34;color:#000&#34;&gt;$ANY_STORAGEOS_POD&lt;/span&gt; -c storageos-init
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system logs &lt;span style=&#34;color:#000&#34;&gt;$ANY_STORAGEOS_POD&lt;/span&gt; -c storageos-init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In case of failure, it will show the following output, indicating which kernel
 modules couldn&amp;rsquo;t be loaded or that they are not properly configured:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Checking configfs

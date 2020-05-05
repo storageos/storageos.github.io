@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
 ">
 
-<meta itemprop="wordCount" content="3445">
+<meta itemprop="wordCount" content="3491">
 
 
 
@@ -136,9 +136,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.f0aeaa605e4fc070ae05f001251a5ce1ee6f7f927610ad7ba51daa1e85ac3a445fe9c2d6896cc0ff21b06c6d9ad16bb39fb073b33c296590e00e81f3ac8de150.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.15c8ebe08b9d61619e1c6bb9bf7a2fab63820d9e497c738086f6ac2a92d0faf7db77b1e3ff0aef7fa9888f92c0e5585829640a09377eeabbdb0dd2c5c01bc8c4.json"
   data-offline-search-base-href="/"
 >
 
@@ -828,6 +828,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencelicence" href="/v2/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferenceopen_source_attribution" href="/v2/docs/reference/open_source_attribution/">Open Source Attribution</a>
       
       
@@ -1049,7 +1055,36 @@ $ <span style="color:#204a87">export</span> <span style="color:#000">NAMESPACE</
 <li>
 <p>Deploy Operator</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./etcd-operator/example/rbac/create_role.sh
-$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f ./etcd-operator/example/deployment.yaml
+$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: apps/v1
+</span><span style="color:#4e9a06">kind: Deployment
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: etcd-operator
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  selector:
+</span><span style="color:#4e9a06">    matchLabels:
+</span><span style="color:#4e9a06">      app: etcd-operator
+</span><span style="color:#4e9a06">  replicas: 1
+</span><span style="color:#4e9a06">  template:
+</span><span style="color:#4e9a06">    metadata:
+</span><span style="color:#4e9a06">      labels:
+</span><span style="color:#4e9a06">        app: etcd-operator
+</span><span style="color:#4e9a06">    spec:
+</span><span style="color:#4e9a06">      containers:
+</span><span style="color:#4e9a06">      - name: etcd-operator
+</span><span style="color:#4e9a06">        image: quay.io/coreos/etcd-operator:v0.9.4
+</span><span style="color:#4e9a06">        command:
+</span><span style="color:#4e9a06">        - etcd-operator
+</span><span style="color:#4e9a06">        env:
+</span><span style="color:#4e9a06">        - name: MY_POD_NAMESPACE
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.namespace
+</span><span style="color:#4e9a06">        - name: MY_POD_NAME
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.name
+</span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>
 <p>The Kubernetes masters should then be labelled so a nodeSelector can be used in the EtcdCluster manifest</p>
@@ -1065,7 +1100,7 @@ $ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f ./etcd-operato
 </span><span style="color:#4e9a06"> name: &#34;storageos-etcd&#34;
 </span><span style="color:#4e9a06">spec:
 </span><span style="color:#4e9a06"> size: 1
-</span><span style="color:#4e9a06"> version: &#34;3.4.16&#34;
+</span><span style="color:#4e9a06"> version: &#34;3.4.7&#34;
 </span><span style="color:#4e9a06"> pod:
 </span><span style="color:#4e9a06">   etcdEnv:
 </span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND</span>_BYTES
@@ -1104,7 +1139,7 @@ END
 <p> </p>
 <h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
 <p>In order to install the StorageOS operator download the requisite yaml manifests or apply them with kubectl.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/2.0.0-rc.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.0.0/storageos-operator.yaml
 </code></pre></div><p>You can verify the operator is running using the following command</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
 </code></pre></div><p> </p>
@@ -1147,8 +1182,7 @@ END
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;upstream&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># storageClassName: fast # The storage class creates by the StorageOS operator is configurable</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csi</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1162,13 +1196,13 @@ END
 </span></code></pre></div></li>
 <li>
 <p>Confirm that the cluster has been created and that StorageOS pods are running</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos get pods
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system get pods
 </code></pre></div><p>StorageOS pods enter a ready state after a minimum of 65s has passed.</p>
 </li>
 <li>
 <p>Deploy the StorageOS CLI as a container</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos run               <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--image storageos/cli:2.0.0-rc.1         <span style="color:#4e9a06">\
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run               <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.0.0         <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
@@ -1194,7 +1228,7 @@ END
 </code></pre></div></li>
 <li>
 <p>Verify that the CLI is working. <code>pvc-1</code> should be listed in the CLI output</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>The StorageOS web UI can also be used to display information about the state of the cluster. The StorageOS UI can be accessed on any node that is running a StorageOS pod on port 5705. The username/password for the UI is defined by the <code>storageos-api</code> secret. For this self-evaluation the username/password is <code>storageos:storageos</code></p>
@@ -1301,7 +1335,7 @@ Hello World!
 </li>
 <li>
 <p>Confirm that a replicated volume has been created by using the StorageOS CLI or UI</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Create a pod that uses the PVC</p>
@@ -1338,14 +1372,14 @@ Hello World!
 NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 pvc-replicated Bound    pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86   5Gi        RWO            fast           1m
 
-$ kubectl <span style="color:#204a87">exec</span> -it -n storageos cli -- storageos get volumes
+$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
 NAMESPACE  NAME                                      SIZE     LOCATION              ATTACHED ON   REPLICAS  AGE
 default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">26</span> seconds ago
 
 </code></pre></div></li>
 <li>
 <p>Check the location of the master volume and notice that it is on a new node. If the pod that mounted the volume was located on the same node that was shutdown then the pod will need to be recreated.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n storageos cli -- storageos get volumes
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
 NAMESPACE  NAME                                      SIZE     LOCATION               ATTACHED ON   REPLICAS  AGE
 default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker2 <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">46</span> seconds ago
 </code></pre></div></li>
@@ -1410,7 +1444,7 @@ Hello World!
 </code></pre></div></li>
 <li>
 <p>Use the StorageOS CLI to check the location of the volumes</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> cli -- storageos get volumes
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Verify that the Pod is running on the same node</p>
@@ -1449,7 +1483,7 @@ Hello World!
 </code></pre></div></li>
 <li>
 <p>Use the StorageOS CLI or the GUI to check the master volume location and the mount location. They should match</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos v ls
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Exec into the pgbench container and run pgbench</p>

@@ -32,7 +32,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
 In order to mitigate against problems caused by filling the host root disk, we recommend mounting a separate device into the /var/lib/storageos directory. StorageOS is agnostic to the type of filesystem mounted in /var/lib/storageos.
 Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/data to hold user data. By default, the directory /var/lib/storageos/data/dev1 will be created when a node is bootstrapped, and used for pool data.">
 
-<meta itemprop="wordCount" content="785">
+<meta itemprop="wordCount" content="780">
 
 
 
@@ -139,9 +139,9 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -160,7 +160,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -190,7 +190,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -212,6 +212,12 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -270,19 +276,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -300,37 +294,13 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -378,6 +348,12 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -505,24 +481,6 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -553,12 +511,6 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -583,41 +535,6 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -630,31 +547,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -807,79 +700,61 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -938,12 +813,6 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -962,13 +831,13 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -979,43 +848,14 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1095,7 +935,7 @@ Extending Available Storage StorageOS uses subdirectories of /var/lib/storageos/
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1154,22 +994,23 @@ formatting in addition to the root filesystem. StorageOS data dir dev1
 (<code>/var/lib/storageos/data/dev1</code>) is using <code>/dev/xvda1</code>. We will use the
 device <code>/dev/xvdf</code> to expand StorageOS available space.</p>
 <p>List available block devices in the host.</p>
-<pre><code>root@ip-172-20-58-239:~# lsblk
+<pre><code>root@node0:~# lsblk
 NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 xvda    202:0    0  128G  0 disk
 `-xvda1 202:1    0  128G  0 part /
 xvdf    202:80   0  100G  0 disk
 </code></pre><p>Check StorageOS cluster&rsquo;s available capacity.</p>
-<pre><code>root@ip-172-20-58-239:~# storageos node ls --format=&quot;table {{.Name}}\t{{.Capacity}}&quot;
-NAME                                          TOTAL
-ip-172-20-119-113.eu-west-1.compute.internal  128.7GB
-ip-172-20-58-239.eu-west-1.compute.internal   128.7GB
-ip-172-20-68-139.eu-west-1.compute.internal   128.7GB
-ip-172-20-84-11.eu-west-1.compute.internal    128.7GB
+<pre><code>$ storageos get node -ojson | jq -r '.[] | { name: .name, capacity: .capacity.total  }'
+&quot;node0&quot;
+137,438,953,472
+&quot;node1&quot;
+137,438,953,472
+&quot;node2&quot;
+137,438,953,472
 </code></pre></li>
 <li>
 <p>Format device</p>
-<pre><code>root@ip-172-20-58-239:/var/lib/storageos/data# mkfs -t ext4 /dev/xvdf
+<pre><code>root@node0:/var/lib/storageos/data# mkfs -t ext4 /dev/xvdf
 mke2fs 1.42.12 (29-Aug-2014)
 Creating filesystem with 26214400 4k blocks and 6553600 inodes
 Filesystem UUID: 380712fa-6f82-477a-81a5-d7466d4c6b7f
@@ -1184,26 +1025,20 @@ Writing superblocks and filesystem accounting information: done
 </code></pre></li>
 <li>
 <p>Mount filesystem</p>
-<pre><code>root@ip-172-20-58-239:~# mkdir -p /var/lib/storageos/data/dev2
-root@ip-172-20-58-239:~# mount /dev/xvdf /var/lib/storageos/data/dev2
+<pre><code>root@node0:~# mkdir -p /var/lib/storageos/data/dev2
+root@node0:~# mount /dev/xvdf /var/lib/storageos/data/dev2
 </code></pre></li>
 <li>
 <p>Verify available storage</p>
 <p>In less than 30 seconds, StorageOS will see the new available capacity.</p>
-<pre><code>root@ip-172-20-58-239:~# storageos node ls --format=&quot;table {{.Name}}\t{{.Capacity}}&quot;
-NAME                                          TOTAL
-ip-172-20-119-113.eu-west-1.compute.internal  128.7GB
-ip-172-20-58-239.eu-west-1.compute.internal   227.3GB
-ip-172-20-68-139.eu-west-1.compute.internal   128.7GB
-ip-172-20-84-11.eu-west-1.compute.internal    128.7GB
-
-root@ip-172-20-58-239:/var/lib/storageos/data/dev2# lsblk
-NAME    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0  128G  0 disk
-`-xvda1 202:1    0  128G  0 part /
-xvdf    202:80   0  100G  0 disk /var/lib/storageos/data/dev2
-</code></pre><p>Note that the node ip-172-20-58-239.eu-west-1.compute.internal has increased the TOTAL capacity in
-100Gi.</p>
+<pre><code>$ storageos get node -ojson | jq -r '.[] | { name: .name, capacity: .capacity.total  }'
+&quot;node0&quot;
+244,491,013,324
+&quot;node1&quot;
+137,438,953,472
+&quot;node2&quot;
+137,438,953,472
+</code></pre><p>Note that the node node0 has increased the TOTAL capacity in 100Gi.</p>
 </li>
 </ol>
 <blockquote>
@@ -1218,7 +1053,7 @@ xvdf    202:80   0  100G  0 disk /var/lib/storageos/data/dev2
 using a volumegroup named <code>storageos</code> and logical volume called <code>data</code>. There
 is a second physical disk <code>/dev/xvdg</code> unused.</p>
 <p>List available block devices in the host.</p>
-<pre><code>root@ip-172-20-84-11:~# lsblk
+<pre><code>root@node2:~# lsblk
 NAME             MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 xvda             202:0    0  128G  0 disk
 `-xvda1          202:1    0  128G  0 part /
@@ -1226,25 +1061,26 @@ xvdf             202:80   0  100G  0 disk
 `-storageos-data 254:0    0   99G  0 lvm  /var/lib/storageos
 xvdg             202:96   0  100G  0 disk
 </code></pre><p>Check StorageOS cluster&rsquo;s available capacity.</p>
-<pre><code>root@ip-172-20-84-11:~# storageos node ls --format=&quot;table {{.Name}}\t{{.Capacity}}&quot;
-NAME                                          TOTAL
-ip-172-20-119-113.eu-west-1.compute.internal  128.7GB
-ip-172-20-58-239.eu-west-1.compute.internal   128.7GB
-ip-172-20-68-139.eu-west-1.compute.internal   128.7GB
-ip-172-20-84-11.eu-west-1.compute.internal    100.3GB # --&gt; LVM storageos/data volume
+<pre><code>$ storageos get node -ojson | jq -r '.[] | { name: .name, capacity: .capacity.total  }'
+&quot;node0&quot;
+137,438,953,472
+&quot;node1&quot;
+137,438,953,472
+&quot;node2&quot;
+107,696,304,947 # --&gt; LVM storageos/data volume
 </code></pre></li>
 <li>
 <p>Add physical disk to LVM</p>
-<pre><code>root@ip-172-20-84-11:~# vgextend storageos /dev/xvdg
+<pre><code>root@node2:~# vgextend storageos /dev/xvdg
   Volume group &quot;storageos&quot; successfully extended
 </code></pre><p>The volume group <code>storageos</code> must have 2 physical volumes (#PV)</p>
-<pre><code>root@ip-172-20-84-11:~# vgs
+<pre><code>root@node2:~# vgs
   VG        #PV #LV #SN Attr   VSize   VFree
   storageos   2   1   0 wz--n- 199.99g 104.99g
 </code></pre></li>
 <li>
 <p>Extend logical volume <code>data</code></p>
-<pre><code>root@ip-172-20-84-11:~# lvextend -L+100G /dev/storageos/data
+<pre><code>root@node2:~# lvextend -L+100G /dev/storageos/data
   Size of logical volume storageos/data changed from 95.00 GiB (24320 extents) to 195.00 GiB (49920 extents).
   Logical volume data successfully resized
 </code></pre></li>
@@ -1254,7 +1090,7 @@ ip-172-20-84-11.eu-west-1.compute.internal    100.3GB # --&gt; LVM storageos/dat
 <p>Your filesystem must support the option to be expanded, and to do so
 while in use. Otherwise, you need to unmount first.</p>
 </blockquote>
-<pre><code>root@ip-172-20-84-11:~# resize2fs /dev/storageos/data
+<pre><code>root@node2:~# resize2fs /dev/storageos/data
 resize2fs 1.42.12 (29-Aug-2014)
 Filesystem at /dev/storageos/data is mounted on /var/lib/storageos; on-line resizing required
 old_desc_blocks = 6, new_desc_blocks = 13
@@ -1263,16 +1099,17 @@ The filesystem on /dev/storageos/data is now 51118080 (4k) blocks long.
 <li>
 <p>Check new available space</p>
 <p>The mounted file system to <code>/var/lib/storageos</code> has increased its size.</p>
-<pre><code>root@ip-172-20-84-11:~# df -h /dev/mapper/storageos-data
+<pre><code>root@node2:~# df -h /dev/mapper/storageos-data
 Filesystem                  Size  Used Avail Use% Mounted on
 /dev/mapper/storageos-data  192G   60M  183G   1% /var/lib/storageos
 </code></pre><p>StorageOS available storage has increased too.</p>
-<pre><code>root@ip-172-20-84-11:~# storageos node ls --format=&quot;table {{.Name}}\t{{.Capacity}}&quot;
-NAME                                          TOTAL
-ip-172-20-119-113.eu-west-1.compute.internal  128.7GB
-ip-172-20-58-239.eu-west-1.compute.internal   128.7GB
-ip-172-20-68-139.eu-west-1.compute.internal   128.7GB
-ip-172-20-84-11.eu-west-1.compute.internal    201GB # --&gt; 100G more available
+<pre><code>$ storageos get node -ojson | jq -r '.[] | { name: .name, capacity: .capacity.total  }'
+&quot;node0&quot;
+137,438,953,472
+&quot;node1&quot;
+137,438,953,472
+&quot;node2&quot;
+206,158,430,208 # --&gt; 100G more available
 </code></pre></li>
 </ol>
 <blockquote>

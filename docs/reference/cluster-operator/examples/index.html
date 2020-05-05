@@ -22,25 +22,22 @@
 
 <title>Cluster Operator examples | </title><meta property="og:title" content="Cluster Operator examples" />
 <meta property="og:description" content="Before deploying a StorageOS cluster, create a Secret to define the StorageOS API Username and Password in base64 encoding.
-kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;storageos-operator&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: # echo -n &#39;&lt;secret&gt;&#39; | base64 apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.
- Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;." />
+kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;default&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z # CSI Credentials csiProvisionUsername: c3RvcmFnZW9z csiProvisionPassword: c3RvcmFnZW9z csiControllerPublishUsername: c3RvcmFnZW9z csiControllerPublishPassword: c3RvcmFnZW9z csiNodePublishUsername: c3RvcmFnZW9z csiNodePublishPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/cluster-operator/examples/" />
 
 <meta itemprop="name" content="Cluster Operator examples">
 <meta itemprop="description" content="Before deploying a StorageOS cluster, create a Secret to define the StorageOS API Username and Password in base64 encoding.
-kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;storageos-operator&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: # echo -n &#39;&lt;secret&gt;&#39; | base64 apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.
- Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;.">
+kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;default&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z # CSI Credentials csiProvisionUsername: c3RvcmFnZW9z csiProvisionPassword: c3RvcmFnZW9z csiControllerPublishUsername: c3RvcmFnZW9z csiControllerPublishPassword: c3RvcmFnZW9z csiNodePublishUsername: c3RvcmFnZW9z csiNodePublishPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.">
 
-<meta itemprop="wordCount" content="442">
+<meta itemprop="wordCount" content="446">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Cluster Operator examples"/>
 <meta name="twitter:description" content="Before deploying a StorageOS cluster, create a Secret to define the StorageOS API Username and Password in base64 encoding.
-kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;storageos-operator&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: # echo -n &#39;&lt;secret&gt;&#39; | base64 apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.
- Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;."/>
+kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;default&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z # CSI Credentials csiProvisionUsername: c3RvcmFnZW9z csiProvisionPassword: c3RvcmFnZW9z csiControllerPublishUsername: c3RvcmFnZW9z csiControllerPublishPassword: c3RvcmFnZW9z csiNodePublishUsername: c3RvcmFnZW9z csiNodePublishPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password."/>
 
 
 
@@ -139,9 +136,9 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -160,7 +157,7 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -190,7 +187,7 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -212,6 +209,12 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -270,19 +273,7 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -300,37 +291,13 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -378,6 +345,12 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -505,24 +478,6 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -553,12 +508,6 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -583,41 +532,6 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -630,31 +544,7 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -807,79 +697,61 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -938,12 +810,6 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -962,13 +828,13 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -979,43 +845,14 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1100,7 +937,7 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1138,14 +975,21 @@ API Username and Password in base64 encoding.</p>
 </span><span style="color:#4e9a06">kind: Secret
 </span><span style="color:#4e9a06">metadata:
 </span><span style="color:#4e9a06">  name: &#34;storageos-api&#34;
-</span><span style="color:#4e9a06">  namespace: &#34;storageos-operator&#34;
+</span><span style="color:#4e9a06">  namespace: &#34;default&#34;
 </span><span style="color:#4e9a06">  labels:
 </span><span style="color:#4e9a06">    app: &#34;storageos&#34;
 </span><span style="color:#4e9a06">type: &#34;kubernetes.io/storageos&#34;
 </span><span style="color:#4e9a06">data:
-</span><span style="color:#4e9a06">  # echo -n &#39;&lt;secret&gt;&#39; | base64
 </span><span style="color:#4e9a06">  apiUsername: c3RvcmFnZW9z
 </span><span style="color:#4e9a06">  apiPassword: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">
+</span><span style="color:#4e9a06">  # CSI Credentials
+</span><span style="color:#4e9a06">  csiProvisionUsername: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">  csiProvisionPassword: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">  csiControllerPublishUsername: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">  csiControllerPublishPassword: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">  csiNodePublishUsername: c3RvcmFnZW9z
+</span><span style="color:#4e9a06">  csiNodePublishPassword: c3RvcmFnZW9z
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div><p>This example contains a default password, for production installations, use a
 unique, strong password.</p>
@@ -1177,7 +1021,6 @@ examples</a> for full CR files.</p>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;10.43.93.95:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># IP of the SVC that exposes ETCD</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can specify individual IPs of the etcd servers</span>
-    backend: <span style="color:#4e9a06">&#39;etcd&#39;</span>
 </code></pre></div><h2 id="installing-to-a-subset-of-nodes">Installing to a subset of nodes</h2>
 <p>In this case we select nodes that are workers. To make sure that StorageOS doesn&rsquo;t start in Master nodes.</p>
 <p>You can see the labels in the nodes by <code>kubectl get node --show-labels</code>.</p>
@@ -1205,15 +1048,15 @@ variable is defined by the operator by selecting all the nodes that match the
   csi:
     enable: <span style="color:#204a87">true</span>
     deploymentStrategy: deployment
-  <span style="color:#8f5902;font-style:italic"># enableProvisionCreds: false</span>
-  <span style="color:#8f5902;font-style:italic"># enableControllerPublishCreds: false</span>
-  <span style="color:#8f5902;font-style:italic"># enableNodePublishCreds: false</span>
+    enableProvisionCreds: <span style="color:#204a87">true</span>
+    enableControllerPublishCreds: <span style="color:#204a87">true</span>
+    enableNodePublishCreds: <span style="color:#204a87">true</span>
 </code></pre></div><p>The credentials must be defined in the <code>storageos-api</code> Secret</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apiVersion: v1
 kind: Secret
 metadata:
   name: <span style="color:#4e9a06">&#34;storageos-api&#34;</span>
-  namespace: <span style="color:#4e9a06">&#34;default&#34;</span>
+  namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
   labels:
     app: <span style="color:#4e9a06">&#34;storageos&#34;</span>
 type: <span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span>
@@ -1221,13 +1064,14 @@ data:
   <span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span>
   apiUsername: c3RvcmFnZW9z
   apiPassword: c3RvcmFnZW9z
-  <span style="color:#8f5902;font-style:italic"># Add base64 encoded creds below for CSI credentials.</span>
-  <span style="color:#8f5902;font-style:italic"># csiProvisionUsername:</span>
-  <span style="color:#8f5902;font-style:italic"># csiProvisionPassword:</span>
-  <span style="color:#8f5902;font-style:italic"># csiControllerPublishUsername:</span>
-  <span style="color:#8f5902;font-style:italic"># csiControllerPublishPassword:</span>
-  <span style="color:#8f5902;font-style:italic"># csiNodePublishUsername:</span>
-  <span style="color:#8f5902;font-style:italic"># csiNodePublishPassword:</span>
+
+   <span style="color:#8f5902;font-style:italic"># Add base64 encoded creds below for CSI credentials.</span>
+  csiProvisionUsername: c3RvcmFnZW9z
+  csiProvisionPassword: c3RvcmFnZW9z
+  csiControllerPublishUsername: c3RvcmFnZW9z
+  csiControllerPublishPassword: c3RvcmFnZW9z
+  csiNodePublishUsername: c3RvcmFnZW9z
+  csiNodePublishPassword: c3RvcmFnZW9z
 </code></pre></div><h2 id="specifying-a-shared-directory-for-use-with-kubelet-as-a-container">Specifying a shared directory for use with kubelet as a container</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spec:
   sharedDir: <span style="color:#4e9a06">&#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&#39;</span>
@@ -1235,7 +1079,7 @@ data:
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">spec:
   resources:
     requests:
-      memory: <span style="color:#4e9a06">&#34;256Mi&#34;</span>
+      memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
   <span style="color:#8f5902;font-style:italic">#   cpu: &#34;1&#34;</span>
   <span style="color:#8f5902;font-style:italic"># limits:</span>
   <span style="color:#8f5902;font-style:italic">#   memory: &#34;4Gi&#34;</span>

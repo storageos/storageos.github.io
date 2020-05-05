@@ -21,26 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>StorageOS Feature labels | </title><meta property="og:title" content="StorageOS Feature labels" />
-<meta property="og:description" content="Feature labels are a powerful and flexible way to control storage features, especially when combined with rules.
+<meta property="og:description" content="Feature labels are a powerful and flexible way to control storage features.
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
-StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes with the Cluster Operator, any node labels set on Kubernetes nodes are available within StorageOS." />
+StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes, the Cluster Operator syncs any node labels set on Kubernetes nodes within StorageOS. Node labels may also be set with the CLI or UI." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/labels/" />
 
 <meta itemprop="name" content="StorageOS Feature labels">
-<meta itemprop="description" content="Feature labels are a powerful and flexible way to control storage features, especially when combined with rules.
+<meta itemprop="description" content="Feature labels are a powerful and flexible way to control storage features.
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
-StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes with the Cluster Operator, any node labels set on Kubernetes nodes are available within StorageOS.">
+StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes, the Cluster Operator syncs any node labels set on Kubernetes nodes within StorageOS. Node labels may also be set with the CLI or UI.">
 
-<meta itemprop="wordCount" content="610">
+<meta itemprop="wordCount" content="260">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Feature labels"/>
-<meta name="twitter:description" content="Feature labels are a powerful and flexible way to control storage features, especially when combined with rules.
+<meta name="twitter:description" content="Feature labels are a powerful and flexible way to control storage features.
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
-StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes with the Cluster Operator, any node labels set on Kubernetes nodes are available within StorageOS."/>
+StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes, the Cluster Operator syncs any node labels set on Kubernetes nodes within StorageOS. Node labels may also be set with the CLI or UI."/>
 
 
 
@@ -139,9 +139,9 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -160,7 +160,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -190,7 +190,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -212,6 +212,12 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -270,19 +276,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -300,37 +294,13 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -378,6 +348,12 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -505,24 +481,6 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -553,12 +511,6 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -583,41 +535,6 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -630,31 +547,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -807,79 +700,61 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -938,12 +813,6 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -962,13 +831,13 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -979,43 +848,14 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1066,15 +906,6 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 
 
 
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#storageos-node-labels">StorageOS Node labels</a></li>
-    <li><a href="#storageos-pod-labels">StorageOS Pod Labels</a></li>
-    <li><a href="#storageos-pool-labels">StorageOS Pool labels</a></li>
-    <li><a href="#storageos-volume-labels">StorageOS Volume labels</a></li>
-  </ul>
-</nav>
-
 
 
           </div>
@@ -1096,7 +927,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1120,105 +951,18 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 <div class="td-content">
 	<h1>StorageOS Feature labels</h1>
 	
-	<p>Feature labels are a powerful and flexible way to control storage features,
-especially when combined with <a href="https://docs.storageos.com/docs/reference/cli/rule/">rules</a>.</p>
+	<p>Feature labels are a powerful and flexible way to control storage features.</p>
 <p>Labels can be applied to various StorageOS artefacts. Applying specific feature
 labels triggers compression, replication and other storage features. No feature
 labels are present by default.</p>
 <h2 id="storageos-node-labels">StorageOS Node labels</h2>
 <p>Nodes do not have any feature labels present by default.  When StorageOS is run
-within Kubernetes with the <a href="https://docs.storageos.com/docs/reference/cluster-operator/">Cluster Operator</a>, any node labels set on
-Kubernetes nodes are available within StorageOS.  Node labels may also be set
-with the CLI or UI.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Deployment type</td>
-<td align="left"><code>storageos.com/deployment</code></td>
-<td align="left">strings [<code>computeonly</code>,<code>mixed</code>]</td>
-<td align="left">Specifies whether a node should be <code>computeonly</code> where it only acts as a client and does not host volume data locally, or <code>mixed</code> (the default), where the node can operate in both client and server modes.</td>
-</tr>
-<tr>
-<td align="left">Region</td>
-<td align="left"><code>iaas/region</code></td>
-<td align="left">string</td>
-<td align="left">Set automatically in AWS, Azure and GCE.  e.g. <code>eu-west-1</code>.  Not currently used by StorageOS but available for use in rules.</td>
-</tr>
-<tr>
-<td align="left">Failure domain</td>
-<td align="left"><code>iaas/failure-domain</code></td>
-<td align="left">string</td>
-<td align="left">Used to spread master and replicas across different failure domains.  Set automatically in AWS, Azure and GCE, e.g. <code>eu-west-1b</code></td>
-</tr>
-<tr>
-<td align="left">Update domain</td>
-<td align="left"><code>iaas/update-domain</code></td>
-<td align="left">string</td>
-<td align="left">Set by some cloud providers to perform sequential updates/reboots.  Not currently used by StorageOS but available for use in rules.</td>
-</tr>
-<tr>
-<td align="left">Size</td>
-<td align="left"><code>iaas/size</code></td>
-<td align="left">string</td>
-<td align="left">The node hardware configuration, as set by the cloud provider, e.g. <code>m5d.xlarge</code>.  Not currently used by StorageOS but available for use in rules.</td>
-</tr>
-</tbody>
-</table>
-<p>To add a label to a node:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos node update --label-add storageos.com/deployment<span style="color:#ce5c00;font-weight:bold">=</span>computeonly nodename
-</code></pre></div><h2 id="storageos-pod-labels">StorageOS Pod Labels</h2>
-<table>
-<thead>
-<tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Fencing</td>
-<td align="left"><code>storageos.com/fenced</code></td>
-<td align="left">true / false</td>
-<td align="left">Enables StorageOS fencing of pods on unavailable nodes. For more information about fencing prerequisites please see the <a href="/docs/operations/fencing">Fencing</a> operations page.</td>
-</tr>
-</tbody>
-</table>
-<p>To add the fencing label to a pod use kubectl:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl label pod &lt;POD_NAME&gt; <span style="color:#000">key</span><span style="color:#ce5c00;font-weight:bold">=</span>value
-kubectl label pod mydb-pod storageos.com/fenced<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
-</code></pre></div><h2 id="storageos-pool-labels">StorageOS Pool labels</h2>
-<p>Pools do not have any labels present by default.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">Overcommitment</td>
-<td align="left"><code>storageos.com/overcommit</code></td>
-<td align="left">integers [+]</td>
-<td align="left">Sets the percentage of overcommitment allowed for the pool (see <a href="https://docs.storageos.com/docs/operations/overcommitment/">here</a>).</td>
-</tr>
-</tbody>
-</table>
-<p>To add overcommit labels to a pool:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos pool update --label-add storageos.com/overcommit<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">20</span> default
-</code></pre></div><h2 id="storageos-volume-labels">StorageOS Volume labels</h2>
+within Kubernetes, the <a href="https://docs.storageos.com/docs/reference/cluster-operator/">Cluster Operator</a> syncs any node labels
+set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
+CLI or UI.</p>
+<p>Future versions of StorageOS v2 will allow the use of node labels to set
+compute-only topologies vs. HyperConverged.</p>
+<h2 id="storageos-volume-labels">StorageOS Volume labels</h2>
 <p>Volumes do not have any feature labels present by default</p>
 <table>
 <thead>
@@ -1243,36 +987,6 @@ kubectl label pod mydb-pod storageos.com/fenced<span style="color:#ce5c00;font-w
 <td align="left">Switches off compression of data at rest and in transit.</td>
 </tr>
 <tr>
-<td align="left">Encryption</td>
-<td align="left"><code>storageos.com/encryption</code></td>
-<td align="left">true / false</td>
-<td align="left">Enables volume encryption, more details <a href="/docs/operations/encrypted-volumes">here</a></td>
-</tr>
-<tr>
-<td align="left">Failure mode</td>
-<td align="left"><code>storageos.com/failure.mode</code></td>
-<td align="left">strings [<code>soft</code>,<code>hard</code>,<code>alwayson</code>]</td>
-<td align="left">Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable.</td>
-</tr>
-<tr>
-<td align="left">Failure tolerance</td>
-<td align="left"><code>storageos.com/failure.tolerance</code></td>
-<td align="left">integers [0, 4]</td>
-<td align="left">Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas &gt; 0, so if there are 2 replicas it will default to 1.</td>
-</tr>
-<tr>
-<td align="left">Placement</td>
-<td align="left"><code>storageos.com/hint.master</code></td>
-<td align="left">Node hostname or uuid</td>
-<td align="left">Requests master volume placement on the specified node.  Will use another node if request can&rsquo;t be satisfied.</td>
-</tr>
-<tr>
-<td align="left">QoS</td>
-<td align="left"><code>storageos.com/throttle</code></td>
-<td align="left">true / false</td>
-<td align="left">Deprioritizes traffic by reducing the rate of disk I/O, when true.</td>
-</tr>
-<tr>
 <td align="left">Replication</td>
 <td align="left"><code>storageos.com/replicas</code></td>
 <td align="left">integers [0, 5]</td>
@@ -1281,23 +995,46 @@ kubectl label pod mydb-pod storageos.com/fenced<span style="color:#ce5c00;font-w
 </tbody>
 </table>
 <p>To create a volume with a feature label:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos volume create --label storageos.com/throttle<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span> --label storageos.com/replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> volumename
-</code></pre></div><p>When using the Kubernetes CSI driver (available from Kubernetes 1.10), volume
-labels can also be added to the parameters section of the StorageClass. This
-means that all volumes created with the specific StorageClass will have
-StorageOS volume labels applied to them.</p>
-<p>For example the StorageClass below will create <code>ext4</code> formatted volumes with a
-single StorageOS replica, in the <code>default</code> <a href="https://docs.storageos.com/docs/concepts/pools/">pool</a>.</p>
+<ul>
+<li>
+<p>Option 1: PVC Label</p>
+<p>Add the label in the PVC definition, for instance:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>PersistentVolumeClaim<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>pvc<span style="color:#0000cf;font-weight:bold">-3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">storageos.com/replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Label &lt;-----</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">storageClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;fast&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">accessModes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span>- ReadWriteOnce<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>1G<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Option 2: Set label in the StorageClass</p>
+<p>Any PVC using the StorageClass inherits the label. The PVC label takes
+precedence over the StorageClass parameters.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storage.k8s.io/v1<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StorageClass<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos-replicated<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fsType</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">storageos.com/replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos<span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div>
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">fsType</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">storageos.com/replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Label   &lt;--------</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># CSI driver (recommended) </span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Option 3:</p>
+<p>Once a PVC is created, you can update the Labels in StorageOS both in the
+UI or CLI. Those labels are going to be visible only for StorageOS and will
+not be synced to the Kubernetes resource.</p>
+</li>
+</ul>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>

@@ -265,14 +265,12 @@ will be kept.&lt;/p&gt;
 &lt;p&gt;While the replica count is controllable on a per-volume basis, some
 environments may prefer to set &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/#storageos-storageclass-labels&#34;&gt;default labels on the StorageClass&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;delta-sync&#34;&gt;Delta Sync&lt;/h3&gt;
-&lt;p&gt;StorageOS stores a checksum for every 4KB block of a volume. 256 contiguous
-block hashsums are used to generate a hashsum for a 1MiB region such that 1MiB
-regions are the smallest unit of synchronization. This means that if a replica
-for a volume goes offline, that when the replica comes back online only the
-regions with changed blocks need to be synchronized. This optimization reduces
-the time it takes for replicas to catch up, improving volume resilience.
-Additionally, it reduces network and IO bandwidth which can reduce costs when
-running in public clouds.&lt;/p&gt;
+&lt;p&gt;StorageOS implements a delta sync between a volume master and its replicas.
+This means that if a replica for a volume goes offline, that when the replica
+comes back online only the regions with changed blocks need to be synchronized.
+This optimization reduces the time it takes for replicas to catch up, improving
+volume resilience. Additionally, it reduces network and IO bandwidth which can
+reduce costs when running in public clouds.&lt;/p&gt;
 
       </description>
     </item>

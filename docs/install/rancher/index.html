@@ -22,25 +22,28 @@
 
 <title>Rancher | </title><meta property="og:title" content="Rancher" />
 <meta property="og:description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding.
+  Make sure to add a StorageOS licence after installing.
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
-   Catalog Advanced    Rancher Catalog Install StorageOS is a Certified application in the Rancher Catalog." />
+  The StorageOS v2 installation using the Rancher Catalog will be available soon." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/install/rancher/" />
 
 <meta itemprop="name" content="Rancher">
 <meta itemprop="description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding.
+  Make sure to add a StorageOS licence after installing.
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
-   Catalog Advanced    Rancher Catalog Install StorageOS is a Certified application in the Rancher Catalog.">
+  The StorageOS v2 installation using the Rancher Catalog will be available soon.">
 
-<meta itemprop="wordCount" content="1181">
+<meta itemprop="wordCount" content="702">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Rancher"/>
 <meta name="twitter:description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding.
+  Make sure to add a StorageOS licence after installing.
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
-   Catalog Advanced    Rancher Catalog Install StorageOS is a Certified application in the Rancher Catalog."/>
+  The StorageOS v2 installation using the Rancher Catalog will be available soon."/>
 
 
 
@@ -139,9 +142,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -160,7 +163,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -190,7 +193,7 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -212,6 +215,12 @@
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -270,19 +279,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -300,37 +297,13 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -378,6 +351,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -505,24 +484,6 @@
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -553,12 +514,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -583,41 +538,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -630,31 +550,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -807,79 +703,61 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -938,12 +816,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -962,13 +834,13 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -979,43 +851,14 @@
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1087,7 +930,7 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1117,6 +960,9 @@
 satisfied before proceeding.</p>
 </blockquote>
 <blockquote>
+<p>Make sure to add a StorageOS licence after installing.</p>
+</blockquote>
+<blockquote>
 <p>StorageOS transparently supports Rancher deployments on CentOS, RHEL,
 Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can
 support other Linux distributions as detailed on the <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">System Configuration
@@ -1124,6 +970,7 @@ page</a> if the
 appropriate kernel modules are available.</p>
 </blockquote>
 <p> </p>
+<p>The StorageOS v2 installation using the Rancher Catalog will be available soon.</p>
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
 
@@ -1142,24 +989,8 @@ appropriate kernel modules are available.</p>
 
             
 
-		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#catalog" role="tab"
-		   aria-controls="nav-home" aria-selected="true">Catalog</a>
-
-            
-		
-
-            
-            
-
-            
-            
-
-            
-
-            
-
-		<a class="nav-item nav-link" id="nav-1" data-toggle="tab" href="#advanced" role="tab"
-		   aria-controls="nav-home" aria-selected="false">Advanced</a>
+		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#manual" role="tab"
+		   aria-controls="nav-home" aria-selected="true">Manual</a>
 
             
 		
@@ -1177,159 +1008,8 @@ appropriate kernel modules are available.</p>
 
 
 
-<div class="tab-pane fade show active" id="catalog" role="tabpanel" aria-labelledby="nav-">
-    <h1 id="rancher-catalog-install">Rancher Catalog Install</h1>
-<p>StorageOS is a Certified application in the <a href="https://rancher.com/docs/rancher/v2.x/en/catalog/">Rancher
-Catalog</a>. You can install
-StorageOS using the Rancher application install.</p>
-<ol>
-<li>
-<p>Select the <code>System</code> project of your cluster</p>
-<p><img src="/images/rancher-ui-green-bubbles/rancher-1.png" alt="install-1"></p>
-</li>
-<li>
-<p>Select the <code>Apps</code> tab and click <code>Launch</code>
-<img src="/images/rancher-ui-green-bubbles/rancher-2.png" alt="install-2"></p>
-</li>
-<li>
-<p>Search for StorageOS and click on the App
-<img src="/images/rancher-ui-green-bubbles/rancher-3.png" alt="install-3"></p>
-</li>
-<li>
-<p>Define the StorageOS cluster installation</p>
-<blockquote>
-<p>A generic configuration for StorageOS is preset using the default values in
-the form. The values in the form can be changed to customize the
-installation. To customize the installation further, set <code>Install StorageOS Cluster</code> to false and use a <a href="/docs/install/rancher/install/rancher-catalog#custom-resource-definition">yaml definition for the StorageOSCluster
-Custom
-Resource</a>.</p>
-</blockquote>
-<p> </p>
-<p>The following options are exposed by the form to allow some simple
-customization of the StorageOS installation.</p>
-<ul>
-<li><a href="https://docs.storageos.com/docs/reference/cluster-operator/">Cluster Operator</a> namespace
-: The Kubernetes namespace where the StorageOS Cluster Operator controller
-and other resources will be created.</li>
-<li>Container Images
-: By default images are pulled from DockerHub, you can specify the image URLs
-when using private registries.</li>
-<li>Conditional bootstrap of StorageOS
-: Controls the automatic deployment of StorageOS after installing the
-Cluster Operator. If set to <code>false</code>, the Operator will be created, but the
-Custom Resource will not be applied to the cluster. Launch the operator and
-proceed to the section <a href="#custom-resource-definition">Custom Resource
-definition</a>. For more information check the
-Operator <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration/">documentation</a> and <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples/">CR
-examples</a>.</li>
-<li>StorageOS namespace
-: The Kubernetes namespace where StorageOS will be installed. Installing
-into the <code>kube-system</code> namespace will add StorageOS to a priority class to
-ensure high priority resource allocation. Installing StorageOS with the
-priority class prevents StorageOS from being evicted during periods of
-resource contention.</li>
-<li>Username/Password
-: Default Username and Password for the admin account to be created at
-StorageOS bootstrap. A random password will be generated by leaving the
-field empty or clicking the <code>Generate</code> button.</li>
-<li>Key-value store <a href="https://docs.storageos.com/docs/operations/external-etcd/">setup</a>
-: Connection and configuration details for an external Etcd cluster.
-StorageOS can use an external key-value store to hold configuration.
-Settings such as external etcd with TLS termination are available.</li>
-<li>Node Selectors and Tolerations
-: Control placement of StorageOS DaemonSet Pods. StorageOS will only be installed
-on the selected nodes. Can be used in conjunction with tolerations.</li>
-</ul>
-<p> </p>
-<p><img src="/images/rancher-ui-green-bubbles/rancher-4.png" alt="install-4">
-<img src="/images/rancher-ui-green-bubbles/rancher-5.png" alt="install-5"></p>
-</li>
-<li>
-<p>Verify the cluster bootstrap has successfully completed</p>
-<p><img src="/images/rancher-ui-green-bubbles/rancher-6.png" alt="install-6"></p>
-</li>
-</ol>
-<p> </p>
-<h2 id="custom-resource-definition">Custom Resource definition</h2>
-<p>If <code>Install StorageOS Cluster</code> was set to <code>false</code>, StorageOS will not be
-bootstrapped automatically. After the StorageOS Operator is installed, you can
-now create a Custom Resource that describes the StorageOS cluster.</p>
-<ol>
-<li>
-<p>Select the <code>System Workloads</code> and <code>Import YAML</code>
-<img src="/images/rancher-ui-green-bubbles/rancher-7.png" alt="install-7"></p>
-</li>
-<li>
-<p>Create the <code>Secret</code> and <code>CustomResource</code>
-<img src="/images/rancher-ui-green-bubbles/rancher-8.png" alt="install-8"></p>
-<p>This is an example.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apiVersion: v1
-kind: Secret
-metadata:
-  name: <span style="color:#4e9a06">&#34;storageos-api&#34;</span>
-  namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
-  labels:
-    app: <span style="color:#4e9a06">&#34;storageos&#34;</span>
-type: <span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span>
-data:
-  <span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span>
-  apiUsername: c3RvcmFnZW9z <span style="color:#8f5902;font-style:italic"># Define your own user and password</span>
-  apiPassword: c3RvcmFnZW9z
----
-apiVersion: <span style="color:#4e9a06">&#34;storageos.com/v1&#34;</span>
-kind: StorageOSCluster
-metadata:
-  name: <span style="color:#4e9a06">&#34;storageos&#34;</span>
-spec:
-  k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
-  secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
-  secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: <span style="color:#4e9a06">&#34;deployment&#34;</span>
-  images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:{{ site.latest_node_version }}&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-<span style="color:#8f5902;font-style:italic">#  kvBackend:</span>
-<span style="color:#8f5902;font-style:italic">#    address: &#39;storageos-etcd-client.etcd:2379&#39; # Example address, change for your etcd endpoint</span>
-<span style="color:#8f5902;font-style:italic">#    backend: &#39;etcd&#39;</span>
-  sharedDir: <span style="color:#4e9a06">&#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&#39;</span> <span style="color:#8f5902;font-style:italic"># Needed when Kubelet runs as a container</span>
-  resources:
-    requests:
-      memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
-  nodeSelectorTerms:
-    - matchExpressions:
-      - key: <span style="color:#4e9a06">&#34;node-role.kubernetes.io/worker&#34;</span>
-        operator: In
-        values:
-        - <span style="color:#4e9a06">&#34;true&#34;</span>
-</code></pre></div><blockquote>
-<p>Additional <code>spec</code> parameters are available on the [Cluster Operator
-configuration]({%link _docs/reference/cluster-operator/configuration.md %}) page.</p>
-</blockquote>
-<blockquote>
-<p>You can find more examples such as deployments referencing a external
-etcd kv store for StorageOS in the <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples/">Cluster Operator examples</a> page.</p>
-</blockquote>
-</li>
-</ol>
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="tab-pane fade" id="advanced" role="tabpanel" aria-labelledby="nav-">
-    <h1 id="advanced-installation">Advanced installation</h1>
-<p>This installation procedure is available in case the default method does not
-meet your requirements. The following procedure requires more steps to complete
-in comparison to the default procedure and requires adjustment of more
-installation parameters.</p>
+<div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="nav-">
+    <h1 id="manual-installation">Manual Installation</h1>
 <p>The StorageOS Cluster Operator is a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/">Kubernetes native
 application</a>
 developed to deploy and configure StorageOS clusters, and assist with
@@ -1348,10 +1028,11 @@ documentation.</p>
 <li><a href="#1-install-storageos-operator">Install StorageOS Operator</a></li>
 <li><a href="#2-create-a-secret">Create a Secret for default username and password</a></li>
 <li><a href="#3-trigger-a-storageos-installation">Trigger bootstrap using a CustomResource</a></li>
+<li><a href="#4-license-cluster">Apply StorageOS licence</a></li>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.3/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.0.0/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1364,8 +1045,8 @@ storageoscluster-operator-68678798ff-f28zw   1/1       Running   <span style="co
 API Username and Password in base64 encoding.
 The API username and password are used to create the default StorageOS admin
 account which can be used with the StorageOS CLI and to login to the StorageOS
-GUI. The account defined in the secret is also used by Kubernetes to
-authenticate against the StorageOS API when installing with the native driver.</p>
+GUI. The CSI credentials are used to register the CSI accounts, so Kubernetes
+and StorageOS communicate over an authenticated API.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apiVersion: v1
 kind: Secret
 metadata:
@@ -1378,6 +1059,13 @@ data:
   <span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span>
   apiUsername: c3RvcmFnZW9z
   apiPassword: c3RvcmFnZW9z
+  <span style="color:#8f5902;font-style:italic"># CSI Credentials</span>
+  csiProvisionUsername: c3RvcmFnZW9z
+  csiProvisionPassword: c3RvcmFnZW9z
+  csiControllerPublishUsername: c3RvcmFnZW9z
+  csiControllerPublishPassword: c3RvcmFnZW9z
+  csiNodePublishUsername: c3RvcmFnZW9z
+  csiNodePublishPassword: c3RvcmFnZW9z
 </code></pre></div><p>This example contains a default password, for production installations, use a
 unique, strong password.</p>
 <blockquote>
@@ -1401,12 +1089,19 @@ metadata:
 spec:
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
+  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:1.5.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.0.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+  kvBackend:
+    address: <span style="color:#4e9a06">&#39;storageos-etcd-client.etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
+  <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
   csi:
     enable: <span style="color:#204a87">true</span>
     deploymentStrategy: deployment
+    enableControllerPublishCreds: <span style="color:#204a87">true</span>
+    enableNodePublishCreds: <span style="color:#204a87">true</span>
+    enableProvisionCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
     memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
@@ -1426,18 +1121,27 @@ page.</p>
 store for StorageOS in the <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples/">Cluster Operator examples</a> page.</p>
 </blockquote>
 <h3 id="verify-storageos-installation">Verify StorageOS Installation</h3>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos get pods -w</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n kube-system get pods -w</span>
 NAME                                    READY   STATUS    RESTARTS   AGE
 storageos-csi-helper-5cf59b5b4-f5nwr    2/2     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-75f6c               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-czbqx               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 storageos-daemonset-zv4tq               3/3     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
-storageos-scheduler-6d67b46f67-5c46j    1/1     Running   <span style="color:#0000cf;font-weight:bold">6</span>          3m
+storageos-scheduler-6d67b46f67-5c46j    1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 </code></pre></div><blockquote>
 <p>The above command watches the Pods created by the Cluster Definition example.
 Note that pods typically take approximately 65 seconds to enter the Running
 Phase.</p>
 </blockquote>
+<h2 id="4-license-cluster">4. License cluster</h2>
+<blockquote>
+<p>A newly installed StorageOS cluster does not include a licence. A cluster
+must be licensed within 24 hours of the installation. For more information,
+check the <a href="https://docs.storageos.com/docs/reference/licence/">reference licence page</a>.</p>
+</blockquote>
+<p>You can apply a Free Developer licence following the <a href="https://docs.storageos.com/docs/operations/licensing/">operations
+licensing</a> page, or purchase a
+licence contacting <a href="mailto:sales@storageos.com">sales@storageos.com</a>.</p>
 
 </div>
 

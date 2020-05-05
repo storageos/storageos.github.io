@@ -55,10 +55,10 @@ window.onload = function() {
 configuration.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# linux/amd64&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.0.0-rc.1/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.0.0/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# MacOS&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.0.0-rc.1/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.0.0/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will need to provide the correct credentials to connect to the API. The
 default installation uses the &lt;code&gt;storageos-api&lt;/code&gt; Secret to generate the first
 admin user. By default, it creates a single user with username &lt;code&gt;storageos&lt;/code&gt; and
@@ -314,7 +314,7 @@ Kubernetes Pod events.&lt;/p&gt;
 failure to Kubernetes, showing the status of the Pod as &lt;code&gt;Init:Err&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;To view the output of all &lt;code&gt;storageos-init&lt;/code&gt; containers the following command can
 be used:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n storageos logs -l &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos,kind&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;daemonset -c storageos-init
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system logs -l &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos,kind&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;daemonset -c storageos-init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more details, check the
 &lt;a href=&#34;https://github.com/storageos/init&#34;&gt;StorageOS init container project&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;scripts-executed&#34;&gt;Scripts executed&lt;/h2&gt;
@@ -419,6 +419,47 @@ UI or CLI. Those labels are going to be visible only for StorageOS and will
 not be synced to the Kubernetes resource.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Licence</title>
+      <link>https://docs.storageos.com/v2/docs/reference/licence/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2/docs/reference/licence/</guid>
+      <description>
+        
+        
+        &lt;p&gt;A newly installed StorageOS cluster does not include a licence. A cluster can
+run unlicensed for 24 hours. After that, new operations such as volume
+provisioning or adding nodes are not permitted. Normal functioning of the
+cluster can be unlocked by applying a Free Developer licence.&lt;/p&gt;
+&lt;p&gt;To learn how to apply a licence to your cluster, check the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/licensing/&#34;&gt;operations
+licensing&lt;/a&gt; page.&lt;/p&gt;
+&lt;h2 id=&#34;free-developer-licence&#34;&gt;Free Developer licence&lt;/h2&gt;
+&lt;p&gt;The developer licence only requires the user to register and issue a
+licence through StorageOS.&lt;/p&gt;
+&lt;p&gt;The developer licence is free and grants a licence for a 5 node StorageOS
+cluster with 5TB of provisioned capacity. It is designed to enable basic cloud
+native workflows in Kubernetes that require the persistence of stateful
+application data. Dynamic provisioning, distributed access to data and high
+availability of volumes through synchronous replication and automatic failover
+are some of the features that are available under the developer licence.&lt;/p&gt;
+&lt;p&gt;The free developer licence includes community support through &lt;a href=&#34;https://slack.storageos.com&#34;&gt;our public Slack
+channel.&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;commercial-licences&#34;&gt;Commercial licences&lt;/h2&gt;
+&lt;p&gt;For information on our commercial offerings, including support, please contact
+&lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;note-about-capacity-limits&#34;&gt;Note about capacity limits&lt;/h2&gt;
+&lt;p&gt;Some StorageOS licences have limits on capacity. StorageOS allows provisioning
+volumes until the limit of the licence is reached. Only the size of the volume
+requested by the Persistent Volume Claim counts for the licence limit,
+regardless whether of whether the volume has replication enabled.&lt;/p&gt;
+&lt;p&gt;Once the licence limit is reached, new volumes are not able to provision unless
+provisioned capacity is released, i.e deleting volumes. That behaviour is not
+tight to the capacity of the backend disks on your nodes.&lt;/p&gt;
 
       </description>
     </item>
@@ -5225,12 +5266,12 @@ limitations under the License.
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;2.0.0-rc.1&lt;/code&gt;, available from
-&lt;a href=&#34;https://hub.docker.com/r/storageos/node/&#34;&gt;Docker Hub&lt;/a&gt; as &lt;code&gt;storageos/node:2.0.0-rc.1&lt;/code&gt;, or via the &lt;a href=&#34;https://github.com/storageos/charts&#34;&gt;Helm
+&lt;p&gt;The latest tagged release is &lt;code&gt;v2.0.0&lt;/code&gt;, available from
+&lt;a href=&#34;https://hub.docker.com/r/storageos/node/&#34;&gt;Docker Hub&lt;/a&gt; as &lt;code&gt;storageos/node:v2.0.0&lt;/code&gt;, or via the &lt;a href=&#34;https://github.com/storageos/charts&#34;&gt;Helm
 Chart&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;The latest CLI release is &lt;code&gt;2.0.0-rc.1&lt;/code&gt;, available from
+&lt;p&gt;The latest CLI release is &lt;code&gt;v2.0.0&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;200---released-99999999&#34;&gt;2.0.0 - Released 99/99/9999&lt;/h2&gt;
+&lt;h2 id=&#34;200---to-be-released&#34;&gt;2.0.0 - To be released&lt;/h2&gt;
 
       </description>
     </item>

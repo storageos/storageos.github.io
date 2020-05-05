@@ -24,7 +24,7 @@
 <meta property="og:description" content="This section is aimed to help you troubleshoot issues in your cluster, whether they are related to the StorageOS installation, integration with orchestrators or common misconfigurations.
 Tools To be able to troubleshoot issues the StorageOS cli is required.
 Pod in pending because of mount error Issue: The output of kubectl describe pod $POD_ID contains no such file or directory and references the StorageOS volume device file.
-root@node1:~# kubectl -n storageos describe $POD_ID (." />
+root@node1:~# kubectl -n kube-system describe $POD_ID (." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2/docs/operations/troubleshooting/" />
 
@@ -32,7 +32,7 @@ root@node1:~# kubectl -n storageos describe $POD_ID (." />
 <meta itemprop="description" content="This section is aimed to help you troubleshoot issues in your cluster, whether they are related to the StorageOS installation, integration with orchestrators or common misconfigurations.
 Tools To be able to troubleshoot issues the StorageOS cli is required.
 Pod in pending because of mount error Issue: The output of kubectl describe pod $POD_ID contains no such file or directory and references the StorageOS volume device file.
-root@node1:~# kubectl -n storageos describe $POD_ID (.">
+root@node1:~# kubectl -n kube-system describe $POD_ID (.">
 
 <meta itemprop="wordCount" content="2174">
 
@@ -43,7 +43,7 @@ root@node1:~# kubectl -n storageos describe $POD_ID (.">
 <meta name="twitter:description" content="This section is aimed to help you troubleshoot issues in your cluster, whether they are related to the StorageOS installation, integration with orchestrators or common misconfigurations.
 Tools To be able to troubleshoot issues the StorageOS cli is required.
 Pod in pending because of mount error Issue: The output of kubectl describe pod $POD_ID contains no such file or directory and references the StorageOS volume device file.
-root@node1:~# kubectl -n storageos describe $POD_ID (."/>
+root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
 
 
 
@@ -142,9 +142,9 @@ root@node1:~# kubectl -n storageos describe $POD_ID (."/>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -163,7 +163,7 @@ root@node1:~# kubectl -n storageos describe $POD_ID (."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.f0aeaa605e4fc070ae05f001251a5ce1ee6f7f927610ad7ba51daa1e85ac3a445fe9c2d6896cc0ff21b06c6d9ad16bb39fb073b33c296590e00e81f3ac8de150.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.15c8ebe08b9d61619e1c6bb9bf7a2fab63820d9e497c738086f6ac2a92d0faf7db77b1e3ff0aef7fa9888f92c0e5585829640a09377eeabbdb0dd2c5c01bc8c4.json"
   data-offline-search-base-href="/"
 >
 
@@ -834,6 +834,12 @@ root@node1:~# kubectl -n storageos describe $POD_ID (."/>
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferencelicence" href="/v2/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v2docsreferenceopen_source_attribution" href="/v2/docs/reference/open_source_attribution/">Open Source Attribution</a>
       
       
@@ -1022,7 +1028,7 @@ cli</a> is required.</p>
 <h2 id="pod-in-pending-because-of-mount-error">Pod in pending because of mount error</h2>
 <h3 id="issue">Issue:</h3>
 <p>The output of <code>kubectl describe pod $POD_ID</code> contains <code>no such file or directory</code> and references the StorageOS volume device file.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~# kubectl -n storageos describe <span style="color:#000">$POD_ID</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~# kubectl -n kube-system describe <span style="color:#000">$POD_ID</span>
 <span style="color:#ce5c00;font-weight:bold">(</span>...<span style="color:#ce5c00;font-weight:bold">)</span>
 Events:
   <span style="color:#ce5c00;font-weight:bold">(</span>...<span style="color:#ce5c00;font-weight:bold">)</span>
@@ -1112,7 +1118,7 @@ implying that StorageOS is not running. For Kubernetes to define StorageOS pods
 ready, the health check must pass.</p>
 <h3 id="assert-2">Assert:</h3>
 <p>Check the status of StorageOS pods.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~/# kubectl -n storageos get pod --selector <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos <span style="color:#8f5902;font-style:italic"># for CSI add --selector kind=daemonset</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~/# kubectl -n kube-system get pod --selector <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos <span style="color:#8f5902;font-style:italic"># for CSI add --selector kind=daemonset</span>
 NAME              READY     STATUS    RESTARTS   AGE
 storageos-qrqkj   0/1       Running   <span style="color:#0000cf;font-weight:bold">0</span>          1m
 storageos-s4bfv   0/1       Running   <span style="color:#0000cf;font-weight:bold">0</span>          1m
@@ -1185,7 +1191,7 @@ reclaimPolicy: Delete
 </li>
 <li>
 <p>Check if the secret exists according to those parameters</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n storageos get secret storageos-api
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system get secret storageos-api
 No resources found.
 Error from server <span style="color:#ce5c00;font-weight:bold">(</span>NotFound<span style="color:#ce5c00;font-weight:bold">)</span>: secrets <span style="color:#4e9a06">&#34;storageos-api&#34;</span> not found
 </code></pre></div><p>If no resources are found, it is clear that the Secret doesn&rsquo;t exist or it is not deployed in
@@ -1224,9 +1230,9 @@ such cases the <code>JOIN</code> variable must not contain master nodes or the S
 cluster will remain unable to start.</p>
 <h3 id="assert-4">Assert:</h3>
 <p>Check that the first node of the <code>JOIN</code> variable started properly.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~/# kubectl -n storageos describe ds/storageos <span style="color:#000;font-weight:bold">|</span> grep JOIN
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~/# kubectl -n kube-system describe ds/storageos <span style="color:#000;font-weight:bold">|</span> grep JOIN
     JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
-root@node1:~/# kubectl -n storageos get pod -o wide <span style="color:#000;font-weight:bold">|</span> grep 172.28.128.3
+root@node1:~/# kubectl -n kube-system get pod -o wide <span style="color:#000;font-weight:bold">|</span> grep 172.28.128.3
 storageos-8zqxl   1/1       Running   <span style="color:#0000cf;font-weight:bold">0</span>          2m        172.28.128.3   node1
 </code></pre></div><h3 id="solution-4">Solution:</h3>
 <p>Make sure that the <code>JOIN</code> variable doesn&rsquo;t specify the master nodes. In case
@@ -1243,7 +1249,7 @@ through Kubernetes node labels, or StorageOS in the <a href="https://docs.storag
 <h2 id="lio-initerror">LIO Init:Error</h2>
 <h3 id="issue-4">Issue:</h3>
 <p>StorageOS pods not starting with <code>Init:Error</code></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n storageos get pod
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system get pod
 NAME              READY     STATUS              RESTARTS   AGE
 storageos-2kwqx   0/3       Init:Err             <span style="color:#0000cf;font-weight:bold">0</span>          6s
 storageos-cffcr   0/3       Init:Err             <span style="color:#0000cf;font-weight:bold">0</span>          6s
@@ -1256,7 +1262,7 @@ modules on the host system. If you are seeing these errors it is because that
 container couldn&rsquo;t load the modules.</p>
 <h3 id="assert-5">Assert</h3>
 <p>Check the logs of the init container.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n storageos logs <span style="color:#000">$ANY_STORAGEOS_POD</span> -c storageos-init
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system logs <span style="color:#000">$ANY_STORAGEOS_POD</span> -c storageos-init
 </code></pre></div><p>In case of failure, it will show the following output, indicating which kernel
 modules couldn&rsquo;t be loaded or that they are not properly configured:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Checking configfs

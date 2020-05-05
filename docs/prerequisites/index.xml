@@ -134,11 +134,6 @@ between all nodes in the cluster:&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;gRPC&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5702&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Prometheus&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5703&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;DirectFS&lt;/td&gt;
@@ -146,37 +141,12 @@ between all nodes in the cluster:&lt;/p&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5704&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Dataplane health check&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dataplane Supervisor&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5705&lt;/td&gt;
 &lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;REST API&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5706&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5707&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;ETCD service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5708&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5709&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;center&#34;&gt;5710&lt;/td&gt;
-&lt;td align=&#34;center&#34;&gt;tcp&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;NATS service&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;center&#34;&gt;5711&lt;/td&gt;
@@ -259,6 +229,32 @@ Kubernetes master&amp;rsquo;s &lt;code&gt;controller-manager&lt;/code&gt; and &l
 enabled for both.&lt;/p&gt;
 &lt;p&gt;Refer to our installation pages for the orchestrators to see details on how to
 check and enable mount propagation where appropriate.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Etcd</title>
+      <link>https://docs.storageos.com/docs/prerequisites/etcd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/prerequisites/etcd/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS requires an etcd cluster in order to function.&lt;/p&gt;
+&lt;p&gt;For more information on why etcd is required please see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/etcd/&#34;&gt;etcd concepts&lt;/a&gt; page and for production recommendations for
+etcd installations please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;Etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. StorageOS does not recommend using the Kubernetes etcd cluster for
+StorageOS installations&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;using-etcd-with-storageos&#34;&gt;Using Etcd with StorageOS&lt;/h2&gt;
+&lt;p&gt;During installation of StorageOS the &lt;code&gt;kvBackend&lt;/code&gt; parameters of the StorageOS
+operator are used to specify the address of the etcd cluster. See the
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/&#34;&gt;StorageOS cluster operator
+configuration&lt;/a&gt; examples for more
+information.&lt;/p&gt;
 
       </description>
     </item>

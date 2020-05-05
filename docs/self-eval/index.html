@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
 ">
 
-<meta itemprop="wordCount" content="4362">
+<meta itemprop="wordCount" content="3491">
 
 
 
@@ -136,9 +136,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -187,7 +187,7 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -209,6 +209,12 @@
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -267,19 +273,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -297,37 +291,13 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -375,6 +345,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -502,24 +478,6 @@
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -550,12 +508,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -580,41 +532,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -627,31 +544,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -804,79 +697,61 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -935,12 +810,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -959,13 +828,13 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -976,43 +845,14 @@
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1072,7 +912,6 @@
     <li><a href="#a-namestorageosoperatorastorageos-operator">StorageOS Operator</a>
       <ul>
         <li><a href="#a-namestorageosoperatorfeaturesastorageos-operator-features">StorageOS Operator features</a></li>
-        <li><a href="#a-namenativedrivervscsianative-driver-vs-csi">Native Driver vs CSI</a></li>
       </ul>
     </li>
     <li><a href="#a-nameexternaletcdaexternal-etcd">External Etcd</a></li>
@@ -1084,12 +923,10 @@
     </li>
     <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator">Install StorageOS Operator</a></li>
     <li><a href="#a-nameinstallstorageosainstall-storageos">Install StorageOS</a></li>
-    <li><a href="#a-namesetupamonitoringstackasetup-a-monitoring-stack">Setup a Monitoring Stack</a></li>
   </ul>
 
   <ul>
     <li><a href="#a-namevolumereplicationavolume-replication">Volume Replication</a></li>
-    <li><a href="#a-namefencingafencing">Fencing</a></li>
   </ul>
 
   <ul>
@@ -1123,7 +960,7 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1141,57 +978,6 @@
 	<h1>Self Evaluation Guide</h1>
 	<div class="lead">Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.</div>
 	<p>If you have any specific or more complex requirements please contact StorageOS as we&rsquo;d be happy to organise a POC in conjunction with our Engineering team. You can join our <a href="https://storageos.slack.com">slack channel</a> or email us at: <a href="mailto:info@storageos.com">info@storageos.com</a></p>
-<p> </p>
-<h1 id="table-of-contents">Table of Contents</h1>
-<!-- vscode-markdown-toc -->
-<ul>
-<li><a href="#StorageOSOperator">StorageOS Operator</a>
-<ul>
-<li><a href="#StorageOSOperatorfeatures">StorageOS Operator features</a></li>
-<li><a href="#NativeDrivervsCSI">Native Driver vs CSI</a></li>
-</ul>
-</li>
-<li><a href="#ExternalEtcd">External Etcd</a></li>
-<li><a href="#Prerequisites">Prerequisites</a></li>
-<li><a href="#InstallingStorageOS">Installing StorageOS</a>
-<ul>
-<li><a href="#Installetcd">Install etcd</a></li>
-<li><a href="#InstallStorageOSOperator">Install StorageOS Operator</a></li>
-<li><a href="#InstallStorageOS">Install StorageOS</a></li>
-<li><a href="#SetupaMonitoringStack">Setup a Monitoring Stack</a></li>
-</ul>
-</li>
-<li><a href="#StorageOSFeatures">StorageOS Features</a>
-<ul>
-<li><a href="#VolumeReplication">Volume Replication</a></li>
-<li><a href="#Fencing">Fencing</a></li>
-</ul>
-</li>
-<li><a href="#Benchmarking">Benchmarking</a>
-<ul>
-<li><a href="#Considerations">Considerations</a>
-<ul>
-<li><a href="#ApplicationvsStorageOSreplication">Application vs StorageOS replication</a></li>
-<li><a href="#StatefulSets">StatefulSets</a></li>
-<li><a href="#VolumePlacement">Volume Placement</a>
-<ul>
-<li><a href="#Howtolandavolumeandapodonthesamenode">How to land a volume and a pod on the same node</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#SyntheticBenchmarks">Synthetic Benchmarks</a></li>
-<li><a href="#ApplicationBenchmarks">Application Benchmarks</a></li>
-</ul>
-</li>
-<li><a href="#Conclusion">Conclusion</a></li>
-</ul>
-<!-- vscode-markdown-toc-config
-	numbering=true
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-<div style="page-break-after: always;"></div>
 <h2 id="support-for-self-evaluations">Support for Self Evaluations</h2>
 <p>Should you have questions or require support, there are several ways to get in
 touch with us. The fastest way to get in touch is to <a href="https://slack.storageos.com">join our public Slack
@@ -1220,12 +1006,8 @@ hbspt.forms.create({
 <h3 id="a-namestorageosoperatorfeaturesastorageos-operator-features"><a name='StorageOSOperatorfeatures'></a>StorageOS Operator features</h3>
 <p>Specific configuration options for the StorageOS Operator that we believe to be important during a self-evaluation will be laid out in this guide.</p>
 <p>A set of example StorageOSCluster are listed <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples">here</a>. For an exhaustive list of configuration settings for the StorageOS operator please see our <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration">documentation</a>.</p>
-<h3 id="a-namenativedrivervscsianative-driver-vs-csi"><a name='NativeDrivervsCSI'></a>Native Driver vs CSI</h3>
-<p>Communication between Kubernetes and StorageOS can use one of two drivers; the StorageOS Native Driver or the CSI (Container Storage Interface) driver. CSI provides a standardized interface for storage providers to use and is considered GA from Kubernetes 1.13. Therefore, StorageOS uses CSI as the default driver for Kubernetes 1.13+.</p>
-<p>As the StorageOS native driver is implemented in the Kubernetes trunk by StorageOS, it is tied to Kubernetes releases. Whereas using CSI we can iterate more quickly and make improvements independent of Kubernetes releases.</p>
-<p>Importantly CSI is only considered generally available in Kubernetes 1.13+ and is still in technology preview in Openshift 3.11.</p>
 <h2 id="a-nameexternaletcdaexternal-etcd"><a name='ExternalEtcd'></a>External Etcd</h2>
-<p>StorageOS highly recommends an external etcd cluster is used for production deployments. In this configuration the etcd cluster would run on separate boxes from the rest of the Kubernetes and StorageOS cluster ensuring stability and resilience of the etcd cluster. However for the purposes of a self-evaluation it is acceptable to run etcd as a container inside Kubernetes.</p>
+<p>StorageOS highly recommends that an etcd cluster on standalone nodes outside the Kubernetes cluster is used for production deployments. In this configuration the etcd cluster would run on separate boxes from the rest of the Kubernetes and StorageOS cluster ensuring stability and resilience of the etcd cluster. However for the purposes of a self-evaluation it is acceptable to run etcd as a container inside Kubernetes.</p>
 <p>We do not recommend running etcd on the same nodes as StorageOS when node failure will be tested, as if the majority of etcd nodes fail then the etcd cluster cannot be recovered automatically. Therefore it is better to run etcd on separate nodes.</p>
 <h2 id="a-nameprerequisitesaprerequisites"><a name='Prerequisites'></a>Prerequisites</h2>
 <p>StorageOS has some prerequisites that must be met to complete a successful installation</p>
@@ -1273,7 +1055,36 @@ $ <span style="color:#204a87">export</span> <span style="color:#000">NAMESPACE</
 <li>
 <p>Deploy Operator</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./etcd-operator/example/rbac/create_role.sh
-$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f ./etcd-operator/example/deployment.yaml
+$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: apps/v1
+</span><span style="color:#4e9a06">kind: Deployment
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: etcd-operator
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  selector:
+</span><span style="color:#4e9a06">    matchLabels:
+</span><span style="color:#4e9a06">      app: etcd-operator
+</span><span style="color:#4e9a06">  replicas: 1
+</span><span style="color:#4e9a06">  template:
+</span><span style="color:#4e9a06">    metadata:
+</span><span style="color:#4e9a06">      labels:
+</span><span style="color:#4e9a06">        app: etcd-operator
+</span><span style="color:#4e9a06">    spec:
+</span><span style="color:#4e9a06">      containers:
+</span><span style="color:#4e9a06">      - name: etcd-operator
+</span><span style="color:#4e9a06">        image: quay.io/coreos/etcd-operator:v0.9.4
+</span><span style="color:#4e9a06">        command:
+</span><span style="color:#4e9a06">        - etcd-operator
+</span><span style="color:#4e9a06">        env:
+</span><span style="color:#4e9a06">        - name: MY_POD_NAMESPACE
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.namespace
+</span><span style="color:#4e9a06">        - name: MY_POD_NAME
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.name
+</span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>
 <p>The Kubernetes masters should then be labelled so a nodeSelector can be used in the EtcdCluster manifest</p>
@@ -1289,7 +1100,7 @@ $ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f ./etcd-operato
 </span><span style="color:#4e9a06"> name: &#34;storageos-etcd&#34;
 </span><span style="color:#4e9a06">spec:
 </span><span style="color:#4e9a06"> size: 1
-</span><span style="color:#4e9a06"> version: &#34;3.3.17&#34;
+</span><span style="color:#4e9a06"> version: &#34;3.4.7&#34;
 </span><span style="color:#4e9a06"> pod:
 </span><span style="color:#4e9a06">   etcdEnv:
 </span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND</span>_BYTES
@@ -1328,7 +1139,7 @@ END
 <p> </p>
 <h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
 <p>In order to install the StorageOS operator download the requisite yaml manifests or apply them with kubectl.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.3/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.0.0/storageos-operator.yaml
 </code></pre></div><p>You can verify the operator is running using the following command</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
 </code></pre></div><p> </p>
@@ -1343,52 +1154,60 @@ END
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># CSI Credentials</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiProvisionUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiProvisionPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerPublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerPublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
 <p>Create a StorageOSCluster resource</p>
-<pre><code>$ kubectl create -f - &lt;&lt;END
-apiVersion: &quot;storageos.com/v1&quot;
-kind: StorageOSCluster
-metadata:
- name: &quot;storageos&quot;
-spec:
- secretRefName: &quot;storageos-api&quot;
- secretRefNamespace: &quot;default&quot;
- images:
-   nodeContainer: &quot;storageos/node:1.5.3&quot; # StorageOS version
- resources:
-   requests:
-   memory: &quot;512Mi&quot;
- csi:
-   enable: true
-   deploymentStrategy: deployment
- kvBackend:
-   address: 'storageos-etcd-client.etcd.svc:2379'
-   backend: 'etcd'
-END
-</code></pre></li>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$<span style="color:#f8f8f8;text-decoration:underline"> </span>kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>- &lt;&lt;END<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos.com/v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StorageOSCluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example-storageoscluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;upstream&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># storageClassName: fast # The storage class creates by the StorageOS operator is configurable</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csi</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">deploymentStrategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;deployment&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableProvisionCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableControllerPublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableNodePublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">kvBackend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd-client.etcd.svc.cluster.local:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
 <li>
 <p>Confirm that the cluster has been created and that StorageOS pods are running</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos get pods
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system get pods
 </code></pre></div><p>StorageOS pods enter a ready state after a minimum of 65s has passed.</p>
 </li>
 <li>
 <p>Deploy the StorageOS CLI as a container</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos run         <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--image storageos/cli:1.2.2        <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                    <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_HOST</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos     <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--command cli                      <span style="color:#4e9a06">\
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run               <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.0.0         <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--command cli                            <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>-- /bin/sleep <span style="color:#0000cf;font-weight:bold">999999</span>
 </code></pre></div></li>
 <li>
@@ -1398,9 +1217,8 @@ END
 </span><span style="color:#4e9a06">kind: PersistentVolumeClaim
 </span><span style="color:#4e9a06">metadata:
 </span><span style="color:#4e9a06"> name: pvc-1
-</span><span style="color:#4e9a06"> annotations:
-</span><span style="color:#4e9a06">   volume.beta.kubernetes.io/storage-class: fast
 </span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06"> storageClassName: &#34;fast&#34;
 </span><span style="color:#4e9a06"> accessModes:
 </span><span style="color:#4e9a06">   - ReadWriteOnce
 </span><span style="color:#4e9a06"> resources:
@@ -1410,7 +1228,7 @@ END
 </code></pre></div></li>
 <li>
 <p>Verify that the CLI is working. <code>pvc-1</code> should be listed in the CLI output</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos volume ls
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>The StorageOS web UI can also be used to display information about the state of the cluster. The StorageOS UI can be accessed on any node that is running a StorageOS pod on port 5705. The username/password for the UI is defined by the <code>storageos-api</code> secret. For this self-evaluation the username/password is <code>storageos:storageos</code></p>
@@ -1482,40 +1300,7 @@ Hello World!
 Hello World!
 </code></pre></div></li>
 </ol>
-<p>Now that StorageOS has been successfully installed, the cluster has a standard license by default which allows for the creation of 100GB of persistent volumes. If you register the cluster then a developer license will be applied and 500GB of persistent volumes can be created. Replicas do not count towards the license total so a 500GB license could be used to created a 500GB volume with 5 replicas. For the purposes of this self-evaluation the standard license is sufficient.</p>
-<h2 id="a-namesetupamonitoringstackasetup-a-monitoring-stack"><a name='SetupaMonitoringStack'></a>Setup a Monitoring Stack</h2>
-<p>StorageOS exposes many metrics about the running of StorageOS and perhaps most importantly the read/write performance of StorageOS volumes. Each StorageOS pod exposes a Prometheus endpoint that exposes metrics; these can be visualized with something like Grafana.</p>
-<p>A guided installation of Prometheus, using the Prometheus operator and Grafana, using helm, is available in our deploy repository.</p>
-<ol>
-<li>
-<p>To install Prometheus you can run the <code>install-prometheus</code> script</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
-$ <span style="color:#204a87">cd</span> storageos-usecases/prometheus
-$ ./install-prometheus.sh
-</code></pre></div><p>``</p>
-</li>
-<li>
-<p>Grafana can be installed using yaml manifests</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./install-grafana.sh
-</code></pre></div><p>``</p>
-</li>
-<li>
-<p>In order to view the Grafana or Prometheus UI create the NodePort services in the manifests folder</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f manifests/prometheus/prometheus-svc.yaml.example
-$ kubectl create -f manifests/grafana/grafana-svc.yaml.example
-</code></pre></div><pre><code>
-The Grafana UI is then available on `&lt;NODE_IP&gt;:3000`. The username and password are `admin`:`admin`. The username and password are set in a secret in the grafana-deployment.yaml file. Once logged in create the Prometheus data source by setting the URL to `http://prometheus-operated:9090` and configure the scrape interval to be 10s and set the query timeout to 30s. The [StorageOS example dashboard](https://grafana.com/dashboards/10093) can then be imported into Grafana.
-
-</code></pre></li>
-<li>
-<p>To confirm the dashboard is working try writing some data to the volume that was created previously</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it d1 -- bash -c <span style="color:#4e9a06">&#39;dd if=/dev/zero of=/mnt/file count=1024 bs=1M oflag=direct&#39;</span>
-</code></pre></div><p>``</p>
-</li>
-</ol>
-<p>The StorageOS dashboard will show that a volume is being written to, giving metrics for IOPS and bandwidth.</p>
-<p>For more information about how to interpret the metrics that we expose please see our documentation about <a href="https://docs.storageos.com/docs/operations/monitoring/">Monitoring StorageOS</a>. And for a full overview of the metrics that we expose please refer to our <a href="https://docs.storageos.com/docs/reference/prometheus">Prometheus</a> documentation.</p>
-<p>We have also created a dashboard for monitoring etcd pods which can be found <a href="https://grafana.com/dashboards/10323">here</a>. It is important to defragment etcd before the on disk space exceeds the database quota, see the <a href="https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/maintenance.md#defragmentation">etcd documentation</a> for more information about etcd maintenance.</p>
+<p>Now that StorageOS has been successfully installed, the cluster has a standard license by default which allows for the creation of 50GB of persistent volumes. If you register the cluster then a developer license will be applied and 500GB of persistent volumes can be created. Replicas do not count towards the license total so a 500GB license could be used to created a 500GB volume with 5 replicas. For the purposes of this self-evaluation the standard license is sufficient.</p>
 <p> </p>
 <h1 id="a-namestorageosfeaturesastorageos-features"><a name='StorageOSFeatures'></a>StorageOS Features</h1>
 <p>Now that you have a correctly functioning StorageOS cluster we will explain some of our features that may be of use to you as you complete application and synthetic benchmarks.</p>
@@ -1533,17 +1318,16 @@ The Grafana UI is then available on `&lt;NODE_IP&gt;:3000`. The username and pas
 </span><span style="color:#4e9a06">apiVersion: v1
 </span><span style="color:#4e9a06">kind: PersistentVolumeClaim
 </span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06">name: pvc-replicated
-</span><span style="color:#4e9a06">labels:
-</span><span style="color:#4e9a06">  storageos.com/replicas: &#34;1&#34;
-</span><span style="color:#4e9a06">annotations:
-</span><span style="color:#4e9a06">  volume.beta.kubernetes.io/storage-class: fast
+</span><span style="color:#4e9a06"> name: pvc-replicated
+</span><span style="color:#4e9a06"> labels:
+</span><span style="color:#4e9a06">   storageos.com/replicas: &#34;1&#34;
 </span><span style="color:#4e9a06">spec:
-</span><span style="color:#4e9a06">accessModes:
-</span><span style="color:#4e9a06">  - ReadWriteOnce
-</span><span style="color:#4e9a06">resources:
-</span><span style="color:#4e9a06">  requests:
-</span><span style="color:#4e9a06">    storage: 5Gi
+</span><span style="color:#4e9a06"> storageClassName: &#34;fast&#34;
+</span><span style="color:#4e9a06"> accessModes:
+</span><span style="color:#4e9a06"> - ReadWriteOnce
+</span><span style="color:#4e9a06"> resources:
+</span><span style="color:#4e9a06">   requests:
+</span><span style="color:#4e9a06">     storage: 5Gi
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div><blockquote>
 <p>Note that volume replication is enabled by setting the <code>storageos.com/replicas</code> label on the volume.</p>
@@ -1551,7 +1335,7 @@ The Grafana UI is then available on `&lt;NODE_IP&gt;:3000`. The username and pas
 </li>
 <li>
 <p>Confirm that a replicated volume has been created by using the StorageOS CLI or UI</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos volume ls
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Create a pod that uses the PVC</p>
@@ -1583,62 +1367,27 @@ root@replicated-pod:/# cat /mnt/hello
 Hello World!
 </code></pre></div></li>
 <li>
-<p>Find the location of the master volume and drain the node using the StorageOS CLI. Draining a node causes all volumes on the node to be evicted. For replicated volumes this immediately promotes a replica to become the new master, and for unreplicated volumes a replica is created and fully synchronized before the volume fails over</p>
+<p>Find the location of the master volume and shutdown the. Shutting down a node causes all volumes, with online replicas, on the node to be evicted. For replicated volumes this immediately promotes a replica to become the new master.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pvc
 NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 pvc-replicated Bound    pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86   5Gi        RWO            fast           1m
 
-$ kubectl <span style="color:#204a87">exec</span> -it -n storageos cli -- storageos volume ls
-NAMESPACE/NAME                                    SIZE   MOUNT           STATUS  REPLICAS  LOCATION
-default/pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86  50GiB  ip-10-0-11-175  active  1/1       ip-10-0-11-167 <span style="color:#ce5c00;font-weight:bold">(</span>healthy<span style="color:#ce5c00;font-weight:bold">)</span>
+$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
+NAMESPACE  NAME                                      SIZE     LOCATION              ATTACHED ON   REPLICAS  AGE
+default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">26</span> seconds ago
 
-$ kubectl <span style="color:#204a87">exec</span> -it -n storageos cli -- storageos node drain ip-10-0-11-167
-ip-10-0-11-167
 </code></pre></div></li>
 <li>
-<p>Check the location of the master volume and notice that it is on a new node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n storageos cli -- storageos volume ls
-NAMESPACE/NAME                                    SIZE   MOUNT           STATUS  REPLICAS  LOCATION
-default/pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86  50GiB  ip-10-0-11-175  active  1/1       ip-10-0-11-189 <span style="color:#ce5c00;font-weight:bold">(</span>synching<span style="color:#ce5c00;font-weight:bold">)</span>
+<p>Check the location of the master volume and notice that it is on a new node. If the pod that mounted the volume was located on the same node that was shutdown then the pod will need to be recreated.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
+NAMESPACE  NAME                                      SIZE     LOCATION               ATTACHED ON   REPLICAS  AGE
+default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker2 <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">46</span> seconds ago
 </code></pre></div></li>
 <li>
 <p>Check that the data is still accessible to the pod</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it replicated-pod -- bash
 root@replicated-pod:/# cat /mnt/hello
 Hello World!
-</code></pre></div></li>
-</ol>
-<h2 id="a-namefencingafencing"><a name='Fencing'></a>Fencing</h2>
-<p>StorageOS enables fencing of pods using the <code>storageos.com/fenced=true</code> label. Pods must have the fencing label set and be using at least one StorageOS volume. Any StorageOS volume that the pod is using must have at least one healthy replica.</p>
-<p>StatefulSets are the de facto controller for stateful workloads in Kubernetes. They provide a variety of useful guarantees but chief among them is that pods are unique. This guarantee means that if Kubernetes detects that a node is segregated from the master, StatefulSet pods will not be rescheduled unless the StatefulSet pods on the failed node are manually force terminated. However as StorageOS pods communicate via a gossip protocol, StorageOS can determine whether the node is truly offline or just partitioned from the master. In the case that the node is no longer participating in gossip, StorageOS can intervene and terminate StatefulSet pods that are using StorageOS volumes thus improving the time to recover for StatefulSets.</p>
-<p>For more information about StatefulSets and fencing please see our <a href="https://docs.storageos.com/docs/concepts/fencing">Fencing concepts</a> page. For information on how to enable Fencing see our <a href="https://docs.storageos.com/docs/operations/fencing">Fencing operations</a> page.</p>
-<ol>
-<li>
-<p>To test fencing create a StatefulSet from the StorageOS deploy repository. Note this is the same repository that we cloned earlier so if you already have a copy just <code>cd storageos-usecases</code>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
-$ <span style="color:#204a87">cd</span> storageos-usecases
-$ kubectl create -f ./fencing
-</code></pre></div></li>
-<li>
-<p>Check what node the <code>mysql-0</code> pod is running on and make that node unavailable e.g. shutdown the node or stop the kubelet on the node. Now watch as the <code>mysql-0</code> pod is rescheduled onto a different node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -l <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>mysql -o wide
-NAME      READY   STATUS    RESTARTS   AGE    IP           NODE                           NOMINATED NODE   READINESS GATES
-client    1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          1m     10.244.2.4   ip-10-1-10-112.storageos.net   &lt;none&gt;           &lt;none&gt;
-mysql-0   1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          1m     10.244.1.6   ip-10-1-10-235.storageos.net   &lt;none&gt;           &lt;none&gt;
-</code></pre></div></li>
-<li>
-<p>Once the node is in a NotReady state you&rsquo;ll see that the <code>mysql-0</code> pod has been rescheduled on a different node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get nodes
-NAME                           STATUS     ROLES    AGE    VERSION
-ip-10-1-10-112.storageos.net   Ready      master   107m   v1.14.3
-ip-10-1-10-118.storageos.net   Ready      &lt;none&gt;   107m   v1.14.3
-ip-10-1-10-235.storageos.net   NotReady   &lt;none&gt;   107m   v1.14.3
-
-
-$ kubectl get pods -o wide
-NAME      READY   STATUS        RESTARTS   AGE   IP           NODE                           NOMINATED NODE   READINESS GATES
-client    1/1     Running       <span style="color:#0000cf;font-weight:bold">0</span>          1m    10.244.2.4   ip-10-1-10-112.storageos.net   &lt;none&gt;           &lt;none&gt;
-mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</span>          30s   10.244.1.6   ip-10-1-10-118.storageos.net   &lt;none&gt;           &lt;none&gt;
 </code></pre></div></li>
 </ol>
 <p> </p>
@@ -1658,9 +1407,7 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 <p>When testing applications, such as databases, it is also necessary to run benchmarks for a sufficiently long time to account for caching, and cache flushing that databases do. We recommend running application benchmarks over a 20-30min period for this reason.</p>
 <h4 id="a-namehowtolandavolumeandapodonthesamenodeahow-to-land-a-volume-and-a-pod-on-the-same-node"><a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node</h4>
 <p>StorageOS has an automatic co-location feature on our development roadmap that we are calling pod locality. Until the feature is GA co-location of a master volume and a pod can be achieved by leveraging existing StorageOS and Kubernetes features.</p>
-<p><code>storageos.com/hint.master</code> is a volume label that influences the placement of a StorageOS master volume. By setting this label to the same value as a <code>nodeSelector</code> on a StatefulSet or Pod the master volume and the pod should co-locate on the same node. You can reference our <a href="https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml">FIO local volumes job</a> for an example of how to do this.</p>
-<p>StorageOS <a href="https://docs.storageos.com/docs/concepts/pools">Pools</a> can be used to restrict volume placement to a subset of nodes. Nodes can be included in a specific pool by matching a pools <code>nodeSelector</code>. Pools can be created using the StorageOS GUI or <a href="https://docs.storageos.com/docs/reference/cli/pool">CLI</a>. The pool that a volume will be created from is specified in the StorageClass <code>pool</code> <a href="https://github.com/storageos/deploy/blob/master/k8s/examples/000-storageclass.yaml">parameter</a>.</p>
-<p>It is also possible to cordon StorageOS nodes using the GUI or the CLI in order to force the placement of volumes on a specific node. A further possibility is to use of the <code>storageos.com/auto-follow</code> label. This label enables StorageOS to promote a replica volume to being a master when the pod and the replica volume are co-located.
+<p><code>storageos.com/hint.master</code> is a volume label that influences the placement of a StorageOS master volume. By setting this label to the StorageOS nodeID that corresponds to the <code>nodeSelector</code> on a StatefulSet or Pod the master volume and the pod should co-locate on the same node. You can reference our <a href="https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml">FIO local volumes job</a> for an example of how to do this.
  </p>
 <h2 id="a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</h2>
 <p>Synthetic benchmarks using tools such as FIO are a useful way to begin measuring StorageOS performance. While not fully representative of application performance, they allow us to reason about the performance of storage devices without the added complexity of simulating real world workloads, and provide results easily comparable across platforms.</p>
@@ -1680,8 +1427,8 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get node --show-labels
 </code></pre></div></li>
 <li>
-<p>Generate the FIO jobs by passing in the node name that the job should run on. The number is the number of volumes that FIO will test concurrently</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./job-generator-per-volumecount.sh <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000">$NODE_NAME</span>
+<p>Generate the FIO jobs by passing in the node name that the job should run on, and the StorageOS node id for that node. The number is the number of volumes that FIO will test concurrently. The StorageOS node ID can be found using the cli to <code>describe node</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./job-generator-per-volumecount.sh <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000">$NODE_NAME</span> <span style="color:#000">$STORAGEOS_NODEID</span>
 </code></pre></div></li>
 <li>
 <p>Upload the FIO profiles as ConfigMaps</p>
@@ -1697,7 +1444,7 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 </code></pre></div></li>
 <li>
 <p>Use the StorageOS CLI to check the location of the volumes</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> cli -- storageos volume ls
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Verify that the Pod is running on the same node</p>
@@ -1727,7 +1474,7 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl label node &lt;NODE&gt; <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>postgres
 </code></pre></div></li>
 <li>
-<p>Then set the <code>storageos.com/hint.master</code> label in 20-postgres-statefulset.yaml file to match the node name you have chosen before creating all the files</p>
+<p>Then set the <code>storageos.com/hint.master</code> label in 20-postgres-statefulset.yaml file to match the StorageOS nodeID for the node you have chosen before creating all the files. The StorageOS nodeID can be obtained using the cli and doing a <code>describe node</code></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f .
 </code></pre></div></li>
 <li>
@@ -1736,7 +1483,7 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 </code></pre></div></li>
 <li>
 <p>Use the StorageOS CLI or the GUI to check the master volume location and the mount location. They should match</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos <span style="color:#204a87">exec</span> -it cli -- storageos v ls
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
 <p>Exec into the pgbench container and run pgbench</p>

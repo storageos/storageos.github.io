@@ -23,18 +23,18 @@
 <title>User Management | </title><meta property="og:title" content="User Management" />
 <meta property="og:description" content="A StorageOS cluster admin can create users and restrict their access rights to StorageOS namespaces using policies.
  Note: Users are created with access to the default namespace. This access is only revoked when a policy is created for the user or their group.
- Creating users To create a user with the CLI, run:
-$ storageos user create jim --groups qa The above command will create a user named jim and add them to the group qa." />
+ Managing users Users can be created and deleted by navigating to the &ldquo;Users&rdquo; section of the GUI.
+Alternatively users can also be managed using the CLI." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/users/" />
 
 <meta itemprop="name" content="User Management">
 <meta itemprop="description" content="A StorageOS cluster admin can create users and restrict their access rights to StorageOS namespaces using policies.
  Note: Users are created with access to the default namespace. This access is only revoked when a policy is created for the user or their group.
- Creating users To create a user with the CLI, run:
-$ storageos user create jim --groups qa The above command will create a user named jim and add them to the group qa.">
+ Managing users Users can be created and deleted by navigating to the &ldquo;Users&rdquo; section of the GUI.
+Alternatively users can also be managed using the CLI.">
 
-<meta itemprop="wordCount" content="338">
+<meta itemprop="wordCount" content="106">
 
 
 
@@ -42,8 +42,8 @@ $ storageos user create jim --groups qa The above command will create a user nam
 <meta name="twitter:title" content="User Management"/>
 <meta name="twitter:description" content="A StorageOS cluster admin can create users and restrict their access rights to StorageOS namespaces using policies.
  Note: Users are created with access to the default namespace. This access is only revoked when a policy is created for the user or their group.
- Creating users To create a user with the CLI, run:
-$ storageos user create jim --groups qa The above command will create a user named jim and add them to the group qa."/>
+ Managing users Users can be created and deleted by navigating to the &ldquo;Users&rdquo; section of the GUI.
+Alternatively users can also be managed using the CLI."/>
 
 
 
@@ -142,9 +142,9 @@ $ storageos user create jim --groups qa The above command will create a user nam
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -163,7 +163,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -193,7 +193,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -215,6 +215,12 @@ $ storageos user create jim --groups qa The above command will create a user nam
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -273,19 +279,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -303,37 +297,13 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -381,6 +351,12 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -508,24 +484,6 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -556,12 +514,6 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -586,41 +538,6 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -633,31 +550,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -810,79 +703,61 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -941,12 +816,6 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -965,13 +834,13 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -982,43 +851,14 @@ $ storageos user create jim --groups qa The above command will create a user nam
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1069,17 +909,6 @@ $ storageos user create jim --groups qa The above command will create a user nam
 
 
 
-<nav id="TableOfContents">
-  <ul>
-    <li><a href="#creating-users">Creating users</a></li>
-    <li><a href="#list-all-users">List all users</a></li>
-    <li><a href="#inspect-users">Inspect users</a></li>
-    <li><a href="#update-a-user">Update a user</a></li>
-    <li><a href="#deleting-users">Deleting users</a></li>
-    <li><a href="#altering-the-storageos-api-account">Altering the StorageOS API account</a></li>
-  </ul>
-</nav>
-
 
 
           </div>
@@ -1101,7 +930,7 @@ $ storageos user create jim --groups qa The above command will create a user nam
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1132,56 +961,13 @@ StorageOS <a href="https://docs.storageos.com/docs/operations/namespaces/">names
 <p>Note: Users are created with access to the default namespace. This access is
 only revoked when a policy is created for the user or their group.</p>
 </blockquote>
-<h2 id="creating-users">Creating users</h2>
+<h2 id="managing-users">Managing users</h2>
+<p>Users can be created and deleted by navigating to the &ldquo;Users&rdquo; section of the GUI.</p>
+<p>Alternatively users can also be managed using the CLI.</p>
 <p>To create a user with the CLI, run:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user create jim --groups qa
-</code></pre></div><p>The above command will create a user named jim and add them to the group qa.
-The command will also prompt you to enter a password for the newly created
-user.</p>
-<p>The groups flag is optional and the group will be created if it does not
-already exist.</p>
-<h2 id="list-all-users">List all users</h2>
-<p>To view all users, run:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user ls
-ID                                    USERNAME   GROUPS  ROLE
-a3b2948c-c5ef-116c-35c0-0cf4a42acf79  storageos          admin
-395f9e99-8f60-52e7-6a90-36096666fea3  <span style="color:#204a87">test</span>       <span style="color:#204a87">test</span>    user
-</code></pre></div><h2 id="inspect-users">Inspect users</h2>
-<p>To inspect a user, run:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user inspect jim
-<span style="color:#ce5c00;font-weight:bold">[</span>
-    <span style="color:#ce5c00;font-weight:bold">{</span>
-        <span style="color:#4e9a06">&#34;id&#34;</span>: <span style="color:#4e9a06">&#34;7f27fa40-ffdf-c443-1e60-214378003b97&#34;</span>,
-        <span style="color:#4e9a06">&#34;username&#34;</span>: <span style="color:#4e9a06">&#34;jim&#34;</span>,
-        <span style="color:#4e9a06">&#34;groups&#34;</span>: <span style="color:#4e9a06">&#34;qa&#34;</span>,
-        <span style="color:#4e9a06">&#34;role&#34;</span>: <span style="color:#4e9a06">&#34;user&#34;</span>
-    <span style="color:#ce5c00;font-weight:bold">}</span>
-<span style="color:#ce5c00;font-weight:bold">]</span>
-</code></pre></div><h2 id="update-a-user">Update a user</h2>
-<p>To update a users attributes, run:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user update jim --add-groups dev
-</code></pre></div><p>The above command would add jim to the dev group. To see all the options that
-update has use the command below:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user update --help
-</code></pre></div><h2 id="deleting-users">Deleting users</h2>
-<p>To delete a user, run:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user rm jim
-</code></pre></div><h2 id="altering-the-storageos-api-account">Altering the StorageOS API account</h2>
-<p>When installing with the StorageOS Operator, the StorageOS API account is
-defined by the <a href="/docs/install/kubernetes/install/">storageos-api
-secret</a>.</p>
-<p>For installations using the native driver, Kubernetes uses the account defined
-in the secret to authenticate against the StorageOS API. Therefore if the
-account details are changed, the Kubernetes storageos-api secret needs to be
-updated. In order to update the secret you need to base64 encode the new
-username/password and edit the storageos-api secret to reflect the new account
-details.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">echo</span> -n USERNAME <span style="color:#000;font-weight:bold">|</span> base64
-<span style="color:#204a87">echo</span> -n PASSWORD <span style="color:#000;font-weight:bold">|</span> base64
-kubectl edit secret storageos-api
-</code></pre></div><p>For installations using CSI the storageos-api secret is used to define the
-default account credentials. However as Kubernetes communicates with StorageOS
-via the CSI socket, the secret is not used after cluster bootstrapping.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos user create jim
+</code></pre></div><p>The above command will create a user named jim. The command will also prompt
+you to enter a password for the newly created user.</p>
 
 	
 	

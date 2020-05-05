@@ -23,61 +23,57 @@
         
         
         &lt;p&gt;StorageOS is a software-defined storage platform for running stateful
-applications in containers.&lt;/p&gt;
-&lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
-StorageOS&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Fundamentally, StorageOS aggregates storage attached to nodes in a cluster,
-creates a virtual pool across nodes, and presents virtual volumes from the pool
-into containers.&lt;/p&gt;
-&lt;p&gt;It is agnostic to the underlying storage and runs equally on
+applications in Kubernetes.&lt;/p&gt;
+&lt;p&gt;Fundamentally, StorageOS uses the storage attached to the nodes in the
+StorageOS cluster to create and present virtual volumes into containers. Space
+on the host is consumed from the mount point &lt;code&gt;/var/lib/storageos/data&lt;/code&gt;, so it
+is therefore recommended that disk devices are used exclusively for StorageOS,
+as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;StorageOS is agnostic to the underlying storage and runs equally well on
 bare metal, in virtual machines or on cloud providers.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
-&lt;p&gt;StorageOS is deployed as one container on each node that presents or consumes
-storage, available as &lt;code&gt;storageos/node&lt;/code&gt; on the Docker Hub. In Kubernetes,
-this is typically managed as a daemonset, next
-to the applications. StorageOS runs entirely in user space.&lt;/p&gt;
+&lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
+StorageOS&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;storageos-on-kubernetes&#34;&gt;StorageOS on Kubernetes&lt;/h3&gt;
+&lt;p&gt;StorageOS is architected as a series of containers that fulfil separate,
+discrete functions.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;StorageOS Controlplane&lt;/p&gt;
+&lt;p&gt;Responsible for monitoring and maintaining the state of volumes and nodes in the cluster&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;StorageOS Dataplane&lt;/p&gt;
+&lt;p&gt;Responsible for all I/O path related tasks; reading, writing, compression and caching&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;StorageOS Scheduler&lt;/p&gt;
+&lt;p&gt;Responsible for scheduling applications on the same node as applications volume&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CSI helper&lt;/p&gt;
+&lt;p&gt;Responsible for registering StorageOS with Kubernetes as a CSI driver&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;StorageOS Operator&lt;/p&gt;
+&lt;p&gt;Responsible for the creation and maintenance of the StorageOS cluster&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;StorageOS is deployed by the StorageOS operator. In Kubernetes, the StorageOS
+Controlplane and Dataplane are deployed in a single pod managed by a daemonset.
+This daemonset runs on every node in the cluster that will consume or present
+storage. The scheduler, CSI helper and Operator run as separate pods and are
+controlled as deployments.&lt;/p&gt;
 &lt;p&gt;StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
 is managed through standard StorageClasses and PersistentVolumeClaims, and
-features are controlled by Kubernetes-style labels and selectors, prefixed with
-&lt;code&gt;storageos.com/&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;StorageOS uses the storage capacity from the nodes where it is installed to
-provide thinly-provisioned volumes. That space is selected from the mount point
-of &lt;code&gt;/var/lib/storageos/data&lt;/code&gt; on the host. It is recommended that disk devices
-are used exclusively for StorageOS, as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage
-&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Any container may mount a StorageOS virtual volume from any node, regardless of
-whether the container and volume are colocated on the same node or the volume is
-remote. Therefore, applications may be started or restarted on any node and
-access volumes transparently.&lt;/p&gt;
-&lt;p&gt;Volumes are provisioned from a storage pool and are thinly provisioned.&lt;/p&gt;
-&lt;p&gt;By default, volumes are cached to improve read performance and compressed to
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
+Kubernetes-style labels and selectors, prefixed with &lt;code&gt;storageos.com/&lt;/code&gt;. By
+default, volumes are cached to improve read performance and compressed to
 reduce network traffic.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Available memory&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;% of overall memory reserved by StorageOS for caching&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;3 GB or less&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;3%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;3-8 GB&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;5%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;8-12 GB&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;7%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;12 GB or more&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;10%&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;Any pod may mount a StorageOS virtual volume from any node that is also
+running StorageOS, regardless of whether the pod and volume are
+collocated on the same node. Therefore, applications may be started or
+restarted on any node and access volumes transparently.&lt;/p&gt;
 
       </description>
     </item>
@@ -92,16 +88,12 @@ reduce network traffic.&lt;/p&gt;
         
         
         &lt;p&gt;StorageOS clusters represent groups of nodes which run a common distributed
-control plane, and aggregate their storage into one or more
-&lt;a href=&#34;https://docs.storageos.com/docs/concepts/pools&#34;&gt;pools&lt;/a&gt;.&lt;/p&gt;
+control plane.&lt;/p&gt;
 &lt;p&gt;Typically, a StorageOS cluster maps one-to-one to a Kubernetes (or similar
-orchestrator) cluster, and we expect our container to run on all worker
+orchestrator) cluster, and we expect our daemonset to run on all worker
 nodes within the cluster that will consume or present storage.&lt;/p&gt;
 &lt;p&gt;Clusters use etcd to maintain state and manage distributed consensus between
-nodes. We offer a choice between an internally managed etcd suitable for test
-installations or the ability to interface with an external etcd, suitable for
-production deployments. We recommend the use of external etcd when production
-or production like workloads will be deployed on StorageOS.&lt;/p&gt;
+nodes.&lt;/p&gt;
 
       </description>
     </item>
@@ -145,239 +137,29 @@ for a volume, blocks are compressed then encrypted.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Encryption</title>
-      <link>https://docs.storageos.com/docs/concepts/encryption/</link>
+      <title>Docs: Etcd</title>
+      <link>https://docs.storageos.com/docs/concepts/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/concepts/encryption/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/etcd/</guid>
       <description>
         
         
-        &lt;p&gt;Encryption is enabled on a per volume basis using the
-&lt;code&gt;storageos.com/encryption&lt;/code&gt; label (for more information see &lt;a href=&#34;https://docs.storageos.com/docs/operations/encrypted-volumes&#34;&gt;Encrypted
-Volumes&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;StorageOS encrypts volumes on disk using AES-256 in XTS-AES mode with 512 bit
-keys as recommended by &lt;a href=&#34;https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-38e.pdf&#34;&gt;NIST&lt;/a&gt;, with encryption keys being derived using &lt;a href=&#34;https://eprint.iacr.org/2010/264.pdf&#34;&gt;HKDF&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Keys and Initialisation vectors are generated using the &lt;a href=&#34;https://godoc.org/crypto/rand&#34;&gt;crypto/rand&lt;/a&gt; package.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Key&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Size&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Usage&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Volume&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;512 bits random data&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Used by XTS-AES to encrypt and decrypt disk blocks&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Namespace&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;256 bits random data&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Used to encrypt Volume keys&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Initialisation Vector&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;256 bits random data&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Used as &amp;lsquo;salt&amp;rsquo; when encrypting volume keys with namespace keys&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;The components required to derive the encryption key are stored in a Kubernetes
-secret. By default these secrets are stored in the namespace that StorageOS is
-installed into. As Kubernetes secrets are only base64 encoded, it is recommend
-to &lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/&#34;&gt;encrypt secrets at
-rest&lt;/a&gt;.
-Alternatively a
-&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/kms-provider/&#34;&gt;KMS&lt;/a&gt; such
-as &lt;a href=&#34;https://www.vaultproject.io/&#34;&gt;HashiCorp Vault&lt;/a&gt; can be used.&lt;/p&gt;
-&lt;p&gt;Each namespace has its own key that is created when the namespace is
-initialized. The namespace keys are stored as Kubernetes secrets named
-&lt;code&gt;ns-key.{Namespace Name}&lt;/code&gt;. The namespace key secrets are created in whatever
-namespace StorageOS is installed into.&lt;/p&gt;
-&lt;p&gt;In the example below there are two &lt;code&gt;ns-key&lt;/code&gt; secrets in the &lt;code&gt;storageos&lt;/code&gt;
-namespace because a StorageOS volume has been provisioned in the &lt;code&gt;default&lt;/code&gt; and
-&lt;code&gt;mongo&lt;/code&gt; namespaces. A &lt;code&gt;ns-key&lt;/code&gt; is created for a namespace regardless of whether
-an encrypted volume exists in the namespace or not.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get secrets -n storageos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep ns-key
-ns-key.default                                 Opaque                                &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;      4d
-ns-key.mongo                                   Opaque                                &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;      5h
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A volume is encrypted with a volume key that is a randomly generated 512 bit
-key. Rather than storing the volume key, StorageOS stores an encrypted version
-of the volume key, called the volume user key, which is generated by encrypting
-the volume key with a 256 bit namespace key and 256 bit initialization vector. Each
-namespace has a unique key and a unique initialization vector is generated
-for each volume.&lt;/p&gt;
-&lt;p&gt;The volume key is discarded to avoid the key that encrypts user data being
-compromised. Whenever the volume needs to be decrypted the volume key is
-derived by decrypting the volume user key using the namespace key and initialisation
-vector that are stored.&lt;/p&gt;
-&lt;p&gt;In order to check that the volume key has been correctly derived, a key digest
-of the volume key is stored to verify the derived volume key is identical to
-the original key.&lt;/p&gt;
-&lt;p&gt;Ultimately this means that the volume user key, initialisation vector, a digest
-of the volume key and the namespace key are stored in a Kubernetes secret. See
-&lt;a href=&#34;https://docs.storageos.com/docs/operations/encrypted-volumes&#34;&gt;Encrypted Volumes&lt;/a&gt; for best practices
-regarding backing up StorageOS secrets.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Fencing</title>
-      <link>https://docs.storageos.com/docs/concepts/fencing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/fencing/</guid>
-      <description>
-        
-        
-        &lt;p&gt;In order to understand what Fencing is and why it is a useful feature it&amp;rsquo;s
-important to understand the behaviour of StatefulSets.&lt;/p&gt;
-&lt;p&gt;Kubernetes does reschedule pods from some controllers when nodes become
-unavailable. The default behaviour is that when a node becomes unavailable its
-status becomes &amp;ldquo;Unknown&amp;rdquo; and after the pod-eviction-timeout has passed pods are
-scheduled for deletion. By default, the pod-eviction-timeout is five minutes.&lt;/p&gt;
-&lt;p&gt;StatefulSets are the de facto Kubernetes controller to use for stateful
-applications. The StatefulSet controller offers guarantees around pod
-uniqueness, sticky identities and the persistence of PVCs beyond the lifetime
-of the pod. As such, StatefulSets have different characteristics and provide
-different guarantees than Deployments.&lt;/p&gt;
-&lt;p&gt;Deployments guarantee the amount of healthy replicas by reconciling the state
-of the cluster with the declared desired state. Attempts to align the cluster
-state with the desired state happen as fast as possible by aggressively
-initializing and terminating pods. If one pod is terminating, another will be
-automatically scheduled to start even if the first pod is not yet completely
-terminated. Stateless applications benefit from this behaviour as one pod
-executes the same work as any other in the deployment.&lt;/p&gt;
-&lt;p&gt;StatefulSets, on the other hand, guarantee that every pod scheduled has a
-unique identity, which is to say that only a single copy of the pod is running
-in the cluster at any one time. Whenever scheduling decisions are made, the
-StatefulSet controller ensures that only one copy of a pod is running. If a pod
-is deleted, a new pod will not be scheduled until the first pod is fully
-terminated. This is an important guarantee considering that FileSystems
-need to be unmounted before they can be remounted in a new pod. Any PVC
-defining a device requires this behaviour to ensure the consistency of the
-data and thus the PVC.&lt;/p&gt;
-&lt;p&gt;As a consequence of the guarantee of unique pod identity, StatefulSet pods
-don&amp;rsquo;t get rescheduled upon node failures. This is because Kubernetes is unable to
-reason about whether the node is temporarily unavailable due to a network
-partition or if the node has crashed. Therefore, the StatefulSet controller
-cannot guarantee that if it reschedules an unavailable pod that the pod is not
-still running. The original pod would be running on the partitioned node and
-the rescheduled pod would be running on a different node, in violation of the
-StatefulSet guarantee of pod uniqueness. Instead, the StatefulSet controller
-slates the pod on the partitioned node for termination, but since there is
-no communication between the node and the control plane, the termination cannot
-be actioned by the partitioned node. The control plane will then mark the pod
-status as &amp;ldquo;Unknown&amp;rdquo; while it waits for the partition to heal or for a manual
-intervention by the cluster operator. The partitioned node doesn&amp;rsquo;t make any
-changes to its pods as there&amp;rsquo;s no communication between the node and the
-Kubernetes control plane.&lt;/p&gt;
-&lt;p&gt;For more information on the rationale behind the design of StatefulSets please
-see the Kubernetes design proposal for &lt;a href=&#34;https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/pod-safety.md&#34;&gt;Pod
-Safety&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;HA for StatefulSet applications can be achieved with the StorageOS Fencing
-feature&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;StorageOS implements a feature known as Fencing. With Fencing, pods that are
-scheduled on a failed node can be terminated by StorageOS allowing the pods to
-be scheduled on a different node. StorageOS can determine if a pod should be
-rescheduled by leveraging StorageOS health checks that are already used to
-ensure high availability of data and failover. Without Fencing, the pod will be
-slated for termination but this can only be actioned when the unavailable node
-rejoins the cluster or the unavailable node is deleted from the cluster.&lt;/p&gt;
-&lt;p&gt;As explained in &lt;a href=&#34;https://docs.storageos.com/docs/concepts/fencing#statefulset-behaviour&#34;&gt;StatefulSet
-Behaviour&lt;/a&gt;, the StatefulSet
-controller is conservative by design, given the constraints of various types of
-persistent volumes that can be managed in Kubernetes. For certain workloads,
-when StorageOS has declared a node offline it may be desirable to promote
-faster pod rescheduling by allowing StorageOS to Fence pods on the unavailable
-node. By enabling Fencing, StatefulSet pods have a much shorter time to recover
-(TTR) than usual and no manual intervention is required for StatefulSet pods on
-failed nodes to be rescheduled. Hence, &lt;em&gt;the combination of StorageOS volume
-failover and StorageOS Fencing makes an application more resilient to node
-failures with automatic recovery and a 30-60 second TTR.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;As a StorageOS pod runs on each node in the cluster that consumes or presents
-storage, and these nodes communicate using a gossip protocol, StorageOS has
-additional insight into whether a node cannot communicate with the master or if
-the node is truly unavailable. Additionally due to the synchronous replication
-of StorageOS volumes, any writes made to the volume on the partitioned node
-will fail as the writes cannot be acknowledged by replica volumes. Therefore,
-in a scenario where the node is unreachable StorageOS knows that the pod will
-lose access to its data so it is safe for StorageOS to force the pod to be
-rescheduled.&lt;/p&gt;
-&lt;p&gt;For more information about how to enable Fencing please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/fencing&#34;&gt;Fencing
-Operations&lt;/a&gt; page.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Metrics</title>
-      <link>https://docs.storageos.com/docs/concepts/metrics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/metrics/</guid>
-      <description>
-        
-        
-        &lt;p&gt;StorageOS believes in exposing many metrics about the functioning and
-performance of StorageOS processes to help users instrument applications
-consuming StorageOS volumes and StorageOS itself. To this end StorageOS exposes
-metrics via a Prometheus endpoint on each StorageOS pod. See our &lt;a href=&#34;https://docs.storageos.com/docs/reference/prometheus&#34;&gt;Prometheus
-Endpoint&lt;/a&gt; reference page for specific details about
-what metrics are exposed.&lt;/p&gt;
-&lt;p&gt;StorageOS metrics are exposed in &lt;a href=&#34;https://prometheus.io/docs/instrumenting/exposition_formats/#text-based-format&#34;&gt;Prometheus text
-format&lt;/a&gt;,
-so collectors such as &lt;a href=&#34;https://prometheus.io&#34;&gt;Prometheus&lt;/a&gt;,
-&lt;a href=&#34;https://www.influxdata.com/time-series-platform/telegraf/&#34;&gt;Telegraf&lt;/a&gt; or
-&lt;a href=&#34;https://sensu.io/&#34;&gt;Sensu&lt;/a&gt; can be used. Prometheus text format exposes data as
-time series where each time series can be one of four &lt;a href=&#34;https://prometheus.io/docs/concepts/metric_types/&#34;&gt;Prometheus metric
-types&lt;/a&gt;.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Metric Name&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Example Metric&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Counter&lt;/td&gt;
-&lt;td&gt;Cumulative metric that only increases. Can be reset to zero on a restart&lt;/td&gt;
-&lt;td&gt;storageos_volume_backend_read_bytes_total&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Gauge&lt;/td&gt;
-&lt;td&gt;Metric that can increase or decrease&lt;/td&gt;
-&lt;td&gt;storageos_volume_size_bytes&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Histogram&lt;/td&gt;
-&lt;td&gt;Cumulative metric that includes information about the distribution of samples&lt;/td&gt;
-&lt;td&gt;storageos_local_leader_known_nodes_sync_seconds&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Summary&lt;/td&gt;
-&lt;td&gt;Similar to a histogram but calculates quantiles over certain time windows&lt;/td&gt;
-&lt;td&gt;go_gc_duration_second&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Each time series is identified by a metric name and &lt;a href=&#34;http://opentsdb.net/overview.html&#34;&gt;key-value
-labels&lt;/a&gt;. The key-value labels allow multiple
-dimensions for a metric to be exposed. For example the
-&lt;code&gt;storageos_volume_backend_read_bytes_total&lt;/code&gt; metric is given for each volume.&lt;/p&gt;
-&lt;p&gt;Using Prometheus to scrape metrics endpoints in Kubernetes is quite elegant as
-Prometheus can be configured to scrape metrics from Kubernetes Services. This
-is important because StorageOS metrics are intended to be scraped from every
-StorageOS pod in the cluster and then aggregated.&lt;/p&gt;
-&lt;p&gt;For an example of how to visualize StorageOS metrics please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/monitoring#analysing-metrics&#34;&gt;Monitoring
-StorageOS page&lt;/a&gt; for a link to a
-sample Grafana dashboard.&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&#34;https://etcd.io&#34;&gt;etcd&lt;/a&gt; is an open-source distributed, strongly consistent key
+value store that is used by StorageOS to durably persist the StorageOS cluster
+state. As the backing store for Kubernetes, StorageOS uses etcd for many of the
+same reasons.&lt;/p&gt;
+&lt;p&gt;StorageOS uses etcd as the single source of truth for all StorageOS objects.
+Whenever a request is made to create, update or delete an object the result is
+written to etcd before the request is completed. Using etcd as a configuration
+store allows nodes to retrieve the current cluster state after being offlined,
+allowing offlined nodes to rejoin the cluster.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. StorageOS v2.0 does not provide an embedded etcd server as previous
+versions did. You will need to setup an etcd server for StorageOS to use
+prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
+to install and configure etcd.&lt;/p&gt;
+&lt;/blockquote&gt;
 
       </description>
     </item>
@@ -412,122 +194,8 @@ the StorageOS StorageClass are created.&lt;/p&gt;
         
         
         &lt;p&gt;A StorageOS node is any machine (virtual or physical) that is running the
-StorageOS container. Under Kubernetes orchestration a StorageOS container
-runs as part of a Kubernetes pod on all Kubernetes worker node. StorageOS nodes
-aggregate host storage and present this storage as StorageOS &lt;a href=&#34;https://docs.storageos.com/docs/concepts/pools/&#34;&gt;pools&lt;/a&gt;.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Pod Placement</title>
-      <link>https://docs.storageos.com/docs/concepts/podlocality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/podlocality/</guid>
-      <description>
-        
-        
-        &lt;p&gt;StorageOS has the capacity to influence Kubernetes Pod placement decisions to
-ensure that Pods are scheduled on the same nodes as their data. This
-functionality is known as &lt;code&gt;Pod Locality&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;StorageOS grants access to data by presenting, on local or remote nodes, the
-devices used in a Pod&amp;rsquo;s VolumeMounts. However, it is often the case that it is
-required or preferred to place the Pod on the node where the StorageOS Primary
-Volume is located, because IO operations are fastest as a result of minimized
-network traffic and associated latency. Read operations are served locally and
-writes require fewer round trips to the replicas of the volume.&lt;/p&gt;
-&lt;p&gt;StorageOS automatically enables the use of a custom scheduler for any Pod
-using StorageOS Volumes. Checkout the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/admission-controller/&#34;&gt;Admission Controller reference&lt;/a&gt; for more
-information.&lt;/p&gt;
-&lt;h2 id=&#34;locality-modes&#34;&gt;Locality modes&lt;/h2&gt;
-&lt;p&gt;There are two modes available to set pod locality for StorageOS Volumes.&lt;/p&gt;
-&lt;h3 id=&#34;preferred&#34;&gt;Preferred&lt;/h3&gt;
-&lt;p&gt;The Pod SHOULD be placed alongside its data, if possible. Otherwise, it will be
-placed alongside volume replicas. If neither scenario is possible, the Pod
-will start on another node and StorageOS will grant access to the
-data over the network.&lt;/p&gt;
-&lt;p&gt;Preferred mode is the default behaviour when using the StorageOS scheduler.&lt;/p&gt;
-&lt;h3 id=&#34;strict&#34;&gt;Strict&lt;/h3&gt;
-&lt;p&gt;The Pod MUST be placed alongside its data, i.e. on a node with the master
-volume or a replica. If that is not possible, the Pod will remain in pending
-state until the premise can be fulfilled.&lt;/p&gt;
-&lt;p&gt;The aim of strict mode is to provide the user with the capability to guarantee
-best performance for applications. Some applications are required to give a
-certain level of performance, and for such applications strict co-location of
-application and data is essential.&lt;/p&gt;
-&lt;p&gt;For instance, when running Kafka Pods under heavy load, it may be better to
-avoid scheduling a Pod using a remote volume rather than have clients
-direct traffic at a cluster member which exhibits degraded performance.&lt;/p&gt;
-&lt;p&gt;To see examples on how to set a mode for your Pods, check out the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/examples/&#34;&gt;examples
-reference page&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;storageos-kubernetes-scheduler&#34;&gt;Storageos Kubernetes Scheduler&lt;/h2&gt;
-&lt;p&gt;StorageOS achieves Pod locality by implementing a Kubernetes scheduler
-extender. The Kubernetes standard scheduler interacts with the StorageOS
-scheduler when placement decisions need to be made.&lt;/p&gt;
-&lt;p&gt;The Kubernetes standard scheduler selects a set of nodes for a placement
-decision based on nodeSelectors, affinity rules, etc. This list of nodes is
-sent to the StorageOS scheduler which sends back the target node where the Pod
-shall be placed.&lt;/p&gt;
-&lt;p&gt;The StorageOS scheduler logic is provided by a Pod in the Namespace where
-StorageOS Pods are running.&lt;/p&gt;
-&lt;h3 id=&#34;scheduling-process&#34;&gt;Scheduling process&lt;/h3&gt;
-&lt;p&gt;When a Pod needs to be scheduled, the scheduler collects information
-about all available nodes and the requirements of the Pod. The collected
-data is then passed through the Filter phase, during which the scheduler predicates
-are applied to the node data to decide if the given nodes are compatible
-with the Pod requirements. The result of the filter consists of a list of nodes
-that are compatible for the given Pod and a list of nodes that aren&amp;rsquo;t
-compatible.&lt;/p&gt;
-&lt;p&gt;The list of compatible nodes is then passed to the Prioritize phase, in which
-the nodes are scored based on attributes such as the state. The result of the
-Prioritize phase is a list of nodes with their respective scores. The more
-favorable nodes get higher scores than less favorable nodes. The list is then
-used by the scheduler to decide the final node to schedule the Pod on.&lt;/p&gt;
-&lt;p&gt;Once a node has been selected, the third phase, Bind, handles the binding
-of the Pod to the Kubernetes apiserver. Once bound, the kubelet on the node
-provisions the Pod.&lt;/p&gt;
-&lt;p&gt;The StorageOS scheduler implement Filter and Prioritization phases and leaves
-binding to the default Kubernetes scheduler.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    Available         +------------------+                     +------------------+
-  NodeList &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  Filtered NodeList  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;    Scored
-   Information        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod Information  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   NodeList
-+--------------------&amp;gt;+      Filter      +--------------------&amp;gt;+    Prioritize    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;---------------&amp;gt;
-                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Predicates&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Priorities&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
-                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
-                      +------------------+                     +------------------+
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;scheduling-rules&#34;&gt;Scheduling Rules&lt;/h3&gt;
-&lt;p&gt;The StorageOS scheduler filters nodes ensuring that the remaining subset
-fulfill the following prerequisites:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The node is running StorageOS&lt;/li&gt;
-&lt;li&gt;The node is healthy&lt;/li&gt;
-&lt;li&gt;The node is not StorageOS Cordoned&lt;/li&gt;
-&lt;li&gt;The node is not in a StorageOS Drained state&lt;/li&gt;
-&lt;li&gt;The node is not a StorageOS compute-only node&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;The scoring protocol once the nodes are filtered is as follows:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Node with master volume - 15 points&lt;/li&gt;
-&lt;li&gt;Node with replica volume - 10 points&lt;/li&gt;
-&lt;li&gt;Node with no master or replica volume - 5 points&lt;/li&gt;
-&lt;li&gt;Node with unhealthy volume or unsynced replica - 1 point&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;admission-controller&#34;&gt;Admission Controller&lt;/h2&gt;
-&lt;p&gt;StorageOS implements an &lt;a href=&#34;https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-are-they&#34;&gt;admission
-controller&lt;/a&gt;
-that ensures any Pod using StorageOS Volumes are scheduled by the StorageOS
-Scheduler. This makes the use of the scheduler transparent to the user. Check
-the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/admission-controller/&#34;&gt;reference page&lt;/a&gt;
-to see how to alter this behaviour.&lt;/p&gt;
-&lt;p&gt;The Admission Controller is based on admission webhooks. Therefore, no custom
-admission plugins need to be enabled at bootstrap of your Kubernetes cluster.
-Admission webhooks are HTTP callbacks that receive admission requests and do
-something with them. The StorageOS Cluster Operator serves the admission
-webhook. So when a Pod is in the process of being created, the StorageOS
-Cluster Operator mutates the &lt;code&gt;spec.schedulerName&lt;/code&gt; ensuring the
-&lt;code&gt;storageos-scheduler&lt;/code&gt; is set.&lt;/p&gt;
+StorageOS daemonset pod. A node must be running a daemonset pod in order to
+consume and/or present storage.&lt;/p&gt;
 
       </description>
     </item>
@@ -550,28 +218,6 @@ to the namespace.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;For more information on how to use policies, see the
 &lt;a href=&#34;https://docs.storageos.com/docs/operations/policies/&#34;&gt;Policies operations&lt;/a&gt; page.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Pools</title>
-      <link>https://docs.storageos.com/docs/concepts/pools/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/pools/</guid>
-      <description>
-        
-        
-        &lt;p&gt;StorageOS aggregates host storage from all nodes where the StorageOS container
-runs into a storage pool. A pool is a collection of storage based on host
-attributes such as class of server, storage or location.&lt;/p&gt;
-&lt;p&gt;Node storage can be allocated to a specific pool using Node selectors. Pool node
-selectors look for labels on host nodes and will aggregate storage from nodes
-whose labels match into the specific pool.&lt;/p&gt;
-&lt;p&gt;Pools can have feature labels applied to them such as
-&lt;code&gt;storageos.com/overcommit&lt;/code&gt; which allows the pool to have its storage
-&lt;a href=&#34;https://docs.storageos.com/docs/operations/overcommitment/&#34;&gt;overcommited&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>
@@ -602,155 +248,29 @@ written (step 3), the write operation return successfully to the application
 &lt;p&gt;For most applications, one replica is sufficient (&lt;code&gt;storageos.com/replicas=1&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;All replication traffic on the wire is compressed using the lz4 algorithm, then
 streamed over tcp/ip to target port tcp/5703.&lt;/p&gt;
-&lt;p&gt;If the master volume is lost, a random replica is promoted to master (&lt;code&gt;D2&lt;/code&gt; or
-&lt;code&gt;D3&lt;/code&gt; above) and a new replica is created and synced on an available node (Node 2
-or 4). This is transparent to the application and does not cause downtime.&lt;/p&gt;
+&lt;p&gt;If the master volume is lost, a replica is promoted to master (&lt;code&gt;D2&lt;/code&gt; or &lt;code&gt;D3&lt;/code&gt;
+above) and a new replica is created and synced on an available node (Node 2 or
+4). This is transparent to the application and does not cause downtime.&lt;/p&gt;
 &lt;p&gt;If a replica volume is lost and there are enough remaining nodes, a new replica
 is created and synced on an available node. While a new replica is created and
-being synced, the volume&amp;rsquo;s health will be marked as degraded and the failure
-mode will determine whether the volume can be used during recovery:&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;Failure mode&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;On loss of replica&lt;/th&gt;
-&lt;th&gt;Example&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Hard&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail.&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;storageos.com/failure.mode=hard&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Always On&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;As long as any copy of the volume is available, the volume will be usable.&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;storageos.com/failure.mode=alwayson&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Soft&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica.&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;storageos.com/failure.mode=soft storageos.com/failure.tolerance=2&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;While replica count and replication failure mode are controllable on a
-per-volume basis, some environments may prefer to set appropriate policies to
-ensure a desired level of data protection. This can be accomplished on a
-per-namespace basis  using
-&lt;a href=&#34;https://docs.storageos.com/docs/operations/rules/&#34;&gt;Rules&lt;/a&gt;.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Rules</title>
-      <link>https://docs.storageos.com/docs/concepts/rules/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/rules/</guid>
-      <description>
-        
-        
-        &lt;p&gt;Rules are used for managing data policy and placement using StorageOS features
-such as replication, QoS and compression. They provide a way for operators to
-define default charactistics (such as number of replicas).&lt;/p&gt;
-&lt;p&gt;Rules are defined using labels and selectors. When a volume is created, the
-rules are evaluated to determine whether to apply the action.&lt;/p&gt;
-&lt;p&gt;An example business requirement might be that all production volumes are
-replicated twice. This would be defined with a selector &lt;code&gt;env==prod&lt;/code&gt;, and the
-action would be to add the label &lt;code&gt;storageos.com/replicas=2&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Rules can be created with the CLI or Web UI. See &lt;a href=&#34;https://docs.storageos.com/docs/operations/rules/&#34;&gt;Rules&lt;/a&gt; for details.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Shared Filesystem</title>
-      <link>https://docs.storageos.com/docs/concepts/sharedfs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/concepts/sharedfs/</guid>
-      <description>
-        
-        
-        &lt;blockquote&gt;
-&lt;p&gt;Shared filesystems in the 1.5.3 release are
-currently in Technology Preview. This &lt;strong&gt;experimental feature&lt;/strong&gt; is not yet
-intended for production use.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Shared Filesystem support allows volumes to be mounted for read &amp;amp; write access
-by multiple containers simultaneously, even from different nodes.  In
-Kubernetes, shared filesystems are referred to as &lt;code&gt;ReadWriteMany&lt;/code&gt; or RWX
-volumes.&lt;/p&gt;
-&lt;p&gt;Follow the &lt;a href=&#34;https://docs.storageos.com/docs/operations/sharedfs/&#34;&gt;Operations page&lt;/a&gt; to learn
-how to deploy and use &lt;code&gt;ReadWriteMany&lt;/code&gt; PersistentVolumeClaims (PVCs).&lt;/p&gt;
-&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
-&lt;p&gt;The default StorageOS StorageClass can create volumes with either
-&lt;code&gt;ReadWriteOnce&lt;/code&gt; (RWO) or &lt;code&gt;ReadWriteMany&lt;/code&gt; (RWX)
-&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes&#34;&gt;AccessModes&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;When requesting a RWX PVC, StorageOS will provision a standard RWO volume
-and mount the volume into an NFS server instance dedicated to this volume.&lt;/p&gt;
-&lt;p&gt;The NFS server is provisioned as a StatefulSet, which is created by the
-StorageOS Cluster Operator using an &lt;code&gt;NFSServer&lt;/code&gt; Custom Resource Definition. The
-configuration of the NFS server is stored in a ConfigMap. The ConfigMap defines
-the export location matching the RWO volume that StorageOS dynamically
-provisioned to back the NFS server.&lt;/p&gt;
-&lt;p&gt;Separate Services are defined for the NFS traffic and for HTTP-based health and
-metrics traffic.&lt;/p&gt;
-&lt;p&gt;The NFS traffic Service is on port &lt;code&gt;2049&lt;/code&gt; and uses TCP only to allow simple
-exposure to clients outside the Kubernetes cluster.  Clients must be capable of
-NFS version 4.2 which has numerous (primarily performance) advantages over
-previous revisions.&lt;/p&gt;
-&lt;p&gt;The StorageOS NFS server exposes a health endpoint on
-&lt;code&gt;http://&amp;lt;PodIP&amp;gt;:80/healthz&lt;/code&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;HTTP 200/OK&lt;/code&gt; will be returned when the server is
-operational and sending heartbeat messages.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HTTP 503/Service Unavailable&lt;/code&gt; will be returned if the server hasn&amp;rsquo;t sent a
-heartbeat message within 10 seconds.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Prometheus metrics for the NFS server, clients and IO activity are available on
-&lt;code&gt;http://&amp;lt;PodIP&amp;gt;:80/metrics&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Details of the StorageOS NFS Server implementation are available on
-&lt;a href=&#34;https://github.com/storageos/nfs&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/rwx/rwx.png&#34; alt=&#34;rwx&#34;&gt;&lt;/p&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;p&gt;The NFS server Pod and the RWO StorageOS volume are placed in the same
-Namespace as the RWX PVC.&lt;/p&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/rwx/rwx-ns.png&#34; alt=&#34;rwx&#34;&gt;&lt;/p&gt;
-&lt;p&gt; &lt;/p&gt;
-&lt;p&gt;The NFS server StatefulSet is named after the RWO Persistent Volume.
-Therefore the NFS Pod will be named in the form of &lt;code&gt;pvc-${UID}-0&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Once the NFS server is healthy and sharing the RWO volume&amp;rsquo;s filesystem, the
-RWX volume is available for use.  It takes slightly longer to provision a
-RWX volume for the first time as the NFS server image has to be pulled.&lt;/p&gt;
-&lt;p&gt;The StorageOS RWO backing volume will be updated with labels:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;storageos.com/nfs.server&lt;/code&gt;: NFS server endpoint.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;storageos.com/nfs.share&lt;/code&gt;: NFS share path.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The RWX Volume is a Kubernetes construct backed by StorageOS Volumes,
-therefore the StorageOS API will not report on shared volumes.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h2 id=&#34;labels&#34;&gt;Labels&lt;/h2&gt;
-&lt;p&gt;StorageOS uses labels to apply behaviour regarding the Volumes. &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;Feature
-labels&lt;/a&gt; can be passed to the RWX PVC to
-ensure that the underlying StorageOS volume backing the NFS server implements
-those features&lt;/p&gt;
-&lt;p&gt;For instance, to enable replication, set the label &lt;code&gt;storageos.com/replicas: 1&lt;/code&gt;
-in the RWX PVC metadata.&lt;/p&gt;
-&lt;h2 id=&#34;fencing&#34;&gt;Fencing&lt;/h2&gt;
-&lt;p&gt;StorageOS implements &lt;a href=&#34;https://docs.storageos.com/docs/concepts/fencing/&#34;&gt;fencing&lt;/a&gt; for
-StatefulSet based pods. When replication has been enabled, the NFS server will
-use the fencing feature to ensure rapid failover when the node fails.&lt;/p&gt;
-&lt;h2 id=&#34;csi&#34;&gt;CSI&lt;/h2&gt;
-&lt;p&gt;Shared Filesystems / RWX volumes are only supported by StorageOS when using CSI
-(Container Storage Interface).&lt;/p&gt;
+being synced, the volume&amp;rsquo;s health will be marked as degraded.&lt;/p&gt;
+&lt;p&gt;If the lost replica comes back online before the new replica has finished
+synchronizing, then StorageOS will calculate which of the two synchronizing
+replicas has the smallest difference compared to the master volume and keep
+that replica. The same holds true if a master volume is lost and a replica is
+promoted to be the new master. If possible, a new replica will be created and
+begin to sync. Should the former master come back online it will be demoted to
+a replica and the replica will the smallest difference to the current master
+will be kept.&lt;/p&gt;
+&lt;p&gt;While the replica count is controllable on a per-volume basis, some
+environments may prefer to set &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/#storageos-storageclass-labels&#34;&gt;default labels on the StorageClass&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;delta-sync&#34;&gt;Delta Sync&lt;/h3&gt;
+&lt;p&gt;StorageOS implements a delta sync between a volume master and its replicas.
+This means that if a replica for a volume goes offline, that when the replica
+comes back online only the regions with changed blocks need to be synchronized.
+This optimization reduces the time it takes for replicas to catch up, improving
+volume resilience. Additionally, it reduces network and IO bandwidth which can
+reduce costs when running in public clouds.&lt;/p&gt;
 
       </description>
     </item>
@@ -765,10 +285,10 @@ use the fencing feature to ensure rapid failover when the node fails.&lt;/p&gt;
         
         
         &lt;p&gt;StorageOS volumes are a logical construct which represent a writeable volume
-and exhibit standard POSIX semantics. We present volumes as mounts into
+and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into
 containers via the Linux LIO subsystem.&lt;/p&gt;
 &lt;p&gt;Conceptually, StorageOS volumes have a frontend presentation, which is the
-side the application sees, and a backend presentation, which is the actual
+what the application sees, and a backend presentation, which is the actual
 on-disk format. Depending on the configuration, frontend and backend components
 may be on the same or different hosts.&lt;/p&gt;
 &lt;p&gt;Volumes are formatted using the linux standard ext4 filesystem by default.
@@ -777,18 +297,18 @@ or xfs by setting the fsType parameter in their StorageClass (See
 &lt;a href=&#34;https://docs.storageos.com/docs/reference/filesystems#persistent-volume-filesystems&#34;&gt;Supported
 Filesystems&lt;/a&gt; for
 more information). Different filesystems may be supported in the future.&lt;/p&gt;
-&lt;p&gt;StorageOS volumes are represented on disk in two parts.&lt;/p&gt;
-&lt;p&gt;Actual volume data is written to blob files in
-&lt;code&gt;/var/lib/storageos/data/dev[\d+]&lt;/code&gt;. Inside these directories, each StorageOS
-block device gets two blob files of the form &lt;code&gt;vol.xxxxxx.y.blob&lt;/code&gt;, where x is
-the inode number for the device, and y is an index between 0 and 1. We provide
-two blob files in order to ensure that certain operations which require locking
-do not impede in-flight writes to the volume.&lt;/p&gt;
+&lt;p&gt;StorageOS volumes are represented on disk in two parts. Actual volume data is
+written to blob files in &lt;code&gt;/var/lib/storageos/data/dev[\d+]&lt;/code&gt;. Inside these
+directories, each StorageOS block device gets two blob files of the form
+&lt;code&gt;vol.xxxxxx.y.blob&lt;/code&gt;, where x is the inode number for the device, and y is an
+index between 0 and 1. We provide two blob files in order to ensure that
+certain operations which require locking do not impede in-flight writes to the
+volume.&lt;/p&gt;
 &lt;p&gt;In systems which have multiple &lt;code&gt;/var/lib/storageos/data/dev[\d+]&lt;/code&gt; directories,
-we place two blob files per block device. This allows us to load-balance writes
-across multiple devices. In cases where dev directories are added after a
-period of run time, later directories are favoured for writes until the data is
-distributed evenly across the blob files.&lt;/p&gt;
+two blob files are created per block device. This allows us to load-balance
+writes across multiple devices. In cases where dev directories are added after
+a period of run time, later directories are favoured for writes until the data
+is distributed evenly across the blob files.&lt;/p&gt;
 &lt;p&gt;Metadata is kept in directories named &lt;code&gt;/var/lib/storageos/data/db[\d+]&lt;/code&gt;. We
 maintain an index of all blocks written to the blob file inside the metadata
 store, including checksums. These checksums allow us to detect bitrot, and
@@ -798,10 +318,7 @@ implement recovery from replicas for volumes with one or more replicas defined.&
 blocks in the associated volume. This size is consistent irrespective of data
 compression defined on the volume.&lt;/p&gt;
 &lt;p&gt;To ensure deterministic performance, individual StorageOS volumes must fit on a single
-node. In situations where &lt;a href=&#34;https://docs.storageos.com/docs/operations/overcommitment/&#34;&gt;overcommit&lt;/a&gt; is applied, a scaling factor is applied when determining whether to place a
-volume on a node.&lt;/p&gt;
-&lt;p&gt;We present various metrics regarding StorageOS volumes, including used capacity
-and throughput, via our &lt;a href=&#34;https://docs.storageos.com/docs/reference/prometheus/&#34;&gt;Prometheus Endpoint&lt;/a&gt;.&lt;/p&gt;
+node.&lt;/p&gt;
 
       </description>
     </item>

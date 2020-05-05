@@ -21,25 +21,25 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Volumes | </title><meta property="og:title" content="Volumes" />
-<meta property="og:description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. We present volumes as mounts into containers via the Linux LIO subsystem.
-Conceptually, StorageOS volumes have a frontend presentation, which is the side the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
+<meta property="og:description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into containers via the Linux LIO subsystem.
+Conceptually, StorageOS volumes have a frontend presentation, which is the what the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
 Volumes are formatted using the linux standard ext4 filesystem by default." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/concepts/volumes/" />
 
 <meta itemprop="name" content="Volumes">
-<meta itemprop="description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. We present volumes as mounts into containers via the Linux LIO subsystem.
-Conceptually, StorageOS volumes have a frontend presentation, which is the side the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
+<meta itemprop="description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into containers via the Linux LIO subsystem.
+Conceptually, StorageOS volumes have a frontend presentation, which is the what the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
 Volumes are formatted using the linux standard ext4 filesystem by default.">
 
-<meta itemprop="wordCount" content="380">
+<meta itemprop="wordCount" content="343">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volumes"/>
-<meta name="twitter:description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. We present volumes as mounts into containers via the Linux LIO subsystem.
-Conceptually, StorageOS volumes have a frontend presentation, which is the side the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
+<meta name="twitter:description" content="StorageOS volumes are a logical construct which represent a writeable volume and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into containers via the Linux LIO subsystem.
+Conceptually, StorageOS volumes have a frontend presentation, which is the what the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
 Volumes are formatted using the linux standard ext4 filesystem by default."/>
 
 
@@ -139,9 +139,9 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -160,7 +160,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -190,7 +190,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -212,6 +212,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -270,19 +276,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -300,37 +294,13 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -378,6 +348,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -505,24 +481,6 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -553,12 +511,6 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -583,41 +535,6 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -630,31 +547,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -807,79 +700,61 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -938,12 +813,6 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -962,13 +831,13 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -979,43 +848,14 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1087,7 +927,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1112,10 +952,10 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 	<h1>Volumes</h1>
 	
 	<p>StorageOS volumes are a logical construct which represent a writeable volume
-and exhibit standard POSIX semantics. We present volumes as mounts into
+and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into
 containers via the Linux LIO subsystem.</p>
 <p>Conceptually, StorageOS volumes have a frontend presentation, which is the
-side the application sees, and a backend presentation, which is the actual
+what the application sees, and a backend presentation, which is the actual
 on-disk format. Depending on the configuration, frontend and backend components
 may be on the same or different hosts.</p>
 <p>Volumes are formatted using the linux standard ext4 filesystem by default.
@@ -1124,18 +964,18 @@ or xfs by setting the fsType parameter in their StorageClass (See
 <a href="/docs/reference/filesystems#persistent-volume-filesystems">Supported
 Filesystems</a> for
 more information). Different filesystems may be supported in the future.</p>
-<p>StorageOS volumes are represented on disk in two parts.</p>
-<p>Actual volume data is written to blob files in
-<code>/var/lib/storageos/data/dev[\d+]</code>. Inside these directories, each StorageOS
-block device gets two blob files of the form <code>vol.xxxxxx.y.blob</code>, where x is
-the inode number for the device, and y is an index between 0 and 1. We provide
-two blob files in order to ensure that certain operations which require locking
-do not impede in-flight writes to the volume.</p>
+<p>StorageOS volumes are represented on disk in two parts. Actual volume data is
+written to blob files in <code>/var/lib/storageos/data/dev[\d+]</code>. Inside these
+directories, each StorageOS block device gets two blob files of the form
+<code>vol.xxxxxx.y.blob</code>, where x is the inode number for the device, and y is an
+index between 0 and 1. We provide two blob files in order to ensure that
+certain operations which require locking do not impede in-flight writes to the
+volume.</p>
 <p>In systems which have multiple <code>/var/lib/storageos/data/dev[\d+]</code> directories,
-we place two blob files per block device. This allows us to load-balance writes
-across multiple devices. In cases where dev directories are added after a
-period of run time, later directories are favoured for writes until the data is
-distributed evenly across the blob files.</p>
+two blob files are created per block device. This allows us to load-balance
+writes across multiple devices. In cases where dev directories are added after
+a period of run time, later directories are favoured for writes until the data
+is distributed evenly across the blob files.</p>
 <p>Metadata is kept in directories named <code>/var/lib/storageos/data/db[\d+]</code>. We
 maintain an index of all blocks written to the blob file inside the metadata
 store, including checksums. These checksums allow us to detect bitrot, and
@@ -1145,10 +985,7 @@ implement recovery from replicas for volumes with one or more replicas defined.<
 blocks in the associated volume. This size is consistent irrespective of data
 compression defined on the volume.</p>
 <p>To ensure deterministic performance, individual StorageOS volumes must fit on a single
-node. In situations where <a href="https://docs.storageos.com/docs/operations/overcommitment/">overcommit</a> is applied, a scaling factor is applied when determining whether to place a
-volume on a node.</p>
-<p>We present various metrics regarding StorageOS volumes, including used capacity
-and throughput, via our <a href="https://docs.storageos.com/docs/reference/prometheus/">Prometheus Endpoint</a>.</p>
+node.</p>
 
 	
 	

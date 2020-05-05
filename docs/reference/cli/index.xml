@@ -14,1047 +14,593 @@
     
     
     <item>
-      <title>Docs: Cluster</title>
-      <link>https://docs.storageos.com/docs/reference/cli/cluster/</link>
+      <title>Docs: Apply licence</title>
+      <link>https://docs.storageos.com/docs/reference/cli/apply/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/cli/cluster/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/apply/</guid>
       <description>
         
         
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos cluster
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos apply licence --help
 
-Usage:	storageos cluster COMMAND
+Usage:
+  storageos apply licence &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
-Manage clusters
+Examples:
+
+$ storageos apply licence --from-file &amp;lt;path-to-licence-file&amp;gt;
+
+$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;lt;licence file contents&amp;gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos apply licence --from-stdin
+
+
+Flags:
+      --from-file string   reads a StorageOS product licence from a specified file path
+      --from-stdin         reads a StorageOS product licence from the standard input
+  -h, --help               &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; licence
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Attach</title>
+      <link>https://docs.storageos.com/docs/reference/cli/attach/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/cli/attach/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos attach
+Attach a volume to a node
+
+Usage:
+  storageos attach &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos attach volume --namespace my-namespace-name my-volume my-node
+
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; attach
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Create</title>
+      <link>https://docs.storageos.com/docs/reference/cli/create/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/cli/create/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos create --help
+Create new resources
+
+Usage:
+  storageos create &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Available Commands:
+  user        Create a new user account
+  volume      Provision a new volume
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; create
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos create [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-volume&#34;&gt;create volume&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos create volume --help
+Provision a new volume
+
+Usage:
+  storageos create volume &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos create volume --description &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;This volume contains the data for my app&amp;#34;&lt;/span&gt; --fs-type &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ext4&amp;#34;&lt;/span&gt; --labels &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod,rack&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;db-1 --size 10GiB --namespace my-namespace-name my-app
+
+$ storageos create volume --replicas &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; --namespace my-namespace-name my-replicated-app
+
+
+Flags:
+      --async                       perform the operation asynchronously, using the configured timeout duration
+      --cache                       caches volume data &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --compress                    compress data stored by the volume at rest and during transit &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -d, --description string          a human-friendly description to give the volume
+  -f, --fs-type string              the filesystem to format the new volume with once provisioned &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ext4&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -h, --help                        &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volume
+  -l, --labels strings              an optional &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of labels to assign to the new volume, provided as a comma-separated list of &lt;span style=&#34;color:#000&#34;&gt;key&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;value pairs
+  -r, --replicas uint               the number of replicated copies of the volume to maintain
+  -s, --size string                 the capacity to provision the volume with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;5GiB&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --throttle                    deprioritises the volume&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s traffic by reducing the rate of disk I/O
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;create-user&#34;&gt;create user&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos create user --help
+Create a new user account
+
+Usage:
+  storageos create user &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos create user --with-username&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;alice --with-admin&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+
+
+Flags:
+  -h, --help                      &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; user
+      --with-admin                control whether the user is given administrative priviledges
+      --with-groups stringArray   the list of policy groups to assign to the user
+      --with-password string      the password to assign to the user. If not specified, this will be prompted &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt;.
+      --with-username string      the username to assign
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Delete</title>
+      <link>https://docs.storageos.com/docs/reference/cli/delete/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/cli/delete/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos delete -h
+
+Delete resources in the cluster
+
+Usage:
+  storageos delete &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Available Commands:
+  volume      Delete a volume
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; delete
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos delete [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;delete-volume&#34;&gt;delete volume&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos delete volume --help
+Delete a volume
+
+Usage:
+  storageos delete volume &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;volume name&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos delete volume my-test-volume my-unneeded-volume
+
+$ storagoes delete volume --namespace my-namespace my-old-volume
+
+
+Flags:
+      --async        perform the operation asynchronously, using the configured timeout duration
+      --cas string   make changes to a resource conditional upon matching a provided version
+  -h, --help         &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volume
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Describe</title>
+      <link>https://docs.storageos.com/docs/reference/cli/describe/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/cli/describe/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos describe --help
+Fetch extended details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
+
+Usage:
+  storageos describe &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Available Commands:
+  node        Retrieve detailed information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; nodes in the cluster
+  volume      Show detailed information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volumes
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; describe
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos describe [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;describe-node&#34;&gt;describe node&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos describe node --help
+Retrieve detailed information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; nodes in the cluster
+
+Usage:
+  storageos describe node &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;node names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
 Aliases:
-  cluster, c
+  node, nodes
 
-Options:
-      --help   Print usage
+Examples:
 
-Commands:
-  connectivity Display connectivity diagnostics &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the cluster
-  create       Creates a cluster initialization token.
-  health       Displays the cluster&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;s health.
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  inspect      Display detailed information on one or more cluster
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  maintenance  Enable|disable maintenance mode for the cluster
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  rm           Remove one or more clusters
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;Run &amp;#39;&lt;/span&gt;storageos cluster COMMAND --help&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-cluster-connectivity&#34;&gt;&lt;code&gt;storageos cluster connectivity&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To check the connectivity of the cluster&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos cluster connectivity
-SOURCE                NAME                           ADDRESS           LATENCY     STATUS  MESSAGE
-storageos-nodes2  storageos-nodes1.api       10.0.12.154:5705  1.085151ms  OK      
-storageos-nodes2  storageos-nodes1.directfs  10.0.12.154:5703  1.09232ms   OK      
-storageos-nodes2  storageos-nodes1.etcd      10.0.12.154:5707  1.142334ms  OK      
-storageos-nodes2  storageos-nodes1.nats      10.0.12.154:5708  1.172353ms  OK      
-storageos-nodes2  storageos-nodes1.serf      10.0.12.154:5711  1.11125ms   OK      
-storageos-nodes2  storageos-nodes2.api       10.0.12.148:5705  1.204403ms  OK      
-storageos-nodes2  storageos-nodes2.directfs  10.0.12.148:5703  1.134408ms  OK      
-storageos-nodes2  storageos-nodes2.etcd      10.0.12.148:5707  1.115885ms  OK      
-storageos-nodes2  storageos-nodes2.nats      10.0.12.148:5708  1.201178ms  OK      
-storageos-nodes2  storageos-nodes2.serf      10.0.12.148:5711  1.111379ms  OK      
-storageos-nodes2  storageos-nodes3.api       10.0.12.253:5705  1.143731ms  OK      
-storageos-nodes2  storageos-nodes3.directfs  10.0.12.253:5703  1.149442ms  OK      
-storageos-nodes2  storageos-nodes3.etcd      10.0.12.253:5707  1.083065ms  OK      
-storageos-nodes2  storageos-nodes3.nats      10.0.12.253:5708  1.090467ms  OK      
-storageos-nodes2  storageos-nodes3.serf      10.0.12.253:5711  1.158129ms  OK      
-storageos-nodes3  storageos-nodes1.api       10.0.12.154:5705  1.145954ms  OK      
-storageos-nodes3  storageos-nodes1.directfs  10.0.12.154:5703  1.114514ms  OK      
-storageos-nodes3  storageos-nodes1.etcd      10.0.12.154:5707  1.214016ms  OK      
-storageos-nodes3  storageos-nodes1.nats      10.0.12.154:5708  1.093753ms  OK      
-storageos-nodes3  storageos-nodes1.serf      10.0.12.154:5711  1.076079ms  OK      
-storageos-nodes3  storageos-nodes2.api       10.0.12.148:5705  1.206116ms  OK      
-storageos-nodes3  storageos-nodes2.directfs  10.0.12.148:5703  1.077688ms  OK      
-storageos-nodes3  storageos-nodes2.etcd      10.0.12.148:5707  1.079419ms  OK      
-storageos-nodes3  storageos-nodes2.nats      10.0.12.148:5708  1.090791ms  OK      
-storageos-nodes3  storageos-nodes2.serf      10.0.12.148:5711  1.15946ms   OK      
-storageos-nodes3  storageos-nodes3.api       10.0.12.253:5705  1.098104ms  OK      
-storageos-nodes3  storageos-nodes3.directfs  10.0.12.253:5703  1.154387ms  OK      
-storageos-nodes3  storageos-nodes3.etcd      10.0.12.253:5707  1.147184ms  OK      
-storageos-nodes3  storageos-nodes3.nats      10.0.12.253:5708  1.168365ms  OK      
-storageos-nodes3  storageos-nodes3.serf      10.0.12.253:5711  1.10147ms   OK      
-storageos-nodes1  storageos-nodes1.api       10.0.12.154:5705  1.141353ms  OK      
-storageos-nodes1  storageos-nodes1.directfs  10.0.12.154:5703  1.10065ms   OK      
-storageos-nodes1  storageos-nodes1.etcd      10.0.12.154:5707  1.143535ms  OK      
-storageos-nodes1  storageos-nodes1.nats      10.0.12.154:5708  1.142812ms  OK      
-storageos-nodes1  storageos-nodes1.serf      10.0.12.154:5711  1.125368ms  OK      
-storageos-nodes1  storageos-nodes2.api       10.0.12.148:5705  1.126621ms  OK      
-storageos-nodes1  storageos-nodes2.directfs  10.0.12.148:5703  1.114407ms  OK      
-storageos-nodes1  storageos-nodes2.etcd      10.0.12.148:5707  1.192261ms  OK      
-storageos-nodes1  storageos-nodes2.nats      10.0.12.148:5708  1.075251ms  OK      
-storageos-nodes1  storageos-nodes2.serf      10.0.12.148:5711  1.191951ms  OK      
-storageos-nodes1  storageos-nodes3.api       10.0.12.253:5705  1.080853ms  OK      
-storageos-nodes1  storageos-nodes3.directfs  10.0.12.253:5703  1.084045ms  OK      
-storageos-nodes1  storageos-nodes3.etcd      10.0.12.253:5707  1.117382ms  OK      
-storageos-nodes1  storageos-nodes3.nats      10.0.12.253:5708  1.15015ms   OK      
-storageos-nodes1  storageos-nodes3.serf      10.0.12.253:5711  1.075519ms  OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-cluster-create&#34;&gt;&lt;code&gt;storageos cluster create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a cluster token for &lt;a href=&#34;https://docs.storageos.com/docs/reference/clusterdiscovery/&#34;&gt;cluster discovery&lt;/a&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos cluster create
-207f0026-3844-40e0-884b-729d79c124b8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-cluster-health&#34;&gt;&lt;code&gt;storageos cluster health&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view the status of cluster nodes:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos cluster health
-NODE         CP_STATUS  DP_STATUS
-storageos-1  Healthy    Healthy
-storageos-2  Healthy    Healthy
-storageos-3  Healthy    Healthy
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To view the status in more detail there are additional format
-options which can be given to the &lt;code&gt;--format&lt;/code&gt; flag:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cp&lt;/code&gt; shows the status of control plane components&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;dp&lt;/code&gt; shows the status of data plane components&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;detailed&lt;/code&gt; shows the status of control plane and data plane components&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;All the normal format options are available too. Run &lt;code&gt;storageos cluster health --format help&lt;/code&gt;
-to see all the options for this command.&lt;/p&gt;
-&lt;h3 id=&#34;storageos-cluster-inspect&#34;&gt;&lt;code&gt;storageos cluster inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To inspect a cluster:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos cluster inspect 207f0026-3844-40e0-884b-729d79c124b8
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;207f0026-3844-40e0-884b-729d79c124b8&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;size&amp;#34;&lt;/span&gt;: 3,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2017-07-14T13:17:29.226058526Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;updatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2017-07-14T13:17:29.22605861Z&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-cluster-maintenance-inspect&#34;&gt;&lt;code&gt;storageos cluster maintenance inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view the maintenance status of a cluster:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ storageos cluster maintenance inspect
-[
-    {
-        &amp;quot;enabled&amp;quot;: false,
-        &amp;quot;updatedBy&amp;quot;: &amp;quot;&amp;quot;,
-        &amp;quot;updatedAt&amp;quot;: &amp;quot;0001-01-01T00:00:00Z&amp;quot;
-    }
-]
+$ storageos describe node my-node-name
 
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;storageos-cluster-rm&#34;&gt;&lt;code&gt;storageos cluster rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To remove a cluster:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos cluster rm 207f0026-3844-40e0-884b-729d79c124b8
-207f0026-3844-40e0-884b-729d79c124b8
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Licence</title>
-      <link>https://docs.storageos.com/docs/reference/cli/licence/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/licence/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos licence 
 
-Usage:	storageos licence COMMAND
+Flags:
+  -h, --help                   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; node
+  -l, --selector stringArray   filter returned results by a &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of comma-separated label selectors
 
-Manage the licence
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;describe-volume&#34;&gt;describe volume&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos describe volume --help
+Show detailed information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volumes
 
-Options:
-      --help   Print usage
-
-Commands:
-  apply       Apply a new licence, Either provide the filename of the licence file or write to stdin.
-		E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos licence apply --filename=licence&amp;#34;&lt;/span&gt;
-		E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;cat licence | storageos licence apply --stdin&amp;#34;&lt;/span&gt;
-  inspect     Display detailed information on the licence
-  rm          Remove the current licence
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos licence COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-licence-apply&#34;&gt;&lt;code&gt;storageos licence apply&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To apply a new licence from a licence file to override the existing one, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos licence apply --filename&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;licence
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To apply a new licence from clipboard to override the existing one, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; PASTE-THE-LICENCE-KEY-HERE &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos licence apply --stdin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-licence-inspect&#34;&gt;&lt;code&gt;storageos licence inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To display detailed information on the current licence, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos licence inspect
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;clusterID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ea0f97a1-9fa5-4977-9919-e9fb4bbd8708&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storage&amp;#34;&lt;/span&gt;: 100,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;validUntil&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;9999-01-01T00:00:00Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;licenceType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;basic&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;features&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;HA&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;unregistered&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-licence-rm&#34;&gt;&lt;code&gt;storageos licence rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete the previously applied licence from the system, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos licence rm
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Login</title>
-      <link>https://docs.storageos.com/docs/reference/cli/login/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/login/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos login --help
-
-Usage:	storageos login &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;HOST&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-
-Store login credentials &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; a given storageos host
-
-Options:
-      --help              Print usage
-  -p, --password string   The password to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; this host &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;will override value of the global option
-                          --password&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  -u, --username string   The username to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; this host &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;will override value of the global option
-                          --username&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The storageos CLI provides a simple credentials helper to aid in cluster management.
-In addition to the use of environment variables &lt;code&gt;STORAGEOS_USERNAME&lt;/code&gt; and &lt;code&gt;STORAGEOS_PASSWORD&lt;/code&gt; the credentials stored by this command are available for use to authenticate with a cluster.
-The CLI will automatically use the stored credentials when contacting a known host (if not overridden by &lt;code&gt;-u&lt;/code&gt; or &lt;code&gt;-p&lt;/code&gt;).&lt;/p&gt;
-&lt;p&gt;To store credentials for a host use the &lt;code&gt;login&lt;/code&gt; command:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos login 10.1.5.249
-Username: storageos
-Password:
-Credentials verified
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;These credentials are then stored in the file &lt;code&gt;$HOMEDIR/.storageos/config.json&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-	&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;knownHosts&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-		&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;10.1.5.249:5705&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-			&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
-			&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;password&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;c3RvcmFnZW9z&amp;#34;&lt;/span&gt;
-		&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-	&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On Windows and Linux these credentials are stored in plain-text equivalent base-64 so users should take appropriate measures to protect the contents of this file.
-On the Mac platform, osx-keychain integration is provided, enabling secure credential storage.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-	&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;knownHosts&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-		&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;10.1.5.249:5705&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;{&lt;/span&gt;
-			&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;,&lt;/span&gt;
-			&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;&amp;#34;useKeychain&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;
-		&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-	&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;copying-credentials-between-machines&#34;&gt;Copying credentials between machines&lt;/h2&gt;
-&lt;p&gt;On Windows and Linux, migrating credentials to another machine is simple. Just copy the file &lt;code&gt;$HOMEDIR/.storageos/config.json&lt;/code&gt; to the same path on the new machine.&lt;/p&gt;
-&lt;p&gt;For Mac machines, the contents stored in the keychain must also be copied. Information on how to do this can be found on &lt;a href=&#34;https://support.apple.com/kb/PH20120?locale=en_US&#34;&gt;Apple&amp;rsquo;s site&lt;/a&gt;.
-For user convenience, all credentials stored in the keychain by the storageos CLI will use the service name &lt;code&gt;storageos_cli&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Once credentials for a cluster are no-longer needed, use the logout command to forget the credentials.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos &lt;span style=&#34;color:#204a87&#34;&gt;logout&lt;/span&gt; 10.1.5.249
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Logs</title>
-      <link>https://docs.storageos.com/docs/reference/cli/logs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/logs/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;Usage:	storageos logs COMMAND
-
-View and manage node logs
-
-Options:
-      --clear-filter       Clears the filter
-      --filter string      Set the logging filter
-  -f, --follow             Tail the logs &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the given node, or all nodes &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;if&lt;/span&gt; not specified
-      --format string      Output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;raw or table&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; or a Go template &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;raw&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-      --help               Print usage
-   -l, --log-level string   Set the logging level &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;debug&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;info&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;warn&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;error&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fatal&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  -q, --quiet              Only display volume names
-  -t, --timeout int        Timeout in seconds. &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-
-Commands:
-  view        Show logging configuration
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos logs COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;logs&lt;/code&gt; command is intended to assist with troubleshooting a running cluster.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;--log-level&lt;/code&gt; controls the level of detail shown in the logs with &lt;code&gt;info&lt;/code&gt; the
-default.  The available options are &lt;code&gt;debug&lt;/code&gt;, &lt;code&gt;info&lt;/code&gt;, &lt;code&gt;warn&lt;/code&gt;, &lt;code&gt;error&lt;/code&gt; and
-&lt;code&gt;fatal&lt;/code&gt;.  During normal operation &lt;code&gt;info&lt;/code&gt; level is recommended.&lt;/p&gt;
-&lt;p&gt;Filters fine-tune the amount of detail shown.  They allow you to set the log
-level to &lt;code&gt;debug&lt;/code&gt; level, then set specific categories at a higher level
-(e.g. &lt;code&gt;info&lt;/code&gt;) so there is less noise while troubleshooting an issue.&lt;/p&gt;
-&lt;p&gt;For example, the filter &lt;code&gt;dp=info,cp=info,etcd=debug&lt;/code&gt; would set all dataplane and
-controlplane categories to &lt;code&gt;info&lt;/code&gt; level, then only enable &lt;code&gt;debug&lt;/code&gt; on the &lt;code&gt;etcd&lt;/code&gt;
-category.  Filters are evaluated from left to right.  The log level must also be
-set to &lt;code&gt;debug&lt;/code&gt; to show the &lt;code&gt;etcd&lt;/code&gt; category at &lt;code&gt;debug&lt;/code&gt; level.&lt;/p&gt;
-&lt;p&gt;Categories are tags on log messages that relate to the component that generated
-them.  A typical log message looks like:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;time=&amp;quot;2018-01-11T12:42:58Z&amp;quot; level=info msg=&amp;quot;lost leadership election, waiting&amp;quot; action=election category=leader error=&amp;quot;already exists&amp;quot; module=ha
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;storageos-logs-view&#34;&gt;&lt;code&gt;storageos logs view&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Displays the current log levels and filters for the whole cluster.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs view
-NODE         LEVEL  FILTER
-storageos-1  debug  &lt;span style=&#34;color:#000&#34;&gt;cp&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,dp&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,leader&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;debug
-storageos-2  info
-storageos-3  debug  &lt;span style=&#34;color:#000&#34;&gt;cp&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,dp&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,ha&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;debug
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;set-log-verbosity&#34;&gt;Set log verbosity&lt;/h3&gt;
-&lt;p&gt;To set the log level on all nodes in the cluster:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --log-level debug
-OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To set the log level on specific nodes, append a list of node names:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --log-level debug storageos-1 storageos-2
-OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;set-filter&#34;&gt;Set filter&lt;/h3&gt;
-&lt;p&gt;To set a filter on a single node:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --filter &lt;span style=&#34;color:#000&#34;&gt;cp&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,dp&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info,leader&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;debug storageos-1
-OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If no node names are given, the filter will be applied to all nodes.&lt;/p&gt;
-&lt;h3 id=&#34;clear-filter&#34;&gt;Clear filter&lt;/h3&gt;
-&lt;p&gt;To remove the filter, use the &lt;code&gt;--clear-filter&lt;/code&gt; flag.&lt;/p&gt;
-&lt;p&gt;To clear on all nodes:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --clear-filter
-OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can clear the filter on specific nodes by appending one or more node names:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --clear-filter storageos-1
-OK
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;viewing-logs&#34;&gt;Viewing logs&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;--follow&lt;/code&gt; flag allows you to view the cluster logs as they are generated.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos logs --follow storageos-1
-
-storageos logs --follow
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Namespaces</title>
-      <link>https://docs.storageos.com/docs/reference/cli/namespace/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/namespace/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos namespace
-
-Usage:	storageos namespace COMMAND
-
-Manage namespaces
+Usage:
+  storageos describe volume &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;volume names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
 Aliases:
-  namespace, ns
+  volume, volumes
 
-Options:
-      --help   Print usage
+Examples:
 
-Commands:
-  create      Create a namespace
-  inspect     Display detailed information on one or more namespaces
-  ls          List namespaces
-  rm          Remove one or more namespaces
-  update      Update a namespace
+$ storageos describe volumes
 
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos namespace COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-namespace-create&#34;&gt;&lt;code&gt;storageos namespace create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a namespace:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos namespace create legal --description compliance-volumes
-legal
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add the &lt;code&gt;--display-name&lt;/code&gt; flag to set a display-friendly name.&lt;/p&gt;
-&lt;h3 id=&#34;storageos-namespace-inspect&#34;&gt;&lt;code&gt;storageos namespace inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Check if a namespace has labels applied.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos namespace inspect legal &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep labels
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: null,
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-namespace-ls&#34;&gt;&lt;code&gt;storageos namespace ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view namespaces:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos namespace ls -q
-default
-legal
-performance
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Remove &lt;code&gt;-q&lt;/code&gt; for full details&lt;/p&gt;
-&lt;h3 id=&#34;storageos-namespace-rm&#34;&gt;&lt;code&gt;storageos namespace rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To remove a namespace (add &amp;ndash;force to remove namespaces with mounted volumes):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos namespace rm legal
-legal
+$ storageos describe volume --namespace my-namespace-name my-volume-name
+
+
+Flags:
+  -h, --help                   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volume
+  -l, --selector stringArray   filter returned results by a &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of comma-separated label selectors
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
     <item>
-      <title>Docs: Nodes</title>
-      <link>https://docs.storageos.com/docs/reference/cli/node/</link>
+      <title>Docs: Detach Volume</title>
+      <link>https://docs.storageos.com/docs/reference/cli/detach/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/cli/node/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/detach/</guid>
       <description>
         
         
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos detach --help
+Detach a volume from its current location
 
-Usage:  storageos node COMMAND
+Usage:
+  storageos detach &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
-Manage nodes
+Examples:
+
+$ storageos detach volume --namespace my-namespace-name my-volume
+
+
+Flags:
+      --cas string   make changes to a resource conditional upon matching a provided version
+  -h, --help         &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; detach
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Get</title>
+      <link>https://docs.storageos.com/docs/reference/cli/get/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/cli/get/</guid>
+      <description>
+        
+        
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get --help
+Fetch basic details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
+
+Usage:
+  storageos get &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Available Commands:
+  cluster     Fetch cluster-wide configuration details
+  diagnostics Fetch a cluster diagnostic bundle
+  namespace   Retrieve basic details of cluster namespaces
+  node        Retrieve basic details of nodes in the cluster
+  user        Fetch user details
+  volume      Retrieve basic details of volumes
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; get
+
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos get [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-cluster&#34;&gt;get cluster&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get cluster  --help
+Fetch cluster-wide configuration details
+
+Usage:
+  storageos get cluster &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos get cluster
+
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; cluster
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-diagnostics&#34;&gt;get diagnostics&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics  --help
+Fetch a cluster diagnostic bundle
+
+Usage:
+  storageos get diagnostics &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Examples:
+
+$ storageos get diagnostics
+
+$ storageos get diagnostics --output-file ~/my-diagnostics
+
+
+Flags:
+  -h, --help                 &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; diagnostics
+      --output-file string   writes the generated diagnostic bundle to a specified file path
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-namespace&#34;&gt;get namespace&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get namespace  -h
+Retrieve basic details of cluster namespaces
+
+Usage:
+  storageos get namespace &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;namespace names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
 Aliases:
-  node, n
+  namespace, namespaces
 
-Options:
-      --help   Print usage
+Examples:
 
-Commands:
-  connectivity Display detailed connectivity information on one or more nodes
-  cordon       Put one or more nodes into an unschedulable state
-  delete       Remove an offline node from the cluster.
-  drain        Migrate volumes from one or more nodes.
-  health       Display detailed information on a given node
-  inspect      Display detailed information on one or more nodes
-  ls           List nodes
-  uncordon     Restore one or more nodes from an unschedulable state
-  undrain      Stop drain on one or more nodes.
-  update       Update a node
+$ storageos get namespaces
 
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos node COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-connectivity&#34;&gt;&lt;code&gt;storageos node connectivity&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Display the latency and status of the connection between different nodes of the
-cluster and the services attached to the network started by StorageOS. It shows
-whether any node or service can&amp;rsquo;t be connected.&lt;/p&gt;
-&lt;p&gt;The output can be for all permutations of nodes in the cluster or for one
-specific node.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node connectivity 
-SOURCE            NAME                       ADDRESS             LATENCY     STATUS  MESSAGE
-ip-172-20-88-241  ip-172-20-100-61.api       172.20.100.61:5705  1.172108ms  OK  
-ip-172-20-88-241  ip-172-20-100-61.directfs  172.20.100.61:5703  1.238443ms  OK  
-ip-172-20-88-241  ip-172-20-100-61.nats      172.20.100.61:5708  1.088224ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.api        172.20.32.38:5705   1.201392ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.directfs   172.20.32.38:5703   1.225196ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.nats       172.20.32.38:5708   1.097115ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.api       172.20.39.233:5705  1.190318ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.directfs  172.20.39.233:5703  1.222903ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.nats      172.20.39.233:5708  1.286556ms  OK  
-ip-172-20-39-233  ip-172-20-100-61.api       172.20.100.61:5705  1.257497ms  OK  
-ip-172-20-39-233  ip-172-20-100-61.directfs  172.20.100.61:5703  1.102858ms  OK  
-ip-172-20-39-233  ip-172-20-100-61.nats      172.20.100.61:5708  1.240308ms  OK  
-ip-172-20-39-233  ip-172-20-32-38.api        172.20.32.38:5705   1.169309ms  OK  
-ip-172-20-39-233  ip-172-20-32-38.directfs   172.20.32.38:5703   1.238169ms  OK  
-ip-172-20-39-233  ip-172-20-32-38.nats       172.20.32.38:5708   1.120058ms  OK  
-ip-172-20-39-233  ip-172-20-88-241.api       172.20.88.241:5705  1.285212ms  OK  
-ip-172-20-39-233  ip-172-20-88-241.directfs  172.20.88.241:5703  1.274576ms  OK  
-ip-172-20-39-233  ip-172-20-88-241.nats      172.20.88.241:5708  1.257659ms  OK  
-ip-172-20-100-61  ip-172-20-32-38.api        172.20.32.38:5705   1.136496ms  OK  
-ip-172-20-100-61  ip-172-20-32-38.directfs   172.20.32.38:5703   1.200905ms  OK  
-ip-172-20-100-61  ip-172-20-32-38.nats       172.20.32.38:5708   1.227956ms  OK  
-ip-172-20-100-61  ip-172-20-39-233.api       172.20.39.233:5705  1.075072ms  OK  
-ip-172-20-100-61  ip-172-20-39-233.directfs  172.20.39.233:5703  1.279988ms  OK  
-ip-172-20-100-61  ip-172-20-39-233.nats      172.20.39.233:5708  1.239564ms  OK  
-ip-172-20-100-61  ip-172-20-88-241.api       172.20.88.241:5705  1.240107ms  OK  
-ip-172-20-100-61  ip-172-20-88-241.directfs  172.20.88.241:5703  1.219858ms  OK  
-ip-172-20-100-61  ip-172-20-88-241.nats      172.20.88.241:5708  1.309962ms  OK  
-ip-172-20-32-38   ip-172-20-100-61.api       172.20.100.61:5705  1.08306ms   OK  
-ip-172-20-32-38   ip-172-20-100-61.directfs  172.20.100.61:5703  1.186921ms  OK  
-ip-172-20-32-38   ip-172-20-100-61.nats      172.20.100.61:5708  1.233717ms  OK  
-ip-172-20-32-38   ip-172-20-39-233.api       172.20.39.233:5705  1.272816ms  OK  
-ip-172-20-32-38   ip-172-20-39-233.directfs  172.20.39.233:5703  1.215386ms  OK  
-ip-172-20-32-38   ip-172-20-39-233.nats      172.20.39.233:5708  1.272102ms  OK  
-ip-172-20-32-38   ip-172-20-88-241.api       172.20.88.241:5705  1.276441ms  OK  
-ip-172-20-32-38   ip-172-20-88-241.directfs  172.20.88.241:5703  1.248265ms  OK  
-ip-172-20-32-38   ip-172-20-88-241.nats      172.20.88.241:5708  1.328679ms  OK  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node connectivity ip-172-20-88-241
-SOURCE             NAME                      ADDRESS             LATENCY     STATUS  MESSAGE
-ip-172-20-88-241  ip-172-20-100-61.api       172.20.100.61:5705  2.804153ms  OK  
-ip-172-20-88-241  ip-172-20-100-61.directfs  172.20.100.61:5703  2.77249ms   OK  
-ip-172-20-88-241  ip-172-20-100-61.nats      172.20.100.61:5708  2.791746ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.api        172.20.32.38:5705   2.755615ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.directfs   172.20.32.38:5703   2.815147ms  OK  
-ip-172-20-88-241  ip-172-20-32-38.nats       172.20.32.38:5708   2.526776ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.api       172.20.39.233:5705  2.817432ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.directfs  172.20.39.233:5703  2.839914ms  OK  
-ip-172-20-88-241  ip-172-20-39-233.nats      172.20.39.233:5708  2.894249ms  OK  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-cordon&#34;&gt;&lt;code&gt;storageos node cordon&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Puts one or more nodes into an unschedulable state, in preparation for upgrading or
-decommissioning a node.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node cordon storageos-1
-storageos-1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-delete&#34;&gt;&lt;code&gt;storageos node delete&lt;/code&gt;&lt;/h3&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Only applicable for installations with &lt;code&gt;KV_BACKEND=etcd&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Removes a StorageOS node from the cluster. It will only succeed if the node is
-&lt;code&gt;Offline&lt;/code&gt;. All data in that node will be lost, hence it is recommended to drain
-the node before decommissioning it.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node delete storageos-1
-storageos-1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-drain&#34;&gt;&lt;code&gt;storageos node drain&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Evicts all volumes from one or more nodes and puts them into an unschedulable state.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node drain storageos-1
-storageos-1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-inspect&#34;&gt;&lt;code&gt;storageos node inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view detailed information such as state, port configuration,
-health, version and capacity in JSON format, inspect the node:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node inspect storageos-1
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;dafdcc3b-7a7a-14e4-77f4-bcc2070543cf&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostname&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;192.168.50.100&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvAddr&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;apiPort&amp;#34;&lt;/span&gt;: 5705,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;natsPort&amp;#34;&lt;/span&gt;: 5708,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;natsClusterPort&amp;#34;&lt;/span&gt;: 5710,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;serfPort&amp;#34;&lt;/span&gt;: 5711,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;dfsPort&amp;#34;&lt;/span&gt;: 5703,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvPeerPort&amp;#34;&lt;/span&gt;: 5707,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvClientPort&amp;#34;&lt;/span&gt;: 5706,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: null,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logLevel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logFormat&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logFilter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;bindAddr&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;deviceDir&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos/volumes&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;join&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvBackend&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;debug&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;devices&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-            &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;e303b84f-b562-c1b0-8434-1ee89f5a9f8d&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;active&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;identifier&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos/data&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;filesystem&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;capacityStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;totalCapacityBytes&amp;#34;&lt;/span&gt;: 40576331776,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;availableCapacityBytes&amp;#34;&lt;/span&gt;: 38596853760,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;provisionedCapacityBytes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T09:20:17.499457963Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;updatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T09:35:17.87048772Z&amp;#34;&lt;/span&gt;
-            &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostID&amp;#34;&lt;/span&gt;: 53012,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-1&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-20T09:22:17.491813738Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;updatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T09:35:17.876400176Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;health&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;healthy&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;healthUpdatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T09:20:22.868508782Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;versionInfo&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;buildDate&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-05-25T190132Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;revision&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;f8915fa&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;apiVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;goVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;go1.9.1&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;linux&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;arch&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;amd64&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kernelVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;experimental&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-            &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;StorageOS 1.0.0 (f8915fa), built: 2018-05-25T190132Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Revision&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;scheduler&amp;#34;&lt;/span&gt;: true,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;cordon&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;drain&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;volumeStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;masterVolumeCount&amp;#34;&lt;/span&gt;: 0,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;replicaVolumeCount&amp;#34;&lt;/span&gt;: 2,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;virtualVolumeCount&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;capacityStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;totalCapacityBytes&amp;#34;&lt;/span&gt;: 40576331776,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;availableCapacityBytes&amp;#34;&lt;/span&gt;: 38596853760,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;provisionedCapacityBytes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-ls&#34;&gt;&lt;code&gt;storageos node ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view the state of your cluster, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node ls
+$ storageos get namespace my-namespace-name
 
-NAME         ADDRESS         HEALTH              SCHEDULER  VOLUMES     TOTAL    USED   VERSION
-storageos-1  192.168.50.100  Healthy &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;18&lt;/span&gt; minutes  &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;       M: 0, R: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;  40.58GB  4.88%  1.0.0
-storageos-2  192.168.50.101  Healthy &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;17&lt;/span&gt; minutes  &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;      M: 1, R: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;  40.58GB  4.88%  1.0.0
-storageos-3  192.168.50.102  Healthy &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;17&lt;/span&gt; minutes  &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;      M: 1, R: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;  40.58GB  4.88%  1.0.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The output shows a StorageOS cluster with three nodes named
-&lt;code&gt;storageos-1&lt;/code&gt;, &lt;code&gt;storageos-2&lt;/code&gt; and &lt;code&gt;storageos-3&lt;/code&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;SCHEDULER&lt;/code&gt;: whether the node contains the scheduler, which is responsible for
-the placement of volumes, performing health checks and providing high
-availability to nodes. A cluster will have exactly one scheduler node.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;VOLUMES&lt;/code&gt;: the number of master or replica copies of volumes on this node.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;storageos-node-uncordon&#34;&gt;&lt;code&gt;storageos node uncordon&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Restore one or more nodes after cordoning the node for upgrade.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node uncordon storageos-1
-storageos-1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-node-undrain&#34;&gt;&lt;code&gt;storageos node undrain&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Stops any draining procedure in place and restores the node to its normal functionality.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos node undrain storageos-1 
-storageos-1
+
+Flags:
+  -h, --help                   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; namespace
+  -l, --selector stringArray   filter returned results by a &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of comma-separated label selectors
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-node&#34;&gt;get node&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get node  -h
+Retrieve basic details of nodes in the cluster
+
+Usage:
+  storageos get node &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;node names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Aliases:
+  node, nodes
+
+Examples:
+
+$ storageos get node my-node-name
+
+
+Flags:
+  -h, --help                   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; node
+  -l, --selector stringArray   filter returned results by a &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of comma-separated label selectors
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-user&#34;&gt;get user&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get user -h
+Fetch user details
+
+Usage:
+  storageos get user &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;user names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Aliases:
+  user, users
+
+Examples:
+
+$ storageos get user my-username
+$ storageos get user my-username-1 my-username-2
+$ storageos get user --use-ids my-userid
+$ storageos get user --use-ids my-userid-1 my-userid-2
+
+
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; user
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;get-volume&#34;&gt;get volume&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get volume -h
+Retrieve basic details of volumes
+
+Usage:
+  storageos get volume &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;volume names...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
+
+Aliases:
+  volume, volumes
+
+Examples:
+
+$ storageos get volumes --all-namespaces
+
+$ storageos get volume --namespace my-namespace-name my-volume-name
+
+
+Flags:
+      --all-namespaces         retrieves volumes from all accessible namespaces. This option overrides the namespace configuration
+  -h, --help                   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volume
+  -l, --selector stringArray   filter returned results by a &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of comma-separated label selectors
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
     <item>
-      <title>Docs: Policies</title>
-      <link>https://docs.storageos.com/docs/reference/cli/policy/</link>
+      <title>Docs: Help</title>
+      <link>https://docs.storageos.com/docs/reference/cli/help/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/cli/policy/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/help/</guid>
       <description>
         
         
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy 
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt;
+Storage &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; Cloud Native Applications.
 
-Usage:	storageos policy COMMAND
+By using this product, you are agreeing to the terms of the the StorageOS Ltd. End
+User Subscription Agreement &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;EUSA&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; found at: https://storageos.com/legal/#eusa
 
-Manage policies
+To be notified about stable releases and latest features, sign up at https://my.storageos.com.
 
-Options:
-      --help   Print usage
+Usage:
+  storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;command&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
-Commands:
-  create      Create a new policy, Either provide the &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; of policy files, &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; with options or write to stdin.
-		E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos policy create --user awesomeUser --namespace testing&amp;#34;&lt;/span&gt;
-		E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos policy create --policies=&amp;#39;rules1.jsonl,rules2.jsonl&amp;#39;&amp;#34;&lt;/span&gt;
-		E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;echo &amp;#39;{&amp;#34;&lt;/span&gt;spec&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;: {&amp;#34;&lt;/span&gt;group&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;: &amp;#34;&lt;/span&gt;devs&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;, &amp;#34;&lt;/span&gt;namespace&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;: &amp;#34;&lt;/span&gt;develop&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;}}&amp;#39; | storageos policy create --stdin&amp;#34;&lt;/span&gt;
-  inspect     Display detailed information on one or more polic&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;y&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;ies&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  ls          List policies
-  rm          Remove one or more polic&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;y&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;ies&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Available Commands:
+  apply       Make changes to existing resources
+  attach      Attach a volume to a node
+  create      Create new resources
+  delete      Delete resources in the cluster
+  describe    Fetch extended details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
+  detach      Detach a volume from its current location
+  get         Fetch basic details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
+  &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt;        Help about any &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
+  version     View version information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the StorageOS CLI
 
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos policy COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-policy-create&#34;&gt;&lt;code&gt;storageos policy create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a new policy that allows users in the group &amp;ldquo;developers&amp;rdquo; to access the namespace &amp;ldquo;staging&amp;rdquo;, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy create --group developers --namespace staging
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-policy-inspect&#34;&gt;&lt;code&gt;storageos policy inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To display detailed information on one or more policies, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy inspect 9fb096af-0a16-d1d2-5416-b637f0194b3f
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;spec&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;group&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;developers&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;namespace&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;staging&amp;#34;&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The ID used is the policy ID as displayed in &lt;code&gt;storageos policy ls&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;storageos-policy-ls&#34;&gt;&lt;code&gt;storageos policy ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To list the policies on the system, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy ls
-ID                                    USER  GROUP       NAMESPACE
-9fb096af-0a16-d1d2-5416-b637f0194b3f        developers  staging
-f1e33492-aa9b-3922-7824-383941d37a5d        testers     staging
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-policy-rm&#34;&gt;&lt;code&gt;storageos policy rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete a policy from the system, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy rm 9fb096af-0a16-d1d2-5416-b637f0194b3f
-9fb096af-0a16-d1d2-5416-b637f0194b3f
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The policy is now deleted.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos policy ls
-ID                                    USER  GROUP    NAMESPACE
-f1e33492-aa9b-3922-7824-383941d37a5d        testers  staging
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: The ID used is the policy ID as displayed in &lt;code&gt;storageos policy ls&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -h, --help                    &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; storageos
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Pools</title>
-      <link>https://docs.storageos.com/docs/reference/cli/pool/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/pool/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool
+Additional &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; topics:
+  storageos env       View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; configuration settings which can be &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; in the environment
+  storageos exitcodes View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt; codes used by the StorageOS CLI
 
-Usage:	storageos pool COMMAND
-
-Manage capacity pools
-
-Options:
-      --help   Print usage
-
-Commands:
-  create      Create a capacity pool
-  inspect     Display detailed information on one or more capacity pools
-  ls          List capacity pools
-  rm          Remove one or more capacity pools
-  update      Update a pool
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos pool COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-pool-create&#34;&gt;&lt;code&gt;storageos pool create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a pool, consisting of nodes with a given label:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool create no-ha --node-selector &lt;span style=&#34;color:#000&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;fast
-no-ha
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To add a label at time of creation:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool create production --label &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod
-production
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-pool-ls&#34;&gt;&lt;code&gt;storageos pool ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To list pools:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool ls
-NAME        DEFAULT  NODE_SELECTOR  DEVICE_SELECTOR  NODES  TOTAL    USED
-default     &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;                                     &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;      40.58GB  4.88%
-no-ha       &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;    &lt;span style=&#34;color:#000&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;fast                    &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;      40.58GB  4.88%
-production  &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;                                    &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;      0B       -
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-pool-inspect&#34;&gt;&lt;code&gt;storageos pool inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To inspect the metadata for a given pool:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool inspect no-ha
-
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;e911c9fe-7d1c-8482-48b6-d0b1283476d4&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;no-ha&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;nodeSelector&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storage=fast&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;deviceSelector&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;capacityStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;totalCapacityBytes&amp;#34;&lt;/span&gt;: 40576331776,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;availableCapacityBytes&amp;#34;&lt;/span&gt;: 38595940352,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;provisionedCapacityBytes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;nodes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-            &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ba9eca89-ea10-ce4e-26b9-85331f0b5ee2&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostname&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;address&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;192.168.50.100&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvAddr&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;apiPort&amp;#34;&lt;/span&gt;: 5705,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;natsPort&amp;#34;&lt;/span&gt;: 5708,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;natsClusterPort&amp;#34;&lt;/span&gt;: 5710,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;serfPort&amp;#34;&lt;/span&gt;: 5711,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;dfsPort&amp;#34;&lt;/span&gt;: 5703,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvPeerPort&amp;#34;&lt;/span&gt;: 5707,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvClientPort&amp;#34;&lt;/span&gt;: 5706,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logLevel&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logFormat&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;logFilter&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;bindAddr&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;deviceDir&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos/volumes&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;join&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kvBackend&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;debug&amp;#34;&lt;/span&gt;: false,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;devices&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-                    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ID&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;59dadbcb-22c6-a01c-8334-1ae9f5ed72c6&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
-                        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;active&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;identifier&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos/data&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;class&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;filesystem&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;capacityStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;totalCapacityBytes&amp;#34;&lt;/span&gt;: 40576331776,
-                            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;availableCapacityBytes&amp;#34;&lt;/span&gt;: 38595940352,
-                            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;provisionedCapacityBytes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-                        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T10:18:28.528081144Z&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;updatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T11:07:58.876658156Z&amp;#34;&lt;/span&gt;
-                    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostID&amp;#34;&lt;/span&gt;: 51087,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-1&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T10:18:28.523996151Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;updatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T11:07:58.894679039Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;health&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;healthy&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;healthUpdatedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-06-22T10:18:38.83674189Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;versionInfo&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;buildDate&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-05-25T190132Z&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;revision&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;f8915fa&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1.0.0&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;apiVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;goVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;go1.9.1&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;os&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;linux&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;arch&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;amd64&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kernelVersion&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;experimental&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-                    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;StorageOS 1.0.0 (f8915fa), built: 2018-05-25T190132Z&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Revision&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;scheduler&amp;#34;&lt;/span&gt;: true,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;cordon&amp;#34;&lt;/span&gt;: false,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;drain&amp;#34;&lt;/span&gt;: false,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;volumeStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;masterVolumeCount&amp;#34;&lt;/span&gt;: 1,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;replicaVolumeCount&amp;#34;&lt;/span&gt;: 0,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;virtualVolumeCount&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-                &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;capacityStats&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;totalCapacityBytes&amp;#34;&lt;/span&gt;: 40576331776,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;availableCapacityBytes&amp;#34;&lt;/span&gt;: 38595940352,
-                    &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;provisionedCapacityBytes&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;
-                &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-            &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-pool-rm&#34;&gt;&lt;code&gt;storageos pool rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete a pool:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos pool rm no-ha
-no-ha
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
     <item>
-      <title>Docs: Rules</title>
-      <link>https://docs.storageos.com/docs/reference/cli/rule/</link>
+      <title>Docs: Version</title>
+      <link>https://docs.storageos.com/docs/reference/cli/version/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/reference/cli/rule/</guid>
+      <guid>https://docs.storageos.com/docs/reference/cli/version/</guid>
       <description>
         
         
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos rule
+        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos version --help
+View version information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the StorageOS CLI
 
-Usage:	storageos rule COMMAND
+Usage:
+  storageos version &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;flags&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
 
-Manage rules
+Flags:
+  -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; version
 
-Options:
-      --help   Print usage
-
-Commands:
-  create      Creates a rule. To create a rule that configures &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt; replicas &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; volumes with the label &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod, run:
-storageos rule create --namespace default --selector &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod --action add --label storageos.com/replicas&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt; replicator
-
-  inspect     Display detailed information on one or more rules
-  ls          List rules
-  rm          Remove one or more rules
-  update      Update a rule
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos rule COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-rule-create&#34;&gt;&lt;code&gt;storageos rule create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a rule that configures 2 replicas for volumes with the label env=prod:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos rule create --namespace default --selector &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;env==prod&amp;#39;&lt;/span&gt; --action add --label storageos.com/replicas&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt; replicator
-default/replicator
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-rule-inspect&#34;&gt;&lt;code&gt;storageos rule inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To inspect a rule:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ storageos rule inspect default/replicator
-[
-    {
-        &amp;quot;id&amp;quot;: &amp;quot;9db3252a-bd14-885b-0d0a-b0da1dd2d4a1&amp;quot;,
-        &amp;quot;name&amp;quot;: &amp;quot;replicator&amp;quot;,
-        &amp;quot;namespace&amp;quot;: &amp;quot;default&amp;quot;,
-        &amp;quot;description&amp;quot;: &amp;quot;&amp;quot;,
-        &amp;quot;active&amp;quot;: true,
-        &amp;quot;weight&amp;quot;: 5,
-        &amp;quot;action&amp;quot;: &amp;quot;add&amp;quot;,
-        &amp;quot;selector&amp;quot;: &amp;quot;env==prod&amp;quot;,
-        &amp;quot;labels&amp;quot;: {
-            &amp;quot;storageos.com/replicas&amp;quot;: &amp;quot;2&amp;quot;
-        }
-    }
-]
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;storageos-rule-ls&#34;&gt;&lt;code&gt;storageos rule ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To list all rules:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos rule ls
-NAMESPACE/NAME       SELECTOR                  ACTION  LABELS
-default/dev-marker   !storageos.com/replicas   add     &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;dev
-default/prod-marker  storageos.com/replicas&amp;gt;1  add     &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod
-default/replicator   &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;prod                 add     storageos.com/replicas&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;
-default/uat-marker   storageos.com/replicas&amp;lt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt;  add     &lt;span style=&#34;color:#000&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;uat
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-rule-rm&#34;&gt;&lt;code&gt;storageos rule rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete a rule:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos rule rm default/replicator
-default/replicator
+Global Flags:
+      --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Users</title>
-      <link>https://docs.storageos.com/docs/reference/cli/user/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/user/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user
-
-Usage:	storageos user COMMAND
-
-Manage users
-
-Options:
-      --help   Print usage
-
-Commands:
-  create      Create a new User, E.g. &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos user create --password alice&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;interactive password prompt&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  inspect     Display detailed information on one or more user&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  ls          List users
-  rm          Remove one or more user&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  update      Update &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;select&lt;/span&gt; fields in a user account
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos user COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-user-create&#34;&gt;&lt;code&gt;storageos user create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a new (admin) user &amp;ldquo;awesomeUser&amp;rdquo; with a interactively provided password that is a member of the group &amp;ldquo;dev&amp;rdquo;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user create --role admin --groups dev awesomeUser
-Password: 
-Confirm Password: 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For multiple groups, use comma separation. E.g. &lt;code&gt;--groups dev,testing,deploy&lt;/code&gt;
-For non admin users use &lt;code&gt;--role user&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&#34;storageos-user-inspect&#34;&gt;&lt;code&gt;storageos user inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To display detailed information on the user &amp;ldquo;awesomeUser&amp;rdquo;, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user inspect awesomeUser
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;861511a8-2843-1031-724c-2cabaa2ca4e9&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;username&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;awesomeUser&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;groups&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;dev&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;admin&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Either the username or the ID can be used to select the user.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;storageos-user-ls&#34;&gt;&lt;code&gt;storageos user ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To list the users on the system, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user ls
-ID                                    USERNAME     GROUPS  ROLE
-861511a8-2843-1031-724c-2cabaa2ca4e9  awesomeUser  dev     admin
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos    admin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-user-rm&#34;&gt;&lt;code&gt;storageos user rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete a user from the system, run:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user rm 861511a8-2843-1031-724c-2cabaa2ca4e9
-861511a8-2843-1031-724c-2cabaa2ca4e9
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The user is now deleted.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user ls
-ID                                    USERNAME   GROUPS  ROLE
-9d6f2ea9-3c7d-2358-7d81-b29c50e10cc9  storageos          admin
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;Note&lt;/strong&gt;: Either the username or the ID can be used to select the user.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;storageos-user-update&#34;&gt;&lt;code&gt;storageos user update&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;Change the password of the user &amp;ldquo;awesomeUser&amp;rdquo;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --password awesomeUser
-Password: 
-Confirm Password: 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Change the username of the user &amp;ldquo;awesomeUser&amp;rdquo;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --username moreAwesomeUser awesomeUser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add &amp;ldquo;awesomeUser&amp;rdquo; to the dev group:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --add-groups dev awesomeUser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Remove &amp;ldquo;awesomeUser&amp;rdquo; from the dev group:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --remove-groups dev awesomeUser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Revoke &amp;ldquo;awesomeUser&amp;rdquo;&amp;lsquo;s admin privileges:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --role user awesomeUser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Restore &amp;ldquo;awesomeUser&amp;rdquo;&amp;lsquo;s admin privileges:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos user update --role admin awesomeUser
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: Volumes</title>
-      <link>https://docs.storageos.com/docs/reference/cli/volume/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/reference/cli/volume/</guid>
-      <description>
-        
-        
-        &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos volume
-
-Usage:	storageos volume COMMAND
-
-Manage volumes
-
-Options:
-      --help   Print usage
-
-Commands:
-  create      Create a volume
-  inspect     Display detailed information on one or more volumes
-  ls          List volumes
-  mount       Mount specified volume
-  rm          Remove one or more volumes
-  unmount     Unmount specified volume
-  update      Update a volume
-
-Run &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;storageos volume COMMAND --help&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information on a command.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that the mount and unmount commands are not available on MacOS or Windows.&lt;/p&gt;
-&lt;h3 id=&#34;storageos-volume-create&#34;&gt;&lt;code&gt;storageos volume create&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To create a 15GB volume in the default namespace:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos volume create --namespace default --size &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;15&lt;/span&gt; --fstype xfs volume-name
-default/volume-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-volume-inspect&#34;&gt;&lt;code&gt;storageos volume inspect&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view volume details:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos volume inspect default/volume-name
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;8d17066e-07d9-3f5f-e0de-edfc28e13f8f&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;inode&amp;#34;&lt;/span&gt;: 0,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;volume-name&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;size&amp;#34;&lt;/span&gt;: 15,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;pool&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fsType&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;xfs&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;description&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;labels&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;namespace&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;nodeSelector&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;master&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;id&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;inode&amp;#34;&lt;/span&gt;: 0,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;nodeName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-1&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;controller&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;controllerName&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;health&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;healthy&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;active&amp;#34;&lt;/span&gt;,
-            &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0001-01-01T00:00:00Z&amp;#34;&lt;/span&gt;
-        &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mounted&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mountDevice&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mountpoint&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mountedAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0001-01-01T00:00:00Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;replicas&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;health&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;status&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;active&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;statusMessage&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mkfsDone&amp;#34;&lt;/span&gt;: false,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;mkfsDoneAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0001-01-01T00:00:00Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdAt&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;0001-01-01T00:00:00Z&amp;#34;&lt;/span&gt;,
-        &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;createdBy&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
-    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-volume-ls&#34;&gt;&lt;code&gt;storageos volume ls&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To view all volumes in all namespaces:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos volume ls 
-NAMESPACE/NAME       SIZE  MOUNT  SELECTOR  STATUS  REPLICAS  LOCATION
-default/volume-name  15GB                   active  0/0       storageos-1 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;healthy&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-volume-mount&#34;&gt;&lt;code&gt;storageos volume mount&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To mount a volume on the current node into &lt;code&gt;/mnt&lt;/code&gt; (note this requires root):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo -E storageos volume mount default/volume-name /mnt
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(Important: use the &lt;code&gt;sudo -E&lt;/code&gt; option to preserve the storageos environment credentials)&lt;/em&gt;&lt;/p&gt;
-&lt;h3 id=&#34;storageos-volume-rm&#34;&gt;&lt;code&gt;storageos volume rm&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To delete a volume (use &lt;code&gt;--force&lt;/code&gt; to delete mounted volumes):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos volume rm default/volume-name
-default/volume-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;storageos-volume-unmount&#34;&gt;&lt;code&gt;storageos volume unmount&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;To unmount a volume on the current node (note this requires root):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo -E storageos volume unmount default/volume-name
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;(Important: use the &lt;code&gt;sudo -E&lt;/code&gt; option to preserve the storageos environment credentials)&lt;/em&gt;&lt;/p&gt;
-
       </description>
     </item>
     

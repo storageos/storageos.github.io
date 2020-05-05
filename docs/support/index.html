@@ -30,7 +30,7 @@
 <meta itemprop="description" content="How to ask for StorageOS support.
 ">
 
-<meta itemprop="wordCount" content="400">
+<meta itemprop="wordCount" content="435">
 
 
 
@@ -136,9 +136,9 @@
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -187,7 +187,7 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -209,6 +209,12 @@
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -267,19 +273,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -297,37 +291,13 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -375,6 +345,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -502,24 +478,6 @@
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -550,12 +508,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -580,41 +532,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -627,31 +544,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -804,79 +697,61 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -935,12 +810,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -959,13 +828,13 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -976,43 +845,14 @@
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1068,7 +908,7 @@
     <li><a href="#platform">Platform</a></li>
     <li><a href="#storageos">StorageOS</a></li>
     <li><a href="#orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</a></li>
-    <li><a href="#storageos-cluster-report">StorageOS Cluster Report</a></li>
+    <li><a href="#storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</a></li>
   </ul>
 </nav>
 
@@ -1090,7 +930,7 @@
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1119,8 +959,8 @@ information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.</p>
 <p>Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-report">StorageOS Cluster
-Report</a>.</p>
+as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-diagnostic-bundle">StorageOS Diagnostic
+Bundle</a>.</p>
 <h2 id="platform">Platform</h2>
 <ul>
 <li>Cloud provider/Bare metal</li>
@@ -1131,46 +971,49 @@ Report</a>.</p>
 <h2 id="storageos">StorageOS</h2>
 <ul>
 <li>Version of StorageOS</li>
-<li><code>storageos node ls</code></li>
-<li><code>storageos volume ls</code></li>
-<li><code>storageos volume inspect VOL_ID</code> # in case of issues with a specific volume</li>
+<li><code>storageos get nodes</code></li>
+<li><code>storageos get volumes</code></li>
+<li><code>storageos describe volume VOL_ID</code> # in case of issues with a specific volume</li>
 </ul>
 <h2 id="orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</h2>
 <ul>
 <li>Version and installation method</li>
 <li>Managed or self managed?</li>
-<li><code>kubectl -n storageos get pod</code></li>
-<li><code>kubectl -n storageos logs -lapp=storageos -c storageos</code></li>
-<li><code>kubectl -n storageos get storageclass</code></li>
+<li><code>kubectl -n kube-system get pod</code></li>
+<li><code>kubectl -n kube-system logs -lapp=storageos -c storageos</code></li>
+<li><code>kubectl -n kube-system get storageclass</code></li>
 <li>Specific for your namespaces: <code>kubectl describe pvc PVC_NAME</code></li>
 <li>Specific for your namespaces: <code>kubectl describe pod POD_NAME</code></li>
 </ul>
-<h2 id="storageos-cluster-report">StorageOS Cluster Report</h2>
-<p>StorageOS has a cluster diagnostic function that aggregates cluster information.</p>
-<p>For each node the following is collected:</p>
+<h2 id="storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</h2>
+<p>StorageOS has a cluster diagnostic function that aggregates cluster
+information.</p>
+<p>The cluster diagnostic bundle is created only when a user chooses to do so. For
+convenience the cluster diagnostic bundle can either be uploaded to StorageOS
+or downloaded to the machine running the browser or CLI. The cluster diagnostic
+bundle is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket
+using a TLS encrypted connection. The upload takes place only after user
+confirmation.</p>
+<p>As a general outline the following information is sent to us:</p>
 <ul>
 <li>StorageOS logs</li>
-<li>output of <code>storageos inspect node</code></li>
+<li>StorageOS cluster state - node config, volumes and namespaces</li>
+<li>output of <code>storageos describe node</code></li>
 <li>output of <code>lshw</code></li>
 <li>output of <code>dmesg</code></li>
 </ul>
-<p>StorageOS engineers might ask for a report to be generated during
+<p>See <a href="https://docs.storageos.com/docs/reference/bundle/">Support Bundle</a> for an exhaustive list of what is included in the cluster diagnostic bundle.</p>
+<p>StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
 support cases.</p>
-<p>The information given in the cluster report is only used for support purposes
+<p>The information given in the cluster cluster diagnostic bundle is only used for support purposes
 and it will be removed once the data is no longer needed for such purposes.
 In case the information is sensitive and can&rsquo;t be given to StorageOS, please
 make sure that support engineers have as much information about your
 environment as possible.</p>
-<p>The cluster report is created only when a user chooses to do so. For
-convenience the report can either be uploaded to StorageOS or downloaded to the
-machine running the browser. The report is uploaded from a StorageOS node to a
-StorageOS GCP encrypted bucket using a TLS encrypted connection. The upload
-takes place only after user confirmation.</p>
-<p>You can generate a report through the StorageOS <a href="/docs/reference/gui">GUI</a> by
-navigating to the <code>Cluster</code> menu. You can also directly connect to the cluster
-diagnostic API endpoint and retrieve the bundle. Note that only a user with the
-Admin role can create Diagnostic Bundles.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -u &lt;ADMIN_USERNAME&gt;:&lt;ADMIN_PASSWORD&gt; http://&lt;NODE_IP&gt;:5705/v1/diagnostics/cluster -o diagnostic.tar
+<p>You can generate a cluster diagnostic bundle through the StorageOS <a href="/docs/reference/gui">GUI</a> by
+navigating to the <code>Cluster</code> menu and downloading the StorageOS support Bundle.
+The cluster cluster diagnostic bundle can also be generated using the CLI command below.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get diagnostics -o storageos-diagnostic-bundle
 </code></pre></div>
 	
 	

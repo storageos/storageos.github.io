@@ -155,7 +155,7 @@
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;StorageOS node container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:1.5.3&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:v2.0.0&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.annotations&lt;/code&gt;&lt;/td&gt;
@@ -188,14 +188,14 @@
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.backend&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kvBackend.backend&lt;/code&gt; (v2 deprecated)&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Name of the key-value store to use. Set to &lt;code&gt;etcd&lt;/code&gt; for external key-value store.&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;embedded&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;namespace&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Namespace where storageos cluster resources are created&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;kube-system&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;nodeSelectorTerms&lt;/code&gt;&lt;/td&gt;
@@ -289,14 +289,21 @@ API Username and Password in base64 encoding.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Secret
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: &amp;#34;storageos-api&amp;#34;
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;storageos-operator&amp;#34;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  namespace: &amp;#34;default&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  labels:
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    app: &amp;#34;storageos&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;type: &amp;#34;kubernetes.io/storageos&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;data:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  # echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiUsername: c3RvcmFnZW9z
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  apiPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  # CSI Credentials
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiProvisionUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiProvisionPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiControllerPublishUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiControllerPublishPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiNodePublishUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiNodePublishPassword: c3RvcmFnZW9z
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
@@ -328,7 +335,6 @@ examples&lt;/a&gt; for full CR files.&lt;/p&gt;
   kvBackend:
     address: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;10.43.93.95:2379&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# IP of the SVC that exposes ETCD&lt;/span&gt;
   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# address: &amp;#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&amp;#39; # You can specify individual IPs of the etcd servers&lt;/span&gt;
-    backend: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;etcd&amp;#39;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-to-a-subset-of-nodes&#34;&gt;Installing to a subset of nodes&lt;/h2&gt;
 &lt;p&gt;In this case we select nodes that are workers. To make sure that StorageOS doesn&amp;rsquo;t start in Master nodes.&lt;/p&gt;
 &lt;p&gt;You can see the labels in the nodes by &lt;code&gt;kubectl get node --show-labels&lt;/code&gt;.&lt;/p&gt;
@@ -356,15 +362,15 @@ variable is defined by the operator by selecting all the nodes that match the
   csi:
     enable: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     deploymentStrategy: deployment
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableProvisionCreds: false&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableControllerPublishCreds: false&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# enableNodePublishCreds: false&lt;/span&gt;
+    enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The credentials must be defined in the &lt;code&gt;storageos-api&lt;/code&gt; Secret&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: v1
 kind: Secret
 metadata:
   name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-api&amp;#34;&lt;/span&gt;
-  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;
+  namespace: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-operator&amp;#34;&lt;/span&gt;
   labels:
     app: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
 type: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;kubernetes.io/storageos&amp;#34;&lt;/span&gt;
@@ -372,13 +378,14 @@ data:
   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# echo -n &amp;#39;&amp;lt;secret&amp;gt;&amp;#39; | base64&lt;/span&gt;
   apiUsername: c3RvcmFnZW9z
   apiPassword: c3RvcmFnZW9z
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add base64 encoded creds below for CSI credentials.&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionUsername:&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiProvisionPassword:&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishUsername:&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiControllerPublishPassword:&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishUsername:&lt;/span&gt;
-  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# csiNodePublishPassword:&lt;/span&gt;
+
+   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add base64 encoded creds below for CSI credentials.&lt;/span&gt;
+  csiProvisionUsername: c3RvcmFnZW9z
+  csiProvisionPassword: c3RvcmFnZW9z
+  csiControllerPublishUsername: c3RvcmFnZW9z
+  csiControllerPublishPassword: c3RvcmFnZW9z
+  csiNodePublishUsername: c3RvcmFnZW9z
+  csiNodePublishPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;Specifying a shared directory for use with kubelet as a container&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
   sharedDir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt;
@@ -386,7 +393,7 @@ data:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;spec:
   resources:
     requests:
-      memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;256Mi&amp;#34;&lt;/span&gt;
+      memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   cpu: &amp;#34;1&amp;#34;&lt;/span&gt;
   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# limits:&lt;/span&gt;
   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#   memory: &amp;#34;4Gi&amp;#34;&lt;/span&gt;
@@ -408,7 +415,7 @@ pods.&lt;/p&gt;
         
         &lt;h2 id=&#34;upgrade-storageos-operator-from-yaml-manifest&#34;&gt;Upgrade StorageOS operator from yaml manifest&lt;/h2&gt;
 &lt;p&gt;Upgrade the StorageOS operator using the following yaml manifest.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/1.5.3/storageos-operator.yaml
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.0.0/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
 Since, the Update Strategy of the StorageOS Operator Deployment is set to

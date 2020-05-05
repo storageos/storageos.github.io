@@ -21,32 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Architecture | </title><meta property="og:title" content="Architecture" />
-<meta property="og:description" content="StorageOS is a software-defined storage platform for running stateful applications in containers.
-Read about the cloud native storage principles behind StorageOS.
-Fundamentally, StorageOS aggregates storage attached to nodes in a cluster, creates a virtual pool across nodes, and presents virtual volumes from the pool into containers.
-It is agnostic to the underlying storage and runs equally on bare metal, in virtual machines or on cloud providers.
-StorageOS is deployed as one container on each node that presents or consumes storage, available as storageos/node on the Docker Hub." />
+<meta property="og:description" content="StorageOS is a software-defined storage platform for running stateful applications in Kubernetes.
+Fundamentally, StorageOS uses the storage attached to the nodes in the StorageOS cluster to create and present virtual volumes into containers. Space on the host is consumed from the mount point /var/lib/storageos/data, so it is therefore recommended that disk devices are used exclusively for StorageOS, as described in Managing Host Storage 
+StorageOS is agnostic to the underlying storage and runs equally well on bare metal, in virtual machines or on cloud providers." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/concepts/architecture/" />
 
 <meta itemprop="name" content="Architecture">
-<meta itemprop="description" content="StorageOS is a software-defined storage platform for running stateful applications in containers.
-Read about the cloud native storage principles behind StorageOS.
-Fundamentally, StorageOS aggregates storage attached to nodes in a cluster, creates a virtual pool across nodes, and presents virtual volumes from the pool into containers.
-It is agnostic to the underlying storage and runs equally on bare metal, in virtual machines or on cloud providers.
-StorageOS is deployed as one container on each node that presents or consumes storage, available as storageos/node on the Docker Hub.">
+<meta itemprop="description" content="StorageOS is a software-defined storage platform for running stateful applications in Kubernetes.
+Fundamentally, StorageOS uses the storage attached to the nodes in the StorageOS cluster to create and present virtual volumes into containers. Space on the host is consumed from the mount point /var/lib/storageos/data, so it is therefore recommended that disk devices are used exclusively for StorageOS, as described in Managing Host Storage 
+StorageOS is agnostic to the underlying storage and runs equally well on bare metal, in virtual machines or on cloud providers.">
 
-<meta itemprop="wordCount" content="279">
+<meta itemprop="wordCount" content="319">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Architecture"/>
-<meta name="twitter:description" content="StorageOS is a software-defined storage platform for running stateful applications in containers.
-Read about the cloud native storage principles behind StorageOS.
-Fundamentally, StorageOS aggregates storage attached to nodes in a cluster, creates a virtual pool across nodes, and presents virtual volumes from the pool into containers.
-It is agnostic to the underlying storage and runs equally on bare metal, in virtual machines or on cloud providers.
-StorageOS is deployed as one container on each node that presents or consumes storage, available as storageos/node on the Docker Hub."/>
+<meta name="twitter:description" content="StorageOS is a software-defined storage platform for running stateful applications in Kubernetes.
+Fundamentally, StorageOS uses the storage attached to the nodes in the StorageOS cluster to create and present virtual volumes into containers. Space on the host is consumed from the mount point /var/lib/storageos/data, so it is therefore recommended that disk devices are used exclusively for StorageOS, as described in Managing Host Storage 
+StorageOS is agnostic to the underlying storage and runs equally well on bare metal, in virtual machines or on cloud providers."/>
 
 
 
@@ -145,9 +139,9 @@ StorageOS is deployed as one container on each node that presents or consumes st
 </a>
 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 	
-	<a class="dropdown-item" href="/">v1.x</a>
+	<a class="dropdown-item" href="/v1.x">v1.x</a>
 	
-	<a class="dropdown-item" href="/v2">v2.0</a>
+	<a class="dropdown-item" href="/">v2.0</a>
 	
 </div>
 
@@ -166,7 +160,7 @@ StorageOS is deployed as one container on each node that presents or consumes st
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.cc23826c775fc62daebe490d10845936c11e52a4666d3cd0bab465412871b8f7e2e786383d20a7ea052512c33871a5f6fa7a62168a0f2ecd508f64b696a7bd36.json"
+  data-offline-search-index-json-src="/offline-search-index.846b5ba5638ec3a941656b4948a7afb8811af8fcf740206e3143cbc419ea1460ae20aae42a901680238c0c5f567f6c7d62735ee681e04346547d6f23c32c1158.json"
   data-offline-search-base-href="/"
 >
 
@@ -196,7 +190,7 @@ StorageOS is deployed as one container on each node that presents or consumes st
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation</a>
+    <a  href="/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V2</a>
   </li>
   <ul>
     <li class="collapse show" id="docs">
@@ -218,6 +212,12 @@ StorageOS is deployed as one container on each node that presents or consumes st
   <ul>
     <li class="collapse " id="docsintroduction">
       
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsintroductionoverview" href="/docs/introduction/overview/">StorageOS V2 Overview</a>
       
       
       
@@ -276,19 +276,7 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsencryption" href="/docs/concepts/encryption/">Encryption</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsmetrics" href="/docs/concepts/metrics/">Metrics</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
       
       
       
@@ -306,37 +294,13 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspodlocality" href="/docs/concepts/podlocality/">Podlocality</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspolicies" href="/docs/concepts/policies/">Policies</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptspools" href="/docs/concepts/pools/">Pools</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrules" href="/docs/concepts/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptssharedfs" href="/docs/concepts/sharedfs/">Shared Filesystem - RWX</a>
       
       
       
@@ -384,6 +348,12 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesetcd" href="/docs/prerequisites/etcd/">Etcd</a>
       
       
     </li>
@@ -511,24 +481,6 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupdates" href="/docs/operations/updates/"></a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdecommission-nodes" href="/docs/operations/decommission-nodes/">Decommissioning of Nodes</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencrypted-volumes" href="/docs/operations/encrypted-volumes/">Encryption</a>
-      
-      
-      
-      
 
 
 
@@ -559,12 +511,6 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing Pods</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -589,41 +535,6 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmaintenance" href="/docs/operations/maintenance/">Maintenance</a>
-      
-      
-      
-      
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/monitoring/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Monitoring</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsoperationsmonitoring">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmonitoringprometheus-setup" href="/docs/operations/monitoring/prometheus-setup/">Prometheus Setup</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsnamespaces" href="/docs/operations/namespaces/">Namespaces</a>
       
       
@@ -636,31 +547,7 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsovercommitment" href="/docs/operations/overcommitment/">Pool Overcommitment</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrules" href="/docs/operations/rules/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationssharedfs" href="/docs/operations/sharedfs/">Shared Filesystem - RWX</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrades" href="/docs/operations/upgrades/">Upgrade StorageOS</a>
       
       
       
@@ -813,79 +700,61 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicluster" href="/docs/reference/cli/cluster/">Cluster</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilicence" href="/docs/reference/cli/licence/">Licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliattach" href="/docs/reference/cli/attach/">Attach</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogin" href="/docs/reference/cli/login/">Login</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclicreate" href="/docs/reference/cli/create/">Create</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclilogs" href="/docs/reference/cli/logs/">Logs</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidelete" href="/docs/reference/cli/delete/">Delete</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinamespace" href="/docs/reference/cli/namespace/">Namespaces</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidescribe" href="/docs/reference/cli/describe/">Describe</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclinode" href="/docs/reference/cli/node/">Nodes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclidetach" href="/docs/reference/cli/detach/">Detach Volume</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipolicy" href="/docs/reference/cli/policy/">Policies</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliget" href="/docs/reference/cli/get/">Get</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclipool" href="/docs/reference/cli/pool/">Pools</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclirule" href="/docs/reference/cli/rule/">Rules</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliuser" href="/docs/reference/cli/user/">Users</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclivolume" href="/docs/reference/cli/volume/">Volumes</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliversion" href="/docs/reference/cli/version/">Version</a>
       
       
     </li>
   </ul>
 </ul>
 
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclusterdiscovery" href="/docs/reference/clusterdiscovery/">Cluster discovery</a>
       
       
       
@@ -944,12 +813,6 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceenvvars" href="/docs/reference/envvars/">Environment Variables</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -968,13 +831,13 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencelicence" href="/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceopen_source_attribution" href="/docs/reference/open_source_attribution/">Open Source Attribution</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceprometheus" href="/docs/reference/prometheus/">Prometheus Endpoint</a>
       
       
       
@@ -985,43 +848,14 @@ StorageOS is deployed as one container on each node that presents or consumes st
       
       
       
-
-
-
-
-
-
-<ul class="td-sidebar-nav__section pr-md-3">
-  <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
-  </li>
-  <ul>
-    <li class="collapse " id="docsreferencescheduler">
-      
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
-      
-      
-      
-      
-      
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceschedulerexamples" href="/docs/reference/scheduler/examples/">Examples</a>
-      
-      
-    </li>
-  </ul>
-</ul>
-
-      
-      
-      
-      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
       
       
       
@@ -1093,7 +927,7 @@ StorageOS is deployed as one container on each node that presents or consumes st
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/">Documentation</a>
+	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
 
 
@@ -1118,61 +952,57 @@ StorageOS is deployed as one container on each node that presents or consumes st
 	<h1>Architecture</h1>
 	
 	<p>StorageOS is a software-defined storage platform for running stateful
-applications in containers.</p>
-<p>Read about <a href="https://storageos.com/storageos-cloud-native-storage">the cloud native storage principles behind
-StorageOS</a>.</p>
-<p>Fundamentally, StorageOS aggregates storage attached to nodes in a cluster,
-creates a virtual pool across nodes, and presents virtual volumes from the pool
-into containers.</p>
-<p>It is agnostic to the underlying storage and runs equally on
+applications in Kubernetes.</p>
+<p>Fundamentally, StorageOS uses the storage attached to the nodes in the
+StorageOS cluster to create and present virtual volumes into containers. Space
+on the host is consumed from the mount point <code>/var/lib/storageos/data</code>, so it
+is therefore recommended that disk devices are used exclusively for StorageOS,
+as described in <a href="https://docs.storageos.com/docs/operations/managing-host-storage/">Managing Host Storage </a></p>
+<p>StorageOS is agnostic to the underlying storage and runs equally well on
 bare metal, in virtual machines or on cloud providers.</p>
 <p><img src="/images/docs/concepts/storageos-cluster.png" alt="StorageOS architecture"></p>
-<p>StorageOS is deployed as one container on each node that presents or consumes
-storage, available as <code>storageos/node</code> on the Docker Hub. In Kubernetes,
-this is typically managed as a daemonset, next
-to the applications. StorageOS runs entirely in user space.</p>
+<p>Read about <a href="https://storageos.com/storageos-cloud-native-storage">the cloud native storage principles behind
+StorageOS</a>.</p>
+<h3 id="storageos-on-kubernetes">StorageOS on Kubernetes</h3>
+<p>StorageOS is architected as a series of containers that fulfil separate,
+discrete functions.</p>
+<ul>
+<li>
+<p>StorageOS Controlplane</p>
+<p>Responsible for monitoring and maintaining the state of volumes and nodes in the cluster</p>
+</li>
+<li>
+<p>StorageOS Dataplane</p>
+<p>Responsible for all I/O path related tasks; reading, writing, compression and caching</p>
+</li>
+<li>
+<p>StorageOS Scheduler</p>
+<p>Responsible for scheduling applications on the same node as applications volume</p>
+</li>
+<li>
+<p>CSI helper</p>
+<p>Responsible for registering StorageOS with Kubernetes as a CSI driver</p>
+</li>
+<li>
+<p>StorageOS Operator</p>
+<p>Responsible for the creation and maintenance of the StorageOS cluster</p>
+</li>
+</ul>
+<p>StorageOS is deployed by the StorageOS operator. In Kubernetes, the StorageOS
+Controlplane and Dataplane are deployed in a single pod managed by a daemonset.
+This daemonset runs on every node in the cluster that will consume or present
+storage. The scheduler, CSI helper and Operator run as separate pods and are
+controlled as deployments.</p>
 <p>StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
 is managed through standard StorageClasses and PersistentVolumeClaims, and
-features are controlled by Kubernetes-style labels and selectors, prefixed with
-<code>storageos.com/</code>.</p>
-<p>StorageOS uses the storage capacity from the nodes where it is installed to
-provide thinly-provisioned volumes. That space is selected from the mount point
-of <code>/var/lib/storageos/data</code> on the host. It is recommended that disk devices
-are used exclusively for StorageOS, as described in <a href="https://docs.storageos.com/docs/operations/managing-host-storage/">Managing Host Storage
-</a></p>
-<p>Any container may mount a StorageOS virtual volume from any node, regardless of
-whether the container and volume are colocated on the same node or the volume is
-remote. Therefore, applications may be started or restarted on any node and
-access volumes transparently.</p>
-<p>Volumes are provisioned from a storage pool and are thinly provisioned.</p>
-<p>By default, volumes are cached to improve read performance and compressed to
+<a href="https://docs.storageos.com/docs/reference/labels/">features</a> are controlled by
+Kubernetes-style labels and selectors, prefixed with <code>storageos.com/</code>. By
+default, volumes are cached to improve read performance and compressed to
 reduce network traffic.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Available memory</th>
-<th align="left">% of overall memory reserved by StorageOS for caching</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">3 GB or less</td>
-<td align="left">3%</td>
-</tr>
-<tr>
-<td align="left">3-8 GB</td>
-<td align="left">5%</td>
-</tr>
-<tr>
-<td align="left">8-12 GB</td>
-<td align="left">7%</td>
-</tr>
-<tr>
-<td align="left">12 GB or more</td>
-<td align="left">10%</td>
-</tr>
-</tbody>
-</table>
+<p>Any pod may mount a StorageOS virtual volume from any node that is also
+running StorageOS, regardless of whether the pod and volume are
+collocated on the same node. Therefore, applications may be started or
+restarted on any node and access volumes transparently.</p>
 
 	
 	

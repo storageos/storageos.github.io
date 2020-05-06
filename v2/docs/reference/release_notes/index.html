@@ -24,7 +24,8 @@
 <meta property="og:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
 The latest tagged release is v2.0.0, available from Docker Hub as storageos/node:v2.0.0, or via the Helm Chart
 The latest CLI release is v2.0.0, available from Github
-2.0.0 - To be released " />
+Upgrading To upgrade form version 1.x to 2.x, please contact support for assistance.
+v2.0.0 - Released 05/05/2020 New  operator: StorageOS containers now run in the kube-system namespace by default to allow the system-node-critical priority class to be set." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2/docs/reference/release_notes/" />
 
@@ -32,9 +33,10 @@ The latest CLI release is v2.0.0, available from Github
 <meta itemprop="description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
 The latest tagged release is v2.0.0, available from Docker Hub as storageos/node:v2.0.0, or via the Helm Chart
 The latest CLI release is v2.0.0, available from Github
-2.0.0 - To be released ">
+Upgrading To upgrade form version 1.x to 2.x, please contact support for assistance.
+v2.0.0 - Released 05/05/2020 New  operator: StorageOS containers now run in the kube-system namespace by default to allow the system-node-critical priority class to be set.">
 
-<meta itemprop="wordCount" content="52">
+<meta itemprop="wordCount" content="372">
 
 
 
@@ -43,7 +45,8 @@ The latest CLI release is v2.0.0, available from Github
 <meta name="twitter:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
 The latest tagged release is v2.0.0, available from Docker Hub as storageos/node:v2.0.0, or via the Helm Chart
 The latest CLI release is v2.0.0, available from Github
-2.0.0 - To be released "/>
+Upgrading To upgrade form version 1.x to 2.x, please contact support for assistance.
+v2.0.0 - Released 05/05/2020 New  operator: StorageOS containers now run in the kube-system namespace by default to allow the system-node-critical priority class to be set."/>
 
 
 
@@ -163,7 +166,7 @@ The latest CLI release is v2.0.0, available from Github
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.15c8ebe08b9d61619e1c6bb9bf7a2fab63820d9e497c738086f6ac2a92d0faf7db77b1e3ff0aef7fa9888f92c0e5585829640a09377eeabbdb0dd2c5c01bc8c4.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.745632fa9f2777fbd55b04130a9384660922d4c96da66fec6c2c7a5dea0f53151105f54731ef8316c5bfa7b482c0dc8d4219a83d9577dc3e9f45590a991b2865.json"
   data-offline-search-base-href="/"
 >
 
@@ -909,6 +912,19 @@ The latest CLI release is v2.0.0, available from Github
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#v200---released-05052020">v2.0.0 - Released 05/05/2020</a>
+      <ul>
+        <li><a href="#new">New</a></li>
+        <li><a href="#improved">Improved</a></li>
+        <li><a href="#fixed">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#v200-rc1---released-31032020">v2.0.0-rc.1 - Released 31/03/2020</a></li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -961,7 +977,66 @@ and to perform upgrades only after reading the release notes.</p>
 Chart</a></p>
 <p>The latest CLI release is <code>v2.0.0</code>, available from
 <a href="https://github.com/storageos/go-cli/releases">Github</a></p>
-<h2 id="200---to-be-released">2.0.0 - To be released</h2>
+<h1 id="upgrading">Upgrading</h1>
+<p>To upgrade form version 1.x to 2.x, please contact <a href="https://docs.storageos.com/v2/docs/support/">support</a> for assistance.</p>
+<h2 id="v200---released-05052020">v2.0.0 - Released 05/05/2020</h2>
+<h3 id="new">New</h3>
+<ul>
+<li>operator: StorageOS containers now run in the <code>kube-system</code> namespace by
+default to allow the <code>system-node-critical</code> priority class to be set.  This
+instructs Kubernetes to start StorageOS before application Pods, and to evict
+StorageOS only after application Pods have finished.  This setting was
+previously recommended in documentation; it is now the default.</li>
+<li>operator: StorageOS CSI helper containers now run as privileged.  This ensures
+that the CSI endpoint can be seen on systems with SELinux enabled.</li>
+<li>ui: replication progress for new or re-joining replicas is now displayed.</li>
+<li>ui: show warning for unlicensed clusters.</li>
+<li>cli: new commands:
+<ul>
+<li>licence management</li>
+<li>get policy</li>
+<li>create namespace</li>
+<li>create policy</li>
+<li>describe user</li>
+<li>describe namespace</li>
+<li>describe policy</li>
+<li>delete user</li>
+<li>delete namespace</li>
+<li>delete policy</li>
+</ul>
+</li>
+<li>licence: removed the default licence expiry date added for <code>v2.0.0-rc.1</code>.</li>
+</ul>
+<h3 id="improved">Improved</h3>
+<ul>
+<li>dataplane: improved retry behaviour for network IO.</li>
+<li>cli: &ldquo;get volumes&rdquo; for all namespaces should be done in parallel.</li>
+<li>cli: help text document config file</li>
+<li>ui: link node name and get to node details on the volume details page.</li>
+<li>ui: node details add available capacity spinner.</li>
+<li>ui: node list remove capacity values / address port.</li>
+<li>ui: node list show master/replica counts.</li>
+<li>ui: node list remove edit action.</li>
+<li>ui: format entity labels.</li>
+<li>ui: node details link volumes.</li>
+<li>ui: align buttons for licences.</li>
+<li>ui: k8s warning in &ldquo;create volume&rdquo; modal.</li>
+<li>ui: node list remove &ldquo;API&rdquo; from &ldquo;API Address&rdquo;</li>
+<li>ui: add some details about the Licence on the licence page.</li>
+<li>api: include valid for duration in login response.</li>
+<li>licence: restrict nodes which are unregistered after 24 hours.</li>
+<li>scheduler: return error for namespace/volume not found</li>
+<li>dataplane: start gRPC threads separately from rest of the supervisor.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>ui: centre licence types.</li>
+<li>ui: capacity in ui is per namespace.</li>
+<li>cli: fail gracefully if missing some output details (i.e. no node exists for id).</li>
+</ul>
+<h2 id="v200-rc1---released-31032020">v2.0.0-rc.1 - Released 31/03/2020</h2>
+<p>Initial release of version 2.x.  See <a href="https://storageos.com/storageos-2-0-release-blog">StorageOS v2.0 Release
+Blog</a> for details.</p>
 
 	
 	

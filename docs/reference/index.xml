@@ -5272,8 +5272,8 @@ Chart&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The latest CLI release is &lt;code&gt;v2.0.0&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
-&lt;p&gt;To upgrade form version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
-&lt;h2 id=&#34;v200---released-05052020&#34;&gt;v2.0.0 - Released 05/05/2020&lt;/h2&gt;
+&lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
+&lt;h2 id=&#34;v200---released-2020-05-05&#34;&gt;v2.0.0 - Released 2020-05-05&lt;/h2&gt;
 &lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;operator: StorageOS containers now run in the &lt;code&gt;kube-system&lt;/code&gt; namespace by
@@ -5328,7 +5328,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.&lt;/li&gt;
 &lt;li&gt;ui: capacity in ui is per namespace.&lt;/li&gt;
 &lt;li&gt;cli: fail gracefully if missing some output details (i.e. no node exists for id).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;v200-rc1---released-31032020&#34;&gt;v2.0.0-rc.1 - Released 31/03/2020&lt;/h2&gt;
+&lt;h2 id=&#34;v200-rc1---released-2020-03-31&#34;&gt;v2.0.0-rc.1 - Released 2020-03-31&lt;/h2&gt;
 &lt;p&gt;Initial release of version 2.x.  See &lt;a href=&#34;https://storageos.com/storageos-2-0-release-blog&#34;&gt;StorageOS v2.0 Release
 Blog&lt;/a&gt; for details.&lt;/p&gt;
 

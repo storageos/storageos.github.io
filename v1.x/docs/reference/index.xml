@@ -6180,12 +6180,12 @@ Chart&lt;/a&gt;&lt;/p&gt;
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/operations/upgrades/&#34;&gt;upgrades&lt;/a&gt; for upgrade strategies.&lt;/p&gt;
-&lt;h2 id=&#34;153---released-25012020&#34;&gt;1.5.3 - Released 25/01/2020&lt;/h2&gt;
+&lt;h2 id=&#34;153---released-20200125&#34;&gt;1.5.3 - Released 2020/01/25&lt;/h2&gt;
 &lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Resolved misrepresentation of internal metrics for licensed clusters.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;152---released-18122019&#34;&gt;1.5.2 - Released 18/12/2019&lt;/h2&gt;
+&lt;h2 id=&#34;152---released-20191218&#34;&gt;1.5.2 - Released 2019/12/18&lt;/h2&gt;
 &lt;p&gt;Adds support for Kubernetes 1.17 and CSI 1.2.  Also reduces node container size
 by 70%.&lt;/p&gt;
 &lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
@@ -6207,7 +6207,7 @@ reduces the amount of time required to install and boostrap a new cluster.&lt;/l
 docs.storageos.com.&lt;/li&gt;
 &lt;li&gt;Node label update now retries if the node is not yet known to StorageOS.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;151---released-26112019&#34;&gt;1.5.1 - Released 26/11/2019&lt;/h2&gt;
+&lt;h2 id=&#34;151---released-20191126&#34;&gt;1.5.1 - Released 2019/11/26&lt;/h2&gt;
 &lt;p&gt;Fixes a permission error on Kubernetes 1.16 and improves reporting of
 Pod scheduling failures.&lt;/p&gt;
 &lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
@@ -6266,7 +6266,7 @@ Instead, we now prefer to use the &lt;code&gt;InternalIP&lt;/code&gt; address, a
 found, the first address used as before.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;150---released-12112019&#34;&gt;1.5.0 - Released 12/11/2019&lt;/h2&gt;
+&lt;h2 id=&#34;150---released-20191112&#34;&gt;1.5.0 - Released 2019/11/12&lt;/h2&gt;
 &lt;p&gt;Along with a 10x improvement in sequential read performance, version &lt;code&gt;1.5.0&lt;/code&gt;
 adds two much-requested features; Pod Locality and Shared Filesytems (RWX).&lt;/p&gt;
 &lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
@@ -6345,7 +6345,7 @@ love to understand your challenges and any ideas you may have to improve
 StorageOS.  You may unsubscribe from our mailing list at any time.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;140---released-06092019&#34;&gt;1.4.0 - Released 06/09/2019&lt;/h2&gt;
+&lt;h2 id=&#34;140---released-20190906&#34;&gt;1.4.0 - Released 2019/09/06&lt;/h2&gt;
 &lt;p&gt;Version &lt;code&gt;1.4.0&lt;/code&gt; changes the way metadata keys are stored on disk resulting in
 improved key locality and thus an increase in IO performance.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;IMPORTANT:&lt;/em&gt; Due to the nature of this change, the upgrade process includes an
@@ -6369,7 +6369,7 @@ than a second.&lt;/li&gt;
 &lt;li&gt;The Prometheus metrics endpoint no longer displays statistics for volumes
 that have been deleted.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;130---released-08072019&#34;&gt;1.3.0 - Released 08/07/2019&lt;/h2&gt;
+&lt;h2 id=&#34;130---released-20190708&#34;&gt;1.3.0 - Released 2019/07/08&lt;/h2&gt;
 &lt;p&gt;The &lt;code&gt;1.3.0&lt;/code&gt; release contains further substantial performance improvements,
 particularly for workloads that can parallelise IO or when multiple volumes are
 performing high rates of IO.&lt;/p&gt;
@@ -6417,7 +6417,7 @@ process, causing the create to fail.&lt;/li&gt;
 if the volume was already unmounted.  The operation now returns success and
 allows a remount to succeed.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;121---released-15052019&#34;&gt;1.2.1 - Released 15/05/2019&lt;/h2&gt;
+&lt;h2 id=&#34;121---released-20190515&#34;&gt;1.2.1 - Released 2019/05/15&lt;/h2&gt;
 &lt;p&gt;1.2.1 is primarily a bug fix release, but it also includes some performance
 improvements.&lt;/p&gt;
 &lt;h3 id=&#34;improved-5&#34;&gt;Improved&lt;/h3&gt;
@@ -6450,7 +6450,7 @@ demand. This mitigates a timing issue and allows faster failover.&lt;/li&gt;
 &lt;li&gt;Replication logs could contain incorrect volume identifiers when multiple
 syncs are in progress.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;120---released-17042019&#34;&gt;1.2.0 - Released 17/04/2019&lt;/h2&gt;
+&lt;h2 id=&#34;120---released-20190417&#34;&gt;1.2.0 - Released 2019/04/17&lt;/h2&gt;
 &lt;p&gt;The &lt;code&gt;1.2.0&lt;/code&gt; release contains significant performance and resource utilisation
 improvements, along with 3 new features:&lt;/p&gt;
 &lt;ul&gt;
@@ -6534,7 +6534,7 @@ token to be supplied as a parameter.&lt;/li&gt;
 &lt;li&gt;When changing the cluster log level at run-time using &lt;code&gt;storageos logs --log-level debug&lt;/code&gt;, the new log level would be applied but an incorrect error
 would be returned.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;115---released-29032019&#34;&gt;1.1.5 - Released 29/03/2019&lt;/h2&gt;
+&lt;h2 id=&#34;115---released-20190329&#34;&gt;1.1.5 - Released 2019/03/29&lt;/h2&gt;
 &lt;p&gt;Version 1.1.5 is an interim bugfix release as we continue to test the upcoming
 1.2 feature release internally.&lt;/p&gt;
 &lt;h3 id=&#34;improved-7&#34;&gt;Improved&lt;/h3&gt;
@@ -6576,7 +6576,7 @@ though the update suceeded.&lt;/li&gt;
 disabled.&lt;/li&gt;
 &lt;li&gt;Adding a label to a volume in the UI could insert the string &amp;ldquo;undefined&amp;rdquo;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;114---released-06032019&#34;&gt;1.1.4 - Released 06/03/2019&lt;/h2&gt;
+&lt;h2 id=&#34;114---released-20190306&#34;&gt;1.1.4 - Released 2019/03/06&lt;/h2&gt;
 &lt;p&gt;Includes a single fix to increase the time we wait for the operating system to
 create a new block device.  On some platforms (cloud providers in particular)
 the variation can be wider than expected.&lt;/p&gt;
@@ -6584,7 +6584,7 @@ the variation can be wider than expected.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Address device creation delays on certain platforms/distributions.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;113---released-01032019&#34;&gt;1.1.3 - Released 01/03/2019&lt;/h2&gt;
+&lt;h2 id=&#34;113---released-20190301&#34;&gt;1.1.3 - Released 2019/03/01&lt;/h2&gt;
 &lt;p&gt;Version 1.1.3 is a bugfix and usability release.  Please upgrade if you are
 using external etcd.&lt;/p&gt;
 &lt;h3 id=&#34;new-5&#34;&gt;New&lt;/h3&gt;
@@ -6615,7 +6615,7 @@ removing a label.&lt;/li&gt;
 &lt;li&gt;Fixed a bug that might prevent a volume delete request from being actioned.
 This would appear as a volume that is stuck in deleting state.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;112---released-03022019&#34;&gt;1.1.2 - Released 03/02/2019&lt;/h2&gt;
+&lt;h2 id=&#34;112---released-20190203&#34;&gt;1.1.2 - Released 2019/02/03&lt;/h2&gt;
 &lt;p&gt;1.1.2 improves stability when nodes lose network connectivity intermittenly by
 introducing a new grace period before performing node recovery operations.&lt;/p&gt;
 &lt;h2 id=&#34;breaking-changes&#34;&gt;Breaking changes&lt;/h2&gt;
@@ -6670,7 +6670,7 @@ the Kubernetes native driver.&lt;/li&gt;
 &lt;li&gt;When importing Kubernetes ABAC policy files, the jsonl format was incorrectly
 detected and input was incorrectly parsed as json, which would not validate.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;111---released-21012019&#34;&gt;1.1.1 - Released 21/01/2019&lt;/h2&gt;
+&lt;h2 id=&#34;111---released-20190121&#34;&gt;1.1.1 - Released 2019/01/21&lt;/h2&gt;
 &lt;p&gt;1.1.1 contains a critical bugfix in the etcd client library that could cause
 the StorageOS control plane to become unresponsive when etcd is unavailable.&lt;/p&gt;
 &lt;h3 id=&#34;new-7&#34;&gt;New&lt;/h3&gt;
@@ -6733,7 +6733,7 @@ it is not compressed.  It now saves as &lt;code&gt;.tar&lt;/code&gt;.&lt;/li&gt;
 get stuck.  The delete result processing is now done in a separate thread from
 the request so that a long request can&amp;rsquo;t block receiving responses.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;110---released-04012019&#34;&gt;1.1.0 - Released 04/01/2019&lt;/h2&gt;
+&lt;h2 id=&#34;110---released-20190104&#34;&gt;1.1.0 - Released 2019/01/04&lt;/h2&gt;
 &lt;p&gt;1.1.0 adds support for &lt;a href=&#34;https://github.com/container-storage-interface/spec&#34;&gt;CSI 1.0&lt;/a&gt;
 and includes some minor bug fixes.&lt;/p&gt;
 &lt;h3 id=&#34;new-8&#34;&gt;New&lt;/h3&gt;
@@ -6760,7 +6760,7 @@ respond on the same metadata ip address that AWS uses.  Fixed in
 &lt;a href=&#34;https://github.com/aws/aws-sdk-go/pull/2380&#34;&gt;aws-sdk-go&lt;/a&gt;.&lt;/li&gt;
 &lt;li&gt;Refreshing the UI caused the selected namespace to be reset.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;102---released-10122018&#34;&gt;1.0.2 - Released 10/12/2018&lt;/h2&gt;
+&lt;h2 id=&#34;102---released-20181210&#34;&gt;1.0.2 - Released 2018/12/10&lt;/h2&gt;
 &lt;p&gt;1.0.2 includes a fix required for Azure AKS and several other fixes and
 improvements, many to help with running on low-memory or heavily loaded servers.&lt;/p&gt;
 &lt;h3 id=&#34;improvements-2&#34;&gt;Improvements&lt;/h3&gt;
@@ -6838,7 +6838,7 @@ watcher was interrupted.  Now, full state from the KV store is re-evaluated
 every 10 seconds.&lt;/li&gt;
 &lt;li&gt;When creating a volume using CSI, the pool field was ignored.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;101---released-23112018&#34;&gt;1.0.1 - Released 23/11/2018&lt;/h2&gt;
+&lt;h2 id=&#34;101---released-20181123&#34;&gt;1.0.1 - Released 2018/11/23&lt;/h2&gt;
 &lt;p&gt;This is primarily a bugfix release to better handle node recovery behaviour when
 network connectivity is re-established.  There are also a few minor bugfixes and
 general improvements.&lt;/p&gt;
@@ -6869,7 +6869,7 @@ the Prometheus &lt;code&gt;/metrics&lt;/code&gt; endpoint.&lt;/li&gt;
 &lt;code&gt;fatal&lt;/code&gt; level, overwriting the correct log level.&lt;/li&gt;
 &lt;li&gt;Fixed errors in Web UI when API not yet available.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100---released-15112018&#34;&gt;1.0.0 - Released 15/11/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100---released-20181115&#34;&gt;1.0.0 - Released 2018/11/15&lt;/h2&gt;
 &lt;p&gt;1.0.0 is suitable for production workloads.&lt;/p&gt;
 &lt;h3 id=&#34;new-9&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
@@ -6975,7 +6975,7 @@ portal account that was created with a social login.&lt;/li&gt;
 &lt;li&gt;If there was an error deleting a rule, the API returned an Internal Server
 Error rather than a more helpful contextual error.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100-rc5---released-01102018&#34;&gt;1.0.0-rc5 - Released 01/10/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100-rc5---released-20181001&#34;&gt;1.0.0-rc5 - Released 2018/10/01&lt;/h2&gt;
 &lt;p&gt;1.0.0-rc5 is a major update, with multiple bug fixes, performance and usability
 improvements as we get closer to removing the RC label.&lt;/p&gt;
 &lt;h3 id=&#34;breaking-changes-1&#34;&gt;Breaking changes&lt;/h3&gt;
@@ -7207,7 +7207,7 @@ being prepared for re-use.  This could lead to a replication error or volumes
 stuck in &amp;ldquo;syncing&amp;rdquo; state.&lt;/li&gt;
 &lt;li&gt;No longer logs an error when deleting a volume with no data.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100-rc4---released-18072018&#34;&gt;1.0.0-rc4 - Released 18/07/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100-rc4---released-20180718&#34;&gt;1.0.0-rc4 - Released 2018/07/18&lt;/h2&gt;
 &lt;p&gt;Multiple bug fixes and improvements, and improved shutdown handling.&lt;/p&gt;
 &lt;h3 id=&#34;new-11&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
@@ -7240,7 +7240,7 @@ verbose logging.&lt;/li&gt;
 amount fixing: &amp;ldquo;cannot provision volume with size 999 GB, currently
 provisioned: 1 GB, licenced: 1000 GB&amp;rdquo;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100-rc3---released-02072018&#34;&gt;1.0.0-rc3 - Released 02/07/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100-rc3---released-20180702&#34;&gt;1.0.0-rc3 - Released 2018/07/02&lt;/h2&gt;
 &lt;p&gt;Multiple improvements based on customer feedback.&lt;/p&gt;
 &lt;h3 id=&#34;new-12&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
@@ -7279,14 +7279,14 @@ this step automated.&lt;/li&gt;
 This meant that volumes with frequently changing data could use more capacity
 than allocated.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100-rc2---released-31052018&#34;&gt;1.0.0-rc2 - Released 31/05/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100-rc2---released-20180531&#34;&gt;1.0.0-rc2 - Released 2018/05/31&lt;/h2&gt;
 &lt;p&gt;Single fix to address provisioning issue in Amazon AWS.&lt;/p&gt;
 &lt;h3 id=&#34;fixed-20&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Increased time to wait for device to appear, causing volume creation to fail.
 This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;100-rc1---released-25052018&#34;&gt;1.0.0-rc1 - Released 25/05/2018&lt;/h2&gt;
+&lt;h2 id=&#34;100-rc1---released-20180525&#34;&gt;1.0.0-rc1 - Released 2018/05/25&lt;/h2&gt;
 &lt;p&gt;The 1.0 release series is focussed on supporting enterprise workloads, with
 numerous new features and improvements to performance, stability and
 maintainability.&lt;/p&gt;
@@ -7373,7 +7373,7 @@ This may cause cluster instability while nodes are being upgraded.&lt;/p&gt;
 0.8.x+.  Our recommendation is to create a new cluster, paying attention to the
 new parameters (&lt;code&gt;CLUSTER_ID&lt;/code&gt; and &lt;code&gt;INITIAL_CLUSTER&lt;/code&gt;).  Note that &lt;code&gt;CLUSTER_ID&lt;/code&gt; and
 &lt;code&gt;INITIAL_CLUSTER&lt;/code&gt; have been replaced by &lt;code&gt;JOIN&lt;/code&gt; in 0.9.x onwards.&lt;/p&gt;
-&lt;h2 id=&#34;0100---released-28022018&#34;&gt;0.10.0 - Released 28/02/2018&lt;/h2&gt;
+&lt;h2 id=&#34;0100---released-20180228&#34;&gt;0.10.0 - Released 2018/02/28&lt;/h2&gt;
 &lt;p&gt;The 0.10.0 version focusses on stability and usability as we get closer to GA,
 but also adds a number of new features (UI, Prometheus metrics, log streaming).&lt;/p&gt;
 &lt;h3 id=&#34;breaking-changes-3&#34;&gt;Breaking changes&lt;/h3&gt;
@@ -7568,7 +7568,7 @@ fixes an issue with Docker EE with mixed-case volume names.&lt;/li&gt;
 &lt;li&gt;Do not reset node health if internal healthcheck returns invalid response.
 Instead, retry and wait for valid response message.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;090---released-17112017&#34;&gt;0.9.0 - Released 17/11/2017&lt;/h2&gt;
+&lt;h2 id=&#34;090---released-20171117&#34;&gt;0.9.0 - Released 2017/11/17&lt;/h2&gt;
 &lt;p&gt;This release focusses on usability and backend improvements.  It builds on the
 embedded KV store from 0.8.x and improves the bootstrap process.&lt;/p&gt;
 &lt;p&gt;Enhanced stress testing and performance benchmarking have also led to a number
@@ -7662,7 +7662,7 @@ on those platforms.&lt;/li&gt;
 &lt;ul&gt;
 &lt;li&gt;NBD device numbers now start at 1 instead of 0 to defend against default values&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;080---released-29082017&#34;&gt;0.8.0 - Released 29/08/2017&lt;/h2&gt;
+&lt;h2 id=&#34;080---released-20170829&#34;&gt;0.8.0 - Released 2017/08/29&lt;/h2&gt;
 &lt;p&gt;This is our first feature release since launching our public beta, and it
 focusses on feedback from users.  As always, please let us know how you are using
 StorageOS, what problems it is solving for you and how it can improve.  Join our

@@ -21,20 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Nodes | </title><meta property="og:title" content="Nodes" />
-<meta property="og:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage." />
+<meta property="og:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
+By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/concepts/nodes/" />
 
 <meta itemprop="name" content="Nodes">
-<meta itemprop="description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.">
+<meta itemprop="description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
+By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes.">
 
-<meta itemprop="wordCount" content="31">
+<meta itemprop="wordCount" content="166">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nodes"/>
-<meta name="twitter:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage."/>
+<meta name="twitter:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
+By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes."/>
 
 
 
@@ -154,7 +160,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fa3ea64c42869a8a6564e6d48f99d33b895cf8392540ed8e53844fbc7b20fcba7015ac81d1c9820badeeeed02272f99db18dda4e6c0afac5e9cbce3af45c3dba.json"
+  data-offline-search-index-json-src="/offline-search-index.8e3eb8f56ae55d7094004508bd3f99584205738f3148d4c29ef39c68b1c66b47a56ae8b7e303aeb1be5fe88a27f39faf554d42729d4d60813ea1a55ca1248d4c.json"
   data-offline-search-base-href="/"
 >
 
@@ -954,6 +960,18 @@
 	<p>A StorageOS node is any machine (virtual or physical) that is running the
 StorageOS daemonset pod. A node must be running a daemonset pod in order to
 consume and/or present storage.</p>
+<p>By default StorageOS nodes run in <code>hyperconverged</code> mode. This means that the
+node hosts data from StorageOS volumes and can present volumes to applications.</p>
+<p>Alternatively, a node can run in <code>computeonly</code> mode, which means no storage is
+consumed on the node itself and the node only presents volumes hosted by
+other nodes. Volumes presented to applications running on compute only nodes
+are therefore all remote. Compute only nodes can be very useful for topologies
+where nodes are ephemeral and should not host data, but the ephemeral nodes
+host applications that require StorageOS volumes. The nodes that are not
+intended to hold data, but just to present StorageOS volumes, can be set as
+<code>computeonly</code>.</p>
+<p>A node can be marked as compute only at any point in time by adding the label
+<code>storageos.com/computeonly=true</code>, following the <a href="https://docs.storageos.com/docs/reference/labels/">labels reference</a>.</p>
 
 	
 	

@@ -3232,6 +3232,17 @@ END
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;-- /bin/sleep &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;999999&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;License cluster&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A newly installed StorageOS cluster does not include a licence. A cluster
+must be licensed within 24 hours of the installation. For more information,
+check the &lt;a href=&#34;https://docs.storageos.com/docs/reference/licence/&#34;&gt;reference licence page&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can apply a Free Developer licence by following the &lt;a href=&#34;https://docs.storageos.com/docs/operations/licensing/&#34;&gt;operations
+licensing&lt;/a&gt; page, or purchase a
+licence by contacting &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;Confirm that StorageOS is working by creating a PVC&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl create -f - &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;lt;&amp;lt;END
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
@@ -5582,9 +5593,29 @@ labels are present by default.&lt;/p&gt;
 within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
 set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
 CLI or UI.&lt;/p&gt;
-&lt;p&gt;Future versions of StorageOS v2 will allow the use of node labels to set
-compute-only topologies vs. HyperConverged.&lt;/p&gt;
-&lt;h2 id=&#34;storageos-volume-labels&#34;&gt;StorageOS Volume labels&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Feature&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Label&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Values&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Compute only&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/computeonly&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Specifies whether a node should be &lt;code&gt;computeonly&lt;/code&gt; where it only acts as a client and does not host volume data locally, otherwise the node is hyperconverged (the default), where the node can operate in both client and server modes.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;You can set the computeonly label on the Kubernetes node and the label will be
+sync&amp;rsquo;d to the StorageOS node (labels take an eventual consistency
+reconciliation time of ~1min).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; storageos.com/computeonly&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;storageos-volume-labels&#34;&gt;StorageOS Volume labels&lt;/h2&gt;
 &lt;p&gt;Volumes do not have any feature labels present by default&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;

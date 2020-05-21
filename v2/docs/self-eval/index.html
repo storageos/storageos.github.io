@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
 ">
 
-<meta itemprop="wordCount" content="3491">
+<meta itemprop="wordCount" content="3542">
 
 
 
@@ -157,7 +157,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.97b16afe75a3832d06347ad9969373b22e4d770874c66d7757118fe44cca831668afb83e855aa7843c0af037cdd23f8c1745cba41e72dce60ebecdb3a4f8016b.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.857ed54def8a50cf7fd6fb517e9780d9a14a16b8be27f5443b2e3396a810d6bdce9b51d0f3c0f1e0fd4ecee1ad3cf4d5e3d0bbb6c5487ea9208f451080eea57d.json"
   data-offline-search-base-href="/"
 >
 
@@ -1216,6 +1216,17 @@ END
 </span><span style="color:#4e9a06"></span>--command cli                            <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>-- /bin/sleep <span style="color:#0000cf;font-weight:bold">999999</span>
 </code></pre></div></li>
+<li>
+<p>License cluster</p>
+<blockquote>
+<p>A newly installed StorageOS cluster does not include a licence. A cluster
+must be licensed within 24 hours of the installation. For more information,
+check the <a href="https://docs.storageos.com/v2/docs/reference/licence/">reference licence page</a>.</p>
+</blockquote>
+<p>You can apply a Free Developer licence by following the <a href="https://docs.storageos.com/v2/docs/operations/licensing/">operations
+licensing</a> page, or purchase a
+licence by contacting <a href="mailto:sales@storageos.com">sales@storageos.com</a>.</p>
+</li>
 <li>
 <p>Confirm that StorageOS is working by creating a PVC</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END

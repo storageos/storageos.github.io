@@ -32,7 +32,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
 StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes, the Cluster Operator syncs any node labels set on Kubernetes nodes within StorageOS. Node labels may also be set with the CLI or UI.">
 
-<meta itemprop="wordCount" content="260">
+<meta itemprop="wordCount" content="325">
 
 
 
@@ -160,7 +160,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.fa3ea64c42869a8a6564e6d48f99d33b895cf8392540ed8e53844fbc7b20fcba7015ac81d1c9820badeeeed02272f99db18dda4e6c0afac5e9cbce3af45c3dba.json"
+  data-offline-search-index-json-src="/offline-search-index.8e3eb8f56ae55d7094004508bd3f99584205738f3148d4c29ef39c68b1c66b47a56ae8b7e303aeb1be5fe88a27f39faf554d42729d4d60813ea1a55ca1248d4c.json"
   data-offline-search-base-href="/"
 >
 
@@ -966,9 +966,29 @@ labels are present by default.</p>
 within Kubernetes, the <a href="https://docs.storageos.com/docs/reference/cluster-operator/">Cluster Operator</a> syncs any node labels
 set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
 CLI or UI.</p>
-<p>Future versions of StorageOS v2 will allow the use of node labels to set
-compute-only topologies vs. HyperConverged.</p>
-<h2 id="storageos-volume-labels">StorageOS Volume labels</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Feature</th>
+<th align="left">Label</th>
+<th align="left">Values</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Compute only</td>
+<td align="left"><code>storageos.com/computeonly</code></td>
+<td align="left">true / false</td>
+<td align="left">Specifies whether a node should be <code>computeonly</code> where it only acts as a client and does not host volume data locally, otherwise the node is hyperconverged (the default), where the node can operate in both client and server modes.</td>
+</tr>
+</tbody>
+</table>
+<p>You can set the computeonly label on the Kubernetes node and the label will be
+sync&rsquo;d to the StorageOS node (labels take an eventual consistency
+reconciliation time of ~1min).</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl label node <span style="color:#000">$NODE</span> storageos.com/computeonly<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
+</code></pre></div><h2 id="storageos-volume-labels">StorageOS Volume labels</h2>
 <p>Volumes do not have any feature labels present by default</p>
 <table>
 <thead>

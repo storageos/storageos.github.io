@@ -196,6 +196,18 @@ the StorageOS StorageClass are created.&lt;/p&gt;
         &lt;p&gt;A StorageOS node is any machine (virtual or physical) that is running the
 StorageOS daemonset pod. A node must be running a daemonset pod in order to
 consume and/or present storage.&lt;/p&gt;
+&lt;p&gt;By default StorageOS nodes run in &lt;code&gt;hyperconverged&lt;/code&gt; mode. This means that the
+node hosts data from StorageOS volumes and can present volumes to applications.&lt;/p&gt;
+&lt;p&gt;Alternatively, a node can run in &lt;code&gt;computeonly&lt;/code&gt; mode, which means no storage is
+consumed on the node itself and the node only presents volumes hosted by
+other nodes. Volumes presented to applications running on compute only nodes
+are therefore all remote. Compute only nodes can be very useful for topologies
+where nodes are ephemeral and should not host data, but the ephemeral nodes
+host applications that require StorageOS volumes. The nodes that are not
+intended to hold data, but just to present StorageOS volumes, can be set as
+&lt;code&gt;computeonly&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;A node can be marked as compute only at any point in time by adding the label
+&lt;code&gt;storageos.com/computeonly=true&lt;/code&gt;, following the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/labels/&#34;&gt;labels reference&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>

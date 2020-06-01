@@ -5769,25 +5769,20 @@ and click on the tab &amp;ldquo;Upgrade&amp;rdquo;, for the specific licence lev
 Then paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you
 can also view your cluster ID on the same page.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/apply-licence-key.png&#34; alt=&#34;Apply Licence Key&#34;&gt;&lt;/p&gt;
-&lt;h2 id=&#34;obtaining-a-developer-licence-via-the-cli&#34;&gt;Obtaining a Developer licence via the CLI&lt;/h2&gt;
+&lt;h2 id=&#34;applying-a-licence-via-the-cli&#34;&gt;Applying a licence via the CLI&lt;/h2&gt;
 &lt;p&gt;Before getting a licence, you need to know the ID of your StorageOS cluster.&lt;/p&gt;
 &lt;p&gt;This CLI command can print the cluster ID:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get cluster
 ID:               704dd165-9580-4da4-a554-0acb96d328cb
 Licence:
   expiration:     2021-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; year from now&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-  capacity:       2.2 TiB
-  kind:           developer
-  customer name:  t2
+  capacity:       5.0 TiB
+  kind:           professional
+  customer name:  storageos
 Created at:       2020-03-25T13:48:33Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 Updated at:       2020-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To obtain a licence for your StorageOS cluster, create a new StorageOS account
-or log into &lt;a href=&#34;https://my.storageos.com&#34;&gt;StorageOS Portal&lt;/a&gt;, go to the &lt;a href=&#34;https://my.storageos.com/licenses&#34;&gt;Licences
-page&lt;/a&gt; and follow the instructions on the
-page to get the licence key for your cluster. Make sure that you input the
-correct cluster ID before generating the licence key.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/operations/licensing/get-licence.png&#34; alt=&#34;Get Licence&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Then copy the licence key to clipboard and apply the licence by the CLI command:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Given the Cluster ID, the StorageOS team can generate a licence. Once, given
+the key, you can apply the licence by using the following command.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;echo&lt;/span&gt; PASTE-THE-LICENCE-KEY-HERE &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; storageos apply licence --from-stdin
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Read the &lt;a href=&#34;https://docs.storageos.com/v2/docs/reference/cli/apply/&#34;&gt;licence CLI command reference&lt;/a&gt; for further information.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;

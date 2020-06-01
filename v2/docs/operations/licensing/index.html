@@ -30,7 +30,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
 <meta itemprop="description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
 Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:">
 
-<meta itemprop="wordCount" content="362">
+<meta itemprop="wordCount" content="319">
 
 
 
@@ -157,7 +157,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.b2ff1c4fad177a46e24c2e98ec3c45a9bb5948a8c792e4bd82a6683f7a90bab69410ef8c755bc9fb55791c6e1b102d1b7741bca3f88a4aa50a217d505bca7ae1.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.f9a33cb0a6833e17854295d7babca91296b3b3e83b97b2a1643ae94cf16a583923e7fac7b08808619dd02985eb11078a25f4cbadecc671c41fb39e5cb1daaf1d.json"
   data-offline-search-base-href="/"
 >
 
@@ -913,7 +913,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
   <ul>
     <li><a href="#obtaining-a-developer-licence-via-the-gui">Obtaining a Developer licence via the GUI</a></li>
     <li><a href="#applying-a-previously-obtained-licence-via-the-gui">Applying a previously obtained licence via the GUI</a></li>
-    <li><a href="#obtaining-a-developer-licence-via-the-cli">Obtaining a Developer licence via the CLI</a></li>
+    <li><a href="#applying-a-licence-via-the-cli">Applying a licence via the CLI</a></li>
     <li><a href="#obtaining-an-enterprise-licence">Obtaining an Enterprise licence</a></li>
   </ul>
 </nav>
@@ -987,25 +987,20 @@ and click on the tab &ldquo;Upgrade&rdquo;, for the specific licence level you p
 Then paste the licence key and click on &ldquo;UPLOAD KEY TO CLUSTER&rdquo;. Note that you
 can also view your cluster ID on the same page.</p>
 <p><img src="/images/docs/operations/licensing/apply-licence-key.png" alt="Apply Licence Key"></p>
-<h2 id="obtaining-a-developer-licence-via-the-cli">Obtaining a Developer licence via the CLI</h2>
+<h2 id="applying-a-licence-via-the-cli">Applying a licence via the CLI</h2>
 <p>Before getting a licence, you need to know the ID of your StorageOS cluster.</p>
 <p>This CLI command can print the cluster ID:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get cluster
 ID:               704dd165-9580-4da4-a554-0acb96d328cb
 Licence:
   expiration:     2021-03-25T13:48:46Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> year from now<span style="color:#ce5c00;font-weight:bold">)</span>
-  capacity:       2.2 TiB
-  kind:           developer
-  customer name:  t2
+  capacity:       5.0 TiB
+  kind:           professional
+  customer name:  storageos
 Created at:       2020-03-25T13:48:33Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> hour ago<span style="color:#ce5c00;font-weight:bold">)</span>
 Updated at:       2020-03-25T13:48:46Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> hour ago<span style="color:#ce5c00;font-weight:bold">)</span>
-</code></pre></div><p>To obtain a licence for your StorageOS cluster, create a new StorageOS account
-or log into <a href="https://my.storageos.com">StorageOS Portal</a>, go to the <a href="https://my.storageos.com/licenses">Licences
-page</a> and follow the instructions on the
-page to get the licence key for your cluster. Make sure that you input the
-correct cluster ID before generating the licence key.</p>
-<p><img src="/images/docs/operations/licensing/get-licence.png" alt="Get Licence"></p>
-<p>Then copy the licence key to clipboard and apply the licence by the CLI command:</p>
+</code></pre></div><p>Given the Cluster ID, the StorageOS team can generate a licence. Once, given
+the key, you can apply the licence by using the following command.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">echo</span> PASTE-THE-LICENCE-KEY-HERE <span style="color:#000;font-weight:bold">|</span> storageos apply licence --from-stdin
 </code></pre></div><p>Read the <a href="https://docs.storageos.com/v2/docs/reference/cli/apply/">licence CLI command reference</a> for further information.</p>
 <h2 id="obtaining-an-enterprise-licence">Obtaining an Enterprise licence</h2>

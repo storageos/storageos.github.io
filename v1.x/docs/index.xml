@@ -47,7 +47,7 @@
 satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Any Kubernetes managed service such as EKS, AKS, GKE, DO or DockeEE
+&lt;p&gt;Any Kubernetes managed service such as EKS, AKS, GKE, DO or DockerEE
 platform can use the following Kubernetes guide to install StorageOS.
 &lt;strong&gt;Ensure the use of CSI for these platforms&lt;/strong&gt;.&lt;/p&gt;
 &lt;/blockquote&gt;

@@ -260,6 +260,10 @@ payment.&lt;/p&gt;
 &lt;p&gt;The GUI is available at port 5705 on any of the nodes in the cluster. Initially
 you can log in as the default administrator, with the username and password
 from the &lt;code&gt;storageos-api&lt;/code&gt; Secret. By default &lt;code&gt;storageos&lt;/code&gt;, &lt;code&gt;storageos&lt;/code&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can access the GUI by either port-forwarding with kubectl or using an
+Ingress rule. i.e &lt;code&gt;kubectl -n kube-system port-forward svc/storageos 5705&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/login.png&#34; alt=&#34;Logging in&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nodes&#34;&gt;Nodes&lt;/h2&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v2/images/docs/gui-v2/nodes.png&#34; alt=&#34;Nodes&#34;&gt;

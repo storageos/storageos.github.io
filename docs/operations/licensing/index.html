@@ -22,22 +22,22 @@
 
 <title>Licensing | </title><meta property="og:title" content="Licensing" />
 <meta property="og:description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI: http://ADVERTISE_IP:5705/#/licence." />
+Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/licensing/" />
 
 <meta itemprop="name" content="Licensing">
 <meta itemprop="description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI: http://ADVERTISE_IP:5705/#/licence.">
+Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:">
 
-<meta itemprop="wordCount" content="335">
+<meta itemprop="wordCount" content="362">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Licensing"/>
 <meta name="twitter:description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI: http://ADVERTISE_IP:5705/#/licence."/>
+Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:"/>
 
 
 
@@ -157,7 +157,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8e3eb8f56ae55d7094004508bd3f99584205738f3148d4c29ef39c68b1c66b47a56ae8b7e303aeb1be5fe88a27f39faf554d42729d4d60813ea1a55ca1248d4c.json"
+  data-offline-search-index-json-src="/offline-search-index.72635778e02e7cec5351f1ae6b39bc5a13833977776a68bc509fe5b2aa2ecc97c9f3853c9114bf6b35eb6531b92a6cace4963bb0ae443dd1479443ce31726e65.json"
   data-offline-search-base-href="/"
 >
 
@@ -970,15 +970,19 @@ cluster can be unlocked by applying for a Free Developer licence.</p>
 <h2 id="obtaining-a-developer-licence-via-the-gui">Obtaining a Developer licence via the GUI</h2>
 <p>You can obtain and apply a free Developer licence in the StorageOS web GUI by
 creating or logging in with a StorageOS account on the StorageOS portal via the
-licence page of the StorageOS web GUI:
-<code>http://ADVERTISE_IP:5705/#/licence</code>.</p>
+licence page of the StorageOS web GUI:</p>
+<blockquote>
+<p>You can access the <a href="https://docs.storageos.com/docs/reference/gui/">GUI</a> on any node
+running the StorageOS Daemonset on the port 5705. Whether using an Ingress
+route or port-forwarding.</p>
+</blockquote>
 <p><img src="/images/docs/operations/licensing/licence-login.png" alt="Licence Login"></p>
 <p>Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible.</p>
 <p><img src="/images/docs/gui-v2/license.png" alt="Developer Licence"></p>
 <h2 id="applying-a-previously-obtained-licence-via-the-gui">Applying a previously obtained licence via the GUI</h2>
 <p>Commercial licences are delivered through contact with the StorageOS team.
-To apply such keys, via the web GUI, visit <code>http://ADVERTISE_IP:5705/#/licence</code>
+To apply such keys, via the web GUI, visit the <code>licence</code> section of the GUI
 and click on the tab &ldquo;Upgrade&rdquo;, for the specific licence level you purchased.
 Then paste the licence key and click on &ldquo;UPLOAD KEY TO CLUSTER&rdquo;. Note that you
 can also view your cluster ID on the same page.</p>

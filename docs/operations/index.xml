@@ -669,15 +669,19 @@ cluster can be unlocked by applying for a Free Developer licence.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-gui&#34;&gt;Obtaining a Developer licence via the GUI&lt;/h2&gt;
 &lt;p&gt;You can obtain and apply a free Developer licence in the StorageOS web GUI by
 creating or logging in with a StorageOS account on the StorageOS portal via the
-licence page of the StorageOS web GUI:
-&lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;.&lt;/p&gt;
+licence page of the StorageOS web GUI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You can access the &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui/&#34;&gt;GUI&lt;/a&gt; on any node
+running the StorageOS Daemonset on the port 5705. Whether using an Ingress
+route or port-forwarding.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/gui-v2/license.png&#34; alt=&#34;Developer Licence&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;applying-a-previously-obtained-licence-via-the-gui&#34;&gt;Applying a previously obtained licence via the GUI&lt;/h2&gt;
 &lt;p&gt;Commercial licences are delivered through contact with the StorageOS team.
-To apply such keys, via the web GUI, visit &lt;code&gt;http://ADVERTISE_IP:5705/#/licence&lt;/code&gt;
+To apply such keys, via the web GUI, visit the &lt;code&gt;licence&lt;/code&gt; section of the GUI
 and click on the tab &amp;ldquo;Upgrade&amp;rdquo;, for the specific licence level you purchased.
 Then paste the licence key and click on &amp;ldquo;UPLOAD KEY TO CLUSTER&amp;rdquo;. Note that you
 can also view your cluster ID on the same page.&lt;/p&gt;

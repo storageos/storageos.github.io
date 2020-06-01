@@ -23,18 +23,18 @@
 <title>Graphical user interface (GUI) | </title><meta property="og:title" content="Graphical user interface (GUI)" />
 <meta property="og:description" content="StorageOS provides a GUI for cluster and volume management.
 The GUI is available at port 5705 on any of the nodes in the cluster. Initially you can log in as the default administrator, with the username and password from the storageos-api Secret. By default storageos, storageos.
-Nodes Volumes You can create volumes, including replicated volumes, and view volume details:
-Licensing Cluster info Namespaces Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:" />
+ You can access the GUI by either port-forwarding with kubectl or using an Ingress rule. i.e kubectl -n kube-system port-forward svc/storageos 5705.
+ Nodes Volumes You can create volumes, including replicated volumes, and view volume details:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/gui/" />
 
 <meta itemprop="name" content="Graphical user interface (GUI)">
 <meta itemprop="description" content="StorageOS provides a GUI for cluster and volume management.
 The GUI is available at port 5705 on any of the nodes in the cluster. Initially you can log in as the default administrator, with the username and password from the storageos-api Secret. By default storageos, storageos.
-Nodes Volumes You can create volumes, including replicated volumes, and view volume details:
-Licensing Cluster info Namespaces Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:">
+ You can access the GUI by either port-forwarding with kubectl or using an Ingress rule. i.e kubectl -n kube-system port-forward svc/storageos 5705.
+ Nodes Volumes You can create volumes, including replicated volumes, and view volume details:">
 
-<meta itemprop="wordCount" content="82">
+<meta itemprop="wordCount" content="104">
 
 
 
@@ -42,8 +42,8 @@ Licensing Cluster info Namespaces Volumes can be namespaced across different pro
 <meta name="twitter:title" content="Graphical user interface (GUI)"/>
 <meta name="twitter:description" content="StorageOS provides a GUI for cluster and volume management.
 The GUI is available at port 5705 on any of the nodes in the cluster. Initially you can log in as the default administrator, with the username and password from the storageos-api Secret. By default storageos, storageos.
-Nodes Volumes You can create volumes, including replicated volumes, and view volume details:
-Licensing Cluster info Namespaces Volumes can be namespaced across different projects or teams, and you can switch namespace using the left hand panel:"/>
+ You can access the GUI by either port-forwarding with kubectl or using an Ingress rule. i.e kubectl -n kube-system port-forward svc/storageos 5705.
+ Nodes Volumes You can create volumes, including replicated volumes, and view volume details:"/>
 
 
 
@@ -163,7 +163,7 @@ Licensing Cluster info Namespaces Volumes can be namespaced across different pro
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.8e3eb8f56ae55d7094004508bd3f99584205738f3148d4c29ef39c68b1c66b47a56ae8b7e303aeb1be5fe88a27f39faf554d42729d4d60813ea1a55ca1248d4c.json"
+  data-offline-search-index-json-src="/offline-search-index.72635778e02e7cec5351f1ae6b39bc5a13833977776a68bc509fe5b2aa2ecc97c9f3853c9114bf6b35eb6531b92a6cace4963bb0ae443dd1479443ce31726e65.json"
   data-offline-search-base-href="/"
 >
 
@@ -974,6 +974,10 @@ Licensing Cluster info Namespaces Volumes can be namespaced across different pro
 <p>The GUI is available at port 5705 on any of the nodes in the cluster. Initially
 you can log in as the default administrator, with the username and password
 from the <code>storageos-api</code> Secret. By default <code>storageos</code>, <code>storageos</code>.</p>
+<blockquote>
+<p>You can access the GUI by either port-forwarding with kubectl or using an
+Ingress rule. i.e <code>kubectl -n kube-system port-forward svc/storageos 5705</code>.</p>
+</blockquote>
 <p><img src="/images/docs/gui-v2/login.png" alt="Logging in"></p>
 <h2 id="nodes">Nodes</h2>
 <p><img src="/images/docs/gui-v2/nodes.png" alt="Nodes">

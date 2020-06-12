@@ -1636,7 +1636,7 @@ configuration&lt;/a&gt; page.&lt;/p&gt;
      deploymentStrategy: deployment
    resources:
      requests:
-     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
+       memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
    k8sDistro: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;openshift&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/v1.x/images/openshift4/stos-specs.png&#34; alt=&#34;install-8&#34;&gt;&lt;/p&gt;
 &lt;/li&gt;

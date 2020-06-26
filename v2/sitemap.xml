@@ -335,6 +335,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2/docs/reference/tolerations/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2/docs/operations/troubleshooting/</loc>
   </url>
   
@@ -344,6 +348,10 @@
   
   <url>
     <loc>https://docs.storageos.com/v2/docs/reference/cli/version/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2/docs/operations/resize/</loc>
   </url>
   
   <url>

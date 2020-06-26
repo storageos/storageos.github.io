@@ -1199,5 +1199,64 @@ you to enter a password for the newly created user.&lt;/p&gt;
       </description>
     </item>
     
+    <item>
+      <title>Docs: Volume Resize</title>
+      <link>https://docs.storageos.com/docs/operations/resize/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/resize/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS supports offline resize of volumes through editing a PVC storage
+request, or by updating the volume config via the CLI or UI. Please note that
+StorageOS only supports increasing volume size. For more information about how
+the resize works please see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#volume-resize&#34;&gt;Resize
+concepts&lt;/a&gt; page.&lt;/p&gt;
+&lt;h3 id=&#34;resizing-a-volume&#34;&gt;Resizing a Volume&lt;/h3&gt;
+&lt;p&gt;In order to resize a PVC the storage request field must be updated.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-1
+spec:
+  storageClassName: fast
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In order to edit a PVC you can use &lt;code&gt;kubectl edit&lt;/code&gt; or &lt;code&gt;kubectl apply&lt;/code&gt; to make
+changes.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. Resizing a volume without updating the PVC directly will NOT result in
+the PVC being updated. The methods below are included for completeness, in
+Kubernetes environments editing the PVC is the preferred method for resizing
+a volume.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To resize a volume using the StorageOS CLI use the &lt;code&gt;volume update&lt;/code&gt; command&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos update volume size pvc-a47cfa03-cc92-4ec9-84ab-00e5516c64fa 10GiB
+Name:                                 pvc-a47cfa03-cc92-4ec9-84ab-00e5516c64fa
+ID:                                   925e667f-91d3-465a-9391-8fdb56d0c9ff
+Size:                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;11&lt;/span&gt; GB
+Description:
+AttachedOn:
+Replicas:                             1x ready
+Labels:
+  - csi.storage.k8s.io/pv/name        pvc-a47cfa03-cc92-4ec9-84ab-00e5516c64fa
+  - csi.storage.k8s.io/pvc/name       pvc-1
+  - csi.storage.k8s.io/pvc/namespace  default
+  - foo                               bar
+  - pool                              default
+  - storageos.com/replicas            &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+
+Volume pvc-a47cfa03-cc92-4ec9-84ab-00e5516c64fa &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;925e667f-91d3-465a-9391-8fdb56d0c9ff&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; updated. Size changed.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To resize a volume using the StorageOS UI, navigate to the volumes section and
+click the edit pencil in order to update the volume config.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/resize/resize-vol.png&#34; alt=&#34;StorageOS Resize&#34;&gt;&lt;/p&gt;
+
+      </description>
+    </item>
+    
   </channel>
 </rss>

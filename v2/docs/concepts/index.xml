@@ -331,6 +331,19 @@ blocks in the associated volume. This size is consistent irrespective of data
 compression defined on the volume.&lt;/p&gt;
 &lt;p&gt;To ensure deterministic performance, individual StorageOS volumes must fit on a single
 node.&lt;/p&gt;
+&lt;h2 id=&#34;volume-resize&#34;&gt;Volume Resize&lt;/h2&gt;
+&lt;p&gt;StorageOS v2.1 supports offline resize of volumes. This means that a volume
+cannot be resized while it is in use. Furthermore, in order for a resize
+operation to take place the volume must not be attached to a node. This is to
+ensure that the volume is not in use.&lt;/p&gt;
+&lt;p&gt;This means that if a Kubernetes pod is currently consuming a volume that a
+resize request has been issued for, the resize will not be actioned until the
+pod is terminated and the volume is detached from the node. The StorageOS
+controlplane will then attach the volume to the node that holds the master
+deployment and resize the underlying block device and then run resize2fs to
+expand the filesystem.&lt;/p&gt;
+&lt;p&gt;For a walk through of how to resize a volume please see the &lt;a href=&#34;https://docs.storageos.com/v2/docs/operations/resize&#34;&gt;Volume
+Resize&lt;/a&gt; operations page.&lt;/p&gt;
 
       </description>
     </item>

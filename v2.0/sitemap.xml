@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cluster-operator/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/introduction/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/install/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/introduction/overview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/prerequisites/systemconfiguration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cluster-operator/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/install/openshift/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/prerequisites/firewalls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/introduction/quickstart/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cluster-operator/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/prerequisites/mountpropagation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/install/rancher/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cluster-operator/upgrade/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/introduction/platforms/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/prerequisites/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/best-practices/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/support/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/self-eval/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/index.json</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/api/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/apply/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/attach/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/aws-eks/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/azure-aks/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/backups/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/cassandra/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cluster-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/clusters/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/compression/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/contributing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/create/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/delete/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/describe/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/detach/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/dockeree/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/elasticsearch/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/etcd/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/external-etcd/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/prerequisites/etcd/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/firstpvc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/get/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/gui/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/health/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/help/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/managing-host-storage/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/init-container/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/jenkins/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/kafka/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/kubevirt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/labels/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/licence/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/licensing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/mssql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/external-etcd/etcd-tls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/mysql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/namespaces/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/namespaces/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/nodes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/open_source_attribution/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/openshift/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/policies/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/policies/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/postgres/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/platforms/rancher/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/redis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/release_notes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/replication/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/search/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/storageclasses/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/telemetry/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/bundle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/filesystems/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/tolerations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/troubleshooting/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/users/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/reference/cli/version/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/operations/resize/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/concepts/volumes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.0/docs/usecases/zookeeper/</loc>
+  </url>
+  
+</urlset>

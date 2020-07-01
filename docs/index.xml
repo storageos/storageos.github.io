@@ -216,6 +216,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -276,6 +278,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -307,6 +310,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -338,6 +342,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -369,6 +374,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -479,6 +485,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -539,6 +547,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -570,6 +579,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -601,6 +611,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -632,6 +643,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -742,6 +754,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -802,6 +816,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -833,6 +848,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -864,6 +880,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -895,6 +912,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1005,6 +1023,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1065,6 +1085,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1096,6 +1117,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1127,6 +1149,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1158,6 +1181,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1268,6 +1292,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1328,6 +1354,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1359,6 +1386,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1390,6 +1418,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -1421,6 +1450,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -2160,6 +2190,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2195,6 +2227,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;
@@ -2399,6 +2432,8 @@ API Username and Password in base64 encoding.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiControllerPublishPassword: c3RvcmFnZW9z
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiNodePublishUsername: c3RvcmFnZW9z
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiNodePublishPassword: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiControllerExpandUsername: c3RvcmFnZW9z
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
@@ -2460,6 +2495,7 @@ variable is defined by the operator by selecting all the nodes that match the
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;enableProvisionCreds&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;enableControllerPublishCreds&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;enableNodePublishCreds&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;enableControllerExpandCreds&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The credentials must be defined in the &lt;code&gt;storageos-api&lt;/code&gt; Secret&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -2481,6 +2517,8 @@ variable is defined by the operator by selecting all the nodes that match the
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csiControllerPublishPassword&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;c3RvcmFnZW9z&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csiNodePublishUsername&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;c3RvcmFnZW9z&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csiNodePublishPassword&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;c3RvcmFnZW9z&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csiControllerExpandUsername&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;c3RvcmFnZW9z&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csiControllerExpandPassword&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;c3RvcmFnZW9z&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;specifying-a-shared-directory-for-use-with-kubelet-as-a-container&#34;&gt;Specifying a shared directory for use with kubelet as a container&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;sharedDir&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;/var/lib/kubelet/plugins/kubernetes.io~storageos&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -2678,6 +2716,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This example contains a default password, for production installations, use a
 unique, strong password.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -2714,6 +2754,7 @@ spec:
     enableControllerPublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableNodePublishCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
     enableProvisionCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+    enableControllerExpandCreds: &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
   resources:
     requests:
     memory: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;512Mi&amp;#34;&lt;/span&gt;

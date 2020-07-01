@@ -34,7 +34,7 @@
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
   The StorageOS v2 installation using the Rancher Catalog will be available soon.">
 
-<meta itemprop="wordCount" content="702">
+<meta itemprop="wordCount" content="708">
 
 
 
@@ -189,7 +189,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.ea8ec762fb0ecd7d5c9826b537532a8626a8c6a9f9b0e88bc5d3d24650cef010db5f2fa92d6edfc111ea65d74fc2f4c321de6c01eb72b412c60f222ade774a91.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.39a71269bb5198af4c377e20cf6be1e1da41b3622596eb67da78bf917a09d62b43a2a1065a8ffb43b4011ab77a61c5ce8e01cd5f30e027a6421af13acf14f9b0.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +223,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.ea8ec762fb0ecd7d5c9826b537532a8626a8c6a9f9b0e88bc5d3d24650cef010db5f2fa92d6edfc111ea65d74fc2f4c321de6c01eb72b412c60f222ade774a91.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.39a71269bb5198af4c377e20cf6be1e1da41b3622596eb67da78bf917a09d62b43a2a1065a8ffb43b4011ab77a61c5ce8e01cd5f30e027a6421af13acf14f9b0.json"
   data-offline-search-base-href="/"
 >
 
@@ -1142,6 +1142,8 @@ data:
   csiControllerPublishPassword: c3RvcmFnZW9z
   csiNodePublishUsername: c3RvcmFnZW9z
   csiNodePublishPassword: c3RvcmFnZW9z
+  csiControllerExpandUsername: c3RvcmFnZW9z
+  csiControllerExpandPassword: c3RvcmFnZW9z
 </code></pre></div><p>This example contains a default password, for production installations, use a
 unique, strong password.</p>
 <blockquote>
@@ -1178,6 +1180,7 @@ spec:
     enableControllerPublishCreds: <span style="color:#204a87">true</span>
     enableNodePublishCreds: <span style="color:#204a87">true</span>
     enableProvisionCreds: <span style="color:#204a87">true</span>
+    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
     memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>

@@ -1948,10 +1948,6 @@ opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;StorageOS v2 supports OpenShift v4. For more information check the &lt;a href=&#34;https://docs.storageos.com/docs/platforms/openshift/&#34;&gt;OpenShift
 platform&lt;/a&gt; page.&lt;/p&gt;
-&lt;p&gt;The recommended way to run StorageOS on OpenShift is to deploy the StorageOS
-Cluster Operator using the Operator Lifecycle Manager (OLM) from the Red Hat
-OperatorHub, and bootstrap StorageOS using a Custom Resource. If that option is
-not suited for your use case, you can choose the &amp;ldquo;Manual&amp;rdquo; installation.&lt;/p&gt;
 &lt;h1 id=&#34;manual-install&#34;&gt;Manual install&lt;/h1&gt;
 &lt;p&gt;The StorageOS Cluster Operator is a &lt;a href=&#34;https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/&#34;&gt;Kubernetes native
 application&lt;/a&gt;

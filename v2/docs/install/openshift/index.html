@@ -36,7 +36,7 @@ The recommended way to run StorageOS on OpenShift is to deploy the StorageOS Clu
  StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page.
 The recommended way to run StorageOS on OpenShift is to deploy the StorageOS Cluster Operator using the Operator Lifecycle Manager (OLM) from the Red Hat OperatorHub, and bootstrap StorageOS using a Custom Resource.">
 
-<meta itemprop="wordCount" content="1141">
+<meta itemprop="wordCount" content="744">
 
 
 
@@ -192,7 +192,7 @@ The recommended way to run StorageOS on OpenShift is to deploy the StorageOS Clu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.39a71269bb5198af4c377e20cf6be1e1da41b3622596eb67da78bf917a09d62b43a2a1065a8ffb43b4011ab77a61c5ce8e01cd5f30e027a6421af13acf14f9b0.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.9e6cc4a659edc992124ebeaa8279b8d11f32d390737548e6d3927679f860c7ac7e11f90c886ede27d875b56239239ff1960cff6c66c15e18e075549faf64ef64.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +226,7 @@ The recommended way to run StorageOS on OpenShift is to deploy the StorageOS Clu
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.39a71269bb5198af4c377e20cf6be1e1da41b3622596eb67da78bf917a09d62b43a2a1065a8ffb43b4011ab77a61c5ce8e01cd5f30e027a6421af13acf14f9b0.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.9e6cc4a659edc992124ebeaa8279b8d11f32d390737548e6d3927679f860c7ac7e11f90c886ede27d875b56239239ff1960cff6c66c15e18e075549faf64ef64.json"
   data-offline-search-base-href="/"
 >
 
@@ -988,6 +988,25 @@ The recommended way to run StorageOS on OpenShift is to deploy the StorageOS Clu
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#__steps-to-install-storageos__">Steps to install StorageOS:</a></li>
+    <li><a href="#1-install-storageos-operator">1. Install StorageOS operator</a>
+      <ul>
+        <li><a href="#verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-create-a-secret">2. Create a Secret</a></li>
+    <li><a href="#3-trigger-a-storageos-installation">3 Trigger a StorageOS installation</a>
+      <ul>
+        <li><a href="#verify-storageos-installation">Verify StorageOS Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-license-cluster">4. License cluster</a></li>
+    <li><a href="#first-storageos-volume">First StorageOS volume</a></li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1052,187 +1071,7 @@ Cluster Operator using the Operator Lifecycle Manager (OLM) from the Red Hat
 OperatorHub, and bootstrap StorageOS using a Custom Resource. If that option is
 not suited for your use case, you can choose the &ldquo;Manual&rdquo; installation.</p>
 <p> </p>
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-
-		
-		
-		
-		
-
-            
-            
-
-            
-            
-
-            
-
-            
-
-		<a class="nav-item nav-link active" id="nav-1" data-toggle="tab" href="#olm" role="tab"
-		   aria-controls="nav-home" aria-selected="true">OLM</a>
-
-            
-		
-
-            
-            
-
-            
-            
-
-            
-
-            
-
-		<a class="nav-item nav-link" id="nav-1" data-toggle="tab" href="#manual" role="tab"
-		   aria-controls="nav-home" aria-selected="false">Manual</a>
-
-            
-		
-
-	</div>
-</nav>
-
-<div class="tab-content" id="1">
-    <br></br>
-
-
-
-
-
-
-
-
-<div class="tab-pane fade show active" id="olm " role="tabpanel" aria-labelledby="nav-olm ">
-    <h1 id="operator-lifecycle-manager">Operator Lifecycle Manager</h1>
-<p>The StorageOS Cluster Operator is  RedHat OpenShift certified operator
-available from the OperatorHub.</p>
-<ol>
-<li>
-<p>Select the <code>OperatorHub</code> from the Catalog sub menu and search for StorageOS</p>
-<p><img src="/images/openshift4/operatorhub.png" alt="install-1"></p>
-</li>
-<li>
-<p>Select StorageOS and click install</p>
-<p><img src="/images/openshift4/install-storageos-operator.png" alt="install-2"></p>
-</li>
-<li>
-<p>Create the Operator subscription by clicking subscribe</p>
-<p><img src="/images/openshift4/create-operator-subscription.png" alt="install-3"></p>
-</li>
-<li>
-<p>Wait until the Upgrade Status shows 1 installed</p>
-<p><img src="/images/openshift4/install-complete.png" alt="install-4"></p>
-</li>
-<li>
-<p>Create a secret containing the <code>apiUsername</code> and an <code>apiPassword</code> key. The
-username and password defined in the secret will be used to authenticate
-when using the StorageOS CLI and GUI. For the communication between
-StorageOS and OpenShift, the CSI credentials  <code>csiProvisionUsername</code>,
-<code>csiProvisionPassword</code>, <code>csiControllerPublishUsername</code>,
-<code>csiControllerPublishPassword</code>, <code>csiNodePublishUsername</code>,
-<code>csiNodePublishPassword</code> are needed. Take note of which project you created
-the secret in.</p>
-<p><img src="/images/openshift4/create-secret.png" alt="install-5">
- 
-<img src="/images/openshift4/secret-input-1.png" alt="install-6">
-<img src="/images/openshift4/secret-input-2.png" alt="install-7">
-<img src="/images/openshift4/secret-input-3.png" alt="install-8"></p>
-<p>Alternatively the YAML input can be used with a Secret as follows:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>openshift-operators<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># CSI Credentials</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiProvisionUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiProvisionPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiControllerPublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiControllerPublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiNodePublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csiNodePublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div></li>
-<li>
-<p>Go to <code>Installed Operators</code> and select the StorageOS operator. Select
-StorageOS Cluster and create a StorageOS cluster.</p>
-<p><img src="/images/openshift4/create-stos.png" alt="install-9"></p>
-</li>
-<li>
-<p>The StorageOS cluster resource describes the StorageOS cluster that will be
-created. The <code>secretRefName</code> and <code>secretRefNamespace</code> should reference the secret
-containing the <code>apiUsername</code> and <code>apiPassword</code> that was previously created.</p>
-<p>Additional <code>spec</code> parameters are available on the <a href="/docs/reference/cluster-operator/configuration">Cluster Operator
-configuration</a> page.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apiVersion: <span style="color:#4e9a06">&#34;storageos.com/v1&#34;</span>
-kind: StorageOSCluster
-metadata:
-  name: storageos
-  namespace: openshift-operators
-spec:
-  secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference the Secret created in the previous step</span>
-  secretRefNamespace: <span style="color:#4e9a06">&#34;openshift-operators&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret created in the previous step</span>
-  namespace: kube-system
-  k8sDistro: <span style="color:#4e9a06">&#34;openshift&#34;</span>
-  images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.0.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-  kvBackend:
-    backend: <span style="color:#4e9a06">&#39;etcd&#39;</span>
-    address: <span style="color:#4e9a06">&#39;storageos-etcd-client.etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
-  <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-  resources:
-    requests:
-    memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
-</code></pre></div><p><img src="/images/openshift4/stos-specs.png" alt="install-8"></p>
-</li>
-<li>
-<p>Verify that the StorageOS Resource enters a running state.</p>
-<p><img src="/images/openshift4/stos-running.png" alt="install-9"></p>
-</li>
-<li>
-<p>Set SELinux Permissions</p>
-<p>The StorageOS CSI helper needs to mount a CSI Socket into the container so
-on each node add the <code>svirt_sandbox_file_t</code> flag to the CSI socket directory
-and CSI socket.</p>
-<pre><code>chcon -Rt svirt_sandbox_file_t /var/lib/kubelet/plugins_registry/storageos
-</code></pre></li>
-<li>
-<p>License cluster</p>
-<blockquote>
-<p>A newly installed StorageOS cluster does not include a licence. A cluster
-must be licensed within 24 hours of the installation. For more information,
-check the <a href="https://docs.storageos.com/v2/docs/reference/licence/">reference licence page</a>.</p>
-</blockquote>
-<p>You can apply a Free Developer licence following the <a href="https://docs.storageos.com/v2/docs/operations/licensing/">operations
-licensing</a> page, or purchase a
-licence contacting <a href="mailto:sales@storageos.com">sales@storageos.com</a>.</p>
-</li>
-</ol>
-
-</div>
-
-
-
-
-
-
-
-
-
-<div class="tab-pane fade" id="manual" role="tabpanel" aria-labelledby="nav-manual">
-    <h1 id="manual-install">Manual install</h1>
+<h1 id="manual-install">Manual install</h1>
 <p>The StorageOS Cluster Operator is a <a href="https://kubernetes.io/docs/concepts/extend-kubernetes/extend-cluster/">Kubernetes native
 application</a>
 developed to deploy and configure StorageOS clusters, and assist with
@@ -1367,20 +1206,6 @@ check the <a href="https://docs.storageos.com/v2/docs/reference/licence/">refere
 <p>You can apply a Free Developer licence following the <a href="https://docs.storageos.com/v2/docs/operations/licensing/">operations
 licensing</a> page, or purchase a
 licence contacting <a href="mailto:sales@storageos.com">sales@storageos.com</a>.</p>
-<h2 id="5-set-selinux-permissions">5. Set SELinux Permissions</h2>
-<p>The StorageOS CSI helper needs to mount a CSI Socket into the container so
-on each node add the <code>svirt_sandbox_file_t</code> flag to the CSI socket directory
-and CSI socket.</p>
-<pre><code>chcon -Rt svirt_sandbox_file_t /var/lib/kubelet/plugins_registry/storageos
-</code></pre>
-</div>
-
-
-
-
-
-</div>
-
 <h2 id="first-storageos-volume">First StorageOS volume</h2>
 <p>If this is your first installation you may wish to follow the <a href="https://docs.storageos.com/v2/docs/operations/firstpvc/">StorageOS
 Volume guide</a> for an example of how

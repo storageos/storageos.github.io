@@ -87,7 +87,7 @@ different topologies that fulfil this prerequisite.&lt;/p&gt;
 
 &lt;div class=&#34;tab-pane fade show active&#34; id=&#34;production&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-production&#34;&gt;
     &lt;h2 id=&#34;external-etcd&#34;&gt;External Etcd&lt;/h2&gt;
-&lt;p&gt;The production topology is designed to provide the highest stability for the
+&lt;p&gt;The following topology is designed to provide the highest stability for the
 etcd cluster. It is necessary for normal StorageOS function to have a reliable
 metadata cluster. Otherwise, central operations such as provisioning,
 attachment or failover of volumes cannot be performed. In the event that etcd
@@ -117,17 +117,17 @@ Ansible.&lt;/p&gt;
 &lt;li&gt;
 &lt;p&gt;Edit the inventory file&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Target the nodes that install etcd, where the file &lt;code&gt;hosts.example&lt;/code&gt; serves
-as an example. The &lt;code&gt;ip&lt;/code&gt; parameter is needed for each node.&lt;/p&gt;
+&lt;p&gt;Target the nodes that install etcd, where the file &lt;code&gt;hosts&lt;/code&gt; serves
+as an example.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat hosts.example
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat hosts
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;nodes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-centos-1 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.14
-centos-2 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.15
-centos-3 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.16
+centos-1 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.10.228&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-10-228.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
+centos-2 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.14.233&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-14-233.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
+centos-3 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.12.111&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-12-111.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Edit the inventory file&lt;/span&gt;
-$ vi hosts.example &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or your own inventory file&lt;/span&gt;
+$ vi hosts &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or your own inventory file&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Edit the etcd configuration&lt;/p&gt;
@@ -136,20 +136,46 @@ $ vi hosts.example &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;#
 &lt;code&gt;etcd_port_client&lt;/code&gt;, &lt;code&gt;etcd_port_peers&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat group_vars/all
-etcd_version: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.3.18&amp;#34;&lt;/span&gt;
+etcd_version: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.4.9&amp;#34;&lt;/span&gt;
 etcd_port_client: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2379&amp;#34;&lt;/span&gt;
 etcd_port_peers: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2380&amp;#34;&lt;/span&gt;
 etcd_quota_bytes: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8589934592&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 8 GB&lt;/span&gt;
 etcd_auto_compaction_mode: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;revision&amp;#34;&lt;/span&gt;
-etcd_auto_compaction_retention: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;100&amp;#34;&lt;/span&gt;
-members: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{{ groups[&amp;#39;nodes&amp;#39;]  }}&amp;#34;&lt;/span&gt;
+etcd_auto_compaction_retention: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;12000&amp;#34;&lt;/span&gt;
+members: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{{ groups[&amp;#39;nodes&amp;#39;] }}&amp;#34;&lt;/span&gt;
 installation_dir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos-etcd&amp;#34;&lt;/span&gt;
+advertise_format: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;fqdn&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# fqdn || ip&lt;/span&gt;
+backup_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/tmp/backup.db&amp;#34;&lt;/span&gt;
+
+tls:
+  enabled: &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
+  ca_common_name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
+  etcd_common_name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;*.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
+  cert_dir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/etc/etcdtls&amp;#34;&lt;/span&gt;
+  ca_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-ca.pem&amp;#34;&lt;/span&gt;
+  etcd_server_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;server.pem&amp;#34;&lt;/span&gt;
+  etcd_server_key_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;server-key.pem&amp;#34;&lt;/span&gt;
+  etcd_client_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-client.crt&amp;#34;&lt;/span&gt;
+  etcd_client_key_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-client.key&amp;#34;&lt;/span&gt;
 
 $ vi group_vars/all
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Choose between using IP addressing or FQDN in the &lt;code&gt;advertise_format&lt;/code&gt;
+parameter. It allows you to decide how Etcd advertise its address to the
+clients. The format becomes very relevant when using TLS.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If enabling TLS, it is recomended to generate your own CA certificate and
+key. As an example, you can find it in &lt;code&gt;roles/tls_cert/files/ca.pem&lt;/code&gt; and
+&lt;code&gt;roles/tls_cert/files/ca-key.pem&lt;/code&gt; which are generated using &lt;code&gt;cfssl&lt;/code&gt; from
+the &lt;code&gt;roles/tls_cert/files/ca-config.json&lt;/code&gt; file. The playbook will
+generate and distribute the keys and certificates for the client auth on
+all etcd nodes. Certificates are signed by the CA mentioned.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Install&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ansible-playbook -i hosts.example site.yml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ansible-playbook -i hosts install.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Verify installation&lt;/p&gt;

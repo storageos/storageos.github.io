@@ -177,7 +177,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.451cc34246d22cbbd756c5b7c44757b38fdad4738e45c27b465089c93fa7224b9165eba06c5c5bcf3cfb271392ab1ec33502347851a1a9850493a89817c436dc.json"
+  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
   data-offline-search-base-href="/"
 >
 
@@ -211,7 +211,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.451cc34246d22cbbd756c5b7c44757b38fdad4738e45c27b465089c93fa7224b9165eba06c5c5bcf3cfb271392ab1ec33502347851a1a9850493a89817c436dc.json"
+  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
   data-offline-search-base-href="/"
 >
 
@@ -1096,7 +1096,7 @@ different topologies that fulfil this prerequisite.</p>
 
 <div class="tab-pane fade show active" id="production" role="tabpanel" aria-labelledby="nav-production">
     <h2 id="external-etcd">External Etcd</h2>
-<p>The production topology is designed to provide the highest stability for the
+<p>The following topology is designed to provide the highest stability for the
 etcd cluster. It is necessary for normal StorageOS function to have a reliable
 metadata cluster. Otherwise, central operations such as provisioning,
 attachment or failover of volumes cannot be performed. In the event that etcd
@@ -1126,17 +1126,17 @@ Ansible.</p>
 <li>
 <p>Edit the inventory file</p>
 <blockquote>
-<p>Target the nodes that install etcd, where the file <code>hosts.example</code> serves
-as an example. The <code>ip</code> parameter is needed for each node.</p>
+<p>Target the nodes that install etcd, where the file <code>hosts</code> serves
+as an example.</p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat hosts.example
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat hosts
 <span style="color:#ce5c00;font-weight:bold">[</span>nodes<span style="color:#ce5c00;font-weight:bold">]</span>
-centos-1 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.14
-centos-2 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.15
-centos-3 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.16
+centos-1 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.10.228&#34;</span>  <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-10-228.eu-west-2.compute.internal&#34;</span>
+centos-2 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.14.233&#34;</span>  <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-14-233.eu-west-2.compute.internal&#34;</span>
+centos-3 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.12.111&#34;</span>  <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-12-111.eu-west-2.compute.internal&#34;</span>
 
 <span style="color:#8f5902;font-style:italic"># Edit the inventory file</span>
-$ vi hosts.example <span style="color:#8f5902;font-style:italic"># Or your own inventory file</span>
+$ vi hosts <span style="color:#8f5902;font-style:italic"># Or your own inventory file</span>
 </code></pre></div></li>
 <li>
 <p>Edit the etcd configuration</p>
@@ -1145,20 +1145,46 @@ $ vi hosts.example <span style="color:#8f5902;font-style:italic"># Or your own i
 <code>etcd_port_client</code>, <code>etcd_port_peers</code></strong></p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat group_vars/all
-etcd_version: <span style="color:#4e9a06">&#34;3.3.18&#34;</span>
+etcd_version: <span style="color:#4e9a06">&#34;3.4.9&#34;</span>
 etcd_port_client: <span style="color:#4e9a06">&#34;2379&#34;</span>
 etcd_port_peers: <span style="color:#4e9a06">&#34;2380&#34;</span>
 etcd_quota_bytes: <span style="color:#0000cf;font-weight:bold">8589934592</span>  <span style="color:#8f5902;font-style:italic"># 8 GB</span>
 etcd_auto_compaction_mode: <span style="color:#4e9a06">&#34;revision&#34;</span>
-etcd_auto_compaction_retention: <span style="color:#4e9a06">&#34;100&#34;</span>
-members: <span style="color:#4e9a06">&#34;{{ groups[&#39;nodes&#39;]  }}&#34;</span>
+etcd_auto_compaction_retention: <span style="color:#4e9a06">&#34;12000&#34;</span>
+members: <span style="color:#4e9a06">&#34;{{ groups[&#39;nodes&#39;] }}&#34;</span>
 installation_dir: <span style="color:#4e9a06">&#34;/var/lib/storageos-etcd&#34;</span>
+advertise_format: <span style="color:#4e9a06">&#39;fqdn&#39;</span> <span style="color:#8f5902;font-style:italic"># fqdn || ip</span>
+backup_file: <span style="color:#4e9a06">&#34;/tmp/backup.db&#34;</span>
+
+tls:
+  enabled: <span style="color:#204a87">false</span>
+  ca_common_name: <span style="color:#4e9a06">&#34;eu-west-2.compute.internal&#34;</span>
+  etcd_common_name: <span style="color:#4e9a06">&#34;*.eu-west-2.compute.internal&#34;</span>
+  cert_dir: <span style="color:#4e9a06">&#34;/etc/etcdtls&#34;</span>
+  ca_cert_file: <span style="color:#4e9a06">&#34;etcd-ca.pem&#34;</span>
+  etcd_server_cert_file: <span style="color:#4e9a06">&#34;server.pem&#34;</span>
+  etcd_server_key_file: <span style="color:#4e9a06">&#34;server-key.pem&#34;</span>
+  etcd_client_cert_file: <span style="color:#4e9a06">&#34;etcd-client.crt&#34;</span>
+  etcd_client_key_file: <span style="color:#4e9a06">&#34;etcd-client.key&#34;</span>
 
 $ vi group_vars/all
-</code></pre></div></li>
+</code></pre></div><blockquote>
+<p>Choose between using IP addressing or FQDN in the <code>advertise_format</code>
+parameter. It allows you to decide how Etcd advertise its address to the
+clients. The format becomes very relevant when using TLS.</p>
+</blockquote>
+<blockquote>
+<p>If enabling TLS, it is recomended to generate your own CA certificate and
+key. As an example, you can find it in <code>roles/tls_cert/files/ca.pem</code> and
+<code>roles/tls_cert/files/ca-key.pem</code> which are generated using <code>cfssl</code> from
+the <code>roles/tls_cert/files/ca-config.json</code> file. The playbook will
+generate and distribute the keys and certificates for the client auth on
+all etcd nodes. Certificates are signed by the CA mentioned.</p>
+</blockquote>
+</li>
 <li>
 <p>Install</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i hosts.example site.yml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i hosts install.yaml
 </code></pre></div></li>
 <li>
 <p>Verify installation</p>

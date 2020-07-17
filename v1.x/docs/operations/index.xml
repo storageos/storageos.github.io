@@ -1674,9 +1674,6 @@ the right location.&lt;/p&gt;
 provided for Kubernetes to deploy StorageOS rather than using automated
 provisioners, make sure that the StorageClass parameters and the Secret
 reference match.&lt;/p&gt;
-&lt;p&gt;{% include troubleshoot/issues/nodename-vs-nodehostname.md %}
-{% include troubleshoot/issues/one-node-multiple-clusters.md %}
-{% include troubleshoot/issues/ports-closed.md %}&lt;/p&gt;
 &lt;h2 id=&#34;peer-discovery---pod-allocation&#34;&gt;Peer discovery - Pod allocation&lt;/h2&gt;
 &lt;h3 id=&#34;issue-3&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS nodes can&amp;rsquo;t join the cluster and show the following log entries.&lt;/p&gt;

@@ -187,7 +187,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/operations/external-etcd/</loc>
+    <loc>https://docs.storageos.com/docs/operations/etcd/</loc>
   </url>
   
   <url>
@@ -251,7 +251,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/operations/external-etcd/etcd-tls/</loc>
+    <loc>https://docs.storageos.com/docs/operations/etcd/storageos-secret-info/</loc>
   </url>
   
   <url>
@@ -311,6 +311,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/resource_requests_and_limits/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/search/</loc>
   </url>
   
@@ -340,6 +344,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/troubleshooting/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/uninstall/</loc>
   </url>
   
   <url>

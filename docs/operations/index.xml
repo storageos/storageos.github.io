@@ -15,312 +15,38 @@
     
     <item>
       <title>Docs: Etcd</title>
-      <link>https://docs.storageos.com/docs/operations/external-etcd/</link>
+      <link>https://docs.storageos.com/docs/operations/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/operations/external-etcd/</guid>
+      <guid>https://docs.storageos.com/docs/operations/etcd/</guid>
       <description>
         
         
-        &lt;p&gt;StorageOS uses &lt;a href=&#34;https://etcd.io&#34;&gt;etcd&lt;/a&gt; to store cluster metadata. Because of
-the strong consistency model that etcd enforces, StorageOS metadata operations
-are guaranteed to be atomic and consistent.&lt;/p&gt;
-&lt;h2 id=&#34;installation-options&#34;&gt;Installation options&lt;/h2&gt;
-&lt;p&gt;Before installing StorageOS, an etcd cluster needs to be prepared. There are
-different topologies that fulfil this prerequisite.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;External etcd (&lt;em&gt;Production&lt;/em&gt;)&lt;/li&gt;
-&lt;li&gt;etcd as Pods (&lt;em&gt;Testing&lt;/em&gt;)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;nav&gt;
-	&lt;div class=&#34;nav nav-tabs&#34; id=&#34;nav-tab&#34; role=&#34;tablist&#34;&gt;
-
-		
-		
-		
-		
-
-            
-            
-
-            
-            
-
-            
-
-            
-
-		&lt;a class=&#34;nav-item nav-link active&#34; id=&#34;nav-9&#34; data-toggle=&#34;tab&#34; href=&#34;#production&#34; role=&#34;tab&#34;
-		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;true&#34;&gt;Production&lt;/a&gt;
-
-            
-		
-
-            
-            
-
-            
-            
-
-            
-
-            
-
-		&lt;a class=&#34;nav-item nav-link&#34; id=&#34;nav-9&#34; data-toggle=&#34;tab&#34; href=&#34;#testing&#34; role=&#34;tab&#34;
-		   aria-controls=&#34;nav-home&#34; aria-selected=&#34;false&#34;&gt;Testing&lt;/a&gt;
-
-            
-		
-
-	&lt;/div&gt;
-&lt;/nav&gt;
-
-&lt;div class=&#34;tab-content&#34; id=&#34;9&#34;&gt;
-    &lt;br&gt;&lt;/br&gt;
-
-
-
-
-
-
-
-
-&lt;div class=&#34;tab-pane fade show active&#34; id=&#34;production&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-production&#34;&gt;
-    &lt;h2 id=&#34;external-etcd&#34;&gt;External Etcd&lt;/h2&gt;
-&lt;p&gt;The following topology is designed to provide the highest stability for the
-etcd cluster. It is necessary for normal StorageOS function to have a reliable
-metadata cluster. Otherwise, central operations such as provisioning,
-attachment or failover of volumes cannot be performed. In the event that etcd
-becomes unavailable, StorageOS clusters become read only, allowing access to
-data but preventing metadata changes.&lt;/p&gt;
-&lt;p&gt;It is recommended to install etcd out of the scope of the orchestrator wherever
-possible. Following CoreOS best practices, a minimum of 3 independent nodes
-should be dedicated to etcd. StorageOS doesn&amp;rsquo;t require a high performance etcd
-cluster as the throughput of metadata to the cluster is low. Depending on the
-level of redundancy you feel comfortable with you can install etcd on the
-Kubernetes Master nodes. &lt;strong&gt;Take extreme care to avoid collisions of the
-StorageOS etcd installation with the Kubernetes etcd when using the Kubernetes
-Master nodes. Precautions such as changing the default configuration for the
-client and peer ports, and ensuring the etcd data directory is modified. The
-ansible playbook below will default the etcd installation directory to
-&lt;code&gt;/var/lib/storageos-etcd&lt;/code&gt;.&lt;/strong&gt;&lt;/p&gt;
-&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;
-&lt;p&gt;If you are familiar with etcd, you can proceed with the CoreOS instructions to
-install etcd, otherwise this section lays out out an example installation using
-Ansible.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Clone StorageOS Helper repository&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/deploy.git
-&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Edit the inventory file&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Target the nodes that install etcd, where the file &lt;code&gt;hosts&lt;/code&gt; serves
-as an example.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat hosts
-&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;nodes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-centos-1 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.10.228&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-10-228.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
-centos-2 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.14.233&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-14-233.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
-centos-3 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;10.64.12.111&amp;#34;&lt;/span&gt;  &lt;span style=&#34;color:#000&#34;&gt;fqdn&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ip-10-64-12-111.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
-
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Edit the inventory file&lt;/span&gt;
-$ vi hosts &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or your own inventory file&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Edit the etcd configuration&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;If targeting Kubernetes Master nodes, you must change
-&lt;code&gt;etcd_port_client&lt;/code&gt;, &lt;code&gt;etcd_port_peers&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ cat group_vars/all
-etcd_version: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3.4.9&amp;#34;&lt;/span&gt;
-etcd_port_client: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2379&amp;#34;&lt;/span&gt;
-etcd_port_peers: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2380&amp;#34;&lt;/span&gt;
-etcd_quota_bytes: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;8589934592&lt;/span&gt;  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# 8 GB&lt;/span&gt;
-etcd_auto_compaction_mode: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;revision&amp;#34;&lt;/span&gt;
-etcd_auto_compaction_retention: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;12000&amp;#34;&lt;/span&gt;
-members: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;{{ groups[&amp;#39;nodes&amp;#39;] }}&amp;#34;&lt;/span&gt;
-installation_dir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/var/lib/storageos-etcd&amp;#34;&lt;/span&gt;
-advertise_format: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;fqdn&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# fqdn || ip&lt;/span&gt;
-backup_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/tmp/backup.db&amp;#34;&lt;/span&gt;
-
-tls:
-  enabled: &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-  ca_common_name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
-  etcd_common_name: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;*.eu-west-2.compute.internal&amp;#34;&lt;/span&gt;
-  cert_dir: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/etc/etcdtls&amp;#34;&lt;/span&gt;
-  ca_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-ca.pem&amp;#34;&lt;/span&gt;
-  etcd_server_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;server.pem&amp;#34;&lt;/span&gt;
-  etcd_server_key_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;server-key.pem&amp;#34;&lt;/span&gt;
-  etcd_client_cert_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-client.crt&amp;#34;&lt;/span&gt;
-  etcd_client_key_file: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-client.key&amp;#34;&lt;/span&gt;
-
-$ vi group_vars/all
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Choose between using IP addressing or FQDN in the &lt;code&gt;advertise_format&lt;/code&gt;
-parameter. It allows you to decide how Etcd advertise its address to the
-clients. The format becomes very relevant when using TLS.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;If enabling TLS, it is recomended to generate your own CA certificate and
-key. As an example, you can find it in &lt;code&gt;roles/tls_cert/files/ca.pem&lt;/code&gt; and
-&lt;code&gt;roles/tls_cert/files/ca-key.pem&lt;/code&gt; which are generated using &lt;code&gt;cfssl&lt;/code&gt; from
-the &lt;code&gt;roles/tls_cert/files/ca-config.json&lt;/code&gt; file. The playbook will
-generate and distribute the keys and certificates for the client auth on
-all etcd nodes. Certificates are signed by the CA mentioned.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Install&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ansible-playbook -i hosts install.yaml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Verify installation&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The playbook installs the &lt;code&gt;etcdctl&lt;/code&gt; binary on the nodes, at
-&lt;code&gt;/usr/local/bin&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ssh &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Any node running the new etcd&lt;/span&gt;
-$ &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;127.0.0.1:2379 member list
-66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
-17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
-8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;managed-services&#34;&gt;Managed Services&lt;/h2&gt;
-&lt;p&gt;When running StorageOS on Managed Kubernetes services it may not be possible to
-deploy with the Production etcd topology described above. It is therefore
-recommended to deploy etcd on its own as much as possible, even if that means
-deploying 3 independent VMs for etcd to run on.&lt;/p&gt;
-&lt;p&gt;As managed services treat nodes as ephemeral resources, if the orchestration
-deletes the 3 nodes hosting etcd, the result will be catastrophic and a restore
-from a backup will be needed.&lt;/p&gt;
-&lt;p&gt;If it is not possible to deploy independent VMs for etcd, etcd can be deployed
-as pods, inside the cluster. This configuration requires an awareness of the
-stability that etcd requires. &lt;strong&gt;You can use the &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/#installation-options&#34;&gt;etcd-as-pods&lt;/a&gt;
-installation option, but be aware of the precautions that need to be taken.&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;why-external-etcd&#34;&gt;Why External Etcd&lt;/h2&gt;
-&lt;p&gt;etcd is a distributed key-value store database focused on strong consistency.
-That means that etcd nodes perform operations across the cluster to ensure
-quorum. In the case that quorum is lost, an etcd node stops and marks its
-contents as read-only. It cannot guarantee that the data being held is valid.
-Another peer might have a newer version that has not been delivered. Quorum is
-fundamental for etcd operations.&lt;/p&gt;
-&lt;p&gt;In a Kubernetes environment, applications are scheduled across and in some
-scenarios such as &amp;ldquo;DiskPressure&amp;rdquo; they may need to be evicted from a node, and
-be scheduled onto a different node. With an application such as etcd, the
-scenario described can result in quorum being lost, making the cluster unable
-to recover automatically. Usually a 3 node etcd cluster can survive losing one
-node and recover. However, losing a second node at the same time or even having
-a network partition between them will result in quorum lost.&lt;/p&gt;
-&lt;h2 id=&#34;bind-etcd-ips-to-kubernetes-service&#34;&gt;Bind Etcd IPs to Kubernetes Service&lt;/h2&gt;
-&lt;p&gt;Kubernetes external services use a DNS name to reference external endpoints.
-You can use the example from the &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc&#34;&gt;helper github
-repository&lt;/a&gt;
-to deploy the external Service. That might be of use when monitoring etcd from
-Prometheus.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-
-
-
-
-&lt;div class=&#34;tab-pane fade&#34; id=&#34;testing&#34; role=&#34;tabpanel&#34; aria-labelledby=&#34;nav-testing&#34;&gt;
-    &lt;h2 id=&#34;etcd-as-pods&#34;&gt;Etcd as Pods&lt;/h2&gt;
-&lt;p&gt;etcd can be deployed in Kubernetes using the official &lt;a href=&#34;https://github.com/coreos/etcd-operator&#34;&gt;etcd-operator&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Deploying etcd in Kubernetes makes the etcd installation very easy, however be
-aware that even though the official etcd-operator is maintained by RedHat, it
-hasn&amp;rsquo;t been under active development since 2019. As such it may be considered
-an archived project. For an actively maintained etcd Operator you might want to
-check the &lt;a href=&#34;https://github.com/improbable-eng/etcd-cluster-operator&#34;&gt;Improbable etcd
-Operator&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Examples of deploying etcd clusters using the etcd-operator on &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-operator-example&#34;&gt;Kubernetes&lt;/a&gt;
-and
-&lt;a href=&#34;https://github.com/storageos/deploy/tree/master/openshift/deploy-storageos/etcd-helpers/etcd-operator-example&#34;&gt;OpenShift&lt;/a&gt;
-are available.&lt;/p&gt;
-&lt;p&gt;Since Kubernetes 1.16 the deployment api uses &amp;ldquo;apps/v1&amp;rdquo;. Once you have cloned
-the coreos etcd operator repository, you will need to change the apiVersion of
-the file &amp;ldquo;examples/deployment.yaml&amp;rdquo; from &lt;code&gt;extensions/v1beta1&lt;/code&gt; to &lt;code&gt;apps/v1&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;The official etcd-operator repository also has a backup deployment operator
-that can help backup etcd data. Make sure you take frequent backups of the etcd
-cluster as it holds all the StorageOS cluster metadata.&lt;/p&gt;
-&lt;h2 id=&#34;known-etcd-operator-issues&#34;&gt;Known etcd-operator issues&lt;/h2&gt;
-&lt;p&gt;This topology is only recommended for deployments where isolated nodes cannot be
-used.&lt;/p&gt;
-&lt;p&gt;etcd is a distributed key-value store database focused on strong consistency.
-That means that etcd nodes perform operations across the cluster to ensure
-quorum. If quorum is lost, etcd nodes stop and etcd marks its contents as
-read-only. This is because it cannot guarantee that new data will be valid.
-Quorum is fundamental for etcd operations. When running etcd in pods it is
-therefore important to consider that a loss of quorum could arise from etcd
-pods being evicted from nodes.&lt;/p&gt;
-&lt;p&gt;Operations such as Kubernetes Upgrades with rolling node pools could cause a
-total failure of the etcd cluster as nodes are discarded in favor of new ones.&lt;/p&gt;
-&lt;p&gt;A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
-can survive the loss of two nodes. Loss of further nodes will result in quorum
-being lost.&lt;/p&gt;
-&lt;p&gt;The etcd-operator doesn&amp;rsquo;t support a full stop of the cluster. Stopping the etcd
-cluster is not possible unless a backup is restored.&lt;/p&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-
-&lt;/div&gt;
-
-&lt;h2 id=&#34;storageos-and-etcd&#34;&gt;StorageOS and Etcd&lt;/h2&gt;
-&lt;p&gt;When installing StorageOS, the etcd endpoints are passed in a StorageOSCluster Custom
-Resource.&lt;/p&gt;
-&lt;p&gt;For instance:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: &amp;quot;storageos.com/v1&amp;quot;
-kind: StorageOSCluster
-metadata:
-  name: &amp;quot;storageos&amp;quot;
-spec:
-  secretRefName: &amp;quot;storageos-api&amp;quot; # Reference from the Secret created in the previous step
-  secretRefNamespace: &amp;quot;default&amp;quot;  # Namespace of the Secret
-
-  (...)
-
-  kvBackend:
-    address: &#39;storageos-etcd-client.etcd:2379&#39; # Example address, change for your etcd endpoint
-   #address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set etcd server ips
-    backend: &#39;etcd&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
-&lt;p&gt;Note the &lt;code&gt;kvBackend.address&lt;/code&gt; section.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;For full Custom Resource documentation check &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/configuration&#34;&gt;StorageOSCluster resource definition&lt;/a&gt;.&lt;/p&gt;
+        &lt;p&gt;Check the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;Etcd prerequisites page&lt;/a&gt;
+for a step by step installation of Etcd.&lt;/p&gt;
 &lt;h2 id=&#34;best-practices&#34;&gt;Best practices&lt;/h2&gt;
-&lt;p&gt;StorageOS uses etcd as a service, whether it is deployed following the above
+&lt;p&gt;StorageOS uses etcd as a service, whether it is deployed following the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;step by
+step&lt;/a&gt;
 instructions or as a custom installation. It is expected that the user
 maintains the availability and integrity of the etcd cluster.&lt;/p&gt;
 &lt;p&gt;It is highly recommended to keep the cluster backed up and ensure high
-availability of its data. It is also important to keep the latency between
-StorageOS nodes and the etcd replicas low. Deploying an etcd cluster in a
-different data center or region can make StorageOS detect etcd nodes as
-unavailable due to latency. A 10ms latency between StorageOS and etcd would be
-the maximum threshold for proper functioning of the system.&lt;/p&gt;
+availability of its data.&lt;/p&gt;
+&lt;h3 id=&#34;low-latency&#34;&gt;Low latency&lt;/h3&gt;
+&lt;p&gt;It is important to keep the latency between StorageOS nodes and the etcd
+replicas low. Deploying an etcd cluster in a different data center or region
+can make StorageOS detect etcd nodes as unavailable due to latency. 10ms
+latency between StorageOS and etcd would be the maximum threshold for proper
+functioning of the system.&lt;/p&gt;
 &lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
-&lt;p&gt;It is highly recommended to add monitoring to the etcd cluster. etcd serves
-Prometheus metrics on the client port &lt;code&gt;http://etc-url:2379/metrics&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;It is highly recommended to add monitoring to the etcd cluster. Etcd serves
+Prometheus metrics on the client port &lt;code&gt;http://etcd-url:2379/metrics&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;You can use StorageOS developed Grafana Dashboards for etcd. When using etcd
 for production, you can use the
 &lt;a href=&#34;https://grafana.com/grafana/dashboards/10322&#34;&gt;etcd-cluster-as-service&lt;/a&gt;, while
 the &lt;a href=&#34;https://grafana.com/grafana/dashboards/10323&#34;&gt;etcd-cluster-as-pod&lt;/a&gt; can be
 used when using etcd from the operator.&lt;/p&gt;
 &lt;h3 id=&#34;defragmentation&#34;&gt;Defragmentation&lt;/h3&gt;
-&lt;p&gt;etcd uses revisions to store multiple versions of keys. Compaction removes all
+&lt;p&gt;Etcd uses revisions to store multiple versions of keys. Compaction removes all
 key revision prior to a certain revision from etcd. Typically the etcd
 configuration enables the automatic compaction of keys to prevent performance
 degradation and limit the storage required. Compaction of revisions can create
@@ -336,6 +62,36 @@ defragmentation is required depends on the churn of key revisions in etcd.&lt;/p
 defragmentation. Be aware that defragmentation is a blocking operation that is
 performed per node, hence the etcd node will be locked for the duration of the
 defragmentation. Defragmentation usually takes a few milliseconds to complete.&lt;/p&gt;
+&lt;p&gt;You can also set cronjobs that execute the following defragmentation script. It
+will run a defrag when the DB is at 80% full. A defragmentation operation has
+to be executed per etcd node and &lt;strong&gt;it is a blocking operation&lt;/strong&gt;. It is recommended
+to &lt;strong&gt;not execute the degragmentation in all etcd members at the same time&lt;/strong&gt;. If
+using a cronjob, set them up for different times.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -sSLo defrag-etcd.sh https://raw.githubusercontent.com/storageos/deploy/master/k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd/roles/install_etcd/templates/defrag-etcd.sh.j2
+chmod +x defrag-etcd.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;known-coreos-etcd-operator-issues&#34;&gt;Known CoreOS Etcd Operator issues&lt;/h2&gt;
+&lt;p&gt;This topology is only recommended for deployments where isolated nodes cannot be
+used.&lt;/p&gt;
+&lt;p&gt;Etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. If quorum is lost, etcd nodes stop and etcd marks its contents as
+read-only. This is because it cannot guarantee that new data will be valid.
+Quorum is fundamental for etcd operations. When running etcd in pods it is
+therefore important to consider that a loss of quorum could arise from etcd
+pods being evicted from nodes.&lt;/p&gt;
+&lt;p&gt;Operations such as Kubernetes Upgrades with rolling node pools could cause a
+total failure of the etcd cluster as nodes are discarded in favor of new ones.&lt;/p&gt;
+&lt;p&gt;A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
+can survive the loss of two nodes. Loss of further nodes will result in quorum
+being lost.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The etcd-operator doesn&amp;rsquo;t support a full stop of the cluster. Stopping the
+etcd cluster causes the loss of all the etcd keystore and make StorageOS unable
+to perform metadata changes.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The official etcd-operator repository also has a backup deployment operator
+that can help backup etcd data. &lt;strong&gt;A restore of the etcd keyspace from a backup
+might cause issues&lt;/strong&gt; due to the disparity between the cluster state and its
+metadata in a different point in time. If you need to restore from a backup
+after a failure of etcd, contact the StorageOS support team.&lt;/p&gt;
 
       </description>
     </item>
@@ -1068,17 +824,109 @@ the right location.&lt;/p&gt;
 provided for Kubernetes to deploy StorageOS rather than using automated
 provisioners, make sure that the StorageClass parameters and the Secret
 reference match.&lt;/p&gt;
-&lt;p&gt;{% include troubleshoot/issues/nodename-vs-nodehostname.md %}
-{% include troubleshoot/issues/one-node-multiple-clusters.md %}
-{% include troubleshoot/issues/ports-closed.md %}&lt;/p&gt;
+&lt;h2 id=&#34;node-name-different-from-hostname&#34;&gt;Node name different from Hostname&lt;/h2&gt;
+&lt;h4 id=&#34;issue-3&#34;&gt;Issue:&lt;/h4&gt;
+&lt;p&gt;StorageOS nodes can&amp;rsquo;t join the cluster showing the following log entries.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:47:02Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to start api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;error verifying UUID: UUID aed3275f-846b-1f75-43a1-adbfec8bf974 has already been registered and has hostname &amp;#39;debian-4&amp;#39;, not &amp;#39;node4&amp;#39;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-3&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;The StorageOS registration process to start the cluster uses the hostname of
+the node where the StorageOS container is running, provided by the Kubelet.
+However, StorageOS verifies the network hostname of the OS as a prestart check
+to make sure it can communicate with other nodes. If those names don&amp;rsquo;t match,
+StorageOS will be unable to start.&lt;/p&gt;
+&lt;h3 id=&#34;solution-4&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Make sure the hostnames match with the Kubernetes advertised names. If
+you have changed the hostname of your nodes, make sure that you restart the
+nodes to apply the change.&lt;/p&gt;
+&lt;h2 id=&#34;peer-discovery---networking&#34;&gt;Peer discovery - Networking&lt;/h2&gt;
+&lt;h3 id=&#34;issue-4&#34;&gt;Issue:&lt;/h3&gt;
+&lt;p&gt;StorageOS nodes can&amp;rsquo;t join the cluster showing the following logs after one
+minute of container uptime.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;not first cluster node, joining first node&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;address&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.5 &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;node3 &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp &lt;span style=&#34;color:#000&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.6
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;could not retrieve cluster config from api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;status_code&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;503&lt;/span&gt;
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to join existing cluster&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;endpoint&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;172.28.128.3,172.28.128.4,172.28.128.5,172.28.128.6&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;503 Service Unavailable&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
+&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;retrying cluster join in 5 seconds...&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-4&#34;&gt;Reason:&lt;/h3&gt;
+&lt;p&gt;StorageOS uses a gossip protocol to discover nodes in the cluster. When
+StorageOS starts, one or more nodes can be referenced so new nodes can query
+existing nodes for the list of members. This error indicates that the node
+can&amp;rsquo;t connect to any of the nodes in the known list. The known list is defined
+in the &lt;code&gt;JOIN&lt;/code&gt; variable.&lt;/p&gt;
+&lt;h3 id=&#34;assert-4&#34;&gt;Assert:&lt;/h3&gt;
+&lt;p&gt;It is likely that ports are block by a firewall.&lt;/p&gt;
+&lt;p&gt;SSH into one of your nodes and check connectivity to the rest of the nodes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Successfull execution:&lt;/span&gt;
+&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@node06 ~&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# nc -zv node04 5705&lt;/span&gt;
+Ncat: Version 7.50 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt; https://nmap.org/ncat  &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Ncat: Connected to 10.0.1.166:5705.
+Ncat: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt; bytes sent, &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt; bytes received in 0.01 seconds.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;StorageOS exposes network diagnostics in its API, viewable from the CLI.  To
+use this feature, the CLI must query the API of a running node. The diagnostics
+show information from all known cluster members. If all the ports are blocked
+during the first bootstrap of the cluster, the diagnostics won&amp;rsquo;t show any data
+as nodes couldn&amp;rsquo;t register.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;StorageOS networks diagnostics are available for storageos-rc5 and
+storageos-cli-rc3 and above.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Example:&lt;/span&gt;
+root@node1:~# storageos cluster connectivity
+SOURCE  NAME            ADDRESS            LATENCY      STATUS  MESSAGE
+node4   node2.nats      172.28.128.4:5708  1.949275ms   OK
+node4   node3.api       172.28.128.5:5705  3.070574ms   OK
+node4   node3.nats      172.28.128.5:5708  2.989238ms   OK
+node4   node2.directfs  172.28.128.4:5703  2.925707ms   OK
+node4   node3.etcd      172.28.128.5:5707  2.854726ms   OK
+node4   node3.directfs  172.28.128.5:5703  2.833371ms   OK
+node4   node1.api       172.28.128.3:5705  2.714467ms   OK
+node4   node1.nats      172.28.128.3:5708  2.613752ms   OK
+node4   node1.etcd      172.28.128.3:5707  2.594159ms   OK
+node4   node1.directfs  172.28.128.3:5703  2.601834ms   OK
+node4   node2.api       172.28.128.4:5705  2.598236ms   OK
+node4   node2.etcd      172.28.128.4:5707  16.650625ms  OK
+node3   node4.nats      172.28.128.6:5708  1.304126ms   OK
+node3   node4.api       172.28.128.6:5705  1.515218ms   OK
+node3   node2.directfs  172.28.128.4:5703  1.359827ms   OK
+node3   node1.api       172.28.128.3:5705  1.185535ms   OK
+node3   node4.directfs  172.28.128.6:5703  1.379765ms   OK
+node3   node1.etcd      172.28.128.3:5707  1.221176ms   OK
+node3   node1.nats      172.28.128.3:5708  1.330122ms   OK
+node3   node2.api       172.28.128.4:5705  1.238541ms   OK
+node3   node1.directfs  172.28.128.3:5703  1.413574ms   OK
+node3   node2.etcd      172.28.128.4:5707  1.214273ms   OK
+node3   node2.nats      172.28.128.4:5708  1.321145ms   OK
+node1   node4.directfs  172.28.128.6:5703  1.140797ms   OK
+node1   node3.api       172.28.128.5:5705  1.089252ms   OK
+node1   node4.api       172.28.128.6:5705  1.178439ms   OK
+node1   node4.nats      172.28.128.6:5708  1.176648ms   OK
+node1   node2.directfs  172.28.128.4:5703  1.529612ms   OK
+node1   node2.etcd      172.28.128.4:5707  1.165681ms   OK
+node1   node2.api       172.28.128.4:5705  1.29602ms    OK
+node1   node2.nats      172.28.128.4:5708  1.267454ms   OK
+node1   node3.nats      172.28.128.5:5708  1.485657ms   OK
+node1   node3.etcd      172.28.128.5:5707  1.469429ms   OK
+node1   node3.directfs  172.28.128.5:5703  1.503015ms   OK
+node2   node4.directfs  172.28.128.6:5703  1.484ms      OK
+node2   node1.directfs  172.28.128.3:5703  1.275304ms   OK
+node2   node4.nats      172.28.128.6:5708  1.261422ms   OK
+node2   node4.api       172.28.128.6:5705  1.465532ms   OK
+node2   node3.api       172.28.128.5:5705  1.252768ms   OK
+node2   node3.nats      172.28.128.5:5708  1.212332ms   OK
+node2   node3.directfs  172.28.128.5:5703  1.192792ms   OK
+node2   node3.etcd      172.28.128.5:5707  1.270076ms   OK
+node2   node1.etcd      172.28.128.3:5707  1.218522ms   OK
+node2   node1.api       172.28.128.3:5705  1.363071ms   OK
+node2   node1.nats      172.28.128.3:5708  1.349383ms   OK
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-5&#34;&gt;Solution:&lt;/h3&gt;
+&lt;p&gt;Open ports following the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/firewalls/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;peer-discovery---pod-allocation&#34;&gt;Peer discovery - Pod allocation&lt;/h2&gt;
-&lt;h3 id=&#34;issue-3&#34;&gt;Issue:&lt;/h3&gt;
+&lt;h3 id=&#34;issue-5&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS nodes can&amp;rsquo;t join the cluster and show the following log entries.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;not first cluster node, joining first node&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;address&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.5 &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;host&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;node3 &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp &lt;span style=&#34;color:#000&#34;&gt;target&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;172.28.128.6
 &lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;could not retrieve cluster config from api&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;status_code&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;503&lt;/span&gt;
 &lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to join existing cluster&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;endpoint&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;172.28.128.3,172.28.128.4,172.28.128.5,172.28.128.6&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;503 Service Unavailable&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
 &lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T13:40:20Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;info &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;retrying cluster join in 5 seconds...&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;action&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;create &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;etcd &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;cp
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-3&#34;&gt;Reason:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-5&#34;&gt;Reason:&lt;/h3&gt;
 &lt;p&gt;StorageOS uses a gossip protocol to discover the nodes in the cluster. When
 StorageOS starts, one or more active nodes must be referenced so new nodes can
 query existing nodes for the list of members. This error indicates that the node
@@ -1093,13 +941,13 @@ StorageOS pods to master nodes, due to the presence of the
 &lt;code&gt;node-role.kubernetes.io/master:NoSchedule&lt;/code&gt; taint that is typically present. In
 such cases the &lt;code&gt;JOIN&lt;/code&gt; variable must not contain master nodes or the StorageOS
 cluster will remain unable to start.&lt;/p&gt;
-&lt;h3 id=&#34;assert-4&#34;&gt;Assert:&lt;/h3&gt;
+&lt;h3 id=&#34;assert-5&#34;&gt;Assert:&lt;/h3&gt;
 &lt;p&gt;Check that the first node of the &lt;code&gt;JOIN&lt;/code&gt; variable started properly.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;root@node1:~/# kubectl -n kube-system describe ds/storageos &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep JOIN
     JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
 root@node1:~/# kubectl -n kube-system get pod -o wide &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; grep 172.28.128.3
 storageos-8zqxl   1/1       Running   &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          2m        172.28.128.3   node1
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-4&#34;&gt;Solution:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-6&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Make sure that the &lt;code&gt;JOIN&lt;/code&gt; variable doesn&amp;rsquo;t specify the master nodes. In case
 you are using the discovery service, it is necessary to ensure that the
 DaemonSet won&amp;rsquo;t allocate Pods on the masters. This can be achieved with taints,
@@ -1112,7 +960,7 @@ page&lt;/a&gt;.&lt;/p&gt;
 &lt;code&gt;storageos.com/deployment=computeonly&lt;/code&gt; label that can be added to the nodes
 through Kubernetes node labels, or StorageOS in the &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;Labels&lt;/a&gt; page.&lt;/p&gt;
 &lt;h2 id=&#34;lio-initerror&#34;&gt;LIO Init:Error&lt;/h2&gt;
-&lt;h3 id=&#34;issue-4&#34;&gt;Issue:&lt;/h3&gt;
+&lt;h3 id=&#34;issue-6&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS pods not starting with &lt;code&gt;Init:Error&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system get pod
 NAME              READY     STATUS              RESTARTS   AGE
@@ -1120,12 +968,12 @@ storageos-2kwqx   0/3       Init:Err             &lt;span style=&#34;color:#0000
 storageos-cffcr   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
 storageos-d4f69   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
 storageos-nhq7m   0/3       Init:Err             &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          6s
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-4&#34;&gt;Reason:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-6&#34;&gt;Reason:&lt;/h3&gt;
 &lt;p&gt;This indicates that since the Linux open source SCSI drivers are not enabled,
 StorageOS cannot start. The StorageOS DaemonSet enables the required kernel
 modules on the host system. If you are seeing these errors it is because that
 container couldn&amp;rsquo;t load the modules.&lt;/p&gt;
-&lt;h3 id=&#34;assert-5&#34;&gt;Assert&lt;/h3&gt;
+&lt;h3 id=&#34;assert-6&#34;&gt;Assert&lt;/h3&gt;
 &lt;p&gt;Check the logs of the init container.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system logs &lt;span style=&#34;color:#000&#34;&gt;$ANY_STORAGEOS_POD&lt;/span&gt; -c storageos-init
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In case of failure, it will show the following output, indicating which kernel
@@ -1137,30 +985,30 @@ executing modprobe -b target_core_mod
 Module tcm_loop is not running
 executing modprobe -b tcm_loop
 modprobe: FATAL: Module tcm_loop not found.
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-5&#34;&gt;Solution:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-7&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Install the required kernel modules (usually found in the
 &lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
 following this &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and delete StorageOS
 pods, allowing the DaemonSet to create the pods again.&lt;/p&gt;
 &lt;h2 id=&#34;lio-not-enabled&#34;&gt;LIO not enabled&lt;/h2&gt;
-&lt;h3 id=&#34;issue-5&#34;&gt;Issue:&lt;/h3&gt;
+&lt;h3 id=&#34;issue-7&#34;&gt;Issue:&lt;/h3&gt;
 &lt;p&gt;StorageOS node can&amp;rsquo;t start and shows the following log entries.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T14:34:40Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;liocheck returned error&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;category&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;liocheck &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;exit status 1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;dataplane &lt;span style=&#34;color:#000&#34;&gt;stderr&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;Sysfs root &amp;#39;/sys/kernel/config/target&amp;#39; is missing, is kernel configfs present and target_core_mod loaded? category=fslio level=warn\nRuntime error checking stage &amp;#39;target_core_mod&amp;#39;: SysFs root missing category=fslio level=warn\nliocheck: FAIL (lio_capable_system() returns failure) category=fslio level=fatal\n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;stdout&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;
 &lt;span style=&#34;color:#000&#34;&gt;time&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2018-09-24T14:34:40Z&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;level&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;error &lt;span style=&#34;color:#000&#34;&gt;msg&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;failed to start dataplane services&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;error&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;system dependency check failed: exit status 1&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;module&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-5&#34;&gt;Reason:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-7&#34;&gt;Reason:&lt;/h3&gt;
 &lt;p&gt;This indicates that one or more kernel modules required for StorageOS are
 not loaded.&lt;/p&gt;
-&lt;h3 id=&#34;assert-6&#34;&gt;Assert&lt;/h3&gt;
+&lt;h3 id=&#34;assert-7&#34;&gt;Assert&lt;/h3&gt;
 &lt;p&gt;The following kernel modules must be enabled in the host.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;lsmod  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; egrep &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;^tcm_loop|^target_core_mod|^target_core_file|^configfs&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-6&#34;&gt;Solution:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;solution-8&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Install the required kernel modules (usually found in the
 &lt;code&gt;linux-image-extra-$(uname -r)&lt;/code&gt; package of your distribution) on your nodes
 following this &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt; and restart the container.&lt;/p&gt;
 &lt;h2 id=&#34;openshift-storageos-pods-missing----daemonset-error&#34;&gt;(OpenShift) StorageOS pods missing &amp;ndash; DaemonSet error&lt;/h2&gt;
 &lt;p&gt;StorageOS DaemonSet doesn&amp;rsquo;t have any pod replicas. The DaemonSet couldn&amp;rsquo;t
 allocate any Pod due to security issues.&lt;/p&gt;
-&lt;h3 id=&#34;issue-6&#34;&gt;Issue:&lt;/h3&gt;
+&lt;h3 id=&#34;issue-8&#34;&gt;Issue:&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master02 standard&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc get pod&lt;/span&gt;
 No resources found.
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;root@master02 standard&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# oc describe daemonset storageos&lt;/span&gt;
@@ -1169,11 +1017,11 @@ Events:
   Type     Reason        Age                From                  Message
   ----     ------        ----               ----                  -------
   Warning  FailedCreate  0s &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;x12 over 10s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;  daemonset-controller  Error creating: pods &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos-&amp;#34;&lt;/span&gt; is forbidden: unable to validate against any security context constraint: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;provider restricted: .spec.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used provider restricted: .spec.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;1&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;2&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.volumes&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;3&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;hostPath&amp;#34;&lt;/span&gt;: hostPath volumes are not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;SYS_ADMIN&amp;#34;&lt;/span&gt;: capability may not be added spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.initContainers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;SYS_ADMIN&amp;#34;&lt;/span&gt;: capability may not be added spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.containers&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;0&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-6&#34;&gt;Reason:&lt;/h3&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;reason-8&#34;&gt;Reason:&lt;/h3&gt;
 &lt;p&gt;The OpenShift cluster has security context constraint policies enabled that
 forbid any pod, without an explicitly set policy for the service account, to
 be allocated.&lt;/p&gt;
-&lt;h3 id=&#34;assert-7&#34;&gt;Assert:&lt;/h3&gt;
+&lt;h3 id=&#34;assert-8&#34;&gt;Assert:&lt;/h3&gt;
 &lt;p&gt;Check if the StorageOS ServiceAccount can create pods with enough permissions&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;oc get scc privileged -o yaml &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or custom scc with enough privileges&lt;/span&gt;
 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;...&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
@@ -1186,7 +1034,7 @@ users:
 - system:serviceaccount:tiller:tiller
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If the StorageOS sa system:serviceaccount:storageos:storageos is in the
 privileged scc it will be able to create pods.&lt;/p&gt;
-&lt;h3 id=&#34;solution-7&#34;&gt;Solution:&lt;/h3&gt;
+&lt;h3 id=&#34;solution-9&#34;&gt;Solution:&lt;/h3&gt;
 &lt;p&gt;Add the ServiceAccount system:serviceaccount:storageos:storageos to a scc with
 enough privileges.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos
@@ -1194,6 +1042,112 @@ enough privileges.&lt;/p&gt;
 &lt;p&gt;If our troubleshooting guides do not help resolve your issue, please see our
 &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support section&lt;/a&gt; for details on how
 to get in touch with us.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Uninstall StorageOS</title>
+      <link>https://docs.storageos.com/docs/operations/uninstall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/uninstall/</guid>
+      <description>
+        
+        
+        &lt;p&gt;This document details a step-by-step procedure to remove StorageOS from a
+Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;Remember that StorageOS enables the stateful applications within your cluster.
+It is very important to remove any applications that rely on StorageOS before
+you remove StorageOS itself, or those applications will suffer unrecoverable
+errors.&lt;/p&gt;
+&lt;h2 id=&#34;remove-stateful-workloads-and-data&#34;&gt;Remove Stateful Workloads and Data&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Delete any resources using StorageOS volumes&lt;/p&gt;
+&lt;p&gt;Delete any statefulsets, deployments or pods that are using StorageOS Volumes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete PVCs using StorageOS&lt;/p&gt;
+&lt;p&gt;Delete any Persistent Volume Claims that are using StorageOS.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl -n &lt;span style=&#34;color:#000&#34;&gt;$NS&lt;/span&gt; delete pvc &lt;span style=&#34;color:#000&#34;&gt;$PVC&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;This will delete data held by StorageOS and won&amp;rsquo;t be recoverable.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;remove-storageos-cluster&#34;&gt;Remove StorageOS Cluster&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Delete StorageOS Cluster&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get storageoscluster --all-namespaces &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Find the namespace where the Custom Resource runs&lt;/span&gt;
+$ kubectl -n &lt;span style=&#34;color:#000&#34;&gt;$NS&lt;/span&gt; delete storageoscluster --all  &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Usually to be found in storageos-operator&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Wait until the StorageOS resources are gone&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl -n kube-system get pod &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NS: Namespace where StorageOS Daemonset is running, usually &amp;#39;kube-system&amp;#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;uninstall-the-storageos-operator&#34;&gt;Uninstall the StorageOS Operator&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Delete the Cluster Operator once the StorageOS Pods are terminated&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Delete the StorageOS Operator deployment&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.1.0/storageos-operator.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Procedure is finished. StorageOS is now uninstalled.&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;remove-storageos-contents-and-metadata-unrecoverable&#34;&gt;Remove StorageOS contents and metadata (unrecoverable)&lt;/h2&gt;
+&lt;p&gt;The steps up until now have been recoverable - as long as the etcd backing
+StorageOS and the contents of /var/lib/storageos on your nodes are safe then
+StorageOS can be reinstalled. For complete removal and recovery of disk space,
+you can use the following procedure.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;The following steps will delete all data held by StorageOS and won&amp;rsquo;t be
+recoverable.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Remove the StorageOS data directory&lt;/p&gt;
+&lt;p&gt;There are two ways to remove the StorageOS data directory:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Login in to the hosts and execute the following commands&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo rm -rf /var/lib/storageos
+$ sudo umount /var/lib/kubelet/plugins_registry/storageos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Execute the following command to deploy a DaemonSet that removes the
+StorageOS data directory.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;N.B This step is irreversible and once the data is removed it cannot
+be recovered.&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Run the following command where &lt;code&gt;kubectl&lt;/code&gt; is installed and with the
+context set for your Kubernetes cluster.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ curl -s https://docs.storageos.comsh/permanently-delete-storageos-data.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Flush Etcd Data&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;This will remove any keys written by StorageOS.&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;
+$ etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;http://&lt;span style=&#34;color:#000&#34;&gt;$ETCD_IP&lt;/span&gt;:2379 del --prefix &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If running Etcd with mTLS, you can set the certificates location with the
+following command.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;
+$ etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;https://&lt;span style=&#34;color:#000&#34;&gt;$ETCD_IP&lt;/span&gt;:2379 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --cacert&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/path/to/ca.pem          &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --cert&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/path/to/client-cert.pem   &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        --key&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;/path/to/client-key.pem     &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;        del --prefix &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ol&gt;
 
       </description>
     </item>

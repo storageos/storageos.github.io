@@ -145,7 +145,7 @@ for a volume, blocks are compressed then encrypted.&lt;/p&gt;
       <description>
         
         
-        &lt;p&gt;&lt;a href=&#34;https://etcd.io&#34;&gt;etcd&lt;/a&gt; is an open-source distributed, strongly consistent key
+        &lt;p&gt;&lt;a href=&#34;https://etcd.io&#34;&gt;Etcd&lt;/a&gt; is an open-source distributed, strongly consistent key
 value store that is used by StorageOS to durably persist the StorageOS cluster
 state. As the backing store for Kubernetes, StorageOS uses etcd for many of the
 same reasons.&lt;/p&gt;
@@ -157,7 +157,7 @@ allowing offlined nodes to rejoin the cluster.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. StorageOS v2.0 does not provide an embedded etcd server as previous
 versions did. You will need to setup an etcd server for StorageOS to use
-prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/external-etcd/&#34;&gt;etcd Operations&lt;/a&gt; page for more information on how
+prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;etcd prerequisites&lt;/a&gt; page for more information on how
 to install and configure etcd.&lt;/p&gt;
 &lt;/blockquote&gt;
 

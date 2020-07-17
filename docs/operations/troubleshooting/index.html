@@ -34,7 +34,7 @@ Tools To be able to troubleshoot issues the StorageOS cli is required.
 Pod in pending because of mount error Issue: The output of kubectl describe pod $POD_ID contains no such file or directory and references the StorageOS volume device file.
 root@node1:~# kubectl -n kube-system describe $POD_ID (.">
 
-<meta itemprop="wordCount" content="2174">
+<meta itemprop="wordCount" content="2788">
 
 
 
@@ -191,7 +191,7 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -552,17 +552,17 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
+    <a  href="/docs/operations/etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoperationsexternal-etcd">
+    <li class="collapse " id="docsoperationsetcd">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsexternal-etcdetcd-tls" href="/docs/operations/external-etcd/etcd-tls/">mTLS</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
     </li>
@@ -617,6 +617,12 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsuninstall" href="/docs/operations/uninstall/">Uninstall StorageOS</a>
       
       
       
@@ -924,6 +930,12 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceresource_requests_and_limits" href="/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
       
       
@@ -1016,36 +1028,51 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
         <li><a href="#solution-3">Solution:</a></li>
       </ul>
     </li>
+    <li><a href="#node-name-different-from-hostname">Node name different from Hostname</a>
+      <ul>
+        <li></li>
+        <li><a href="#reason-3">Reason:</a></li>
+        <li><a href="#solution-4">Solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#peer-discovery---networking">Peer discovery - Networking</a>
+      <ul>
+        <li><a href="#issue-4">Issue:</a></li>
+        <li><a href="#reason-4">Reason:</a></li>
+        <li><a href="#assert-4">Assert:</a></li>
+        <li><a href="#solution-5">Solution:</a></li>
+      </ul>
+    </li>
     <li><a href="#peer-discovery---pod-allocation">Peer discovery - Pod allocation</a>
       <ul>
-        <li><a href="#issue-3">Issue:</a></li>
-        <li><a href="#reason-3">Reason:</a></li>
-        <li><a href="#assert-4">Assert:</a></li>
-        <li><a href="#solution-4">Solution:</a></li>
+        <li><a href="#issue-5">Issue:</a></li>
+        <li><a href="#reason-5">Reason:</a></li>
+        <li><a href="#assert-5">Assert:</a></li>
+        <li><a href="#solution-6">Solution:</a></li>
       </ul>
     </li>
     <li><a href="#lio-initerror">LIO Init:Error</a>
       <ul>
-        <li><a href="#issue-4">Issue:</a></li>
-        <li><a href="#reason-4">Reason:</a></li>
-        <li><a href="#assert-5">Assert</a></li>
-        <li><a href="#solution-5">Solution:</a></li>
+        <li><a href="#issue-6">Issue:</a></li>
+        <li><a href="#reason-6">Reason:</a></li>
+        <li><a href="#assert-6">Assert</a></li>
+        <li><a href="#solution-7">Solution:</a></li>
       </ul>
     </li>
     <li><a href="#lio-not-enabled">LIO not enabled</a>
       <ul>
-        <li><a href="#issue-5">Issue:</a></li>
-        <li><a href="#reason-5">Reason:</a></li>
-        <li><a href="#assert-6">Assert</a></li>
-        <li><a href="#solution-6">Solution:</a></li>
+        <li><a href="#issue-7">Issue:</a></li>
+        <li><a href="#reason-7">Reason:</a></li>
+        <li><a href="#assert-7">Assert</a></li>
+        <li><a href="#solution-8">Solution:</a></li>
       </ul>
     </li>
     <li><a href="#openshift-storageos-pods-missing----daemonset-error">(OpenShift) StorageOS pods missing &ndash; DaemonSet error</a>
       <ul>
-        <li><a href="#issue-6">Issue:</a></li>
-        <li><a href="#reason-6">Reason:</a></li>
-        <li><a href="#assert-7">Assert:</a></li>
-        <li><a href="#solution-7">Solution:</a></li>
+        <li><a href="#issue-8">Issue:</a></li>
+        <li><a href="#reason-8">Reason:</a></li>
+        <li><a href="#assert-8">Assert:</a></li>
+        <li><a href="#solution-9">Solution:</a></li>
       </ul>
     </li>
     <li><a href="#getting-help">Getting Help</a></li>
@@ -1281,17 +1308,109 @@ the right location.</p>
 provided for Kubernetes to deploy StorageOS rather than using automated
 provisioners, make sure that the StorageClass parameters and the Secret
 reference match.</p>
-<p>{% include troubleshoot/issues/nodename-vs-nodehostname.md %}
-{% include troubleshoot/issues/one-node-multiple-clusters.md %}
-{% include troubleshoot/issues/ports-closed.md %}</p>
+<h2 id="node-name-different-from-hostname">Node name different from Hostname</h2>
+<h4 id="issue-3">Issue:</h4>
+<p>StorageOS nodes can&rsquo;t join the cluster showing the following log entries.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:47:02Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;failed to start api&#34;</span> <span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;error verifying UUID: UUID aed3275f-846b-1f75-43a1-adbfec8bf974 has already been registered and has hostname &#39;debian-4&#39;, not &#39;node4&#39;&#34;</span> <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">command</span>
+</code></pre></div><h3 id="reason-3">Reason:</h3>
+<p>The StorageOS registration process to start the cluster uses the hostname of
+the node where the StorageOS container is running, provided by the Kubelet.
+However, StorageOS verifies the network hostname of the OS as a prestart check
+to make sure it can communicate with other nodes. If those names don&rsquo;t match,
+StorageOS will be unable to start.</p>
+<h3 id="solution-4">Solution:</h3>
+<p>Make sure the hostnames match with the Kubernetes advertised names. If
+you have changed the hostname of your nodes, make sure that you restart the
+nodes to apply the change.</p>
+<h2 id="peer-discovery---networking">Peer discovery - Networking</h2>
+<h3 id="issue-4">Issue:</h3>
+<p>StorageOS nodes can&rsquo;t join the cluster showing the following logs after one
+minute of container uptime.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>info <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;not first cluster node, joining first node&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">address</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.5 <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">host</span><span style="color:#ce5c00;font-weight:bold">=</span>node3 <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.6
+<span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;could not retrieve cluster config from api&#34;</span> <span style="color:#000">status_code</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">503</span>
+<span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;failed to join existing cluster&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">endpoint</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.128.3,172.28.128.4,172.28.128.5,172.28.128.6&#34;</span> <span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;503 Service Unavailable&#34;</span> <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp
+<span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>info <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;retrying cluster join in 5 seconds...&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp
+</code></pre></div><h3 id="reason-4">Reason:</h3>
+<p>StorageOS uses a gossip protocol to discover nodes in the cluster. When
+StorageOS starts, one or more nodes can be referenced so new nodes can query
+existing nodes for the list of members. This error indicates that the node
+can&rsquo;t connect to any of the nodes in the known list. The known list is defined
+in the <code>JOIN</code> variable.</p>
+<h3 id="assert-4">Assert:</h3>
+<p>It is likely that ports are block by a firewall.</p>
+<p>SSH into one of your nodes and check connectivity to the rest of the nodes.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Successfull execution:</span>
+<span style="color:#ce5c00;font-weight:bold">[</span>root@node06 ~<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># nc -zv node04 5705</span>
+Ncat: Version 7.50 <span style="color:#ce5c00;font-weight:bold">(</span> https://nmap.org/ncat  <span style="color:#ce5c00;font-weight:bold">)</span>
+Ncat: Connected to 10.0.1.166:5705.
+Ncat: <span style="color:#0000cf;font-weight:bold">0</span> bytes sent, <span style="color:#0000cf;font-weight:bold">0</span> bytes received in 0.01 seconds.
+</code></pre></div><p>StorageOS exposes network diagnostics in its API, viewable from the CLI.  To
+use this feature, the CLI must query the API of a running node. The diagnostics
+show information from all known cluster members. If all the ports are blocked
+during the first bootstrap of the cluster, the diagnostics won&rsquo;t show any data
+as nodes couldn&rsquo;t register.</p>
+<blockquote>
+<p>StorageOS networks diagnostics are available for storageos-rc5 and
+storageos-cli-rc3 and above.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Example:</span>
+root@node1:~# storageos cluster connectivity
+SOURCE  NAME            ADDRESS            LATENCY      STATUS  MESSAGE
+node4   node2.nats      172.28.128.4:5708  1.949275ms   OK
+node4   node3.api       172.28.128.5:5705  3.070574ms   OK
+node4   node3.nats      172.28.128.5:5708  2.989238ms   OK
+node4   node2.directfs  172.28.128.4:5703  2.925707ms   OK
+node4   node3.etcd      172.28.128.5:5707  2.854726ms   OK
+node4   node3.directfs  172.28.128.5:5703  2.833371ms   OK
+node4   node1.api       172.28.128.3:5705  2.714467ms   OK
+node4   node1.nats      172.28.128.3:5708  2.613752ms   OK
+node4   node1.etcd      172.28.128.3:5707  2.594159ms   OK
+node4   node1.directfs  172.28.128.3:5703  2.601834ms   OK
+node4   node2.api       172.28.128.4:5705  2.598236ms   OK
+node4   node2.etcd      172.28.128.4:5707  16.650625ms  OK
+node3   node4.nats      172.28.128.6:5708  1.304126ms   OK
+node3   node4.api       172.28.128.6:5705  1.515218ms   OK
+node3   node2.directfs  172.28.128.4:5703  1.359827ms   OK
+node3   node1.api       172.28.128.3:5705  1.185535ms   OK
+node3   node4.directfs  172.28.128.6:5703  1.379765ms   OK
+node3   node1.etcd      172.28.128.3:5707  1.221176ms   OK
+node3   node1.nats      172.28.128.3:5708  1.330122ms   OK
+node3   node2.api       172.28.128.4:5705  1.238541ms   OK
+node3   node1.directfs  172.28.128.3:5703  1.413574ms   OK
+node3   node2.etcd      172.28.128.4:5707  1.214273ms   OK
+node3   node2.nats      172.28.128.4:5708  1.321145ms   OK
+node1   node4.directfs  172.28.128.6:5703  1.140797ms   OK
+node1   node3.api       172.28.128.5:5705  1.089252ms   OK
+node1   node4.api       172.28.128.6:5705  1.178439ms   OK
+node1   node4.nats      172.28.128.6:5708  1.176648ms   OK
+node1   node2.directfs  172.28.128.4:5703  1.529612ms   OK
+node1   node2.etcd      172.28.128.4:5707  1.165681ms   OK
+node1   node2.api       172.28.128.4:5705  1.29602ms    OK
+node1   node2.nats      172.28.128.4:5708  1.267454ms   OK
+node1   node3.nats      172.28.128.5:5708  1.485657ms   OK
+node1   node3.etcd      172.28.128.5:5707  1.469429ms   OK
+node1   node3.directfs  172.28.128.5:5703  1.503015ms   OK
+node2   node4.directfs  172.28.128.6:5703  1.484ms      OK
+node2   node1.directfs  172.28.128.3:5703  1.275304ms   OK
+node2   node4.nats      172.28.128.6:5708  1.261422ms   OK
+node2   node4.api       172.28.128.6:5705  1.465532ms   OK
+node2   node3.api       172.28.128.5:5705  1.252768ms   OK
+node2   node3.nats      172.28.128.5:5708  1.212332ms   OK
+node2   node3.directfs  172.28.128.5:5703  1.192792ms   OK
+node2   node3.etcd      172.28.128.5:5707  1.270076ms   OK
+node2   node1.etcd      172.28.128.3:5707  1.218522ms   OK
+node2   node1.api       172.28.128.3:5705  1.363071ms   OK
+node2   node1.nats      172.28.128.3:5708  1.349383ms   OK
+</code></pre></div><h3 id="solution-5">Solution:</h3>
+<p>Open ports following the <a href="https://docs.storageos.com/docs/prerequisites/firewalls/">prerequisites page</a>.</p>
 <h2 id="peer-discovery---pod-allocation">Peer discovery - Pod allocation</h2>
-<h3 id="issue-3">Issue:</h3>
+<h3 id="issue-5">Issue:</h3>
 <p>StorageOS nodes can&rsquo;t join the cluster and show the following log entries.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>info <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;not first cluster node, joining first node&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">address</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.5 <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">host</span><span style="color:#ce5c00;font-weight:bold">=</span>node3 <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp <span style="color:#000">target</span><span style="color:#ce5c00;font-weight:bold">=</span>172.28.128.6
 <span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;could not retrieve cluster config from api&#34;</span> <span style="color:#000">status_code</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">503</span>
 <span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;failed to join existing cluster&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">endpoint</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;172.28.128.3,172.28.128.4,172.28.128.5,172.28.128.6&#34;</span> <span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;503 Service Unavailable&#34;</span> <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp
 <span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T13:40:20Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>info <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;retrying cluster join in 5 seconds...&#34;</span> <span style="color:#000">action</span><span style="color:#ce5c00;font-weight:bold">=</span>create <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>cp
-</code></pre></div><h3 id="reason-3">Reason:</h3>
+</code></pre></div><h3 id="reason-5">Reason:</h3>
 <p>StorageOS uses a gossip protocol to discover the nodes in the cluster. When
 StorageOS starts, one or more active nodes must be referenced so new nodes can
 query existing nodes for the list of members. This error indicates that the node
@@ -1306,13 +1425,13 @@ StorageOS pods to master nodes, due to the presence of the
 <code>node-role.kubernetes.io/master:NoSchedule</code> taint that is typically present. In
 such cases the <code>JOIN</code> variable must not contain master nodes or the StorageOS
 cluster will remain unable to start.</p>
-<h3 id="assert-4">Assert:</h3>
+<h3 id="assert-5">Assert:</h3>
 <p>Check that the first node of the <code>JOIN</code> variable started properly.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root@node1:~/# kubectl -n kube-system describe ds/storageos <span style="color:#000;font-weight:bold">|</span> grep JOIN
     JOIN:          172.28.128.3,172.28.128.4,172.28.128.5
 root@node1:~/# kubectl -n kube-system get pod -o wide <span style="color:#000;font-weight:bold">|</span> grep 172.28.128.3
 storageos-8zqxl   1/1       Running   <span style="color:#0000cf;font-weight:bold">0</span>          2m        172.28.128.3   node1
-</code></pre></div><h3 id="solution-4">Solution:</h3>
+</code></pre></div><h3 id="solution-6">Solution:</h3>
 <p>Make sure that the <code>JOIN</code> variable doesn&rsquo;t specify the master nodes. In case
 you are using the discovery service, it is necessary to ensure that the
 DaemonSet won&rsquo;t allocate Pods on the masters. This can be achieved with taints,
@@ -1325,7 +1444,7 @@ page</a>.</p>
 <code>storageos.com/deployment=computeonly</code> label that can be added to the nodes
 through Kubernetes node labels, or StorageOS in the <a href="https://docs.storageos.com/docs/reference/labels/">Labels</a> page.</p>
 <h2 id="lio-initerror">LIO Init:Error</h2>
-<h3 id="issue-4">Issue:</h3>
+<h3 id="issue-6">Issue:</h3>
 <p>StorageOS pods not starting with <code>Init:Error</code></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system get pod
 NAME              READY     STATUS              RESTARTS   AGE
@@ -1333,12 +1452,12 @@ storageos-2kwqx   0/3       Init:Err             <span style="color:#0000cf;font
 storageos-cffcr   0/3       Init:Err             <span style="color:#0000cf;font-weight:bold">0</span>          6s
 storageos-d4f69   0/3       Init:Err             <span style="color:#0000cf;font-weight:bold">0</span>          6s
 storageos-nhq7m   0/3       Init:Err             <span style="color:#0000cf;font-weight:bold">0</span>          6s
-</code></pre></div><h3 id="reason-4">Reason:</h3>
+</code></pre></div><h3 id="reason-6">Reason:</h3>
 <p>This indicates that since the Linux open source SCSI drivers are not enabled,
 StorageOS cannot start. The StorageOS DaemonSet enables the required kernel
 modules on the host system. If you are seeing these errors it is because that
 container couldn&rsquo;t load the modules.</p>
-<h3 id="assert-5">Assert</h3>
+<h3 id="assert-6">Assert</h3>
 <p>Check the logs of the init container.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system logs <span style="color:#000">$ANY_STORAGEOS_POD</span> -c storageos-init
 </code></pre></div><p>In case of failure, it will show the following output, indicating which kernel
@@ -1350,30 +1469,30 @@ executing modprobe -b target_core_mod
 Module tcm_loop is not running
 executing modprobe -b tcm_loop
 modprobe: FATAL: Module tcm_loop not found.
-</code></pre></div><h3 id="solution-5">Solution:</h3>
+</code></pre></div><h3 id="solution-7">Solution:</h3>
 <p>Install the required kernel modules (usually found in the
 <code>linux-image-extra-$(uname -r)</code> package of your distribution) on your nodes
 following this <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">prerequisites page</a> and delete StorageOS
 pods, allowing the DaemonSet to create the pods again.</p>
 <h2 id="lio-not-enabled">LIO not enabled</h2>
-<h3 id="issue-5">Issue:</h3>
+<h3 id="issue-7">Issue:</h3>
 <p>StorageOS node can&rsquo;t start and shows the following log entries.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T14:34:40Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;liocheck returned error&#34;</span> <span style="color:#000">category</span><span style="color:#ce5c00;font-weight:bold">=</span>liocheck <span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;exit status 1&#34;</span> <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span>dataplane <span style="color:#000">stderr</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;Sysfs root &#39;/sys/kernel/config/target&#39; is missing, is kernel configfs present and target_core_mod loaded? category=fslio level=warn\nRuntime error checking stage &#39;target_core_mod&#39;: SysFs root missing category=fslio level=warn\nliocheck: FAIL (lio_capable_system() returns failure) category=fslio level=fatal\n&#34;</span> <span style="color:#000">stdout</span><span style="color:#ce5c00;font-weight:bold">=</span>
 <span style="color:#000">time</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2018-09-24T14:34:40Z&#34;</span> <span style="color:#000">level</span><span style="color:#ce5c00;font-weight:bold">=</span>error <span style="color:#000">msg</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;failed to start dataplane services&#34;</span> <span style="color:#000">error</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;system dependency check failed: exit status 1&#34;</span> <span style="color:#000">module</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">command</span>
-</code></pre></div><h3 id="reason-5">Reason:</h3>
+</code></pre></div><h3 id="reason-7">Reason:</h3>
 <p>This indicates that one or more kernel modules required for StorageOS are
 not loaded.</p>
-<h3 id="assert-6">Assert</h3>
+<h3 id="assert-7">Assert</h3>
 <p>The following kernel modules must be enabled in the host.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsmod  <span style="color:#000;font-weight:bold">|</span> egrep <span style="color:#4e9a06">&#34;^tcm_loop|^target_core_mod|^target_core_file|^configfs&#34;</span>
-</code></pre></div><h3 id="solution-6">Solution:</h3>
+</code></pre></div><h3 id="solution-8">Solution:</h3>
 <p>Install the required kernel modules (usually found in the
 <code>linux-image-extra-$(uname -r)</code> package of your distribution) on your nodes
 following this <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">prerequisites page</a> and restart the container.</p>
 <h2 id="openshift-storageos-pods-missing----daemonset-error">(OpenShift) StorageOS pods missing &ndash; DaemonSet error</h2>
 <p>StorageOS DaemonSet doesn&rsquo;t have any pod replicas. The DaemonSet couldn&rsquo;t
 allocate any Pod due to security issues.</p>
-<h3 id="issue-6">Issue:</h3>
+<h3 id="issue-8">Issue:</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master02 standard<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># oc get pod</span>
 No resources found.
 <span style="color:#ce5c00;font-weight:bold">[</span>root@master02 standard<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># oc describe daemonset storageos</span>
@@ -1382,11 +1501,11 @@ Events:
   Type     Reason        Age                From                  Message
   ----     ------        ----               ----                  -------
   Warning  FailedCreate  0s <span style="color:#ce5c00;font-weight:bold">(</span>x12 over 10s<span style="color:#ce5c00;font-weight:bold">)</span>  daemonset-controller  Error creating: pods <span style="color:#4e9a06">&#34;storageos-&#34;</span> is forbidden: unable to validate against any security context constraint: <span style="color:#ce5c00;font-weight:bold">[</span>provider restricted: .spec.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used provider restricted: .spec.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.volumes<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>: Invalid value: <span style="color:#4e9a06">&#34;hostPath&#34;</span>: hostPath volumes are not allowed to be used spec.volumes<span style="color:#ce5c00;font-weight:bold">[</span>1<span style="color:#ce5c00;font-weight:bold">]</span>: Invalid value: <span style="color:#4e9a06">&#34;hostPath&#34;</span>: hostPath volumes are not allowed to be used spec.volumes<span style="color:#ce5c00;font-weight:bold">[</span>2<span style="color:#ce5c00;font-weight:bold">]</span>: Invalid value: <span style="color:#4e9a06">&#34;hostPath&#34;</span>: hostPath volumes are not allowed to be used spec.volumes<span style="color:#ce5c00;font-weight:bold">[</span>3<span style="color:#ce5c00;font-weight:bold">]</span>: Invalid value: <span style="color:#4e9a06">&#34;hostPath&#34;</span>: hostPath volumes are not allowed to be used spec.initContainers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: <span style="color:#4e9a06">&#34;SYS_ADMIN&#34;</span>: capability may not be added spec.initContainers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.initContainers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.initContainers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used spec.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.privileged: Invalid value: true: Privileged containers are not allowed capabilities.add: Invalid value: <span style="color:#4e9a06">&#34;SYS_ADMIN&#34;</span>: capability may not be added spec.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.hostNetwork: Invalid value: true: Host network is not allowed to be used spec.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.hostPort: Invalid value: 5705: Host ports are not allowed to be used spec.containers<span style="color:#ce5c00;font-weight:bold">[</span>0<span style="color:#ce5c00;font-weight:bold">]</span>.securityContext.hostPID: Invalid value: true: Host PID is not allowed to be used<span style="color:#ce5c00;font-weight:bold">]</span>
-</code></pre></div><h3 id="reason-6">Reason:</h3>
+</code></pre></div><h3 id="reason-8">Reason:</h3>
 <p>The OpenShift cluster has security context constraint policies enabled that
 forbid any pod, without an explicitly set policy for the service account, to
 be allocated.</p>
-<h3 id="assert-7">Assert:</h3>
+<h3 id="assert-8">Assert:</h3>
 <p>Check if the StorageOS ServiceAccount can create pods with enough permissions</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc get scc privileged -o yaml <span style="color:#8f5902;font-style:italic"># Or custom scc with enough privileges</span>
 <span style="color:#ce5c00;font-weight:bold">(</span>...<span style="color:#ce5c00;font-weight:bold">)</span>
@@ -1399,7 +1518,7 @@ users:
 - system:serviceaccount:tiller:tiller
 </code></pre></div><p>If the StorageOS sa system:serviceaccount:storageos:storageos is in the
 privileged scc it will be able to create pods.</p>
-<h3 id="solution-7">Solution:</h3>
+<h3 id="solution-9">Solution:</h3>
 <p>Add the ServiceAccount system:serviceaccount:storageos:storageos to a scc with
 enough privileges.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc adm policy add-scc-to-user privileged system:serviceaccount:storageos:storageos

@@ -34,7 +34,7 @@ Tools To be able to troubleshoot issues the StorageOS cli is required.
 Pod in pending because of mount error Issue: The output of kubectl describe pod $POD_ID contains no such file or directory and references the StorageOS volume device file.
 root@node1:~# kubectl -n kube-system describe $POD_ID (.">
 
-<meta itemprop="wordCount" content="2174">
+<meta itemprop="wordCount" content="2162">
 
 
 
@@ -191,7 +191,7 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.dafdc76c9cb017cd82dad61ec954a08dd60017f0c0fdc0e1a743f8b101c323fb15fa03de887c8d372f6a33da8016951806cf87326e4b4301e787655ae2a60f8b.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.ab46d88a82976636bfb8f28eb5082364c4bddd062f4913d910dc6e26bf46d1c87d1ef0527407ae9f6e9f898806ec20945b6e6dbeb624b35ff0e94112ee25eb90.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@ root@node1:~# kubectl -n kube-system describe $POD_ID (."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.dafdc76c9cb017cd82dad61ec954a08dd60017f0c0fdc0e1a743f8b101c323fb15fa03de887c8d372f6a33da8016951806cf87326e4b4301e787655ae2a60f8b.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.ab46d88a82976636bfb8f28eb5082364c4bddd062f4913d910dc6e26bf46d1c87d1ef0527407ae9f6e9f898806ec20945b6e6dbeb624b35ff0e94112ee25eb90.json"
   data-offline-search-base-href="/"
 >
 
@@ -1281,9 +1281,6 @@ the right location.</p>
 provided for Kubernetes to deploy StorageOS rather than using automated
 provisioners, make sure that the StorageClass parameters and the Secret
 reference match.</p>
-<p>{% include troubleshoot/issues/nodename-vs-nodehostname.md %}
-{% include troubleshoot/issues/one-node-multiple-clusters.md %}
-{% include troubleshoot/issues/ports-closed.md %}</p>
 <h2 id="peer-discovery---pod-allocation">Peer discovery - Pod allocation</h2>
 <h3 id="issue-3">Issue:</h3>
 <p>StorageOS nodes can&rsquo;t join the cluster and show the following log entries.</p>

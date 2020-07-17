@@ -21,22 +21,22 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Self Evaluation Guide | </title><meta property="og:title" content="Self Evaluation Guide" />
-<meta property="og:description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
+<meta property="og:description" content="Step-by-step guide to installing and evaluating StorageOS
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/self-eval/" />
 
 <meta itemprop="name" content="Self Evaluation Guide">
-<meta itemprop="description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
+<meta itemprop="description" content="Step-by-step guide to installing and evaluating StorageOS
 ">
 
-<meta itemprop="wordCount" content="3542">
+<meta itemprop="wordCount" content="3279">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Self Evaluation Guide"/>
-<meta name="twitter:description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
+<meta name="twitter:description" content="Step-by-step guide to installing and evaluating StorageOS
 "/>
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
@@ -185,7 +185,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -219,7 +219,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -546,17 +546,17 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
+    <a  href="/docs/operations/etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoperationsexternal-etcd">
+    <li class="collapse " id="docsoperationsetcd">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsexternal-etcdetcd-tls" href="/docs/operations/external-etcd/etcd-tls/">mTLS</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
     </li>
@@ -611,6 +611,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsuninstall" href="/docs/operations/uninstall/">Uninstall StorageOS</a>
       
       
       
@@ -918,6 +924,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceresource_requests_and_limits" href="/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
       
       
@@ -987,20 +999,17 @@
   </ul>
 
   <ul>
-    <li><a href="#a-namestorageosoperatorastorageos-operator">StorageOS Operator</a>
-      <ul>
-        <li><a href="#a-namestorageosoperatorfeaturesastorageos-operator-features">StorageOS Operator features</a></li>
-      </ul>
-    </li>
-    <li><a href="#a-nameexternaletcdaexternal-etcd">External Etcd</a></li>
     <li><a href="#a-nameprerequisitesaprerequisites">Prerequisites</a></li>
-    <li><a href="#a-nameinstallingstorageosainstalling-storageos">Installing StorageOS</a>
+    <li><a href="#a-namequick-installationaquick-installation">Quick Installation</a></li>
+    <li><a href="#a-namestepbystepainstalling-storageos-step-by-step">Installing StorageOS Step By Step</a>
       <ul>
         <li><a href="#a-nameinstalletcdainstall-etcd">Install etcd</a></li>
       </ul>
     </li>
     <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator">Install StorageOS Operator</a></li>
     <li><a href="#a-nameinstallstorageosainstall-storageos">Install StorageOS</a></li>
+    <li><a href="#a-namestorageosvolumeaprovision-a-storageos-volume">Provision a StorageOS Volume</a></li>
+    <li><a href="#a-namelicenseclusteralicense-cluster">License cluster</a></li>
   </ul>
 
   <ul>
@@ -1054,13 +1063,22 @@
             
 <div class="td-content">
 	<h1>Self Evaluation Guide</h1>
-	<div class="lead">Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.</div>
-	<p>If you have any specific or more complex requirements please contact StorageOS as we&rsquo;d be happy to organise a POC in conjunction with our Engineering team. You can join our <a href="https://storageos.slack.com">slack channel</a> or email us at: <a href="mailto:info@storageos.com">info@storageos.com</a></p>
+	<div class="lead">Step-by-step guide to installing and evaluating StorageOS</div>
+	<p>Our self-evaluation guide is a step by step recipe for installing and testing
+StorageOS. This guide is divided into three sections:</p>
+<ul>
+<li><strong>Installation</strong> - install StorageOS with a single command</li>
+<li><strong>Feature Testing</strong> - short walkthrough of some of our features</li>
+<li><strong>Benchmarking</strong> - a recipe to benchmark StorageOS on your infrastructure</li>
+</ul>
+<p>For more comprehensive documentation including installation advice for complex
+setups, operational guides, and use-cases, please see our main <a href="https://docs.storageos.com/docs/">documentation
+site</a>.</p>
 <h2 id="support-for-self-evaluations">Support for Self Evaluations</h2>
 <p>Should you have questions or require support, there are several ways to get in
 touch with us. The fastest way to get in touch is to <a href="https://slack.storageos.com">join our public Slack
 channel</a>. You can also get in touch via email to
-<a href="mailto:support@storageos.com"> info@storageos.com</a>.</p>
+<a href="mailto:support@storageos.com">info@storageos.com</a>.</p>
 <p>Furthermore you can fill out the form below and we will get in touch.</p>
 <p> </p>
 <script charset="utf-8" type="text/javascript"
@@ -1076,45 +1094,61 @@ hbspt.forms.create({
 </script>
 <p> </p>
 <h1 id="installation">Installation</h1>
-<p>The first phase of the self-evaluation is to install StorageOS. This section of the document aims to layout what options are exposed to you during installation and why some options may be preferable to you over others.</p>
-<p>A standard StorageOS installations uses the StorageOS operator, so as much of the necessary configuration is handled for you. The StorageOS operator has been certified by <a href="https://storageos.com/red-hat/">Red Hat</a> and is <a href="https://github.com/storageos/cluster-operator">open source</a>.</p>
-<h2 id="a-namestorageosoperatorastorageos-operator"><a name='StorageOSOperator'></a>StorageOS Operator</h2>
-<p>The StorageOS operator is a Kubernetes native application that manages the StorageOS cluster lifecycle. It simplifies cluster installation, cluster removal and other operations.</p>
-<p>The StorageOS operator watches for the creation of StorageOSCluster Custom Resources. A StorageOSCluster is a declarative representation of a StorageOS cluster. For example if CSI is enabled in the StorageOSCluster resource, a StorageOS cluster will be created that uses the CSI driver.</p>
-<h3 id="a-namestorageosoperatorfeaturesastorageos-operator-features"><a name='StorageOSOperatorfeatures'></a>StorageOS Operator features</h3>
-<p>Specific configuration options for the StorageOS Operator that we believe to be important during a self-evaluation will be laid out in this guide.</p>
-<p>A set of example StorageOSCluster are listed <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples">here</a>. For an exhaustive list of configuration settings for the StorageOS operator please see our <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration">documentation</a>.</p>
-<h2 id="a-nameexternaletcdaexternal-etcd"><a name='ExternalEtcd'></a>External Etcd</h2>
-<p>StorageOS highly recommends that an etcd cluster on standalone nodes outside the Kubernetes cluster is used for production deployments. In this configuration the etcd cluster would run on separate boxes from the rest of the Kubernetes and StorageOS cluster ensuring stability and resilience of the etcd cluster. However for the purposes of a self-evaluation it is acceptable to run etcd as a container inside Kubernetes.</p>
-<p>We do not recommend running etcd on the same nodes as StorageOS when node failure will be tested, as if the majority of etcd nodes fail then the etcd cluster cannot be recovered automatically. Therefore it is better to run etcd on separate nodes.</p>
+<p>In this document we detail a simple installation suitable for evaluation
+purposes. The etcd we install uses a 3 node cluster with ephemeral storage, and
+as such is not suitable for production workloads. However, for evaluation
+purposes it should be sufficient. For production deployments, please see our
+main <a href="https://docs.storageos.com/docs/prerequisites/etcd/">documentation pages</a>.</p>
+<p>A standard StorageOS installation uses the StorageOS operator, which performs
+most platform-specifc configuration for you. The StorageOS operator has been
+certified by <a href="https://storageos.com/red-hat/">Red Hat</a> and is <a href="https://github.com/storageos/cluster-operator">open
+source</a>.</p>
+<p>The basic installation steps are:</p>
+<ul>
+<li>Check prerequisites</li>
+<li>Install an etcd cluster</li>
+<li>Install the <a href="https://docs.storageos.com/docs/reference/cluster-operator/">StorageOS Operator</a></li>
+<li>Install StorageOS by applying a CR for the Operator to action</li>
+</ul>
 <h2 id="a-nameprerequisitesaprerequisites"><a name='Prerequisites'></a>Prerequisites</h2>
-<p>StorageOS has some prerequisites that must be met to complete a successful installation</p>
+<p>While we do not require custom kernel modules or additional userspace tooling,
+StorageOS does have a few basic prerequisites that are met by default by most
+modern distributions:</p>
 <ul>
-<li>Machines intended to run StorageOS have at least 1 CPU core, 2GB RAM</li>
-<li>Docker 1.10 or later with <a href="https://docs.storageos.com/docs/prerequisites/mountpropagation">mount propagation enabled</a></li>
+<li>At least 1 CPU core, 2GB RAM free</li>
 <li>TCP ports 5701-5710 and TCP &amp; UDP 5711 open between all nodes in the cluster</li>
-<li>A 64bit supported operating system - By default StorageOS supports Debian 9, RancherOS, RHEL7.5 and CentOS7.</li>
+<li>A 64bit supported operating system - StorageOS can run without additional
+packages in Debian 9, RancherOS, RHEL7.5,8 and CentOS7,8 and need the package
+linux-image-extra for Ubuntu.</li>
+<li>Mainline kernel modules <code>target_core_mod</code>, <code>tcp_loop</code>, <code>target_core_file</code>,
+<code>target_core_user</code>, <code>configfs</code>, and <code>ui</code>. These are present by default on
+most modern linux distributions, and can be installed with standard package
+managers. See our <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">system configuration</a> page for instructions.</li>
 </ul>
+<h2 id="a-namequick-installationaquick-installation"><a name='Quick Installation'></a>Quick Installation</h2>
+<p>For those feeling brave and/or lucky, we have encapsulated the installation
+instructions in this guide into a short bash script. As with similar
+instructions elsewhere on the internet, caution is advised here. The script is
+liberally commented and we recommend that you inspect it in your text editor of
+choice before running.</p>
 <blockquote>
-<p>Note Ubuntu 16.04 and 18.04 are supported but additional packages are required. Ubuntu 16.04/18.04 with the AWS kernel and Ubuntu 18.04 with the GCE kernel do not provide the required packages and are therefore <em>NOT</em> supported.</p>
+<p>Run the following command where <code>kubectl</code> is installed and with the context
+set for your Kubernetes cluster</p>
 </blockquote>
-<p>To install the required kernel modules on Ubuntu 16.04:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt -y update
-sudo apt -y install linux-image-extra-<span style="color:#204a87;font-weight:bold">$(</span>uname -r<span style="color:#204a87;font-weight:bold">)</span>
-</code></pre></div><p>To install the required kernel modules on Ubuntu 18.04+:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt -y update
-sudo apt -y install linux-modules-extra-<span style="color:#204a87;font-weight:bold">$(</span>uname -r<span style="color:#204a87;font-weight:bold">)</span>
-</code></pre></div><h2 id="a-nameinstallingstorageosainstalling-storageos"><a name='InstallingStorageOS'></a>Installing StorageOS</h2>
-<p>Installation steps are as follows:</p>
-<ul>
-<li>Install etcd</li>
-<li>Install StorageOS Operator</li>
-<li>Create a Kubernetes secret detailing the default StorageOS administrator account</li>
-<li>Install StorageOS using a StorageOSCluster Custom Resource</li>
-</ul>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s https://docs.storageos.comsh/deploy-storageos-cluster.sh <span style="color:#000;font-weight:bold">|</span> bash
+</code></pre></div><p>Note that this script deploys a cluster with etcd on transient storage,
+<strong>suitable for evaluation purposes only</strong>. Do not use this cluster for
+production workloads.</p>
+<p>Your new cluster can be used straight away. You can now jump to the
+<a href="https://docs.storageos.com/docs/self-eval/#StorageOSVolume">Provision a Volume</a> section below to provision your first volume and license
+the cluster.</p>
+<h2 id="a-namestepbystepainstalling-storageos-step-by-step"><a name='StepByStep'></a>Installing StorageOS Step By Step</h2>
+<p>This section describes the installation steps in some more detail.</p>
 <h3 id="a-nameinstalletcdainstall-etcd"><a name='Installetcd'></a>Install etcd</h3>
-<p>In order to get a StorageOS cluster stood up quickly, a single node etcd cluster can be installed in Kubernetes, on a Kubernetes master. The reason for installing on a master is that master nodes generally have predictable lifetimes and low Pod scheduling churn. As such there is a lesser risk of the etcd pod being evicted ensuring a stable etcd cluster.</p>
-<p>Note that if the etcd pod is stopped for any reason the etcd cluster will cease to function pending manual intervention. Please take this into account during testing of failure scenarios.</p>
+<p>Here we install a 3 node etcd cluster using the CoreOS operator to install on
+ephemeral storage within your Kubernetes cluster. This is suitable for
+evaluation purposes. For production deployment instructions, please see our
+<a href="https://docs.storageos.com/docs/prerequisites/etcd/">production etcd</a> page.</p>
 <ol>
 <li>
 <p>Download repo</p>
@@ -1165,65 +1199,68 @@ $ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style=
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>
-<p>The Kubernetes masters should then be labelled so a nodeSelector can be used in the EtcdCluster manifest</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl label nodes &lt;NODES&gt; etcd-cluster<span style="color:#ce5c00;font-weight:bold">=</span>storageos-etcd
-</code></pre></div><p>Once the master node taints are known and the nodes have been labelled you can deploy an EtcdCluster manifest that contains tolerations for all taints on the master nodes and selects for the node label applied in the previous step. A sample manifest is below. Edit the size to match the number of masters you will deploy on and edit the tolerations to match all taints on the master nodes where etcd will be deployed.</p>
-</li>
-<li>
 <p>Create the EtcdCluster resource</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n etcd create -f - <span style="color:#4e9a06">&lt;&lt;END
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n etcd create -f - <span style="color:#4e9a06">&lt;&lt;YAML
 </span><span style="color:#4e9a06">apiVersion: &#34;etcd.database.coreos.com/v1beta2&#34;
 </span><span style="color:#4e9a06">kind: &#34;EtcdCluster&#34;
 </span><span style="color:#4e9a06">metadata:
 </span><span style="color:#4e9a06"> name: &#34;storageos-etcd&#34;
 </span><span style="color:#4e9a06">spec:
-</span><span style="color:#4e9a06"> size: 1
+</span><span style="color:#4e9a06"> size: 3 # Set to 1 if insufficient nodes
 </span><span style="color:#4e9a06"> version: &#34;3.4.7&#34;
 </span><span style="color:#4e9a06"> pod:
 </span><span style="color:#4e9a06">   etcdEnv:
-</span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND</span>_BYTES
-     value: <span style="color:#4e9a06">&#34;2147483648&#34;</span>  <span style="color:#8f5902;font-style:italic"># 2 GB</span> 
-   - name: ETCD_AUTO_COMPACTION_RETENTION
-     value: <span style="color:#4e9a06">&#34;100&#34;</span> <span style="color:#8f5902;font-style:italic"># Keep 100 revisions</span>
-   - name: ETCD_AUTO_COMPACTION_MODE
-     value: <span style="color:#4e9a06">&#34;revision&#34;</span> <span style="color:#8f5902;font-style:italic"># Set the revision mode</span>
-   resources:
-     requests:
-       cpu: 200m
-       memory: 300Mi
-   securityContext:
-     runAsNonRoot: <span style="color:#204a87">true</span>
-     runAsUser: <span style="color:#0000cf;font-weight:bold">9000</span>
-     fsGroup: <span style="color:#0000cf;font-weight:bold">9000</span>
-   tolerations:
-   - operator: <span style="color:#4e9a06">&#34;Exists&#34;</span>
-   nodeSelector:
-     etcd-cluster: storageos-etcd
-   affinity:
-     podAntiAffinity:
-       preferredDuringSchedulingIgnoredDuringExecution:
-       - weight: <span style="color:#0000cf;font-weight:bold">100</span>
-         podAffinityTerm:
-           labelSelector:
-             matchExpressions:
-             - key: etcd_cluster
-               operator: In
-               values:
-               - storageos-etcd
-           topologyKey: kubernetes.io/hostname
-END
+</span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND_BYTES
+</span><span style="color:#4e9a06">     value: &#34;2147483648&#34;  # 2 GB 
+</span><span style="color:#4e9a06">   - name: ETCD_AUTO_COMPACTION_RETENTION
+</span><span style="color:#4e9a06">     value: &#34;1000&#34; # Keep 1000 revisions
+</span><span style="color:#4e9a06">   - name: ETCD_AUTO_COMPACTION_MODE
+</span><span style="color:#4e9a06">     value: &#34;revision&#34; # Set the revision mode
+</span><span style="color:#4e9a06">   resources:
+</span><span style="color:#4e9a06">     requests:
+</span><span style="color:#4e9a06">       cpu: 200m
+</span><span style="color:#4e9a06">       memory: 300Mi
+</span><span style="color:#4e9a06">   securityContext:
+</span><span style="color:#4e9a06">     runAsNonRoot: true
+</span><span style="color:#4e9a06">     runAsUser: 9000
+</span><span style="color:#4e9a06">     fsGroup: 9000
+</span><span style="color:#4e9a06">   tolerations:
+</span><span style="color:#4e9a06">   - operator: &#34;Exists&#34; # add tolerations to match all taints on the master nodes where etcd will be deployed
+</span><span style="color:#4e9a06">   affinity:
+</span><span style="color:#4e9a06">     podAntiAffinity:
+</span><span style="color:#4e9a06">       preferredDuringSchedulingIgnoredDuringExecution:
+</span><span style="color:#4e9a06">       - weight: 100
+</span><span style="color:#4e9a06">         podAffinityTerm:
+</span><span style="color:#4e9a06">           labelSelector:
+</span><span style="color:#4e9a06">             matchExpressions:
+</span><span style="color:#4e9a06">             - key: etcd_cluster
+</span><span style="color:#4e9a06">               operator: In
+</span><span style="color:#4e9a06">               values:
+</span><span style="color:#4e9a06">               - storageos-etcd
+</span><span style="color:#4e9a06">           topologyKey: kubernetes.io/hostname
+</span><span style="color:#4e9a06">YAML</span>
 </code></pre></div></li>
 </ol>
-<p> </p>
+<p>This creates a 3 node etcd cluster and associated service in Kubernetes. We can
+use the service endpoint when creating the StorageOS cluster.</p>
 <h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
-<p>In order to install the StorageOS operator download the requisite yaml manifests or apply them with kubectl.</p>
+<p>In order to install the StorageOS operator download the requisite yaml
+manifests or apply them with kubectl.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.1.0/storageos-operator.yaml
 </code></pre></div><p>You can verify the operator is running using the following command</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
 </code></pre></div><p> </p>
 <h2 id="a-nameinstallstorageosainstall-storageos"><a name='InstallStorageOS'></a>Install StorageOS</h2>
-<p>Once the StorageOS operator has been installed a StorageOS cluster can be generated by creating a StorageOSCluster resource.</p>
-<p>A StorageOSCluster resource describes the state of the StorageOS cluster that is desired and the StorageOS operator will create the desired StorageOS cluster. For examples of StorageOSCluster resources please see our examples page <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples">here</a>. For a full list of the configurable <code>spec</code> parameters of the StorageOSCluster resource please see <a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration">here</a>.</p>
+<p>Once the StorageOS operator has been installed a StorageOS cluster can be
+generated by creating a StorageOSCluster resource.</p>
+<p>A StorageOSCluster resource describes the state of the StorageOS cluster that
+is desired and the StorageOS operator will create the desired StorageOS
+cluster. For examples of StorageOSCluster resources please see our examples
+page
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/examples">here</a>.
+For a full list of the configurable <code>spec</code> parameters of the StorageOSCluster
+resource please see
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration">here</a>.</p>
 <ol>
 <li>
 <p>Create a secret defining the API username and password</p>
@@ -1247,6 +1284,8 @@ END
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerPublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerExpandUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerExpandPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
@@ -1273,55 +1312,49 @@ END
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
-<p>Confirm that the cluster has been created and that StorageOS pods are running</p>
+<p>Confirm that the cluster has been created and that StorageOS pods are
+running</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system get pods
-</code></pre></div><p>StorageOS pods enter a ready state after a minimum of 65s has passed.</p>
+</code></pre></div><p>StorageOS pods enter a ready state after a minimum of 45s has passed.</p>
 </li>
 <li>
 <p>Deploy the StorageOS CLI as a container</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run               <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.1.0         <span style="color:#4e9a06">\
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.1.0 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--command cli                            <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>-- /bin/sleep <span style="color:#0000cf;font-weight:bold">999999</span>
+</span><span style="color:#4e9a06"></span>-- /bin/sh -c <span style="color:#4e9a06">&#34;while true; do sleep 999999; done&#34;</span>
 </code></pre></div></li>
+</ol>
+<h2 id="a-namestorageosvolumeaprovision-a-storageos-volume"><a name='StorageOSVolume'></a>Provision a StorageOS Volume</h2>
+<p>Now that we have a working StorageOS cluster, we can provision a volume to test
+everything is working as expected.</p>
+<ol>
 <li>
-<p>License cluster</p>
-<blockquote>
-<p>A newly installed StorageOS cluster does not include a licence. A cluster
-must be licensed within 24 hours of the installation. For more information,
-check the <a href="https://docs.storageos.com/docs/reference/licence/">reference licence page</a>.</p>
-</blockquote>
-<p>You can apply a Free Developer licence by following the <a href="https://docs.storageos.com/docs/operations/licensing/">operations
-licensing</a> page, or purchase a
-licence by contacting <a href="mailto:sales@storageos.com">sales@storageos.com</a>.</p>
-</li>
-<li>
-<p>Confirm that StorageOS is working by creating a PVC</p>
+<p>Create a PVC</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
 </span><span style="color:#4e9a06">apiVersion: v1
 </span><span style="color:#4e9a06">kind: PersistentVolumeClaim
 </span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06"> name: pvc-1
+</span><span style="color:#4e9a06">  name: pvc-1
 </span><span style="color:#4e9a06">spec:
-</span><span style="color:#4e9a06"> storageClassName: &#34;fast&#34;
-</span><span style="color:#4e9a06"> accessModes:
-</span><span style="color:#4e9a06">   - ReadWriteOnce
-</span><span style="color:#4e9a06"> resources:
-</span><span style="color:#4e9a06">   requests:
-</span><span style="color:#4e9a06">     storage: 5Gi
+</span><span style="color:#4e9a06">  storageClassName: &#34;fast&#34;
+</span><span style="color:#4e9a06">  accessModes:
+</span><span style="color:#4e9a06">    - ReadWriteOnce
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">    requests:
+</span><span style="color:#4e9a06">      storage: 5Gi
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>
-<p>Verify that the CLI is working. <code>pvc-1</code> should be listed in the CLI output</p>
+<p>Verify that the volume was created with the CLI</p>
+<blockquote>
+<p><code>pvc-1</code> should be listed in the CLI output</p>
+</blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
-</code></pre></div></li>
-<li>
-<p>The StorageOS web UI can also be used to display information about the state of the cluster. The StorageOS UI can be accessed on any node that is running a StorageOS pod on port 5705. The username/password for the UI is defined by the <code>storageos-api</code> secret. For this self-evaluation the username/password is <code>storageos:storageos</code></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http://&lt;NODE_IP&gt;:5705
 </code></pre></div></li>
 <li>
 <p>Create a pod that consumes the PVC</p>
@@ -1346,17 +1379,22 @@ licence by contacting <a href="mailto:sales@storageos.com">sales@storageos.com</
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>
-<p>Check that the pod starts successfully. If the pod starts successfully then the StorageOS cluster is working correctly</p>
+<p>Check that the pod starts successfully. If the pod starts successfully then
+the StorageOS cluster is working correctly</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod d1 -w
-</code></pre></div><p>The pod mounts a StorageOS volume under <code>/mnt</code> so any files written there will persist the lifetime of the pod. This can be demonstrated using the following commands.</p>
+</code></pre></div><p>The pod mounts a StorageOS volume under <code>/mnt</code> so any files written there
+will persist beyond the lifetime of the pod. This can be demonstrated using
+the following commands.</p>
 </li>
 <li>
 <p>Execute a shell inside the pod and write some data to a file</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it d1 -- bash
 root@d1:/# <span style="color:#204a87">echo</span> Hello World! &gt; /mnt/hello
 root@d1:/# cat /mnt/hello
-Hello World!
-</code></pre></div></li>
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
 <li>
 <p>Delete the pod</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl delete pod d1
@@ -1386,20 +1424,42 @@ Hello World!
 <li>
 <p>Open a shell inside the pod and check the contents of <code>/mnt/hello</code></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it d1 -- cat /mnt/hello
-Hello World!
-</code></pre></div></li>
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
 </ol>
-<p>Now that StorageOS has been successfully installed, the cluster has a standard license by default which allows for the creation of 50GB of persistent volumes. If you register the cluster then a developer license will be applied and 500GB of persistent volumes can be created. Replicas do not count towards the license total so a 500GB license could be used to created a 500GB volume with 5 replicas. For the purposes of this self-evaluation the standard license is sufficient.</p>
-<p> </p>
+<h2 id="a-namelicenseclusteralicense-cluster"><a name='LicenseCluster'></a>License cluster</h2>
+<p>Newly installed StorageOS clusters must be licensed within 24 hours. Our
+developer license is free, and supports up to 5TiB of provisioned storage.</p>
+<p>You will need access to the StorageOS API on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl port-forward -n kube-system svc/storageos <span style="color:#0000cf;font-weight:bold">5705</span>
+</code></pre></div><p>Now follow the instructions on our <a href="https://docs.storageos.com/docs/operations/licensing/">operations licensing</a> page to obtain and apply a license.</p>
+<p>Installation of StorageOS is now complete.</p>
 <h1 id="a-namestorageosfeaturesastorageos-features"><a name='StorageOSFeatures'></a>StorageOS Features</h1>
-<p>Now that you have a correctly functioning StorageOS cluster we will explain some of our features that may be of use to you as you complete application and synthetic benchmarks.</p>
-<p>StorageOS features are all enabled/disabled by applying labels to volumes. These labels can be passed to StorageOS via persistent volume claims (PVCs) or can be applied to volumes using the StorageOS CLI or GUI.</p>
-<p>The following is not an exhaustive feature list but outlines features which are commonly of use during a self-evaluation.</p>
+<p>Now that you have a fully functional StorageOS cluster we will explain
+some of our features that may be of use to you as you complete application and
+synthetic benchmarks.</p>
+<p>StorageOS features are all enabled/disabled by applying labels to volumes.
+These labels can be passed to StorageOS via persistent volume claims (PVCs) or
+can be applied to volumes using the StorageOS CLI or GUI.</p>
+<p>The following is not an exhaustive feature list but outlines features which are
+commonly of use during a self-evaluation.</p>
 <h2 id="a-namevolumereplicationavolume-replication"><a name='VolumeReplication'></a>Volume Replication</h2>
-<p>StorageOS enables synchronous replication of volumes using the <code>storageos.com/replicas</code> label.</p>
-<p>The volume that is active is referred to as the master volume. The master volume and its replicas are always placed on separate nodes. In fact if a replica cannot be placed on a node without a replica of the same volume, the volume will fail to be created. For example, in a three node StorageOS cluster a volume with 3 replicas cannot be created as the third replica cannot be placed on a node that doesn&rsquo;t already contain a replica of the same volume.</p>
-<p>The failure mode for a volume affects how many failed replicas can be tolerated before the volume is marked as offline. Replicas are also segregated according to the <code>iaas/failure-domains</code> node label. StorageOS will automatically place a master volume and its replicas in separate failure domains where possible.</p>
-<p>See our <a href="https://docs.storageos.com/docs/concepts/replication">replication documentation</a> for more information on volume replication.</p>
+<p>StorageOS enables synchronous replication of volumes using the
+<code>storageos.com/replicas</code> label.</p>
+<p>The volume that is active is referred to as the master volume. The master
+volume and its replicas are always placed on separate nodes. In fact if a
+replica cannot be placed on a node without a replica of the same volume, the
+volume will fail to be created. For example, in a three node StorageOS cluster
+a volume with 3 replicas cannot be created as the third replica cannot be
+placed on a node that doesn&rsquo;t already contain a replica of the same volume.</p>
+<p>See our <a href="https://docs.storageos.com/docs/concepts/replication">replication
+documentation</a> for more
+information on volume replication.</p>
 <ol>
 <li>
 <p>To test volume replication create the following PersistentVolumeClaim</p>
@@ -1419,11 +1479,13 @@ Hello World!
 </span><span style="color:#4e9a06">     storage: 5Gi
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div><blockquote>
-<p>Note that volume replication is enabled by setting the <code>storageos.com/replicas</code> label on the volume.</p>
+<p>Note that volume replication is enabled by setting the
+<code>storageos.com/replicas</code> label on the volume.</p>
 </blockquote>
 </li>
 <li>
-<p>Confirm that a replicated volume has been created by using the StorageOS CLI or UI</p>
+<p>Confirm that a replicated volume has been created by using the StorageOS CLI
+or UI</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
@@ -1453,10 +1515,15 @@ Hello World!
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it replicated-pod -- bash
 root@replicated-pod:/# <span style="color:#204a87">echo</span> Hello World! &gt; /mnt/hello
 root@replicated-pod:/# cat /mnt/hello
-Hello World!
-</code></pre></div></li>
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
 <li>
-<p>Find the location of the master volume and shutdown the. Shutting down a node causes all volumes, with online replicas, on the node to be evicted. For replicated volumes this immediately promotes a replica to become the new master.</p>
+<p>Find the location of the master volume and shutdown the node</p>
+<p>Shutting down a node causes all volumes, with online replicas, on the node
+to be evicted. For replicated volumes this immediately promotes a replica
+to become the new master.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pvc
 NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 pvc-replicated Bound    pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86   5Gi        RWO            fast           1m
@@ -1467,7 +1534,9 @@ default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker <span 
 
 </code></pre></div></li>
 <li>
-<p>Check the location of the master volume and notice that it is on a new node. If the pod that mounted the volume was located on the same node that was shutdown then the pod will need to be recreated.</p>
+<p>Check the location of the master volume and notice that it is on a new node.
+If the pod that mounted the volume was located on the same node that was
+shutdown then the pod will need to be recreated.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
 NAMESPACE  NAME                                      SIZE     LOCATION               ATTACHED ON   REPLICAS  AGE
 default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker2 <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">46</span> seconds ago
@@ -1476,35 +1545,89 @@ default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker2 <span
 <p>Check that the data is still accessible to the pod</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it replicated-pod -- bash
 root@replicated-pod:/# cat /mnt/hello
-Hello World!
-</code></pre></div></li>
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
 </ol>
 <p> </p>
 <h1 id="a-namebenchmarkingabenchmarking"><a name='Benchmarking'></a>Benchmarking</h1>
-<p>As a rule the best performance is obtained by using unreplicated volumes that are co-located with the application or benchmarking tool writing to the volume. See Volume Placement below for more information.</p>
-<p>When running benchmarks in the cloud, benchmarks need to be run multiple times and nodes should be destroyed and recreated so that the underlying machine changes. This should be done to reduce the impact that noisy neighbours might have on benchmark results.</p>
+<p>As a rule the best performance is obtained by using unreplicated volumes that
+are co-located with the application or benchmarking tool writing to the volume.
+See Volume Placement below for more information.</p>
+<p>When running benchmarks in the cloud, benchmarks need to be run multiple times
+and nodes should be destroyed and recreated so that the underlying machine
+changes. This should be done to reduce the impact that noisy neighbours might
+have on benchmark results.</p>
 <h2 id="a-nameconsiderationsaconsiderations"><a name='Considerations'></a>Considerations</h2>
 <h3 id="a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication"><a name='ApplicationvsStorageOSreplication'></a>Application vs StorageOS replication</h3>
-<p>Certain applications are able to natively replicate or shard data between application instances. When using these applications it is worth considering whether application replication, StorageOS replication or a mixture of both should be used.</p>
-<p>When StorageOS replication is enabled the time to recover in cases of node failure can be lessened. This is because StorageOS will promote a replica, Kubernetes will reschedule the application instance and the amount of data the application needs to catch up on is limited to whatever data was modified while the application was being rescheduled. Without StorageOS replication the application would have to rebuild an entire copy of data. Some applications have their performance greatly impacted by having to rebuild shards/replicas so this is also avoided.</p>
+<p>Certain applications are able to natively replicate or shard data between
+application instances. When using these applications it is worth considering
+whether application replication, StorageOS replication or a mixture of both
+should be used.</p>
+<p>When StorageOS replication is enabled the time to recover in cases of node
+failure can be lessened. This is because StorageOS will promote a replica,
+Kubernetes will reschedule the application instance and the amount of data the
+application needs to catch up on is limited to whatever data was modified while
+the application was being rescheduled. Without StorageOS replication the
+application would have to rebuild an entire copy of data. Some applications
+have their performance greatly impacted by having to rebuild shards/replicas so
+this is also avoided.</p>
 <h3 id="a-namestatefulsetsastatefulsets"><a name='StatefulSets'></a>StatefulSets</h3>
-<p>StatefulSets are the de facto controller for stateful applications. As such, when deploying applications that will use StorageOS volumes, StatefulSets should be used. You can find more information about StatefulSets <a href="https://docs.storageos.com/docs/usecases/kubernetes/#statefulsets">here</a>.</p>
+<p>StatefulSets are the de facto controller for stateful applications. As such,
+when deploying applications that will use StorageOS volumes, StatefulSets
+should be used. You can find more information about StatefulSets
+<a href="https://docs.storageos.com/docs/usecases/kubernetes/#statefulsets">here</a>.</p>
 <h3 id="a-namevolumeplacementavolume-placement"><a name='VolumePlacement'></a>Volume Placement</h3>
-<p>StorageOS volumes give the best performance when the application pod and the master volume are co-located on the same node. When benchmarking applications, it is useful to take into account that using remote volumes and replicas impact the overall performance of a volume.</p>
-<p>Going from 0 to 1 replica has the greatest performance impact for writes as now the latency of the operation is equal to the round trip time to the node with the replica over the network. Adding additional replicas poses less of a performance impact as writes to replicas are done in parallel, and the round trip time to each node is unlikely to greatly increase unless replicas land on nodes that are geographically distant to the master volumes&rsquo; node.</p>
-<p>Even when volumes are replicated co-location of pod and master volume is still desirable because application writes are first sent to the master and then sent from the master volume to the replicas. Writing to a local master therefore saves network latency between the application and the master volume. As reads are always served from the master volume a remote master volume will add latency to reads as well as writes.</p>
-<p>When testing applications, such as databases, it is also necessary to run benchmarks for a sufficiently long time to account for caching, and cache flushing that databases do. We recommend running application benchmarks over a 20-30min period for this reason.</p>
+<p>StorageOS volumes give the best performance when the application pod and the
+master volume are co-located on the same node. When benchmarking applications,
+it is useful to take into account that using remote volumes and replicas impact
+the overall performance of a volume.</p>
+<p>Going from 0 to 1 replica has the greatest performance impact for writes as now
+the latency of the operation is equal to the round trip time to the node with
+the replica over the network. Adding additional replicas poses less of a
+performance impact as writes to replicas are done in parallel, and the round
+trip time to each node is unlikely to greatly increase unless replicas land on
+nodes that are geographically distant to the master volumes&rsquo; node.</p>
+<p>Even when volumes are replicated co-location of pod and master volume is still
+desirable because application writes are first sent to the master and then sent
+from the master volume to the replicas. Writing to a local master therefore
+saves network latency between the application and the master volume. As reads
+are always served from the master volume a remote master volume will add
+latency to reads as well as writes.</p>
+<p>When testing applications, such as databases, it is also necessary to run
+benchmarks for a sufficiently long time to account for caching, and cache
+flushing that databases do. We recommend running application benchmarks over a
+20-30min period for this reason.</p>
 <h4 id="a-namehowtolandavolumeandapodonthesamenodeahow-to-land-a-volume-and-a-pod-on-the-same-node"><a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node</h4>
-<p>StorageOS has an automatic co-location feature on our development roadmap that we are calling pod locality. Until the feature is GA co-location of a master volume and a pod can be achieved by leveraging existing StorageOS and Kubernetes features.</p>
-<p><code>storageos.com/hint.master</code> is a volume label that influences the placement of a StorageOS master volume. By setting this label to the StorageOS nodeID that corresponds to the <code>nodeSelector</code> on a StatefulSet or Pod the master volume and the pod should co-locate on the same node. You can reference our <a href="https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml">FIO local volumes job</a> for an example of how to do this.
- </p>
+<p>StorageOS has an automatic co-location feature on our development roadmap that
+we are calling pod locality. Until the feature is GA co-location of a master
+volume and a pod can be achieved by leveraging existing StorageOS and
+Kubernetes features.</p>
+<p><code>storageos.com/hint.master</code> is a volume label that influences the placement of
+a StorageOS master volume. By setting this label to the StorageOS nodeID that
+corresponds to the <code>nodeSelector</code> on a StatefulSet or Pod the master volume and
+the pod should co-locate on the same node. You can reference our <a href="https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml">FIO local
+volumes
+job</a>
+for an example of how to do this.  </p>
 <h2 id="a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</h2>
-<p>Synthetic benchmarks using tools such as FIO are a useful way to begin measuring StorageOS performance. While not fully representative of application performance, they allow us to reason about the performance of storage devices without the added complexity of simulating real world workloads, and provide results easily comparable across platforms.</p>
-<p>As with application benchmarks, when testing in public clouds multiple runs on newly created nodes should be considered to account for the impact of noisy neighbours.</p>
-<p>StorageOS has created a test suite for running FIO tests against StorageOS volumes that can be found <a href="https://github.com/storageos/use-cases/tree/master/FIO">here</a>. The test suite can be deployed into a Kubernetes cluster using the instructions below.</p>
+<p>Synthetic benchmarks using tools such as FIO are a useful way to begin
+measuring StorageOS performance. While not fully representative of application
+performance, they allow us to reason about the performance of storage devices
+without the added complexity of simulating real world workloads, and provide
+results easily comparable across platforms.</p>
+<p>As with application benchmarks, when testing in public clouds multiple runs on
+newly created nodes should be considered to account for the impact of noisy
+neighbours.</p>
+<p>StorageOS has created a test suite for running FIO tests against StorageOS
+volumes that can be found
+<a href="https://github.com/storageos/use-cases/tree/master/FIO">here</a>. The test suite
+can be deployed into a Kubernetes cluster using the instructions below.</p>
 <ol>
 <li>
-<p>Clone the StorageOS use cases repo.  Note this is the same repository that we cloned earlier so if you already have a copy just <code>cd storageos-usecases/FIO/local-volumes</code>.</p>
+<p>Clone the StorageOS use cases repo.  Note this is the same repository that
+we cloned earlier so if you already have a copy just <code>cd storageos-usecases/FIO/local-volumes</code>.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
 </code></pre></div></li>
 <li>
@@ -1512,12 +1635,20 @@ Hello World!
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">cd</span> storageos-usecases/FIO/local-volumes
 </code></pre></div></li>
 <li>
-<p>Get the name of the node that you wish the FIO pods and volumes to be created on. Make sure that the node name and the label <code>kubernetes.io/hostname</code> match and that the node has enough storage capacity to create 8Gi worth of volumes</p>
+<p>Get the name of the node that you wish the FIO pods and volumes to be
+created on. Make sure that the node name and the label
+<code>kubernetes.io/hostname</code> match and that the node has enough storage capacity
+to create 8Gi worth of volumes</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get node --show-labels
 </code></pre></div></li>
 <li>
-<p>Generate the FIO jobs by passing in the node name that the job should run on, and the StorageOS node id for that node. The number is the number of volumes that FIO will test concurrently. The StorageOS node ID can be found using the cli to <code>describe node</code></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./job-generator-per-volumecount.sh <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000">$NODE_NAME</span> <span style="color:#000">$STORAGEOS_NODEID</span>
+<p>Generate the FIO jobs by passing in the node name that the job should run
+on, and the StorageOS node ID for that node. The number is the number of
+volumes that FIO will test concurrently. The StorageOS node ID can be found
+using the cli to <code>describe node</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> cli -- storageos describe node
+
+$ ./job-generator-per-volumecount.sh <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000">$NODE_NAME</span> <span style="color:#000">$STORAGEOS_NODEID</span>
 </code></pre></div></li>
 <li>
 <p>Upload the FIO profiles as ConfigMaps</p>
@@ -1540,18 +1671,34 @@ Hello World!
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod -owide
 </code></pre></div></li>
 </ol>
-<p>FIO has a number of parameters that can be adjusted to simulate a variety of workloads and configurations. Particularly the queue depth, block size and the number of volumes used affect the FIO results. To tune the FIO parameters the profiles file can be edited or the ConfigMap that is created from the profiles file can be edited directly.</p>
-<p>StorageOS configuration also affects the overall volume performance. For example adding a replica to a volume will increase the latency for writes and affect IOPS and bandwidth for the volume.</p>
-<p>To see the effect a StorageOS replica has on performance rerun an FIO test but add the <code>storageos.com/replicas: &quot;1&quot;</code> label to the PersistentVolumeClaims in the jobs spec. The greatest performance impact from adding replicas comes when moving from 0 to 1 replica. Adding additional replicas does not incur a significant performance penalty.</p>
-<p>The remote volumes folder contains a guide for performing the same FIO tests against remote volumes.
- </p>
+<p>FIO has a number of parameters that can be adjusted to simulate a variety of
+workloads and configurations. Particularly the queue depth, block size and the
+number of volumes used affect the FIO results. To tune the FIO parameters the
+profiles file can be edited or the ConfigMap that is created from the profiles
+file can be edited directly.</p>
+<p>StorageOS configuration also affects the overall volume performance. For
+example adding a replica to a volume will increase the latency for writes and
+affect IOPS and bandwidth for the volume.</p>
+<p>To see the effect a StorageOS replica has on performance rerun an FIO test but
+add the <code>storageos.com/replicas: &quot;1&quot;</code> label to the PersistentVolumeClaims in
+the jobs spec. The greatest performance impact from adding replicas comes when
+moving from 0 to 1 replica. Adding additional replicas does not incur a
+significant performance penalty.</p>
+<p>The remote volumes folder contains a guide for performing the same FIO tests
+against remote volumes.  </p>
 <h2 id="a-nameapplicationbenchmarksaapplication-benchmarks"><a name='ApplicationBenchmarks'></a>Application Benchmarks</h2>
-<p>While synthetic benchmarks are useful for examining the behaviour of StorageOS with very specific workloads, in order to get a realistic picture of StorageOS performance actual applications should be tested.</p>
-<p>Many applications come with test suites which provide standard workloads. For best results, test using your application of choice with a representative configuration and real world data.</p>
-<p>As an example of benchmarking an application the following steps lay out how to benchmark a Postgres database backed by a StorageOS volume.</p>
+<p>While synthetic benchmarks are useful for examining the behaviour of StorageOS
+with very specific workloads, in order to get a realistic picture of StorageOS
+performance actual applications should be tested.</p>
+<p>Many applications come with test suites which provide standard workloads. For
+best results, test using your application of choice with a representative
+configuration and real world data.</p>
+<p>As an example of benchmarking an application the following steps lay out how to
+benchmark a Postgres database backed by a StorageOS volume.</p>
 <ol>
 <li>
-<p>Start by cloning the StorageOS use cases repository. Note this is the same repository that we cloned earlier so if you already have a copy just <code>cd storageos-usecases/pgbench</code>.</p>
+<p>Start by cloning the StorageOS use cases repository. Note this is the same
+repository that we cloned earlier so if you already have a copy just <code>cd storageos-usecases/pgbench</code>.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
 </code></pre></div></li>
 <li>
@@ -1559,11 +1706,15 @@ Hello World!
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">cd</span> storageos-usecases/pgbench
 </code></pre></div></li>
 <li>
-<p>Decide which node you want the pgbench pod and volume to be located on. The node needs to be labelled <code>app=postgres</code></p>
+<p>Decide which node you want the pgbench pod and volume to be located on. The
+node needs to be labelled <code>app=postgres</code></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl label node &lt;NODE&gt; <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>postgres
 </code></pre></div></li>
 <li>
-<p>Then set the <code>storageos.com/hint.master</code> label in 20-postgres-statefulset.yaml file to match the StorageOS nodeID for the node you have chosen before creating all the files. The StorageOS nodeID can be obtained using the cli and doing a <code>describe node</code></p>
+<p>Then set the <code>storageos.com/hint.master</code> label in
+20-postgres-statefulset.yaml file to match the StorageOS nodeID for the node
+you have chosen before creating all the files. The StorageOS nodeID can be
+obtained using the cli and doing a <code>describe node</code></p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f .
 </code></pre></div></li>
 <li>
@@ -1571,7 +1722,8 @@ Hello World!
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -w -l <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>postgres
 </code></pre></div></li>
 <li>
-<p>Use the StorageOS CLI or the GUI to check the master volume location and the mount location. They should match</p>
+<p>Use the StorageOS CLI or the GUI to check the master volume location and the
+mount location. They should match</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
 </code></pre></div></li>
 <li>
@@ -1581,8 +1733,12 @@ Hello World!
 </ol>
 <p> </p>
 <h1 id="a-nameconclusionaconclusion"><a name='Conclusion'></a>Conclusion</h1>
-<p>After completing these steps you will have benchmark scores for StorageOS. Please keep in mind that benchmarks are only part of the story and that there is no replacement for testing actual production or production like workloads.</p>
-<p>StorageOS invites you to provide feedback on your self-evaluation to the <a href="https://storageos.slack.com">slack channel</a> or by directly emailing us at <a href="mailto:info@storageos.com">info@storageos.com</a></p>
+<p>After completing these steps you will have benchmark scores for StorageOS.
+Please keep in mind that benchmarks are only part of the story and that there
+is no replacement for testing actual production or production like workloads.</p>
+<p>StorageOS invites you to provide feedback on your self-evaluation to the <a href="https://storageos.slack.com">slack
+channel</a> or by directly emailing us at
+<a href="mailto:info@storageos.com">info@storageos.com</a></p>
 
 	
 	

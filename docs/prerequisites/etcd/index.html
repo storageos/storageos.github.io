@@ -21,29 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Etcd | </title><meta property="og:title" content="Etcd" />
-<meta property="og:description" content="StorageOS requires an etcd cluster in order to function.
-For more information on why etcd is required please see our etcd concepts page and for production recommendations for etcd installations please see our Etcd Operations page.
- N.B. StorageOS does not recommend using the Kubernetes etcd cluster for StorageOS installations
- Using Etcd with StorageOS During installation of StorageOS the kvBackend parameters of the StorageOS operator are used to specify the address of the etcd cluster." />
+<meta property="og:description" content="StorageOS requires an etcd cluster in order to function. For more information on why etcd is required please see our etcd concepts page.
+We do not support using the Kubernetes etcd for StorageOS installations.
+We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/prerequisites/etcd/" />
 
 <meta itemprop="name" content="Etcd">
-<meta itemprop="description" content="StorageOS requires an etcd cluster in order to function.
-For more information on why etcd is required please see our etcd concepts page and for production recommendations for etcd installations please see our Etcd Operations page.
- N.B. StorageOS does not recommend using the Kubernetes etcd cluster for StorageOS installations
- Using Etcd with StorageOS During installation of StorageOS the kvBackend parameters of the StorageOS operator are used to specify the address of the etcd cluster.">
+<meta itemprop="description" content="StorageOS requires an etcd cluster in order to function. For more information on why etcd is required please see our etcd concepts page.
+We do not support using the Kubernetes etcd for StorageOS installations.
+We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations.">
 
-<meta itemprop="wordCount" content="84">
+<meta itemprop="wordCount" content="1958">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Etcd"/>
-<meta name="twitter:description" content="StorageOS requires an etcd cluster in order to function.
-For more information on why etcd is required please see our etcd concepts page and for production recommendations for etcd installations please see our Etcd Operations page.
- N.B. StorageOS does not recommend using the Kubernetes etcd cluster for StorageOS installations
- Using Etcd with StorageOS During installation of StorageOS the kvBackend parameters of the StorageOS operator are used to specify the address of the etcd cluster."/>
+<meta name="twitter:description" content="StorageOS requires an etcd cluster in order to function. For more information on why etcd is required please see our etcd concepts page.
+We do not support using the Kubernetes etcd for StorageOS installations.
+We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations."/>
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 
@@ -191,7 +188,7 @@ For more information on why etcd is required please see our etcd concepts page a
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +222,7 @@ For more information on why etcd is required please see our etcd concepts page a
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b22afe8e7088f9f3b38c2af5a7fd263b53fa175229c4b0a321344656a0b803c3ae87f481168c7a1d16f4499de873b6e6934b248fb7caba250e3bb83c28cbe03c.json"
+  data-offline-search-index-json-src="/offline-search-index.1a4135e3bf19673c181fdac9c20631266834300ec3302f2ea21bcdadda114f7075c4913558313730ca18b6db897b44ffa1115d7d4a40cdc79605d280865592a4.json"
   data-offline-search-base-href="/"
 >
 
@@ -552,17 +549,17 @@ For more information on why etcd is required please see our etcd concepts page a
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/external-etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
+    <a  href="/docs/operations/etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoperationsexternal-etcd">
+    <li class="collapse " id="docsoperationsetcd">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsexternal-etcdetcd-tls" href="/docs/operations/external-etcd/etcd-tls/">mTLS</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
     </li>
@@ -617,6 +614,12 @@ For more information on why etcd is required please see our etcd concepts page a
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstroubleshooting" href="/docs/operations/troubleshooting/">Troubleshooting</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsuninstall" href="/docs/operations/uninstall/">Uninstall StorageOS</a>
       
       
       
@@ -924,6 +927,12 @@ For more information on why etcd is required please see our etcd concepts page a
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceresource_requests_and_limits" href="/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencetelemetry" href="/docs/reference/telemetry/">StorageOS Telemetry</a>
       
       
@@ -1032,19 +1041,571 @@ For more information on why etcd is required please see our etcd concepts page a
 <div class="td-content">
 	<h1>Etcd</h1>
 	
-	<p>StorageOS requires an etcd cluster in order to function.</p>
-<p>For more information on why etcd is required please see our <a href="https://docs.storageos.com/docs/concepts/etcd/">etcd concepts</a> page and for production recommendations for
-etcd installations please see our <a href="https://docs.storageos.com/docs/operations/external-etcd/">Etcd Operations</a> page.</p>
-<blockquote>
-<p>N.B. StorageOS does not recommend using the Kubernetes etcd cluster for
-StorageOS installations</p>
+	<p>StorageOS requires an etcd cluster in order to function. For more information
+on why etcd is required please see our <a href="https://docs.storageos.com/docs/concepts/etcd/">etcd concepts</a> page.</p>
+<p>We do not support using the Kubernetes etcd for StorageOS installations.</p>
+<p>We provide two methods for installing etcd. For those looking for a quick route
+to evaluating StorageOS, our first method installs etcd into your Kubernetes
+cluster using the CoreOS operator. Due to limitations in the CoreOS operator,
+this installation is not backed by any persistent storage, and therefore is
+unsuitable for production installations.</p>
+<p>For production installations, there is currently no satisfactory way of
+installing a production-grade etcd cluster inside Kubernetes (although the
+landscape is changing rapidly, watch this space), and our production guidance
+remains to install etcd on separate machines outside of your Kubernetes
+cluster. This method is the best way to ensure a stable StorageOS cluster.</p>
+<ol>
+<li>Ephemeral pods within Kubernetes (<em>Testing</em>)</li>
+<li>External Virtual Machines (<em>Production</em>)</li>
+</ol>
+<p>Click the tabs below to select the installation method of your choice.</p>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+		
+		
+		
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		<a class="nav-item nav-link active" id="nav-9" data-toggle="tab" href="#testing" role="tab"
+		   aria-controls="nav-home" aria-selected="true">Testing</a>
+
+            
+		
+
+            
+            
+
+            
+            
+
+            
+
+            
+
+		<a class="nav-item nav-link" id="nav-9" data-toggle="tab" href="#production" role="tab"
+		   aria-controls="nav-home" aria-selected="false">Production</a>
+
+            
+		
+
+	</div>
+</nav>
+
+<div class="tab-content" id="9">
+    <br></br>
+
+
+
+
+
+
+
+
+<div class="tab-pane fade show active" id="testing" role="tabpanel" aria-labelledby="nav-testing">
+    <h2 id="testing---installing-etcd-into-your-kubernetes-cluster">Testing - Installing Etcd Into Your Kubernetes Cluster</h2>
+<p><strong>This fast and convenient method is useful for quickly creating an etcd
+cluster in order to evaluate StorageOS. Do not use it for production
+installations.</strong></p>
+<p>This method uses the <a href="https://github.com/coreos/etcd-operator">CoreOS
+etcd-operator</a> to install a 3 node
+etcd cluster within your Kubernetes cluster, in the <code>storageos-etcd</code> namespace.
+We then install a Kubernetes service in that same namespace.</p>
+<p>The official etcd-operator repository also has a backup deployment operator
+that can help backup etcd data. <strong>A restore of the etcd keyspace from a backup
+might cause issues</strong> due to the disparity between the cluster state and its
+metadata in a different point in time. If you need to restore from a backup
+after a failure of etcd, contact the StorageOS support team.</p>
+<h3 id="quick-install">Quick Install</h3>
+<p>For a one command install, the following script uses <code>kubectl</code> to create an
+etcd cluster in the <code>storageos-etcd</code> namespace. It requires kubectl in the
+system path, and the context set to the appropriate cluster.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s https://docs.storageos.comsh/deploy-etcd.sh <span style="color:#000;font-weight:bold">|</span> bash
+</code></pre></div><h3 id="installation-step-by-step">Installation Step by Step</h3>
+<p>For those who would prefer to execute the steps by themselves, they are as
+follows:</p>
+<ol>
+<li>
+<p>Configure Namespace</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">export</span> <span style="color:#000">NAMESPACE</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos-etcd
+</code></pre></div></li>
+<li>
+<p>Create Namespace</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create namespace <span style="color:#000">$NAMESPACE</span>
+</code></pre></div></li>
+<li>
+<p>If running in Openshift, an SCC is needed to start Pods</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oc adm policy add-scc-to-user anyuid system:serviceaccount:<span style="color:#000">$NAMESPACE</span>:default
+</code></pre></div></li>
+<li>
+<p>Create ClusterRole and ClusterRoleBinding</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"> $ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f-<span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06"> apiVersion: rbac.authorization.k8s.io/v1beta1
+</span><span style="color:#4e9a06"> kind: ClusterRoleBinding
+</span><span style="color:#4e9a06"> metadata:
+</span><span style="color:#4e9a06">   name: etcd-operator
+</span><span style="color:#4e9a06"> roleRef:
+</span><span style="color:#4e9a06">   apiGroup: rbac.authorization.k8s.io
+</span><span style="color:#4e9a06">   kind: ClusterRole
+</span><span style="color:#4e9a06">   name: etcd-operator
+</span><span style="color:#4e9a06"> subjects:
+</span><span style="color:#4e9a06">   - kind: ServiceAccount
+</span><span style="color:#4e9a06">     name: default
+</span><span style="color:#4e9a06">     namespace: $NAMESPACE
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div><div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f-<span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: rbac.authorization.k8s.io/v1beta1
+</span><span style="color:#4e9a06">kind: ClusterRole
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: etcd-operator
+</span><span style="color:#4e9a06">rules:
+</span><span style="color:#4e9a06">- apiGroups:
+</span><span style="color:#4e9a06">  - etcd.database.coreos.com
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">  - etcdclusters
+</span><span style="color:#4e9a06">  - etcdbackups
+</span><span style="color:#4e9a06">  - etcdrestores
+</span><span style="color:#4e9a06">  verbs:
+</span><span style="color:#4e9a06">  - &#34;*&#34;
+</span><span style="color:#4e9a06">- apiGroups:
+</span><span style="color:#4e9a06">  - apiextensions.k8s.io
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">   - customresourcedefinitions
+</span><span style="color:#4e9a06">  verbs:
+</span><span style="color:#4e9a06">  - &#34;*&#34;
+</span><span style="color:#4e9a06">- apiGroups:
+</span><span style="color:#4e9a06">  - &#34;&#34;
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">  - pods
+</span><span style="color:#4e9a06">  - services
+</span><span style="color:#4e9a06">  - endpoints
+</span><span style="color:#4e9a06">  - persistentvolumeclaims
+</span><span style="color:#4e9a06">  - events
+</span><span style="color:#4e9a06">  verbs:
+</span><span style="color:#4e9a06">  - &#34;*&#34;
+</span><span style="color:#4e9a06">- apiGroups:
+</span><span style="color:#4e9a06">  - apps
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">  - deployments
+</span><span style="color:#4e9a06">  verbs:
+</span><span style="color:#4e9a06">  - &#34;*&#34;
+</span><span style="color:#4e9a06"># The following permissions can be removed if not using S3 backup and TLS
+</span><span style="color:#4e9a06">- apiGroups:
+</span><span style="color:#4e9a06">  - &#34;&#34;
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">  - secrets
+</span><span style="color:#4e9a06">  verbs:
+</span><span style="color:#4e9a06">  - get
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Deploy Etcd Operator</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: apps/v1
+</span><span style="color:#4e9a06">kind: Deployment
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: etcd-operator
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  selector:
+</span><span style="color:#4e9a06">    matchLabels:
+</span><span style="color:#4e9a06">      app: etcd-operator
+</span><span style="color:#4e9a06">  replicas: 1
+</span><span style="color:#4e9a06">  template:
+</span><span style="color:#4e9a06">    metadata:
+</span><span style="color:#4e9a06">      labels:
+</span><span style="color:#4e9a06">        app: etcd-operator
+</span><span style="color:#4e9a06">    spec:
+</span><span style="color:#4e9a06">      containers:
+</span><span style="color:#4e9a06">      - name: etcd-operator
+</span><span style="color:#4e9a06">        image: quay.io/coreos/etcd-operator:v0.9.4
+</span><span style="color:#4e9a06">        command:
+</span><span style="color:#4e9a06">        - etcd-operator
+</span><span style="color:#4e9a06">        env:
+</span><span style="color:#4e9a06">        - name: MY_POD_NAMESPACE
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.namespace
+</span><span style="color:#4e9a06">        - name: MY_POD_NAME
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.name
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div><p>Wait for the Etcd Operator Pod to start</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n <span style="color:#000">$NAMESPACE</span> get pod -lapp<span style="color:#ce5c00;font-weight:bold">=</span>etcd-operator
+</code></pre></div></li>
+<li>
+<p>Create the EtcdCluster resource</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$<span style="color:#f8f8f8;text-decoration:underline"> </span>kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>-n<span style="color:#f8f8f8;text-decoration:underline"> </span>$NAMESPACE<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>- &lt;&lt;END<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;etcd.database.coreos.com/v1beta2&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;EtcdCluster&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">size</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">version</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;3.4.7&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pod</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">etcdEnv</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ETCD_QUOTA_BACKEND_BYTES<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;2147483648&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># 2 GB</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ETCD_AUTO_COMPACTION_RETENTION<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1000&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Keep 1000 revisions (default)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ETCD_AUTO_COMPACTION_MODE<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">value</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;revision&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Set the revision mode</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">cpu</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>200m<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">memory</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>300Mi<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">securityContext</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">runAsNonRoot</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">runAsUser</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">fsGroup</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">9000</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">tolerations</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">operator</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;Exists&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">affinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">podAntiAffinity</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">preferredDuringSchedulingIgnoredDuringExecution</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">weight</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">100</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">podAffinityTerm</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">labelSelector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">              </span><span style="color:#204a87;font-weight:bold">matchExpressions</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">              </span>- <span style="color:#204a87;font-weight:bold">key</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>etcd_cluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">operator</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>In<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">                </span><span style="color:#204a87;font-weight:bold">values</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">                </span>- storageos-etcd<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">            </span><span style="color:#204a87;font-weight:bold">topologyKey</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>kubernetes.io/hostname<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+</ol>
+<h3 id="installation-verification">Installation Verification</h3>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n storageos-etcd get pod,svc
+NAME                                 READY   STATUS    RESTARTS   AGE
+pod/etcd-operator-55978c4587-8kx7b   1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          2h
+pod/storageos-etcd-qm9tmrpnlm        1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          2h
+pod/storageos-etcd-rzhjdz74hp        1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          2h
+pod/storageos-etcd-wvvv2d9g98        1/1     Running   <span style="color:#0000cf;font-weight:bold">0</span>          2h
+
+NAME                            TYPE        CLUSTER-IP       EXTERNAL-IP PORT<span style="color:#ce5c00;font-weight:bold">(</span>S<span style="color:#ce5c00;font-weight:bold">)</span>             AGE
+service/storageos-etcd          ClusterIP   None             &lt;none&gt;      2379/TCP,2380/TCP   22h
+service/storageos-etcd-client   ClusterIP   172.30.132.255   &lt;none&gt;      2379/TCP            22h
+</code></pre></div><blockquote>
+<p>The URL from the Service <code>storageos-etcd-client.storageos-etcd.svc:2379</code> will
+be used later in the StorageOS Cluster CustomResource the
+<code>kvBackend.address</code>.</p>
 </blockquote>
+<h2 id="known-etcd-operator-issues">Known etcd-operator issues</h2>
+<p>Etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. If quorum is lost, etcd nodes stop and etcd marks its contents as
+read-only. This is because it cannot guarantee that new data will be valid.
+Quorum is fundamental for etcd operations. When running etcd using the CoreOS
+Operator, it is important to consider that a loss of quorum could arise from
+etcd pods being evicted from nodes.</p>
+<p>Operations such as Kubernetes Upgrades with rolling node pools could cause a
+total failure of the etcd cluster as nodes are discarded in favor of new ones.</p>
+<p>A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
+can survive the loss of two nodes. Loss of further nodes will result in quorum
+being lost.</p>
+<p><strong>The etcd-operator doesn&rsquo;t support a full stop of the cluster. Stopping the
+etcd cluster causes the loss of all the etcd keystore and make StorageOS unable
+to perform metadata changes.</strong></p>
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade" id="production" role="tabpanel" aria-labelledby="nav-production">
+    <h2 id="production---etcd-on-external-virtual-machines">Production - Etcd on External Virtual Machines</h2>
+<p>For production installations, StorageOS strongly recommends running etcd
+outside of Kubernetes on a minimum of 3 dedicated virtual machines. This
+topology offers strong guarantees of resilience and uptime. We recommend this
+architecture in all environments, including those where Kubernetes is being
+deployed as a managed service.</p>
+<p>StorageOS doesn&rsquo;t require a high performance etcd cluster as the throughput of
+metadata to the cluster is low.</p>
+<p>Depending on the level of redundancy you feel comfortable with you can install
+etcd on the Kubernetes Master nodes. <strong>Take extreme care to avoid collisions of
+the StorageOS etcd installation with the Kubernetes etcd when using the
+Kubernetes Master nodes. Precautions such as changing the default configuration
+for the client and peer ports, and ensuring the etcd data directory is
+modified. The ansible playbook below will default the etcd installation
+directory to <code>/var/lib/storageos-etcd</code>.</strong></p>
+<p>You can choose between two installation options.</p>
+<ul>
+<li><a href="#installation---manual">Manual Installation</a></li>
+<li><a href="#installation---ansible">Ansible Installation</a></li>
+</ul>
+<h3 id="installation---manual">Installation - Manual</h3>
+<p>This section documents the steps required for manual installation of etcd using
+standard package management commands and systemd manifests.</p>
+<blockquote>
+<p><strong>Repeat the following steps on all the nodes that will run etcd as a systemd service.</strong></p>
+</blockquote>
+<ol>
+<li>
+<p>Configure Etcd version and ports</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">export</span> <span style="color:#000">ETCD_VERSION</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;3.4.9&#34;</span>
+<span style="color:#204a87">export</span> <span style="color:#000">CLIENT_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2379&#34;</span>
+<span style="color:#204a87">export</span> <span style="color:#000">PEERS_PORT</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;2380&#34;</span>
+</code></pre></div><blockquote>
+<p><strong>If targeting Kubernetes Master nodes, you must change
+<code>CLIENT_PORT</code>, <code>PEERS_PORT</code></strong></p>
+</blockquote>
+</li>
+<li>
+<p>Download Etcd from CoreOS official site</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -L https://github.com/coreos/etcd/releases/download/v<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>/etcd-v<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64.tar.gz -o /tmp/etcd-<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64.tar.gz
+mkdir -p /tmp/etcd-v<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64
+tar -xzvf /tmp/etcd-<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64.tar.gz -C /tmp/etcd-v<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64 --strip-components<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span>
+rm /tmp/etcd-<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64.tar.gz
+</code></pre></div></li>
+<li>
+<p>Install Etcd binaries</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">cd</span> /tmp/etcd-v<span style="color:#4e9a06">${</span><span style="color:#000">ETCD_VERSION</span><span style="color:#4e9a06">}</span>-linux-amd64
+mv etcd /usr/local/sbin/etcd3
+mv etcdctl /usr/local/sbin/etcdctl
+chmod <span style="color:#0000cf;font-weight:bold">0755</span> /usr/local/sbin/etcd3 /usr/local/sbin/etcdctl
+</code></pre></div></li>
+<li>
+<p>Set up persistent Etcd data directory</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /var/lib/storageos-etcd
+</code></pre></div></li>
+<li>
+<p>Create the systemd environment file</p>
+<p>On all nodes that will run etcd create a systemd environemnt file
+<code>/etc/etcd.conf</code> which has the IPs of all the nodes. The <code>NODE_IP</code> will
+need to change to correspond to the node IP where the environment file
+resides. <code>NODE1_IP</code>, <code>NODE2_IP</code> and <code>NODE3_IP</code> will remain the same across
+all three files.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat <span style="color:#4e9a06">&lt;&lt;END &gt; /etc/etcd.conf
+</span><span style="color:#4e9a06"># NODE_IP is the IP of the node where this file resides.
+</span><span style="color:#4e9a06">NODE_IP=10.64.10.228
+</span><span style="color:#4e9a06"># Node 1 IP
+</span><span style="color:#4e9a06">NODE1_IP=10.64.10.228
+</span><span style="color:#4e9a06"># Node 2 IP
+</span><span style="color:#4e9a06">NODE2_IP=10.64.14.233
+</span><span style="color:#4e9a06"># Node 3 IP  
+</span><span style="color:#4e9a06">NODE3_IP=10.64.12.111
+</span><span style="color:#4e9a06">CLIENT_PORT=${CLIENT_PORT}
+</span><span style="color:#4e9a06">PEERS_PORT=${PEERS_PORT}
+</span><span style="color:#4e9a06">END</span>
+
+<span style="color:#8f5902;font-style:italic"># Verify that variables are expaneded in the file</span>
+$ cat /etc/etcd.conf
+
+</code></pre></div></li>
+<li>
+<p>Create the systemd unit file for etcd3 service</p>
+<p>Create a systemd unit file <code>/etc/systemd/system/etcd3.service</code> with the
+following information:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>Unit<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Description</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd3
+<span style="color:#000">Documentation</span><span style="color:#ce5c00;font-weight:bold">=</span>https://github.com/coreos/etcd
+<span style="color:#000">Conflicts</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd2.service
+
+<span style="color:#ce5c00;font-weight:bold">[</span>Service<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">Type</span><span style="color:#ce5c00;font-weight:bold">=</span>notify
+<span style="color:#000">Restart</span><span style="color:#ce5c00;font-weight:bold">=</span>always
+<span style="color:#000">RestartSec</span><span style="color:#ce5c00;font-weight:bold">=</span>5s
+<span style="color:#000">LimitNOFILE</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">40000</span>
+<span style="color:#000">TimeoutStartSec</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">0</span>
+<span style="color:#000">EnvironmentFile</span><span style="color:#ce5c00;font-weight:bold">=</span>/etc/etcd.conf
+
+<span style="color:#000">ExecStart</span><span style="color:#ce5c00;font-weight:bold">=</span>/usr/local/sbin/etcd3 --name etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --data-dir /var/lib/storageos-etcd <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --quota-backend-bytes <span style="color:#0000cf;font-weight:bold">8589934592</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --auto-compaction-retention <span style="color:#0000cf;font-weight:bold">1000</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --auto-compaction-mode revision <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster-state new <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster-token etcd-token <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span>,http://127.0.0.1:2379 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --advertise-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-advertise-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE1_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE1_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>,etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE2_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE2_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>,etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE3_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE3_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>
+
+
+<span style="color:#ce5c00;font-weight:bold">[</span>Install<span style="color:#ce5c00;font-weight:bold">]</span>
+<span style="color:#000">WantedBy</span><span style="color:#ce5c00;font-weight:bold">=</span>multi-user.target
+</code></pre></div><blockquote>
+<p><code>$NODE_IP</code> is the IP address of the machine you are installing etcd on.`</p>
+</blockquote>
+<blockquote>
+<p>If enabling TLS, it is recomended to generate your own CA certificate and
+key. You will need to distribute the keys and certificates for the client
+auth on all etcd nodes. Moreover, the <code>ExecStart</code> value should look as
+below:</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#000">ExecStart</span><span style="color:#ce5c00;font-weight:bold">=</span>/usr/local/sbin/etcd3 --name etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --data-dir /var/lib/storageos-etcd <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --quota-backend-bytes <span style="color:#0000cf;font-weight:bold">8589934592</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --auto-compaction-retention <span style="color:#0000cf;font-weight:bold">1000</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --auto-compaction-mode revision <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --peer-auto-tls <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --client-cert-auth --trusted-ca-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/client-cert.pem <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --cert-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/ca.pem <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --key-file<span style="color:#ce5c00;font-weight:bold">=</span>/path/to/client-key.pem <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster-state new <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster-token etcd-token <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-client-urls https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --advertise-client-urls https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-peer-urls https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-advertise-peer-urls https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --initial-cluster etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE1_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE1_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>,etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE2_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE2_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>,etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE3_IP</span><span style="color:#4e9a06">}</span><span style="color:#ce5c00;font-weight:bold">=</span>https://<span style="color:#4e9a06">${</span><span style="color:#000">NODE3_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span>
+</code></pre></div></li>
+<li>
+<p>Reload and start the etc3 systemd service</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ systemctl daemon-reload
+$ systemctl <span style="color:#204a87">enable</span> etcd3.service
+$ systemctl start  etcd3.service
+</code></pre></div></li>
+<li>
+<p>Installation Verification</p>
+<blockquote>
+<p>The <code>etcdctl</code> binary is installed at <code>/usr/local/bin</code> on the nodes.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh <span style="color:#000">$NODE</span> <span style="color:#8f5902;font-style:italic"># Any node running the new etcd</span>
+$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>http://127.0.0.1:2379 member list <span style="color:#8f5902;font-style:italic"># $NODE_IP - the IP of the node</span>
+66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
+17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
+8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379
+</code></pre></div><blockquote>
+<p>Read the <a href="https://docs.storageos.com/docs/operations/etcd/">etcd operations</a>
+page for our etcd recommendations.</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="installation---ansible">Installation - Ansible</h3>
+<p>For a repeatable and automated installation, use of a configuration management
+tool such as ansible is recommended. StorageOS provides an ansible playbook to
+help you deploy etcd on standalone virtual machines.</p>
+<ol>
+<li>
+<p>Clone StorageOS deployment repository</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/storageos/deploy.git
+<span style="color:#204a87">cd</span> k8s/deploy-storageos/etcd-helpers/etcd-ansible-systemd
+</code></pre></div></li>
+<li>
+<p>Edit the inventory file</p>
+<blockquote>
+<p>The inventory file targets the nodes that will run etcd. The file <code>hosts</code>
+is an example of such an inventory file.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat hosts
+<span style="color:#ce5c00;font-weight:bold">[</span>nodes<span style="color:#ce5c00;font-weight:bold">]</span>
+centos-1 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.10.228&#34;</span> <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-10-228.eu-west-2.compute.internal&#34;</span>
+centos-2 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.14.233&#34;</span> <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-14-233.eu-west-2.compute.internal&#34;</span>
+centos-3 <span style="color:#000">ip</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;10.64.12.111&#34;</span> <span style="color:#000">fqdn</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#4e9a06">&#34;ip-10-64-12-111.eu-west-2.compute.internal&#34;</span>
+
+<span style="color:#8f5902;font-style:italic"># Edit the inventory file</span>
+$ vi hosts <span style="color:#8f5902;font-style:italic"># Or your own inventory file</span>
+</code></pre></div></li>
+<li>
+<p>Edit the etcd configuration</p>
+<blockquote>
+<p><strong>If targeting Kubernetes Master nodes, you must change
+<code>etcd_port_client</code>, <code>etcd_port_peers</code></strong></p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat group_vars/all
+etcd_version: <span style="color:#4e9a06">&#34;3.4.9&#34;</span>
+etcd_port_client: <span style="color:#4e9a06">&#34;2379&#34;</span>
+etcd_port_peers: <span style="color:#4e9a06">&#34;2380&#34;</span>
+etcd_quota_bytes: <span style="color:#0000cf;font-weight:bold">8589934592</span>  <span style="color:#8f5902;font-style:italic"># 8 GB</span>
+etcd_auto_compaction_mode: <span style="color:#4e9a06">&#34;revision&#34;</span>
+etcd_auto_compaction_retention: <span style="color:#4e9a06">&#34;1000&#34;</span>
+members: <span style="color:#4e9a06">&#34;{{ groups[&#39;nodes&#39;] }}&#34;</span>
+installation_dir: <span style="color:#4e9a06">&#34;/var/lib/storageos-etcd&#34;</span>
+advertise_format: <span style="color:#4e9a06">&#39;fqdn&#39;</span> <span style="color:#8f5902;font-style:italic"># fqdn || ip</span>
+backup_file: <span style="color:#4e9a06">&#34;/tmp/backup.db&#34;</span>
+
+tls:
+  enabled: <span style="color:#204a87">false</span>
+  ca_common_name: <span style="color:#4e9a06">&#34;eu-west-2.compute.internal&#34;</span>
+  etcd_common_name: <span style="color:#4e9a06">&#34;*.eu-west-2.compute.internal&#34;</span>
+  cert_dir: <span style="color:#4e9a06">&#34;/etc/etcdtls&#34;</span>
+  ca_cert_file: <span style="color:#4e9a06">&#34;etcd-ca.pem&#34;</span>
+  etcd_server_cert_file: <span style="color:#4e9a06">&#34;server.pem&#34;</span>
+  etcd_server_key_file: <span style="color:#4e9a06">&#34;server-key.pem&#34;</span>
+  etcd_client_cert_file: <span style="color:#4e9a06">&#34;etcd-client.crt&#34;</span>
+  etcd_client_key_file: <span style="color:#4e9a06">&#34;etcd-client.key&#34;</span>
+
+$ vi group_vars/all
+</code></pre></div><blockquote>
+<p>Choose between using IP addressing or FQDN in the <code>advertise_format</code>
+parameter. It allows you to decide how Etcd advertises its address to
+clients. This is particularly relevant when using TLS.</p>
+</blockquote>
+<blockquote>
+<p>If enabling TLS, it is recomended to generate your own CA certificate and
+key. You can do it by generating the CA from the machine running Ansible
+by: <code>ansible-playbook create_ca.yaml</code>.</p>
+</blockquote>
+</li>
+<li>
+<p>Install</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ansible-playbook -i hosts install.yaml
+</code></pre></div></li>
+<li>
+<p>Installation Verification</p>
+<blockquote>
+<p>The playbook installs the <code>etcdctl</code> binary on the nodes, at
+<code>/usr/local/bin</code>.</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh <span style="color:#000">$NODE</span> <span style="color:#8f5902;font-style:italic"># Any node running the new etcd</span>
+$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>127.0.0.1:2379 member list
+66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
+17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
+8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379
+</code></pre></div></li>
+</ol>
+<h2 id="benefits-of-running-external-to-kubernetes">Benefits of Running External to Kubernetes</h2>
+<p>Etcd is a distributed key-value store database focused on strong consistency.
+That means that etcd nodes perform operations across the cluster to ensure
+quorum. In the case that quorum is lost, an etcd node stops and marks its
+contents as read-only. Another peer might have a newer version that has not
+been committed to the database. Quorum is fundamental for etcd operations.</p>
+<p>In a Kubernetes environment, applications are scheduled across and in some
+scenarios such as &ldquo;DiskPressure&rdquo; they may need to be evicted from a node, and
+be scheduled onto a different node. With an application such as etcd, the
+scenario described can result in quorum being lost, making the cluster unable
+to recover automatically. Usually a 3 node etcd cluster can survive losing one
+node and recover. However, losing a second node at the same time or even having
+a network partition between them will result in quorum lost.</p>
+<h2 id="bind-etcd-ips-to-kubernetes-service">Bind Etcd IPs to Kubernetes Service</h2>
+<p>Kubernetes external services use a DNS name to reference external endpoints,
+making them easy to reference from inside the cluster.  You can use the example
+from the <a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc">helper github
+repository</a>
+to deploy the external Service. Using an external service can make monitoring
+of etcd from Prometheus easier.</p>
+
+</div>
+
+
+
+
+
+</div>
+
 <h2 id="using-etcd-with-storageos">Using Etcd with StorageOS</h2>
-<p>During installation of StorageOS the <code>kvBackend</code> parameters of the StorageOS
-operator are used to specify the address of the etcd cluster. See the
-<a href="/docs/reference/cluster-operator/examples/">StorageOS cluster operator
-configuration</a> examples for more
-information.</p>
+<p>During installation of StorageOS the <code>kvBackend.address</code> parameter of the StorageOS
+operator is used to specify the address of the etcd cluster. See the
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/examples/#installing-with-an-external-etcd">StorageOS cluster operator configuration</a> examples for more information.</p>
 
 	
 	

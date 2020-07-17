@@ -5398,6 +5398,46 @@ Blog&lt;/a&gt; for details.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Docs: Resource Requests and Limits</title>
+      <link>https://docs.storageos.com/docs/reference/resource_requests_and_limits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/resource_requests_and_limits/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;managing-resources-for-storageos-containers&#34;&gt;Managing Resources for StorageOS containers&lt;/h2&gt;
+&lt;p&gt;Kubernetes resource requests and limits are two optional Pod properties that
+allow you to specify how much of a resource a container in a Pod needs or can
+use. They are two main resources that you can specify requests and limits for,
+CPU and Memory.&lt;/p&gt;
+&lt;p&gt;As StorageOS is an infrastructure component, the health of other applications
+depends on being able to write to the StorageOS volumes. As such it is of
+paramount importance to avoid restarts of the StorageOS DaemonSet Pods.
+Restarting a StorageOS Pod results in the volumes of the node the StorageOS Pod
+is running on being marked as Read Only, and causes the failover of primary
+volumes on that node to their replicas. After a StorageOS Pod restart, once the
+StorageOS DaemonSet Pod is &amp;ldquo;READY&amp;rdquo;, the application Pods running on the node
+need to be restarted in order to trigger a mount of the filesystem hosted on
+the StorageOS volume and resume normal operations. To avoid restarts of the
+StorageOS main container by Kubernetes due to resource limits being reached, it
+is recommended to not set resource limits on the StorageOS DaemonSet. In
+addition to avoiding resource limits, StorageOS uses a &lt;a href=&#34;https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass&#34;&gt;high priority
+class&lt;/a&gt;
+when the DaemonSet is installed in the &amp;lsquo;kube-system&amp;rsquo; namespace. That avoids the
+DaemonSet Pods of being evicted.&lt;/p&gt;
+&lt;p&gt;For more information about managing resources for containers please see the
+&lt;a href=&#34;https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/&#34;&gt;Kubernetes
+documentation&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;defining-pod-resource-requests-and-reservations&#34;&gt;Defining Pod resource requests and reservations&lt;/h2&gt;
+&lt;p&gt;To add resource requests and reservations to the StorageOS DaemonSet &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/#defining-pod-resource-requests-and-reservations&#34;&gt;configure
+them in the StorageOSCluster
+resource&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: StorageOS Telemetry</title>
       <link>https://docs.storageos.com/docs/reference/telemetry/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

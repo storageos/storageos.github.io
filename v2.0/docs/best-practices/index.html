@@ -30,7 +30,7 @@ It is highly recommended to use external etcd for cloud environments and place t
 <meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
 
-<meta itemprop="wordCount" content="645">
+<meta itemprop="wordCount" content="657">
 
 
 
@@ -185,7 +185,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.dafdc76c9cb017cd82dad61ec954a08dd60017f0c0fdc0e1a743f8b101c323fb15fa03de887c8d372f6a33da8016951806cf87326e4b4301e787655ae2a60f8b.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.ab46d88a82976636bfb8f28eb5082364c4bddd062f4913d910dc6e26bf46d1c87d1ef0527407ae9f6e9f898806ec20945b6e6dbeb624b35ff0e94112ee25eb90.json"
   data-offline-search-base-href="/"
 >
 
@@ -219,7 +219,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.dafdc76c9cb017cd82dad61ec954a08dd60017f0c0fdc0e1a743f8b101c323fb15fa03de887c8d372f6a33da8016951806cf87326e4b4301e787655ae2a60f8b.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.ab46d88a82976636bfb8f28eb5082364c4bddd062f4913d910dc6e26bf46d1c87d1ef0527407ae9f6e9f898806ec20945b6e6dbeb624b35ff0e94112ee25eb90.json"
   data-offline-search-base-href="/"
 >
 
@@ -1048,14 +1048,15 @@ details.</p>
 <h2 id="resource-reservations">Resource reservations</h2>
 <p>StorageOS resource consumption depends on the workloads and the StorageOS
 features in use.</p>
-<p>For production environments, it is recommended to test StorageOS using
-realistic workloads and tune resources accordingly.</p>
-<p>The recommended minimum memory reservation for the StorageOS Pods is 235Mb.
-However it is recommended to prepare nodes so StorageOS can operate with at
-least with 1-2GB of memory. StorageOS frees memory when possible.</p>
+<p>The recommended minimum memory reservation for the StorageOS Pods is 512MB for
+non-production environments. However it is recommended to prepare nodes so
+StorageOS can operate with at least with 1-2GB of memory. StorageOS frees
+memory when possible.</p>
+<p>For production environments, we recommend 4GB of Memory and 1 CPU as a minimum
+and to test StorageOS using realistic workloads and tune resources accordingly.</p>
 <p>StorageOS Pods resource allocation will impact directly on the availability of
-volumes in case of eviction or resource limit triggered restart. It is recommended
-to not limit StorageOS Pods.</p>
+volumes in case of eviction or resource limit triggered restart. It is
+recommended to not limit StorageOS Pods.</p>
 <p>StorageOS implements a storage engine, therefore limiting CPU consumption might
 affect the I/O throughput of your volumes.</p>
 <h2 id="storageos-api-usernamepassword">StorageOS API username/password</h2>

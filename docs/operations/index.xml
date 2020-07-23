@@ -449,14 +449,17 @@ run unlicensed for 24 hours. After that, new operations such as volume
 provisioning or adding nodes are not permitted. Normal functioning of the
 cluster can be unlocked by applying for a Free Developer licence.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-a-developer-licence-via-the-gui&#34;&gt;Obtaining a Developer licence via the GUI&lt;/h2&gt;
+&lt;p&gt;You will need access to the StorageOS GUI on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl port-forward -n kube-system svc/storageos &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5705&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an alternative, an Ingress controller may be preferred.&lt;/p&gt;
+&lt;p&gt;Once you have obtained access to the GUI, login using whatever credentials you
+used to create the cluster.&lt;/p&gt;
 &lt;p&gt;You can obtain and apply a free Developer licence in the StorageOS web GUI by
 creating or logging in with a StorageOS account on the StorageOS portal via the
-licence page of the StorageOS web GUI:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;You can access the &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui/&#34;&gt;GUI&lt;/a&gt; on any node
-running the StorageOS Daemonset on the port 5705. Whether using an Ingress
-route or port-forwarding.&lt;/p&gt;
-&lt;/blockquote&gt;
+licence page of the GUI:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/licence-login.png&#34; alt=&#34;Licence Login&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible.&lt;/p&gt;
@@ -1114,12 +1117,12 @@ recoverable.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;There are two ways to remove the StorageOS data directory:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Login in to the hosts and execute the following commands&lt;/p&gt;
+&lt;p&gt;(Option 1) Login in to the hosts and execute the following commands&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ sudo rm -rf /var/lib/storageos
 $ sudo umount /var/lib/kubelet/plugins_registry/storageos
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Execute the following command to deploy a DaemonSet that removes the
+&lt;p&gt;(Option 2) Execute the following command to deploy a DaemonSet that removes the
 StorageOS data directory.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;N.B This step is irreversible and once the data is removed it cannot

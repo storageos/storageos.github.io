@@ -22,22 +22,22 @@
 
 <title>Licensing | </title><meta property="og:title" content="Licensing" />
 <meta property="og:description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:" />
+Obtaining a Developer licence via the GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/licensing/" />
 
 <meta itemprop="name" content="Licensing">
 <meta itemprop="description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:">
+Obtaining a Developer licence via the GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):">
 
-<meta itemprop="wordCount" content="319">
+<meta itemprop="wordCount" content="371">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Licensing"/>
 <meta name="twitter:description" content="A newly installed StorageOS cluster does not include a licence. A cluster can run unlicensed for 24 hours. After that, new operations such as volume provisioning or adding nodes are not permitted. Normal functioning of the cluster can be unlocked by applying for a Free Developer licence.
-Obtaining a Developer licence via the GUI You can obtain and apply a free Developer licence in the StorageOS web GUI by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI:"/>
+Obtaining a Developer licence via the GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):"/>
 
 
 
@@ -187,7 +187,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dc2d10b88db477b038f55ad707dcdd5546007944419ddf0bae61bb624f62d06ad0fb9aa402aca62999cda4a0becbaab50925da57d3b16a91695ef88dd6cc753b.json"
+  data-offline-search-index-json-src="/offline-search-index.1651d651a3780bce7af446018dea185822f301378370e0deb7e9f84b9a53d3b7088783d04a77684c9715e4c56af75dd21dcf9989354c7956fce4aa257f72858e.json"
   data-offline-search-base-href="/"
 >
 
@@ -221,7 +221,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a free Develo
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.dc2d10b88db477b038f55ad707dcdd5546007944419ddf0bae61bb624f62d06ad0fb9aa402aca62999cda4a0becbaab50925da57d3b16a91695ef88dd6cc753b.json"
+  data-offline-search-index-json-src="/offline-search-index.1651d651a3780bce7af446018dea185822f301378370e0deb7e9f84b9a53d3b7088783d04a77684c9715e4c56af75dd21dcf9989354c7956fce4aa257f72858e.json"
   data-offline-search-base-href="/"
 >
 
@@ -1054,14 +1054,17 @@ run unlicensed for 24 hours. After that, new operations such as volume
 provisioning or adding nodes are not permitted. Normal functioning of the
 cluster can be unlocked by applying for a Free Developer licence.</p>
 <h2 id="obtaining-a-developer-licence-via-the-gui">Obtaining a Developer licence via the GUI</h2>
+<p>You will need access to the StorageOS GUI on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl port-forward -n kube-system svc/storageos <span style="color:#0000cf;font-weight:bold">5705</span>
+</code></pre></div><p>As an alternative, an Ingress controller may be preferred.</p>
+<p>Once you have obtained access to the GUI, login using whatever credentials you
+used to create the cluster.</p>
 <p>You can obtain and apply a free Developer licence in the StorageOS web GUI by
 creating or logging in with a StorageOS account on the StorageOS portal via the
-licence page of the StorageOS web GUI:</p>
-<blockquote>
-<p>You can access the <a href="https://docs.storageos.com/docs/reference/gui/">GUI</a> on any node
-running the StorageOS Daemonset on the port 5705. Whether using an Ingress
-route or port-forwarding.</p>
-</blockquote>
+licence page of the GUI:</p>
 <p><img src="/images/docs/operations/licensing/licence-login.png" alt="Licence Login"></p>
 <p>Wait a few seconds for the licence generation process to complete, at which
 point your licence will be visible.</p>

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -44,6 +44,8 @@ Keys and Initialisation vectors are generated using the crypto/rand package.
 StorageOS encrypts volumes on disk using AES-256 in XTS-AES mode with 512 bit keys as recommended by NIST, with encryption keys being derived using HKDF.
 Keys and Initialisation vectors are generated using the crypto/rand package.
    Key Size Usage     Volume 512 bits random data Used by XTS-AES to encrypt and decrypt disk blocks   Namespace 256 bits random data Used to encrypt Volume keys   Initialisation Vector 256 bits random data Used as &lsquo;salt&rsquo; when encrypting volume keys with namespace keys    The components required to derive the encryption key are stored in a Kubernetes secret."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

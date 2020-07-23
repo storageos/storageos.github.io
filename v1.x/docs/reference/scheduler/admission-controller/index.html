@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -41,6 +41,8 @@ During Pod creation, Kubernetes sends a web request to the StorageOS WebHook wit
 <meta name="twitter:description" content="StorageOS implements a MutatingAdmissionWebhook Admission Controller to ensure that Pods using StorageOS Volumes use the storageos-scheduler. An admission controller intercepts requests to the Kubernetes API server prior to persistence of the object, but after the request is authenticated and authorized.
 The Admission Controller is responsible for mutating the PodSpec at creation time to populate the PodSpec.schedulerName field with the name of the StorageOS Scheduler - storageos-scheduler.
 During Pod creation, Kubernetes sends a web request to the StorageOS WebHook with the Pod specification."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

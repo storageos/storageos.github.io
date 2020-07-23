@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -41,6 +41,8 @@ kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34
 <meta name="twitter:description" content="Before deploying a StorageOS cluster, create a Secret to define the StorageOS API Username and Password in base64 encoding.
 kubectl create -f - &lt;&lt;END apiVersion: v1 kind: Secret metadata: name: &#34;storageos-api&#34; namespace: &#34;storageos-operator&#34; labels: app: &#34;storageos&#34; type: &#34;kubernetes.io/storageos&#34; data: # echo -n &#39;&lt;secret&gt;&#39; | base64 apiUsername: c3RvcmFnZW9z apiPassword: c3RvcmFnZW9z END This example contains a default password, for production installations, use a unique, strong password.
  Make sure that the encoding of the credentials doesn&rsquo;t have special characters such as &lsquo;\n&rsquo;."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

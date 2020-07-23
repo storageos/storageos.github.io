@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -41,6 +41,8 @@ apiVersion: v1 kind: PersistentVolumeClaim metadata: name: pvc-1 spec: storageCl
 <meta name="twitter:description" content="StorageOS supports offline resize of volumes through editing a PVC storage request, or by updating the volume config via the CLI or UI. Please note that StorageOS only supports increasing volume size. For more information about how the resize works please see our Resize concepts page.
 Resizing a Volume In order to resize a PVC the storage request field must be updated.
 apiVersion: v1 kind: PersistentVolumeClaim metadata: name: pvc-1 spec: storageClassName: fast accessModes: - ReadWriteOnce resources: requests: storage: 5Gi In order to edit a PVC you can use kubectl edit or kubectl apply to make changes."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

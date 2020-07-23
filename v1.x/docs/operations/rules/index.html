@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -47,6 +47,8 @@ Create a rule that configures 2 replicas for volumes with the label env=prod:
 $ storageos rule create --namespace default --selector &#39;env==prod&#39; --label storageos.com/replicas=2 replicator default/replicator Optional parameters Rules also accept the optional parameters --action and --weight.
 -a, --action string Rule action (add|remove) (default &quot;add&quot;)
 Where multiple rules apply to the same label, a weight is used to determine the order of evaluation."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

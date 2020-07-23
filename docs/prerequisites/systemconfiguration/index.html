@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="generator" content="Hugo 0.64.1" />
 
-<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
 
 
@@ -41,6 +41,8 @@ We require the following modules to be loaded:
 <meta name="twitter:description" content="StorageOS requires certain kernel modules to function, in particular Linux-IO , an open-source implementation of the SCSI target.
 We require the following modules to be loaded:
  target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE. However if StorageOS is started first there is no mechanism for StorageOS to fallback to FUSE if another application begins to use TCMU."/>
+
+
 
 <link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
 

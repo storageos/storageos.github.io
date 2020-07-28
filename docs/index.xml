@@ -3342,7 +3342,7 @@ as such is not suitable for production workloads. However, for evaluation
 purposes it should be sufficient. For production deployments, please see our
 main &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;documentation pages&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A standard StorageOS installation uses the StorageOS operator, which performs
-most platform-specifc configuration for you. The StorageOS operator has been
+most platform-specific configuration for you. The StorageOS operator has been
 certified by &lt;a href=&#34;https://storageos.com/red-hat/&#34;&gt;Red Hat&lt;/a&gt; and is &lt;a href=&#34;https://github.com/storageos/cluster-operator&#34;&gt;open
 source&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;The basic installation steps are:&lt;/p&gt;
@@ -3377,7 +3377,7 @@ choice before running.&lt;/p&gt;
 &lt;p&gt;Run the following command where &lt;code&gt;kubectl&lt;/code&gt; is installed and with the context
 set for your Kubernetes cluster&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -s https://docs.storageos.com/sh/deploy-storageos-cluster.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; bash
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -sL https://storageos.run &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; bash
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that this script deploys a cluster with etcd on transient storage,
 &lt;strong&gt;suitable for evaluation purposes only&lt;/strong&gt;. Do not use this cluster for
 production workloads.&lt;/p&gt;
@@ -3794,140 +3794,87 @@ root@replicated-pod:/# cat /mnt/hello
 &lt;/ol&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;h1 id=&#34;a-namebenchmarkingabenchmarking&#34;&gt;&lt;a name=&#39;Benchmarking&#39;&gt;&lt;/a&gt;Benchmarking&lt;/h1&gt;
-&lt;p&gt;As a rule the best performance is obtained by using unreplicated volumes that
-are co-located with the application or benchmarking tool writing to the volume.
-See Volume Placement below for more information.&lt;/p&gt;
-&lt;p&gt;When running benchmarks in the cloud, benchmarks need to be run multiple times
-and nodes should be destroyed and recreated so that the underlying machine
-changes. This should be done to reduce the impact that noisy neighbours might
-have on benchmark results.&lt;/p&gt;
+&lt;p&gt;Benchmarking storage is a complex topic. Considering the many books and papers
+that have been written about benchmarking, we could write many paragraphs here
+and only begin to scratch the surface.&lt;/p&gt;
+&lt;p&gt;Taking this complexity into account we present recipes for both synthetic
+benchmarks using &lt;a href=&#34;https://github.com/axboe/fio&#34;&gt;FIO&lt;/a&gt;, and a sample application
+benchmark to test PostgreSQL using
+&lt;a href=&#34;https://www.postgresql.org/docs/current/pgbench.html&#34;&gt;pgbench&lt;/a&gt;. The approaches
+are complementary - synthetic benchmarks allow us to strictly control the
+parameters of the IO we put through the system in order to stress various
+aspects of it. Application benchmarks allow us to get a sense of the
+performance of the system when running an actual representative workload -
+which of course is the ultimate arbiter of performance.&lt;/p&gt;
+&lt;p&gt;Despite the inherent complexity of benchmarking storage there are a few general
+considerations to keep in mind.&lt;/p&gt;
 &lt;h2 id=&#34;a-nameconsiderationsaconsiderations&#34;&gt;&lt;a name=&#39;Considerations&#39;&gt;&lt;/a&gt;Considerations&lt;/h2&gt;
-&lt;h3 id=&#34;a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication&#34;&gt;&lt;a name=&#39;ApplicationvsStorageOSreplication&#39;&gt;&lt;/a&gt;Application vs StorageOS replication&lt;/h3&gt;
-&lt;p&gt;Certain applications are able to natively replicate or shard data between
-application instances. When using these applications it is worth considering
-whether application replication, StorageOS replication or a mixture of both
-should be used.&lt;/p&gt;
-&lt;p&gt;When StorageOS replication is enabled the time to recover in cases of node
-failure can be lessened. This is because StorageOS will promote a replica,
-Kubernetes will reschedule the application instance and the amount of data the
-application needs to catch up on is limited to whatever data was modified while
-the application was being rescheduled. Without StorageOS replication the
-application would have to rebuild an entire copy of data. Some applications
-have their performance greatly impacted by having to rebuild shards/replicas so
-this is also avoided.&lt;/p&gt;
-&lt;h3 id=&#34;a-namestatefulsetsastatefulsets&#34;&gt;&lt;a name=&#39;StatefulSets&#39;&gt;&lt;/a&gt;StatefulSets&lt;/h3&gt;
-&lt;p&gt;StatefulSets are the de facto controller for stateful applications. As such,
-when deploying applications that will use StorageOS volumes, StatefulSets
-should be used. You can find more information about StatefulSets
-&lt;a href=&#34;https://docs.storageos.com/docs/usecases/kubernetes/#statefulsets&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;a-namevolumeplacementavolume-placement&#34;&gt;&lt;a name=&#39;VolumePlacement&#39;&gt;&lt;/a&gt;Volume Placement&lt;/h3&gt;
-&lt;p&gt;StorageOS volumes give the best performance when the application pod and the
-master volume are co-located on the same node. When benchmarking applications,
-it is useful to take into account that using remote volumes and replicas impact
-the overall performance of a volume.&lt;/p&gt;
-&lt;p&gt;Going from 0 to 1 replica has the greatest performance impact for writes as now
-the latency of the operation is equal to the round trip time to the node with
-the replica over the network. Adding additional replicas poses less of a
-performance impact as writes to replicas are done in parallel, and the round
-trip time to each node is unlikely to greatly increase unless replicas land on
-nodes that are geographically distant to the master volumes&amp;rsquo; node.&lt;/p&gt;
-&lt;p&gt;Even when volumes are replicated co-location of pod and master volume is still
-desirable because application writes are first sent to the master and then sent
-from the master volume to the replicas. Writing to a local master therefore
-saves network latency between the application and the master volume. As reads
-are always served from the master volume a remote master volume will add
-latency to reads as well as writes.&lt;/p&gt;
-&lt;p&gt;When testing applications, such as databases, it is also necessary to run
-benchmarks for a sufficiently long time to account for caching, and cache
-flushing that databases do. We recommend running application benchmarks over a
-20-30min period for this reason.&lt;/p&gt;
-&lt;h4 id=&#34;a-namehowtolandavolumeandapodonthesamenodeahow-to-land-a-volume-and-a-pod-on-the-same-node&#34;&gt;&lt;a name=&#39;Howtolandavolumeandapodonthesamenode&#39;&gt;&lt;/a&gt;How to land a volume and a pod on the same node&lt;/h4&gt;
-&lt;p&gt;StorageOS has an automatic co-location feature on our development roadmap that
-we are calling pod locality. Until the feature is GA co-location of a master
-volume and a pod can be achieved by leveraging existing StorageOS and
-Kubernetes features.&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;storageos.com/hint.master&lt;/code&gt; is a volume label that influences the placement of
-a StorageOS master volume. By setting this label to the StorageOS nodeID that
-corresponds to the &lt;code&gt;nodeSelector&lt;/code&gt; on a StatefulSet or Pod the master volume and
-the pod should co-locate on the same node. You can reference our &lt;a href=&#34;https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml&#34;&gt;FIO local
-volumes
-job&lt;/a&gt;
-for an example of how to do this.  &lt;/p&gt;
+&lt;h3 id=&#34;a-namevolumeplacementalocal-vs-remote-volumes&#34;&gt;&lt;a name=&#39;VolumePlacement&#39;&gt;&lt;/a&gt;Local vs. Remote Volumes&lt;/h3&gt;
+&lt;p&gt;When a workload is placed on the same node as a volume, there is no network
+round trip for IO, and performance is consequently improved. When considering
+the performance of StorageOS it is important to evaluate both local and remote
+volumes; since for certain workloads we want the high performance of a local
+attachment, but we also desire the flexibility of knowing that our less
+performance-sensitive workloads can run from any node in the cluster.&lt;/p&gt;
+&lt;h3 id=&#34;a-namereplicationathe-effect-of-synchronous-replication&#34;&gt;&lt;a name=&#39;Replication&#39;&gt;&lt;/a&gt;The Effect of Synchronous Replication&lt;/h3&gt;
+&lt;p&gt;Synchronous replication does not impact the read performance of a volume, but
+it can have a significant impact on the write performance of the volume, since
+all writes must be propagated to replicas before being acked to the
+application. The impact varies in proportion to the inter-node latency. For an
+inter-node latency of 1ms, we have a max ceiling of 1000 write IOPS, and in
+reality a little less than that to allow for processing time on the nodes. This
+is less concerning then it may first appear, since many applications will issue
+multiple writes in parallel (known as increasing the queue depth).&lt;/p&gt;
 &lt;h2 id=&#34;a-namesyntheticbenchmarksasynthetic-benchmarks&#34;&gt;&lt;a name=&#39;SyntheticBenchmarks&#39;&gt;&lt;/a&gt;Synthetic Benchmarks&lt;/h2&gt;
+&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubernetes cluster with a minimum of 3 nodes and a minimum of
+30 Gb available capacity&lt;/li&gt;
+&lt;li&gt;StorageOS CLI running as a pod in the cluster&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;Synthetic benchmarks using tools such as FIO are a useful way to begin
 measuring StorageOS performance. While not fully representative of application
 performance, they allow us to reason about the performance of storage devices
 without the added complexity of simulating real world workloads, and provide
 results easily comparable across platforms.&lt;/p&gt;
-&lt;p&gt;As with application benchmarks, when testing in public clouds multiple runs on
-newly created nodes should be considered to account for the impact of noisy
-neighbours.&lt;/p&gt;
-&lt;p&gt;StorageOS has created a test suite for running FIO tests against StorageOS
-volumes that can be found
-&lt;a href=&#34;https://github.com/storageos/use-cases/tree/master/FIO&#34;&gt;here&lt;/a&gt;. The test suite
-can be deployed into a Kubernetes cluster using the instructions below.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;Clone the StorageOS use cases repo.  Note this is the same repository that
-we cloned earlier so if you already have a copy just &lt;code&gt;cd storageos-usecases/FIO/local-volumes&lt;/code&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ git clone https://github.com/storageos/use-cases.git storageos-usecases
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Move into the FIO local-volumes folder&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos-usecases/FIO/local-volumes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Get the name of the node that you wish the FIO pods and volumes to be
-created on. Make sure that the node name and the label
-&lt;code&gt;kubernetes.io/hostname&lt;/code&gt; match and that the node has enough storage capacity
-to create 8Gi worth of volumes&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get node --show-labels
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Generate the FIO jobs by passing in the node name that the job should run
-on, and the StorageOS node ID for that node. The number is the number of
-volumes that FIO will test concurrently. The StorageOS node ID can be found
-using the cli to &lt;code&gt;describe node&lt;/code&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl -n kube-system &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; cli -- storageos describe node
-
-$ ./job-generator-per-volumecount.sh &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$NODE_NAME&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;$STORAGEOS_NODEID&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Upload the FIO profiles as ConfigMaps&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ ./upload-fio-profiles.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Run the FIO tests&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl create -f ./jobs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Check the PVCs have been provisioned&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get pvc
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Use the StorageOS CLI to check the location of the volumes&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl -n kube-system &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; cli -- storageos get volumes
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Verify that the Pod is running on the same node&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get pod -owide
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
 &lt;p&gt;FIO has a number of parameters that can be adjusted to simulate a variety of
-workloads and configurations. Particularly the queue depth, block size and the
-number of volumes used affect the FIO results. To tune the FIO parameters the
-profiles file can be edited or the ConfigMap that is created from the profiles
-file can be edited directly.&lt;/p&gt;
-&lt;p&gt;StorageOS configuration also affects the overall volume performance. For
-example adding a replica to a volume will increase the latency for writes and
-affect IOPS and bandwidth for the volume.&lt;/p&gt;
-&lt;p&gt;To see the effect a StorageOS replica has on performance rerun an FIO test but
-add the &lt;code&gt;storageos.com/replicas: &amp;quot;1&amp;quot;&lt;/code&gt; label to the PersistentVolumeClaims in
-the jobs spec. The greatest performance impact from adding replicas comes when
-moving from 0 to 1 replica. Adding additional replicas does not incur a
-significant performance penalty.&lt;/p&gt;
-&lt;p&gt;The remote volumes folder contains a guide for performing the same FIO tests
-against remote volumes.  &lt;/p&gt;
+workloads and configurations. Parameters that are particularly important are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Block Size&lt;/strong&gt; - the size of the IO units performed.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Queue Depth&lt;/strong&gt; - the amount of concurrent IOs in flight&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IO Pattern&lt;/strong&gt; - access can be random across the disk, or sequentially. IO
+subsystems typically perform better with sequential IO, because of the
+effect of read ahead caches, and other factors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For this self-evaluation we will run a set of tests based on the excellent
+&lt;a href=&#34;https://github.com/leeliu/dbench&#34;&gt;DBench&lt;/a&gt;, which distills the numerous FIO
+options into a series of well-crafted scenarios:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Random Read/Write IOPS and BW&lt;/strong&gt; - these tests measure the IOPS ceiling
+(with a 4k block size) and bandwidth ceiling (with a 128K block size) of the
+volume using a random IO pattern and high queue depth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Average Latency&lt;/strong&gt; - these tests measure the IO latency of the volume under
+favourable conditions using a random access pattern, low queue depth and low
+block size&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sequential Read/Write&lt;/strong&gt; - these tests measure the sequential read/write
+throughput of the volume with a high queue depth and high block size&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mixed Random Read/Write IOPS&lt;/strong&gt; - these tests measure the performance of the
+volume under a 60/40 read/write workload using a random access pattern and
+low blocksize&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For convenience we present a single script to run the scenarios using local and
+remote volumes both with and without a replica. Deploy the FIO tests for the
+four scenarios using the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;curl -sL https://docs.storageos.com/sh/deploy-synthetic-benchmarks.sh &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; bash
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The script will take approximately 20 minutes to complete, and will print the
+results to STDOUT.&lt;/p&gt;
+&lt;p&gt;The exact results observed will depend on the particular platform and
+environment, but the following trends should be observable:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;local volumes perform faster than remote volumes&lt;/li&gt;
+&lt;li&gt;read performance is independent of the number of replicas&lt;/li&gt;
+&lt;li&gt;write performance is dependent on the number of replicas&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;a-nameapplicationbenchmarksaapplication-benchmarks&#34;&gt;&lt;a name=&#39;ApplicationBenchmarks&#39;&gt;&lt;/a&gt;Application Benchmarks&lt;/h2&gt;
 &lt;p&gt;While synthetic benchmarks are useful for examining the behaviour of StorageOS
 with very specific workloads, in order to get a realistic picture of StorageOS
@@ -3980,7 +3927,7 @@ Please keep in mind that benchmarks are only part of the story and that there
 is no replacement for testing actual production or production like workloads.&lt;/p&gt;
 &lt;p&gt;StorageOS invites you to provide feedback on your self-evaluation to the &lt;a href=&#34;https://storageos.slack.com&#34;&gt;slack
 channel&lt;/a&gt; or by directly emailing us at
-&lt;a href=&#34;mailto:info@storageos.com&#34;&gt;info@storageos.com&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;mailto:info@storageos.com&#34;&gt;info@storageos.com&lt;/a&gt;]&lt;/p&gt;
 
       </description>
     </item>

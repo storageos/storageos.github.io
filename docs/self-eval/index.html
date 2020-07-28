@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.69.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Step-by-step guide to installing and evaluating StorageOS
 ">
 
-<meta itemprop="wordCount" content="3279">
+<meta itemprop="wordCount" content="2929">
 
 
 
@@ -45,8 +45,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" as="style">
+<link href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -187,7 +187,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a21bdedfb43708c6aa0e4222507febc5cce96ed9b902843bb1916f6224194bfbee6722e022767e5e5ff6c58d1375955f8087edc21542b9ca5ea3c794ce03c82d.json"
+  data-offline-search-index-json-src="/offline-search-index.809b2a535a13722ebe067174bf6a015dcc0c2c2b5d4b013750292d691a19e658cb14fa95f595878b30e840e4fb605dd65e3881148fbd7e3e8f6769beeff4bc7e.json"
   data-offline-search-base-href="/"
 >
 
@@ -221,7 +221,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.a21bdedfb43708c6aa0e4222507febc5cce96ed9b902843bb1916f6224194bfbee6722e022767e5e5ff6c58d1375955f8087edc21542b9ca5ea3c794ce03c82d.json"
+  data-offline-search-index-json-src="/offline-search-index.809b2a535a13722ebe067174bf6a015dcc0c2c2b5d4b013750292d691a19e658cb14fa95f595878b30e840e4fb605dd65e3881148fbd7e3e8f6769beeff4bc7e.json"
   data-offline-search-base-href="/"
 >
 
@@ -719,6 +719,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesprometheus" href="/docs/usecases/prometheus/">Prometheus</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesredis" href="/docs/usecases/redis/">Redis</a>
       
       
@@ -1001,33 +1007,36 @@
   </ul>
 
   <ul>
-    <li><a href="#a-nameprerequisitesaprerequisites">Prerequisites</a></li>
-    <li><a href="#a-namequick-installationaquick-installation">Quick Installation</a></li>
-    <li><a href="#a-namestepbystepainstalling-storageos-step-by-step">Installing StorageOS Step By Step</a>
+    <li><a href="#a-nameprerequisitesaprerequisites"><a name='Prerequisites'></a>Prerequisites</a></li>
+    <li><a href="#a-namequick-installationaquick-installation"><a name='Quick Installation'></a>Quick Installation</a></li>
+    <li><a href="#a-namestepbystepainstalling-storageos-step-by-step"><a name='StepByStep'></a>Installing StorageOS Step By Step</a>
       <ul>
-        <li><a href="#a-nameinstalletcdainstall-etcd">Install etcd</a></li>
+        <li><a href="#a-nameinstalletcdainstall-etcd"><a name='Installetcd'></a>Install etcd</a></li>
       </ul>
     </li>
-    <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator">Install StorageOS Operator</a></li>
-    <li><a href="#a-nameinstallstorageosainstall-storageos">Install StorageOS</a></li>
-    <li><a href="#a-namestorageosvolumeaprovision-a-storageos-volume">Provision a StorageOS Volume</a></li>
-    <li><a href="#a-namelicenseclusteralicense-cluster">License cluster</a></li>
+    <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</a></li>
+    <li><a href="#a-nameinstallstorageosainstall-storageos"><a name='InstallStorageOS'></a>Install StorageOS</a></li>
+    <li><a href="#a-namestorageosvolumeaprovision-a-storageos-volume"><a name='StorageOSVolume'></a>Provision a StorageOS Volume</a></li>
+    <li><a href="#a-namelicenseclusteralicense-cluster"><a name='LicenseCluster'></a>License cluster</a></li>
   </ul>
 
   <ul>
-    <li><a href="#a-namevolumereplicationavolume-replication">Volume Replication</a></li>
+    <li><a href="#a-namevolumereplicationavolume-replication"><a name='VolumeReplication'></a>Volume Replication</a></li>
   </ul>
 
   <ul>
-    <li><a href="#a-nameconsiderationsaconsiderations">Considerations</a>
+    <li><a href="#a-nameconsiderationsaconsiderations"><a name='Considerations'></a>Considerations</a>
       <ul>
-        <li><a href="#a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication">Application vs StorageOS replication</a></li>
-        <li><a href="#a-namestatefulsetsastatefulsets">StatefulSets</a></li>
-        <li><a href="#a-namevolumeplacementavolume-placement">Volume Placement</a></li>
+        <li><a href="#a-namevolumeplacementalocal-vs-remote-volumes"><a name='VolumePlacement'></a>Local vs. Remote Volumes</a></li>
+        <li><a href="#a-namereplicationathe-effect-of-synchronous-replication"><a name='Replication'></a>The Effect of Synchronous Replication</a></li>
       </ul>
     </li>
-    <li><a href="#a-namesyntheticbenchmarksasynthetic-benchmarks">Synthetic Benchmarks</a></li>
-    <li><a href="#a-nameapplicationbenchmarksaapplication-benchmarks">Application Benchmarks</a></li>
+    <li><a href="#a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-nameapplicationbenchmarksaapplication-benchmarks"><a name='ApplicationBenchmarks'></a>Application Benchmarks</a></li>
   </ul>
 </nav>
 
@@ -1102,7 +1111,7 @@ as such is not suitable for production workloads. However, for evaluation
 purposes it should be sufficient. For production deployments, please see our
 main <a href="https://docs.storageos.com/docs/prerequisites/etcd/">documentation pages</a>.</p>
 <p>A standard StorageOS installation uses the StorageOS operator, which performs
-most platform-specifc configuration for you. The StorageOS operator has been
+most platform-specific configuration for you. The StorageOS operator has been
 certified by <a href="https://storageos.com/red-hat/">Red Hat</a> and is <a href="https://github.com/storageos/cluster-operator">open
 source</a>.</p>
 <p>The basic installation steps are:</p>
@@ -1137,7 +1146,7 @@ choice before running.</p>
 <p>Run the following command where <code>kubectl</code> is installed and with the context
 set for your Kubernetes cluster</p>
 </blockquote>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -s https://docs.storageos.com/sh/deploy-storageos-cluster.sh <span style="color:#000;font-weight:bold">|</span> bash
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sL https://storageos.run <span style="color:#000;font-weight:bold">|</span> bash
 </code></pre></div><p>Note that this script deploys a cluster with etcd on transient storage,
 <strong>suitable for evaluation purposes only</strong>. Do not use this cluster for
 production workloads.</p>
@@ -1270,13 +1279,13 @@ resource please see
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># CSI Credentials</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1296,21 +1305,21 @@ resource please see
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos.com/v1<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StorageOSCluster<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example-storageoscluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example-storageoscluster<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;upstream&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># storageClassName: fast # The storage class creates by the StorageOS operator is configurable</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csi</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">deploymentStrategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;deployment&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableProvisionCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableControllerPublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableNodePublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">kvBackend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd-client.etcd.svc.cluster.local:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd-client.etcd.svc.cluster.local:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
@@ -1554,140 +1563,87 @@ root@replicated-pod:/# cat /mnt/hello
 </ol>
 <p> </p>
 <h1 id="a-namebenchmarkingabenchmarking"><a name='Benchmarking'></a>Benchmarking</h1>
-<p>As a rule the best performance is obtained by using unreplicated volumes that
-are co-located with the application or benchmarking tool writing to the volume.
-See Volume Placement below for more information.</p>
-<p>When running benchmarks in the cloud, benchmarks need to be run multiple times
-and nodes should be destroyed and recreated so that the underlying machine
-changes. This should be done to reduce the impact that noisy neighbours might
-have on benchmark results.</p>
+<p>Benchmarking storage is a complex topic. Considering the many books and papers
+that have been written about benchmarking, we could write many paragraphs here
+and only begin to scratch the surface.</p>
+<p>Taking this complexity into account we present recipes for both synthetic
+benchmarks using <a href="https://github.com/axboe/fio">FIO</a>, and a sample application
+benchmark to test PostgreSQL using
+<a href="https://www.postgresql.org/docs/current/pgbench.html">pgbench</a>. The approaches
+are complementary - synthetic benchmarks allow us to strictly control the
+parameters of the IO we put through the system in order to stress various
+aspects of it. Application benchmarks allow us to get a sense of the
+performance of the system when running an actual representative workload -
+which of course is the ultimate arbiter of performance.</p>
+<p>Despite the inherent complexity of benchmarking storage there are a few general
+considerations to keep in mind.</p>
 <h2 id="a-nameconsiderationsaconsiderations"><a name='Considerations'></a>Considerations</h2>
-<h3 id="a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication"><a name='ApplicationvsStorageOSreplication'></a>Application vs StorageOS replication</h3>
-<p>Certain applications are able to natively replicate or shard data between
-application instances. When using these applications it is worth considering
-whether application replication, StorageOS replication or a mixture of both
-should be used.</p>
-<p>When StorageOS replication is enabled the time to recover in cases of node
-failure can be lessened. This is because StorageOS will promote a replica,
-Kubernetes will reschedule the application instance and the amount of data the
-application needs to catch up on is limited to whatever data was modified while
-the application was being rescheduled. Without StorageOS replication the
-application would have to rebuild an entire copy of data. Some applications
-have their performance greatly impacted by having to rebuild shards/replicas so
-this is also avoided.</p>
-<h3 id="a-namestatefulsetsastatefulsets"><a name='StatefulSets'></a>StatefulSets</h3>
-<p>StatefulSets are the de facto controller for stateful applications. As such,
-when deploying applications that will use StorageOS volumes, StatefulSets
-should be used. You can find more information about StatefulSets
-<a href="https://docs.storageos.com/docs/usecases/kubernetes/#statefulsets">here</a>.</p>
-<h3 id="a-namevolumeplacementavolume-placement"><a name='VolumePlacement'></a>Volume Placement</h3>
-<p>StorageOS volumes give the best performance when the application pod and the
-master volume are co-located on the same node. When benchmarking applications,
-it is useful to take into account that using remote volumes and replicas impact
-the overall performance of a volume.</p>
-<p>Going from 0 to 1 replica has the greatest performance impact for writes as now
-the latency of the operation is equal to the round trip time to the node with
-the replica over the network. Adding additional replicas poses less of a
-performance impact as writes to replicas are done in parallel, and the round
-trip time to each node is unlikely to greatly increase unless replicas land on
-nodes that are geographically distant to the master volumes&rsquo; node.</p>
-<p>Even when volumes are replicated co-location of pod and master volume is still
-desirable because application writes are first sent to the master and then sent
-from the master volume to the replicas. Writing to a local master therefore
-saves network latency between the application and the master volume. As reads
-are always served from the master volume a remote master volume will add
-latency to reads as well as writes.</p>
-<p>When testing applications, such as databases, it is also necessary to run
-benchmarks for a sufficiently long time to account for caching, and cache
-flushing that databases do. We recommend running application benchmarks over a
-20-30min period for this reason.</p>
-<h4 id="a-namehowtolandavolumeandapodonthesamenodeahow-to-land-a-volume-and-a-pod-on-the-same-node"><a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node</h4>
-<p>StorageOS has an automatic co-location feature on our development roadmap that
-we are calling pod locality. Until the feature is GA co-location of a master
-volume and a pod can be achieved by leveraging existing StorageOS and
-Kubernetes features.</p>
-<p><code>storageos.com/hint.master</code> is a volume label that influences the placement of
-a StorageOS master volume. By setting this label to the StorageOS nodeID that
-corresponds to the <code>nodeSelector</code> on a StatefulSet or Pod the master volume and
-the pod should co-locate on the same node. You can reference our <a href="https://github.com/storageos/use-cases/blob/master/FIO/local-volumes/jobs/fio-4vol.yaml">FIO local
-volumes
-job</a>
-for an example of how to do this.  </p>
+<h3 id="a-namevolumeplacementalocal-vs-remote-volumes"><a name='VolumePlacement'></a>Local vs. Remote Volumes</h3>
+<p>When a workload is placed on the same node as a volume, there is no network
+round trip for IO, and performance is consequently improved. When considering
+the performance of StorageOS it is important to evaluate both local and remote
+volumes; since for certain workloads we want the high performance of a local
+attachment, but we also desire the flexibility of knowing that our less
+performance-sensitive workloads can run from any node in the cluster.</p>
+<h3 id="a-namereplicationathe-effect-of-synchronous-replication"><a name='Replication'></a>The Effect of Synchronous Replication</h3>
+<p>Synchronous replication does not impact the read performance of a volume, but
+it can have a significant impact on the write performance of the volume, since
+all writes must be propagated to replicas before being acked to the
+application. The impact varies in proportion to the inter-node latency. For an
+inter-node latency of 1ms, we have a max ceiling of 1000 write IOPS, and in
+reality a little less than that to allow for processing time on the nodes. This
+is less concerning then it may first appear, since many applications will issue
+multiple writes in parallel (known as increasing the queue depth).</p>
 <h2 id="a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Kubernetes cluster with a minimum of 3 nodes and a minimum of
+30 Gb available capacity</li>
+<li>StorageOS CLI running as a pod in the cluster</li>
+</ul>
 <p>Synthetic benchmarks using tools such as FIO are a useful way to begin
 measuring StorageOS performance. While not fully representative of application
 performance, they allow us to reason about the performance of storage devices
 without the added complexity of simulating real world workloads, and provide
 results easily comparable across platforms.</p>
-<p>As with application benchmarks, when testing in public clouds multiple runs on
-newly created nodes should be considered to account for the impact of noisy
-neighbours.</p>
-<p>StorageOS has created a test suite for running FIO tests against StorageOS
-volumes that can be found
-<a href="https://github.com/storageos/use-cases/tree/master/FIO">here</a>. The test suite
-can be deployed into a Kubernetes cluster using the instructions below.</p>
-<ol>
-<li>
-<p>Clone the StorageOS use cases repo.  Note this is the same repository that
-we cloned earlier so if you already have a copy just <code>cd storageos-usecases/FIO/local-volumes</code>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
-</code></pre></div></li>
-<li>
-<p>Move into the FIO local-volumes folder</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">cd</span> storageos-usecases/FIO/local-volumes
-</code></pre></div></li>
-<li>
-<p>Get the name of the node that you wish the FIO pods and volumes to be
-created on. Make sure that the node name and the label
-<code>kubernetes.io/hostname</code> match and that the node has enough storage capacity
-to create 8Gi worth of volumes</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get node --show-labels
-</code></pre></div></li>
-<li>
-<p>Generate the FIO jobs by passing in the node name that the job should run
-on, and the StorageOS node ID for that node. The number is the number of
-volumes that FIO will test concurrently. The StorageOS node ID can be found
-using the cli to <code>describe node</code></p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> cli -- storageos describe node
-
-$ ./job-generator-per-volumecount.sh <span style="color:#0000cf;font-weight:bold">4</span> <span style="color:#000">$NODE_NAME</span> <span style="color:#000">$STORAGEOS_NODEID</span>
-</code></pre></div></li>
-<li>
-<p>Upload the FIO profiles as ConfigMaps</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./upload-fio-profiles.sh
-</code></pre></div></li>
-<li>
-<p>Run the FIO tests</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f ./jobs
-</code></pre></div></li>
-<li>
-<p>Check the PVCs have been provisioned</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pvc
-</code></pre></div></li>
-<li>
-<p>Use the StorageOS CLI to check the location of the volumes</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> cli -- storageos get volumes
-</code></pre></div></li>
-<li>
-<p>Verify that the Pod is running on the same node</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod -owide
-</code></pre></div></li>
-</ol>
 <p>FIO has a number of parameters that can be adjusted to simulate a variety of
-workloads and configurations. Particularly the queue depth, block size and the
-number of volumes used affect the FIO results. To tune the FIO parameters the
-profiles file can be edited or the ConfigMap that is created from the profiles
-file can be edited directly.</p>
-<p>StorageOS configuration also affects the overall volume performance. For
-example adding a replica to a volume will increase the latency for writes and
-affect IOPS and bandwidth for the volume.</p>
-<p>To see the effect a StorageOS replica has on performance rerun an FIO test but
-add the <code>storageos.com/replicas: &quot;1&quot;</code> label to the PersistentVolumeClaims in
-the jobs spec. The greatest performance impact from adding replicas comes when
-moving from 0 to 1 replica. Adding additional replicas does not incur a
-significant performance penalty.</p>
-<p>The remote volumes folder contains a guide for performing the same FIO tests
-against remote volumes.  </p>
+workloads and configurations. Parameters that are particularly important are:</p>
+<ul>
+<li><strong>Block Size</strong> - the size of the IO units performed.</li>
+<li><strong>Queue Depth</strong> - the amount of concurrent IOs in flight</li>
+<li><strong>IO Pattern</strong> - access can be random across the disk, or sequentially. IO
+subsystems typically perform better with sequential IO, because of the
+effect of read ahead caches, and other factors</li>
+</ul>
+<p>For this self-evaluation we will run a set of tests based on the excellent
+<a href="https://github.com/leeliu/dbench">DBench</a>, which distills the numerous FIO
+options into a series of well-crafted scenarios:</p>
+<ul>
+<li><strong>Random Read/Write IOPS and BW</strong> - these tests measure the IOPS ceiling
+(with a 4k block size) and bandwidth ceiling (with a 128K block size) of the
+volume using a random IO pattern and high queue depth</li>
+<li><strong>Average Latency</strong> - these tests measure the IO latency of the volume under
+favourable conditions using a random access pattern, low queue depth and low
+block size</li>
+<li><strong>Sequential Read/Write</strong> - these tests measure the sequential read/write
+throughput of the volume with a high queue depth and high block size</li>
+<li><strong>Mixed Random Read/Write IOPS</strong> - these tests measure the performance of the
+volume under a 60/40 read/write workload using a random access pattern and
+low blocksize</li>
+</ul>
+<p>For convenience we present a single script to run the scenarios using local and
+remote volumes both with and without a replica. Deploy the FIO tests for the
+four scenarios using the following command:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sL https://docs.storageos.com/sh/deploy-synthetic-benchmarks.sh <span style="color:#000;font-weight:bold">|</span> bash
+</code></pre></div><p>The script will take approximately 20 minutes to complete, and will print the
+results to STDOUT.</p>
+<p>The exact results observed will depend on the particular platform and
+environment, but the following trends should be observable:</p>
+<ul>
+<li>local volumes perform faster than remote volumes</li>
+<li>read performance is independent of the number of replicas</li>
+<li>write performance is dependent on the number of replicas</li>
+</ul>
 <h2 id="a-nameapplicationbenchmarksaapplication-benchmarks"><a name='ApplicationBenchmarks'></a>Application Benchmarks</h2>
 <p>While synthetic benchmarks are useful for examining the behaviour of StorageOS
 with very specific workloads, in order to get a realistic picture of StorageOS
@@ -1740,7 +1696,7 @@ Please keep in mind that benchmarks are only part of the story and that there
 is no replacement for testing actual production or production like workloads.</p>
 <p>StorageOS invites you to provide feedback on your self-evaluation to the <a href="https://storageos.slack.com">slack
 channel</a> or by directly emailing us at
-<a href="mailto:info@storageos.com">info@storageos.com</a></p>
+<a href="mailto:info@storageos.com">info@storageos.com</a>]</p>
 
 	
 	

@@ -159,7 +159,9 @@
 	
 	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.1</a></li>
+	<li><a class="dropdown-item" href="/2.1">v2.1</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.2</a></li>
 	
 </ul>
 
@@ -179,7 +181,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.809b2a535a13722ebe067174bf6a015dcc0c2c2b5d4b013750292d691a19e658cb14fa95f595878b30e840e4fb605dd65e3881148fbd7e3e8f6769beeff4bc7e.json"
+  data-offline-search-index-json-src="/offline-search-index.5dfc81bcb2f6b765b6cb6f47877a1252ef727aca5ef5d277267f1eb6aad4d9925a4571af636f064d405fa6543aa680f66999fa36db84bd2abccdb20b375d2d86.json"
   data-offline-search-base-href="/"
 >
 
@@ -213,7 +215,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.809b2a535a13722ebe067174bf6a015dcc0c2c2b5d4b013750292d691a19e658cb14fa95f595878b30e840e4fb605dd65e3881148fbd7e3e8f6769beeff4bc7e.json"
+  data-offline-search-index-json-src="/offline-search-index.5dfc81bcb2f6b765b6cb6f47877a1252ef727aca5ef5d277267f1eb6aad4d9925a4571af636f064d405fa6543aa680f66999fa36db84bd2abccdb20b375d2d86.json"
   data-offline-search-base-href="/"
 >
 
@@ -998,6 +1000,7 @@
     <li><a href="#best-practices">Best practices</a>
       <ul>
         <li><a href="#low-latency">Low latency</a></li>
+        <li><a href="#etcd-advertise-urls">Etcd advertise urls</a></li>
         <li><a href="#monitoring">Monitoring</a></li>
         <li><a href="#defragmentation">Defragmentation</a></li>
       </ul>
@@ -1066,6 +1069,13 @@ replicas low. Deploying an etcd cluster in a different data center or region
 can make StorageOS detect etcd nodes as unavailable due to latency. 10ms
 latency between StorageOS and etcd would be the maximum threshold for proper
 functioning of the system.</p>
+<h3 id="etcd-advertise-urls">Etcd advertise urls</h3>
+<p>The Etcd startup parameters <code>advertise-client-urls</code> and
+<code>initial-advertise-peer-urls</code> specify the addresses etcd clients or other etcd
+members should use to contact the etcd server. The advertise addresses must be
+reachable from the remote machines. i.e where StorageOS is running so it can
+connect successfully. Do not advertise addresses like localhost or 0.0.0.0 for
+a production setup since these addresses are unreachable from remote machines.</p>
 <h3 id="monitoring">Monitoring</h3>
 <p>It is highly recommended to add monitoring to the etcd cluster. Etcd serves
 Prometheus metrics on the client port <code>http://etcd-url:2379/metrics</code>.</p>

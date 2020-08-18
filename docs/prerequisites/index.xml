@@ -647,6 +647,10 @@ following information:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;$NODE_IP&lt;/code&gt; is the IP address of the machine you are installing etcd on.`&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
+&lt;p&gt;Note that setting the advertise-client-urls incorrectly will cause any
+client connection to fail. StorageOS will fail to communicate to Etcd.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;p&gt;If enabling TLS, it is recomended to generate your own CA certificate and
 key. You will need to distribute the keys and certificates for the client
 auth on all etcd nodes. Moreover, the &lt;code&gt;ExecStart&lt;/code&gt; value should look as
@@ -715,7 +719,12 @@ centos-3 &lt;span style=&#34;color:#000&#34;&gt;ip&lt;/span&gt;&lt;span style=&#
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Edit the inventory file&lt;/span&gt;
 $ vi hosts &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Or your own inventory file&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;The ip or fqdn are used to expose the advertise-client-urls of Etcd.
+Failing to provide valid ip/fqdn will cause any client connection to
+fail. StorageOS will fail to communicate to Etcd.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Edit the etcd configuration&lt;/p&gt;
 &lt;blockquote&gt;

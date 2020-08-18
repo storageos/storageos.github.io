@@ -37,6 +37,13 @@ replicas low. Deploying an etcd cluster in a different data center or region
 can make StorageOS detect etcd nodes as unavailable due to latency. 10ms
 latency between StorageOS and etcd would be the maximum threshold for proper
 functioning of the system.&lt;/p&gt;
+&lt;h3 id=&#34;etcd-advertise-urls&#34;&gt;Etcd advertise urls&lt;/h3&gt;
+&lt;p&gt;The Etcd startup parameters &lt;code&gt;advertise-client-urls&lt;/code&gt; and
+&lt;code&gt;initial-advertise-peer-urls&lt;/code&gt; specify the addresses etcd clients or other etcd
+members should use to contact the etcd server. The advertise addresses must be
+reachable from the remote machines. i.e where StorageOS is running so it can
+connect successfully. Do not advertise addresses like localhost or 0.0.0.0 for
+a production setup since these addresses are unreachable from remote machines.&lt;/p&gt;
 &lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
 &lt;p&gt;It is highly recommended to add monitoring to the etcd cluster. Etcd serves
 Prometheus metrics on the client port &lt;code&gt;http://etcd-url:2379/metrics&lt;/code&gt;.&lt;/p&gt;
@@ -1098,7 +1105,7 @@ $ kubectl -n &lt;span style=&#34;color:#000&#34;&gt;$NS&lt;/span&gt; delete stor
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Delete the StorageOS Operator deployment&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.1.0/storageos-operator.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.2.0/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Procedure is finished. StorageOS is now uninstalled.&lt;/strong&gt;&lt;/p&gt;
@@ -1192,10 +1199,12 @@ you to enter a password for the newly created user.&lt;/p&gt;
         
         
         &lt;p&gt;StorageOS supports offline resize of volumes through editing a PVC storage
-request, or by updating the volume config via the CLI or UI. Please note that
-StorageOS only supports increasing volume size. For more information about how
-the resize works please see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#volume-resize&#34;&gt;Resize
-concepts&lt;/a&gt; page.&lt;/p&gt;
+request, or by updating the volume config via the CLI or UI. This means that a
+volume cannot be resized while it is in use. Furthermore, in order for a resize
+operation to take place the volume must not be attached to a node. This is to
+ensure the volume is not in use. Please note that StorageOS only supports
+increasing volume size. For more information about how the resize works please
+see our &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes#volume-resize&#34;&gt;Resize concepts&lt;/a&gt; page.&lt;/p&gt;
 &lt;h3 id=&#34;resizing-a-volume&#34;&gt;Resizing a Volume&lt;/h3&gt;
 &lt;p&gt;In order to resize a PVC the storage request field must be updated.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: v1
@@ -1211,6 +1220,11 @@ spec:
       storage: 5Gi
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In order to edit a PVC you can use &lt;code&gt;kubectl edit&lt;/code&gt; or &lt;code&gt;kubectl apply&lt;/code&gt; to make
 changes.&lt;/p&gt;
+&lt;p&gt;StorageOS supports offline resize of volumes through editing a PVC storage
+request. This means that a volume cannot be resized while it is in use.
+Furthermore, in order for a resize operation to take place the volume must not
+be attached to a node. This requires that any pods using a volume must be
+scaled down for the resize to take place.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. Resizing a volume without updating the PVC directly will NOT result in
 the PVC being updated. The methods below are included for completeness, in

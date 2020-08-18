@@ -1768,7 +1768,7 @@ following object exists.&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:1.0.0&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.kubeschedulerContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.kubeSchedulerContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Kube scheduler container image&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Default dependent on Scheduler version&lt;/td&gt;
 &lt;/tr&gt;

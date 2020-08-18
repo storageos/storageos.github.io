@@ -170,7 +170,9 @@ Setting up mTLS with Etcd Below is an example StorageOSCluster resource that can
 	
 	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.1</a></li>
+	<li><a class="dropdown-item" href="/2.1">v2.1</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.2</a></li>
 	
 </ul>
 
@@ -190,7 +192,7 @@ Setting up mTLS with Etcd Below is an example StorageOSCluster resource that can
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.0731e49446e6b81a0c483b9e3cddb82b7df34b90b63c33d4f4ddb9e078f8e9cb69d9e45024ce01e8a7af298c1d07291f756d2ee8423f501afc561612fe5e969d.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.144a8e10e8a582137f671192f89667c9f8c58ee7ed1c9545335065f388d6e58a701bc4afa88867d1836d2c825726e059b9e01946d1bd17e4b99c629caf5a3cf6.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +226,7 @@ Setting up mTLS with Etcd Below is an example StorageOSCluster resource that can
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.0731e49446e6b81a0c483b9e3cddb82b7df34b90b63c33d4f4ddb9e078f8e9cb69d9e45024ce01e8a7af298c1d07291f756d2ee8423f501afc561612fe5e969d.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.144a8e10e8a582137f671192f89667c9f8c58ee7ed1c9545335065f388d6e58a701bc4afa88867d1836d2c825726e059b9e01946d1bd17e4b99c629caf5a3cf6.json"
   data-offline-search-base-href="/"
 >
 
@@ -1078,7 +1080,7 @@ StorageOS with etcd using mTLS.</p>
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tlsEtcdSecretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;etcd-client-tls&#34;</span><span style="color:#f8f8f8;text-decoration:underline">                          </span><span style="color:#8f5902;font-style:italic"># Secret containing etcd client certificates</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">tlsEtcdSecretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;etcd&#34;</span><span style="color:#f8f8f8;text-decoration:underline">                                </span><span style="color:#8f5902;font-style:italic"># Namespace of the client certificates secret</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">kvBackend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;https://storageos-etcd-cluster-client.etcd.svc:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Etcd client service address.</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;https://storageos-etcd-cluster-client.storageos-etcd.svc:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Etcd client service address.</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">backend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;etcd&#34;</span><span style="color:#f8f8f8;text-decoration:underline">                                                </span><span style="color:#8f5902;font-style:italic"># Backend type</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p><code>tlsEtcdSecretRefName</code> and <code>tlsEtcdSecretRefNamespace</code> are used to pass a
 reference to a secret that should contain the following key:values:</p>

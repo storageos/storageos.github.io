@@ -1206,10 +1206,12 @@ you to enter a password for the newly created user.&lt;/p&gt;
         
         
         &lt;p&gt;StorageOS supports offline resize of volumes through editing a PVC storage
-request, or by updating the volume config via the CLI or UI. Please note that
-StorageOS only supports increasing volume size. For more information about how
-the resize works please see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes#volume-resize&#34;&gt;Resize
-concepts&lt;/a&gt; page.&lt;/p&gt;
+request, or by updating the volume config via the CLI or UI. This means that a
+volume cannot be resized while it is in use. Furthermore, in order for a resize
+operation to take place the volume must not be attached to a node. This is to
+ensure the volume is not in use. Please note that StorageOS only supports
+increasing volume size. For more information about how the resize works please
+see our &lt;a href=&#34;https://docs.storageos.com/v2/docs/concepts/volumes#volume-resize&#34;&gt;Resize concepts&lt;/a&gt; page.&lt;/p&gt;
 &lt;h3 id=&#34;resizing-a-volume&#34;&gt;Resizing a Volume&lt;/h3&gt;
 &lt;p&gt;In order to resize a PVC the storage request field must be updated.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: v1
@@ -1225,6 +1227,11 @@ spec:
       storage: 5Gi
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;In order to edit a PVC you can use &lt;code&gt;kubectl edit&lt;/code&gt; or &lt;code&gt;kubectl apply&lt;/code&gt; to make
 changes.&lt;/p&gt;
+&lt;p&gt;StorageOS supports offline resize of volumes through editing a PVC storage
+request. This means that a volume cannot be resized while it is in use.
+Furthermore, in order for a resize operation to take place the volume must not
+be attached to a node. This requires that any pods using a volume must be
+scaled down for the resize to take place.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;N.B. Resizing a volume without updating the PVC directly will NOT result in
 the PVC being updated. The methods below are included for completeness, in

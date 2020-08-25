@@ -6173,15 +6173,34 @@ provide them during a support engagement.&lt;/p&gt;
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;1.5.3&lt;/code&gt;, available from
-&lt;a href=&#34;https://hub.docker.com/r/storageos/node/&#34;&gt;Docker Hub&lt;/a&gt; as &lt;code&gt;storageos/node:1.5.3&lt;/code&gt;, or via the &lt;a href=&#34;https://github.com/storageos/charts&#34;&gt;Helm
+&lt;p&gt;The latest tagged release is &lt;code&gt;1.5.4&lt;/code&gt;, available from
+&lt;a href=&#34;https://hub.docker.com/r/storageos/node/&#34;&gt;Docker Hub&lt;/a&gt; as &lt;code&gt;storageos/node:1.5.4&lt;/code&gt;, or via the &lt;a href=&#34;https://github.com/storageos/charts&#34;&gt;Helm
 Chart&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The latest CLI release is &lt;code&gt;1.2.2&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/operations/upgrades/&#34;&gt;upgrades&lt;/a&gt; for upgrade strategies.&lt;/p&gt;
-&lt;h2 id=&#34;153---released-20200125&#34;&gt;1.5.3 - Released 2020/01/25&lt;/h2&gt;
+&lt;h2 id=&#34;154---released-20200819&#34;&gt;1.5.4 - Released 2020/08/19&lt;/h2&gt;
 &lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;If a CSI volume create request expires before completing, the retry operation
+may not succeed.&lt;/li&gt;
+&lt;li&gt;When detaching NFS volumes, return success if the volume has already been
+deleted.  This avoids Kubernetes retrying the operation indefinitely.&lt;/li&gt;
+&lt;li&gt;Don&amp;rsquo;t overlap /var/lib/kubelet mount.  This could result in multiple entries
+for &lt;code&gt;/var/lib/storageos&lt;/code&gt; in &lt;code&gt;/etc/fstab&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Set fsid_device to false so that NFS does not use local device major/minor
+numbers for filesystem descriptors.&lt;/li&gt;
+&lt;li&gt;Run CSI containers as privileged.&lt;/li&gt;
+&lt;li&gt;Pass cluster node selector to NFS pods.&lt;/li&gt;
+&lt;li&gt;As an additional safeguard, check that the StorageOS device contains only
+zeros in the first 256KB before running &lt;code&gt;mkfs&lt;/code&gt;.  &lt;code&gt;blkid&lt;/code&gt; is also still used to
+check for existing filesystems.&lt;/li&gt;
+&lt;li&gt;Reduced writes to etcd for health checks.&lt;/li&gt;
+&lt;li&gt;Fixed error &amp;ldquo;failed to detach volumes&amp;rdquo; &amp;hellip; &amp;ldquo;resource name may not be empty&amp;rdquo;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;153---released-20200125&#34;&gt;1.5.3 - Released 2020/01/25&lt;/h2&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Resolved misrepresentation of internal metrics for licensed clusters.&lt;/li&gt;
 &lt;/ul&gt;
@@ -6201,7 +6220,7 @@ reduces the amount of time required to install and boostrap a new cluster.&lt;/l
 &lt;li&gt;&lt;code&gt;operator-sdk&lt;/code&gt; dependency updated to version 0.12.&lt;/li&gt;
 &lt;li&gt;Downgraded some log messages for transient failures from error to info.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Resolved documentation inconsistency between Openshift Marketplace and
 docs.storageos.com.&lt;/li&gt;
@@ -6249,7 +6268,7 @@ wait in &lt;code&gt;Pending&lt;/code&gt; state while there is an existing cluste
 &lt;p&gt;Updated the [cluster-operator] base image to latest &lt;code&gt;ubi8/ubi-minimal&lt;/code&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Fixed permission errors in Kubernetes 1.16:&lt;/p&gt;
@@ -6326,7 +6345,7 @@ handles embedded quotes.&lt;/li&gt;
 &lt;li&gt;Telemetry now uses gRPC over TLS.  The existing Sentry-based telemetry will be
 phased out.  Telemetry can be disabled by setting &lt;code&gt;DISABLE_TELEMETRY=true&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Encrypted volumes did not always respect the compression setting, resulting in
 capacity savings being lower than expected.  Unlike most storage systems,
@@ -6364,7 +6383,7 @@ significant bits, followed by the offset.&lt;/li&gt;
 &lt;li&gt;Volume deletes are now 5 - 20x faster, and for &amp;lt;10GB volumes should take less
 than a second.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;The Prometheus metrics endpoint no longer displays statistics for volumes
 that have been deleted.&lt;/li&gt;
@@ -6408,7 +6427,7 @@ uploaded to assist with support.&lt;/li&gt;
 and consistency with other operators using Kubernetes&amp;rsquo; &lt;code&gt;controller-runtime&lt;/code&gt;
 library.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;When creating volumes in stress test conditions, it was possible to be
 re-allocated the inode of a volume that had not yet finished the deletion
@@ -6432,7 +6451,7 @@ reducing the time taken to provision the volume.&lt;/li&gt;
 &lt;li&gt;Logging for volume detach operations when fencing a Pod.&lt;/li&gt;
 &lt;li&gt;Cluster maintenance logging improved.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-7&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Improved handling of in-memory cache during repeated failover events.&lt;/li&gt;
 &lt;li&gt;When a volume was being deleted while there was IO pending to an offline
@@ -6526,7 +6545,7 @@ consistent messages.&lt;/p&gt;
 &lt;p&gt;Gossip (serf) port added to the network connectivity heath check.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-7&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-8&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;The CLI command &lt;code&gt;storageos cluster health&lt;/code&gt; now returns more useful information
 about the health of the cluster and does not require the cluster ID or join
@@ -6549,7 +6568,7 @@ Kubernetes labels to be inherited and used for scheduling decisions.&lt;/li&gt;
 &lt;li&gt;Removed noisy log messages from the dataplane stats module.&lt;/li&gt;
 &lt;li&gt;Increased log level to &lt;code&gt;info&lt;/code&gt; for volume create and delete with CSI.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-8&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-9&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Mounting a volume while the volume was undergoing a series of configuration
 updates could cause the mount to hang.&lt;/li&gt;
@@ -6580,7 +6599,7 @@ disabled.&lt;/li&gt;
 &lt;p&gt;Includes a single fix to increase the time we wait for the operating system to
 create a new block device.  On some platforms (cloud providers in particular)
 the variation can be wider than expected.&lt;/p&gt;
-&lt;h3 id=&#34;fixed-9&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-10&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Address device creation delays on certain platforms/distributions.&lt;/li&gt;
 &lt;/ul&gt;
@@ -6606,7 +6625,7 @@ successful login.&lt;/li&gt;
 plane.&lt;/li&gt;
 &lt;li&gt;Strict dependency checking when configuring volumes.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-10&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-11&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;When refreshing the volumes page in the UI could return a &amp;ldquo;volume not found&amp;rdquo;
 error.&lt;/li&gt;
@@ -6661,7 +6680,7 @@ dataplane.&lt;/p&gt;
 &lt;p&gt;Added more logging at debug level when gossip detected a node&amp;rsquo;s health change.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-11&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-12&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;When CSI is enabled, if a volume was created in a namespace that did not
 already exist, then the create operation would fail.  Now the namespace is
@@ -6715,7 +6734,7 @@ node as it may not have the previous backend data.  The log messages now
 better explain the issue and the steps required to resolve.&lt;/li&gt;
 &lt;li&gt;Better error logging when data plane configuration was not applied.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-12&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-13&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Updated the etcd client library to version 3.3.11, which includes a fix for
 &lt;a href=&#34;https://github.com/etcd-io/etcd/issues/9578,&#34;&gt;https://github.com/etcd-io/etcd/issues/9578,&lt;/a&gt; a tight loop in the reconnect
@@ -6753,7 +6772,7 @@ order.&lt;/li&gt;
 &lt;li&gt;When creating a volume using CSI, the namespace can be set by adding a
 &lt;code&gt;volumenamespace&lt;/code&gt; label to the StorageClass.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-13&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-14&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud provider detection could cause a panic in non-AWS environments that
 respond on the same metadata ip address that AWS uses.  Fixed in
@@ -6821,7 +6840,7 @@ We now log: &lt;code&gt;connection closed&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Better logging for dataplane status errors.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-14&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-15&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;On Azure AKS, StorageOS could fail to restart.  This was caused by an error in
 the system device capabilities verification incorrectly determining that the
@@ -6858,7 +6877,7 @@ addition to uploading for StorageOS support.&lt;/li&gt;
 &lt;li&gt;The volume list in the Web UI now shows more detailed volume health.&lt;/li&gt;
 &lt;li&gt;Dataplane metrics now use less memory.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-15&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-16&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;If a node was partitioned as a result of a network failure, it would not
 always rejoin the cluster when the network was restored.  Nodes now
@@ -6930,7 +6949,7 @@ validation.&lt;/li&gt;
 bundle.&lt;/li&gt;
 &lt;li&gt;Updated container labels.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-16&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-17&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;When a replica is auto-promoted to master because the application container
 moved, a cache reset for the volume is now triggered prior to updating the
@@ -7145,7 +7164,7 @@ plane to only log a warning or error message if the intended action failed.&lt;/
 &lt;p&gt;Ongoing log message readability and tuning of log levels.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-17&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-18&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Filesystems now behave correctly when the underlying data store is out of
 capacity.  Previously the filesystem would appear to hang as it would retry
@@ -7233,7 +7252,7 @@ immediately reduced.&lt;/li&gt;
 &lt;li&gt;Log verbosity has been reduced at info level.  Set &lt;code&gt;LOG_LEVEL=debug&lt;/code&gt; for more
 verbose logging.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-18&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-19&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;UI labels overlapped when window resized in Firefox.&lt;/li&gt;
 &lt;li&gt;You can now provision the licenced amount, rather than up to the licenced
@@ -7270,7 +7289,7 @@ a leadership change.&lt;/li&gt;
 &lt;li&gt;Minor improvements to the UI notifications and error messages.&lt;/li&gt;
 &lt;li&gt;Upgraded controlplane compiler to Golang 10.0.3 (from 1.9.1).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-19&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-20&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Online device resizing now works with SCSI devices.  Note that &lt;code&gt;resize2fs&lt;/code&gt;
 still needs to be run manually on the filesystem, and we are working on making
@@ -7281,7 +7300,7 @@ than allocated.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;100-rc2---released-20180531&#34;&gt;1.0.0-rc2 - Released 2018/05/31&lt;/h2&gt;
 &lt;p&gt;Single fix to address provisioning issue in Amazon AWS.&lt;/p&gt;
-&lt;h3 id=&#34;fixed-20&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-21&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Increased time to wait for device to appear, causing volume creation to fail.
 This was encountered on Xen-based RHEL/Centos VMs running in Amazon AWS.&lt;/li&gt;
@@ -7348,7 +7367,7 @@ against corruption.&lt;/li&gt;
 &lt;li&gt;Invalid labels now generate a validation error.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;storageos.com/&lt;/code&gt; namespaced labels must validate against known labels.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-21&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-22&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Mapping of compression and throttle labels.&lt;/li&gt;
 &lt;li&gt;Remove hard connection limit on replication services.&lt;/li&gt;
@@ -7456,7 +7475,7 @@ You will now get a validation error if you try to mount an ext3 formatted
 filesystem as ext4.  &lt;code&gt;ext4&lt;/code&gt; is the default if not specified when mounting an
 unformatted volume.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-22&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-23&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Ensure cache is invalidated after mkfs.  Fixes mount error 32 that could occur
 with Kubernetes or OpenShift on Centos/RHEL.&lt;/li&gt;
@@ -7484,7 +7503,7 @@ the CLI provides the &lt;code&gt;storageos logs&lt;/code&gt; subcommand to contr
 &lt;li&gt;Better error message when the KV store is unavailable&lt;/li&gt;
 &lt;li&gt;Reduced memory footprint of controlplane by 67%.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-23&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-24&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Memory leak introduced in 0.9.0 fixed&lt;/li&gt;
 &lt;/ul&gt;
@@ -7557,7 +7576,7 @@ instability into the cluster to ensure there is no service disruption.&lt;/p&gt;
 &lt;li&gt;Dataplane, etcd, gRPC and NATS now use same log format as the controlplane.&lt;/li&gt;
 &lt;li&gt;More user-friendly error message when &lt;code&gt;ADVERTISE_IP&lt;/code&gt; is invalid.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-24&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-25&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Fixed a bug that caused mounts to fail with &lt;code&gt;Failed to mount: exit status 32&lt;/code&gt;.
 This was caused by the volume being marked as ready before the device was
@@ -7629,7 +7648,7 @@ services&lt;/li&gt;
 &lt;li&gt;Improve signal handling&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;LOG_LEVEL&lt;/code&gt; passed to dataplane components&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-25&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-26&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Clear mount lock after ungraceful node shutdown&lt;/li&gt;
 &lt;li&gt;etcd error: &lt;code&gt;mvcc: database space exceeded&lt;/code&gt;&lt;/li&gt;
@@ -7701,7 +7720,7 @@ which have their environment label set to &lt;code&gt;production&lt;/code&gt;)&l
 &lt;li&gt;Internal volume performance counters&lt;/li&gt;
 &lt;li&gt;API can report health while waiting for cluster to initialize&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-26&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-27&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Better behaviour when communication blocked by firewalls&lt;/li&gt;
 &lt;li&gt;Ensure namespaces are unique when creating&lt;/li&gt;
@@ -7736,7 +7755,7 @@ growing suite of platforms and usage scenarios.&lt;/p&gt;
 &lt;li&gt;User authentication internals made extensible to other auth providers&lt;/li&gt;
 &lt;li&gt;Internal changes to allow different log levels per module&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-27&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-28&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Removed log entries where events are raised and logged again&lt;/li&gt;
 &lt;li&gt;Consolidated log messages when KV store is not available&lt;/li&gt;
@@ -7750,7 +7769,7 @@ growing suite of platforms and usage scenarios.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Better write parallelization performance&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-28&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-29&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Issue with volume deletion&lt;/li&gt;
 &lt;/ul&gt;
@@ -7770,7 +7789,7 @@ growing suite of platforms and usage scenarios.&lt;/p&gt;
 &lt;li&gt;Replication enhancements&lt;/li&gt;
 &lt;li&gt;Ongoing log-level tuning to reduce noise&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-29&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-30&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Issue removing metadata on volume destroy&lt;/li&gt;
 &lt;li&gt;Improved compression performance&lt;/li&gt;

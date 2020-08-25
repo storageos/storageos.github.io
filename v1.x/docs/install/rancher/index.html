@@ -192,7 +192,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.396f992aa602fe582f9575e1129409e0ddf27454187158d1db8871fa34bd8ce3992245fdc7d04be5cfbbf7e94c2931b6e3ab8a2b2f3842e02cab3614b2d24111.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +226,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.396f992aa602fe582f9575e1129409e0ddf27454187158d1db8871fa34bd8ce3992245fdc7d04be5cfbbf7e94c2931b6e3ab8a2b2f3842e02cab3614b2d24111.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -1416,7 +1416,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.3/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/1.5.4/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1469,7 +1469,7 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:1.5.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:1.5.4&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   csi:
     enable: <span style="color:#204a87">true</span>
     deploymentStrategy: deployment

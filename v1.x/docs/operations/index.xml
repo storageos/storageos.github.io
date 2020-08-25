@@ -1367,7 +1367,7 @@ default/prod-marker
         
         
         &lt;blockquote&gt;
-&lt;p&gt;Shared filesystems in the 1.5.3 release are
+&lt;p&gt;Shared filesystems in the 1.5.4 release are
 currently in Technology Preview, and are only available using the CSI driver.
 This &lt;strong&gt;experimental feature&lt;/strong&gt; is not yet intended for production use.&lt;/p&gt;
 &lt;/blockquote&gt;

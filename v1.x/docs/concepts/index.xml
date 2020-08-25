@@ -676,7 +676,7 @@ action would be to add the label &lt;code&gt;storageos.com/replicas=2&lt;/code&g
         
         
         &lt;blockquote&gt;
-&lt;p&gt;Shared filesystems in the 1.5.3 release are
+&lt;p&gt;Shared filesystems in the 1.5.4 release are
 currently in Technology Preview. This &lt;strong&gt;experimental feature&lt;/strong&gt; is not yet
 intended for production use.&lt;/p&gt;
 &lt;/blockquote&gt;

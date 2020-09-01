@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://docs.storageos.com/docs/platforms/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,18 +20,21 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Platforms | </title><meta property="og:title" content="Platforms" />
-<meta property="og:description" content="StorageOS specific notes for supported platforms
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://docs.storageos.com/docs/platforms/" />
+<title>Upgrade StorageOS | </title><meta property="og:title" content="Upgrade StorageOS" />
+<meta property="og:description" content="Procedure to upgrade a StorageOS v2 Cluster" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.storageos.com/docs/operations/upgrade/" />
 
-<meta itemprop="name" content="Platforms">
-<meta itemprop="description" content="StorageOS specific notes for supported platforms
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Platforms"/>
-<meta name="twitter:description" content="StorageOS specific notes for supported platforms
-"/>
+<meta itemprop="name" content="Upgrade StorageOS">
+<meta itemprop="description" content="Procedure to upgrade a StorageOS v2 Cluster">
+
+<meta itemprop="wordCount" content="238">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Upgrade StorageOS"/>
+<meta name="twitter:description" content="Procedure to upgrade a StorageOS v2 Cluster"/>
 
 
 
@@ -67,9 +69,9 @@
 <script src="/js/enable-link-tab.js"></script>
 
 
-    <title>Platforms | </title>
+    <title>Upgrade StorageOS | </title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -469,10 +471,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/platforms/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Platforms</a>
+    <a  href="/docs/platforms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Platforms</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsplatforms">
+    <li class="collapse " id="docsplatforms">
       
       
       
@@ -528,10 +530,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Operations</a>
+    <a  href="/docs/operations/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Operations</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoperations">
+    <li class="collapse show" id="docsoperations">
       
       
       
@@ -621,7 +623,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsupgrade" href="/docs/operations/upgrade/">Upgrade StorageOS</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsoperationsupgrade" href="/docs/operations/upgrade/">Upgrade StorageOS</a>
       
       
       
@@ -1021,6 +1023,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
@@ -1028,8 +1033,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://docs.storageos.com/docs/operations/">Operations</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://docs.storageos.com/docs/platforms/">Platforms</a>
+	<a href="https://docs.storageos.com/docs/operations/upgrade/">Upgrade StorageOS</a>
 </li>
 
 	</ol>
@@ -1037,245 +1049,68 @@
 
             
 <div class="td-content">
-	<h1>Platforms</h1>
-	<div class="lead">StorageOS specific notes for supported platforms</div>
-	<p>While StorageOS is platform agnostic, there are certain configurations
-or operations that relate to a specific platform.</p>
-<p>StorageOS can be used in any Kubernetes distribution when the
-<a href="https://docs.storageos.com/docs/prerequisites/">prerequisites</a> are met. That
-includes Kubernetes manged services.</p>
-
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/platforms/aws-eks/">AWS EKS</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/platforms/azure-aks/">Azure AKS</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/platforms/dockeree/">Docker Enterprise Edition</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/platforms/openshift/">OpenShift</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/platforms/rancher/">Rancher</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+	<h1>Upgrade StorageOS</h1>
+	<div class="lead">Procedure to upgrade a StorageOS v2 Cluster</div>
+	<p>This document details a step-by-step procedure to upgrade a StorageOS v2
+cluster.</p>
+<p>Keep in mind that upgrading a cluster will require minor downtime of
+applications using StorageOS volumes. However we will take steps to minimize
+that time as much as possible the required downtime.</p>
+<h2 id="upgrade-storageos">Upgrade StorageOS</h2>
+<blockquote>
+<p>Warning: To reduce downtime, it is recommended to <code>docker pull</code> the new
+StorageOS container image <code>storageos/node:v2.2.0</code>
+on the nodes beforehand so that the cluster spins up faster!</p>
+</blockquote>
+<ol>
+<li>
+<p>First make sure you keep a backup of all the StorageOS yaml files. You can
+reuse the StorageOSCluster configuration file to easily upgrade your
+cluster. You can also backup the Statefulset yaml files to keep track of the
+replicas.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get pod -n storageos-operator -o yaml &gt; storageos_operator.yaml
+kubectl get storageoscluster -n storageos-operator -o yaml &gt; storageos_cr.yaml
+kubectl get statefulset --all-namespaces &gt; statefulset-sizes.yaml
+</code></pre></div></li>
+<li>
+<p>Scale all stateful applications that use StorageOS volumes to 0.</p>
+</li>
+<li>
+<p>Delete the StorageOSCluster CR.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl delete storageoscluster cluster-storageos -n storageos-operator
+</code></pre></div></li>
+<li>
+<p>Deploy the new operator.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.2.0/storageos-operator.yaml
+</code></pre></div><blockquote>
+<p>Warning: If you have made changes to the CRDs, Service Account or Cluster
+Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
+</blockquote>
+</li>
+<li>
+<p>Edit the StorageOSCluster Custom Resource (storageos_cr.yaml) with the new node image version.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">images</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Re-create the StorageOSCluster</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>storageos_cr.yaml<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Wait for all the StorageOS pods to enter the <code>RUNNING</code> state</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get pods -l <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos -A -w
+</code></pre></div></li>
+<li>
+<p>Scale your stateful applications back up.</p>
+</li>
+</ol>
+<p>Congratulations, you now have the latest version StorageOS!</p>
 
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>
 </div>
+
 
           </main>
         </div>

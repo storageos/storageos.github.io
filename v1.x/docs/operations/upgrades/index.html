@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.69.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -48,8 +48,8 @@ Currently there are two strategies to upgrade StorageOS and both maintain data i
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" as="style">
+<link href="/v1.x/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -254,10 +254,10 @@ Currently there are two strategies to upgrade StorageOS and both maintain data i
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/v1.x/docs/" class="align-left pl-0 pr-2 td-sidebar-link td-sidebar-link__section">Documentation V1</a>
+    <a  href="/v1.x/docs/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Documentation V1</a>
   </li>
   <ul>
-    <li class="collapse show" id="v1xdocs">
+    <li class="collapse " id="v1xdocs">
       
       
       
@@ -1311,7 +1311,7 @@ $ storageos volume ls --format <span style="color:#4e9a06">&#34;table {{.Name}}\
 $ storageos volume ls --format <span style="color:#4e9a06">&#34;table {{.Name}}\t{{.Replicas}}&#34;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#4e9a06">&#39;0/0&#39;</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{ print $1  }&#39;</span> <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span> storageos volume update --label-add storageos.com/replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span>
+</span><span style="color:#4e9a06"></span>    <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{}</span> storageos volume update --label-add storageos.com/replicas<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">1</span> <span style="color:#ce5c00;font-weight:bold">{}</span>
 </code></pre></div></li>
 <li>
 <p>Wait until all replicas are synced (1/1)</p>
@@ -1362,11 +1362,11 @@ be evicted, you can delete the stateful Pods after the <code>kubectl cordon $NOD
 </li>
 <li>
 <p>Delete StorageOS Pod.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n <span style="color:#000">$NAMESPACE</span> get pod -owide --no-headers <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#4e9a06">&#34;</span><span style="color:#000">$NODE</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $1}&#39;</span> <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span> kubectl -n <span style="color:#000">$NAMESPACE</span> delete pod <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n <span style="color:#000">$NAMESPACE</span> get pod -owide --no-headers <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#4e9a06">&#34;</span><span style="color:#000">$NODE</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $1}&#39;</span> <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{}</span> kubectl -n <span style="color:#000">$NAMESPACE</span> delete pod <span style="color:#ce5c00;font-weight:bold">{}</span>
 </code></pre></div></li>
 <li>
 <p>Wait until StorageOS Pod with the new version is started and ready.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n <span style="color:#000">$NAMESPACE</span> get pod -owide --no-headers <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#4e9a06">&#34;</span><span style="color:#000">$NODE</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $1}&#39;</span> <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span> kubectl -n <span style="color:#000">$NAMESPACE</span> get pod <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n <span style="color:#000">$NAMESPACE</span> get pod -owide --no-headers <span style="color:#000;font-weight:bold">|</span> grep <span style="color:#4e9a06">&#34;</span><span style="color:#000">$NODE</span><span style="color:#4e9a06">&#34;</span> <span style="color:#000;font-weight:bold">|</span> awk <span style="color:#4e9a06">&#39;{print $1}&#39;</span> <span style="color:#000;font-weight:bold">|</span> xargs -I<span style="color:#ce5c00;font-weight:bold">{}</span> kubectl -n <span style="color:#000">$NAMESPACE</span> get pod <span style="color:#ce5c00;font-weight:bold">{}</span>
 NAME              READY     STATUS    RESTARTS   AGE
 storageos-j7pqf   1/1       Running   <span style="color:#0000cf;font-weight:bold">0</span>          3m
 </code></pre></div></li>

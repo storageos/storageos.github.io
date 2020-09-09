@@ -30,7 +30,7 @@
 <meta itemprop="description" content="Step-by-step guide to installing and evaluating StorageOS
 ">
 
-<meta itemprop="wordCount" content="2929">
+<meta itemprop="wordCount" content="2936">
 
 
 
@@ -189,7 +189,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.709a1c5048b99b2303a667b8406a299dc5b1673d400a30239ae6e5cd92e294cc893d7802a05a3a392459f46a5ee0befe22e9721d8b45c18d1e07e833e07ec27d.json"
+  data-offline-search-index-json-src="/offline-search-index.ea8d05c73d564c86fc235f890efb1ae1fe941b039d220518aa4b7b43109e0a98c7f9a4a9d395c54e0041a75bbca3da2c76461e59ea2708460ab92fa571f02fda.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +223,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.709a1c5048b99b2303a667b8406a299dc5b1673d400a30239ae6e5cd92e294cc893d7802a05a3a392459f46a5ee0befe22e9721d8b45c18d1e07e833e07ec27d.json"
+  data-offline-search-index-json-src="/offline-search-index.ea8d05c73d564c86fc235f890efb1ae1fe941b039d220518aa4b7b43109e0a98c7f9a4a9d395c54e0041a75bbca3da2c76461e59ea2708460ab92fa571f02fda.json"
   data-offline-search-base-href="/"
 >
 
@@ -1316,16 +1316,11 @@ resource please see
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example-storageoscluster<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;upstream&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># storageClassName: fast # The storage class creates by the StorageOS operator is configurable</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csi</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enable</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">deploymentStrategy</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;deployment&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableProvisionCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableControllerPublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">enableNodePublishCreds</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">kvBackend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd-client.etcd.svc.cluster.local:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">

@@ -34,7 +34,7 @@
   StorageOS transparently supports Rancher deployments on CentOS, RHEL, Debian, Ubuntu or RancherOS (CSI is not supported on RancherOS) and can support other Linux distributions as detailed on the System Configuration page if the appropriate kernel modules are available.
   The StorageOS v2 installation using the Rancher Catalog will be available soon.">
 
-<meta itemprop="wordCount" content="696">
+<meta itemprop="wordCount" content="691">
 
 
 
@@ -195,7 +195,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.7c13f74777d9d380995c0b9f0ec4b69900ee210c9f32552326769767425c294ddd5ff6e69977df7e2d3bdeefbc63b24a09bab98ba3af2cc68d47ac64ab64fb2f.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.0f150768dc744947bbca862390aee6b1c841c9e1b386e9b02a2c4a7f4af3f1febad9ba6626629c93de26a6ea695e97e477488056945abba162f034541449ce7b.json"
   data-offline-search-base-href="/"
 >
 
@@ -229,7 +229,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.7c13f74777d9d380995c0b9f0ec4b69900ee210c9f32552326769767425c294ddd5ff6e69977df7e2d3bdeefbc63b24a09bab98ba3af2cc68d47ac64ab64fb2f.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.0f150768dc744947bbca862390aee6b1c841c9e1b386e9b02a2c4a7f4af3f1febad9ba6626629c93de26a6ea695e97e477488056945abba162f034541449ce7b.json"
   data-offline-search-base-href="/"
 >
 
@@ -1177,25 +1177,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.0.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>

@@ -274,13 +274,6 @@ spec:
  images:
    nodeContainer: "storageos/node:${STOS_VERSION}" # StorageOS version
  # storageClassName: fast # The storage class creates by the StorageOS operator is configurable
- csi:
-   enable: true
-   deploymentStrategy: "deployment"
-   enableProvisionCreds: true
-   enableControllerPublishCreds: true
-   enableNodePublishCreds: true
-   enableControllerExpandCreds: true
  kvBackend:
    address: "storageos-etcd-client.${ETCD_NAMESPACE}.svc:2379"
 END

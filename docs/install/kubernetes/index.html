@@ -36,7 +36,7 @@
   Make sure to add a StorageOS licence after installing.
    1.19 1.18 1.17 1.16 1.15 1.14 1.13    Install StorageOS on Kubernetes 1.">
 
-<meta itemprop="wordCount" content="6614">
+<meta itemprop="wordCount" content="6482">
 
 
 
@@ -198,7 +198,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.709a1c5048b99b2303a667b8406a299dc5b1673d400a30239ae6e5cd92e294cc893d7802a05a3a392459f46a5ee0befe22e9721d8b45c18d1e07e833e07ec27d.json"
+  data-offline-search-index-json-src="/offline-search-index.ea8d05c73d564c86fc235f890efb1ae1fe941b039d220518aa4b7b43109e0a98c7f9a4a9d395c54e0041a75bbca3da2c76461e59ea2708460ab92fa571f02fda.json"
   data-offline-search-base-href="/"
 >
 
@@ -232,7 +232,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.709a1c5048b99b2303a667b8406a299dc5b1673d400a30239ae6e5cd92e294cc893d7802a05a3a392459f46a5ee0befe22e9721d8b45c18d1e07e833e07ec27d.json"
+  data-offline-search-index-json-src="/offline-search-index.ea8d05c73d564c86fc235f890efb1ae1fe941b039d220518aa4b7b43109e0a98c7f9a4a9d395c54e0041a75bbca3da2c76461e59ea2708460ab92fa571f02fda.json"
   data-offline-search-base-href="/"
 >
 
@@ -1317,25 +1317,20 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1349,25 +1344,20 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1381,25 +1371,20 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1413,25 +1398,20 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1583,25 +1563,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1615,25 +1589,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1647,25 +1615,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1679,25 +1641,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1849,25 +1805,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1881,25 +1831,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1913,25 +1857,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -1945,25 +1883,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2114,25 +2046,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2146,25 +2072,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2178,25 +2098,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2210,25 +2124,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2379,25 +2287,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2411,25 +2313,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2443,25 +2339,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2475,25 +2365,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2644,25 +2528,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2676,25 +2554,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2708,25 +2580,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2740,25 +2606,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2909,25 +2769,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2941,25 +2795,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -2973,25 +2821,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>
@@ -3005,25 +2847,19 @@ metadata:
   name: <span style="color:#4e9a06">&#34;example-storageos&#34;</span>
   namespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>
 spec:
+  <span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span>
   secretRefName: <span style="color:#4e9a06">&#34;storageos-api&#34;</span> <span style="color:#8f5902;font-style:italic"># Reference from the Secret created in the previous step</span>
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
-  namespace: <span style="color:#4e9a06">&#34;kube-system&#34;</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
-  csi:
-    enable: <span style="color:#204a87">true</span>
-    deploymentStrategy: deployment
-    enableControllerPublishCreds: <span style="color:#204a87">true</span>
-    enableNodePublishCreds: <span style="color:#204a87">true</span>
-    enableProvisionCreds: <span style="color:#204a87">true</span>
-    enableControllerExpandCreds: <span style="color:#204a87">true</span>
   resources:
     requests:
       memory: <span style="color:#4e9a06">&#34;512Mi&#34;</span>
+      cpu: <span style="color:#0000cf;font-weight:bold">1</span>
 <span style="color:#8f5902;font-style:italic">#  nodeSelectorTerms:</span>
 <span style="color:#8f5902;font-style:italic">#    - matchExpressions:</span>
 <span style="color:#8f5902;font-style:italic">#      - key: &#34;node-role.kubernetes.io/worker&#34; # Compute node label will vary according to your installation</span>

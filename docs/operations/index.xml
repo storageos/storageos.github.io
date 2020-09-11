@@ -14,6 +14,46 @@
     
     
     <item>
+      <title>Docs: Find ClusterID</title>
+      <link>https://docs.storageos.com/docs/operations/cluster-id/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/cluster-id/</guid>
+      <description>
+        
+        
+        &lt;p&gt;Every StorageOS cluster has a unique ClusterID generated at bootstrap. A
+StorageOS Licence is specific for a ClusterID.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-obtain-the-clusterid&#34;&gt;How to obtain the ClusterID&lt;/h2&gt;
+&lt;p&gt;You can obtain the ClusterID using either the CLI or GUI.&lt;/p&gt;
+&lt;h3 id=&#34;gui&#34;&gt;GUI&lt;/h3&gt;
+&lt;p&gt;You will need access to the StorageOS GUI on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl port-forward -n kube-system svc/storageos &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5705&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As an alternative, an Ingress controller may be preferred.&lt;/p&gt;
+&lt;p&gt;Once you have obtained access to the GUI, login using whatever credentials you
+used to create the cluster and go to the &amp;ldquo;Licence&amp;rdquo; section on the left
+navigation menu.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/operations/licensing/licence-page.png&#34; alt=&#34;Licence page&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;cli&#34;&gt;CLI&lt;/h3&gt;
+&lt;p&gt;This CLI command can print the cluster ID:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get cluster
+ID:               704dd165-9580-4da4-a554-0acb96d328cb
+Licence:
+  expiration:     2021-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; year from now&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  capacity:       5.0 TiB
+  kind:           professional
+  customer name:  storageos
+Created at:       2020-03-25T13:48:33Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+Updated at:       2020-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; hour ago&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Given the Cluster ID, the StorageOS team can generate a licence.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Etcd</title>
       <link>https://docs.storageos.com/docs/operations/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

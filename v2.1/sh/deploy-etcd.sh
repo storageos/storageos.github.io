@@ -13,7 +13,7 @@ fi
 # Create ClusterRole and ClusterRoleBinding
 kubectl -n $NAMESPACE create -f-<<END
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: etcd-operator
@@ -26,7 +26,7 @@ subjects:
   name: default
   namespace: $NAMESPACE
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: etcd-operator

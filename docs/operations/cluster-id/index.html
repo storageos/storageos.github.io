@@ -20,27 +20,27 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Compression | </title><meta property="og:title" content="Compression" />
-<meta property="og:description" content="StorageOS compression is handled on a per volume basis and is disabled by default in v2.2&#43;, as performance is generally increased when compression is disabled due to block alignment. This means that there is a trade off between volume performance and the space the volume occupies on the backend device.
-Compression can be enabled by setting the label storageos.com/nocompress=false on a volume at volume creation time.
-StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network." />
+<title>Find ClusterID | </title><meta property="og:title" content="Find ClusterID" />
+<meta property="og:description" content="Every StorageOS cluster has a unique ClusterID generated at bootstrap. A StorageOS Licence is specific for a ClusterID.
+How to obtain the ClusterID You can obtain the ClusterID using either the CLI or GUI.
+GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://docs.storageos.com/docs/concepts/compression/" />
+<meta property="og:url" content="https://docs.storageos.com/docs/operations/cluster-id/" />
 
-<meta itemprop="name" content="Compression">
-<meta itemprop="description" content="StorageOS compression is handled on a per volume basis and is disabled by default in v2.2&#43;, as performance is generally increased when compression is disabled due to block alignment. This means that there is a trade off between volume performance and the space the volume occupies on the backend device.
-Compression can be enabled by setting the label storageos.com/nocompress=false on a volume at volume creation time.
-StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network.">
+<meta itemprop="name" content="Find ClusterID">
+<meta itemprop="description" content="Every StorageOS cluster has a unique ClusterID generated at bootstrap. A StorageOS Licence is specific for a ClusterID.
+How to obtain the ClusterID You can obtain the ClusterID using either the CLI or GUI.
+GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):">
 
-<meta itemprop="wordCount" content="222">
+<meta itemprop="wordCount" content="176">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Compression"/>
-<meta name="twitter:description" content="StorageOS compression is handled on a per volume basis and is disabled by default in v2.2&#43;, as performance is generally increased when compression is disabled due to block alignment. This means that there is a trade off between volume performance and the space the volume occupies on the backend device.
-Compression can be enabled by setting the label storageos.com/nocompress=false on a volume at volume creation time.
-StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network."/>
+<meta name="twitter:title" content="Find ClusterID"/>
+<meta name="twitter:description" content="Every StorageOS cluster has a unique ClusterID generated at bootstrap. A StorageOS Licence is specific for a ClusterID.
+How to obtain the ClusterID You can obtain the ClusterID using either the CLI or GUI.
+GUI You will need access to the StorageOS GUI on port 5705 of any of your nodes. For convenience, it is often easiest to port forward the service using the following kubectl incantation (this will block, so a second terminal window may be advisable):"/>
 
 
 
@@ -75,7 +75,7 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 <script src="/js/enable-link-tab.js"></script>
 
 
-    <title>Compression | </title>
+    <title>Find ClusterID | </title>
   </head>
   <body class="td-page">
     <header>
@@ -312,10 +312,10 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Concepts</a>
+    <a  href="/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsconcepts">
+    <li class="collapse " id="docsconcepts">
       
       
       
@@ -334,7 +334,7 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsconceptscompression" href="/docs/concepts/compression/">Compression</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscompression" href="/docs/concepts/compression/">Compression</a>
       
       
       
@@ -536,17 +536,17 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/operations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Operations</a>
+    <a  href="/docs/operations/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Operations</a>
   </li>
   <ul>
-    <li class="collapse " id="docsoperations">
+    <li class="collapse show" id="docsoperations">
       
       
       
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationscluster-id" href="/docs/operations/cluster-id/">ClusterID</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsoperationscluster-id" href="/docs/operations/cluster-id/">ClusterID</a>
       
       
       
@@ -1018,6 +1018,17 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#how-to-obtain-the-clusterid">How to obtain the ClusterID</a>
+      <ul>
+        <li><a href="#gui">GUI</a></li>
+        <li><a href="#cli">CLI</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1046,14 +1057,14 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
 
 <li class="breadcrumb-item" >
-	<a href="https://docs.storageos.com/docs/concepts/">Concepts</a>
+	<a href="https://docs.storageos.com/docs/operations/">Operations</a>
 </li>
 
 
 
 
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://docs.storageos.com/docs/concepts/compression/">Compression</a>
+	<a href="https://docs.storageos.com/docs/operations/cluster-id/">ClusterID</a>
 </li>
 
 	</ol>
@@ -1061,30 +1072,35 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
             
 <div class="td-content">
-	<h1>Compression</h1>
+	<h1>Find ClusterID</h1>
 	
-	<p>StorageOS compression is handled on a per volume basis and is disabled by
-default in v2.2+, as performance is generally increased when compression is
-disabled due to block alignment. This means that there is a trade
-off between volume performance and the space the volume occupies on the backend
-device.</p>
-<p>Compression can be enabled by setting the <a href="/docs/reference/labels">label</a>
-<code>storageos.com/nocompress=false</code> on a volume at volume creation time.</p>
-<p>StorageOS utilises the <a href="https://lz4.github.io/lz4/">lz4 compression algorithm</a>
-when writing to the backend store and when compressing <a href="/docs/concepts/replication">replication
-traffic</a> before it is sent across the network.</p>
-<p>StorageOS detects whether a block can be compressed or not by creating a
-heuristic that predicts the size of a compressed block. If the heuristic
-indicates that the compressed block is likely to be larger than the
-original block then the uncompressed block is stored. Block size increases post
-compression if the compression dictionary is added to a block that cannot be
-compressed. By verifying whether blocks can be compressed, disk efficiency is
-increased and CPU resources are not wasted on attempts to compress
-uncompressible blocks. StorageOS&rsquo; patented on disk format is used to tell
-whether individual blocks are compressed without overhead. As such volume
-compression can be dynamically enabled/disabled even while a volume is in use.</p>
-<p>When compression and <a href="/docs/concepts/encryption">encryption</a> are both enabled
-for a volume, blocks are compressed then encrypted.</p>
+	<p>Every StorageOS cluster has a unique ClusterID generated at bootstrap. A
+StorageOS Licence is specific for a ClusterID.</p>
+<h2 id="how-to-obtain-the-clusterid">How to obtain the ClusterID</h2>
+<p>You can obtain the ClusterID using either the CLI or GUI.</p>
+<h3 id="gui">GUI</h3>
+<p>You will need access to the StorageOS GUI on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl port-forward -n kube-system svc/storageos <span style="color:#0000cf;font-weight:bold">5705</span>
+</code></pre></div><p>As an alternative, an Ingress controller may be preferred.</p>
+<p>Once you have obtained access to the GUI, login using whatever credentials you
+used to create the cluster and go to the &ldquo;Licence&rdquo; section on the left
+navigation menu.</p>
+<p><img src="/images/docs/operations/licensing/licence-page.png" alt="Licence page"></p>
+<h3 id="cli">CLI</h3>
+<p>This CLI command can print the cluster ID:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get cluster
+ID:               704dd165-9580-4da4-a554-0acb96d328cb
+Licence:
+  expiration:     2021-03-25T13:48:46Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> year from now<span style="color:#ce5c00;font-weight:bold">)</span>
+  capacity:       5.0 TiB
+  kind:           professional
+  customer name:  storageos
+Created at:       2020-03-25T13:48:33Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> hour ago<span style="color:#ce5c00;font-weight:bold">)</span>
+Updated at:       2020-03-25T13:48:46Z <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#0000cf;font-weight:bold">1</span> hour ago<span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p>Given the Cluster ID, the StorageOS team can generate a licence.</p>
 
 	
 	

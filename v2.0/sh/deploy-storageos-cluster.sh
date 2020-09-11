@@ -54,7 +54,7 @@ kubectl create namespace ${ETCD_NAMESPACE}
 echo -e "${GREEN}Creating etcd ClusterRole and ClusterRoleBinding${NC}"
 kubectl -n ${ETCD_NAMESPACE} create -f-<<END
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: etcd-operator
@@ -67,7 +67,7 @@ subjects:
   name: default
   namespace: ${ETCD_NAMESPACE}
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: etcd-operator

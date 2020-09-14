@@ -127,10 +127,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/usecases/backups/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/usecases/cassandra/</loc>
   </url>
   
@@ -327,6 +323,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/usecases/sidecar-backups/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/operations/storageclasses/</loc>
   </url>
   
@@ -364,6 +364,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/users/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/usecases/velero-backups/</loc>
   </url>
   
   <url>

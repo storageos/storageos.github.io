@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -30,11 +30,12 @@
 <meta itemprop="description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
 ">
 
-<meta itemprop="wordCount" content="4408">
+<meta itemprop="wordCount" content="4412">
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Self Evaluation Guide"/>
 <meta name="twitter:description" content="Step-by-step guide to test StorageOS as such it provides a one size fits all guide to a StorageOS self-evaluation.
 "/>
@@ -45,8 +46,8 @@
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -189,7 +190,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +224,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -1133,39 +1134,39 @@
   </ul>
 
   <ul>
-    <li><a href="#a-namestorageosoperatorastorageos-operator">StorageOS Operator</a>
+    <li><a href="#a-namestorageosoperatorastorageos-operator"><a name='StorageOSOperator'></a>StorageOS Operator</a>
       <ul>
-        <li><a href="#a-namestorageosoperatorfeaturesastorageos-operator-features">StorageOS Operator features</a></li>
-        <li><a href="#a-namenativedrivervscsianative-driver-vs-csi">Native Driver vs CSI</a></li>
+        <li><a href="#a-namestorageosoperatorfeaturesastorageos-operator-features"><a name='StorageOSOperatorfeatures'></a>StorageOS Operator features</a></li>
+        <li><a href="#a-namenativedrivervscsianative-driver-vs-csi"><a name='NativeDrivervsCSI'></a>Native Driver vs CSI</a></li>
       </ul>
     </li>
-    <li><a href="#a-nameexternaletcdaexternal-etcd">External Etcd</a></li>
-    <li><a href="#a-nameprerequisitesaprerequisites">Prerequisites</a></li>
-    <li><a href="#a-nameinstallingstorageosainstalling-storageos">Installing StorageOS</a>
+    <li><a href="#a-nameexternaletcdaexternal-etcd"><a name='ExternalEtcd'></a>External Etcd</a></li>
+    <li><a href="#a-nameprerequisitesaprerequisites"><a name='Prerequisites'></a>Prerequisites</a></li>
+    <li><a href="#a-nameinstallingstorageosainstalling-storageos"><a name='InstallingStorageOS'></a>Installing StorageOS</a>
       <ul>
-        <li><a href="#a-nameinstalletcdainstall-etcd">Install etcd</a></li>
+        <li><a href="#a-nameinstalletcdainstall-etcd"><a name='Installetcd'></a>Install etcd</a></li>
       </ul>
     </li>
-    <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator">Install StorageOS Operator</a></li>
-    <li><a href="#a-nameinstallstorageosainstall-storageos">Install StorageOS</a></li>
-    <li><a href="#a-namesetupamonitoringstackasetup-a-monitoring-stack">Setup a Monitoring Stack</a></li>
+    <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</a></li>
+    <li><a href="#a-nameinstallstorageosainstall-storageos"><a name='InstallStorageOS'></a>Install StorageOS</a></li>
+    <li><a href="#a-namesetupamonitoringstackasetup-a-monitoring-stack"><a name='SetupaMonitoringStack'></a>Setup a Monitoring Stack</a></li>
   </ul>
 
   <ul>
-    <li><a href="#a-namevolumereplicationavolume-replication">Volume Replication</a></li>
-    <li><a href="#a-namefencingafencing">Fencing</a></li>
+    <li><a href="#a-namevolumereplicationavolume-replication"><a name='VolumeReplication'></a>Volume Replication</a></li>
+    <li><a href="#a-namefencingafencing"><a name='Fencing'></a>Fencing</a></li>
   </ul>
 
   <ul>
-    <li><a href="#a-nameconsiderationsaconsiderations">Considerations</a>
+    <li><a href="#a-nameconsiderationsaconsiderations"><a name='Considerations'></a>Considerations</a>
       <ul>
-        <li><a href="#a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication">Application vs StorageOS replication</a></li>
-        <li><a href="#a-namestatefulsetsastatefulsets">StatefulSets</a></li>
-        <li><a href="#a-namevolumeplacementavolume-placement">Volume Placement</a></li>
+        <li><a href="#a-nameapplicationvsstorageosreplicationaapplication-vs-storageos-replication"><a name='ApplicationvsStorageOSreplication'></a>Application vs StorageOS replication</a></li>
+        <li><a href="#a-namestatefulsetsastatefulsets"><a name='StatefulSets'></a>StatefulSets</a></li>
+        <li><a href="#a-namevolumeplacementavolume-placement"><a name='VolumePlacement'></a>Volume Placement</a></li>
       </ul>
     </li>
-    <li><a href="#a-namesyntheticbenchmarksasynthetic-benchmarks">Synthetic Benchmarks</a></li>
-    <li><a href="#a-nameapplicationbenchmarksaapplication-benchmarks">Application Benchmarks</a></li>
+    <li><a href="#a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</a></li>
+    <li><a href="#a-nameapplicationbenchmarksaapplication-benchmarks"><a name='ApplicationBenchmarks'></a>Application Benchmarks</a></li>
   </ul>
 </nav>
 
@@ -1386,7 +1387,7 @@ $ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style=
 </span><span style="color:#4e9a06"> pod:
 </span><span style="color:#4e9a06">   etcdEnv:
 </span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND</span>_BYTES
-     value: <span style="color:#4e9a06">&#34;2147483648&#34;</span>  <span style="color:#8f5902;font-style:italic"># 2 GB</span> 
+     value: <span style="color:#4e9a06">&#34;2147483648&#34;</span>  <span style="color:#8f5902;font-style:italic"># 2 GB </span>
    - name: ETCD_AUTO_COMPACTION_RETENTION
      value: <span style="color:#4e9a06">&#34;100&#34;</span> <span style="color:#8f5902;font-style:italic"># Keep 100 revisions</span>
    - name: ETCD_AUTO_COMPACTION_MODE
@@ -1431,19 +1432,19 @@ END
 <ol>
 <li>
 <p>Create a secret defining the API username and password</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$<span style="color:#f8f8f8;text-decoration:underline"> </span>kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>- &lt;&lt;END<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">$ kubectl create -f - &lt;&lt;END</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Secret</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c3RvcmFnZW9z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">c3RvcmFnZW9z</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">END</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
 <p>Create a StorageOSCluster resource</p>
@@ -1746,7 +1747,7 @@ mysql-0   1/1     Running       <span style="color:#0000cf;font-weight:bold">0</
 <p>StatefulSets are the de facto controller for stateful applications. As such, when deploying applications that will use StorageOS volumes, StatefulSets should be used. You can find more information about StatefulSets <a href="https://docs.storageos.com/docs/usecases/kubernetes/#statefulsets">here</a>.</p>
 <h3 id="a-namevolumeplacementavolume-placement"><a name='VolumePlacement'></a>Volume Placement</h3>
 <p>StorageOS volumes give the best performance when the application pod and the master volume are co-located on the same node. When benchmarking applications, it is useful to take into account that using remote volumes and replicas impact the overall performance of a volume.</p>
-<p>Going from 0 to 1 replica has the greatest performance impact for writes as now the latency of the operation is equal to the round trip time to the node with the replica over the network. Adding additional replicas poses less of a performance impact as writes to replicas are done in parallel, and the round trip time to each node is unlikely to greatly increase unless replicas land on nodes that are geographically distant to the master volumes&rsquo; node.</p>
+<p>Going from 0 to 1 replica has the greatest performance impact for writes as now the latency of the operation is equal to the round trip time to the node with the replica over the network. Adding additional replicas poses less of a performance impact as writes to replicas are done in parallel, and the round trip time to each node is unlikely to greatly increase unless replicas land on nodes that are geographically distant to the master volumes' node.</p>
 <p>Even when volumes are replicated co-location of pod and master volume is still desirable because application writes are first sent to the master and then sent from the master volume to the replicas. Writing to a local master therefore saves network latency between the application and the master volume. As reads are always served from the master volume a remote master volume will add latency to reads as well as writes.</p>
 <p>When testing applications, such as databases, it is also necessary to run benchmarks for a sufficiently long time to account for caching, and cache flushing that databases do. We recommend running application benchmarks over a 20-30min period for this reason.</p>
 <h4 id="a-namehowtolandavolumeandapodonthesamenodeahow-to-land-a-volume-and-a-pod-on-the-same-node"><a name='Howtolandavolumeandapodonthesamenode'></a>How to land a volume and a pod on the same node</h4>

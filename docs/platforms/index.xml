@@ -91,6 +91,23 @@ stateful workloads.&lt;/p&gt;
 creation, deletion and mounting of volumes through CSI. The CSI container
 running in the StorageOS Daemonset creates a Linux socket that allows the
 communication between OpenShift and StorageOS&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;StorageOS v2 supports OpenShift 4.0, 4.1, 4.2, 4.3, 4.4 and 4.5.&lt;/p&gt;
+&lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;installation
+instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;h2 id=&#34;openshift-upgrades&#34;&gt;OpenShift Upgrades&lt;/h2&gt;
+&lt;p&gt;OpenShift provides an upgrade operator that automates the process of
+orchestrator version changes.&lt;/p&gt;
+&lt;p&gt;This procedure can cause StorageOS to malfunction due to sequential node
+restarts not taking the presence of stateful application data into
+consideration. To avoid this issue, make sure all stateful workloads using
+StorageOS Volumes are stopped - usually by scaling StatefulSets to 0. Please
+contact StorageOS support for further advice if required.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenShift requires the internal registry to be available during the upgrade,
+however StorageOS volumes may not be available. Therefore using StorageOS
+for the internal registry is &lt;strong&gt;not&lt;/strong&gt; recommended.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;csi-container-storage-interface-note&#34;&gt;CSI (Container Storage Interface) Note&lt;/h2&gt;
 &lt;p&gt;CSI is the standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their
@@ -103,10 +120,6 @@ only. The native driver has been deprecated&lt;/p&gt;
 provision them. StorageOS presents volumes to containers with standard POSIX
 mount targets. This enables the Kubelet to mount StorageOS volumes using
 standard linux device files. Checkout &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/systemconfiguration/&#34;&gt;device presentation&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
-&lt;p&gt;StorageOS v2 supports OpenShift 4.0, 4.1, 4.2 and 4.3.&lt;/p&gt;
-&lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;installation
-instructions&lt;/a&gt; page.&lt;/p&gt;
 
       </description>
     </item>

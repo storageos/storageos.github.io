@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -27,7 +27,8 @@
 <meta property="og:url" content="https://docs.storageos.com/v1.x/docs/operations/monitoring/" />
 
 <meta itemprop="name" content="Monitoring StorageOS">
-<meta itemprop="description" content="StorageOS Documentation"><meta name="twitter:card" content="summary"/>
+<meta itemprop="description" content="StorageOS Documentation">
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Monitoring StorageOS"/>
 <meta name="twitter:description" content="StorageOS Documentation"/>
 
@@ -37,8 +38,8 @@
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -181,7 +182,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -215,7 +216,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -1216,7 +1217,7 @@ for a volume from the application perspective. As a <a href="https://prometheus.
 increase</a> over time,
 the prometheus <code>rate()</code> function needs to be applied to get a measure of
 operations over time.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_volume_frontend_write_total<span style="color:#ce5c00;font-weight:bold">[</span>2m<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_volume_frontend_write_total<span style="color:#ce5c00;font-weight:bold">[</span>2m<span style="color:#ce5c00;font-weight:bold">])</span>
 </code></pre></div><p>The Prometheus rate function calculates the per-second average rate of increase
 for a counter, over the 2 minute time period given. So, the function above
 gives the per-second average of writes over two minutes. Therefore, if the rate
@@ -1230,7 +1231,7 @@ bandwidth from the application&rsquo;s perspective.</p>
 <p>These metrics are counters that report the total bytes read from/written to a
 volume. As with IOPS, a rate can be calculated to give the average number of
 bytes per second.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_volume_frontend_write_bytes_total<span style="color:#ce5c00;font-weight:bold">[</span>2m<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_volume_frontend_write_bytes_total<span style="color:#ce5c00;font-weight:bold">[</span>2m<span style="color:#ce5c00;font-weight:bold">])</span>
 </code></pre></div><p>As with IOPS, the function above gives the per-second average increase in bytes
 written to a volume, therefore if the rate of read and write byte totals is
 summed you have the total volume bandwidth.</p>
@@ -1250,7 +1251,7 @@ the StorageOS container starts, including the metrics below.</p>
 <p>The StorageOS control plane is the first process that starts when a StorageOS
 pod is created. The <code>storageos_control_process_start_time_seconds</code> is a gauge
 that provides the start time of the control plane process since the Unix epoch.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">time<span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#ce5c00;font-weight:bold">)</span> - storageos_control_process_start_time_seconds<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">alias</span><span style="color:#ce5c00;font-weight:bold">=</span>~<span style="color:#4e9a06">&#34;</span><span style="color:#000">$node</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">time<span style="color:#ce5c00;font-weight:bold">()</span> - storageos_control_process_start_time_seconds<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">alias</span><span style="color:#ce5c00;font-weight:bold">=</span>~<span style="color:#4e9a06">&#34;</span><span style="color:#000">$node</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span>
 </code></pre></div><p>By subtracting the control plane start time from the current time since the
 Unix epoch, the total uptime of the process can be derived.</p>
 <h3 id="cpu-usage">CPU Usage</h3>
@@ -1258,9 +1259,9 @@ Unix epoch, the total uptime of the process can be derived.</p>
 calculate the total CPU footprint of the StorageOS container, these processes
 need to be summed together. <code>*_cpu_seconds</code> metrics are counters that reflect
 the total seconds of CPU time each process has used.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">(</span>rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_control_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> +
-rate<span style="color:#ce5c00;font-weight:bold">(</span>storastorageos_dataplane_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> +
-rate<span style="color:#ce5c00;font-weight:bold">(</span>storastorageos_stats_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span> * <span style="color:#0000cf;font-weight:bold">100</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">(</span>rate<span style="color:#ce5c00;font-weight:bold">(</span>storageos_control_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">])</span> +
+rate<span style="color:#ce5c00;font-weight:bold">(</span>storastorageos_dataplane_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">])</span> +
+rate<span style="color:#ce5c00;font-weight:bold">(</span>storastorageos_stats_process_cpu_seconds_total<span style="color:#ce5c00;font-weight:bold">[</span>3m<span style="color:#ce5c00;font-weight:bold">]))</span> * <span style="color:#0000cf;font-weight:bold">100</span>
 </code></pre></div><p>To calculate the average number of seconds of CPU time used per second, a rate
 must be taken. The rate expresses the fraction of 1 second of CPU time that was
 used by the StorageOS process in one second. Therefore to express this as a
@@ -1280,7 +1281,7 @@ summed to calculate the memory footprint of StorageOS processes.</p>
 types</a>; masters and
 replicas. A master volume is the device that a pod mounts and the replicas are
 hot stand-bys for the master volume.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sum<span style="color:#ce5c00;font-weight:bold">(</span>storageos_node_volumes_total<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">alias</span><span style="color:#ce5c00;font-weight:bold">=</span>~<span style="color:#4e9a06">&#34;</span><span style="color:#000">$node</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">}</span><span style="color:#ce5c00;font-weight:bold">)</span> by <span style="color:#ce5c00;font-weight:bold">(</span>alias, volume_type<span style="color:#ce5c00;font-weight:bold">)</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sum<span style="color:#ce5c00;font-weight:bold">(</span>storageos_node_volumes_total<span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#000">alias</span><span style="color:#ce5c00;font-weight:bold">=</span>~<span style="color:#4e9a06">&#34;</span><span style="color:#000">$node</span><span style="color:#4e9a06">&#34;</span><span style="color:#ce5c00;font-weight:bold">})</span> by <span style="color:#ce5c00;font-weight:bold">(</span>alias, volume_type<span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div><p>By summing across the Prometheus <code>alias</code> and
 <code>volume_type</code> labels the number of master and replica volumes per node can be
 found. Changes in the relative numbers of master and replicas indicate that volumes

@@ -1885,8 +1885,12 @@ to mount a StorageOS volume in a Pod.&lt;/p&gt;
 satisfied before proceeding. Including the deployment of an etcd cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
+&lt;p&gt;For OpenShift upgrades, refer to the
+&lt;a href=&#34;https://docs.storageos.com/docs/platforms/openshift/#openshift-upgrades&#34;&gt;OpenShift platform page&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
 &lt;p&gt;If you have installed OpenShift in AWS ensure that the requisite ports are
-opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
+opened for the worker nodes&#39; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Make sure to add a StorageOS licence after installing.&lt;/p&gt;

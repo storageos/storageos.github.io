@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -38,7 +38,8 @@ Keys and Initialisation vectors are generated using the crypto/rand package.
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Encryption"/>
 <meta name="twitter:description" content="Encryption is enabled on a per volume basis using the storageos.com/encryption label (for more information see Encrypted Volumes).
 StorageOS encrypts volumes on disk using AES-256 in XTS-AES mode with 512 bit keys as recommended by NIST, with encryption keys being derived using HKDF.
@@ -51,8 +52,8 @@ Keys and Initialisation vectors are generated using the crypto/rand package.
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -195,7 +196,7 @@ Keys and Initialisation vectors are generated using the crypto/rand package.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -229,7 +230,7 @@ Keys and Initialisation vectors are generated using the crypto/rand package.
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -1187,26 +1188,26 @@ keys as recommended by <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nist
 <table>
 <thead>
 <tr>
-<th align="left">Key</th>
-<th align="left">Size</th>
-<th align="left">Usage</th>
+<th style="text-align:left">Key</th>
+<th style="text-align:left">Size</th>
+<th style="text-align:left">Usage</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Volume</td>
-<td align="left">512 bits random data</td>
-<td align="left">Used by XTS-AES to encrypt and decrypt disk blocks</td>
+<td style="text-align:left">Volume</td>
+<td style="text-align:left">512 bits random data</td>
+<td style="text-align:left">Used by XTS-AES to encrypt and decrypt disk blocks</td>
 </tr>
 <tr>
-<td align="left">Namespace</td>
-<td align="left">256 bits random data</td>
-<td align="left">Used to encrypt Volume keys</td>
+<td style="text-align:left">Namespace</td>
+<td style="text-align:left">256 bits random data</td>
+<td style="text-align:left">Used to encrypt Volume keys</td>
 </tr>
 <tr>
-<td align="left">Initialisation Vector</td>
-<td align="left">256 bits random data</td>
-<td align="left">Used as &lsquo;salt&rsquo; when encrypting volume keys with namespace keys</td>
+<td style="text-align:left">Initialisation Vector</td>
+<td style="text-align:left">256 bits random data</td>
+<td style="text-align:left">Used as &lsquo;salt&rsquo; when encrypting volume keys with namespace keys</td>
 </tr>
 </tbody>
 </table>

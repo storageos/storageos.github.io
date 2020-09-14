@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -36,7 +36,8 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Feature labels"/>
 <meta name="twitter:description" content="Feature labels are a powerful and flexible way to control storage features, especially when combined with rules.
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
@@ -48,8 +49,8 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -192,7 +193,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +227,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -1197,42 +1198,42 @@ with the CLI or UI.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
+<th style="text-align:left">Feature</th>
+<th style="text-align:left">Label</th>
+<th style="text-align:left">Values</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Deployment type</td>
-<td align="left"><code>storageos.com/deployment</code></td>
-<td align="left">strings [<code>computeonly</code>,<code>mixed</code>]</td>
-<td align="left">Specifies whether a node should be <code>computeonly</code> where it only acts as a client and does not host volume data locally, or <code>mixed</code> (the default), where the node can operate in both client and server modes.</td>
+<td style="text-align:left">Deployment type</td>
+<td style="text-align:left"><code>storageos.com/deployment</code></td>
+<td style="text-align:left">strings [<code>computeonly</code>,<code>mixed</code>]</td>
+<td style="text-align:left">Specifies whether a node should be <code>computeonly</code> where it only acts as a client and does not host volume data locally, or <code>mixed</code> (the default), where the node can operate in both client and server modes.</td>
 </tr>
 <tr>
-<td align="left">Region</td>
-<td align="left"><code>iaas/region</code></td>
-<td align="left">string</td>
-<td align="left">Set automatically in AWS, Azure and GCE.  e.g. <code>eu-west-1</code>.  Not currently used by StorageOS but available for use in rules.</td>
+<td style="text-align:left">Region</td>
+<td style="text-align:left"><code>iaas/region</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Set automatically in AWS, Azure and GCE.  e.g. <code>eu-west-1</code>.  Not currently used by StorageOS but available for use in rules.</td>
 </tr>
 <tr>
-<td align="left">Failure domain</td>
-<td align="left"><code>iaas/failure-domain</code></td>
-<td align="left">string</td>
-<td align="left">Used to spread master and replicas across different failure domains.  Set automatically in AWS, Azure and GCE, e.g. <code>eu-west-1b</code></td>
+<td style="text-align:left">Failure domain</td>
+<td style="text-align:left"><code>iaas/failure-domain</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Used to spread master and replicas across different failure domains.  Set automatically in AWS, Azure and GCE, e.g. <code>eu-west-1b</code></td>
 </tr>
 <tr>
-<td align="left">Update domain</td>
-<td align="left"><code>iaas/update-domain</code></td>
-<td align="left">string</td>
-<td align="left">Set by some cloud providers to perform sequential updates/reboots.  Not currently used by StorageOS but available for use in rules.</td>
+<td style="text-align:left">Update domain</td>
+<td style="text-align:left"><code>iaas/update-domain</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Set by some cloud providers to perform sequential updates/reboots.  Not currently used by StorageOS but available for use in rules.</td>
 </tr>
 <tr>
-<td align="left">Size</td>
-<td align="left"><code>iaas/size</code></td>
-<td align="left">string</td>
-<td align="left">The node hardware configuration, as set by the cloud provider, e.g. <code>m5d.xlarge</code>.  Not currently used by StorageOS but available for use in rules.</td>
+<td style="text-align:left">Size</td>
+<td style="text-align:left"><code>iaas/size</code></td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">The node hardware configuration, as set by the cloud provider, e.g. <code>m5d.xlarge</code>.  Not currently used by StorageOS but available for use in rules.</td>
 </tr>
 </tbody>
 </table>
@@ -1242,18 +1243,18 @@ with the CLI or UI.</p>
 <table>
 <thead>
 <tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
+<th style="text-align:left">Feature</th>
+<th style="text-align:left">Label</th>
+<th style="text-align:left">Values</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Fencing</td>
-<td align="left"><code>storageos.com/fenced</code></td>
-<td align="left">true / false</td>
-<td align="left">Enables StorageOS fencing of pods on unavailable nodes. For more information about fencing prerequisites please see the <a href="/docs/operations/fencing">Fencing</a> operations page.</td>
+<td style="text-align:left">Fencing</td>
+<td style="text-align:left"><code>storageos.com/fenced</code></td>
+<td style="text-align:left">true / false</td>
+<td style="text-align:left">Enables StorageOS fencing of pods on unavailable nodes. For more information about fencing prerequisites please see the <a href="/docs/operations/fencing">Fencing</a> operations page.</td>
 </tr>
 </tbody>
 </table>
@@ -1265,18 +1266,18 @@ kubectl label pod mydb-pod storageos.com/fenced<span style="color:#ce5c00;font-w
 <table>
 <thead>
 <tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
+<th style="text-align:left">Feature</th>
+<th style="text-align:left">Label</th>
+<th style="text-align:left">Values</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Overcommitment</td>
-<td align="left"><code>storageos.com/overcommit</code></td>
-<td align="left">integers [+]</td>
-<td align="left">Sets the percentage of overcommitment allowed for the pool (see <a href="https://docs.storageos.com/v1.x/docs/operations/overcommitment/">here</a>).</td>
+<td style="text-align:left">Overcommitment</td>
+<td style="text-align:left"><code>storageos.com/overcommit</code></td>
+<td style="text-align:left">integers [+]</td>
+<td style="text-align:left">Sets the percentage of overcommitment allowed for the pool (see <a href="https://docs.storageos.com/v1.x/docs/operations/overcommitment/">here</a>).</td>
 </tr>
 </tbody>
 </table>
@@ -1287,60 +1288,60 @@ kubectl label pod mydb-pod storageos.com/fenced<span style="color:#ce5c00;font-w
 <table>
 <thead>
 <tr>
-<th align="left">Feature</th>
-<th align="left">Label</th>
-<th align="left">Values</th>
-<th align="left">Description</th>
+<th style="text-align:left">Feature</th>
+<th style="text-align:left">Label</th>
+<th style="text-align:left">Values</th>
+<th style="text-align:left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">Caching</td>
-<td align="left"><code>storageos.com/nocache</code></td>
-<td align="left">true / false</td>
-<td align="left">Switches off caching.</td>
+<td style="text-align:left">Caching</td>
+<td style="text-align:left"><code>storageos.com/nocache</code></td>
+<td style="text-align:left">true / false</td>
+<td style="text-align:left">Switches off caching.</td>
 </tr>
 <tr>
-<td align="left">Compression</td>
-<td align="left"><code>storageos.com/nocompress</code></td>
-<td align="left">true / false</td>
-<td align="left">Switches off compression of data at rest and in transit.</td>
+<td style="text-align:left">Compression</td>
+<td style="text-align:left"><code>storageos.com/nocompress</code></td>
+<td style="text-align:left">true / false</td>
+<td style="text-align:left">Switches off compression of data at rest and in transit.</td>
 </tr>
 <tr>
-<td align="left">Encryption</td>
-<td align="left"><code>storageos.com/encryption</code></td>
-<td align="left">true / false</td>
-<td align="left">Enables volume encryption, more details <a href="/docs/operations/encrypted-volumes">here</a></td>
+<td style="text-align:left">Encryption</td>
+<td style="text-align:left"><code>storageos.com/encryption</code></td>
+<td style="text-align:left">true / false</td>
+<td style="text-align:left">Enables volume encryption, more details <a href="/docs/operations/encrypted-volumes">here</a></td>
 </tr>
 <tr>
-<td align="left">Failure mode</td>
-<td align="left"><code>storageos.com/failure.mode</code></td>
-<td align="left">strings [<code>soft</code>,<code>hard</code>,<code>alwayson</code>]</td>
-<td align="left">Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable.</td>
+<td style="text-align:left">Failure mode</td>
+<td style="text-align:left"><code>storageos.com/failure.mode</code></td>
+<td style="text-align:left">strings [<code>soft</code>,<code>hard</code>,<code>alwayson</code>]</td>
+<td style="text-align:left">Soft failure mode works together with the failure tolerance. Hard is a mode where any loss in desired replicas count will mark volume as unavailable. AlwaysOn is a mode where as long as master is alive volume will be writable.</td>
 </tr>
 <tr>
-<td align="left">Failure tolerance</td>
-<td align="left"><code>storageos.com/failure.tolerance</code></td>
-<td align="left">integers [0, 4]</td>
-<td align="left">Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas &gt; 0, so if there are 2 replicas it will default to 1.</td>
+<td style="text-align:left">Failure tolerance</td>
+<td style="text-align:left"><code>storageos.com/failure.tolerance</code></td>
+<td style="text-align:left">integers [0, 4]</td>
+<td style="text-align:left">Specifies how many failed replicas to tolerate, defaults to (Replicas - 1) if Replicas &gt; 0, so if there are 2 replicas it will default to 1.</td>
 </tr>
 <tr>
-<td align="left">Placement</td>
-<td align="left"><code>storageos.com/hint.master</code></td>
-<td align="left">Node hostname or uuid</td>
-<td align="left">Requests master volume placement on the specified node.  Will use another node if request can&rsquo;t be satisfied.</td>
+<td style="text-align:left">Placement</td>
+<td style="text-align:left"><code>storageos.com/hint.master</code></td>
+<td style="text-align:left">Node hostname or uuid</td>
+<td style="text-align:left">Requests master volume placement on the specified node.  Will use another node if request can&rsquo;t be satisfied.</td>
 </tr>
 <tr>
-<td align="left">QoS</td>
-<td align="left"><code>storageos.com/throttle</code></td>
-<td align="left">true / false</td>
-<td align="left">Deprioritizes traffic by reducing the rate of disk I/O, when true.</td>
+<td style="text-align:left">QoS</td>
+<td style="text-align:left"><code>storageos.com/throttle</code></td>
+<td style="text-align:left">true / false</td>
+<td style="text-align:left">Deprioritizes traffic by reducing the rate of disk I/O, when true.</td>
 </tr>
 <tr>
-<td align="left">Replication</td>
-<td align="left"><code>storageos.com/replicas</code></td>
-<td align="left">integers [0, 5]</td>
-<td align="left">Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.</td>
+<td style="text-align:left">Replication</td>
+<td style="text-align:left"><code>storageos.com/replicas</code></td>
+<td style="text-align:left">integers [0, 5]</td>
+<td style="text-align:left">Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.</td>
 </tr>
 </tbody>
 </table>
@@ -1352,15 +1353,15 @@ means that all volumes created with the specific StorageClass will have
 StorageOS volume labels applied to them.</p>
 <p>For example the StorageClass below will create <code>ext4</code> formatted volumes with a
 single StorageOS replica, in the <code>default</code> <a href="https://docs.storageos.com/v1.x/docs/concepts/pools/">pool</a>.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storage.k8s.io/v1<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StorageClass<span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storage.k8s.io/v1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">StorageClass</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos-replicated<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storageos-replicated</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fsType</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">fsType</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ext4</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">default</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">storageos.com/replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">storageos</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div>
 	
 	

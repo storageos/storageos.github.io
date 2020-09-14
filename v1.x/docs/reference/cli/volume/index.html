@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -32,7 +32,8 @@
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volumes"/>
 <meta name="twitter:description" content="$ storageos volume Usage:	storageos volume COMMAND Manage volumes Options: --help Print usage Commands: create Create a volume inspect Display detailed information on one or more volumes ls List volumes mount Mount specified volume rm Remove one or more volumes unmount Unmount specified volume update Update a volume Run &#39;storageos volume COMMAND --help&#39; for more information on a command. Note that the mount and unmount commands are not available on MacOS or Windows."/>
 
@@ -42,8 +43,8 @@
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -186,7 +187,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -220,7 +221,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
   data-offline-search-base-href="/"
 >
 
@@ -1128,12 +1129,12 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#storageos-volume-create">storageos volume create</a></li>
-        <li><a href="#storageos-volume-inspect">storageos volume inspect</a></li>
-        <li><a href="#storageos-volume-ls">storageos volume ls</a></li>
-        <li><a href="#storageos-volume-mount">storageos volume mount</a></li>
-        <li><a href="#storageos-volume-rm">storageos volume rm</a></li>
-        <li><a href="#storageos-volume-unmount">storageos volume unmount</a></li>
+        <li><a href="#storageos-volume-create"><code>storageos volume create</code></a></li>
+        <li><a href="#storageos-volume-inspect"><code>storageos volume inspect</code></a></li>
+        <li><a href="#storageos-volume-ls"><code>storageos volume ls</code></a></li>
+        <li><a href="#storageos-volume-mount"><code>storageos volume mount</code></a></li>
+        <li><a href="#storageos-volume-rm"><code>storageos volume rm</code></a></li>
+        <li><a href="#storageos-volume-unmount"><code>storageos volume unmount</code></a></li>
       </ul>
     </li>
   </ul>
@@ -1230,7 +1231,7 @@ default/volume-name
         <span style="color:#4e9a06">&#34;pool&#34;</span>: <span style="color:#4e9a06">&#34;default&#34;</span>,
         <span style="color:#4e9a06">&#34;fsType&#34;</span>: <span style="color:#4e9a06">&#34;xfs&#34;</span>,
         <span style="color:#4e9a06">&#34;description&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,
-        <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span><span style="color:#ce5c00;font-weight:bold">}</span>,
+        <span style="color:#4e9a06">&#34;labels&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{}</span>,
         <span style="color:#4e9a06">&#34;namespace&#34;</span>: <span style="color:#4e9a06">&#34;default&#34;</span>,
         <span style="color:#4e9a06">&#34;nodeSelector&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,
         <span style="color:#4e9a06">&#34;master&#34;</span>: <span style="color:#ce5c00;font-weight:bold">{</span>
@@ -1248,7 +1249,7 @@ default/volume-name
         <span style="color:#4e9a06">&#34;mountDevice&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,
         <span style="color:#4e9a06">&#34;mountpoint&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,
         <span style="color:#4e9a06">&#34;mountedAt&#34;</span>: <span style="color:#4e9a06">&#34;0001-01-01T00:00:00Z&#34;</span>,
-        <span style="color:#4e9a06">&#34;replicas&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span>,
+        <span style="color:#4e9a06">&#34;replicas&#34;</span>: <span style="color:#ce5c00;font-weight:bold">[]</span>,
         <span style="color:#4e9a06">&#34;health&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,
         <span style="color:#4e9a06">&#34;status&#34;</span>: <span style="color:#4e9a06">&#34;active&#34;</span>,
         <span style="color:#4e9a06">&#34;statusMessage&#34;</span>: <span style="color:#4e9a06">&#34;&#34;</span>,

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.75.0" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -22,31 +22,32 @@
 
 <title>OpenShift | </title><meta property="og:title" content="OpenShift" />
 <meta property="og:description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding. Including the deployment of an etcd cluster.
-  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&rsquo; security group.
+  For OpenShift upgrades, refer to the OpenShift platform page.
+  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&#39; security group.
   Make sure to add a StorageOS licence after installing.
- StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page.
-Manual install The StorageOS Cluster Operator is a Kubernetes native application developed to deploy and configure StorageOS clusters, and assist with maintenance operations." />
+ StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/install/openshift/" />
 
 <meta itemprop="name" content="OpenShift">
 <meta itemprop="description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding. Including the deployment of an etcd cluster.
-  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&rsquo; security group.
+  For OpenShift upgrades, refer to the OpenShift platform page.
+  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&#39; security group.
   Make sure to add a StorageOS licence after installing.
- StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page.
-Manual install The StorageOS Cluster Operator is a Kubernetes native application developed to deploy and configure StorageOS clusters, and assist with maintenance operations.">
+ StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page.">
 
-<meta itemprop="wordCount" content="672">
-
+<meta itemprop="wordCount" content="681">
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="OpenShift"/>
 <meta name="twitter:description" content="Make sure the prerequisites for StorageOS are satisfied before proceeding. Including the deployment of an etcd cluster.
-  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&rsquo; security group.
+  For OpenShift upgrades, refer to the OpenShift platform page.
+  If you have installed OpenShift in AWS ensure that the requisite ports are opened for the worker nodes&#39; security group.
   Make sure to add a StorageOS licence after installing.
- StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page.
-Manual install The StorageOS Cluster Operator is a Kubernetes native application developed to deploy and configure StorageOS clusters, and assist with maintenance operations."/>
+ StorageOS v2 supports OpenShift v4. For more information check the OpenShift platform page."/>
 
 
 
@@ -54,8 +55,8 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
 
 
 
-<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
+<link href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -198,7 +199,7 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0b29e9a569b7945d18c4e1c44d4747c58d4eb25fd39f7ba2ffaed94acedf554de2e67ad68179aa148bf7f2358f5505bb56787bbeb408204c6d782cdd5bbe2bf2.json"
+  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
   data-offline-search-base-href="/"
 >
 
@@ -232,7 +233,7 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.0b29e9a569b7945d18c4e1c44d4747c58d4eb25fd39f7ba2ffaed94acedf554de2e67ad68179aa148bf7f2358f5505bb56787bbeb408204c6d782cdd5bbe2bf2.json"
+  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
   data-offline-search-base-href="/"
 >
 
@@ -682,12 +683,6 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesbackups" href="/docs/usecases/backups/">Backups</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasescassandra" href="/docs/usecases/cassandra/">Cassandra</a>
       
       
@@ -749,6 +744,18 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesredis" href="/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasessidecar-backups" href="/docs/usecases/sidecar-backups/">Sidecar Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesvelero-backups" href="/docs/usecases/velero-backups/">Velero Backups</a>
       
       
       
@@ -1026,7 +1033,7 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#__steps-to-install-storageos__">Steps to install StorageOS:</a></li>
+    <li><a href="#__steps-to-install-storageos__"><strong>Steps to install StorageOS:</strong></a></li>
     <li><a href="#1-install-storageos-operator">1. Install StorageOS operator</a>
       <ul>
         <li><a href="#verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</a></li>
@@ -1094,8 +1101,12 @@ Manual install The StorageOS Cluster Operator is a Kubernetes native application
 satisfied before proceeding. Including the deployment of an etcd cluster.</p>
 </blockquote>
 <blockquote>
+<p>For OpenShift upgrades, refer to the
+<a href="https://docs.storageos.com/docs/platforms/openshift/#openshift-upgrades">OpenShift platform page</a>.</p>
+</blockquote>
+<blockquote>
 <p>If you have installed OpenShift in AWS ensure that the requisite ports are
-opened for the worker nodes&rsquo; security group.</p>
+opened for the worker nodes' security group.</p>
 </blockquote>
 <blockquote>
 <p>Make sure to add a StorageOS licence after installing.</p>

@@ -1624,7 +1624,7 @@ satisfied before proceeding. Including the deployment of an etcd cluster.&lt;/p&
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you have installed OpenShift in AWS ensure that the requisite ports are
-opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
+opened for the worker nodes&#39; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Make sure to add a StorageOS licence after installing.&lt;/p&gt;

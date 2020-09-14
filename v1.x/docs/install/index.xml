@@ -1569,7 +1569,7 @@ satisfied before proceeding.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If you have installed OpenShift 4.3 in AWS ensure that the
-requisite ports are opened for the worker nodes&amp;rsquo; security group.&lt;/p&gt;
+requisite ports are opened for the worker nodes&#39; security group.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt; &lt;/p&gt;
 &lt;p&gt;Installing StorageOS on OpenShift 4.3 has fewer prerequisites

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -34,8 +34,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a Developer l
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Licensing"/>
 <meta name="twitter:description" content="A newly installed StorageOS cluster includes an unregistered Basic licence, which caps usable storage space at 100GB. To utilise more storage space, we offer either a Developer (free with registration - 500GB) licence or an Enterprise (unlimited capacity - see below) licence. This document explains how to upgrade your licence using either the GUI or CLI.
 Obtaining a Developer licence via the GUI You can obtain and apply a Developer licence in the StorageOS web GUI automatically by creating or logging in with a StorageOS account on the StorageOS portal via the licence page of the StorageOS web GUI: http://ADVERTISE_IP:5705/#/licence."/>
@@ -46,8 +45,8 @@ Obtaining a Developer licence via the GUI You can obtain and apply a Developer l
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -190,7 +189,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a Developer l
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +223,7 @@ Obtaining a Developer licence via the GUI You can obtain and apply a Developer l
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -1207,7 +1206,7 @@ also view your cluster ID on the same page.</p>
 <h2 id="obtaining-a-developer-licence-via-the-cli">Obtaining a Developer licence via the CLI</h2>
 <p>Before getting a licence, you need to know the ID of your StorageOS cluster.</p>
 <p>This CLI command can print the cluster ID:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos licence inspect <span style="color:#000;font-weight:bold">|</span> jq -r .<span style="color:#ce5c00;font-weight:bold">[]</span>.clusterID
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos licence inspect <span style="color:#000;font-weight:bold">|</span> jq -r .<span style="color:#ce5c00;font-weight:bold">[</span><span style="color:#ce5c00;font-weight:bold">]</span>.clusterID
 </code></pre></div><p>To obtain a licence for your StorageOS cluster, create a new StorageOS account
 or log into <a href="https://my.storageos.com">StorageOS Portal</a>, go to the <a href="https://my.storageos.com/licenses">Licences
 page</a> and follow the instructions on the

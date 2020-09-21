@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -28,12 +28,11 @@
 <meta itemprop="name" content="Upgrade StorageOS">
 <meta itemprop="description" content="Procedure to upgrade a StorageOS v2 Cluster">
 
-<meta itemprop="wordCount" content="287">
+<meta itemprop="wordCount" content="284">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Upgrade StorageOS"/>
 <meta name="twitter:description" content="Procedure to upgrade a StorageOS v2 Cluster"/>
 
@@ -43,8 +42,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -187,7 +186,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -221,7 +220,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -1104,19 +1103,19 @@ Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
 <p>Edit the StorageOSCluster Custom Resource (storageos_cr.yaml) with the new
 node image version.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">images</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>If you&rsquo;re not using any of the hardcoded container image versions make sure
 to delete them as well and only leave the nodeContainer image as shown
 above.</p>
 <p>Make sure to also delete all metadata that you&rsquo;re not using. The final
 metadata stanza should be something similar to that:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;cluster-storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;cluster-storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
 <p>Re-create the StorageOSCluster</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#000">kubectl create -f storageos_cr.yaml</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>storageos_cr.yaml<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
 <li>
 <p>Wait for all the StorageOS pods to enter the <code>RUNNING</code> state</p>

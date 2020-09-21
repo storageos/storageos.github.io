@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -36,8 +36,7 @@ Before you start, ensure you have StorageOS installed and ready on a Kubernetes 
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="PostgreSQL"/>
 <meta name="twitter:description" content="PostgreSQL with StorageOS PostgreSQL or &ldquo;Postgres&rdquo; is an open source object-relational database management system (ORDBMS).
 Postgres is deployed across a wide variety of platforms with a mix of workloads ranging from small, single-node use cases to large Internet-facing clusters with many concurrent users.
@@ -49,8 +48,8 @@ Before you start, ensure you have StorageOS installed and ready on a Kubernetes 
 
 
 
-<link rel="preload" href="/v2.1/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/v2.1/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v2.1/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v2.1/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -193,7 +192,7 @@ Before you start, ensure you have StorageOS installed and ready on a Kubernetes 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.1/offline-search-index.b788bfba0bde82278183aedeb59ad22667905219e46978e46c64497393b73efb4d476d502e4193652078c454b35a28f357da1763639e68bfff8fe19b1d809e38.json"
+  data-offline-search-index-json-src="/v2.1/offline-search-index.82bcc4d8f6c340605ff191d983527995f965d9e8a11594fc89e774bab7f20ab241eaf4ee17d0c3556deb0bae421eb0a964c78acd4729a0e78fe617c8a005a449.json"
   data-offline-search-base-href="/"
 >
 
@@ -227,7 +226,7 @@ Before you start, ensure you have StorageOS installed and ready on a Kubernetes 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.1/offline-search-index.b788bfba0bde82278183aedeb59ad22667905219e46978e46c64497393b73efb4d476d502e4193652078c454b35a28f357da1763639e68bfff8fe19b1d809e38.json"
+  data-offline-search-index-json-src="/v2.1/offline-search-index.82bcc4d8f6c340605ff191d983527995f965d9e8a11594fc89e774bab7f20ab241eaf4ee17d0c3556deb0bae421eb0a964c78acd4729a0e78fe617c8a005a449.json"
   data-offline-search-base-href="/"
 >
 
@@ -1076,30 +1075,30 @@ to [installing StorageOS on Kubernetes]({% link
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/storageos/use-cases.git storageos-usecases
 
 </code></pre></div><p>PersistentVolumeClaim and Pod definition excerpts</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">PersistentVolumeClaim</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>PersistentVolumeClaim<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pg-data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>pg-data<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">annotations</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">volume.beta.kubernetes.io/storage-class</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">fast</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">volume.beta.kubernetes.io/storage-class</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>fast<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>...<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">Pod</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Pod<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">postgress</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>postgress<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">securityContext</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">fsGroup</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">26</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">containers</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pg</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">crunchydata/crunchy-postgres:centos7-10.4-1.8.3</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>pg<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>crunchydata/crunchy-postgres<span style="color:#000;font-weight:bold">:</span>centos7<span style="color:#0000cf;font-weight:bold">-10.4</span><span style="color:#0000cf;font-weight:bold">-1.8</span><span style="color:#0000cf;font-weight:bold">.3</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/pgdata</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">data</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#000">...</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span>- <span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>/pgdata<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>...<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">persistentVolumeClaim</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">claimName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">pg-data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">claimName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>pg-data<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>This excerpt is from the PersistentVolumeClaim and Pod definition. The pod
 definition references the pg-data VolumeClaim so storage is dynamically
 provision storage, using the StorageOS storage class. Dynamic provisioning
@@ -1124,7 +1123,7 @@ through the service.</p>
 Password <span style="color:#204a87;font-weight:bold">for</span> user primaryuser: password
                         List of Databases
   Name    <span style="color:#000;font-weight:bold">|</span>  Owner   <span style="color:#000;font-weight:bold">|</span> Encoding  <span style="color:#000;font-weight:bold">|</span> Collate <span style="color:#000;font-weight:bold">|</span> Ctype <span style="color:#000;font-weight:bold">|</span>   Access <span style="color:#000">privileges</span>
-<span style="color:#ce5c00;font-weight:bold">+=========================================================================</span>+
+<span style="color:#ce5c00;font-weight:bold">+=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#ce5c00;font-weight:bold">=</span>+
 postgres  <span style="color:#000;font-weight:bold">|</span> postgres <span style="color:#000;font-weight:bold">|</span> SQL_ASCII <span style="color:#000;font-weight:bold">|</span> C       <span style="color:#000;font-weight:bold">|</span> C     <span style="color:#000;font-weight:bold">|</span>
 template0 <span style="color:#000;font-weight:bold">|</span> postgres <span style="color:#000;font-weight:bold">|</span> SQL_ASCII <span style="color:#000;font-weight:bold">|</span> C       <span style="color:#000;font-weight:bold">|</span> C     <span style="color:#000;font-weight:bold">|</span> <span style="color:#ce5c00;font-weight:bold">=</span>c/postgres          +
           <span style="color:#000;font-weight:bold">|</span>          <span style="color:#000;font-weight:bold">|</span>           <span style="color:#000;font-weight:bold">|</span>         <span style="color:#000;font-weight:bold">|</span>       <span style="color:#000;font-weight:bold">|</span> <span style="color:#000">postgres</span><span style="color:#ce5c00;font-weight:bold">=</span>CTc/postgres

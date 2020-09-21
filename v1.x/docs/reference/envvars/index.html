@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -34,8 +34,7 @@
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Environment Variables"/>
 <meta name="twitter:description" content="Several aspects of StorageOS behaviour can be controlled via environment variables. These can be injected in via any of the usual mechanisms such as ConfigMaps.
    Variable Name Valid in versions Description     ADVERTISE_IP 1.0&#43; IP address of the node for incoming connections. Defaults to first non-loopback address   API_PORT 1.0&#43; Port for the API to listen on. Defaults to 5705 (IANA Registered)   CSI_ENDPOINT 1."/>
@@ -46,8 +45,8 @@
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -190,7 +189,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +223,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -1179,196 +1178,196 @@ variables. These can be injected in via any of the usual mechanisms such as
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Variable Name</th>
-<th style="text-align:left">Valid in versions</th>
-<th style="text-align:left">Description</th>
+<th align="left">Variable Name</th>
+<th align="left">Valid in versions</th>
+<th align="left">Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><code>ADVERTISE_IP</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">IP address of the node for incoming connections.  Defaults to first non-loopback address</td>
+<td align="left"><code>ADVERTISE_IP</code></td>
+<td align="left">1.0+</td>
+<td align="left">IP address of the node for incoming connections.  Defaults to first non-loopback address</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>API_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the API to listen on.  Defaults to <code>5705</code> (<a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705">IANA Registered</a>)</td>
+<td align="left"><code>API_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the API to listen on.  Defaults to <code>5705</code> (<a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?search=5705">IANA Registered</a>)</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>CSI_ENDPOINT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">If set, CSI compatibility is enabled.  Typically set to <code>unix://var/lib/kubelet/plugins_registry/storageos/csi.sock</code>.  Default is unset</td>
+<td align="left"><code>CSI_ENDPOINT</code></td>
+<td align="left">1.0+</td>
+<td align="left">If set, CSI compatibility is enabled.  Typically set to <code>unix://var/lib/kubelet/plugins_registry/storageos/csi.sock</code>.  Default is unset</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>CSI_VERSION</code></td>
-<td style="text-align:left">1.1.0+</td>
-<td style="text-align:left">Added in <code>1.1.0</code> to define what version of CSI to use. Can be set to <code>v0</code> or <code>v1</code>, defaults to <code>v0</code></td>
+<td align="left"><code>CSI_VERSION</code></td>
+<td align="left">1.1.0+</td>
+<td align="left">Added in <code>1.1.0</code> to define what version of CSI to use. Can be set to <code>v0</code> or <code>v1</code>, defaults to <code>v0</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DESCRIPTION</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">The node description for display purposes only.  Default is unset</td>
+<td align="left"><code>DESCRIPTION</code></td>
+<td align="left">1.0+</td>
+<td align="left">The node description for display purposes only.  Default is unset</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DEVICE_DIR</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Where the volumes are exported.  This directory must be shared into the container using the rshared volume mount option. Defaults to <code>/var/lib/storageos/volumes</code></td>
+<td align="left"><code>DEVICE_DIR</code></td>
+<td align="left">1.0+</td>
+<td align="left">Where the volumes are exported.  This directory must be shared into the container using the rshared volume mount option. Defaults to <code>/var/lib/storageos/volumes</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DFS_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for DirectFS to listen on.  Defaults to <code>5703</code></td>
+<td align="left"><code>DFS_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for DirectFS to listen on.  Defaults to <code>5703</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DISABLE_ERROR_REPORTING</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">To disable error reporting across the cluster, set to <code>true</code>. Defaults to <code>false</code>. Errors are reported to help identify and resolve potential issues that may occur</td>
+<td align="left"><code>DISABLE_ERROR_REPORTING</code></td>
+<td align="left">1.0+</td>
+<td align="left">To disable error reporting across the cluster, set to <code>true</code>. Defaults to <code>false</code>. Errors are reported to help identify and resolve potential issues that may occur</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DISABLE_TCMU</code></td>
-<td style="text-align:left">1.3+</td>
-<td style="text-align:left">Prevents TCMU from being used. On systems where another program is already using TCMU this should be set to <code>true</code>. See <a href="/docs/prerequisites/systemconfiguration">System Configuration</a> for more information.</td>
+<td align="left"><code>DISABLE_TCMU</code></td>
+<td align="left">1.3+</td>
+<td align="left">Prevents TCMU from being used. On systems where another program is already using TCMU this should be set to <code>true</code>. See <a href="/docs/prerequisites/systemconfiguration">System Configuration</a> for more information.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>DISABLE_TELEMETRY</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">To disable anonymous usage reporting across the cluster, set to <code>true</code>. Defaults to <code>false</code>. To help improve the product, data such as API usage and StorageOS configuration information is collected</td>
+<td align="left"><code>DISABLE_TELEMETRY</code></td>
+<td align="left">1.0+</td>
+<td align="left">To disable anonymous usage reporting across the cluster, set to <code>true</code>. Defaults to <code>false</code>. To help improve the product, data such as API usage and StorageOS configuration information is collected</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>FORCE_TCMU</code></td>
-<td style="text-align:left">1.3+</td>
-<td style="text-align:left">Force the dataplane to use TCMU. If set to <code>true</code> StorageOS will not start if TCMU fails to start.</td>
+<td align="left"><code>FORCE_TCMU</code></td>
+<td align="left">1.3+</td>
+<td align="left">Force the dataplane to use TCMU. If set to <code>true</code> StorageOS will not start if TCMU fails to start.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>HOSTNAME</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Hostname of the node, only if you wish to override it.  In Kubernetes environments, typically set to <code>spec.nodeName</code></td>
+<td align="left"><code>HOSTNAME</code></td>
+<td align="left">1.0+</td>
+<td align="left">Hostname of the node, only if you wish to override it.  In Kubernetes environments, typically set to <code>spec.nodeName</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>IN_K8S_CLUSTER</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Toggles enhanced Kubernetes integration.  Defaults to <code>true</code> and will be disabled automatically if Kubernetes API is not accessible.  Requires StorageOS to be deployed as a DaemonSet or Pod.</td>
+<td align="left"><code>IN_K8S_CLUSTER</code></td>
+<td align="left">1.0+</td>
+<td align="left">Toggles enhanced Kubernetes integration.  Defaults to <code>true</code> and will be disabled automatically if Kubernetes API is not accessible.  Requires StorageOS to be deployed as a DaemonSet or Pod.</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>JOIN</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left"><em>Required</em> A join token and/or list of cluster nodes to join.  The first node will bootstrap the cluster.  See <a href="https://docs.storageos.com/v1.x/docs/reference/clusterdiscovery/">cluster discovery</a>.  There is no default; this must be set for multiple-node clusters</td>
+<td align="left"><code>JOIN</code></td>
+<td align="left">1.0+</td>
+<td align="left"><em>Required</em> A join token and/or list of cluster nodes to join.  The first node will bootstrap the cluster.  See <a href="https://docs.storageos.com/v1.x/docs/reference/clusterdiscovery/">cluster discovery</a>.  There is no default; this must be set for multiple-node clusters</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>KUBECONFIG</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Path to local kubeconfig file.  Not normally required.  Default is unset</td>
+<td align="left"><code>KUBECONFIG</code></td>
+<td align="left">1.0+</td>
+<td align="left">Path to local kubeconfig file.  Not normally required.  Default is unset</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>KV_ADDR</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Comma separated list of etcd targets, in the form ip[:port].  Must be specified with <code>KV_BACKEND=etcd</code>.  Prefer multiple direct endpoints over a single load-balanced endpoint</td>
+<td align="left"><code>KV_ADDR</code></td>
+<td align="left">1.0+</td>
+<td align="left">Comma separated list of etcd targets, in the form ip[:port].  Must be specified with <code>KV_BACKEND=etcd</code>.  Prefer multiple direct endpoints over a single load-balanced endpoint</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>KV_BACKEND</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Type of KV store to use. Defaults to <code>embedded</code>. <code>etcd</code> is supported with <code>KV_ADDR</code> set to an external etcd instance</td>
+<td align="left"><code>KV_BACKEND</code></td>
+<td align="left">1.0+</td>
+<td align="left">Type of KV store to use. Defaults to <code>embedded</code>. <code>etcd</code> is supported with <code>KV_ADDR</code> set to an external etcd instance</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>KV_CLIENT_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the embedded Key/Value store. Defaults to <code>5706</code></td>
+<td align="left"><code>KV_CLIENT_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the embedded Key/Value store. Defaults to <code>5706</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>KV_PEER_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the embedded Key/Value store. Defaults to <code>5707</code></td>
+<td align="left"><code>KV_PEER_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the embedded Key/Value store. Defaults to <code>5707</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>LABELS</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Comma separated list of node labels.  e.g. <code>LABELS=country=us,env=prod</code>.  Default is unset</td>
+<td align="left"><code>LABELS</code></td>
+<td align="left">1.0+</td>
+<td align="left">Comma separated list of node labels.  e.g. <code>LABELS=country=us,env=prod</code>.  Default is unset</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>LOG_FILTER</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Used to discard log messages based on category.  e.g. <code>LOG_FILTER=cp=info,dp=info,etcd=debug</code>.  Default is unset</td>
+<td align="left"><code>LOG_FILTER</code></td>
+<td align="left">1.0+</td>
+<td align="left">Used to discard log messages based on category.  e.g. <code>LOG_FILTER=cp=info,dp=info,etcd=debug</code>.  Default is unset</td>
 </tr>
 <tr>
-<td style="text-align:left"><code>LOG_FORMAT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Logging output format, one of <code>text</code> or <code>json</code>.  Defaults to <code>json</code></td>
+<td align="left"><code>LOG_FORMAT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Logging output format, one of <code>text</code> or <code>json</code>.  Defaults to <code>json</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>LOG_LEVEL</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">One of <code>debug</code>, <code>info</code>, <code>warning</code> or <code>error</code>.  Defaults to <code>info</code></td>
+<td align="left"><code>LOG_LEVEL</code></td>
+<td align="left">1.0+</td>
+<td align="left">One of <code>debug</code>, <code>info</code>, <code>warning</code> or <code>error</code>.  Defaults to <code>info</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>NAMESPACE</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">The orchestrator namespace that StorageOS is running in.  Used as the location to store encryption keys in.  Defaults to <code>storageos</code></td>
+<td align="left"><code>NAMESPACE</code></td>
+<td align="left">1.0+</td>
+<td align="left">The orchestrator namespace that StorageOS is running in.  Used as the location to store encryption keys in.  Defaults to <code>storageos</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>NATS_CLUSTER_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the NATS cluster service to listen on. Defaults to <code>5710</code></td>
+<td align="left"><code>NATS_CLUSTER_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the NATS cluster service to listen on. Defaults to <code>5710</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>NATS_HTTP_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the NATS HTTP server to listen on.  Defaults to <code>5709</code></td>
+<td align="left"><code>NATS_HTTP_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the NATS HTTP server to listen on.  Defaults to <code>5709</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>NATS_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for NATS messaging to listen on.  Defaults to <code>5708</code></td>
+<td align="left"><code>NATS_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for NATS messaging to listen on.  Defaults to <code>5708</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PASSWORD</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Password to authenticate to the API with.  Defaults to <code>storageos</code></td>
+<td align="left"><code>PASSWORD</code></td>
+<td align="left">1.0+</td>
+<td align="left">Password to authenticate to the API with.  Defaults to <code>storageos</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PROBE_INTERVAL</code></td>
-<td style="text-align:left">1.1.2+</td>
-<td style="text-align:left">The interval between node probes. Takes a time duration in string format e.g. <code>500ms</code> or <code>2s</code>. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in <code>1.1.2</code> replacing <code>PROBE_INTERVAL_MS</code></td>
+<td align="left"><code>PROBE_INTERVAL</code></td>
+<td align="left">1.1.2+</td>
+<td align="left">The interval between node probes. Takes a time duration in string format e.g. <code>500ms</code> or <code>2s</code>. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in <code>1.1.2</code> replacing <code>PROBE_INTERVAL_MS</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PROBE_INTERVAL_MS</code></td>
-<td style="text-align:left">1.1.1</td>
-<td style="text-align:left">The interval in milliseconds between node probes. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in <code>1.1.1</code> and deprecated in <code>1.1.2</code> See <code>PROBE_INTERVAL</code></td>
+<td align="left"><code>PROBE_INTERVAL_MS</code></td>
+<td align="left">1.1.1</td>
+<td align="left">The interval in milliseconds between node probes. Setting this lower (more frequent) will cause the cluster to detect failed nodes more quickly at the expense of increased bandwidth usage.  Defaults to 1000ms. Added in <code>1.1.1</code> and deprecated in <code>1.1.2</code> See <code>PROBE_INTERVAL</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PROBE_TIMEOUT</code></td>
-<td style="text-align:left">1.1.2+</td>
-<td style="text-align:left">The timeout to wait for an ack from a probed node before assuming it is unhealthy.  Takes a time duration in string format e.g. <code>500ms</code> or <code>2s</code>. This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in <code>1.1.2</code> replacing <code>PROBE_TIMEOUT_MS</code></td>
+<td align="left"><code>PROBE_TIMEOUT</code></td>
+<td align="left">1.1.2+</td>
+<td align="left">The timeout to wait for an ack from a probed node before assuming it is unhealthy.  Takes a time duration in string format e.g. <code>500ms</code> or <code>2s</code>. This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in <code>1.1.2</code> replacing <code>PROBE_TIMEOUT_MS</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>PROBE_TIMEOUT_MS</code></td>
-<td style="text-align:left">1.1.1</td>
-<td style="text-align:left">The timeout to wait for an ack from a probed node before assuming it is unhealthy.  This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in <code>1.1.1</code> and deprecated in <code>1.1.2</code> See <code>PROBE_TIMEOUT</code></td>
+<td align="left"><code>PROBE_TIMEOUT_MS</code></td>
+<td align="left">1.1.1</td>
+<td align="left">The timeout to wait for an ack from a probed node before assuming it is unhealthy.  This should be set to 99-percentile of RTT (round-trip time) on your network.  Defaults to 3000ms. Added in <code>1.1.1</code> and deprecated in <code>1.1.2</code> See <code>PROBE_TIMEOUT</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>SERF_PORT</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Port for the Serf protocol to listen on.  Defaults to <code>5711</code></td>
+<td align="left"><code>SERF_PORT</code></td>
+<td align="left">1.0+</td>
+<td align="left">Port for the Serf protocol to listen on.  Defaults to <code>5711</code></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>TLS_ETCD_CA</code></td>
-<td style="text-align:left">1.2.0</td>
-<td style="text-align:left">The file path to the etcd server Certificate Authority certificate. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
+<td align="left"><code>TLS_ETCD_CA</code></td>
+<td align="left">1.2.0</td>
+<td align="left">The file path to the etcd server Certificate Authority certificate. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>TLS_ETCD_CLIENT_CERT</code></td>
-<td style="text-align:left">1.2.0</td>
-<td style="text-align:left">The file path to the etcd server client certificate. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
+<td align="left"><code>TLS_ETCD_CLIENT_CERT</code></td>
+<td align="left">1.2.0</td>
+<td align="left">The file path to the etcd server client certificate. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>TLS_ETCD_CLIENT_KEY</code></td>
-<td style="text-align:left">1.2.0</td>
-<td style="text-align:left">The file path to the etcd server client key. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
+<td align="left"><code>TLS_ETCD_CLIENT_KEY</code></td>
+<td align="left">1.2.0</td>
+<td align="left">The file path to the etcd server client key. The certificate should be mounted into the container using a Secret. See <a href="/docs/operations/external-etcd/etcd-tls">etcd TLS</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><code>USERNAME</code></td>
-<td style="text-align:left">1.0+</td>
-<td style="text-align:left">Username to authenticate to the API with.  Defaults to <code>storageos</code></td>
+<td align="left"><code>USERNAME</code></td>
+<td align="left">1.0+</td>
+<td align="left">Username to authenticate to the API with.  Defaults to <code>storageos</code></td>
 </tr>
 </tbody>
 </table>

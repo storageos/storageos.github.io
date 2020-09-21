@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -32,8 +32,7 @@
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 
@@ -43,8 +42,8 @@
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -186,7 +185,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 

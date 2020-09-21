@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -40,8 +40,7 @@ In our case, we will use MinIO in the Kubernetes cluster as the &ldquo;cloud pro
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Velero Backups"/>
 <meta name="twitter:description" content="Using Velero to backup your StorageOS volumes Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes.
 Velero consists of the following components:
@@ -55,8 +54,8 @@ In our case, we will use MinIO in the Kubernetes cluster as the &ldquo;cloud pro
 
 
 
-<link rel="preload" href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -199,7 +198,7 @@ In our case, we will use MinIO in the Kubernetes cluster as the &ldquo;cloud pro
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -233,7 +232,7 @@ In our case, we will use MinIO in the Kubernetes cluster as the &ldquo;cloud pro
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -1195,26 +1194,26 @@ restore from that backup. A simple form of quiescence is the unix command
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f ./mysql 
 </code></pre></div><p>Notice that the Statefulset also includes 5 annotations:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">annotations</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">backup.velero.io/backup-volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">data</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">backup.velero.io/backup-volumes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pre.hook.backup.velero.io/command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;[&#34;/sbin/fsfreeze&#34;, &#34;--freeze&#34;, &#34;/var/lib/mysql&#34;]&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pre.hook.backup.velero.io/container</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">fsfreeze</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">pre.hook.backup.velero.io/container</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>fsfreeze<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">post.hook.backup.velero.io/command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#39;[&#34;/sbin/fsfreeze&#34;, &#34;--unfreeze&#34;, &#34;/var/lib/mysql&#34;]&#39;</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">post.hook.backup.velero.io/container</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">fsfreeze</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">post.hook.backup.velero.io/container</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>fsfreeze<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>The first annotation specifies which volume to backup using restic. The other
 annotations are used to perform an fsfreeze on the volume mount point using pre
 and post backup hooks, for more details about Velero pre/post backup hooks
 please see their documentation <a href="https://Velero.io/docs/main/hooks/">here</a>.</p>
 <p>We have to specify to use the <code>fsfreeze</code> ubuntu container since the MySQL
 container doesn&rsquo;t support fsfreeze</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">fsfreeze</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">ubuntu:bionic</span><span style="color:#f8f8f8;text-decoration:underline">
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>fsfreeze<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">image</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ubuntu<span style="color:#000;font-weight:bold">:</span>bionic<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">securityContext</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">privileged</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">privileged</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">true</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">data</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000">/var/lib/mysql</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>/var/lib/mysql<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">command</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#4e9a06">&#34;/bin/bash&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#4e9a06">&#34;/bin/bash&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#4e9a06">&#34;-c&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">      </span>- <span style="color:#4e9a06">&#34;sleep infinity&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div></li>
@@ -1230,7 +1229,7 @@ mysql-0   2/2     Running   <span style="color:#0000cf;font-weight:bold">0</span
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> mysql-0 -n mysql -ti -c mysql -- mysql
 mysql&gt; create database shop<span style="color:#000;font-weight:bold">;</span>
 mysql&gt; use shop<span style="color:#000;font-weight:bold">;</span>
-mysql&gt; create table books <span style="color:#ce5c00;font-weight:bold">(</span>title VARCHAR<span style="color:#ce5c00;font-weight:bold">(</span>256<span style="color:#ce5c00;font-weight:bold">)</span>, price decimal<span style="color:#ce5c00;font-weight:bold">(</span>4,2<span style="color:#ce5c00;font-weight:bold">))</span><span style="color:#000;font-weight:bold">;</span>
+mysql&gt; create table books <span style="color:#ce5c00;font-weight:bold">(</span>title VARCHAR<span style="color:#ce5c00;font-weight:bold">(</span>256<span style="color:#ce5c00;font-weight:bold">)</span>, price decimal<span style="color:#ce5c00;font-weight:bold">(</span>4,2<span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#000;font-weight:bold">;</span>
 mysql&gt; insert into books value <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#4e9a06">&#39;Gates of Fire&#39;</span>, 13.99<span style="color:#ce5c00;font-weight:bold">)</span><span style="color:#000;font-weight:bold">;</span>
 mysql&gt; <span style="color:#204a87;font-weight:bold">select</span> * from books<span style="color:#000;font-weight:bold">;</span>
 +---------------+-------+

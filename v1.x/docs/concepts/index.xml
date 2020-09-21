@@ -55,26 +55,26 @@ reduce network traffic.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Available memory&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;% of overall memory reserved by StorageOS for caching&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Available memory&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;% of overall memory reserved by StorageOS for caching&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;3 GB or less&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;3%&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3 GB or less&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3%&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;3-8 GB&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;5%&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;3-8 GB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;5%&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;8-12 GB&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;7%&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;8-12 GB&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;7%&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;12 GB or more&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;10%&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;12 GB or more&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;10%&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -117,7 +117,7 @@ or production like workloads will be deployed on StorageOS.&lt;/p&gt;
         
         &lt;p&gt;StorageOS compression is handled on a per volume basis and is enabled by
 default, as performance is generally increased when compression is enabled due
-to fewer read/write operations taking place on the backend store (the volumes&#39;
+to fewer read/write operations taking place on the backend store (the volumes&amp;rsquo;
 &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
 by setting the &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
 on a volume.&lt;/p&gt;
@@ -135,7 +135,7 @@ original block then the uncompressed block is stored. Block size increases post
 compression if the compression dictionary is added to a block that cannot be
 compressed. By verifying whether blocks can be compressed, disk efficiency is
 increased and CPU resources are not wasted on attempts to compress
-uncompressible blocks. StorageOS&#39; patented on disk format is used to tell
+uncompressible blocks. StorageOS&amp;rsquo; patented on disk format is used to tell
 whether individual blocks are compressed without overhead. As such volume
 compression can be dynamically enabled/disabled even while a volume is in use.&lt;/p&gt;
 &lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/v1.x/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled
@@ -162,26 +162,26 @@ keys as recommended by &lt;a href=&#34;https://nvlpubs.nist.gov/nistpubs/Legacy/
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Key&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Size&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Usage&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Key&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Size&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Usage&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Volume&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;512 bits random data&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Used by XTS-AES to encrypt and decrypt disk blocks&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Volume&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;512 bits random data&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Used by XTS-AES to encrypt and decrypt disk blocks&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Namespace&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;256 bits random data&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Used to encrypt Volume keys&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Namespace&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;256 bits random data&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Used to encrypt Volume keys&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Initialisation Vector&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;256 bits random data&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Used as &amp;lsquo;salt&amp;rsquo; when encrypting volume keys with namespace keys&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Initialisation Vector&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;256 bits random data&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Used as &amp;lsquo;salt&amp;rsquo; when encrypting volume keys with namespace keys&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -612,25 +612,25 @@ mode will determine whether the volume can be used during recovery:&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;Failure mode&lt;/th&gt;
-&lt;th style=&#34;text-align:left&#34;&gt;On loss of replica&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Failure mode&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;On loss of replica&lt;/th&gt;
 &lt;th&gt;Example&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Hard&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Hard&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;If the number of replicas falls below that requested, mark the volume as unavailable. Any reads or writes will fail.&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;storageos.com/failure.mode=hard&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Always On&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;As long as any copy of the volume is available, the volume will be usable.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Always On&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;As long as any copy of the volume is available, the volume will be usable.&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;storageos.com/failure.mode=alwayson&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Soft&lt;/td&gt;
-&lt;td style=&#34;text-align:left&#34;&gt;Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Soft&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Default mode. Specify how many failed replicas to tolerate, defaulting to 1 if there is only 1 replica, or replicas - 1 if there is more than 1 replica.&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;storageos.com/failure.mode=soft storageos.com/failure.tolerance=2&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;

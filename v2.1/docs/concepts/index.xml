@@ -109,7 +109,7 @@ nodes.&lt;/p&gt;
         
         &lt;p&gt;StorageOS compression is handled on a per volume basis and is enabled by
 default, as performance is generally increased when compression is enabled due
-to fewer read/write operations taking place on the backend store (the volumes&#39;
+to fewer read/write operations taking place on the backend store (the volumes&amp;rsquo;
 &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/concepts/volumes#blob-files&#34;&gt;blob files&lt;/a&gt;). Compression can be disabled
 by setting the &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/reference/labels&#34;&gt;label&lt;/a&gt; &lt;code&gt;storageos.com/nocompress=true&lt;/code&gt;
 on a volume.&lt;/p&gt;
@@ -127,7 +127,7 @@ original block then the uncompressed block is stored. Block size increases post
 compression if the compression dictionary is added to a block that cannot be
 compressed. By verifying whether blocks can be compressed, disk efficiency is
 increased and CPU resources are not wasted on attempts to compress
-uncompressible blocks. StorageOS&#39; patented on disk format is used to tell
+uncompressible blocks. StorageOS&amp;rsquo; patented on disk format is used to tell
 whether individual blocks are compressed without overhead. As such volume
 compression can be dynamically enabled/disabled even while a volume is in use.&lt;/p&gt;
 &lt;p&gt;When compression and &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/concepts/encryption&#34;&gt;encryption&lt;/a&gt; are both enabled

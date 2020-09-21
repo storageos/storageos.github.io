@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -21,23 +21,22 @@
 <link rel="icon" type="image/png" href="/v1.x/favicons/android-192x192.png" sizes="192x192">
 
 <title>Compression | </title><meta property="og:title" content="Compression" />
-<meta property="og:description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&#39; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
+<meta property="og:description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&rsquo; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
 StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v1.x/docs/concepts/compression/" />
 
 <meta itemprop="name" content="Compression">
-<meta itemprop="description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&#39; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
+<meta itemprop="description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&rsquo; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
 StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network.">
 
 <meta itemprop="wordCount" content="238">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Compression"/>
-<meta name="twitter:description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&#39; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
+<meta name="twitter:description" content="StorageOS compression is handled on a per volume basis and is enabled by default, as performance is generally increased when compression is enabled due to fewer read/write operations taking place on the backend store (the volumes&rsquo; blob files). Compression can be disabled by setting the label storageos.com/nocompress=true on a volume.
 StorageOS utilises the lz4 compression algorithm when writing to the backend store and when compressing replication traffic before it is sent across the network."/>
 
 
@@ -46,8 +45,8 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 
 
 
-<link rel="preload" href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/v1.x/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v1.x/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -190,7 +189,7 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +223,7 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v1.x/offline-search-index.9092cd1cd9aed0daa5addaf389437710b9d0fac15bffdba8cdc347dc67db4449eea208a6f6405d991043d56caa0332b6191bcb4b439acde7467bec8c028e7187.json"
+  data-offline-search-index-json-src="/v1.x/offline-search-index.0af3904998e13935bb0c2290c96c759ee4d3adb73c1b0b5a99fe980a6e69bcbf26caa5864d13a318e4357776c11846b2b4ee21f78858d32bfa9cc688154ecb5a.json"
   data-offline-search-base-href="/"
 >
 
@@ -1175,7 +1174,7 @@ StorageOS utilises the lz4 compression algorithm when writing to the backend sto
 	
 	<p>StorageOS compression is handled on a per volume basis and is enabled by
 default, as performance is generally increased when compression is enabled due
-to fewer read/write operations taking place on the backend store (the volumes'
+to fewer read/write operations taking place on the backend store (the volumes&rsquo;
 <a href="/docs/concepts/volumes#blob-files">blob files</a>). Compression can be disabled
 by setting the <a href="/docs/reference/labels">label</a> <code>storageos.com/nocompress=true</code>
 on a volume.</p>
@@ -1193,7 +1192,7 @@ original block then the uncompressed block is stored. Block size increases post
 compression if the compression dictionary is added to a block that cannot be
 compressed. By verifying whether blocks can be compressed, disk efficiency is
 increased and CPU resources are not wasted on attempts to compress
-uncompressible blocks. StorageOS' patented on disk format is used to tell
+uncompressible blocks. StorageOS&rsquo; patented on disk format is used to tell
 whether individual blocks are compressed without overhead. As such volume
 compression can be dynamically enabled/disabled even while a volume is in use.</p>
 <p>When compression and <a href="/docs/concepts/encryption">encryption</a> are both enabled

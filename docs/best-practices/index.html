@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.75.0" />
+<meta name="generator" content="Hugo 0.64.1" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -30,12 +30,11 @@ It is highly recommended to use external etcd for cloud environments and place t
 <meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
 
-<meta itemprop="wordCount" content="657">
+<meta itemprop="wordCount" content="738">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Best Practices"/>
 <meta name="twitter:description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes."/>
@@ -46,8 +45,8 @@ It is highly recommended to use external etcd for cloud environments and place t
 
 
 
-<link rel="preload" href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" as="style">
-<link href="/scss/main.min.e2aecfc62dc6a23259cdd59b3690bd49a1768f18ff734187951af579e6fabddd.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -190,7 +189,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +223,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83bd70e286216fc92b2521e655df7792a5cb9c800e78521673565b2370d9c5fe7fb57f17e45282034e801554cfc6a97a43febd7a41f8804d5ceebfcfb687a7c5.json"
+  data-offline-search-index-json-src="/offline-search-index.4626d6b5652d5ba4e185c18ff498231303824d162cd17193705100df6324db7cbaa8b3d4d9f40bc207eeb641a2f12532ce64db4aa7a3bab7b791861d3a826a52.json"
   data-offline-search-base-href="/"
 >
 
@@ -1027,6 +1026,7 @@ It is highly recommended to use external etcd for cloud environments and place t
     <li><a href="#use-an-external-etcd-cluster">Use an external Etcd cluster</a></li>
     <li><a href="#setup-of-storage-on-the-hosts">Setup of storage on the hosts</a></li>
     <li><a href="#resource-reservations">Resource reservations</a></li>
+    <li><a href="#maintain-a-sufficient-number-of-nodes-for-replicas-to-be-created">Maintain a sufficient number of nodes for replicas to be created</a></li>
     <li><a href="#storageos-api-usernamepassword">StorageOS API username/password</a></li>
     <li><a href="#storageos-pod-placement">StorageOS Pod placement</a></li>
     <li><a href="#dedicated-instance-groups">Dedicated instance groups</a></li>
@@ -1100,6 +1100,14 @@ volumes in case of eviction or resource limit triggered restart. It is
 recommended to not limit StorageOS Pods.</p>
 <p>StorageOS implements a storage engine, therefore limiting CPU consumption might
 affect the I/O throughput of your volumes.</p>
+<h2 id="maintain-a-sufficient-number-of-nodes-for-replicas-to-be-created">Maintain a sufficient number of nodes for replicas to be created</h2>
+<p>To ensure that a new replica can always be created, an additional node should
+be available. To guarantee high availability, clusters using Volumes with 1
+replica must have at least 3 storage nodes. When using Volumes with 2
+replicas, at least 4 storage nodes, 3 replicas, 5 nodes, etc.</p>
+<p>Minimum number of storage nodes = 1 (primary) + N (replicas) + 1</p>
+<p>For more information, see the section on
+<a href="https://docs.storageos.com/docs/concepts/replication/#number-of-nodes">replication</a>.</p>
 <h2 id="storageos-api-usernamepassword">StorageOS API username/password</h2>
 <p>The API grants full access to StorageOS functionality, therefore we recommend
 that the default administrative password of &lsquo;storageos&rsquo; is reset to something

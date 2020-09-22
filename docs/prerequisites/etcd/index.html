@@ -192,7 +192,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5b2fb034056b68f8dddfeb396a3eb51fb82072a282f2fddab602c5ae1ff976a74ccc456011b1c2f6e4e0517b9966b4890862b8956ae7d23c914496cfb92dd2ce.json"
+  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +226,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5b2fb034056b68f8dddfeb396a3eb51fb82072a282f2fddab602c5ae1ff976a74ccc456011b1c2f6e4e0517b9966b4890862b8956ae7d23c914496cfb92dd2ce.json"
+  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
   data-offline-search-base-href="/"
 >
 
@@ -1461,7 +1461,7 @@ following information:</p>
 </span><span style="color:#4e9a06"></span>    --auto-compaction-mode revision <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-cluster-state new <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-cluster-token etcd-token <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    --listen-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span>,http://127.0.0.1:2379 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span>,http://127.0.0.1:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --advertise-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --listen-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-advertise-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
@@ -1512,7 +1512,7 @@ $ systemctl start  etcd3.service
 <p>The <code>etcdctl</code> binary is installed at <code>/usr/local/bin</code> on the nodes.</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh <span style="color:#000">$NODE</span> <span style="color:#8f5902;font-style:italic"># Any node running the new etcd</span>
-$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>http://127.0.0.1:2379 member list <span style="color:#8f5902;font-style:italic"># $NODE_IP - the IP of the node</span>
+$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>http://127.0.0.1:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> member list <span style="color:#8f5902;font-style:italic"># $NODE_IP - the IP of the node</span>
 66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
 17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
 8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379

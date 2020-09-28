@@ -30,7 +30,7 @@ It is highly recommended to use external etcd for cloud environments and place t
 <meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
 
-<meta itemprop="wordCount" content="738">
+<meta itemprop="wordCount" content="810">
 
 
 
@@ -189,7 +189,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
+  data-offline-search-index-json-src="/offline-search-index.b1af5fa1c33ec9165ad2467b3a439944aef862c55077d57952db5e942f6dbe445a8fd427a69cabc37486e0d378d6c17947274700b33ab736bf7a8569370155c3.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +223,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
+  data-offline-search-index-json-src="/offline-search-index.b1af5fa1c33ec9165ad2467b3a439944aef862c55077d57952db5e942f6dbe445a8fd427a69cabc37486e0d378d6c17947274700b33ab736bf7a8569370155c3.json"
   data-offline-search-base-href="/"
 >
 
@@ -1024,6 +1024,7 @@ It is highly recommended to use external etcd for cloud environments and place t
 <nav id="TableOfContents">
   <ul>
     <li><a href="#use-an-external-etcd-cluster">Use an external Etcd cluster</a></li>
+    <li><a href="#etcd-low-latency-io">Etcd low latency IO</a></li>
     <li><a href="#setup-of-storage-on-the-hosts">Setup of storage on the hosts</a></li>
     <li><a href="#resource-reservations">Resource reservations</a></li>
     <li><a href="#maintain-a-sufficient-number-of-nodes-for-replicas-to-be-created">Maintain a sufficient number of nodes for replicas to be created</a></li>
@@ -1080,6 +1081,13 @@ etcd, see the <a href="/docs/operations/external-etcd">External etcd Operations<
 <p>It is highly recommended to use external etcd for <strong>cloud environments</strong> and
 place the etcd cluster on stable nodes. Placing the etcd on nodes that are
 recycled often might affect the normal operations of StorageOS.</p>
+<h2 id="etcd-low-latency-io">Etcd low latency IO</h2>
+<p>It is recommended to run etcd on low-latency disks and keep other IO-intensive
+applications separate from the etcd nodes. Etcd is very sensitive to IO latency.
+Thus, the effect of disk contention can cause etcd downtime.</p>
+<p>Batch jobs such as backups, builds or application bundling can easily cause a
+high usage of disks making etcd unstable. It is recommended to run such
+workloads apart from the etcd servers.</p>
 <h2 id="setup-of-storage-on-the-hosts">Setup of storage on the hosts</h2>
 <p>We recommend creating a separate filesystem for StorageOS to mitigate the risk
 of filling the root filesystem on nodes. This has to be done for each node in

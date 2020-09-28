@@ -71,19 +71,26 @@ instructions or as a custom installation. It is expected that the user
 maintains the availability and integrity of the etcd cluster.&lt;/p&gt;
 &lt;p&gt;It is highly recommended to keep the cluster backed up and ensure high
 availability of its data.&lt;/p&gt;
-&lt;h3 id=&#34;low-latency&#34;&gt;Low latency&lt;/h3&gt;
+&lt;h3 id=&#34;network-low-latency&#34;&gt;Network low latency&lt;/h3&gt;
 &lt;p&gt;It is important to keep the latency between StorageOS nodes and the etcd
 replicas low. Deploying an etcd cluster in a different data center or region
 can make StorageOS detect etcd nodes as unavailable due to latency. 10ms
 latency between StorageOS and etcd would be the maximum threshold for proper
 functioning of the system.&lt;/p&gt;
+&lt;h3 id=&#34;disk-low-latency&#34;&gt;Disk low latency&lt;/h3&gt;
+&lt;p&gt;Etcd is very sensitive to disk latency. Because of that, it is recommended to
+run etcd away from other IO-intensive workloads. Operations such as backups,
+builds or application bundling cause a heavy usage of disks. If such operations
+run alongside the etcd nodes, they will cause etcd to become unstable and suffer
+downtime. It is best to run etcd nodes isolated from other IO workloads.&lt;/p&gt;
 &lt;h3 id=&#34;etcd-advertise-urls&#34;&gt;Etcd advertise urls&lt;/h3&gt;
 &lt;p&gt;The Etcd startup parameters &lt;code&gt;advertise-client-urls&lt;/code&gt; and
 &lt;code&gt;initial-advertise-peer-urls&lt;/code&gt; specify the addresses etcd clients or other etcd
-members should use to contact the etcd server. The advertise addresses must be
-reachable from the remote machines. i.e where StorageOS is running so it can
-connect successfully. Do not advertise addresses like localhost or 0.0.0.0 for
-a production setup since these addresses are unreachable from remote machines.&lt;/p&gt;
+members should use to contact the etcd server. The advertised addresses must be
+reachable from the remote machines - i.e. where StorageOS is running - so it
+can connect successfully. Do not advertise addresses like &lt;code&gt;localhost&lt;/code&gt; or
+&lt;code&gt;0.0.0.0&lt;/code&gt; for a production setup since these addresses are unreachable from
+remote machines.&lt;/p&gt;
 &lt;h3 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h3&gt;
 &lt;p&gt;It is highly recommended to add monitoring to the etcd cluster. Etcd serves
 Prometheus metrics on the client port &lt;code&gt;http://etcd-url:2379/metrics&lt;/code&gt;.&lt;/p&gt;

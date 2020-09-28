@@ -32,7 +32,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
 We do not support using the Kubernetes etcd for StorageOS installations.
 We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations.">
 
-<meta itemprop="wordCount" content="2009">
+<meta itemprop="wordCount" content="2024">
 
 
 
@@ -192,7 +192,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
+  data-offline-search-index-json-src="/offline-search-index.b1af5fa1c33ec9165ad2467b3a439944aef862c55077d57952db5e942f6dbe445a8fd427a69cabc37486e0d378d6c17947274700b33ab736bf7a8569370155c3.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +226,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eb535f9206910296caf9d9ca043093471b4ab27aa0679314c11b91252ce52a5bdc06f4597cfb0bfdef1502e3bd41fd01dca545ae404befd75d205f335644d36.json"
+  data-offline-search-index-json-src="/offline-search-index.b1af5fa1c33ec9165ad2467b3a439944aef862c55077d57952db5e942f6dbe445a8fd427a69cabc37486e0d378d6c17947274700b33ab736bf7a8569370155c3.json"
   data-offline-search-base-href="/"
 >
 
@@ -1081,7 +1081,9 @@ unsuitable for production installations.</p>
 installing a production-grade etcd cluster inside Kubernetes (although the
 landscape is changing rapidly, watch this space), and our production guidance
 remains to install etcd on separate machines outside of your Kubernetes
-cluster. This method is the best way to ensure a stable StorageOS cluster.</p>
+cluster. This method is the best way to ensure a stable StorageOS cluster.
+Please see our etcd operations page for additional information on deployment
+<a href="https://docs.storageos.com/docs/operations/etcd/">best practices</a> and concerns.</p>
 <ol>
 <li>Ephemeral pods within Kubernetes (<em>Testing</em>)</li>
 <li>External Virtual Machines (<em>Production</em>)</li>

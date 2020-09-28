@@ -254,7 +254,9 @@ unsuitable for production installations.&lt;/p&gt;
 installing a production-grade etcd cluster inside Kubernetes (although the
 landscape is changing rapidly, watch this space), and our production guidance
 remains to install etcd on separate machines outside of your Kubernetes
-cluster. This method is the best way to ensure a stable StorageOS cluster.&lt;/p&gt;
+cluster. This method is the best way to ensure a stable StorageOS cluster.
+Please see our etcd operations page for additional information on deployment
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/etcd/&#34;&gt;best practices&lt;/a&gt; and concerns.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Ephemeral pods within Kubernetes (&lt;em&gt;Testing&lt;/em&gt;)&lt;/li&gt;
 &lt;li&gt;External Virtual Machines (&lt;em&gt;Production&lt;/em&gt;)&lt;/li&gt;

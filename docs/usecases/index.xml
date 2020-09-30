@@ -14,7 +14,7 @@
     
     
     <item>
-      <title>Docs: Cassandra</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/cassandra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -107,7 +107,7 @@ cqlsh&amp;gt; SELECT cluster_name, listen_address FROM system.local&lt;span styl
     </item>
     
     <item>
-      <title>Docs: Elasticsearch</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -115,7 +115,7 @@ cqlsh&amp;gt; SELECT cluster_name, listen_address FROM system.local&lt;span styl
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Elasticsearch with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; ElasticSearch with StorageOS &lt;/h1&gt;
 &lt;p&gt;Elasticsearch is a distributed, RESTful search and analytics engine, most
 popularly used to aggregate logs, but also to serve as a search backend to a
 number of different applications.&lt;/p&gt;
@@ -253,7 +253,7 @@ example of how this is done to monitor StorageOS, please see &lt;a href=&#34;htt
     </item>
     
     <item>
-      <title>Docs: Jenkins</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -261,7 +261,8 @@ example of how this is done to monitor StorageOS, please see &lt;a href=&#34;htt
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkins.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Jenkins with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkins.png&#34; width=&#34;125&#34;
+height=&#34;125&#34;&gt; Jenkins with StorageOS&lt;/h1&gt;
 &lt;p&gt;This example shows an example of how to deploy Jenkins on Kubernetes with a
 StorageOS persistent volume being mounted on &lt;code&gt;/var/jenkins_home&lt;/code&gt;. Deploying
 Jenkins using StorageOS offers multiple benefits. Firstly Jenkins can spin up
@@ -327,7 +328,7 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Kafka</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/kafka/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -335,7 +336,8 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Apache Kafka with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Kafka
+with StorageOS &lt;/h1&gt;
 &lt;p&gt;Kafka is a popular stream processing platform combining features from pub/sub
 and traditional queues.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Kafka means that if a pod
@@ -455,7 +457,7 @@ its service endpoint&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Kubevirt</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/kubevirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -602,7 +604,7 @@ the original volume to it.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: MS SQL</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/mssql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -610,7 +612,8 @@ the original volume to it.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mssql.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; MS SQL with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mssql.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; MS SQL
+with StorageOS &lt;/h1&gt;
 &lt;p&gt;Beginning with Microsoft SQL Server 2017, Microsoft has supported MSSQL on
 linux.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
@@ -695,7 +698,7 @@ with your desired MS SQL configuration settings.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: MySQL</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/mysql/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -783,7 +786,7 @@ with your desired MySQL configuration settings.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Nginx</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/nginx/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -791,7 +794,8 @@ with your desired MySQL configuration settings.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/nginx.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Nginx with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/nginx.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Nginx
+with StorageOS &lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.nginx.com/&#34;&gt;Nginx&lt;/a&gt; is a popular web server that can be used as a reverse proxy, load
 balancer or even as a
 &lt;a href=&#34;https://github.com/kubernetes/ingress-nginx&#34;&gt;Kubernetes ingress controller.&lt;/a&gt;&lt;/p&gt;
@@ -888,7 +892,7 @@ with your desired Nginx configuration settings.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: PostgreSQL</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/postgres/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -896,7 +900,7 @@ with your desired Nginx configuration settings.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/postgres.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; PostgreSQL with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/postgres.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; PostgreSQL with StorageOS &lt;/h1&gt;
 &lt;p&gt;PostgreSQL or &amp;ldquo;Postgres&amp;rdquo; is an open source object-relational database management
 system (ORDBMS).&lt;/p&gt;
 &lt;p&gt;Postgres is deployed across a wide variety of platforms with a mix of workloads
@@ -984,7 +988,7 @@ with your desired PostgreSQL configuration settings.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Prometheus</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -992,7 +996,8 @@ with your desired PostgreSQL configuration settings.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/prom.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Prometheus with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/prom.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
+Prometheus with StorageOS &lt;/h1&gt;
 &lt;p&gt;Prometheus is a popular application used for event monitoring and alerting in
 Kubernetes.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
@@ -1085,7 +1090,7 @@ check out the &lt;a href=&#34;https://prometheus.io/docs/&#34;&gt;prometheus doc
     </item>
     
     <item>
-      <title>Docs: Redis</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/redis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1093,7 +1098,8 @@ check out the &lt;a href=&#34;https://prometheus.io/docs/&#34;&gt;prometheus doc
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/redis.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Redis with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/redis.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Redis
+with StorageOS &lt;/h1&gt;
 &lt;p&gt;Redis is a popular networked, in-memory, key-value data store with optional durability to disk.&lt;/p&gt;
 &lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
 cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
@@ -1168,7 +1174,7 @@ with your desired Redis configuration settings.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: Backing up files from StorageOS volumes</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/sidecar-backups/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1176,7 +1182,8 @@ with your desired Redis configuration settings.&lt;/p&gt;
       <description>
         
         
-        &lt;p&gt;In this example use case we provide three different strategies for accessing
+        &lt;h1 id=&#34;backing-up-files-from-storageos-volumes&#34;&gt;Backing up files from StorageOS volumes&lt;/h1&gt;
+&lt;p&gt;In this example use case we provide three different strategies for accessing
 files that have been written to a StorageOS  persistent volume.&lt;/p&gt;
 &lt;p&gt;In the following examples the &amp;ldquo;application&amp;rdquo; container is the container &lt;code&gt;main&lt;/code&gt;,
 which has a rsync, &lt;a href=&#34;https://www.nginx.com/&#34;&gt;Nginx&lt;/a&gt; or sftp sidecar container. The StorageOS volume that
@@ -1363,7 +1370,7 @@ date.txt    lost+found
     </item>
     
     <item>
-      <title>Docs: Velero Backups</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/velero-backups/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1371,7 +1378,8 @@ date.txt    lost+found
       <description>
         
         
-        &lt;h2 id=&#34;using-velero-to-backup-your-storageos-volumes&#34;&gt;Using Velero to backup your StorageOS volumes&lt;/h2&gt;
+        &lt;h1 id=&#34;velero-backups&#34;&gt;Velero Backups&lt;/h1&gt;
+&lt;h2 id=&#34;using-velero-to-backup-your-storageos-volumes&#34;&gt;Using Velero to backup your StorageOS volumes&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://velero.io/&#34;&gt;Velero&lt;/a&gt; is an open source tool to safely backup and restore, perform disaster
 recovery, and migrate Kubernetes cluster resources and persistent volumes.&lt;/p&gt;
 &lt;p&gt;Velero consists of the following components:&lt;/p&gt;
@@ -1574,7 +1582,7 @@ mysql&amp;gt; &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt;
     </item>
     
     <item>
-      <title>Docs: Zookeeper</title>
+      <title>Docs: </title>
       <link>https://docs.storageos.com/docs/usecases/zookeeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -1582,7 +1590,7 @@ mysql&amp;gt; &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/zookeeper.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Apache Zookeeper with StorageOS&lt;/h1&gt;
+        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/zookeeper.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Zookeeper with StorageOS &lt;/h1&gt;
 &lt;p&gt;ZooKeeper is a centralized service for maintaining configuration information,
 naming, providing distributed synchronization, and providing group services.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Zookeeper means that if a pod

@@ -219,6 +219,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/usecases/influxdb/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/init-container/</loc>
   </url>
   

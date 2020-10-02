@@ -7,7 +7,6 @@
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
-<link rel="alternate" type="application/rss&#43;xml" href="https://docs.storageos.com/docs/install/index.xml">
 
 
 <link rel="shortcut icon" href="/favicons/favicon.ico" >
@@ -21,18 +20,24 @@
 <link rel="icon" type="image/png" href="/favicons/android-144x144.png" sizes="144x144">
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
-<title>Install | </title><meta property="og:title" content="Install" />
-<meta property="og:description" content="StorageOS is platform agnostic, however, there are details on different providers and Kubernetes distributions to take in consideration. Follow the instructions to Install, Provision or Troubleshoot according to your providers.
-" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://docs.storageos.com/docs/install/" />
+<title>InfluxDB | </title><meta property="og:title" content="InfluxDB" />
+<meta property="og:description" content="InfluxDB with StorageOS InfluxDB is a popular open source time series database application optimised for managing datasets consisting of many small measurements. Its advantages include the ability to handle very high write and query loads. Its uses include monitoring, analytics and the recording and analysis of data from sensors.
+Before you start, ensure you have StorageOS installed and ready on a Kubernetes cluster. See our guide on how to install StorageOS on Kubernetes for more information." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.storageos.com/docs/usecases/influxdb/" />
 
-<meta itemprop="name" content="Install">
-<meta itemprop="description" content="StorageOS is platform agnostic, however, there are details on different providers and Kubernetes distributions to take in consideration. Follow the instructions to Install, Provision or Troubleshoot according to your providers.
-"><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Install"/>
-<meta name="twitter:description" content="StorageOS is platform agnostic, however, there are details on different providers and Kubernetes distributions to take in consideration. Follow the instructions to Install, Provision or Troubleshoot according to your providers.
-"/>
+<meta itemprop="name" content="InfluxDB">
+<meta itemprop="description" content="InfluxDB with StorageOS InfluxDB is a popular open source time series database application optimised for managing datasets consisting of many small measurements. Its advantages include the ability to handle very high write and query loads. Its uses include monitoring, analytics and the recording and analysis of data from sensors.
+Before you start, ensure you have StorageOS installed and ready on a Kubernetes cluster. See our guide on how to install StorageOS on Kubernetes for more information.">
+
+<meta itemprop="wordCount" content="588">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="InfluxDB"/>
+<meta name="twitter:description" content="InfluxDB with StorageOS InfluxDB is a popular open source time series database application optimised for managing datasets consisting of many small measurements. Its advantages include the ability to handle very high write and query loads. Its uses include monitoring, analytics and the recording and analysis of data from sensors.
+Before you start, ensure you have StorageOS installed and ready on a Kubernetes cluster. See our guide on how to install StorageOS on Kubernetes for more information."/>
 
 
 
@@ -67,9 +72,9 @@
 <script src="/js/enable-link-tab.js"></script>
 
 
-    <title>Install | </title>
+    <title>InfluxDB | </title>
   </head>
-  <body class="td-section">
+  <body class="td-page">
     <header>
       
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -428,10 +433,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/install/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Install</a>
+    <a  href="/docs/install/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Install</a>
   </li>
   <ul>
-    <li class="collapse show" id="docsinstall">
+    <li class="collapse " id="docsinstall">
       
       
       
@@ -658,10 +663,10 @@
 
 <ul class="td-sidebar-nav__section pr-md-3">
   <li class="td-sidebar-nav__section-title">
-    <a  href="/docs/usecases/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Use Cases</a>
+    <a  href="/docs/usecases/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Use Cases</a>
   </li>
   <ul>
-    <li class="collapse " id="docsusecases">
+    <li class="collapse show" id="docsusecases">
       
       
       
@@ -680,7 +685,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsusecasesinfluxdb" href="/docs/usecases/influxdb/">InfluxDB</a>
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsusecasesinfluxdb" href="/docs/usecases/influxdb/">InfluxDB</a>
       
       
       
@@ -1024,10 +1029,9 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes-with-storageos">Kubernetes with StorageOS</a></li>
-    <li><a href="#csi-container-storage-interface-note">CSI (Container Storage Interface) Note</a></li>
-    <li><a href="#kubernetes-upgrades-on-managed-services">Kubernetes Upgrades on Managed Services</a></li>
-    <li><a href="#docker">Docker</a></li>
+    <li><a href="#deploying-influxdb-on-kubernetes">Deploying InfluxDB on Kubernetes</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#backups">Backups</a></li>
   </ul>
 </nav>
 
@@ -1048,6 +1052,9 @@
 
 
 
+
+
+
 <li class="breadcrumb-item" >
 	<a href="https://docs.storageos.com/docs/">Documentation V2</a>
 </li>
@@ -1055,8 +1062,15 @@
 
 
 
+<li class="breadcrumb-item" >
+	<a href="https://docs.storageos.com/docs/usecases/">Use Cases</a>
+</li>
+
+
+
+
 <li class="breadcrumb-item active" aria-current="page">
-	<a href="https://docs.storageos.com/docs/install/">Install</a>
+	<a href="https://docs.storageos.com/docs/usecases/influxdb/">InfluxDB</a>
 </li>
 
 	</ol>
@@ -1064,297 +1078,167 @@
 
             
 <div class="td-content">
-	<h1>Install</h1>
-	<div class="lead">StorageOS is platform agnostic, however, there are details on different providers and Kubernetes distributions to take in consideration. Follow the instructions to Install, Provision or Troubleshoot according to your providers.</div>
-	<h2 id="kubernetes-with-storageos">Kubernetes with StorageOS</h2>
-<p>StorageOS integrates transparently with Kubernetes and different distributions
-such as OpenShift, Rancher, EKS, AKS, GKE, etc. The user can provide standard
-PVC definitions and StorageOS will dynamically provision matching volumes.
-StorageOS presents volumes to containers with standard POSIX mount targets.
-This enables the Kubelet to mount StorageOS volumes using standard linux device
-files. Checkout <a href="https://docs.storageos.com/docs/concepts/volumes/">device presentation</a> for more details.</p>
-<p>Kubernetes and StorageOS communicate with each other to perform actions such as
-creation, deletion or mounting of volumes. The CSI (Container Storage
-Interface) driver is the standard method of communication. Using CSI,
-Kubernetes and StorageOS communicate over a Unix domain socket.</p>
-<p>It is recommended to use the CSI StorgeOS installation from Kubernetes 1.13
-onwards. Although the former communication procedure, the native driver, is
-still in use and StorageOS maintains support for it, its use is discouraged as
-it is a deprecated method, to be removed in newer versions of Kubernetes.</p>
-<h2 id="csi-container-storage-interface-note">CSI (Container Storage Interface) Note</h2>
-<p>CSI is the standard method of communication that enables storage drivers for
-Kubernetes to release on their own schedule. The CSI standard allows storage
-vendors to upgrade, update, and enhance their drivers without the need to
-update Kubernetes source code, or follow Kubernetes release cycles.</p>
-<p>CSI was released GA from Kubernetes 1.13. StorageOS v2 only supports the use of
-CSI as a storage driver. In addition, the StorageOS Cluster Operator handles
-the configuration of the CSI driver and its complexity by detecting the version
-of the Kubernetes installed.</p>
-<p>Check out the status of the CSI release cycle in relation with Kubernetes in
-the <a href="https://kubernetes-csi.github.io/docs/">CSI project</a> page.</p>
-<p>CSI communication is fully supported by StorageOS if the cluster is deployed
-with any <a href="/docs/prerequisites/systemconfiguration#distribution-specifics">supported Linux
-Distribution</a>.</p>
-<h2 id="kubernetes-upgrades-on-managed-services">Kubernetes Upgrades on Managed Services</h2>
-<p>Managed services that support in place upgrades are fully supported. However,
-upgrading Kubernetes using green/blue deployments <strong>is not supported</strong>. This is
-because nodes are replaced rather than being upgraded. Any data stored on the
-nodes is lost when new nodes replace the previous ones.</p>
-<h2 id="docker">Docker</h2>
-<p>Some managed Kubernetes platforms such as Azure AKS, enable the &lsquo;Live-Restore&rsquo;
-Docker feature, enabling containers to continue running while Docker is stopped
-or upgraded. This feature can cause nodes to hang while shutting-down or
-rebooting, as rather than going through an orderly shutdown, StorageOS (and
-other processes) are killed before the disks are synced and unmounted. Devices
-in this inaccessible state will log a warning similar to:</p>
-<pre><code>Transport endpoint not connected
-</code></pre>
-<p>To prevent this behaviour, we advise disabling this feature by setting</p>
-<pre><code>{
-    ...
-    &quot;live-restore&quot;: false
-}
-</code></pre>
-<p>in <code>/etc/docker/daemon.json</code>.</p>
-<p>Here&rsquo;s an example Ansible snippet that might be used to achieve this</p>
-<pre><code>...
-- name: configure /etc/docker/daemon.json
-  lineinfile:
-      path: /etc/docker/daemon.json
-      regexp: '^.*&quot;live-restore&quot;: true,$'
-      line: '  &quot;live-restore&quot;: false,'
-      backrefs: yes
-  notify: restart docker
-...
-</code></pre>
-<blockquote>
-<p>Note: Use at own risk; you may need to adapt the example to work in your
-environment</p>
-</blockquote>
+	<h1>InfluxDB</h1>
+	
+	<h1><img src="/images/docs/explore/influxdb.png" width="125" height="125"> InfluxDB with StorageOS</h1>
+<p>InfluxDB is a popular open source time series database application optimised
+for managing datasets consisting of many small measurements. Its advantages
+include the ability to handle very high write and query loads. Its uses include monitoring, analytics and the recording and analysis of data from sensors.</p>
+<p>Before you start, ensure you have StorageOS installed and ready on a Kubernetes cluster. <a href="https://docs.storageos.com/docs/install/kubernetes/">See our guide on how to install StorageOS on Kubernetes for more information</a>.</p>
+<h2 id="deploying-influxdb-on-kubernetes">Deploying InfluxDB on Kubernetes</h2>
+<ol>
+<li>
+<p>You can find the latest files in the StorageOS use cases repository</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/storageos/use-cases.git storageos-usecases
+<span style="color:#204a87">cd</span> storageos-usecases
+</code></pre></div><p>StatefulSet definition:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>apps/v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StatefulSet<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>influxdb<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#0000cf;font-weight:bold">1</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">selector</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">matchLabels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>influxdb<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">serviceName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>influxdb<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span>...<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">serviceAccountName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>influxdb<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span>...<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">volumeMounts</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">        </span>- <span style="color:#204a87;font-weight:bold">mountPath</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>/var/lib/influxdb<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span>...<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">volumeClaimTemplates</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span>- <span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>data<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">accessModes</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#000;font-weight:bold">[</span><span style="color:#4e9a06">&#34;ReadWriteOnce&#34;</span><span style="color:#000;font-weight:bold">]</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storageClassName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;fast&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># StorageOS storageClass</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">resources</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#204a87;font-weight:bold">requests</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">          </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>20Gi<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>This excerpt is from the StatefulSet definition. This file contains the
+VolumeClaimTemplate that will dynamically provision storage, using the
+StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
+been declared with the same name as a VolumeClaim.</p>
+</li>
+<li>
+<p>Create the InfluxDB objects</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f ./influxdb
+</code></pre></div></li>
+<li>
+<p>Confirm InfluxDB is up and running.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods
+NAME                    READY    STATUS     RESTARTS   AGE
+influxdb-client         1/1      Running    <span style="color:#0000cf;font-weight:bold">0</span>          1m
+influxdb-0              1/1      Running    <span style="color:#0000cf;font-weight:bold">0</span>          1m
+</code></pre></div></li>
+<li>
+<p>Connect to the InfluxDB client pod, then to the InfluxDB server
+through the service (this reflects the common kubernetes pattern of
+maintaining a client pod to conveniently inspect a resource interactively).
+The default user (<em>admin</em>) and password (<em>admin</em>) are defined
+in the StatefulSet.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it influxdb-client -- bash
+root@influxdb-client:/# influx -host influxdb-0.influxdb
+Connected to http://influxdb-0.influxdb:8086 version 1.8.2
+InfluxDB shell version: 1.8.2
+&gt; auth
+username: admin
+password: 
+&gt; show databases
+name: databases
+name
+ _internal
 
-        <div class="section-index">
-    
-    
-    
-    
-    <hr class="panel-line">
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/install/kubernetes/">Kubernetes</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/install/openshift/">OpenShift</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <div class="entry">
-                    <h5>
-                        <a href="/docs/install/rancher/">Rancher</a>
-                    </h5>
-                    <p></p>
-                </div>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-    
-</div>
+&gt; CREATE DATABASE weather<span style="color:#000;font-weight:bold">;</span>
+&gt; USE weather
+Using database weather
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>London <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>26.4
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>London <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>24.9
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>London <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>22.2
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>London <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>14.7
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>London <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>19.5
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>Paris <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>27.1
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>Paris <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>27.5
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>Paris <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>21.3
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>Paris <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>26.7
+&gt; INSERT temperature,location<span style="color:#ce5c00;font-weight:bold">=</span>Paris <span style="color:#000">value</span><span style="color:#ce5c00;font-weight:bold">=</span>30.0
+&gt; SELECT MEAN<span style="color:#ce5c00;font-weight:bold">(</span>*<span style="color:#ce5c00;font-weight:bold">)</span> FROM <span style="color:#4e9a06">&#34;temperature&#34;</span> GROUP BY <span style="color:#4e9a06">&#34;location&#34;</span>
+name: temperature
+tags: <span style="color:#000">location</span><span style="color:#ce5c00;font-weight:bold">=</span>London
+<span style="color:#204a87">time</span> mean_value
 
+<span style="color:#0000cf;font-weight:bold">0</span>    25.65
+
+name: temperature
+tags: <span style="color:#000">location</span><span style="color:#ce5c00;font-weight:bold">=</span>Paris
+<span style="color:#204a87">time</span> mean_value
+
+<span style="color:#0000cf;font-weight:bold">0</span>    26.90
+</code></pre></div></li>
+</ol>
+<p>In the above steps we have inserted some time series data on the temperature
+at two locations, and calculated the mean for both. InfluxDB offers a variety
+of such aggregations (see the docs
+<a href="https://docs.influxdata.com/influxdb/v1.8/query_language/">here</a>), allowing
+convenient analysis of time series data.</p>
+<h2 id="configuration">Configuration</h2>
+<p>If you need custom startup options, you can edit or add to the environment
+variables within the <code>20-statefulset.yaml</code> file.</p>
+<h2 id="backups">Backups</h2>
+<p>In this example of how to perform backups of an InfluxDB database on a
+Kubernetes cluster, we write the output backup file
+to an Amazon Web Services (AWS) S3 bucket. Other approaches, such as backing
+up to internal servers or other StorageOS volumes, are possible. For this
+example to run successfully, Base64-encoded AWS credentials and an S3 bucket
+name should be inserted into the data field of the
+<code>backup/50-secret-config.yaml</code> file.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#39;&lt;your-aws-access-key-id&gt;&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64
+XXXXXXXXXXXX
+$ <span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#39;&lt;your-aws-secret-access-key&gt;&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64
+XXXXXXXXXXXX
+$ <span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#39;&lt;your-aws-default-region&gt;&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64
+XXXXXXXXXXXX
+$ <span style="color:#204a87">echo</span> -n <span style="color:#4e9a06">&#39;&lt;your-S3-bucket-name&gt;&#39;</span> <span style="color:#000;font-weight:bold">|</span> base64
+XXXXXXXXXXXX
+</code></pre></div><p>Secret definition:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>backup-pod-environment<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Opaque<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AWS_ACCESS_KEY_ID</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>XXXXXXXXXXXX<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AWS_SECRET_ACCESS_KEY</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>XXXXXXXXXXXX<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">AWS_DEFAULT_REGION</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>XXXXXXXXXXXX<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">BUCKET_NAME</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>XXXXXXXXXXXX<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">DB_NAME</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>d2VhdGhlcg==<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">DB_HOST</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>aW5mbHV4ZGItMC5pbmZsdXhkYjo4MDg4<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div><p>To perform the backup, create the secret and job from the manifest files
+in the <code>backup</code> directory.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f ./influxdb/backup/
+</code></pre></div><p>Confirm that the backup pod has been created, and the backup performed successfully.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME           READY   STATUS      RESTARTS   AGE
+backup-ks976   0/1     Completed   <span style="color:#0000cf;font-weight:bold">0</span>          1m
+client         1/1     Running     <span style="color:#0000cf;font-weight:bold">0</span>          10m
+influxdb-0     1/1     Running     <span style="color:#0000cf;font-weight:bold">0</span>          10m
+mysql-0        1/1     Running     <span style="color:#0000cf;font-weight:bold">0</span>          10m
+</code></pre></div><p>The files generated by the backup operation should now be available in you S3
+bucket. Re-perform the operation at any time by deleting and re-creating
+the backup job.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl delete -f <span style="color:#4e9a06">&#34;influxdb/40-backup-job.yaml&#34;</span>
+job.batch <span style="color:#4e9a06">&#34;backup&#34;</span> deleted
+$ kubectl create -f <span style="color:#4e9a06">&#34;influxdb/40-backup-job.yaml&#34;</span>
+job.batch/backup created
+</code></pre></div>
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>
 </div>
+
 
           </main>
         </div>

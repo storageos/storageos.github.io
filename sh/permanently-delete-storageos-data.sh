@@ -29,7 +29,7 @@ spec:
           - "/bin/sh"
         args:
           - "-c"
-          - "if [ -d /var/lib/storageos ]; then umount -f /var/lib/storageos || true; rm -rf /var/lib/storageos/; umount -f /var/lib/kubelet/plugins_registry/storageos || true; fi"
+          - "if [ -d /var/lib/storageos ]; then umount -f storageos || true; rm -rf /var/lib/storageos/; umount -f /var/lib/kubelet/plugins_registry/storageos || true; fi"
         securityContext:
           privileged: true
         volumeMounts:

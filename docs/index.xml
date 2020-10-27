@@ -3569,13 +3569,23 @@ nodes.&lt;/p&gt;
       <description>
         
         
-        &lt;p&gt;There are several ways to reach us if you require support. The fastest way to
-get in touch is to &lt;a href=&#34;https://slack.storageos.com&#34;&gt;join our public Slack
+        &lt;p&gt;When you need support, please raise a ticket via our &lt;a href=&#34;https://support.storageos.com&#34;&gt;Help Desk
+portal&lt;/a&gt;. It is important to select the priority
+of your ticket in accordance with the severity:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Severity 1 - Urgent&lt;/li&gt;
+&lt;li&gt;Severity 2 - High&lt;/li&gt;
+&lt;li&gt;Severity 3 - Medium&lt;/li&gt;
+&lt;li&gt;Severity 4 - Low&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This helps us route and prioritise the ticket accordingly. You can find
+definitions of our support severity levels on our
+&lt;a href=&#34;https://storageos.com/support&#34;&gt;website&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Responses to tickets will be cc&amp;rsquo;d via email.&lt;/p&gt;
+&lt;p&gt;For community support and general enquiries, please join our &lt;a href=&#34;https://slack.storageos.com&#34;&gt;public Slack
 channel.&lt;/a&gt; &lt;script async defer
 src=&#34;http://slack.storageos.com/slackin.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
-&lt;p&gt;You can file a support ticket via email to &lt;a href=&#34;mailto:support@storageos.com&#34;&gt;
-support@storageos.com&lt;/a&gt;, or use our &lt;a href=&#34;https://support.storageos.com&#34;&gt;Help Desk
-portal&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;information-to-include-in-tickets&#34;&gt;Information to include in tickets&lt;/h2&gt;
 &lt;p&gt;To help us provide effective support, we request that you provide as much
 information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
@@ -3583,21 +3593,21 @@ entries, that may help us debug your issue.&lt;/p&gt;
 &lt;p&gt;Information about the cluster can be automatically sent to StorageOS engineers
 as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/docs/support/contactus#storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Diagnostic
 Bundle&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;platform&#34;&gt;Platform&lt;/h2&gt;
+&lt;h3 id=&#34;platform&#34;&gt;Platform&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud provider/Bare metal&lt;/li&gt;
 &lt;li&gt;OS distribution and version&lt;/li&gt;
 &lt;li&gt;Kernel version&lt;/li&gt;
 &lt;li&gt;docker version and installation procedure (distro packages or docker install)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;storageos&#34;&gt;StorageOS&lt;/h2&gt;
+&lt;h3 id=&#34;storageos&#34;&gt;StorageOS&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Version of StorageOS&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;storageos get nodes&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;storageos get volumes&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;storageos describe volume VOL_ID&lt;/code&gt; # in case of issues with a specific volume&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;orchestrator-related-kubernetes-openshift-etc&#34;&gt;Orchestrator related (Kubernetes, OpenShift, etc)&lt;/h2&gt;
+&lt;h3 id=&#34;orchestrator-related-kubernetes-openshift-etc&#34;&gt;Orchestrator related (Kubernetes, OpenShift, etc)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Version and installation method&lt;/li&gt;
 &lt;li&gt;Managed or self managed?&lt;/li&gt;
@@ -3607,7 +3617,13 @@ Bundle&lt;/a&gt;.&lt;/p&gt;
 &lt;li&gt;Specific for your namespaces: &lt;code&gt;kubectl describe pvc PVC_NAME&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;Specific for your namespaces: &lt;code&gt;kubectl describe pod POD_NAME&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Cluster Diagnostic Bundle&lt;/h2&gt;
+&lt;h3 id=&#34;environment-changes&#34;&gt;Environment Changes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Details of any recent changes to your environment such as planned
+maintenance, node reboots, network failures, etcd outage, etc.. This can
+help speed up ticket triage and resolution considerably&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Cluster Diagnostic Bundle&lt;/h3&gt;
 &lt;p&gt;StorageOS has a cluster diagnostic function that aggregates cluster
 information.&lt;/p&gt;
 &lt;p&gt;The cluster diagnostic bundle is created only when a user chooses to do so. For

@@ -561,9 +561,9 @@ before deletion of the policy can be completed.&lt;/p&gt;
         
         
         &lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/storage-classes/&#34;&gt;StorageClassess&lt;/a&gt;
-in Kubernetes are used to link PVCs with a backend storage provisioner. For
-instance StorageOS. A StorageClass defines parameters to pass to the
-provisioner. Which in case of StorageOS, they can translate into behaviour
+in Kubernetes are used to link PVCs with a backend storage provisioner - for
+instance, StorageOS. A StorageClass defines parameters to pass to the
+provisioner, which in the case of StorageOS can be translated into behaviour
 applied to the Volumes. Many StorageClasses can be provisioned to apply
 different feature labels to the StorageOS Volumes.&lt;/p&gt;
 &lt;p&gt;By default the StorageOS Cluster Operator installs the &lt;code&gt;fast&lt;/code&gt; StorageClass at
@@ -590,10 +590,10 @@ Resource.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/controller-publish-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/node-publish-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/provisioner-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;StorageClasses can be created to define default labels for StorageOS volumes.
-But also to map to any semantic aggregation of volumes that suit your use case.
-Whether there are different roles, dev, staging and prod. Or a StorageClass
-maps to a team or customer using the cluster, etc.&lt;/p&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;StorageClasses can be created to define default labels for StorageOS volumes,
+but also to map to any semantic aggregation of volumes that suits your use
+case, whether there are different roles (dev, staging, prod), or a
+StorageClass maps to a team or customer using the cluster.&lt;/p&gt;
 &lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 &lt;p&gt;You can find the basic examples in the StorageOS use-cases repository, in
 the &lt;code&gt;00-basic&lt;/code&gt; directory.&lt;/p&gt;

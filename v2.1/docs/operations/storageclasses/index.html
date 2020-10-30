@@ -21,13 +21,13 @@
 <link rel="icon" type="image/png" href="/v2.1/favicons/android-192x192.png" sizes="192x192">
 
 <title>Kubernetes StorageClasses | </title><meta property="og:title" content="Kubernetes StorageClasses" />
-<meta property="og:description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner. For instance StorageOS. A StorageClass defines parameters to pass to the provisioner. Which in case of StorageOS, they can translate into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
+<meta property="og:description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner - for instance, StorageOS. A StorageClass defines parameters to pass to the provisioner, which in the case of StorageOS can be translated into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
 By default the StorageOS Cluster Operator installs the fast StorageClass at bootstrap of StorageOS. You can define its name in the StorageOS Cluster Resource." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2.1/docs/operations/storageclasses/" />
 
 <meta itemprop="name" content="Kubernetes StorageClasses">
-<meta itemprop="description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner. For instance StorageOS. A StorageClass defines parameters to pass to the provisioner. Which in case of StorageOS, they can translate into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
+<meta itemprop="description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner - for instance, StorageOS. A StorageClass defines parameters to pass to the provisioner, which in the case of StorageOS can be translated into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
 By default the StorageOS Cluster Operator installs the fast StorageClass at bootstrap of StorageOS. You can define its name in the StorageOS Cluster Resource.">
 
 <meta itemprop="wordCount" content="295">
@@ -36,7 +36,7 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kubernetes StorageClasses"/>
-<meta name="twitter:description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner. For instance StorageOS. A StorageClass defines parameters to pass to the provisioner. Which in case of StorageOS, they can translate into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
+<meta name="twitter:description" content="StorageClassess in Kubernetes are used to link PVCs with a backend storage provisioner - for instance, StorageOS. A StorageClass defines parameters to pass to the provisioner, which in the case of StorageOS can be translated into behaviour applied to the Volumes. Many StorageClasses can be provisioned to apply different feature labels to the StorageOS Volumes.
 By default the StorageOS Cluster Operator installs the fast StorageClass at bootstrap of StorageOS. You can define its name in the StorageOS Cluster Resource."/>
 
 
@@ -169,7 +169,9 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
 	
 	<li><a class="dropdown-item" href="/v2.1">v2.1</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.2</a></li>
+	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.3</a></li>
 	
 </ul>
 
@@ -189,7 +191,7 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.1/offline-search-index.22e510f26fc0d36a8a83ee1206848f8878dd47b408f3e3edfe9b9b4fb9025af7bb839cd26d5c6164d27a9761c7b667d7afbad66a4c4e8ea43e8ef2133ceeaaba.json"
+  data-offline-search-index-json-src="/v2.1/offline-search-index.b1007e294e65b8fd8d41a6e7c902b1f0daed1a04825fc9f203b24d6fcd56f9a06f8bf14b379d5e5564f761d3d92d90d4076d28d78580af56014cbbfead19dd76.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +225,7 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.1/offline-search-index.22e510f26fc0d36a8a83ee1206848f8878dd47b408f3e3edfe9b9b4fb9025af7bb839cd26d5c6164d27a9761c7b667d7afbad66a4c4e8ea43e8ef2133ceeaaba.json"
+  data-offline-search-index-json-src="/v2.1/offline-search-index.b1007e294e65b8fd8d41a6e7c902b1f0daed1a04825fc9f203b24d6fcd56f9a06f8bf14b379d5e5564f761d3d92d90d4076d28d78580af56014cbbfead19dd76.json"
   data-offline-search-base-href="/"
 >
 
@@ -1049,9 +1051,9 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
 	<h1>Kubernetes StorageClasses</h1>
 	
 	<p><a href="https://kubernetes.io/docs/concepts/storage/storage-classes/">StorageClassess</a>
-in Kubernetes are used to link PVCs with a backend storage provisioner. For
-instance StorageOS. A StorageClass defines parameters to pass to the
-provisioner. Which in case of StorageOS, they can translate into behaviour
+in Kubernetes are used to link PVCs with a backend storage provisioner - for
+instance, StorageOS. A StorageClass defines parameters to pass to the
+provisioner, which in the case of StorageOS can be translated into behaviour
 applied to the Volumes. Many StorageClasses can be provisioned to apply
 different feature labels to the StorageOS Volumes.</p>
 <p>By default the StorageOS Cluster Operator installs the <code>fast</code> StorageClass at
@@ -1078,10 +1080,10 @@ Resource.</p>
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/controller-publish-secret-namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>kube-system<span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># NameSpace that runs StorageOS Daemonset</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/node-publish-secret-namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>kube-system<span style="color:#f8f8f8;text-decoration:underline">        </span><span style="color:#8f5902;font-style:italic"># NameSpace that runs StorageOS Daemonset</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/provisioner-secret-namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>kube-system<span style="color:#f8f8f8;text-decoration:underline">         </span><span style="color:#8f5902;font-style:italic"># NameSpace that runs StorageOS Daemonset</span><span style="color:#f8f8f8;text-decoration:underline">
-</span></code></pre></div><p>StorageClasses can be created to define default labels for StorageOS volumes.
-But also to map to any semantic aggregation of volumes that suit your use case.
-Whether there are different roles, dev, staging and prod. Or a StorageClass
-maps to a team or customer using the cluster, etc.</p>
+</span></code></pre></div><p>StorageClasses can be created to define default labels for StorageOS volumes,
+but also to map to any semantic aggregation of volumes that suits your use
+case, whether there are different roles (dev, staging, prod), or a
+StorageClass maps to a team or customer using the cluster.</p>
 <h2 id="examples">Examples</h2>
 <p>You can find the basic examples in the StorageOS use-cases repository, in
 the <code>00-basic</code> directory.</p>

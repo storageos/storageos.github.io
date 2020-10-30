@@ -5352,7 +5352,7 @@ authoritatively verified to be in use.&lt;/li&gt;
 &lt;li&gt;cli/ui: Allow partial diagnostic bundle downloads.&lt;/li&gt;
 &lt;li&gt;ui: Namespace dropdown can now be scrolled.&lt;/li&gt;
 &lt;li&gt;ui: Add &amp;ldquo;Job title&amp;rdquo; to UI licence form.&lt;/li&gt;
-&lt;li&gt;logging: Log version at startup at INFO level.authoritatively&lt;/li&gt;
+&lt;li&gt;logging: Log version at startup at INFO level.&lt;/li&gt;
 &lt;li&gt;logging: Lower verbosity of SCSI warnings that do not apply to StorageOS.&lt;/li&gt;
 &lt;li&gt;diagnostics: Include logs that have been rotated.&lt;/li&gt;
 &lt;li&gt;diagnostics: Bundle collection across providers is now done in parallel.&lt;/li&gt;

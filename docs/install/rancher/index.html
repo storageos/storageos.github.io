@@ -194,7 +194,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -366,6 +366,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -414,6 +420,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -614,6 +626,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1277,7 +1295,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1336,7 +1354,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.2.0/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.0/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1398,7 +1416,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;rancher&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>

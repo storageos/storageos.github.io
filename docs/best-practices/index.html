@@ -30,7 +30,7 @@ It is highly recommended to use external etcd for cloud environments and place t
 <meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
 
-<meta itemprop="wordCount" content="810">
+<meta itemprop="wordCount" content="877">
 
 
 
@@ -191,7 +191,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -363,6 +363,12 @@ It is highly recommended to use external etcd for cloud environments and place t
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -411,6 +417,12 @@ It is highly recommended to use external etcd for cloud environments and place t
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -611,6 +623,12 @@ It is highly recommended to use external etcd for cloud environments and place t
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1035,6 +1053,7 @@ It is highly recommended to use external etcd for cloud environments and place t
     <li><a href="#etcd-low-latency-io">Etcd low latency IO</a></li>
     <li><a href="#setup-of-storage-on-the-hosts">Setup of storage on the hosts</a></li>
     <li><a href="#resource-reservations">Resource reservations</a></li>
+    <li><a href="#setting-a-kubernetes-pid-limit">Setting a Kubernetes PID limit</a></li>
     <li><a href="#maintain-a-sufficient-number-of-nodes-for-replicas-to-be-created">Maintain a sufficient number of nodes for replicas to be created</a></li>
     <li><a href="#storageos-api-usernamepassword">StorageOS API username/password</a></li>
     <li><a href="#storageos-pod-placement">StorageOS Pod placement</a></li>
@@ -1116,6 +1135,13 @@ volumes in case of eviction or resource limit triggered restart. It is
 recommended to not limit StorageOS Pods.</p>
 <p>StorageOS implements a storage engine, therefore limiting CPU consumption might
 affect the I/O throughput of your volumes.</p>
+<h2 id="setting-a-kubernetes-pid-limit">Setting a Kubernetes PID limit</h2>
+<p>StorageOS recommends that a PID cgroup limit of 32768 be set. StorageOS is a
+multi-threaded application and while most Kubernetes distributions set the PID
+cgroup limit to 32768, some environments can set a limit as low as 1024. The
+StorageOS init container will print a log message warning if the PID cgroup
+limit is too low. See our <a href="/docs/prerequisites/pidlimits">prerequisites</a> for
+more information.</p>
 <h2 id="maintain-a-sufficient-number-of-nodes-for-replicas-to-be-created">Maintain a sufficient number of nodes for replicas to be created</h2>
 <p>To ensure that a new replica can always be created, an additional node should
 be available. To guarantee high availability, clusters using Volumes with 1

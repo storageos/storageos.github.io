@@ -68,18 +68,21 @@ Usage:
 
 Examples:
 
-$ storageos attach volume --namespace my-namespace-name my-volume my-node
+$ storageos attach --namespace my-namespace-name my-volume my-node
 
 
 Flags:
   -h, --help   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; attach
 
 Global Flags:
+      --cache-dir string        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the directory used by the StorageOS CLI to cache data that can be used &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; future commands &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/root/.cache/storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -c, --config string           specifies the config file path &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/root/.config/storageos/config.yaml&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
   -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --no-auth-cache           disable the CLI&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s caching of authentication sessions
   -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 15s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;

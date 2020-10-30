@@ -28,7 +28,7 @@
 <meta itemprop="name" content="Upgrade StorageOS">
 <meta itemprop="description" content="Procedure to upgrade a StorageOS v2 Cluster">
 
-<meta itemprop="wordCount" content="284">
+<meta itemprop="wordCount" content="313">
 
 
 
@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -360,6 +360,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -408,6 +414,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -608,6 +620,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1078,8 +1096,13 @@ applications using StorageOS volumes. However we will take steps to minimize
 the required downtime as much as possible.</p>
 <h2 id="upgrade-storageos">Upgrade StorageOS</h2>
 <blockquote>
+<p>Ensure that you have read the <a href="https://docs.storageos.com/docs/prerequisites/pidlimits/">PIDs prerequisite introduced in StorageOS
+v2.3</a> and that you check the init container
+logs to ensure your environments PID limits are set correctly.</p>
+</blockquote>
+<blockquote>
 <p>Warning: To reduce downtime, it is recommended to <code>docker pull</code> the new
-StorageOS container image <code>storageos/node:v2.2.0</code>
+StorageOS container image <code>storageos/node:v2.3.0</code>
 on the nodes beforehand so that the cluster spins up faster!</p>
 </blockquote>
 <ol>
@@ -1101,7 +1124,7 @@ kubectl get statefulset --all-namespaces &gt; statefulset-sizes.yaml
 </code></pre></div></li>
 <li>
 <p>Deploy the new operator.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.2.0/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.0/storageos-operator.yaml
 </code></pre></div><blockquote>
 <p>Warning: If you have made changes to the CRDs, Service Account or Cluster
 Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
@@ -1111,7 +1134,7 @@ Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
 <p>Edit the StorageOSCluster Custom Resource (storageos_cr.yaml) with the new
 node image version.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">images</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.3.0&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>If you&rsquo;re not using any of the hardcoded container image versions make sure
 to delete them as well and only leave the nodeContainer image as shown
 above.</p>

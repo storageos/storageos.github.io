@@ -153,6 +153,11 @@ between all nodes in the cluster:&lt;/p&gt;
 &lt;td align=&#34;center&#34;&gt;TCP &amp;amp; UDP&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Gossip service&lt;/td&gt;
 &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;25705-25960&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;TCP&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;RWX Volume Endpoints&lt;/td&gt;
+&lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;StorageOS also uses &lt;a href=&#34;https://en.wikipedia.org/wiki/Ephemeral_port&#34;&gt;ephemeral&lt;/a&gt;
@@ -167,10 +172,11 @@ modify to taste.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;ufw default allow outgoing
 ufw allow 5701:5711/tcp
 ufw allow 5711/udp
+ufw allow 25705:25960/tcp
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;firewalld&#34;&gt;Firewalld&lt;/h3&gt;
 &lt;p&gt;For distributions that enable firewalld to control iptables such as some installations of OpenShift.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;firewall-cmd --permanent  --new-service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos
-firewall-cmd --permanent  --service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos --add-port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;5700-5800/tcp
+firewall-cmd --permanent  --service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos --add-port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;5700-5800/tcp --add-port&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;25705-25960/tcp
 firewall-cmd --add-service&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos  --zone&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;public --permanent
 firewall-cmd --reload
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;iptables&#34;&gt;Iptables&lt;/h3&gt;
@@ -180,6 +186,7 @@ iptables -I INPUT -i lo -m comment --comment &lt;span style=&#34;color:#4e9a06&#
 iptables -I INPUT -m state --state ESTABLISHED,RELATED -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit established traffic&amp;#39;&lt;/span&gt; -j ACCEPT
 iptables -I INPUT -p tcp --dport 5701:5711 -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;StorageOS&amp;#39;&lt;/span&gt; -j ACCEPT
 iptables -I INPUT -p udp --dport &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;5711&lt;/span&gt; -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;StorageOS&amp;#39;&lt;/span&gt; -j ACCEPT
+iptables -I INPUT -p tcp --dport 25705:25960 -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;StorageOS&amp;#39;&lt;/span&gt; -j ACCEPT
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Outbound traffic&lt;/span&gt;
 iptables -I OUTPUT -o lo -m comment --comment &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Permit loopback traffic&amp;#39;&lt;/span&gt; -j ACCEPT
@@ -229,6 +236,55 @@ Kubernetes master&amp;rsquo;s &lt;code&gt;controller-manager&lt;/code&gt; and &l
 enabled for both.&lt;/p&gt;
 &lt;p&gt;Refer to our installation pages for the orchestrators to see details on how to
 check and enable mount propagation where appropriate.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: PID Limits</title>
+      <link>https://docs.storageos.com/docs/prerequisites/pidlimits/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/prerequisites/pidlimits/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS recommends that a &lt;a href=&#34;https://www.kernel.org/doc/html/latest/admin-guide/cgroup-v2.html#pid&#34;&gt;PID
+cgroup&lt;/a&gt;
+limit of 32768 be used for StorageOS pods.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Most environments fulfill this prerequisite by default. Check the
+StorageOS init container logs as shown below to ensure this is the case.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;StorageOS pods running in Kubernetes are part of a PID cgroup that may limit
+the maximum number of PIDs that all containers in the PID cgroup slice can
+spawn. As the Linux kernel assigns a PID to processes and Light Weight
+Processes (LWP) a low limit can be easily reached under certain circumstances.
+The PID limit can be set by the Kubernetes distribution or by the container
+runtime. Generally the limit is set to the machine wide default limit of 32768
+but some environments can set this as low as 1024. A low PID limit may prevent
+StorageOS from spawning the required threads.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/storageos/init&#34;&gt;StorageOS init container&lt;/a&gt; runs a script
+that checks for the PID limit of the PID cGroup slice that the StorageOS pod
+runs in. If the
+&lt;a href=&#34;https://github.com/storageos/init/blob/master/scripts/02-limits/limits.sh&#34;&gt;script&lt;/a&gt;
+finds that the limit is less than 32768 it will log a warning. This warning can
+be viewed using kubectl to check the init container logs.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl -n kube-system logs -l &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos,kind&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;daemonset -c storageos-init
+WARNING: Effective max.pids limit &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;1024&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; less than RECOMMENDED_MAX_PIDS_LIMIT &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;32768&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;setting-a-kubernetes-pid-limit&#34;&gt;Setting a Kubernetes PID limit&lt;/h2&gt;
+&lt;p&gt;Kubernetes defaults to an unlimited &lt;code&gt;PodPidsLimit&lt;/code&gt;, which results in the usage of
+the machine wide limit; typically 32768.&lt;/p&gt;
+&lt;p&gt;For information on how to configure the Kubernetes PID limit see the Kubernetes
+documentation
+&lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/kubelet-config-file/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;setting-a-cri-o-pid-limit&#34;&gt;Setting a CRI-O PID limit&lt;/h2&gt;
+&lt;p&gt;Certain orchestrators or setups use CRI-O as the container runtime. Openshift
+4.x currently has CRI-O set a PID limit of 1024 by default. To configure the
+default CRI-O limit in Openshift 4.x see the RedHat documentation
+&lt;a href=&#34;https://access.redhat.com/solutions/5305611&#34;&gt;here&lt;/a&gt;. To configure CRI-O more
+generally see the CRI-O documentation
+&lt;a href=&#34;https://github.com/cri-o/cri-o/blob/master/docs/crio.conf.5.md&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
       </description>
     </item>

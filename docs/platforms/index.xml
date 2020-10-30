@@ -95,6 +95,11 @@ communication between OpenShift and StorageOS&lt;/p&gt;
 &lt;p&gt;StorageOS v2 supports OpenShift 4.0, 4.1, 4.2, 4.3, 4.4 and 4.5.&lt;/p&gt;
 &lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/docs/install/openshift/&#34;&gt;installation
 instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. Openshift 4 uses the CRI-O container runtime that sets a default PID
+limit of 1024. StorageOS recommends that the limit be raised to 32768.
+Please see our &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/pidlimits&#34;&gt;prerequisites&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;h2 id=&#34;openshift-upgrades&#34;&gt;OpenShift Upgrades&lt;/h2&gt;
 &lt;p&gt;OpenShift provides an upgrade operator that automates the process of
 orchestrator version changes.&lt;/p&gt;

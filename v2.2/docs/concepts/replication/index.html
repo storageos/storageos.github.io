@@ -30,7 +30,7 @@ The basic model for StorageOS replication is of a master volume with distributed
 <meta itemprop="description" content="StorageOS replicates volumes across nodes for data protection and high availability. Synchronous replication ensures strong consistency for applications such as databases and Elasticsearch, incurring one network round trip on writes.
 The basic model for StorageOS replication is of a master volume with distributed replicas. Each volume can be replicated between 0 and 5 times, which are provisioned to 0 to 5 nodes, up to the number of remaining nodes in the cluster.">
 
-<meta itemprop="wordCount" content="439">
+<meta itemprop="wordCount" content="650">
 
 
 
@@ -167,9 +167,11 @@ The basic model for StorageOS replication is of a master volume with distributed
 	
 	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
 	
-	<li><a class="dropdown-item" href="/2.1">v2.1</a></li>
+	<li><a class="dropdown-item" href="/v2.1">v2.1</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.2</a></li>
+	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.3</a></li>
 	
 </ul>
 
@@ -189,7 +191,7 @@ The basic model for StorageOS replication is of a master volume with distributed
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +225,7 @@ The basic model for StorageOS replication is of a master volume with distributed
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -542,6 +544,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationscluster-id" href="/v2.2/docs/operations/cluster-id/">ClusterID</a>
+      
+      
+      
+      
 
 
 
@@ -626,6 +634,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsupgrade" href="/v2.2/docs/operations/upgrade/">Upgrade StorageOS</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsusers" href="/v2.2/docs/operations/users/">User Management</a>
       
       
@@ -661,12 +675,6 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesbackups" href="/v2.2/docs/usecases/backups/">Backups</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasescassandra" href="/v2.2/docs/usecases/cassandra/">Cassandra</a>
       
       
@@ -674,6 +682,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecaseselasticsearch" href="/v2.2/docs/usecases/elasticsearch/">Elasticsearch</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesinfluxdb" href="/v2.2/docs/usecases/influxdb/">InfluxDB</a>
       
       
       
@@ -728,6 +742,18 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesredis" href="/v2.2/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasessidecar-backups" href="/v2.2/docs/usecases/sidecar-backups/">Sidecar Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesvelero-backups" href="/v2.2/docs/usecases/velero-backups/">Velero Backups</a>
       
       
       
@@ -1003,6 +1029,17 @@ The basic model for StorageOS replication is of a master volume with distributed
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#number-of-nodes">Number of nodes</a></li>
+        <li><a href="#delta-sync">Delta Sync</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1081,6 +1118,24 @@ a replica and the replica will the smallest difference to the current master
 will be kept.</p>
 <p>While the replica count is controllable on a per-volume basis, some
 environments may prefer to set <a href="https://docs.storageos.com/v2.2/docs/reference/labels/#storageos-storageclass-labels">default labels on the StorageClass</a>.</p>
+<h3 id="number-of-nodes">Number of nodes</h3>
+<p>StorageOS replicas are distributed across available nodes. When a node fails,
+a new replica is provisioned and synced as described above. Failure to
+provision a new replica will eventually cause the volume to become read-only.
+StorageOS will re-attempt creation of the replica for 90 seconds. After that
+period, if the old replica is not available and a new replica cannot be
+provisioned, StorageOS cannot guarantee that the data is safe and stored on
+multiple nodes as requested by the user. It will therefore force the volume
+to be set to read-only.</p>
+<p>To ensure that a new replica can always be created, an additional node should
+be available. To guarantee high availability, clusters using volumes with 1
+replica must have at least 3 storage nodes. When using volumes with 2 replicas,
+at least 4 storage nodes, 3 replicas, 5 nodes, etc.</p>
+<p>Minimum number of storage nodes = 1 (primary) + N (replicas) + 1</p>
+<p>For an application to be able to use the volume normally, the volume needs to
+recover from a degraded state. This is achieved by having enough nodes on which
+to place the data, and triggering a remount of the volumes - i.e. deleting the
+Pod mounting the volume once it is in a healthy state.</p>
 <h3 id="delta-sync">Delta Sync</h3>
 <p>StorageOS implements a delta sync between a volume master and its replicas.
 This means that if a replica for a volume goes offline, that when the replica

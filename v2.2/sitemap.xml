@@ -127,10 +127,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.2/docs/usecases/backups/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/v2.2/docs/usecases/cassandra/</loc>
   </url>
   
@@ -140,6 +136,10 @@
   
   <url>
     <loc>https://docs.storageos.com/v2.2/docs/reference/cluster-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.2/docs/operations/cluster-id/</loc>
   </url>
   
   <url>
@@ -216,6 +216,10 @@
   
   <url>
     <loc>https://docs.storageos.com/v2.2/docs/operations/managing-host-storage/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.2/docs/usecases/influxdb/</loc>
   </url>
   
   <url>
@@ -323,6 +327,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.2/docs/usecases/sidecar-backups/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.2/docs/operations/storageclasses/</loc>
   </url>
   
@@ -355,7 +363,15 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.2/docs/operations/upgrade/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.2/docs/operations/users/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.2/docs/usecases/velero-backups/</loc>
   </url>
   
   <url>

@@ -232,6 +232,82 @@ to the namespace.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Docs: ReadWriteMany</title>
+      <link>https://docs.storageos.com/docs/concepts/rwx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/concepts/rwx/</guid>
+      <description>
+        
+        
+        &lt;blockquote&gt;
+&lt;p&gt;Please note: StorageOS Project edition is required to create RWX Volumes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;StorageOS supports ReadWriteMany (RWX) &lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes&#34;&gt;access
+mode&lt;/a&gt;
+Persistent Volumes. A RWX PVC can be used simultaneously by many Pods in the
+same Kubernetes namespace for read and write operations.&lt;/p&gt;
+&lt;p&gt;StorageOS RWX Volumes are based on a shared filesystem - in the case of our
+implementation, this is NFS.&lt;/p&gt;
+&lt;h2 id=&#34;architecture&#34;&gt;Architecture&lt;/h2&gt;
+&lt;p&gt;For each RWX Volume, the following components are involved:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;StorageOS ReadWriteOnly (RWO) Volume&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;StorageOS provisions a standard &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes/&#34;&gt;Volume&lt;/a&gt; that provides a block device for the file system of the NFS server. This
+means that every RWX Volume has its own RWO Volume. This allows RWX Volumes to
+leverage the synchronous replication and automatic failover functionality of
+StorageOS, providing the NFS server with high availability.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;NFS-Ganesha server&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;For each RWX Volume, an NFS-Ganesha server is spawned by StorageOS. The NFS
+server runs in user space on the Node containing the primary Volume. Each NFS
+server uses its own RWO Volume to store data so the data of each Volume is
+isolated.&lt;/p&gt;
+&lt;p&gt;StorageOS binds an ephemeral port to the host network interface for each
+NFS-Ganesha server. The NFS export is presented using NFS v4.2. Check the
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/firewalls/&#34;&gt;prerequisites page&lt;/a&gt; to see the
+range of ports needed for StorageOS RWX Volumes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;StorageOS API Manager&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;StorageOS fully integrates with Kubernetes. The StorageOS API Manager Pod
+monitors StorageOS RWX Volumes to create and maintain a Kubernetes Service
+that points towards each RWX Volume&amp;rsquo;s NFS export endpoint. The API Manager is
+responsible for updating the Service endpoint when a RWX Volume failover
+occurs.&lt;/p&gt;
+&lt;h2 id=&#34;provisioning-and-using-rwx-pvcs&#34;&gt;Provisioning and using RWX PVCs&lt;/h2&gt;
+&lt;p&gt;The sequence in which a RWX PVC is provisioned and used is as follows:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A PersistentVolumeClaim (PVC) is created with RWX access mode using any
+StorageOS StorageClass.&lt;/li&gt;
+&lt;li&gt;StorageOS dynamically provisions the PV.&lt;/li&gt;
+&lt;li&gt;A new StorageOS RWO Volume is provisioned internally (not visible in
+Kubernetes).&lt;/li&gt;
+&lt;li&gt;When the RWX PVC is consumed by a pod, an NFS-Ganesha server is instantiated
+on the same Node as the primary Volume. The NFS-Ganesha server thus uses the
+RWO StorageOS Volume as its back end disk.&lt;/li&gt;
+&lt;li&gt;The StorageOS API Manager publishes the host IP and port for the NFS service
+endpoint, by creating a Kubernetes Service that points to the NFS-Ganesha
+server export endpoint.&lt;/li&gt;
+&lt;li&gt;StorageOS issues a NFS mount on the Node where the Pod using the PVC is
+scheduled.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;high-availability&#34;&gt;High availability&lt;/h2&gt;
+&lt;p&gt;RWX Volumes failover in the same way as standard RWO StorageOS Volumes. The
+replica Volume is promoted upon detection of Node failure and the NFS-Ganesha
+server is started on the Node containing the promoted replica. The StorageOS
+API Manager updates the endpoint of the Volume&amp;rsquo;s NFS service, causing traffic
+to be routed to the URL of the new NFS-Ganesha server. The NFS client in the
+application Node (where the user&amp;rsquo;s Pod is running) automatically reconnects.&lt;/p&gt;
+&lt;h2 id=&#34;notes&#34;&gt;Notes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;All feature labels that work on RWO Volumes will also work on RWX Volumes.&lt;/li&gt;
+&lt;li&gt;A StorageOS RWX Volume is matched one-to-one with a PVC. Therefore the
+StorageOS RWX Volume can only be accessed by Pods in the same Kubernetes
+namespace.&lt;/li&gt;
+&lt;li&gt;StorageOS RWX Volumes support volume resize. Refer to the &lt;a href=&#34;https://docs.storageos.com/docs/operations/resize/&#34;&gt;resize&lt;/a&gt; documentation for more details.&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Replication</title>
       <link>https://docs.storageos.com/docs/concepts/replication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

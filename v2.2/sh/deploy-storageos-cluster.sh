@@ -17,9 +17,9 @@ set -euo pipefail
 
 # The following variables may be tuned as desired. The defaults should work in
 # most environments.
-export OPERATOR_VERSION='v2.2.0'
-export CLI_VERSION='v2.2.0'
-export STOS_VERSION='v2.2.0'
+export OPERATOR_VERSION='v2.3.0'
+export CLI_VERSION='v2.3.0'
+export STOS_VERSION='v2.3.0'
 export STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
 export STOS_NAMESPACE='kube-system'
 export ETCD_NAMESPACE='storageos-etcd'
@@ -54,7 +54,7 @@ kubectl create namespace ${ETCD_NAMESPACE}
 echo -e "${GREEN}Creating etcd ClusterRole and ClusterRoleBinding${NC}"
 kubectl -n ${ETCD_NAMESPACE} create -f-<<END
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: etcd-operator
@@ -67,7 +67,7 @@ subjects:
   name: default
   namespace: ${ETCD_NAMESPACE}
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: etcd-operator
@@ -274,13 +274,6 @@ spec:
  images:
    nodeContainer: "storageos/node:${STOS_VERSION}" # StorageOS version
  # storageClassName: fast # The storage class creates by the StorageOS operator is configurable
- csi:
-   enable: true
-   deploymentStrategy: "deployment"
-   enableProvisionCreds: true
-   enableControllerPublishCreds: true
-   enableNodePublishCreds: true
-   enableControllerExpandCreds: true
  kvBackend:
    address: "storageos-etcd-client.${ETCD_NAMESPACE}.svc:2379"
 END

@@ -191,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -363,6 +363,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -411,6 +417,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -611,6 +623,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1285,7 +1303,7 @@ use the service endpoint when creating the StorageOS cluster.</p>
 <h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
 <p>In order to install the StorageOS operator download the requisite yaml
 manifests or apply them with kubectl.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.2.0/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.0/storageos-operator.yaml
 </code></pre></div><p>You can verify the operator is running using the following command</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
 </code></pre></div><p> </p>
@@ -1354,7 +1372,7 @@ running</p>
 <li>
 <p>Deploy the StorageOS CLI as a container</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.2.0 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.3.0 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\

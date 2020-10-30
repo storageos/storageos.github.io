@@ -32,7 +32,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
 We do not support using the Kubernetes etcd for StorageOS installations.
 We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations.">
 
-<meta itemprop="wordCount" content="2009">
+<meta itemprop="wordCount" content="2024">
 
 
 
@@ -170,9 +170,11 @@ We provide two methods for installing etcd. For those looking for a quick route 
 	
 	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
 	
-	<li><a class="dropdown-item" href="/2.1">v2.1</a></li>
+	<li><a class="dropdown-item" href="/v2.1">v2.1</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.2</a></li>
+	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.3</a></li>
 	
 </ul>
 
@@ -192,7 +194,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -226,7 +228,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -545,6 +547,12 @@ We provide two methods for installing etcd. For those looking for a quick route 
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationscluster-id" href="/v2.2/docs/operations/cluster-id/">ClusterID</a>
+      
+      
+      
+      
 
 
 
@@ -629,6 +637,12 @@ We provide two methods for installing etcd. For those looking for a quick route 
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsupgrade" href="/v2.2/docs/operations/upgrade/">Upgrade StorageOS</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsusers" href="/v2.2/docs/operations/users/">User Management</a>
       
       
@@ -664,12 +678,6 @@ We provide two methods for installing etcd. For those looking for a quick route 
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesbackups" href="/v2.2/docs/usecases/backups/">Backups</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasescassandra" href="/v2.2/docs/usecases/cassandra/">Cassandra</a>
       
       
@@ -677,6 +685,12 @@ We provide two methods for installing etcd. For those looking for a quick route 
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecaseselasticsearch" href="/v2.2/docs/usecases/elasticsearch/">Elasticsearch</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesinfluxdb" href="/v2.2/docs/usecases/influxdb/">InfluxDB</a>
       
       
       
@@ -731,6 +745,18 @@ We provide two methods for installing etcd. For those looking for a quick route 
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesredis" href="/v2.2/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasessidecar-backups" href="/v2.2/docs/usecases/sidecar-backups/">Sidecar Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesvelero-backups" href="/v2.2/docs/usecases/velero-backups/">Velero Backups</a>
       
       
       
@@ -1063,7 +1089,9 @@ unsuitable for production installations.</p>
 installing a production-grade etcd cluster inside Kubernetes (although the
 landscape is changing rapidly, watch this space), and our production guidance
 remains to install etcd on separate machines outside of your Kubernetes
-cluster. This method is the best way to ensure a stable StorageOS cluster.</p>
+cluster. This method is the best way to ensure a stable StorageOS cluster.
+Please see our etcd operations page for additional information on deployment
+<a href="https://docs.storageos.com/v2.2/docs/operations/etcd/">best practices</a> and concerns.</p>
 <ol>
 <li>Ephemeral pods within Kubernetes (<em>Testing</em>)</li>
 <li>External Virtual Machines (<em>Production</em>)</li>
@@ -1443,7 +1471,7 @@ following information:</p>
 </span><span style="color:#4e9a06"></span>    --auto-compaction-mode revision <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-cluster-state new <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-cluster-token etcd-token <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    --listen-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span>,http://127.0.0.1:2379 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --listen-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span>,http://127.0.0.1:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --advertise-client-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --listen-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --initial-advertise-peer-urls http://<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span>:<span style="color:#4e9a06">${</span><span style="color:#000">PEERS_PORT</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
@@ -1494,7 +1522,7 @@ $ systemctl start  etcd3.service
 <p>The <code>etcdctl</code> binary is installed at <code>/usr/local/bin</code> on the nodes.</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh <span style="color:#000">$NODE</span> <span style="color:#8f5902;font-style:italic"># Any node running the new etcd</span>
-$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>http://127.0.0.1:2379 member list <span style="color:#8f5902;font-style:italic"># $NODE_IP - the IP of the node</span>
+$ <span style="color:#000">ETCDCTL_API</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#0000cf;font-weight:bold">3</span> etcdctl --endpoints<span style="color:#ce5c00;font-weight:bold">=</span>http://127.0.0.1:<span style="color:#4e9a06">${</span><span style="color:#000">CLIENT_PORT</span><span style="color:#4e9a06">}</span> member list <span style="color:#8f5902;font-style:italic"># $NODE_IP - the IP of the node</span>
 66946cff1224bb5, started, etcd-b94bqkb9rf,  http://172.28.0.1:2380, http://172.28.0.1:2379
 17e7256953f9319b, started, etcd-gjr25s4sdr, http://172.28.0.2:2380, http://172.28.0.2:2379
 8b698843a4658823, started, etcd-rqdf9thx5p, http://172.28.0.3:2380, http://172.28.0.3:2379

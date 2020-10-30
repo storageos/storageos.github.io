@@ -21,22 +21,22 @@
 <link rel="icon" type="image/png" href="/v2.2/favicons/android-192x192.png" sizes="192x192">
 
 <title>Support | </title><meta property="og:title" content="Support" />
-<meta property="og:description" content="How to ask for StorageOS support.
+<meta property="og:description" content="How to make a support request
 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2.2/docs/support/" />
 
 <meta itemprop="name" content="Support">
-<meta itemprop="description" content="How to ask for StorageOS support.
+<meta itemprop="description" content="How to make a support request
 ">
 
-<meta itemprop="wordCount" content="435">
+<meta itemprop="wordCount" content="515">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Support"/>
-<meta name="twitter:description" content="How to ask for StorageOS support.
+<meta name="twitter:description" content="How to make a support request
 "/>
 
 
@@ -167,9 +167,11 @@
 	
 	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
 	
-	<li><a class="dropdown-item" href="/2.1">v2.1</a></li>
+	<li><a class="dropdown-item" href="/v2.1">v2.1</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.2</a></li>
+	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.3</a></li>
 	
 </ul>
 
@@ -189,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -223,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.b8a163ffe3095809624531d96d015c14dfd70daa90bc5292d1eda0da3c26c3f9393c717944df11bb84b15db5a274d0c9951060c5d9b89c3b286724b9515fa1d3.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
   data-offline-search-base-href="/"
 >
 
@@ -542,6 +544,12 @@
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationscluster-id" href="/v2.2/docs/operations/cluster-id/">ClusterID</a>
+      
+      
+      
+      
 
 
 
@@ -626,6 +634,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsupgrade" href="/v2.2/docs/operations/upgrade/">Upgrade StorageOS</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsoperationsusers" href="/v2.2/docs/operations/users/">User Management</a>
       
       
@@ -661,12 +675,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesbackups" href="/v2.2/docs/usecases/backups/">Backups</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasescassandra" href="/v2.2/docs/usecases/cassandra/">Cassandra</a>
       
       
@@ -674,6 +682,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecaseselasticsearch" href="/v2.2/docs/usecases/elasticsearch/">Elasticsearch</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesinfluxdb" href="/v2.2/docs/usecases/influxdb/">InfluxDB</a>
       
       
       
@@ -728,6 +742,18 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesredis" href="/v2.2/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasessidecar-backups" href="/v2.2/docs/usecases/sidecar-backups/">Sidecar Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v22docsusecasesvelero-backups" href="/v2.2/docs/usecases/velero-backups/">Velero Backups</a>
       
       
       
@@ -1005,10 +1031,15 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#platform">Platform</a></li>
-    <li><a href="#storageos">StorageOS</a></li>
-    <li><a href="#orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</a></li>
-    <li><a href="#storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</a></li>
+    <li><a href="#information-to-include-in-tickets">Information to include in tickets</a>
+      <ul>
+        <li><a href="#platform">Platform</a></li>
+        <li><a href="#storageos">StorageOS</a></li>
+        <li><a href="#orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</a></li>
+        <li><a href="#environment-changes">Environment Changes</a></li>
+        <li><a href="#storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -1046,14 +1077,24 @@
             
 <div class="td-content">
 	<h1>Support</h1>
-	<div class="lead">How to ask for StorageOS support.</div>
-	<p>There are several ways to reach us if you require support. The fastest way to
-get in touch is to <a href="https://slack.storageos.com">join our public Slack
+	<div class="lead">How to make a support request</div>
+	<p>When you need support, please raise a ticket via our <a href="https://support.storageos.com">Help Desk
+portal</a>. It is important to select the priority
+of your ticket in accordance with the severity:</p>
+<ul>
+<li>Severity 1 - Urgent</li>
+<li>Severity 2 - High</li>
+<li>Severity 3 - Medium</li>
+<li>Severity 4 - Low</li>
+</ul>
+<p>This helps us route and prioritise the ticket accordingly. You can find
+definitions of our support severity levels on our
+<a href="https://storageos.com/support">website</a>.</p>
+<p>Responses to tickets will be cc&rsquo;d via email.</p>
+<p>For community support and general enquiries, please join our <a href="https://slack.storageos.com">public Slack
 channel.</a> <script async defer
 src="http://slack.storageos.com/slackin.js"></script></p>
-<p>You can file a support ticket via email to <a href="mailto:support@storageos.com">
-support@storageos.com</a>, or use our <a href="https://support.storageos.com">Help Desk
-portal</a></p>
+<h2 id="information-to-include-in-tickets">Information to include in tickets</h2>
 <p>To help us provide effective support, we request that you provide as much
 information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
@@ -1061,21 +1102,21 @@ entries, that may help us debug your issue.</p>
 <p>Information about the cluster can be automatically sent to StorageOS engineers
 as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-diagnostic-bundle">StorageOS Diagnostic
 Bundle</a>.</p>
-<h2 id="platform">Platform</h2>
+<h3 id="platform">Platform</h3>
 <ul>
 <li>Cloud provider/Bare metal</li>
 <li>OS distribution and version</li>
 <li>Kernel version</li>
 <li>docker version and installation procedure (distro packages or docker install)</li>
 </ul>
-<h2 id="storageos">StorageOS</h2>
+<h3 id="storageos">StorageOS</h3>
 <ul>
 <li>Version of StorageOS</li>
 <li><code>storageos get nodes</code></li>
 <li><code>storageos get volumes</code></li>
 <li><code>storageos describe volume VOL_ID</code> # in case of issues with a specific volume</li>
 </ul>
-<h2 id="orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</h2>
+<h3 id="orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</h3>
 <ul>
 <li>Version and installation method</li>
 <li>Managed or self managed?</li>
@@ -1085,7 +1126,13 @@ Bundle</a>.</p>
 <li>Specific for your namespaces: <code>kubectl describe pvc PVC_NAME</code></li>
 <li>Specific for your namespaces: <code>kubectl describe pod POD_NAME</code></li>
 </ul>
-<h2 id="storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</h2>
+<h3 id="environment-changes">Environment Changes</h3>
+<ul>
+<li>Details of any recent changes to your environment such as planned
+maintenance, node reboots, network failures, etcd outage, etc.. This can
+help speed up ticket triage and resolution considerably</li>
+</ul>
+<h3 id="storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</h3>
 <p>StorageOS has a cluster diagnostic function that aggregates cluster
 information.</p>
 <p>The cluster diagnostic bundle is created only when a user chooses to do so. For

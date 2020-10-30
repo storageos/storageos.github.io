@@ -183,7 +183,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -217,7 +217,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -355,6 +355,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -403,6 +409,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -603,6 +615,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1079,10 +1097,10 @@
 configuration.</p>
 <h2 id="installation">Installation</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># linux/amd64</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.2.0/storageos_linux_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_linux_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 
 <span style="color:#8f5902;font-style:italic"># MacOS</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.2.0/storageos_darwin_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_darwin_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 </code></pre></div><p>You will need to provide the correct credentials to connect to the API. The
 default installation uses the <code>storageos-api</code> Secret to generate the first
 admin user. By default, it creates a single user with username <code>storageos</code> and
@@ -1146,7 +1164,7 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
 </tr>
 <tr>
 <td><code>attach</code></td>
-<td><code>volume</code></td>
+<td></td>
 <td>Attach Volume to a node.</td>
 </tr>
 <tr>
@@ -1194,6 +1212,8 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
     
     
     <hr class="panel-line">
+        
+            
         
             
         
@@ -1353,6 +1373,10 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
                     </h5>
                     <p></p>
                 </div>
+            
+        
+            
+        
             
         
             

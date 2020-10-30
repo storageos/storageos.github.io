@@ -22,22 +22,22 @@
 
 <title>Firewalls | </title><meta property="og:title" content="Firewalls" />
 <meta property="og:description" content="Port list StorageOS daemons listen on specific ports, which we require to be accessible between all nodes in the cluster:
-   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes." />
+   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service   25705-25960 TCP RWX Volume Endpoints    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/prerequisites/firewalls/" />
 
 <meta itemprop="name" content="Firewalls">
 <meta itemprop="description" content="Port list StorageOS daemons listen on specific ports, which we require to be accessible between all nodes in the cluster:
-   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes.">
+   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service   25705-25960 TCP RWX Volume Endpoints    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes.">
 
-<meta itemprop="wordCount" content="258">
+<meta itemprop="wordCount" content="280">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Firewalls"/>
 <meta name="twitter:description" content="Port list StorageOS daemons listen on specific ports, which we require to be accessible between all nodes in the cluster:
-   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes."/>
+   Port Number TCP/UDP Use     5701 TCP gRPC   5703 TCP DirectFS   5704 TCP Dataplane Supervisor   5705 TCP REST API   5711 TCP &amp; UDP Gossip service   25705-25960 TCP RWX Volume Endpoints    StorageOS also uses ephemeral ports to dial-out to these ports on other StorageOS nodes."/>
 
 
 
@@ -191,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b7ed34974ac66fa13634e7b40cbef996c21a7e711c28101a5f25d0f05d973728e8173bd6b7014b9913e1013dd0d46b14f3a60e1a13a6654d3f95f8d729823dfb.json"
+  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -363,6 +363,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsrwx" href="/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
       
       
@@ -411,6 +417,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitesmountpropagation" href="/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsprerequisitespidlimits" href="/docs/prerequisites/pidlimits/">PID Limits</a>
       
       
       
@@ -611,6 +623,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationspolicies" href="/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsrwx" href="/docs/operations/rwx/">ReadWriteMany</a>
       
       
       
@@ -1124,6 +1142,11 @@ between all nodes in the cluster:</p>
 <td align="center">TCP &amp; UDP</td>
 <td align="left">Gossip service</td>
 </tr>
+<tr>
+<td align="center">25705-25960</td>
+<td align="center">TCP</td>
+<td align="left">RWX Volume Endpoints</td>
+</tr>
 </tbody>
 </table>
 <p>StorageOS also uses <a href="https://en.wikipedia.org/wiki/Ephemeral_port">ephemeral</a>
@@ -1138,10 +1161,11 @@ modify to taste.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ufw default allow outgoing
 ufw allow 5701:5711/tcp
 ufw allow 5711/udp
+ufw allow 25705:25960/tcp
 </code></pre></div><h3 id="firewalld">Firewalld</h3>
 <p>For distributions that enable firewalld to control iptables such as some installations of OpenShift.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">firewall-cmd --permanent  --new-service<span style="color:#ce5c00;font-weight:bold">=</span>storageos
-firewall-cmd --permanent  --service<span style="color:#ce5c00;font-weight:bold">=</span>storageos --add-port<span style="color:#ce5c00;font-weight:bold">=</span>5700-5800/tcp
+firewall-cmd --permanent  --service<span style="color:#ce5c00;font-weight:bold">=</span>storageos --add-port<span style="color:#ce5c00;font-weight:bold">=</span>5700-5800/tcp --add-port<span style="color:#ce5c00;font-weight:bold">=</span>25705-25960/tcp
 firewall-cmd --add-service<span style="color:#ce5c00;font-weight:bold">=</span>storageos  --zone<span style="color:#ce5c00;font-weight:bold">=</span>public --permanent
 firewall-cmd --reload
 </code></pre></div><h3 id="iptables">Iptables</h3>
@@ -1151,6 +1175,7 @@ iptables -I INPUT -i lo -m comment --comment <span style="color:#4e9a06">&#39;Pe
 iptables -I INPUT -m state --state ESTABLISHED,RELATED -m comment --comment <span style="color:#4e9a06">&#39;Permit established traffic&#39;</span> -j ACCEPT
 iptables -I INPUT -p tcp --dport 5701:5711 -m comment --comment <span style="color:#4e9a06">&#39;StorageOS&#39;</span> -j ACCEPT
 iptables -I INPUT -p udp --dport <span style="color:#0000cf;font-weight:bold">5711</span> -m comment --comment <span style="color:#4e9a06">&#39;StorageOS&#39;</span> -j ACCEPT
+iptables -I INPUT -p tcp --dport 25705:25960 -m comment --comment <span style="color:#4e9a06">&#39;StorageOS&#39;</span> -j ACCEPT
 
 <span style="color:#8f5902;font-style:italic"># Outbound traffic</span>
 iptables -I OUTPUT -o lo -m comment --comment <span style="color:#4e9a06">&#39;Permit loopback traffic&#39;</span> -j ACCEPT

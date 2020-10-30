@@ -63,6 +63,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/pidlimits/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/prerequisites/</loc>
   </url>
   
@@ -304,6 +308,14 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/platforms/rancher/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/concepts/rwx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/rwx/</loc>
   </url>
   
   <url>

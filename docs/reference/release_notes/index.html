@@ -36,7 +36,7 @@ The latest CLI release is v2.3.0, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
 v2.3.0 - Released 2020-10-31 This release adds production-grade shared file support to v2, previously a technology preview in v1.">
 
-<meta itemprop="wordCount" content="1646">
+<meta itemprop="wordCount" content="1647">
 
 
 
@@ -200,7 +200,7 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
+  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
   data-offline-search-base-href="/"
 >
 
@@ -234,7 +234,7 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f631380fb1a70d61bbe78a18de6fc338c5374537fd7a565e4818525b59bb97ab58e7ef14377a450901e7b9f92ad96b743ae87db44b7e3316a03a2d8fea74b6bb.json"
+  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
   data-offline-search-base-href="/"
 >
 
@@ -1140,7 +1140,7 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
 and to perform upgrades only after reading the release notes.</p>
 <p>The latest tagged release is <code>v2.3.0</code>. For
 installation instructions please see our
-<a href="/docs/reference/cluster-operator/install">Install</a> page.</p>
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/install/">Install</a> page.</p>
 <p>The latest CLI release is <code>v2.3.0</code>, available from
 <a href="https://github.com/storageos/go-cli/releases">Github</a>.</p>
 <h1 id="upgrading">Upgrading</h1>
@@ -1155,9 +1155,9 @@ technology preview in v1.</p>
 <h3 id="new">New</h3>
 <ul>
 <li>Adds support for <code>ReadWriteMany</code> shared volumes.  See
-<a href="/docs/concepts/rwx">ReadWriteMany</a>.</li>
-<li>Adds <code>api-manager</code> deployment to support shared volumes.  See
-[https://github.com/storageos/api-manager](api-manager on Github ) for more
+<a href="https://docs.storageos.com/docs/concepts/rwx/">ReadWriteMany</a>.</li>
+<li>Adds <code>api-manager</code> deployment to support shared volumes.  See <a href="https://github.com/storageos/api-manager">the api
+manager</a> Github repository for more
 information.</li>
 </ul>
 <h3 id="improved">Improved</h3>
@@ -1204,7 +1204,8 @@ propagate to all nodes.</li>
 <li>init: Checks the effective maximum PID limit and warns if less than the
 StorageOS recommended PID limit (32,768).  CRIO-based distributions such as
 Openshift have a much lower default value (1024).  Consult
-<a href="/docs/prerequisites/pidlimits">prerequisites</a> for more information.</li>
+<a href="https://docs.storageos.com/docs/prerequisites/pidlimits/">prerequisites</a> for more
+information.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
@@ -1245,7 +1246,7 @@ Applications like Kafka will go much faster.</li>
 <li>
 <p>On-disk compression is now disabled by default as in most scenarios this
 offers better performance. To enable on-disk compression for a specific
-workload, see <a href="/docs/concepts/compression">compression</a>.</p>
+workload, see <a href="https://docs.storageos.com/docs/concepts/compression/">compression</a>.</p>
 </li>
 </ul>
 <h3 id="improved-1">Improved</h3>
@@ -1297,10 +1298,9 @@ after a restart. This resulted in multiple entries in <code>/proc/mounts</code>.
 <h2 id="v210---released-2020-06-26">v2.1.0 - Released 2020-06-26</h2>
 <h3 id="new-2">New</h3>
 <ul>
-<li>csi: Volume expansion now supported in offline mode. To expand a volume,
-stop any workloads accessing the volume, then edit the PVC to increase the
-capacity. For more information, see our <a href="/docs/operations/resize">Volume
-Resize</a> operations page and the <a href="https://kubernetes-csi.github.io/docs/volume-expansion.html"><code>CSI Volume Expansion</code></a>
+<li>csi: Volume expansion now supported in offline mode. To expand a volume, stop
+any workloads accessing the volume, then edit the PVC to increase the
+capacity. For more information, see our <a href="https://docs.storageos.com/docs/operations/resize/">Volume Resize</a> operations page and the <a href="https://kubernetes-csi.github.io/docs/volume-expansion.html"><code>CSI Volume Expansion</code></a>
 page.</li>
 <li>api: Volume configuration including replica count can now be updated while
 the volume is in use. Other updateable fields include labels and

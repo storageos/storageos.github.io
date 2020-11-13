@@ -5313,6 +5313,7 @@ technology preview in v1.&lt;/p&gt;
 &lt;li&gt;Adds &lt;code&gt;api-manager&lt;/code&gt; deployment to support shared volumes.  See &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;the api
 manager&lt;/a&gt; Github repository for more
 information.&lt;/li&gt;
+&lt;li&gt;Kubernetes 1.19 support.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;improved&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;

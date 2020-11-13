@@ -390,13 +390,13 @@ reduce costs when running in public clouds.&lt;/p&gt;
         &lt;p&gt;StorageOS volumes are a logical construct which represent a writeable volume
 and exhibit standard POSIX semantics. StorageOS presents volumes as mounts into
 containers via the Linux LIO subsystem.&lt;/p&gt;
-&lt;p&gt;Conceptually, StorageOS volumes have a frontend presentation, which is the
-what the application sees, and a backend presentation, which is the actual
-on-disk format. Depending on the configuration, frontend and backend components
-may be on the same or different hosts.&lt;/p&gt;
+&lt;p&gt;Conceptually, StorageOS volumes have a frontend presentation, which is what
+the application sees, and a backend presentation, which is the actual on-disk
+format. Depending on the configuration, frontend and backend components may be
+on the same or different hosts.&lt;/p&gt;
 &lt;p&gt;Volumes are formatted using the linux standard ext4 filesystem by default.
 Kubernetes users may change the default filesystem type to ext2, ext3, ext4,
-or xfs by setting the fsType parameter in their StorageClass (See
+or xfs by setting the fsType parameter in their StorageClass (see
 &lt;a href=&#34;https://docs.storageos.com/docs/reference/filesystems#persistent-volume-filesystems&#34;&gt;Supported
 Filesystems&lt;/a&gt; for
 more information). Different filesystems may be supported in the future.&lt;/p&gt;

@@ -32,7 +32,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
 We do not support using the Kubernetes etcd for StorageOS installations.
 We provide two methods for installing etcd. For those looking for a quick route to evaluating StorageOS, our first method installs etcd into your Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS operator, this installation is not backed by any persistent storage, and therefore is unsuitable for production installations.">
 
-<meta itemprop="wordCount" content="2024">
+<meta itemprop="wordCount" content="2041">
 
 
 
@@ -194,7 +194,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
+  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ We provide two methods for installing etcd. For those looking for a quick route 
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
+  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
   data-offline-search-base-href="/"
 >
 
@@ -1098,11 +1098,11 @@ We provide two methods for installing etcd. For those looking for a quick route 
 	<p>StorageOS requires an etcd cluster in order to function. For more information
 on why etcd is required please see our <a href="https://docs.storageos.com/docs/concepts/etcd/">etcd concepts</a> page.</p>
 <p>We do not support using the Kubernetes etcd for StorageOS installations.</p>
-<p>We provide two methods for installing etcd. For those looking for a quick route
-to evaluating StorageOS, our first method installs etcd into your Kubernetes
-cluster using the CoreOS operator. Due to limitations in the CoreOS operator,
-this installation is not backed by any persistent storage, and therefore is
-unsuitable for production installations.</p>
+<p>We provide two methods for installing etcd. For those looking for a quick
+route to evaluating StorageOS, our first method installs etcd into your
+Kubernetes cluster using the CoreOS operator. Due to limitations in the CoreOS
+operator, this installation is not backed by any persistent storage, and
+therefore is unsuitable for production installations.</p>
 <p>For production installations, there is currently no satisfactory way of
 installing a production-grade etcd cluster inside Kubernetes (although the
 landscape is changing rapidly, watch this space), and our production guidance
@@ -1175,8 +1175,8 @@ cluster in order to evaluate StorageOS. Do not use it for production
 installations.</strong></p>
 <p>This method uses the <a href="https://github.com/coreos/etcd-operator">CoreOS
 etcd-operator</a> to install a 3 node
-etcd cluster within your Kubernetes cluster, in the <code>storageos-etcd</code> namespace.
-We then install a Kubernetes service in that same namespace.</p>
+etcd cluster within your Kubernetes cluster, in the <code>storageos-etcd</code>
+namespace. We then install a Kubernetes service in that same namespace.</p>
 <p>The official etcd-operator repository also has a backup deployment operator
 that can help backup etcd data. <strong>A restore of the etcd keyspace from a backup
 might cause issues</strong> due to the disparity between the cluster state and its
@@ -1354,8 +1354,8 @@ NAME                            TYPE        CLUSTER-IP       EXTERNAL-IP PORT<sp
 service/storageos-etcd          ClusterIP   None             &lt;none&gt;      2379/TCP,2380/TCP   22h
 service/storageos-etcd-client   ClusterIP   172.30.132.255   &lt;none&gt;      2379/TCP            22h
 </code></pre></div><blockquote>
-<p>The URL from the Service <code>storageos-etcd-client.storageos-etcd.svc:2379</code> will
-be used later in the StorageOS Cluster CustomResource the
+<p>The URL from the Service <code>storageos-etcd-client.storageos-etcd.svc:2379</code>
+will be used later in the StorageOS Cluster CustomResource the
 <code>kvBackend.address</code>.</p>
 </blockquote>
 <h2 id="known-etcd-operator-issues">Known etcd-operator issues</h2>
@@ -1368,12 +1368,11 @@ Operator, it is important to consider that a loss of quorum could arise from
 etcd pods being evicted from nodes.</p>
 <p>Operations such as Kubernetes Upgrades with rolling node pools could cause a
 total failure of the etcd cluster as nodes are discarded in favor of new ones.</p>
-<p>A 3 etcd node cluster can survive losing one node and recover, a 5 node cluster
-can survive the loss of two nodes. Loss of further nodes will result in quorum
-being lost.</p>
+<p>A 3 etcd node cluster can survive losing one node and recover, a 5 node
+cluster can survive the loss of two nodes. Loss of further nodes will result in quorum being lost.</p>
 <p><strong>The etcd-operator doesn&rsquo;t support a full stop of the cluster. Stopping the
-etcd cluster causes the loss of all the etcd keystore and make StorageOS unable
-to perform metadata changes.</strong></p>
+etcd cluster causes the loss of all the etcd keystore and make StorageOS
+unable to perform metadata changes.</strong></p>
 
 </div>
 
@@ -1392,25 +1391,28 @@ outside of Kubernetes on a minimum of 3 dedicated virtual machines. This
 topology offers strong guarantees of resilience and uptime. We recommend this
 architecture in all environments, including those where Kubernetes is being
 deployed as a managed service.</p>
-<p>StorageOS doesn&rsquo;t require a high performance etcd cluster as the throughput of
-metadata to the cluster is low.</p>
+<p>StorageOS doesn&rsquo;t require a high performance etcd cluster, as the throughput
+of metadata to the cluster is low. However, we recommend a careful assessment
+of IOPS capacity <a href="https://docs.storageos.com/docs/operations/etcd/#iops-requirements">best practices</a> to ensure that etcd
+operates normally.</p>
 <p>Depending on the level of redundancy you feel comfortable with you can install
-etcd on the Kubernetes Master nodes. <strong>Take extreme care to avoid collisions of
-the StorageOS etcd installation with the Kubernetes etcd when using the
-Kubernetes Master nodes. Precautions such as changing the default configuration
-for the client and peer ports, and ensuring the etcd data directory is
-modified. The ansible playbook below will default the etcd installation
-directory to <code>/var/lib/storageos-etcd</code>.</strong></p>
+etcd on the Kubernetes Master nodes. <strong>Take extreme care to avoid collisions
+of the StorageOS etcd installation with the Kubernetes etcd when using the
+Kubernetes Master nodes. Precautions such as changing the default
+configuration for the client and peer ports, and ensuring the etcd data
+directory is modified. The ansible playbook below will default the etcd
+installation directory to <code>/var/lib/storageos-etcd</code>.</strong></p>
 <p>You can choose between two installation options.</p>
 <ul>
 <li><a href="#installation---manual">Manual Installation</a></li>
 <li><a href="#installation---ansible">Ansible Installation</a></li>
 </ul>
 <h3 id="installation---manual">Installation - Manual</h3>
-<p>This section documents the steps required for manual installation of etcd using
-standard package management commands and systemd manifests.</p>
+<p>This section documents the steps required for manual installation of etcd
+using standard package management commands and systemd manifests.</p>
 <blockquote>
-<p><strong>Repeat the following steps on all the nodes that will run etcd as a systemd service.</strong></p>
+<p><strong>Repeat the following steps on all the nodes that will run etcd as a
+systemd service.</strong></p>
 </blockquote>
 <ol>
 <li>
@@ -1506,10 +1508,10 @@ following information:</p>
 client connection to fail. StorageOS will fail to communicate to Etcd.</p>
 </blockquote>
 <blockquote>
-<p>If enabling TLS, it is recomended to generate your own CA certificate and
-key. You will need to distribute the keys and certificates for the client
-auth on all etcd nodes. Moreover, the <code>ExecStart</code> value should look as
-below:</p>
+<p>If enabling TLS, it is recomended to generate your own CA certificate
+and key. You will need to distribute the keys and certificates for the
+client auth on all etcd nodes. Moreover, the <code>ExecStart</code> value should
+look as below:</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">    <span style="color:#000">ExecStart</span><span style="color:#ce5c00;font-weight:bold">=</span>/usr/local/sbin/etcd3 --name etcd-<span style="color:#4e9a06">${</span><span style="color:#000">NODE_IP</span><span style="color:#4e9a06">}</span> <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --data-dir /var/lib/storageos-etcd <span style="color:#4e9a06">\
@@ -1563,8 +1565,8 @@ help you deploy etcd on standalone virtual machines.</p>
 <li>
 <p>Edit the inventory file</p>
 <blockquote>
-<p>The inventory file targets the nodes that will run etcd. The file <code>hosts</code>
-is an example of such an inventory file.</p>
+<p>The inventory file targets the nodes that will run etcd. The file
+<code>hosts</code> is an example of such an inventory file.</p>
 </blockquote>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat hosts
 <span style="color:#ce5c00;font-weight:bold">[</span>nodes<span style="color:#ce5c00;font-weight:bold">]</span>
@@ -1616,9 +1618,9 @@ parameter. It allows you to decide how Etcd advertises its address to
 clients. This is particularly relevant when using TLS.</p>
 </blockquote>
 <blockquote>
-<p>If enabling TLS, it is recomended to generate your own CA certificate and
-key. You can do it by generating the CA from the machine running Ansible
-by: <code>ansible-playbook create_ca.yaml</code>.</p>
+<p>If enabling TLS, it is recomended to generate your own CA certificate
+and key. You can do it by generating the CA from the machine running
+Ansible by: <code>ansible-playbook create_ca.yaml</code>.</p>
 </blockquote>
 </li>
 <li>
@@ -1649,12 +1651,12 @@ scenarios such as &ldquo;DiskPressure&rdquo; they may need to be evicted from a 
 be scheduled onto a different node. With an application such as etcd, the
 scenario described can result in quorum being lost, making the cluster unable
 to recover automatically. Usually a 3 node etcd cluster can survive losing one
-node and recover. However, losing a second node at the same time or even having
-a network partition between them will result in quorum lost.</p>
+node and recover. However, losing a second node at the same time or even
+having a network partition between them will result in quorum lost.</p>
 <h2 id="bind-etcd-ips-to-kubernetes-service">Bind Etcd IPs to Kubernetes Service</h2>
 <p>Kubernetes external services use a DNS name to reference external endpoints,
-making them easy to reference from inside the cluster.  You can use the example
-from the <a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc">helper github
+making them easy to reference from inside the cluster.  You can use the
+example from the <a href="https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc">helper github
 repository</a>
 to deploy the external Service. Using an external service can make monitoring
 of etcd from Prometheus easier.</p>
@@ -1668,8 +1670,8 @@ of etcd from Prometheus easier.</p>
 </div>
 
 <h2 id="using-etcd-with-storageos">Using Etcd with StorageOS</h2>
-<p>During installation of StorageOS the <code>kvBackend.address</code> parameter of the StorageOS
-operator is used to specify the address of the etcd cluster. See the
+<p>During installation of StorageOS the <code>kvBackend.address</code> parameter of the
+StorageOS operator is used to specify the address of the etcd cluster. See the
 <a href="https://docs.storageos.com/docs/reference/cluster-operator/examples/#installing-with-an-external-etcd">StorageOS cluster operator configuration</a> examples for more information.</p>
 
 	

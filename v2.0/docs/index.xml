@@ -3348,7 +3348,7 @@ Usage:
 
 Examples:
 
-$ storageos attach volume --namespace my-namespace-name my-volume my-node
+$ storageos attach --namespace my-namespace-name my-volume my-node
 
 
 Flags:

@@ -36,7 +36,7 @@
   Make sure to add a StorageOS licence after installing.
    1.19 1.18 1.17 1.16 1.15 1.14 1.13    Install StorageOS on Kubernetes 1.">
 
-<meta itemprop="wordCount" content="6482">
+<meta itemprop="wordCount" content="6474">
 
 
 
@@ -200,7 +200,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.bebcfb9b1d2c75a3217e639f6ce2d71f69136ed9b6fedc9e106a6b8e9c2a39c9e2e8bdb325f1fcc0e49b9a52779d3bcafd214c32444cbcb5246109cb70d157b4.json"
   data-offline-search-base-href="/"
 >
 
@@ -234,7 +234,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.2/offline-search-index.74a97d2065eb5865ef87309e5903ccf6c6ea5f5c46a09c2d6fcc8ac0083b308e468b55481bbc418973bb20361a3ebc6993cef5a41375331f658b964e80c9294b.json"
+  data-offline-search-index-json-src="/v2.2/offline-search-index.bebcfb9b1d2c75a3217e639f6ce2d71f69136ed9b6fedc9e106a6b8e9c2a39c9e2e8bdb325f1fcc0e49b9a52779d3bcafd214c32444cbcb5246109cb70d157b4.json"
   data-offline-search-base-href="/"
 >
 
@@ -1343,7 +1343,6 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1370,7 +1369,6 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1397,7 +1395,6 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1424,7 +1421,6 @@ spec:
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
     nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.2.0&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
-    kubeSchedulerContainer: <span style="color:#4e9a06">&#34;k8s.gcr.io/kube-scheduler:v1.18.8&#34;</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>

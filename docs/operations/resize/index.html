@@ -21,20 +21,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Volume Resize | </title><meta property="og:title" content="Volume Resize" />
-<meta property="og:description" content="StorageOS supports offline resize of volumes through editing a PVC storage request, or by updating the volume config via the CLI or UI. This means that a volume cannot be resized while it is in use. Furthermore, in order for a resize operation to take place the volume must not be attached to a node. This is to ensure the volume is not in use. Please note that StorageOS only supports increasing volume size." />
+<meta property="og:description" content="StorageOS supports offline resize of volumes, either through editing a PVC storage request, or by updating the volume config via the CLI or UI. A volume cannot be resized while it is in use. To ensure that it is not, for a resize operation to take place the volume must not be attached to a node. This requires that any pods using a volume be scaled down for the resize to take place." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/operations/resize/" />
 
 <meta itemprop="name" content="Volume Resize">
-<meta itemprop="description" content="StorageOS supports offline resize of volumes through editing a PVC storage request, or by updating the volume config via the CLI or UI. This means that a volume cannot be resized while it is in use. Furthermore, in order for a resize operation to take place the volume must not be attached to a node. This is to ensure the volume is not in use. Please note that StorageOS only supports increasing volume size.">
+<meta itemprop="description" content="StorageOS supports offline resize of volumes, either through editing a PVC storage request, or by updating the volume config via the CLI or UI. A volume cannot be resized while it is in use. To ensure that it is not, for a resize operation to take place the volume must not be attached to a node. This requires that any pods using a volume be scaled down for the resize to take place.">
 
-<meta itemprop="wordCount" content="320">
+<meta itemprop="wordCount" content="297">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Volume Resize"/>
-<meta name="twitter:description" content="StorageOS supports offline resize of volumes through editing a PVC storage request, or by updating the volume config via the CLI or UI. This means that a volume cannot be resized while it is in use. Furthermore, in order for a resize operation to take place the volume must not be attached to a node. This is to ensure the volume is not in use. Please note that StorageOS only supports increasing volume size."/>
+<meta name="twitter:description" content="StorageOS supports offline resize of volumes, either through editing a PVC storage request, or by updating the volume config via the CLI or UI. A volume cannot be resized while it is in use. To ensure that it is not, for a resize operation to take place the volume must not be attached to a node. This requires that any pods using a volume be scaled down for the resize to take place."/>
 
 
 
@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
+  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.83b886d98eb50d3bff1d5f61a345b5e6ba77144dab6108a98a2715c83ce6e52fd68747062cf12ce1822f33ee64618a5302c1a4cb84f603b252150edfeccbd65e.json"
+  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
   data-offline-search-base-href="/"
 >
 
@@ -1089,13 +1089,15 @@
 <div class="td-content">
 	<h1>Volume Resize</h1>
 	
-	<p>StorageOS supports offline resize of volumes through editing a PVC storage
-request, or by updating the volume config via the CLI or UI. This means that a
-volume cannot be resized while it is in use. Furthermore, in order for a resize
-operation to take place the volume must not be attached to a node. This is to
-ensure the volume is not in use. Please note that StorageOS only supports
-increasing volume size. For more information about how the resize works please
-see our <a href="/docs/concepts/volumes#volume-resize">Resize concepts</a> page.</p>
+	<p>StorageOS supports offline resize of volumes, either through editing a PVC
+storage request, or by updating the volume config via the CLI or UI. A volume
+cannot be resized while it is in use. To ensure that it is not, for a resize
+operation to take place the volume must not be attached to a node. This
+requires that any pods using a volume be scaled down for the resize to take
+place.</p>
+<p>Please note that StorageOS only supports increasing volume size. For more
+information about how the resize works please see our <a href="https://docs.storageos.com/docs/concepts/volumes/#volume-resize" title="Resize Concepts">Resize
+Concepts</a> page.</p>
 <h3 id="resizing-a-volume">Resizing a Volume</h3>
 <p>In order to resize a PVC the storage request field must be updated.</p>
 <pre><code>apiVersion: v1
@@ -1109,16 +1111,14 @@ spec:
   resources:
     requests:
       storage: 5Gi
-</code></pre><p>In order to edit a PVC you can use <code>kubectl edit</code> or <code>kubectl apply</code> to make
+</code></pre><p>The Volume must be offline for this to take effect. Therefore, before
+performing the operation, scale down any pods using the volume. This will
+ensure that it is not in use.</p>
+<p>In order to edit a PVC you can use <code>kubectl edit</code> or <code>kubectl apply</code> to make
 changes.</p>
-<p>StorageOS supports offline resize of volumes through editing a PVC storage
-request. This means that a volume cannot be resized while it is in use.
-Furthermore, in order for a resize operation to take place the volume must not
-be attached to a node. This requires that any pods using a volume must be
-scaled down for the resize to take place.</p>
 <blockquote>
 <p>N.B. Resizing a volume without updating the PVC directly will NOT result in
-the PVC being updated. The methods below are included for completeness, in
+the PVC being updated. The methods below are included for completeness. In
 Kubernetes environments editing the PVC is the preferred method for resizing
 a volume.</p>
 </blockquote>

@@ -122,7 +122,7 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;attach&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;Attach Volume to a node.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;

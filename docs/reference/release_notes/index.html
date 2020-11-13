@@ -22,31 +22,31 @@
 
 <title>Release notes | </title><meta property="og:title" content="Release notes" />
 <meta property="og:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.0. For installation instructions please see our Install page.
+The latest tagged release is v2.3.1. For installation instructions please see our Install page.
 The latest CLI release is v2.3.0, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.0 - Released 2020-10-31 This release adds production-grade shared file support to v2, previously a technology preview in v1." />
+v2.3.1 - Released 2020-11-16 Allows access to ReadWriteMany shared volumes when running containers as a non-root user." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/release_notes/" />
 
 <meta itemprop="name" content="Release notes">
 <meta itemprop="description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.0. For installation instructions please see our Install page.
+The latest tagged release is v2.3.1. For installation instructions please see our Install page.
 The latest CLI release is v2.3.0, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.0 - Released 2020-10-31 This release adds production-grade shared file support to v2, previously a technology preview in v1.">
+v2.3.1 - Released 2020-11-16 Allows access to ReadWriteMany shared volumes when running containers as a non-root user.">
 
-<meta itemprop="wordCount" content="1650">
+<meta itemprop="wordCount" content="1680">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Release notes"/>
 <meta name="twitter:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.0. For installation instructions please see our Install page.
+The latest tagged release is v2.3.1. For installation instructions please see our Install page.
 The latest CLI release is v2.3.0, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.0 - Released 2020-10-31 This release adds production-grade shared file support to v2, previously a technology preview in v1."/>
+v2.3.1 - Released 2020-11-16 Allows access to ReadWriteMany shared volumes when running containers as a non-root user."/>
 
 
 
@@ -200,7 +200,7 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
+  data-offline-search-index-json-src="/offline-search-index.ce9c5a41f684b58269a6b37e9f7024495187cf3c096770c528f4573b8de987efa39a37b95e4125c408bdef13a5f95896006b6ed42a2445e298eadbefd3e701bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -234,7 +234,7 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.6cbfea406d8aca867ee3802586a41d735ed3edeb80c39b2ba0a90c9d7fb7b99c4999fa1609d681e2298159645ab6f6afe107a1aaadb270ce2136afd0a3c59cc5.json"
+  data-offline-search-index-json-src="/offline-search-index.ce9c5a41f684b58269a6b37e9f7024495187cf3c096770c528f4573b8de987efa39a37b95e4125c408bdef13a5f95896006b6ed42a2445e298eadbefd3e701bb.json"
   data-offline-search-base-href="/"
 >
 
@@ -1058,33 +1058,38 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
 
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#v231---released-2020-11-16">v2.3.1 - Released 2020-11-16</a>
+      <ul>
+        <li><a href="#fixed">Fixed</a></li>
+      </ul>
+    </li>
     <li><a href="#v230---released-2020-10-31">v2.3.0 - Released 2020-10-31</a>
       <ul>
         <li><a href="#breaking">Breaking</a></li>
         <li><a href="#new">New</a></li>
         <li><a href="#improved">Improved</a></li>
-        <li><a href="#fixed">Fixed</a></li>
+        <li><a href="#fixed-1">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v220---released-2020-08-18">v2.2.0 - Released 2020-08-18</a>
       <ul>
         <li><a href="#new-1">New</a></li>
         <li><a href="#improved-1">Improved</a></li>
-        <li><a href="#fixed-1">Fixed</a></li>
+        <li><a href="#fixed-2">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v210---released-2020-06-26">v2.1.0 - Released 2020-06-26</a>
       <ul>
         <li><a href="#new-2">New</a></li>
         <li><a href="#improved-2">Improved</a></li>
-        <li><a href="#fixed-2">Fixed</a></li>
+        <li><a href="#fixed-3">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v200---released-2020-05-05">v2.0.0 - Released 2020-05-05</a>
       <ul>
         <li><a href="#new-3">New</a></li>
         <li><a href="#improved-3">Improved</a></li>
-        <li><a href="#fixed-3">Fixed</a></li>
+        <li><a href="#fixed-4">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v200-rc1---released-2020-03-31">v2.0.0-rc.1 - Released 2020-03-31</a></li>
@@ -1138,13 +1143,20 @@ v2.3.0 - Released 2020-10-31 This release adds production-grade shared file supp
 	
 	<p>We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;,
 and to perform upgrades only after reading the release notes.</p>
-<p>The latest tagged release is <code>v2.3.0</code>. For
+<p>The latest tagged release is <code>v2.3.1</code>. For
 installation instructions please see our
 <a href="https://docs.storageos.com/docs/reference/cluster-operator/install/">Install</a> page.</p>
 <p>The latest CLI release is <code>v2.3.0</code>, available from
 <a href="https://github.com/storageos/go-cli/releases">Github</a>.</p>
 <h1 id="upgrading">Upgrading</h1>
 <p>To upgrade from version 1.x to 2.x, please contact <a href="https://docs.storageos.com/docs/support/">support</a> for assistance.</p>
+<h2 id="v231---released-2020-11-16">v2.3.1 - Released 2020-11-16</h2>
+<p>Allows access to <code>ReadWriteMany</code> shared volumes when running containers as a
+non-root user.</p>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>nfs: root squash to uid=0 is now configured on all shared volumes.</li>
+</ul>
 <h2 id="v230---released-2020-10-31">v2.3.0 - Released 2020-10-31</h2>
 <p>This release adds production-grade shared file support to v2, previously a
 technology preview in v1.</p>
@@ -1208,7 +1220,7 @@ Openshift have a much lower default value (1024).  Consult
 <a href="https://docs.storageos.com/docs/prerequisites/pidlimits/">prerequisites</a> for more
 information.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>dataplane: Fixes <code>transport endpoint is not connected</code> on startup after an
 unclean shutdown.</li>
@@ -1284,7 +1296,7 @@ This allows the scheduler to work in clusters with custom DNS configuration.</li
 <li>operator: Defaults are now set for most CSI configuration options in the
 StorageOSCluster custom resource.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>csi: When unmount request is received for a volume that has already been
 unmounted, return success.</li>
@@ -1327,7 +1339,7 @@ and replica nodes are offline. This allows cleanup of orphaned volumes.</li>
 <li>api: When a new node is added to the cluster, its capacity is available to use
 immediately.</li>
 </ul>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>ui: Favicon was missing.</li>
 <li>ui: Duplicate volumes could be shown on the node details page.</li>
@@ -1382,7 +1394,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.</li>
 <li>scheduler: return error for namespace/volume not found</li>
 <li>dataplane: start gRPC threads separately from rest of the supervisor.</li>
 </ul>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>ui: centre licence types.</li>
 <li>ui: capacity in ui is per namespace.</li>

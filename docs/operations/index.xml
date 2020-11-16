@@ -1268,7 +1268,7 @@ $ kubectl -n &lt;span style=&#34;color:#000&#34;&gt;$NS&lt;/span&gt; delete stor
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Delete the StorageOS Operator deployment&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.3.0/storageos-operator.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Procedure is finished. StorageOS is now uninstalled.&lt;/strong&gt;&lt;/p&gt;
@@ -1366,6 +1366,9 @@ kubectl get statefulset --all-namespaces &amp;gt; statefulset-sizes.yaml
 &lt;li&gt;
 &lt;p&gt;Delete the StorageOSCluster CR.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl delete storageoscluster cluster-storageos -n storageos-operator
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you have renamed the &lt;code&gt;StorageOSCluster&lt;/code&gt; resource you can find it by
+using the command below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl get storageoscluster --all-namespaces
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Deploy the new operator.&lt;/p&gt;

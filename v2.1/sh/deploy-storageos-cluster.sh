@@ -19,7 +19,7 @@ set -euo pipefail
 # most environments.
 export OPERATOR_VERSION='v2.3.1'
 export CLI_VERSION='v2.3.0'
-export STOS_VERSION='v2.3.1'
+export STOS_VERSION='v2.3.2'
 export STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
 export STOS_NAMESPACE='kube-system'
 export ETCD_NAMESPACE='storageos-etcd'

@@ -194,7 +194,7 @@ git clone https://github.com/storageos/use-cases.git storageos-usecases cd stora
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.13be00f64e4b6f4c0376535a23822341c62e9b171bc13c87cc2243dfbb77b3cab9a95e790a8c8b563bae87cfa8dca9736b40ca5f39a0913a11ef8bd7cf7024c5.json"
+  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ git clone https://github.com/storageos/use-cases.git storageos-usecases cd stora
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.13be00f64e4b6f4c0376535a23822341c62e9b171bc13c87cc2243dfbb77b3cab9a95e790a8c8b563bae87cfa8dca9736b40ca5f39a0913a11ef8bd7cf7024c5.json"
+  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
   data-offline-search-base-href="/"
 >
 
@@ -1120,7 +1120,7 @@ the <code>00-basic</code> directory.</p>
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">      </span><span style="color:#204a87;font-weight:bold">storage</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>5Gi<span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>The above PVC will dynamically provision a 5GB volume using the <code>fast</code>
 StorageClass. This StorageClass was created during the StorageOS install
-and triggers creation of a PeristentVolume by StorageOS.</p>
+and triggers creation of a PersistentVolume by StorageOS.</p>
 <p>For installations with CSI, you can create multiple StorageClasses in order
 to specify default labels.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storage.k8s.io/v1<span style="color:#f8f8f8;text-decoration:underline">
@@ -1143,7 +1143,7 @@ to specify default labels.</p>
 </span></code></pre></div><p>The above StorageClass has the <code>storageos.com/replicas</code> label set. This
 label tells StorageOS to create a volume with a replica. Adding StorageOS
 feature labels to the StorageClass ensures all volumes created with the
-StorageClass have the same labels. For simplicities sake this example will
+StorageClass have the same labels. For simplicity&rsquo;s sake this example will
 use unreplicated volumes.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>PersistentVolumeClaim<span style="color:#f8f8f8;text-decoration:underline">

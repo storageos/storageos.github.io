@@ -91,6 +91,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/bundles/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/</loc>
   </url>
   
@@ -175,6 +179,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/bundles/diagnostic-bundle/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/platforms/dockeree/</loc>
   </url>
   
@@ -252,6 +260,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/licensing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/etcd/etcd-migration/</loc>
   </url>
   
   <url>
@@ -355,7 +367,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/reference/bundle/</loc>
+    <loc>https://docs.storageos.com/docs/reference/bundles/support_bundle/</loc>
   </url>
   
   <url>

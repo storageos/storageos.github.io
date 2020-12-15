@@ -183,7 +183,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -217,7 +217,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -572,6 +572,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdetcd-migration" href="/docs/operations/etcd/etcd-migration/">Migrate Etcd</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
@@ -797,6 +803,41 @@
       
       
       
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/bundles/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Bundles</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencebundles">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlesdiagnostic-bundle" href="/docs/reference/bundles/diagnostic-bundle/">Diagnostic bundle</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlessupport_bundle" href="/docs/reference/bundles/support_bundle/">Support bundle</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapi" href="/docs/reference/api/">API Reference</a>
       
@@ -982,12 +1023,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencefilesystems" href="/docs/reference/filesystems/">Supported File systems</a>
       
       
@@ -1100,8 +1135,8 @@
 <div class="td-content">
 	<h1>Etcd</h1>
 	
-	<p>Check the <a href="https://docs.storageos.com/docs/prerequisites/etcd/">Etcd prerequisites page</a>
-for a step by step installation of Etcd.</p>
+	<p>Check the <a href="https://docs.storageos.com/docs/prerequisites/etcd/">etcd prerequisites page</a>
+for a step by step installation of etcd.</p>
 <h2 id="best-practices">Best practices</h2>
 <p>StorageOS uses etcd as a service, whether it is deployed following the <a href="https://docs.storageos.com/docs/prerequisites/etcd/">step
 by step</a> instructions or as a custom
@@ -1139,7 +1174,7 @@ traffic as a production cluster with 100 nodes. Adding <a href="https://docs.sto
 characterise the traffic, and therefore to assess the individual requirements
 of a cluster and adjust its resources accordingly.</p>
 <h3 id="etcd-advertise-urls">Etcd advertise urls</h3>
-<p>The Etcd startup parameters <code>advertise-client-urls</code> and
+<p>The etcd startup parameters <code>advertise-client-urls</code> and
 <code>initial-advertise-peer-urls</code> specify the addresses etcd clients or other etcd
 members should use to contact the etcd server. The advertised addresses must
 be reachable from the remote machines - i.e. where StorageOS is running - so
@@ -1331,6 +1366,19 @@ after a failure of etcd, contact the StorageOS support team.</p>
         
             
         
+            
+        
+            
+        
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="/docs/operations/etcd/etcd-migration/">Migrate Etcd</a>
+                    </h5>
+                    <p></p>
+                </div>
             
         
             

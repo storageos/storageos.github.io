@@ -183,7 +183,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -217,7 +217,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -572,6 +572,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdetcd-migration" href="/docs/operations/etcd/etcd-migration/">Migrate Etcd</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
@@ -797,6 +803,41 @@
       
       
       
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/bundles/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Bundles</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencebundles">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlesdiagnostic-bundle" href="/docs/reference/bundles/diagnostic-bundle/">Diagnostic bundle</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlessupport_bundle" href="/docs/reference/bundles/support_bundle/">Support bundle</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapi" href="/docs/reference/api/">API Reference</a>
       
@@ -982,12 +1023,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencefilesystems" href="/docs/reference/filesystems/">Supported File systems</a>
       
       
@@ -1041,7 +1076,11 @@
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#installation">Installation</a></li>
+    <li><a href="#installation">Installation</a>
+      <ul>
+        <li><a href="#run-cli-as-a-container">Run CLI as a container</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#formatting-cli-output">Formatting CLI Output</a></li>
     <li><a href="#cheatsheet">Cheatsheet</a></li>
@@ -1108,6 +1147,17 @@ password <code>storageos</code>:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos
 <span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos
 <span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>10.1.5.249:5705
+</code></pre></div><h3 id="run-cli-as-a-container">Run CLI as a container</h3>
+<p>You can run the cli as a container in your Kubernetes cluster. Then exec into
+it to run commands.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system run <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --image storageos/cli:v2.3.0 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --command cli                            <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    -- /bin/sh -c <span style="color:#4e9a06">&#34;while true; do sleep 100000; done&#34;</span>
 </code></pre></div><h2 id="usage">Usage</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos
 Storage <span style="color:#204a87;font-weight:bold">for</span> Cloud Native Applications.
@@ -1266,6 +1316,8 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
             
         
             
+        
+            
                 <div class="entry">
                     <h5>
                         <a href="/docs/reference/cli/apply/">Apply licence</a>
@@ -1354,6 +1406,8 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
             
         
             
+        
+            
                 <div class="entry">
                     <h5>
                         <a href="/docs/reference/cli/get/">Get</a>
@@ -1373,6 +1427,8 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
                     </h5>
                     <p></p>
                 </div>
+            
+        
             
         
             

@@ -3650,9 +3650,6 @@ src=&#34;http://slack.storageos.com/slackin.js&#34;&gt;&lt;/script&gt;&lt;/p&gt;
 information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.&lt;/p&gt;
-&lt;p&gt;Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section &lt;a href=&#34;https://docs.storageos.com/docs/support/contactus#storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Diagnostic
-Bundle&lt;/a&gt;.&lt;/p&gt;
 &lt;h3 id=&#34;platform&#34;&gt;Platform&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud provider/Bare metal&lt;/li&gt;
@@ -3683,36 +3680,19 @@ Bundle&lt;/a&gt;.&lt;/p&gt;
 maintenance, node reboots, network failures, etcd outage, etc.. This can
 help speed up ticket triage and resolution considerably&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;storageos-cluster-diagnostic-bundle&#34;&gt;StorageOS Cluster Diagnostic Bundle&lt;/h3&gt;
-&lt;p&gt;StorageOS has a cluster diagnostic function that aggregates cluster
-information.&lt;/p&gt;
-&lt;p&gt;The cluster diagnostic bundle is created only when a user chooses to do so. For
-convenience the cluster diagnostic bundle can either be uploaded to StorageOS
-or downloaded to the machine running the browser or CLI. The cluster diagnostic
-bundle is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket
-using a TLS encrypted connection. The upload takes place only after user
-confirmation.&lt;/p&gt;
-&lt;p&gt;As a general outline the following information is sent to us:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;StorageOS logs&lt;/li&gt;
-&lt;li&gt;StorageOS cluster state - node config, volumes and namespaces&lt;/li&gt;
-&lt;li&gt;output of &lt;code&gt;storageos describe node&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;output of &lt;code&gt;lshw&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;output of &lt;code&gt;dmesg&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;See &lt;a href=&#34;https://docs.storageos.com/docs/reference/bundle/&#34;&gt;Support Bundle&lt;/a&gt; for an exhaustive list of what is included in the cluster diagnostic bundle.&lt;/p&gt;
-&lt;p&gt;StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
-support cases.&lt;/p&gt;
-&lt;p&gt;The information given in the cluster cluster diagnostic bundle is only used for support purposes
-and it will be removed once the data is no longer needed for such purposes.
-In case the information is sensitive and can&amp;rsquo;t be given to StorageOS, please
-make sure that support engineers have as much information about your
-environment as possible.&lt;/p&gt;
-&lt;p&gt;You can generate a cluster diagnostic bundle through the StorageOS &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui&#34;&gt;GUI&lt;/a&gt; by
-navigating to the &lt;code&gt;Cluster&lt;/code&gt; menu and downloading the StorageOS support Bundle.
-The cluster cluster diagnostic bundle can also be generated using the CLI command below.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics -o storageos-diagnostic-bundle
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;storageos-support-bundle&#34;&gt;StorageOS Support Bundle&lt;/h3&gt;
+&lt;p&gt;StorageOS provides the ability to generate a support bundle that aggregates
+cluster information. See &lt;a href=&#34;https://docs.storageos.com/docs/reference/bundles/support_bundle/&#34;&gt;Support Bundle&lt;/a&gt; for a list of what is
+included.&lt;/p&gt;
+&lt;p&gt;StorageOS engineers might ask for a support bundle to be generated
+during support cases.&lt;/p&gt;
+&lt;p&gt;The information in the bundle is used only for support purposes, and will be
+removed once it is no longer needed. If the information is sensitive and can&amp;rsquo;t
+be given to StorageOS, please make sure that the support engineers have as
+much information about your environment as possible.&lt;/p&gt;
+&lt;p&gt;Refer to the &lt;a href=&#34;https://docs.storageos.com/docs/reference/bundles/support_bundle/&#34;&gt;Support Bundle&lt;/a&gt; documentation page for details
+of how to generate a bundle.&lt;/p&gt;
+
       </description>
     </item>
     
@@ -5053,6 +5033,65 @@ Global Flags:
     </item>
     
     <item>
+      <title>Docs: Diagnostic bundle</title>
+      <link>https://docs.storageos.com/docs/reference/bundles/diagnostic-bundle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/bundles/diagnostic-bundle/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS can generate a cluster diagnostic bundle from the GUI or CLI under
+user request. The bundle packages the information needed for the engineering
+team to understand the context of your cluster and begin troubleshooting any
+issues you may be experiencing.&lt;/p&gt;
+&lt;h2 id=&#34;generate-bundle&#34;&gt;Generate Bundle&lt;/h2&gt;
+&lt;h3 id=&#34;cli&#34;&gt;CLI&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; can generate
+the bundle.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;The file generated is in the form of &lt;code&gt;diagnostics-${TIME_STAMP}.gz&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;gui&#34;&gt;GUI&lt;/h3&gt;
+&lt;p&gt;Or you can use the &lt;a href=&#34;https://docs.storageos.com/docs/reference/gui/&#34;&gt;StoregeOS GUI&lt;/a&gt;.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Go to section &amp;ldquo;Cluster&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Press the button &amp;ldquo;DOWNLOAD DIAGNOSTICS&amp;rdquo;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;data-collected-in-the-bundle&#34;&gt;Data collected in the bundle&lt;/h2&gt;
+&lt;p&gt;Most of the data collected in the bundle is regarding the state of the
+StorageOS cluster, however some other information regarding the infrastructure
+is also gathered. The information is used to have a clear view of the cluster
+where StorageOS is running.&lt;/p&gt;
+&lt;p&gt;The bundle incorporates for each node:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;StorageOS Daemonset Pod logs&lt;/li&gt;
+&lt;li&gt;lshw&lt;/li&gt;
+&lt;li&gt;dmesg (kernel logs)&lt;/li&gt;
+&lt;li&gt;StorageOS metadata for the ControlPlane and DataPlane&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;storageos-metadata-collected&#34;&gt;StorageOS metadata collected&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;cluster metadata&lt;/li&gt;
+&lt;li&gt;namespaces metadata&lt;/li&gt;
+&lt;li&gt;nodes metadata&lt;/li&gt;
+&lt;li&gt;volumes metadata&lt;/li&gt;
+&lt;li&gt;capacity stats&lt;/li&gt;
+&lt;li&gt;environment variables&lt;/li&gt;
+&lt;li&gt;health&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;privacy&#34;&gt;Privacy&lt;/h2&gt;
+&lt;p&gt;StorageOS can only obtain the bundle if it is downloaded by the user and given
+to our engineering team, or uploaded for analysis. The data received by
+StorageOS is private and never leaves nor will leave StorageOS Inc.&lt;/p&gt;
+&lt;p&gt;The data contained in the cluster diagnostic bundle has the sole purpose of
+helping customers troubleshoot their issues.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Docker Enterprise Edition</title>
       <link>https://docs.storageos.com/docs/platforms/dockeree/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -5627,7 +5666,7 @@ all three files.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;PEERS_PORT=${PEERS_PORT}
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify that variables are expaneded in the file&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify that variables are expanded in the file&lt;/span&gt;
 $ cat /etc/etcd.conf
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
@@ -7195,100 +7234,6 @@ the key, you can apply the licence by using the following command.&lt;/p&gt;
 &lt;h2 id=&#34;obtaining-an-enterprise-licence&#34;&gt;Obtaining an Enterprise licence&lt;/h2&gt;
 &lt;p&gt;Please contact &lt;a href=&#34;mailto:sales@storageos.com&#34;&gt;sales@storageos.com&lt;/a&gt; to discuss
 pricing for commercial licences.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
-      <title>Docs: </title>
-      <link>https://docs.storageos.com/docs/usecases/mssql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/docs/usecases/mssql/</guid>
-      <description>
-        
-        
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/mssql.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; MS SQL
-with StorageOS &lt;/h1&gt;
-&lt;p&gt;Beginning with Microsoft SQL Server 2017, Microsoft has supported MSSQL on
-linux.&lt;/p&gt;
-&lt;p&gt;Before you start, ensure you have StorageOS installed and ready on a Kubernetes
-cluster. &lt;a href=&#34;https://docs.storageos.com/docs/install/kubernetes/&#34;&gt;See our guide on how to install StorageOS on Kubernetes for more
-information&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;deploying-ms-sql-on-kubernetes&#34;&gt;Deploying MS SQL on Kubernetes&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;You can find the latest files in the StorageOS use cases repository&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone https://github.com/storageos/use-cases.git storageos-usecases
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;StatefulSet defintion&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StatefulSet&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;mssql&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;selector&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;matchLabels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;mssql&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;prod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;serviceName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;mssql&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;serviceAccountName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;mssql&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeMounts&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;       &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;data&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountPath&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;/var/opt/mssql&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;   &lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeClaimTemplates&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;data&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;       &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;prod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ReadWriteOnce&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# StorageOS storageClass &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;     &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;       &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This excerpt is from the StatefulSet definition. This file contains the
-VolumeClaim template that will dynamically provision storage, using the
-StorageOS storage class. Dynamic provisioning occurs as a volumeMount has
-been declared with the same name as a VolumeClaim.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Move into the MS SQL examples folder and create the objects&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;cd&lt;/span&gt; storageos-usecases
-kubectl create -f ./mssql
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Confirm MS SQL is up and running.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl get pods -w -l &lt;span style=&#34;color:#000&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;mssql
-NAME        READY    STATUS    RESTARTS    AGE
-mssql-0     1/1      Running    &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;0&lt;/span&gt;          1m
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Connect to the MS SQL client pod and connect to the MS SQL server through the
-service&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt; $ kubectl &lt;span style=&#34;color:#204a87&#34;&gt;exec&lt;/span&gt; -it mssql-0 -- /opt/mssql-tools/bin/sqlcmd -S mssql-0.mssql -U SA -P &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;Password15&amp;#39;&lt;/span&gt;
- 1&amp;gt; USE master&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
- 2&amp;gt; GO
- Changed database context to &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#39;master&amp;#39;&lt;/span&gt;.
- 1&amp;gt; SELECT name, database_id, create_date FROM sys.databases &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;;&lt;/span&gt;
- 2&amp;gt; GO
- name                        database_id create_date            
- --------------------------- ----------- -----------------------
- master                                &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt; 2003-04-08 09:13:36.390
- tempdb                                &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;2&lt;/span&gt; 2018-11-02 16:30:37.907
- model                                 &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; 2003-04-08 09:13:36.390
- msdb                                  &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt; 2018-10-19 01:18:57.300
-
- &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;4&lt;/span&gt; rows affected&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;configuration&#34;&gt;Configuration&lt;/h2&gt;
-&lt;p&gt;If you need custom startup options, you can edit the ConfigMap file
-&lt;a href=&#34;https://github.com/storageos/use-cases/blob/master/mssql/15-mssql-configmap.yaml&#34;&gt;15-mssql-configmap.yaml&lt;/a&gt;
-with your desired MS SQL configuration settings.&lt;/p&gt;
 
       </description>
     </item>

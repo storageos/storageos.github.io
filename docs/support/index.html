@@ -30,7 +30,7 @@
 <meta itemprop="description" content="How to ask for StorageOS support.
 ">
 
-<meta itemprop="wordCount" content="515">
+<meta itemprop="wordCount" content="356">
 
 
 
@@ -191,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5e6a5340243737fe575888202365ff6161e74848372ff0e332e77754a2e25d44460d01ff84091cd925d6a3a76e6dc082a7005e04e1eb452a23b7573a4a502988.json"
+  data-offline-search-index-json-src="/offline-search-index.7b62dee15fb25eece042b95aa4a36e38a377a4ca61f075a29e9904aaf6c6d7b9ee24b45633f2739bbd74cc3cb5cb15e9591103142b4c065031abc00204d7bef5.json"
   data-offline-search-base-href="/"
 >
 
@@ -580,6 +580,12 @@
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdetcd-migration" href="/docs/operations/etcd/etcd-migration/">Migrate Etcd</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsetcdstorageos-secret-info" href="/docs/operations/etcd/storageos-secret-info/">mTLS</a>
       
       
@@ -805,6 +811,41 @@
       
       
       
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/bundles/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Bundles</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencebundles">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlesdiagnostic-bundle" href="/docs/reference/bundles/diagnostic-bundle/">Diagnostic bundle</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundlessupport_bundle" href="/docs/reference/bundles/support_bundle/">Support bundle</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceapi" href="/docs/reference/api/">API Reference</a>
       
@@ -990,12 +1031,6 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencebundle" href="/docs/reference/bundle/">Support bundle</a>
-      
-      
-      
-      
-      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencefilesystems" href="/docs/reference/filesystems/">Supported File systems</a>
       
       
@@ -1055,7 +1090,7 @@
         <li><a href="#storageos">StorageOS</a></li>
         <li><a href="#orchestrator-related-kubernetes-openshift-etc">Orchestrator related (Kubernetes, OpenShift, etc)</a></li>
         <li><a href="#environment-changes">Environment Changes</a></li>
-        <li><a href="#storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</a></li>
+        <li><a href="#storageos-support-bundle">StorageOS Support Bundle</a></li>
       </ul>
     </li>
   </ul>
@@ -1117,9 +1152,6 @@ src="http://slack.storageos.com/slackin.js"></script></p>
 information as possible when contacting us. The list below is a suggested
 starting point. Additionally, please include anything specific, such as log
 entries, that may help us debug your issue.</p>
-<p>Information about the cluster can be automatically sent to StorageOS engineers
-as mentioned in the section <a href="/docs/support/contactus#storageos-cluster-diagnostic-bundle">StorageOS Diagnostic
-Bundle</a>.</p>
 <h3 id="platform">Platform</h3>
 <ul>
 <li>Cloud provider/Bare metal</li>
@@ -1150,36 +1182,19 @@ Bundle</a>.</p>
 maintenance, node reboots, network failures, etcd outage, etc.. This can
 help speed up ticket triage and resolution considerably</li>
 </ul>
-<h3 id="storageos-cluster-diagnostic-bundle">StorageOS Cluster Diagnostic Bundle</h3>
-<p>StorageOS has a cluster diagnostic function that aggregates cluster
-information.</p>
-<p>The cluster diagnostic bundle is created only when a user chooses to do so. For
-convenience the cluster diagnostic bundle can either be uploaded to StorageOS
-or downloaded to the machine running the browser or CLI. The cluster diagnostic
-bundle is uploaded from a StorageOS node to a StorageOS GCP encrypted bucket
-using a TLS encrypted connection. The upload takes place only after user
-confirmation.</p>
-<p>As a general outline the following information is sent to us:</p>
-<ul>
-<li>StorageOS logs</li>
-<li>StorageOS cluster state - node config, volumes and namespaces</li>
-<li>output of <code>storageos describe node</code></li>
-<li>output of <code>lshw</code></li>
-<li>output of <code>dmesg</code></li>
-</ul>
-<p>See <a href="https://docs.storageos.com/docs/reference/bundle/">Support Bundle</a> for an exhaustive list of what is included in the cluster diagnostic bundle.</p>
-<p>StorageOS engineers might ask for a cluster diagnostic bundle to be generated during
-support cases.</p>
-<p>The information given in the cluster cluster diagnostic bundle is only used for support purposes
-and it will be removed once the data is no longer needed for such purposes.
-In case the information is sensitive and can&rsquo;t be given to StorageOS, please
-make sure that support engineers have as much information about your
-environment as possible.</p>
-<p>You can generate a cluster diagnostic bundle through the StorageOS <a href="/docs/reference/gui">GUI</a> by
-navigating to the <code>Cluster</code> menu and downloading the StorageOS support Bundle.
-The cluster cluster diagnostic bundle can also be generated using the CLI command below.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos get diagnostics -o storageos-diagnostic-bundle
-</code></pre></div>
+<h3 id="storageos-support-bundle">StorageOS Support Bundle</h3>
+<p>StorageOS provides the ability to generate a support bundle that aggregates
+cluster information. See <a href="https://docs.storageos.com/docs/reference/bundles/support_bundle/">Support Bundle</a> for a list of what is
+included.</p>
+<p>StorageOS engineers might ask for a support bundle to be generated
+during support cases.</p>
+<p>The information in the bundle is used only for support purposes, and will be
+removed once it is no longer needed. If the information is sensitive and can&rsquo;t
+be given to StorageOS, please make sure that the support engineers have as
+much information about your environment as possible.</p>
+<p>Refer to the <a href="https://docs.storageos.com/docs/reference/bundles/support_bundle/">Support Bundle</a> documentation page for details
+of how to generate a bundle.</p>
+
 	
 	
 	<div class="text-muted mt-5 pt-3 border-top"></div>

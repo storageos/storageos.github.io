@@ -666,7 +666,7 @@ all three files.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;PEERS_PORT=${PEERS_PORT}
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify that variables are expaneded in the file&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Verify that variables are expanded in the file&lt;/span&gt;
 $ cat /etc/etcd.conf
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;

@@ -62,8 +62,8 @@ Updated at:       2020-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-we
       <description>
         
         
-        &lt;p&gt;Check the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;Etcd prerequisites page&lt;/a&gt;
-for a step by step installation of Etcd.&lt;/p&gt;
+        &lt;p&gt;Check the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;etcd prerequisites page&lt;/a&gt;
+for a step by step installation of etcd.&lt;/p&gt;
 &lt;h2 id=&#34;best-practices&#34;&gt;Best practices&lt;/h2&gt;
 &lt;p&gt;StorageOS uses etcd as a service, whether it is deployed following the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;step
 by step&lt;/a&gt; instructions or as a custom
@@ -101,7 +101,7 @@ traffic as a production cluster with 100 nodes. Adding &lt;a href=&#34;https://d
 characterise the traffic, and therefore to assess the individual requirements
 of a cluster and adjust its resources accordingly.&lt;/p&gt;
 &lt;h3 id=&#34;etcd-advertise-urls&#34;&gt;Etcd advertise urls&lt;/h3&gt;
-&lt;p&gt;The Etcd startup parameters &lt;code&gt;advertise-client-urls&lt;/code&gt; and
+&lt;p&gt;The etcd startup parameters &lt;code&gt;advertise-client-urls&lt;/code&gt; and
 &lt;code&gt;initial-advertise-peer-urls&lt;/code&gt; specify the addresses etcd clients or other etcd
 members should use to contact the etcd server. The advertised addresses must
 be reachable from the remote machines - i.e. where StorageOS is running - so

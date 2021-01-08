@@ -22,7 +22,7 @@ spec:
     - run:
         name: "network-checks"
         collectorName: "netcat"
-        image: arau/tools:0.9
+        image: storageos/support-bundle:0.1
         namespace: kube-system
         hostNetwork: true
         hostPID: true
@@ -70,7 +70,7 @@ spec:
     - run:
         name: "ps-forest"
         collectorName: "ps-forest"
-        image: arau/tools:0.9
+        image: storageos/support-bundle:0.1
         namespace: kube-system
         hostPID: true
         nodeSelector:
@@ -83,7 +83,7 @@ spec:
     - run:
         name: "ps-threads"
         collectorName: "ps-threads"
-        image: arau/tools:0.9
+        image: storageos/support-bundle:0.1
         namespace: kube-system
         hostPID: true
         nodeSelector:
@@ -95,7 +95,7 @@ spec:
     - run:
         name: "loadAvg-all-nodes"
         collectorName: "top"
-        image: arau/tools:0.9
+        image: storageos/support-bundle:0.1
         namespace: kube-system
         hostPID: true
         nodeSelector:

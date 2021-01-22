@@ -117,9 +117,8 @@ for the internal registry is &lt;strong&gt;not&lt;/strong&gt; recommended.&lt;/p
 &lt;p&gt;CSI is the standard that enables storage drivers to release on their own
 schedule. This allows storage vendors to upgrade, update, and enhance their
 drivers without the need to update Kubernetes source code, or follow Kubernetes
-release cycles.&lt;/p&gt;
-&lt;p&gt;StorageOS v2 implements communication with the OpenShift controlplane with CSI
-only. The native driver has been deprecated&lt;/p&gt;
+release cycles. StorageOS v2 uses CSI to implement communication with the
+OpenShift controlplane.&lt;/p&gt;
 &lt;h2 id=&#34;storageos-persistentvolumeclaims&#34;&gt;StorageOS PersistentVolumeClaims&lt;/h2&gt;
 &lt;p&gt;The user can provide standard PVC definitions and StorageOS will dynamically
 provision them. StorageOS presents volumes to containers with standard POSIX

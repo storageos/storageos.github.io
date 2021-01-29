@@ -40,11 +40,18 @@ spec:
           # InternalAPIPort = 5710 # Grpc API
           # GossipPort = 5711 # Gossip+Healthcheck
 
-          echo \"Source node for the test:\";
+          date;
+          echo \"Source node:\";
           hostname -f -I; echo;
 
+          echo \"TCP:\";
           parallel -j2 nc -vnz ::: $(echo $NODES_PRIVATE_IPS| sed \"s/,/ /g\" ) \
-                              ::: 5703 5704 5705 5710 5711
+                              ::: 5703 5704 5705 5710 5711;
+          echo;
+
+          echo \"UDP:\";
+          parallel -j2 nc -vunz ::: $(echo $NODES_PRIVATE_IPS| sed \"s/,/ /g\" ) \
+                              ::: 5711;
           "
         timeout: 90s
     - exec:

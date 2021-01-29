@@ -1573,7 +1573,7 @@ files into blobs which are then sent to MinIO.
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;Here are the prerequisites for running Velero in your Kubernetes cluster:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Kubernetes cluster version 1.13+ with DNS&lt;/li&gt;
+&lt;li&gt;Kubernetes cluster version 1.15 to 1.20 with DNS&lt;/li&gt;
 &lt;li&gt;Kubectl installed&lt;/li&gt;
 &lt;li&gt;Velero cli installed &lt;a href=&#34;https://Velero.io/docs/main/basic-install/&#34;&gt;https://Velero.io/docs/main/basic-install/&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;

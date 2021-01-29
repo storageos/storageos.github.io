@@ -30,7 +30,7 @@
 <meta itemprop="description" content="StorageOSCluster Resource Configuration The following table lists the configurable spec parameters of the StorageOSCluster custom resource and their default values.
    Parameter Description Default     csi.deploymentStrategy CSI helper deployment strategy (statefulset or deployment) statefulset   csi.enable Enable CSI setup false   csi.enableControllerPublishCreds Enable CSI controller publish credentials false   csi.enableNodePublishCreds Enable CSI node publish credentials false   csi.enableProvisionCreds Enable CSI provision credentials false   debug Enable debug mode for all the cluster nodes false   disableFencing Disable Pod fencing false   disableScheduler Disable StorageOS scheduler false   disableTCMU Disable TCMU to allow co-existence with other TCMU users.">
 
-<meta itemprop="wordCount" content="387">
+<meta itemprop="wordCount" content="406">
 
 
 
@@ -191,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.c660a2f25ef300726aaa7cc3069cdd72c6d31a298862843fdc787ba4da20596098529428839bbe146ff3cf76b2747adb7ea9e2825d15ec121ef2b1e2606a0a09.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.64487cf0025f09c286b27646dbe89286279cc5177c072286d97aaeb8daaaeef3dc3539cfba23bf2f77af021bcfa0be6ce91288df895c88109e34ee811cfdd310.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.c660a2f25ef300726aaa7cc3069cdd72c6d31a298862843fdc787ba4da20596098529428839bbe146ff3cf76b2747adb7ea9e2825d15ec121ef2b1e2606a0a09.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.64487cf0025f09c286b27646dbe89286279cc5177c072286d97aaeb8daaaeef3dc3539cfba23bf2f77af021bcfa0be6ce91288df895c88109e34ee811cfdd310.json"
   data-offline-search-base-href="/"
 >
 
@@ -1115,6 +1115,11 @@
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
+<td align="left"><code>images.apiManagerContainer</code></td>
+<td align="left">StorageOS API Manager container image</td>
+<td align="left"><code>storageos/api-manager:v1.0.0</code></td>
+</tr>
+<tr>
 <td align="left"><code>images.csiClusterDriverRegistrarContainer</code></td>
 <td align="left">CSI Cluster Driver Registrar Container image</td>
 <td align="left"><code>quay.io/k8scsi/csi-cluster-driver-registrar:v1.0.1</code></td>
@@ -1147,7 +1152,7 @@
 <tr>
 <td align="left"><code>images.initContainer</code></td>
 <td align="left">StorageOS init container image</td>
-<td align="left"><code>storageos/init:1.0.0</code></td>
+<td align="left"><code>storageos/init:2.1.0</code></td>
 </tr>
 <tr>
 <td align="left"><code>images.kubeSchedulerContainer</code></td>
@@ -1258,6 +1263,11 @@
 <td align="left"><code>sharedDir</code></td>
 <td align="left">Path to be shared with kubelet container when deployed as a pod</td>
 <td align="left"><code>/var/lib/kubelet/plugins/kubernetes.io~storageos</code></td>
+</tr>
+<tr>
+<td align="left"><code>storageClassName</code></td>
+<td align="left">The name of the default StorageClass created for StorageOS volumes</td>
+<td align="left"><code>fast</code></td>
 </tr>
 <tr>
 <td align="left"><code>tlsEtcdSecretRefName</code></td>

@@ -62,6 +62,9 @@ spec:
           - app=storageos
         namespace: kube-system
         command: ["lsblk"]
+        args:
+          - "--bytes"
+          - "--output-all"
         timeout: 90s
     - exec:
         name: "free-disk-space"
@@ -72,7 +75,7 @@ spec:
           - app=storageos
         command: ["df"]
         args:
-        - "-h"
+          - "--print-type"
         timeout: 90s
     - run:
         name: "ps-forest"
@@ -84,8 +87,9 @@ spec:
           node-role.kubernetes.io/worker: "true"
         command: ["ps"]
         args:
-        - "--forest"
-        - "-ejFww"
+          - "--forest"
+          - "-ewwO"
+          - "uname,ppid,pgid,sid,c,sz,rssize,psr,lstart,etimes"
         timeout: 90s
     - run:
         name: "ps-threads"

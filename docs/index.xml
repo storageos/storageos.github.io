@@ -1719,9 +1719,10 @@ board, with improvements in throughput of up to 135% for some scenarios.&lt;/p&g
       <description>
         
         
-        &lt;p&gt;StorageOS requires certain kernel modules to function, in particular &lt;a href=&#34;http://linux-iscsi.org/wiki/Main_Page&#34;&gt;Linux-IO
-&lt;/a&gt;, an open-source implementation of the
-SCSI target.&lt;/p&gt;
+        &lt;p&gt;StorageOS requires certain kernel modules to function. In particular it
+requires &lt;a href=&#34;http://linux-iscsi.org/wiki/Main_Page&#34;&gt;Linux-IO&lt;/a&gt;, an open-source
+implementation of the SCSI target, on all nodes that will execute StorageOS
+(usually the workers).&lt;/p&gt;
 &lt;p&gt;We require the following modules to be loaded:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;target_core_mod&lt;/code&gt;&lt;/li&gt;
@@ -3510,8 +3511,9 @@ source&lt;/a&gt;.&lt;/p&gt;
 StorageOS does have a few basic prerequisites that are met by default by most
 modern distributions:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;At least 1 CPU core, 2GB RAM free&lt;/li&gt;
-&lt;li&gt;TCP ports 5701-5710 and TCP &amp;amp; UDP 5711 open between all nodes in the cluster&lt;/li&gt;
+&lt;li&gt;At least 1 CPU core, 2GB RAM free.&lt;/li&gt;
+&lt;li&gt;A Kubernetes release within the four most recent versions.&lt;/li&gt;
+&lt;li&gt;TCP ports 5701-5710 and TCP &amp;amp; UDP 5711 open between all nodes in the cluster.&lt;/li&gt;
 &lt;li&gt;A 64bit supported operating system - StorageOS can run without additional
 packages in Debian 9, RancherOS, RHEL7.5,8 and CentOS7,8 and need the package
 linux-image-extra for Ubuntu.&lt;/li&gt;
@@ -4262,7 +4264,7 @@ than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.
     </item>
     
     <item>
-      <title>Docs: </title>
+      <title>Docs: Cassandra</title>
       <link>https://docs.storageos.com/docs/usecases/cassandra/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -4270,7 +4272,7 @@ than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorecassandralogopng-cassandra-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/cassandralogo.png&#34; alt=&#34;image&#34;&gt; Cassandra with StorageOS&lt;/h1&gt;
+        &lt;img src=&#34;https://docs.storageos.com/images/docs/explore/cassandralogo.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
 &lt;p&gt;Cassandra is a popular distributed NoSQL open source database.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Cassandra means that if a Cassandra pod
 fails, the cluster is only in a degraded state for as long as it takes
@@ -4870,7 +4872,7 @@ stateful workloads.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: </title>
+      <title>Docs: Elasticsearch</title>
       <link>https://docs.storageos.com/docs/usecases/elasticsearch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -4878,7 +4880,7 @@ stateful workloads.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; ElasticSearch with StorageOS &lt;/h1&gt;
+        &lt;img src=&#34;https://docs.storageos.com/images/docs/explore/elasticsearch.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
 &lt;p&gt;Elasticsearch is a distributed, RESTful search and analytics engine, most
 popularly used to aggregate logs, but also to serve as a search backend to a
 number of different applications.&lt;/p&gt;
@@ -6218,7 +6220,7 @@ Filesystem                  Size  Used Avail Use% Mounted on
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/influxdb.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; InfluxDB with StorageOS&lt;/h1&gt;
+        &lt;img src=&#34;https://docs.storageos.com/images/docs/explore/influxdb.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
 &lt;p&gt;InfluxDB is a popular open source time series database application optimised
 for managing datasets consisting of many small measurements. Its advantages
 include the ability to handle very high write and query loads. Its uses include monitoring, analytics and the recording and analysis of data from sensors.&lt;/p&gt;
@@ -6424,7 +6426,7 @@ be used:&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: </title>
+      <title>Docs: Jenkins</title>
       <link>https://docs.storageos.com/docs/usecases/jenkins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -6432,8 +6434,7 @@ be used:&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkins.png&#34; width=&#34;125&#34;
-height=&#34;125&#34;&gt; Jenkins with StorageOS&lt;/h1&gt;
+        &lt;img src=&#34;https://docs.storageos.com/images/docs/explore/jenkins.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
 &lt;p&gt;This example shows an example of how to deploy Jenkins on Kubernetes with a
 StorageOS persistent volume being mounted on &lt;code&gt;/var/jenkins_home&lt;/code&gt;. Deploying
 Jenkins using StorageOS offers multiple benefits. Firstly Jenkins can spin up
@@ -6499,7 +6500,7 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: </title>
+      <title>Docs: Kafka</title>
       <link>https://docs.storageos.com/docs/usecases/kafka/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -6507,8 +6508,7 @@ scheduling a build of both projects at the same time.&lt;/p&gt;
       <description>
         
         
-        &lt;h1&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt; Kafka
-with StorageOS &lt;/h1&gt;
+        &lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kafka.png&#34; width=&#34;125&#34; height=&#34;125&#34;&gt;
 &lt;p&gt;Kafka is a popular stream processing platform combining features from pub/sub
 and traditional queues.&lt;/p&gt;
 &lt;p&gt;Using StorageOS persistent volumes with Apache Kafka means that if a pod
@@ -6628,7 +6628,7 @@ its service endpoint&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: </title>
+      <title>Docs: Kubevirt</title>
       <link>https://docs.storageos.com/docs/usecases/kubevirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -6636,7 +6636,7 @@ its service endpoint&lt;/p&gt;
       <description>
         
         
-        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng-kubevirt-with-storageos&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt; Kubevirt with StorageOS&lt;/h1&gt;
+        &lt;h1 id=&#34;imageimagesdocsexplorekubevirtpng&#34;&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/explore/kubevirt.png&#34; alt=&#34;image&#34;&gt;&lt;/h1&gt;
 &lt;p&gt;&lt;a href=&#34;https://kubevirt.io&#34;&gt;Kubevirt&lt;/a&gt; is a CNCF sandbox project that allows the
 running of virtual machines (VMs) in Kubernetes pods.&lt;/p&gt;
 &lt;p&gt;Deploying Kubevirt using StorageOS offers multiple benefits. Kubevirt can spin

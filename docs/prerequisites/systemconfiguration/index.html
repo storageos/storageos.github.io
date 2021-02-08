@@ -21,26 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>System Configuration | </title><meta property="og:title" content="System Configuration" />
-<meta property="og:description" content="StorageOS requires certain kernel modules to function, in particular Linux-IO , an open-source implementation of the SCSI target.
+<meta property="og:description" content="StorageOS requires certain kernel modules to function. In particular it requires Linux-IO, an open-source implementation of the SCSI target, on all nodes that will execute StorageOS (usually the workers).
 We require the following modules to be loaded:
- target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE. However if StorageOS is started first there is no mechanism for StorageOS to fallback to FUSE if another application begins to use TCMU." />
+ target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/prerequisites/systemconfiguration/" />
 
 <meta itemprop="name" content="System Configuration">
-<meta itemprop="description" content="StorageOS requires certain kernel modules to function, in particular Linux-IO , an open-source implementation of the SCSI target.
+<meta itemprop="description" content="StorageOS requires certain kernel modules to function. In particular it requires Linux-IO, an open-source implementation of the SCSI target, on all nodes that will execute StorageOS (usually the workers).
 We require the following modules to be loaded:
- target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE. However if StorageOS is started first there is no mechanism for StorageOS to fallback to FUSE if another application begins to use TCMU.">
+ target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE.">
 
-<meta itemprop="wordCount" content="425">
+<meta itemprop="wordCount" content="436">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="System Configuration"/>
-<meta name="twitter:description" content="StorageOS requires certain kernel modules to function, in particular Linux-IO , an open-source implementation of the SCSI target.
+<meta name="twitter:description" content="StorageOS requires certain kernel modules to function. In particular it requires Linux-IO, an open-source implementation of the SCSI target, on all nodes that will execute StorageOS (usually the workers).
 We require the following modules to be loaded:
- target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE. However if StorageOS is started first there is no mechanism for StorageOS to fallback to FUSE if another application begins to use TCMU."/>
+ target_core_mod tcm_loop target_core_file configfs target_core_user uio   N.B. Other applications utilising TCMU cannot be run concurrently with StorageOS. Doing so may result in corruption of data. On startup, StorageOS will detect if other applications are using TCMU and fall back to FUSE."/>
 
 
 
@@ -194,7 +194,7 @@ We require the following modules to be loaded:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.82fab81ab1b93ff0b717ad5465254ecb5f63158c6dce4c9197d1f90d1339c8c017772675c0aa6d4dd2277e124d6b0d1f2a1fe5c486efbc2158c18e0a2eef47a3.json"
+  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ We require the following modules to be loaded:
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.82fab81ab1b93ff0b717ad5465254ecb5f63158c6dce4c9197d1f90d1339c8c017772675c0aa6d4dd2277e124d6b0d1f2a1fe5c486efbc2158c18e0a2eef47a3.json"
+  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
   data-offline-search-base-href="/"
 >
 
@@ -1140,9 +1140,10 @@ We require the following modules to be loaded:
 <div class="td-content">
 	<h1>System Configuration</h1>
 	
-	<p>StorageOS requires certain kernel modules to function, in particular <a href="http://linux-iscsi.org/wiki/Main_Page">Linux-IO
-</a>, an open-source implementation of the
-SCSI target.</p>
+	<p>StorageOS requires certain kernel modules to function. In particular it
+requires <a href="http://linux-iscsi.org/wiki/Main_Page">Linux-IO</a>, an open-source
+implementation of the SCSI target, on all nodes that will execute StorageOS
+(usually the workers).</p>
 <p>We require the following modules to be loaded:</p>
 <ul>
 <li><code>target_core_mod</code></li>

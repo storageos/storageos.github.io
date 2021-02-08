@@ -22,9 +22,10 @@
       <description>
         
         
-        &lt;p&gt;StorageOS requires certain kernel modules to function, in particular &lt;a href=&#34;http://linux-iscsi.org/wiki/Main_Page&#34;&gt;Linux-IO
-&lt;/a&gt;, an open-source implementation of the
-SCSI target.&lt;/p&gt;
+        &lt;p&gt;StorageOS requires certain kernel modules to function. In particular it
+requires &lt;a href=&#34;http://linux-iscsi.org/wiki/Main_Page&#34;&gt;Linux-IO&lt;/a&gt;, an open-source
+implementation of the SCSI target, on all nodes that will execute StorageOS
+(usually the workers).&lt;/p&gt;
 &lt;p&gt;We require the following modules to be loaded:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;target_core_mod&lt;/code&gt;&lt;/li&gt;

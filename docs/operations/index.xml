@@ -722,7 +722,7 @@ attached.&lt;/p&gt;
       <description>
         
         
-        &lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/storage-classes/&#34;&gt;StorageClassess&lt;/a&gt;
+        &lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/storage/storage-classes/&#34;&gt;StorageClasses&lt;/a&gt;
 in Kubernetes are used to link PVCs with a backend storage provisioner - for
 instance, StorageOS. A StorageClass defines parameters to pass to the
 provisioner, which in the case of StorageOS can be translated into behaviour

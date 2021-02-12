@@ -191,7 +191,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -1339,7 +1339,7 @@ use the service endpoint when creating the StorageOS cluster.</p>
 <h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
 <p>In order to install the StorageOS operator download the requisite yaml
 manifests or apply them with kubectl.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><p>You can verify the operator is running using the following command</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
 </code></pre></div><p> </p>
@@ -1408,7 +1408,7 @@ running</p>
 <li>
 <p>Deploy the StorageOS CLI as a container</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.3.0 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.3.3 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\

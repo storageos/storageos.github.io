@@ -68,10 +68,10 @@ window.onload = function() {
 configuration.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# linux/amd64&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# MacOS&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will need to provide the correct credentials to connect to the API. The
 default installation uses the &lt;code&gt;storageos-api&lt;/code&gt; Secret to generate the first
 admin user. By default, it creates a single user with username &lt;code&gt;storageos&lt;/code&gt; and
@@ -83,7 +83,7 @@ password &lt;code&gt;storageos&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;You can run the cli as a container in your Kubernetes cluster. Then exec into
 it to run commands.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --image storageos/cli:v2.3.0 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --image storageos/cli:v2.3.3 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --restart&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;Never                          &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_ENDPOINTS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos:5705 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_USERNAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
@@ -5316,26 +5316,46 @@ limitations under the License.
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.2&lt;/code&gt;. For
+&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.3&lt;/code&gt;. For
 installation instructions please see our
 &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/install/&#34;&gt;Install&lt;/a&gt; page.&lt;/p&gt;
-&lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.0&lt;/code&gt;, available from
+&lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.3&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
-&lt;h2 id=&#34;v232---released-2020-11-25&#34;&gt;v2.3.2 - Released 2020-11-25&lt;/h2&gt;
+&lt;h2 id=&#34;v233---release-2021-02-12&#34;&gt;v2.3.3 - Release 2021-02-12&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Support CSI ListVolumes() API, addressing volume attach problems seen by some
+customers.&lt;/li&gt;
+&lt;li&gt;Quality-of-life fixes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;operator: Use CSI attacher v3 for k8s 1.17+.&lt;/li&gt;
+&lt;li&gt;controlplane/csi: ListVolumes support.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;(controlplane/rejoin) Failure to delete data causes re-advertise loop.&lt;/li&gt;
-&lt;li&gt;(controlplane/rejoin) Handle timeout waiting for progress report.&lt;/li&gt;
-&lt;li&gt;(dataplane/log) Change buffering of &lt;code&gt;symmetra&lt;/code&gt; output to prevent stalls.&lt;/li&gt;
+&lt;li&gt;api-manager: Reset api after token refresh error.&lt;/li&gt;
+&lt;li&gt;operator: Set scheduler when PVCs use default StorageClass.&lt;/li&gt;
+&lt;li&gt;operator: Update base container image.&lt;/li&gt;
+&lt;li&gt;controlplane/volumerpc: &amp;ldquo;Got unknown replica state 0&amp;rdquo; discards results.&lt;/li&gt;
+&lt;li&gt;controlplane/healthcheck: Combined sources fires callback in initialisation.&lt;/li&gt;
+&lt;li&gt;controlplane/fsm: Perform state match check before version check.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;v232---released-2020-11-25&#34;&gt;v2.3.2 - Released 2020-11-25&lt;/h2&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;controlplane/rejoin: Failure to delete data causes re-advertise loop.&lt;/li&gt;
+&lt;li&gt;controlplane/rejoin: Handle timeout waiting for progress report.&lt;/li&gt;
+&lt;li&gt;dataplane/log: Change buffering of &lt;code&gt;symmetra&lt;/code&gt; output to prevent stalls.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v231---released-2020-11-16&#34;&gt;v2.3.1 - Released 2020-11-16&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Allows access to &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes when running containers as a
 non-root user.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;nfs: root squash to uid=0 is now configured on all shared volumes.&lt;/li&gt;
 &lt;/ul&gt;
@@ -5346,7 +5366,7 @@ technology preview in v1.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;code&gt;v2.3.0&lt;/code&gt; operator is no longer able to run StorageOS v1.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Adds support for &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes.  See
 &lt;a href=&#34;https://docs.storageos.com/docs/concepts/rwx/&#34;&gt;ReadWriteMany&lt;/a&gt;.&lt;/li&gt;
@@ -5402,7 +5422,7 @@ Openshift have a much lower default value (1024).  Consult
 &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/pidlimits/&#34;&gt;prerequisites&lt;/a&gt; for more
 information.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: Fixes &lt;code&gt;transport endpoint is not connected&lt;/code&gt; on startup after an
 unclean shutdown.&lt;/li&gt;
@@ -5426,7 +5446,7 @@ improvements across the board. Of particular note:&lt;/p&gt;
 look at the &lt;a href=&#34;https://docs.storageos.com/docs/self-eval/#Benchmarking&#34;&gt;Benchmarking&lt;/a&gt; section of the self-evaluation guide and consider sharing
 your results. Our PRE engineers are available to discuss in our &lt;a href=&#34;https://storageos.slack.com&#34;&gt;slack
 channel&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Data engine revamp focused on provable consistency and performance. Key
@@ -5478,7 +5498,7 @@ This allows the scheduler to work in clusters with custom DNS configuration.&lt;
 &lt;li&gt;operator: Defaults are now set for most CSI configuration options in the
 StorageOSCluster custom resource.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;csi: When unmount request is received for a volume that has already been
 unmounted, return success.&lt;/li&gt;
@@ -5491,7 +5511,7 @@ operations, rather than filling target disk to capacity.&lt;/li&gt;
 after a restart. This resulted in multiple entries in &lt;code&gt;/proc/mounts&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v210---released-2020-06-26&#34;&gt;v2.1.0 - Released 2020-06-26&lt;/h2&gt;
-&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;csi: Volume expansion now supported in offline mode. To expand a volume, stop
 any workloads accessing the volume, then edit the PVC to increase the
@@ -5521,14 +5541,14 @@ and replica nodes are offline. This allows cleanup of orphaned volumes.&lt;/li&g
 &lt;li&gt;api: When a new node is added to the cluster, its capacity is available to use
 immediately.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: Favicon was missing.&lt;/li&gt;
 &lt;li&gt;ui: Duplicate volumes could be shown on the node details page.&lt;/li&gt;
 &lt;li&gt;operator: During uninstall a ClusterRoleBinding was not removed.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v200---released-2020-05-05&#34;&gt;v2.0.0 - Released 2020-05-05&lt;/h2&gt;
-&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-4&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;operator: StorageOS containers now run in the &lt;code&gt;kube-system&lt;/code&gt; namespace by
 default to allow the &lt;code&gt;system-node-critical&lt;/code&gt; priority class to be set. This
@@ -5576,7 +5596,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.&lt;/li&gt;
 &lt;li&gt;scheduler: return error for namespace/volume not found&lt;/li&gt;
 &lt;li&gt;dataplane: start gRPC threads separately from rest of the supervisor.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: centre licence types.&lt;/li&gt;
 &lt;li&gt;ui: capacity in ui is per namespace.&lt;/li&gt;

@@ -183,7 +183,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -217,7 +217,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -1136,10 +1136,10 @@
 configuration.</p>
 <h2 id="installation">Installation</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># linux/amd64</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_linux_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 
 <span style="color:#8f5902;font-style:italic"># MacOS</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_darwin_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 </code></pre></div><p>You will need to provide the correct credentials to connect to the API. The
 default installation uses the <code>storageos-api</code> Secret to generate the first
 admin user. By default, it creates a single user with username <code>storageos</code> and
@@ -1151,7 +1151,7 @@ password <code>storageos</code>:</p>
 <p>You can run the cli as a container in your Kubernetes cluster. Then exec into
 it to run commands.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    --image storageos/cli:v2.3.0 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --image storageos/cli:v2.3.3 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\

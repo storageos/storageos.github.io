@@ -200,7 +200,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -234,7 +234,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9752856d6c8a3dccd4a8c89a6fd10c7298562a721760e3378c5879f234efae84eeba40ba432f1beb773eac66c799e04f93cb072d3a599c370d20a865d4b085ab.json"
+  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
   data-offline-search-base-href="/"
 >
 
@@ -1293,7 +1293,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1379,7 +1379,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1405,7 +1405,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1431,7 +1431,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1457,7 +1457,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1535,7 +1535,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1621,7 +1621,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1647,7 +1647,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1673,7 +1673,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1699,7 +1699,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1777,7 +1777,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -1863,7 +1863,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1889,7 +1889,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1915,7 +1915,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -1941,7 +1941,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2019,7 +2019,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -2105,7 +2105,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2131,7 +2131,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2157,7 +2157,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2183,7 +2183,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2260,7 +2260,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -2346,7 +2346,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2372,7 +2372,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2398,7 +2398,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2424,7 +2424,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2501,7 +2501,7 @@ documentation.</p>
 </ul>
 <h2 id="1-install-storageos-operator">1. Install StorageOS operator</h2>
 <p>Install the StorageOS Cluster Operator using the following yaml manifest.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 </code></pre></div><h3 id="verify-the-cluster-operator-pod-status">Verify the Cluster Operator Pod Status</h3>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ce5c00;font-weight:bold">[</span>root@master03<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#8f5902;font-style:italic"># kubectl -n storageos-operator get pod</span>
 NAME                                         READY     STATUS    RESTARTS   AGE
@@ -2587,7 +2587,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;upstream&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2613,7 +2613,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;eks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2639,7 +2639,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;aks&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>
@@ -2665,7 +2665,7 @@ spec:
   secretRefNamespace: <span style="color:#4e9a06">&#34;storageos-operator&#34;</span>  <span style="color:#8f5902;font-style:italic"># Namespace of the Secret</span>
   k8sDistro: <span style="color:#4e9a06">&#34;gke&#34;</span>
   images:
-    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.2&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
+    nodeContainer: <span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span> <span style="color:#8f5902;font-style:italic"># StorageOS version</span>
   kvBackend:
     address: <span style="color:#4e9a06">&#39;storageos-etcd-client.storageos-etcd:2379&#39;</span> <span style="color:#8f5902;font-style:italic"># Example address, change for your etcd endpoint</span>
   <span style="color:#8f5902;font-style:italic"># address: &#39;10.42.15.23:2379,10.42.12.22:2379,10.42.13.16:2379&#39; # You can set ETCD server ips</span>

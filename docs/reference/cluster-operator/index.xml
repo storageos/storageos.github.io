@@ -160,7 +160,7 @@
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;StorageOS node container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:v2.3.2&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:v2.3.3&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.annotations&lt;/code&gt;&lt;/td&gt;
@@ -453,7 +453,7 @@ documentation&lt;/a&gt;.&lt;/p&gt;
         
         &lt;h2 id=&#34;upgrade-storageos-operator-from-yaml-manifest&#34;&gt;Upgrade StorageOS operator from yaml manifest&lt;/h2&gt;
 &lt;p&gt;Upgrade the StorageOS operator using the following yaml manifest.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.1/storageos-operator.yaml
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
 Since, the Update Strategy of the StorageOS Operator Deployment is set to

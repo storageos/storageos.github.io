@@ -78,8 +78,8 @@ spec:
           - "--print-type"
         timeout: 90s
     - run:
-        name: "ps-forest"
-        collectorName: "ps-forest"
+        name: "ps-general"
+        collectorName: "ps-general"
         image: storageos/support-bundle:0.1
         namespace: kube-system
         hostPID: true
@@ -87,9 +87,8 @@ spec:
           node-role.kubernetes.io/worker: "true"
         command: ["ps"]
         args:
-          - "--forest"
-          - "-ewwO"
-          - "uname,ppid,pgid,sid,c,sz,rssize,psr,lstart,etimes"
+          - "-ewwo"
+          - "pid,uname,ppid,pgid,sid,sz,rssize,vsize,psr,c,bsdtime,nlwp,lstart,etimes,state,tname,args"
         timeout: 90s
     - run:
         name: "ps-threads"
@@ -144,3 +143,14 @@ spec:
           storageos get volumes --all-namespaces -ojson --timeout 30s;
           echo '-----------------------------------------';
           "
+    - exec:
+        name: "proc-mounts"
+        collectorName: "proc-mounts"
+        selector:
+          - kind=daemonset
+          - app=storageos
+        namespace: kube-system
+        command: ["cat"]
+        args:
+          - "/proc/mounts"
+        timeout: 90s

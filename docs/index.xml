@@ -3886,20 +3886,20 @@ or UI&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;apiVersion: v1
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;kind: Pod
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;metadata:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;name: replicated-pod
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  name: replicated-pod
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;spec:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;containers:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  - name: debian
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    image: debian:9-slim
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    command: [&amp;#34;/bin/sleep&amp;#34;]
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    args: [ &amp;#34;3600&amp;#34;  ]
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    volumeMounts:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;      - mountPath: /mnt
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;        name: v1
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;volumes:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  - name: v1
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;    persistentVolumeClaim:
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;      claimName: pvc-replicated
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  containers:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;   - name: debian
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;     image: debian:9-slim
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;     command: [&amp;#34;/bin/sleep&amp;#34;]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;     args: [ &amp;#34;3600&amp;#34;  ]
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;     volumeMounts:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;       - mountPath: /mnt
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;         name: v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;  volumes:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;   - name: v1
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;     persistentVolumeClaim:
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;       claimName: pvc-replicated
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;END&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;

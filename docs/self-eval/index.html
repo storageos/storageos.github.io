@@ -1582,20 +1582,20 @@ or UI</p>
 </span><span style="color:#4e9a06">apiVersion: v1
 </span><span style="color:#4e9a06">kind: Pod
 </span><span style="color:#4e9a06">metadata:
-</span><span style="color:#4e9a06">name: replicated-pod
+</span><span style="color:#4e9a06">  name: replicated-pod
 </span><span style="color:#4e9a06">spec:
-</span><span style="color:#4e9a06">containers:
-</span><span style="color:#4e9a06">  - name: debian
-</span><span style="color:#4e9a06">    image: debian:9-slim
-</span><span style="color:#4e9a06">    command: [&#34;/bin/sleep&#34;]
-</span><span style="color:#4e9a06">    args: [ &#34;3600&#34;  ]
-</span><span style="color:#4e9a06">    volumeMounts:
-</span><span style="color:#4e9a06">      - mountPath: /mnt
-</span><span style="color:#4e9a06">        name: v1
-</span><span style="color:#4e9a06">volumes:
-</span><span style="color:#4e9a06">  - name: v1
-</span><span style="color:#4e9a06">    persistentVolumeClaim:
-</span><span style="color:#4e9a06">      claimName: pvc-replicated
+</span><span style="color:#4e9a06">  containers:
+</span><span style="color:#4e9a06">   - name: debian
+</span><span style="color:#4e9a06">     image: debian:9-slim
+</span><span style="color:#4e9a06">     command: [&#34;/bin/sleep&#34;]
+</span><span style="color:#4e9a06">     args: [ &#34;3600&#34;  ]
+</span><span style="color:#4e9a06">     volumeMounts:
+</span><span style="color:#4e9a06">       - mountPath: /mnt
+</span><span style="color:#4e9a06">         name: v1
+</span><span style="color:#4e9a06">  volumes:
+</span><span style="color:#4e9a06">   - name: v1
+</span><span style="color:#4e9a06">     persistentVolumeClaim:
+</span><span style="color:#4e9a06">       claimName: pvc-replicated
 </span><span style="color:#4e9a06">END</span>
 </code></pre></div></li>
 <li>

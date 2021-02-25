@@ -21,20 +21,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Detach Volume | </title><meta property="og:title" content="Detach Volume" />
-<meta property="og:description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach volume --namespace my-namespace-name my-volume Flags: --cas string make changes to a resource conditional upon matching a provided version -h, --help help for detach Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) " />
+<meta property="og:description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach --namespace my-namespace-name my-volume Flags: --async perform the operation asynchronously, using the configured timeout duration --cas string make changes to a resource conditional upon matching the provided version -h, --help help for detach Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/cli/detach/" />
 
 <meta itemprop="name" content="Detach Volume">
-<meta itemprop="description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach volume --namespace my-namespace-name my-volume Flags: --cas string make changes to a resource conditional upon matching a provided version -h, --help help for detach Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) ">
+<meta itemprop="description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach --namespace my-namespace-name my-volume Flags: --async perform the operation asynchronously, using the configured timeout duration --cas string make changes to a resource conditional upon matching the provided version -h, --help help for detach Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/.">
 
-<meta itemprop="wordCount" content="145">
+<meta itemprop="wordCount" content="194">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Detach Volume"/>
-<meta name="twitter:description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach volume --namespace my-namespace-name my-volume Flags: --cas string make changes to a resource conditional upon matching a provided version -h, --help help for detach Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) "/>
+<meta name="twitter:description" content="$ storageos detach --help Detach a volume from its current location Usage: storageos detach [flags] Examples: $ storageos detach --namespace my-namespace-name my-volume Flags: --async perform the operation asynchronously, using the configured timeout duration --cas string make changes to a resource conditional upon matching the provided version -h, --help help for detach Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/."/>
 
 
 
@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -867,7 +867,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply</a>
       
       
       
@@ -910,6 +910,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliupdate" href="/docs/reference/cli/update/">Update volume</a>
       
       
       
@@ -1135,6 +1141,7 @@
 	<h1>Detach Volume</h1>
 	
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos detach --help
+
 Detach a volume from its current location
 
 Usage:
@@ -1142,19 +1149,23 @@ Usage:
 
 Examples:
 
-$ storageos detach volume --namespace my-namespace-name my-volume
+$ storageos detach --namespace my-namespace-name my-volume
 
 
 Flags:
-      --cas string   make changes to a resource conditional upon matching a provided version
+      --async        perform the operation asynchronously, using the configured timeout duration
+      --cas string   make changes to a resource conditional upon matching the provided version
   -h, --help         <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> detach
 
 Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
   -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 5s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div>

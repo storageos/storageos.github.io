@@ -183,7 +183,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -217,7 +217,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -862,7 +862,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply</a>
       
       
       
@@ -905,6 +905,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliupdate" href="/docs/reference/cli/update/">Update volume</a>
       
       
       
@@ -1136,10 +1142,16 @@
 configuration.</p>
 <h2 id="installation">Installation</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># linux/amd64</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos <span style="color:#4e9a06">\ </span>
+    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 
 <span style="color:#8f5902;font-style:italic"># MacOS</span>
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
+curl -sSLo storageos <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 </code></pre></div><p>You will need to provide the correct credentials to connect to the API. The
 default installation uses the <code>storageos-api</code> Secret to generate the first
 admin user. By default, it creates a single user with username <code>storageos</code> and
@@ -1179,21 +1191,29 @@ Available Commands:
   detach      Detach a volume from its current location
   get         Fetch basic details <span style="color:#204a87;font-weight:bold">for</span> resources
   <span style="color:#204a87">help</span>        Help about any <span style="color:#204a87">command</span>
+  nfs         Make changes and attach nfs volumes
+  update      Make changes to existing resources
   version     View version information <span style="color:#204a87;font-weight:bold">for</span> the StorageOS CLI
 
 Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/home/user/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/home/user/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -h, --help                    <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> storageos
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
   -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 5s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 
 Additional <span style="color:#204a87">help</span> topics:
-  storageos env       View documentation <span style="color:#204a87;font-weight:bold">for</span> configuration settings which can be <span style="color:#204a87">set</span> in the environment
-  storageos exitcodes View documentation <span style="color:#204a87;font-weight:bold">for</span> the <span style="color:#204a87">exit</span> codes used by the StorageOS CLI
+  storageos config-file View <span style="color:#204a87">help</span> information <span style="color:#204a87;font-weight:bold">for</span> using a configuration file
+  storageos env         View documentation <span style="color:#204a87;font-weight:bold">for</span> configuration settings which can be <span style="color:#204a87">set</span> in the environment
+  storageos exitcodes   View documentation <span style="color:#204a87;font-weight:bold">for</span> the <span style="color:#204a87">exit</span> codes used by the StorageOS CLI
+
+Use <span style="color:#4e9a06">&#34;storageos [command] --help&#34;</span> <span style="color:#204a87;font-weight:bold">for</span> more information about a command.
 </code></pre></div><h2 id="formatting-cli-output">Formatting CLI Output</h2>
 <p>StorageOS CLI output can be formatted using the <code>--output</code> option. The strings
 that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsquo; or &lsquo;text&rsquo;.</p>
@@ -1210,7 +1230,7 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
 <tr>
 <td><code>apply</code></td>
 <td><code>licence</code></td>
-<td>Apply licence to cluster.</td>
+<td>Make changes to existing resources.</td>
 </tr>
 <tr>
 <td><code>attach</code></td>
@@ -1219,33 +1239,43 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
 </tr>
 <tr>
 <td><code>create</code></td>
-<td><code>user, volume</code></td>
-<td>Create resources such as users or volumes.</td>
+<td><code>namespace, policy-group, user, volume</code></td>
+<td>Create resources.</td>
 </tr>
 <tr>
 <td><code>delete</code></td>
-<td><code>volume</code></td>
+<td><code>namespace, node, policy-group, user, volume</code></td>
 <td>Delete resources.</td>
 </tr>
 <tr>
 <td><code>describe</code></td>
-<td><code>node, volume</code></td>
+<td><code>cluster, licence, namespace, node, policy-group, user, volume</code></td>
 <td>Show detailed view of resources.</td>
 </tr>
 <tr>
 <td><code>detach</code></td>
-<td><code>volume</code></td>
+<td></td>
 <td>Detach volume from a node.</td>
 </tr>
 <tr>
 <td><code>get</code></td>
-<td><code>cluster, diagnostics, namespace, node, user, volume</code></td>
+<td><code>cluster, diagnostics, namespace, node, policy-group, user, volume</code></td>
 <td>List resources.</td>
 </tr>
 <tr>
 <td><code>help</code></td>
 <td></td>
 <td>Help</td>
+</tr>
+<tr>
+<td><code>nfs</code></td>
+<td><code>attach, endpoint, exports</code></td>
+<td>Make changes to and attach nfs volumes</td>
+</tr>
+<tr>
+<td><code>update</code></td>
+<td><code>volume</code></td>
+<td>Make changes to existing resources</td>
 </tr>
 <tr>
 <td><code>version</code></td>
@@ -1320,7 +1350,7 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
             
                 <div class="entry">
                     <h5>
-                        <a href="/docs/reference/cli/apply/">Apply licence</a>
+                        <a href="/docs/reference/cli/apply/">Apply</a>
                     </h5>
                     <p></p>
                 </div>
@@ -1503,6 +1533,15 @@ that are passed to <code>--output</code> are &lsquo;json&rsquo;, &lsquo;yaml&rsq
         
             
         
+            
+        
+            
+                <div class="entry">
+                    <h5>
+                        <a href="/docs/reference/cli/update/">Update volume</a>
+                    </h5>
+                    <p></p>
+                </div>
             
         
             

@@ -68,10 +68,16 @@ window.onload = function() {
 configuration.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# linux/amd64&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;
+    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# MacOS&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will need to provide the correct credentials to connect to the API. The
 default installation uses the &lt;code&gt;storageos-api&lt;/code&gt; Secret to generate the first
 admin user. By default, it creates a single user with username &lt;code&gt;storageos&lt;/code&gt; and
@@ -111,21 +117,29 @@ Available Commands:
   detach      Detach a volume from its current location
   get         Fetch basic details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt;        Help about any &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
+  nfs         Make changes and attach nfs volumes
+  update      Make changes to existing resources
   version     View version information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the StorageOS CLI
 
 Flags:
+      --cache-dir string        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the directory used by the StorageOS CLI to cache data that can be used &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; future commands &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/user/.cache/storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -c, --config string           specifies the config file path &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/user/.config/storageos/config.yaml&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
   -h, --help                    &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; storageos
   -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --no-auth-cache           disable the CLI&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s caching of authentication sessions
   -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 15s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 
 Additional &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; topics:
-  storageos env       View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; configuration settings which can be &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; in the environment
-  storageos exitcodes View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt; codes used by the StorageOS CLI
+  storageos config-file View &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; using a configuration file
+  storageos env         View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; configuration settings which can be &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; in the environment
+  storageos exitcodes   View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt; codes used by the StorageOS CLI
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;formatting-cli-output&#34;&gt;Formatting CLI Output&lt;/h2&gt;
 &lt;p&gt;StorageOS CLI output can be formatted using the &lt;code&gt;--output&lt;/code&gt; option. The strings
 that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsquo;, &amp;lsquo;yaml&amp;rsquo; or &amp;lsquo;text&amp;rsquo;.&lt;/p&gt;
@@ -142,7 +156,7 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;apply&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;licence&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Apply licence to cluster.&lt;/td&gt;
+&lt;td&gt;Make changes to existing resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;attach&lt;/code&gt;&lt;/td&gt;
@@ -151,33 +165,43 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;create&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;user, volume&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Create resources such as users or volumes.&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;namespace, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Create resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;delete&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;Delete resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;describe&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;node, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cluster, licence, namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;Show detailed view of resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;detach&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;Detach volume from a node.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;get&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;cluster, diagnostics, namespace, node, user, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cluster, diagnostics, namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;List resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;help&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;Help&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;nfs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;attach, endpoint, exports&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Make changes to and attach nfs volumes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;update&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Make changes to existing resources&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;

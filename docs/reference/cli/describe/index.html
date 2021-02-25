@@ -21,20 +21,20 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Describe | </title><meta property="og:title" content="Describe" />
-<meta property="og:description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: node Retrieve detailed information for nodes in the cluster volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) Use &#34;storageos describe [command] --help&#34; for more information about a command." />
+<meta property="og:description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: cluster Retrieve detailed information for the current cluster licence Fetch current licence configuration details namespace Retrieve detailed information for one or many namespaces node Retrieve detailed information for nodes in the cluster policy-group Show detailed information for policy groups user Show detailed information for users volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/cli/describe/" />
 
 <meta itemprop="name" content="Describe">
-<meta itemprop="description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: node Retrieve detailed information for nodes in the cluster volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) Use &#34;storageos describe [command] --help&#34; for more information about a command.">
+<meta itemprop="description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: cluster Retrieve detailed information for the current cluster licence Fetch current licence configuration details namespace Retrieve detailed information for one or many namespaces node Retrieve detailed information for nodes in the cluster policy-group Show detailed information for policy groups user Show detailed information for users volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/.">
 
-<meta itemprop="wordCount" content="459">
+<meta itemprop="wordCount" content="1550">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Describe"/>
-<meta name="twitter:description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: node Retrieve detailed information for nodes in the cluster volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --endpoints stringArray set the list of endpoints which are used when connecting to the StorageOS API (default [http://localhost:5705]) -n, --namespace string specifies the namespace to operate within for commands that require one (default &#34;default&#34;) -o, --output string specifies the output format (one of [json yaml text]) (default &#34;text&#34;) --password string set the StorageOS account password to authenticate with (default &#34;storageos&#34;) --timeout duration set the timeout duration to use for execution of the command (default 5s) --use-ids specify existing StorageOS resources by their unique identifiers instead of by their names --username string set the StorageOS account username to authenticate as (default &#34;storageos&#34;) Use &#34;storageos describe [command] --help&#34; for more information about a command."/>
+<meta name="twitter:description" content="$ storageos describe --help Fetch extended details for resources Usage: storageos describe [command] Available Commands: cluster Retrieve detailed information for the current cluster licence Fetch current licence configuration details namespace Retrieve detailed information for one or many namespaces node Retrieve detailed information for nodes in the cluster policy-group Show detailed information for policy groups user Show detailed information for users volume Show detailed information for volumes Flags: -h, --help help for describe Global Flags: --cache-dir string set the directory used by the StorageOS CLI to cache data that can be used for future commands (default &#34;/root/."/>
 
 
 
@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.1eaa2f6cbeff2bdac57c83e17ee632512a7bd926e416a8ee36bd04852cd8109e38b78719f63b35844f3bb95425395d20a0f37c9be7d486542f0024c078a615d8.json"
+  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
   data-offline-search-base-href="/"
 >
 
@@ -867,7 +867,7 @@
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply licence</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliapply" href="/docs/reference/cli/apply/">Apply</a>
       
       
       
@@ -910,6 +910,12 @@
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceclihelp" href="/docs/reference/cli/help/">Help</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencecliupdate" href="/docs/reference/cli/update/">Update volume</a>
       
       
       
@@ -1079,6 +1085,18 @@
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#describe-cluster">describe cluster</a></li>
+    <li><a href="#describe-license">describe license</a></li>
+    <li><a href="#describe-namespace">describe namespace</a></li>
+    <li><a href="#describe-node">describe node</a></li>
+    <li><a href="#describe-policy-group">describe policy-group</a></li>
+    <li><a href="#describe-user">describe user</a></li>
+    <li><a href="#describe-volume">describe volume</a></li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1135,30 +1153,132 @@
 	<h1>Describe</h1>
 	
 	<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe --help
+
 Fetch extended details <span style="color:#204a87;font-weight:bold">for</span> resources
 
 Usage:
   storageos describe <span style="color:#ce5c00;font-weight:bold">[</span>command<span style="color:#ce5c00;font-weight:bold">]</span>
 
 Available Commands:
-  node        Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> nodes in the cluster
-  volume      Show detailed information <span style="color:#204a87;font-weight:bold">for</span> volumes
+  cluster      Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> the current cluster
+  licence      Fetch current licence configuration details
+  namespace    Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> one or many namespaces
+  node         Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> nodes in the cluster
+  policy-group Show detailed information <span style="color:#204a87;font-weight:bold">for</span> policy groups
+  user         Show detailed information <span style="color:#204a87;font-weight:bold">for</span> users
+  volume       Show detailed information <span style="color:#204a87;font-weight:bold">for</span> volumes
 
 Flags:
   -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> describe
 
 Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
   -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 5s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 
 Use <span style="color:#4e9a06">&#34;storageos describe [command] --help&#34;</span> <span style="color:#204a87;font-weight:bold">for</span> more information about a command.
+</code></pre></div><h2 id="describe-cluster">describe cluster</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe cluster --help
+
+Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> the current cluster
+
+Usage:
+  storageos describe cluster <span style="color:#ce5c00;font-weight:bold">[</span>flags<span style="color:#ce5c00;font-weight:bold">]</span>
+
+Aliases:
+  cluster, nodes
+
+Examples:
+
+$ storageos describe cluster
+
+
+Flags:
+  -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> cluster
+
+Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><h2 id="describe-license">describe license</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe license --help
+
+Fetch current licence configuration details
+
+Usage:
+  storageos describe licence <span style="color:#ce5c00;font-weight:bold">[</span>flags<span style="color:#ce5c00;font-weight:bold">]</span>
+
+Aliases:
+  licence, license
+
+Examples:
+
+$ storageos describe licence
+
+
+Flags:
+  -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> licence
+
+Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><h2 id="describe-namespace">describe namespace</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe namespace --help
+
+Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> one or many namespaces
+
+Usage:
+  storageos describe namespace <span style="color:#ce5c00;font-weight:bold">[</span>flags<span style="color:#ce5c00;font-weight:bold">]</span>
+
+Aliases:
+  namespace, namespaces
+
+Examples:
+
+$ storageos describe namespace my-namespace-name
+$ storageos describe namespace --use-ids my-namespace-id
+$ storageos describe namespaces
+
+
+Flags:
+  -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> namespace
+
+Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div><h2 id="describe-node">describe node</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe node --help
+
 Retrieve detailed information <span style="color:#204a87;font-weight:bold">for</span> nodes in the cluster
 
 Usage:
@@ -1177,15 +1297,84 @@ Flags:
   -l, --selector stringArray   filter returned results by a <span style="color:#204a87">set</span> of comma-separated label selectors
 
 Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
   -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 5s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><h2 id="describe-policy-group">describe policy-group</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe user --help
+
+Show detailed information <span style="color:#204a87;font-weight:bold">for</span> policy groups
+
+Usage:
+  storageos describe policy-group <span style="color:#ce5c00;font-weight:bold">[</span>policy group names...<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>flags<span style="color:#ce5c00;font-weight:bold">]</span>
+
+Aliases:
+  policy-group, policy-groups
+
+Examples:
+
+$ storageos describe policy-groups
+$ storageos describe policy-group my-policy-group-name
+
+
+Flags:
+  -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> policy-group
+
+Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
+      --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><h2 id="describe-user">describe user</h2>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe user --help
+
+Show detailed information <span style="color:#204a87;font-weight:bold">for</span> users
+
+Usage:
+  storageos describe user <span style="color:#ce5c00;font-weight:bold">[</span>user names...<span style="color:#ce5c00;font-weight:bold">]</span> <span style="color:#ce5c00;font-weight:bold">[</span>flags<span style="color:#ce5c00;font-weight:bold">]</span>
+
+Aliases:
+  user, users
+
+Examples:
+
+$ storageos describe users
+$ storageos describe user my-username
+$ storageos describe user my-username-1 my-username-2
+$ storageos describe user --use-ids my-userid
+$ storageos describe user --use-ids my-userid-1 my-userid-2
+
+
+Flags:
+  -h, --help   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> user
+
+Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div><h2 id="describe-volume">describe volume</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ storageos describe volume --help
+
 Show detailed information <span style="color:#204a87;font-weight:bold">for</span> volumes
 
 Usage:
@@ -1202,15 +1391,19 @@ $ storageos describe volume --namespace my-namespace-name my-volume-name
 
 
 Flags:
+  -A, --all-namespaces         retrieves volumes from all accessible namespaces. This option overrides the namespace configuration
   -h, --help                   <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> volume
   -l, --selector stringArray   filter returned results by a <span style="color:#204a87">set</span> of comma-separated label selectors
 
 Global Flags:
+      --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/root/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
   -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 5s<span style="color:#ce5c00;font-weight:bold">)</span>
+      --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         <span style="color:#204a87">set</span> the StorageOS account username to authenticate as <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
 </code></pre></div>

@@ -164,6 +164,18 @@ spec:
           - "/proc/mounts"
         timeout: 90s
     - exec:
+        name: "max-aio"
+        collectorName: "max-aio"
+        namespace: kube-system
+        selector:
+          - kind=daemonset
+          - app=storageos
+        command: ["cat"]
+        args:
+          - "/proc/sys/fs/aio-nr"
+          - "/proc/sys/fs/aio-max-nr"
+        timeout: 90s
+    - exec:
         name: "blobutil-list"
         collectorName: "blobutil-list"
         selector:

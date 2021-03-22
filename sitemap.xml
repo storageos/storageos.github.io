@@ -19,10 +19,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</loc>
   </url>
   
@@ -31,19 +27,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/firewalls/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/introduction/quickstart/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/examples/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/mountpropagation/</loc>
   </url>
   
   <url>
@@ -59,11 +47,19 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/systemconfiguration/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/concepts/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/pidlimits/</loc>
+    <loc>https://docs.storageos.com/docs/prerequisites/firewalls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/mountpropagation/</loc>
   </url>
   
   <url>
@@ -75,6 +71,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/pidlimits/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/platforms/</loc>
   </url>
   
@@ -83,11 +83,19 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/max-aio/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/operations/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/docs/usecases/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/prerequisites/etcd/</loc>
   </url>
   
   <url>
@@ -200,10 +208,6 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/etcd/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/docs/prerequisites/etcd/</loc>
   </url>
   
   <url>

@@ -20,6 +20,15 @@ spec:
         limits:
           maxLines: 1000000
     - run:
+        name: "timestamp"
+        collectorName: "bundle-timestamp"
+        image: storageos/support-bundle:0.1
+        namespace: kube-system
+        command:
+        - "date"
+        - "+%Y-%m-%dT%H:%M:%SZ"
+        timeout: 90s
+    - run:
         name: "network-checks"
         collectorName: "netcat"
         image: storageos/support-bundle:0.1
@@ -153,4 +162,26 @@ spec:
         command: ["cat"]
         args:
           - "/proc/mounts"
+        timeout: 90s
+    - exec:
+        name: "blobutil-list"
+        collectorName: "blobutil-list"
+        selector:
+          - kind=daemonset
+          - app=storageos
+        namespace: kube-system
+        command: ["/bin/blobutil"]
+        args:
+          - "nli"
+          - "list"
+        timeout: 90s
+    - exec:
+        name: "storageos-data-du"
+        collectorName: "storageos-data-du"
+        selector:
+          - kind=daemonset
+          - app=storageos
+        namespace: kube-system
+        command: ["du"]
+        args: ["-b", "-a", "/var/lib/storageos/data"]
         timeout: 90s

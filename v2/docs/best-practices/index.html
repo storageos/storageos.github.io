@@ -21,22 +21,22 @@
 <link rel="icon" type="image/png" href="/v2/favicons/android-192x192.png" sizes="192x192">
 
 <title>StorageOS Best Practices | </title><meta property="og:title" content="StorageOS Best Practices" />
-<meta property="og:description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
+<meta property="og:description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. For production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/v2/docs/best-practices/" />
 
 <meta itemprop="name" content="StorageOS Best Practices">
-<meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
+<meta itemprop="description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. For production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes.">
 
-<meta itemprop="wordCount" content="657">
+<meta itemprop="wordCount" content="646">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="StorageOS Best Practices"/>
-<meta name="twitter:description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. An embedded etcd instance is included in the StorageOS container, but for production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
+<meta name="twitter:description" content="Use an external Etcd cluster StorageOS uses the etcd distributed key-value store to store essential cluster metadata and manage distributed configuration state. For production environments and testing of production workloads, we recommend deploying an external etcd cluster. For more details about, and an example of, how to run etcd, see the External etcd Operations page.
 It is highly recommended to use external etcd for cloud environments and place the etcd cluster on stable nodes."/>
 
 
@@ -191,7 +191,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.045a6006b6b08e51b08cdf6eafc46226c816717b26d47e1bd4c2058c4e2c97243f8ad6e348d2ed3601c727409d72cb2cb4aa379adb7bb0443e3ade34df5f97fd.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.c24c0f873b7b4576533a86b7fe6e54a2f39c7bafbe8be1325ab475bc384f17d4be3934cd829a9d2e283f7aa03952bfd82b7278789fd95e780f4dc65c48138727.json"
   data-offline-search-base-href="/"
 >
 
@@ -225,7 +225,7 @@ It is highly recommended to use external etcd for cloud environments and place t
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2/offline-search-index.045a6006b6b08e51b08cdf6eafc46226c816717b26d47e1bd4c2058c4e2c97243f8ad6e348d2ed3601c727409d72cb2cb4aa379adb7bb0443e3ade34df5f97fd.json"
+  data-offline-search-index-json-src="/v2/offline-search-index.c24c0f873b7b4576533a86b7fe6e54a2f39c7bafbe8be1325ab475bc384f17d4be3934cd829a9d2e283f7aa03952bfd82b7278789fd95e780f4dc65c48138727.json"
   data-offline-search-base-href="/"
 >
 
@@ -1042,12 +1042,11 @@ It is highly recommended to use external etcd for cloud environments and place t
 	<h1>StorageOS Best Practices</h1>
 	
 	<h2 id="use-an-external-etcd-cluster">Use an external Etcd cluster</h2>
-<p>StorageOS uses the <code>etcd</code> distributed key-value store to store essential
-cluster metadata and manage distributed configuration state. An embedded etcd
-instance is included in the StorageOS container, but for production
-environments and testing of production workloads, <strong>we recommend deploying an
-external etcd cluster.</strong> For more details about, and an example of, how to run
-etcd, see the <a href="/docs/operations/external-etcd">External etcd Operations</a> page.</p>
+<p>StorageOS uses the <code>etcd</code> distributed key-value store to store essential cluster
+metadata and manage distributed configuration state. For production environments
+and testing of production workloads, <strong>we recommend deploying an external etcd
+cluster.</strong> For more details about, and an example of, how to run etcd, see the
+<a href="/docs/operations/external-etcd">External etcd Operations</a> page.</p>
 <p>It is highly recommended to use external etcd for <strong>cloud environments</strong> and
 place the etcd cluster on stable nodes. Placing the etcd on nodes that are
 recycled often might affect the normal operations of StorageOS.</p>

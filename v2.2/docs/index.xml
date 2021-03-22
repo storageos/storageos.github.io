@@ -3473,12 +3473,11 @@ Operator is upgrading.&lt;/p&gt;
         
         
         &lt;h2 id=&#34;use-an-external-etcd-cluster&#34;&gt;Use an external Etcd cluster&lt;/h2&gt;
-&lt;p&gt;StorageOS uses the &lt;code&gt;etcd&lt;/code&gt; distributed key-value store to store essential
-cluster metadata and manage distributed configuration state. An embedded etcd
-instance is included in the StorageOS container, but for production
-environments and testing of production workloads, &lt;strong&gt;we recommend deploying an
-external etcd cluster.&lt;/strong&gt; For more details about, and an example of, how to run
-etcd, see the &lt;a href=&#34;https://docs.storageos.com/v2.2/docs/operations/external-etcd&#34;&gt;External etcd Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;StorageOS uses the &lt;code&gt;etcd&lt;/code&gt; distributed key-value store to store essential cluster
+metadata and manage distributed configuration state. For production environments
+and testing of production workloads, &lt;strong&gt;we recommend deploying an external etcd
+cluster.&lt;/strong&gt; For more details about, and an example of, how to run etcd, see the
+&lt;a href=&#34;https://docs.storageos.com/v2.2/docs/operations/external-etcd&#34;&gt;External etcd Operations&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;It is highly recommended to use external etcd for &lt;strong&gt;cloud environments&lt;/strong&gt; and
 place the etcd cluster on stable nodes. Placing the etcd on nodes that are
 recycled often might affect the normal operations of StorageOS.&lt;/p&gt;

@@ -32,7 +32,7 @@ Install Kubectl StorageOS plugin The support bundle is generated with the Storag
 The support bundle is an addition rather than a replacement to the diagnostic bundle.
 Install Kubectl StorageOS plugin The support bundle is generated with the StorageOS kubectl plugin, which can be installed as follows:">
 
-<meta itemprop="wordCount" content="403">
+<meta itemprop="wordCount" content="465">
 
 
 
@@ -194,7 +194,7 @@ Install Kubectl StorageOS plugin The support bundle is generated with the Storag
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
+  data-offline-search-index-json-src="/offline-search-index.666c9b608ec4b1047b56d0b012df866285cd2b4215c0763805b8313bf82a2af367631526d8df08436f62470e2ce81af63493146b22906560427c25fb6bb5d49b.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ Install Kubectl StorageOS plugin The support bundle is generated with the Storag
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.9c4ccbc7f3530b871118b07c2c94e89f3ce93cd7555c5667b45c3df0702e6d2222b6acde56830e45f2b626a81d4d407d2912ac80c4177fe8fddf5b96854d793e.json"
+  data-offline-search-index-json-src="/offline-search-index.666c9b608ec4b1047b56d0b012df866285cd2b4215c0763805b8313bf82a2af367631526d8df08436f62470e2ce81af63493146b22906560427c25fb6bb5d49b.json"
   data-offline-search-base-href="/"
 >
 
@@ -1159,19 +1159,18 @@ Install Kubectl StorageOS plugin The support bundle is generated with the Storag
 	<h1>Support bundle</h1>
 	
 	<p>The support bundle is a tool that gathers information both about StorageOS and
-the environment in which it is operating. It provides information
-about the state and configuration of the cluster, nodes and other Kubernetes
-objects, as well as system performance metrics.</p>
-<p>The support bundle is an addition rather than a replacement to the
-<a href="https://docs.storageos.com/docs/reference/bundles/diagnostic-bundle/">diagnostic bundle</a>.</p>
+the environment in which it is operating. It provides information about the
+state and configuration of the cluster, nodes and other Kubernetes objects, as
+well as system performance metrics.</p>
+<p>The support bundle is an addition rather than a replacement to the <a href="https://docs.storageos.com/docs/reference/bundles/diagnostic-bundle/">diagnostic
+bundle</a>.</p>
 <h2 id="install-kubectl-storageos-plugin">Install Kubectl StorageOS plugin</h2>
-<p>The support bundle is generated with the StorageOS kubectl plugin, which can
-be installed as follows:</p>
+<p>The support bundle is generated with the StorageOS kubectl plugin, which can be
+installed as follows:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -sL https://docs.storageos.com/sh/storageos-support-bundle-install.sh <span style="color:#000;font-weight:bold">|</span> bash
 </code></pre></div><p>If you prefer to run the installation commands individually, we provide them
 here:</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
-<span style="color:#8f5902;font-style:italic"># Create a temporary directory in which to store the plugin binaries</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Create a temporary directory in which to store the plugin binaries</span>
 <span style="color:#000">TMP_DIR</span><span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87;font-weight:bold">$(</span>mktemp -d /tmp/storageos-kubectl-plugin-XXXXX<span style="color:#204a87;font-weight:bold">)</span>
 
 <span style="color:#8f5902;font-style:italic"># Download the plugin binaries and extract to the temporary directory</span>
@@ -1184,25 +1183,31 @@ rm -f kubectl-storageos.tar.gz
 
 <span style="color:#8f5902;font-style:italic"># Add executable permissions for the plugin binaries and move into system path</span>
 <span style="color:#8f5902;font-style:italic"># For details of the bundle-generation tool&#39;s functionality, visit:</span>
-<span style="color:#8f5902;font-style:italic"># https://docs.storageos.com/docs/bundles/support-bundle/</span>
+<span style="color:#8f5902;font-style:italic">#https://docs.storageos.com/docs/bundles/support-bundle/</span>
 chmod +x <span style="color:#000">$TMP_DIR</span>/bin/kubectl-storageos-bundle
 sudo mv <span style="color:#000">$TMP_DIR</span>/bin/kubectl-storageos-bundle /usr/local/bin/
 </code></pre></div><blockquote>
 <p>For MacOS build, use <code>TARGET=kubectl-storageos_darwin_amd64.tar.gz</code></p>
 </blockquote>
 <h2 id="generate-bundle">Generate Bundle</h2>
-<p>To generate a bundle, use the following command, the specification of which
-can be viewed and edited by obtaining the <code>bundle-configuration.yaml</code> file,
-which is publicly available.</p>
-<p><code>$ kubectl storageos bundle https://docs.storageos.com/yaml/bundle-configuration.yaml</code></p>
-<blockquote>
-<p>The tool expects there to be a StorageOS CLI running in kube-system as a Pod
-with the label <code>run=cli</code>. The tool will exec into this pod to get
-information from the StorageOS API. If the StorageOS CLI Pod does not match
-this criteria, you can either pull the YAML file and change the selector in
-the file, or add the label to the Pod. You can run the cli container
+<p>To generate a bundle, use the following command, the specification of which can
+be viewed and edited by obtaining the <code>bundle-configuration.yaml</code> file, which
+is publicly available.</p>
+<p>StorageOS is usually installed in the kube-system namespace. If you have
+installed StorageOS in a different namespace please replace the namespace in
+the storage bundle config as below.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000">STORAGEOS_NS</span><span style="color:#ce5c00;font-weight:bold">=</span>my-namespace
+curl -s https://docs.storageos.com/yaml/bundle-configuration.yaml <span style="color:#000;font-weight:bold">|</span> sed <span style="color:#4e9a06">&#34;</span><span style="color:#4e9a06">s/kube-system/</span><span style="color:#000">$STORAGEOS_NS</span><span style="color:#4e9a06">/g</span><span style="color:#4e9a06">&#34;</span> &gt; /tmp/storageos-kubectl-config.yaml
+kubectl storageos bundle /tmp/storageos-kubectl-config.yaml
+</code></pre></div><p><strong>Please note</strong> that if you have a custom selector for your worker nodes you
+should update the bundle-configuration.yaml under
+<code>spec.collectors.run.nodeselector</code> to reflect this.</p>
+<p>Note also that the bundle tool expects there to be a StorageOS CLI running in
+kube-system as a Pod with the label <code>run=cli</code>. The tool will exec into this pod
+to get information from the StorageOS API. If the StorageOS CLI Pod does not
+match this criteria, you can either pull the YAML file and change the selector
+in the file, or add the label to the Pod. You can run the cli container
 following these <a href="https://docs.storageos.com/docs/reference/cli/#run-cli-as-a-container">instructions</a>.</p>
-</blockquote>
 <h3 id="data-collected-in-the-bundle">Data collected in the bundle</h3>
 <p>The data collected covers both the state of the StorageOS cluster, and in
 particular information regarding the infrastructure on which StorageOS is
@@ -1222,8 +1227,8 @@ operating. It includes:</p>
 <p>StorageOS can only obtain the bundle if it is downloaded by the user and given
 to our engineering team, or uploaded for analysis. The data received by
 StorageOS is private and never leaves nor will leave StorageOS Inc.</p>
-<p>The data contained in the support bundle has the sole purpose of
-helping customers troubleshoot their issues.</p>
+<p>The data contained in the support bundle has the sole purpose of helping
+customers troubleshoot their issues.</p>
 
 	
 	

@@ -5340,13 +5340,32 @@ limitations under the License.
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.3&lt;/code&gt;. For
+&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.4&lt;/code&gt;. For
 installation instructions please see our
 &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/install/&#34;&gt;Install&lt;/a&gt; page.&lt;/p&gt;
 &lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.3&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
+&lt;h2 id=&#34;v234---release-2021-03-24&#34;&gt;v2.3.4 - Release 2021-03-24&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;controlplane/build: Use Sentry prod-url for release branches (CP-4600).&lt;/li&gt;
+&lt;li&gt;controlplane/csi: Improve CSI handler timeout (CP-4585).&lt;/li&gt;
+&lt;li&gt;controlplane/dataplane: UUID mapping cleanup on failed volume creation (CP-4588).&lt;/li&gt;
+&lt;li&gt;controlplane/slog: Improve RPC error logging (CP-4616).&lt;/li&gt;
+&lt;li&gt;dataplane: Allocate fewer aio contexts per volume (DP-305)&lt;/li&gt;
+&lt;li&gt;dataplane: Defer fallocate(2) until first write (DP-312).&lt;/li&gt;
+&lt;li&gt;dataplane: Don&amp;rsquo;t fail replica sync if inter-node connection establishment is slow (DP-319, DP-280).&lt;/li&gt;
+&lt;li&gt;dataplane: Improve logging around gRPC context cancellations (DP-315).&lt;/li&gt;
+&lt;li&gt;dataplane: Improve rollback for failed volume creation (DP-308).&lt;/li&gt;
+&lt;li&gt;dataplane: New support tool to cleanup orphaned volume storage (DP-307).&lt;/li&gt;
+&lt;li&gt;dataplane: supctl can reap named volumes (DP-309).&lt;/li&gt;
+&lt;li&gt;k8s: API token reset failures should trigger re-authentication directly (#38).&lt;/li&gt;
+&lt;li&gt;k8s: Increase lint timeout to reduce CI errors (#305).&lt;/li&gt;
+&lt;li&gt;k8s: Remove PriorityClass from helper pods (#312).&lt;/li&gt;
+&lt;li&gt;k8s: Toleration defaults for helper pods (#311).&lt;/li&gt;
+&lt;li&gt;k8s: Use ubi-minimal base image directly (#307).&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;v233---release-2021-02-12&#34;&gt;v2.3.3 - Release 2021-02-12&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Support CSI ListVolumes() API, addressing volume attach problems seen by some

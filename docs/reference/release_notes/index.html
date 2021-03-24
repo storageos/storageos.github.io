@@ -22,31 +22,31 @@
 
 <title>Release notes | </title><meta property="og:title" content="Release notes" />
 <meta property="og:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.3. For installation instructions please see our Install page.
+The latest tagged release is v2.3.4. For installation instructions please see our Install page.
 The latest CLI release is v2.3.3, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume attach problems seen by some customers." />
+v2.3.4 - Release 2021-03-24  controlplane/build: Use Sentry prod-url for release branches (CP-4600). controlplane/csi: Improve CSI handler timeout (CP-4585)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/release_notes/" />
 
 <meta itemprop="name" content="Release notes">
 <meta itemprop="description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.3. For installation instructions please see our Install page.
+The latest tagged release is v2.3.4. For installation instructions please see our Install page.
 The latest CLI release is v2.3.3, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume attach problems seen by some customers.">
+v2.3.4 - Release 2021-03-24  controlplane/build: Use Sentry prod-url for release branches (CP-4600). controlplane/csi: Improve CSI handler timeout (CP-4585).">
 
-<meta itemprop="wordCount" content="1783">
+<meta itemprop="wordCount" content="1917">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Release notes"/>
 <meta name="twitter:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.3.3. For installation instructions please see our Install page.
+The latest tagged release is v2.3.4. For installation instructions please see our Install page.
 The latest CLI release is v2.3.3, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume attach problems seen by some customers."/>
+v2.3.4 - Release 2021-03-24  controlplane/build: Use Sentry prod-url for release branches (CP-4600). controlplane/csi: Improve CSI handler timeout (CP-4585)."/>
 
 
 
@@ -200,7 +200,7 @@ v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume at
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b82aee7b8e076f72a53c82978359787f794c1dc8f3730c2544f998b9e76a487a59d7285377984b0cca265d80c6cc319c5b3940794b1c63b991a84fdabd4abe7b.json"
+  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
   data-offline-search-base-href="/"
 >
 
@@ -234,7 +234,7 @@ v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume at
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b82aee7b8e076f72a53c82978359787f794c1dc8f3730c2544f998b9e76a487a59d7285377984b0cca265d80c6cc319c5b3940794b1c63b991a84fdabd4abe7b.json"
+  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
   data-offline-search-base-href="/"
 >
 
@@ -1105,6 +1105,7 @@ v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume at
 
 <nav id="TableOfContents">
   <ul>
+    <li><a href="#v234---release-2021-03-24">v2.3.4 - Release 2021-03-24</a></li>
     <li><a href="#v233---release-2021-02-12">v2.3.3 - Release 2021-02-12</a>
       <ul>
         <li><a href="#new">New</a></li>
@@ -1201,13 +1202,32 @@ v2.3.3 - Release 2021-02-12  Support CSI ListVolumes() API, addressing volume at
 	
 	<p>We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;,
 and to perform upgrades only after reading the release notes.</p>
-<p>The latest tagged release is <code>v2.3.3</code>. For
+<p>The latest tagged release is <code>v2.3.4</code>. For
 installation instructions please see our
 <a href="https://docs.storageos.com/docs/reference/cluster-operator/install/">Install</a> page.</p>
 <p>The latest CLI release is <code>v2.3.3</code>, available from
 <a href="https://github.com/storageos/go-cli/releases">Github</a>.</p>
 <h1 id="upgrading">Upgrading</h1>
 <p>To upgrade from version 1.x to 2.x, please contact <a href="https://docs.storageos.com/docs/support/">support</a> for assistance.</p>
+<h2 id="v234---release-2021-03-24">v2.3.4 - Release 2021-03-24</h2>
+<ul>
+<li>controlplane/build: Use Sentry prod-url for release branches (CP-4600).</li>
+<li>controlplane/csi: Improve CSI handler timeout (CP-4585).</li>
+<li>controlplane/dataplane: UUID mapping cleanup on failed volume creation (CP-4588).</li>
+<li>controlplane/slog: Improve RPC error logging (CP-4616).</li>
+<li>dataplane: Allocate fewer aio contexts per volume (DP-305)</li>
+<li>dataplane: Defer fallocate(2) until first write (DP-312).</li>
+<li>dataplane: Don&rsquo;t fail replica sync if inter-node connection establishment is slow (DP-319, DP-280).</li>
+<li>dataplane: Improve logging around gRPC context cancellations (DP-315).</li>
+<li>dataplane: Improve rollback for failed volume creation (DP-308).</li>
+<li>dataplane: New support tool to cleanup orphaned volume storage (DP-307).</li>
+<li>dataplane: supctl can reap named volumes (DP-309).</li>
+<li>k8s: API token reset failures should trigger re-authentication directly (#38).</li>
+<li>k8s: Increase lint timeout to reduce CI errors (#305).</li>
+<li>k8s: Remove PriorityClass from helper pods (#312).</li>
+<li>k8s: Toleration defaults for helper pods (#311).</li>
+<li>k8s: Use ubi-minimal base image directly (#307).</li>
+</ul>
 <h2 id="v233---release-2021-02-12">v2.3.3 - Release 2021-02-12</h2>
 <ul>
 <li>Support CSI ListVolumes() API, addressing volume attach problems seen by some

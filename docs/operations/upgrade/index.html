@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b82aee7b8e076f72a53c82978359787f794c1dc8f3730c2544f998b9e76a487a59d7285377984b0cca265d80c6cc319c5b3940794b1c63b991a84fdabd4abe7b.json"
+  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b82aee7b8e076f72a53c82978359787f794c1dc8f3730c2544f998b9e76a487a59d7285377984b0cca265d80c6cc319c5b3940794b1c63b991a84fdabd4abe7b.json"
+  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
   data-offline-search-base-href="/"
 >
 
@@ -1149,7 +1149,7 @@ logs to ensure your environments PID limits are set correctly.</p>
 </blockquote>
 <blockquote>
 <p>Warning: To reduce downtime, it is recommended to <code>docker pull</code> the new
-StorageOS container image <code>storageos/node:v2.3.3</code>
+StorageOS container image <code>storageos/node:v2.3.4</code>
 on the nodes beforehand so that the cluster spins up faster!</p>
 </blockquote>
 <ol>
@@ -1174,7 +1174,7 @@ using the command below.</p>
 </code></pre></div></li>
 <li>
 <p>Deploy the new operator.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.3/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.4/storageos-operator.yaml
 </code></pre></div><blockquote>
 <p>Warning: If you have made changes to the CRDs, Service Account or Cluster
 Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
@@ -1184,7 +1184,7 @@ Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
 <p>Edit the StorageOSCluster Custom Resource (storageos_cr.yaml) with the new
 node image version.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#204a87;font-weight:bold">images</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.3.3&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">    </span><span style="color:#204a87;font-weight:bold">nodeContainer</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos/node:v2.3.4&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
 </span></code></pre></div><p>If you&rsquo;re not using any of the hardcoded container image versions make sure
 to delete them as well and only leave the nodeContainer image as shown
 above.</p>

@@ -21,26 +21,26 @@
 <link rel="icon" type="image/png" href="/favicons/android-192x192.png" sizes="192x192">
 
 <title>Max AIO | </title><meta property="og:title" content="Max AIO" />
-<meta property="og:description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 512 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
+<meta property="og:description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 4 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
 Max AIO prerequisite. By default there is a maximum number of AIO contexts that can be allocated at once.
-The current and maximum number of AIO requests is visible in your filesystem under the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr." />
+The current and maximum number of AIO requests is visible in the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/prerequisites/max-aio/" />
 
 <meta itemprop="name" content="Max AIO">
-<meta itemprop="description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 512 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
+<meta itemprop="description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 4 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
 Max AIO prerequisite. By default there is a maximum number of AIO contexts that can be allocated at once.
-The current and maximum number of AIO requests is visible in your filesystem under the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr.">
+The current and maximum number of AIO requests is visible in the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr.">
 
-<meta itemprop="wordCount" content="230">
+<meta itemprop="wordCount" content="229">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Max AIO"/>
-<meta name="twitter:description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 512 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
+<meta name="twitter:description" content="As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous Input Output) contexts to serve I/O requests without blocking. StorageOS requires 4 AIO contexts per deployment (i.e. a StorageOS volume deployment, whether master or replica).
 Max AIO prerequisite. By default there is a maximum number of AIO contexts that can be allocated at once.
-The current and maximum number of AIO requests is visible in your filesystem under the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr."/>
+The current and maximum number of AIO requests is visible in the virtual files /proc/sys/fs/aio-nr and /proc/sys/fs/aio-max-nr."/>
 
 
 
@@ -194,7 +194,7 @@ The current and maximum number of AIO requests is visible in your filesystem und
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4e00152f9781f742cbf30d9c67fbbe0c5cc0f0cfa4f3ff6b5ed358230eeb9b1a30780fd5cd1f9acdf144b26296c9cc2cb5abce7f6739acc103604f973596aed5.json"
+  data-offline-search-index-json-src="/offline-search-index.e16f45c5e4e88c02c0dbbaa927c45373398ba8b6d149dfe0bbf0e81179e175660a178cc481816380430fc0fd8ba293776e230ac206ec2d2a5136282b493d57f7.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ The current and maximum number of AIO requests is visible in your filesystem und
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4e00152f9781f742cbf30d9c67fbbe0c5cc0f0cfa4f3ff6b5ed358230eeb9b1a30780fd5cd1f9acdf144b26296c9cc2cb5abce7f6739acc103604f973596aed5.json"
+  data-offline-search-index-json-src="/offline-search-index.e16f45c5e4e88c02c0dbbaa927c45373398ba8b6d149dfe0bbf0e81179e175660a178cc481816380430fc0fd8ba293776e230ac206ec2d2a5136282b493d57f7.json"
   data-offline-search-base-href="/"
 >
 
@@ -1152,27 +1152,27 @@ The current and maximum number of AIO requests is visible in your filesystem und
 	
 	<p>As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous
 Input Output) contexts to serve I/O requests without blocking. StorageOS
-requires 512 AIO contexts per deployment (i.e. a StorageOS volume deployment,
+requires 4 AIO contexts per deployment (i.e. a StorageOS volume deployment,
 whether master or replica).</p>
 <h2 id="max-aio-prerequisite">Max AIO prerequisite.</h2>
 <p>By default there is a maximum number of AIO contexts that can be allocated at
 once.</p>
-<p>The current and maximum number of AIO requests is visible in your filesystem
-under the virtual files <code>/proc/sys/fs/aio-nr</code> and <code>/proc/sys/fs/aio-max-nr</code>.</p>
+<p>The current and maximum number of AIO requests is visible in the virtual
+files <code>/proc/sys/fs/aio-nr</code> and <code>/proc/sys/fs/aio-max-nr</code>.</p>
 <p>The default context limit has been set at 2^16 or 65536. This figure may vary
 so please check your <code>/proc/sys/fs/aio-max-nr</code></p>
 <p>When <code>aio-nr</code> reaches <code>aio-max-nr</code> the <code>io_setup</code> syscall will fail with
-EAGAIN. See the kernel docs <a href="https://www.kernel.org/doc/Documentation/sysctl/fs.txt">here.</a></p>
+EAGAIN. For more information please see the Linux kernel docs
+<a href="https://www.kernel.org/doc/Documentation/sysctl/fs.txt">here.</a></p>
 <h2 id="why-is-this-relevant">Why is this relevant?</h2>
-<p>Since StorageOS requires 512 AIO contexts per deployed volume this sets a limit
-to the number of volumes that can be deployed per node - this means an
-effective limit of 128 deployments per node. Trying to provision additional
-deployments beyond this will fail as the kernel will be unable to create enough
-new AIO contexts.</p>
+<p>As StorageOS requires 4 AIO contexts per deployed volume, there is a limit to
+the number of volumes that can be deployed per node. Trying to provision
+additional deployments once the <code>aio-max-nr</code> has been reached will fail as the
+kernel will be unable to create enough new AIO contexts.</p>
 <h2 id="increasing-your-aio-context-cap">Increasing your AIO context cap.</h2>
-<p>To avoid hitting this limit you can either provision additional nodes to
-reduce the number of volumes per node, or increase your<code>aio-max-nr</code> kernel
-parameter.</p>
+<p>If your nodes <code>aio-max-nr</code> is set too low you can either provision additional
+nodes to reduce the number of deployments per node, or increase the <code>aio-max-nr</code>
+kernel parameter.</p>
 <p>You can do this by editing your <code>/etc/sysctl.conf</code> file with the following
 example line:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fs.aio-max-nr <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#0000cf;font-weight:bold">1048576</span>

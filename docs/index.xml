@@ -3571,27 +3571,27 @@ nodes.&lt;/p&gt;
         
         &lt;p&gt;As part of the dataplane operation, StorageOS uses Linux AIO (Asynchronous
 Input Output) contexts to serve I/O requests without blocking. StorageOS
-requires 512 AIO contexts per deployment (i.e. a StorageOS volume deployment,
+requires 4 AIO contexts per deployment (i.e. a StorageOS volume deployment,
 whether master or replica).&lt;/p&gt;
 &lt;h2 id=&#34;max-aio-prerequisite&#34;&gt;Max AIO prerequisite.&lt;/h2&gt;
 &lt;p&gt;By default there is a maximum number of AIO contexts that can be allocated at
 once.&lt;/p&gt;
-&lt;p&gt;The current and maximum number of AIO requests is visible in your filesystem
-under the virtual files &lt;code&gt;/proc/sys/fs/aio-nr&lt;/code&gt; and &lt;code&gt;/proc/sys/fs/aio-max-nr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The current and maximum number of AIO requests is visible in the virtual
+files &lt;code&gt;/proc/sys/fs/aio-nr&lt;/code&gt; and &lt;code&gt;/proc/sys/fs/aio-max-nr&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;The default context limit has been set at 2^16 or 65536. This figure may vary
 so please check your &lt;code&gt;/proc/sys/fs/aio-max-nr&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;When &lt;code&gt;aio-nr&lt;/code&gt; reaches &lt;code&gt;aio-max-nr&lt;/code&gt; the &lt;code&gt;io_setup&lt;/code&gt; syscall will fail with
-EAGAIN. See the kernel docs &lt;a href=&#34;https://www.kernel.org/doc/Documentation/sysctl/fs.txt&#34;&gt;here.&lt;/a&gt;&lt;/p&gt;
+EAGAIN. For more information please see the Linux kernel docs
+&lt;a href=&#34;https://www.kernel.org/doc/Documentation/sysctl/fs.txt&#34;&gt;here.&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;why-is-this-relevant&#34;&gt;Why is this relevant?&lt;/h2&gt;
-&lt;p&gt;Since StorageOS requires 512 AIO contexts per deployed volume this sets a limit
-to the number of volumes that can be deployed per node - this means an
-effective limit of 128 deployments per node. Trying to provision additional
-deployments beyond this will fail as the kernel will be unable to create enough
-new AIO contexts.&lt;/p&gt;
+&lt;p&gt;As StorageOS requires 4 AIO contexts per deployed volume, there is a limit to
+the number of volumes that can be deployed per node. Trying to provision
+additional deployments once the &lt;code&gt;aio-max-nr&lt;/code&gt; has been reached will fail as the
+kernel will be unable to create enough new AIO contexts.&lt;/p&gt;
 &lt;h2 id=&#34;increasing-your-aio-context-cap&#34;&gt;Increasing your AIO context cap.&lt;/h2&gt;
-&lt;p&gt;To avoid hitting this limit you can either provision additional nodes to
-reduce the number of volumes per node, or increase your&lt;code&gt;aio-max-nr&lt;/code&gt; kernel
-parameter.&lt;/p&gt;
+&lt;p&gt;If your nodes &lt;code&gt;aio-max-nr&lt;/code&gt; is set too low you can either provision additional
+nodes to reduce the number of deployments per node, or increase the &lt;code&gt;aio-max-nr&lt;/code&gt;
+kernel parameter.&lt;/p&gt;
 &lt;p&gt;You can do this by editing your &lt;code&gt;/etc/sysctl.conf&lt;/code&gt; file with the following
 example line:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;fs.aio-max-nr &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1048576&lt;/span&gt;

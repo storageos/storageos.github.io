@@ -22,25 +22,28 @@
 
 <title>Nodes | </title><meta property="og:title" content="Nodes" />
 <meta property="og:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
-By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
-Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes." />
+Nodes can be run in several modes.
+Hyperconverged Mode By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+A hyperconverged node can store data from a volume and present volumes to applications regardless of whether the data for the volume consumed is placed on that node or is being served remotely." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/concepts/nodes/" />
 
 <meta itemprop="name" content="Nodes">
 <meta itemprop="description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
-By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
-Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes.">
+Nodes can be run in several modes.
+Hyperconverged Mode By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+A hyperconverged node can store data from a volume and present volumes to applications regardless of whether the data for the volume consumed is placed on that node or is being served remotely.">
 
-<meta itemprop="wordCount" content="166">
+<meta itemprop="wordCount" content="355">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Nodes"/>
 <meta name="twitter:description" content="A StorageOS node is any machine (virtual or physical) that is running the StorageOS daemonset pod. A node must be running a daemonset pod in order to consume and/or present storage.
-By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
-Alternatively, a node can run in computeonly mode, which means no storage is consumed on the node itself and the node only presents volumes hosted by other nodes."/>
+Nodes can be run in several modes.
+Hyperconverged Mode By default StorageOS nodes run in hyperconverged mode. This means that the node hosts data from StorageOS volumes and can present volumes to applications.
+A hyperconverged node can store data from a volume and present volumes to applications regardless of whether the data for the volume consumed is placed on that node or is being served remotely."/>
 
 
 
@@ -194,7 +197,7 @@ Alternatively, a node can run in computeonly mode, which means no storage is con
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
+  data-offline-search-index-json-src="/offline-search-index.4e00152f9781f742cbf30d9c67fbbe0c5cc0f0cfa4f3ff6b5ed358230eeb9b1a30780fd5cd1f9acdf144b26296c9cc2cb5abce7f6739acc103604f973596aed5.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +231,7 @@ Alternatively, a node can run in computeonly mode, which means no storage is con
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.5d2145341a28cbb1add9c58ac078b9d06a3ce278062c3f86782f5408dbecbb99bbca2d1fa49623720692cd96cb49e4100820a07a780baebdcfd72082125b96eb.json"
+  data-offline-search-index-json-src="/offline-search-index.4e00152f9781f742cbf30d9c67fbbe0c5cc0f0cfa4f3ff6b5ed358230eeb9b1a30780fd5cd1f9acdf144b26296c9cc2cb5abce7f6739acc103604f973596aed5.json"
   data-offline-search-base-href="/"
 >
 
@@ -1097,6 +1100,14 @@ Alternatively, a node can run in computeonly mode, which means no storage is con
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#hyperconverged-mode">Hyperconverged Mode</a></li>
+    <li><a href="#compute-only-mode">Compute-only Mode</a></li>
+    <li><a href="#storage-mode">Storage Mode</a></li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1145,8 +1156,18 @@ Alternatively, a node can run in computeonly mode, which means no storage is con
 	<p>A StorageOS node is any machine (virtual or physical) that is running the
 StorageOS daemonset pod. A node must be running a daemonset pod in order to
 consume and/or present storage.</p>
+<p>Nodes can be run in several modes.</p>
+<h2 id="hyperconverged-mode">Hyperconverged Mode</h2>
 <p>By default StorageOS nodes run in <code>hyperconverged</code> mode. This means that the
 node hosts data from StorageOS volumes and can present volumes to applications.</p>
+<p>A hyperconverged node can store data from a volume and present volumes to
+applications regardless of whether the data for the volume consumed is placed
+on that node or is being served remotely. Remote volumes like this are handled
+by an internal protocol to present block device access to applications running
+on different nodes from the one to which their backing data store is attached.</p>
+<p>StorageOS implements an extension of a Kubernetes Scheduler object that
+influences the placement of Pods on the same nodes as their data.</p>
+<h2 id="compute-only-mode">Compute-only Mode</h2>
 <p>Alternatively, a node can run in <code>computeonly</code> mode, which means no storage is
 consumed on the node itself and the node only presents volumes hosted by
 other nodes. Volumes presented to applications running on compute only nodes
@@ -1157,6 +1178,15 @@ intended to hold data, but just to present StorageOS volumes, can be set as
 <code>computeonly</code>.</p>
 <p>A node can be marked as compute only at any point in time by adding the label
 <code>storageos.com/computeonly=true</code>, following the <a href="https://docs.storageos.com/docs/reference/labels/">labels reference</a>.</p>
+<h2 id="storage-mode">Storage Mode</h2>
+<p>Finally, nodes can be set to storage mode. Nodes set to storage mode don&rsquo;t
+present data locally - instead all data is accessed through the network. This
+topology is enforced by tainting the relevant nodes to ensure that application
+workloads cannot be scheduled there.</p>
+<p>This mode is ideal for ensuring maximum stability of data access as the node is
+isolated from resource drains that may occur due to applications running
+alongside. For redundancy purposes, in high load clusters it is ideal to have
+several nodes running in this mode.</p>
 
 	
 	

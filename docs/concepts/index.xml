@@ -193,8 +193,18 @@ the StorageOS StorageClass are created.&lt;/p&gt;
         &lt;p&gt;A StorageOS node is any machine (virtual or physical) that is running the
 StorageOS daemonset pod. A node must be running a daemonset pod in order to
 consume and/or present storage.&lt;/p&gt;
+&lt;p&gt;Nodes can be run in several modes.&lt;/p&gt;
+&lt;h2 id=&#34;hyperconverged-mode&#34;&gt;Hyperconverged Mode&lt;/h2&gt;
 &lt;p&gt;By default StorageOS nodes run in &lt;code&gt;hyperconverged&lt;/code&gt; mode. This means that the
 node hosts data from StorageOS volumes and can present volumes to applications.&lt;/p&gt;
+&lt;p&gt;A hyperconverged node can store data from a volume and present volumes to
+applications regardless of whether the data for the volume consumed is placed
+on that node or is being served remotely. Remote volumes like this are handled
+by an internal protocol to present block device access to applications running
+on different nodes from the one to which their backing data store is attached.&lt;/p&gt;
+&lt;p&gt;StorageOS implements an extension of a Kubernetes Scheduler object that
+influences the placement of Pods on the same nodes as their data.&lt;/p&gt;
+&lt;h2 id=&#34;compute-only-mode&#34;&gt;Compute-only Mode&lt;/h2&gt;
 &lt;p&gt;Alternatively, a node can run in &lt;code&gt;computeonly&lt;/code&gt; mode, which means no storage is
 consumed on the node itself and the node only presents volumes hosted by
 other nodes. Volumes presented to applications running on compute only nodes
@@ -205,6 +215,15 @@ intended to hold data, but just to present StorageOS volumes, can be set as
 &lt;code&gt;computeonly&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;A node can be marked as compute only at any point in time by adding the label
 &lt;code&gt;storageos.com/computeonly=true&lt;/code&gt;, following the &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;labels reference&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;storage-mode&#34;&gt;Storage Mode&lt;/h2&gt;
+&lt;p&gt;Finally, nodes can be set to storage mode. Nodes set to storage mode don&amp;rsquo;t
+present data locally - instead all data is accessed through the network. This
+topology is enforced by tainting the relevant nodes to ensure that application
+workloads cannot be scheduled there.&lt;/p&gt;
+&lt;p&gt;This mode is ideal for ensuring maximum stability of data access as the node is
+isolated from resource drains that may occur due to applications running
+alongside. For redundancy purposes, in high load clusters it is ideal to have
+several nodes running in this mode.&lt;/p&gt;
 
       </description>
     </item>

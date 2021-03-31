@@ -32,7 +32,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
 Labels can be applied to various StorageOS artefacts. Applying specific feature labels triggers compression, replication and other storage features. No feature labels are present by default.
 StorageOS Node labels Nodes do not have any feature labels present by default. When StorageOS is run within Kubernetes, the Cluster Operator syncs any node labels set on Kubernetes nodes within StorageOS. Node labels may also be set with the CLI or UI.">
 
-<meta itemprop="wordCount" content="343">
+<meta itemprop="wordCount" content="338">
 
 
 
@@ -194,7 +194,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e16f45c5e4e88c02c0dbbaa927c45373398ba8b6d149dfe0bbf0e81179e175660a178cc481816380430fc0fd8ba293776e230ac206ec2d2a5136282b493d57f7.json"
+  data-offline-search-index-json-src="/offline-search-index.c58e45463b5de5d6e6600489022a879bb654999213330cab297c425631def0340f69dc5e592f484dca14b159085967239a17d9c3c08bf75b0beeb845710a024f.json"
   data-offline-search-base-href="/"
 >
 
@@ -228,7 +228,7 @@ StorageOS Node labels Nodes do not have any feature labels present by default. W
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.e16f45c5e4e88c02c0dbbaa927c45373398ba8b6d149dfe0bbf0e81179e175660a178cc481816380430fc0fd8ba293776e230ac206ec2d2a5136282b493d57f7.json"
+  data-offline-search-index-json-src="/offline-search-index.c58e45463b5de5d6e6600489022a879bb654999213330cab297c425631def0340f69dc5e592f484dca14b159085967239a17d9c3c08bf75b0beeb845710a024f.json"
   data-offline-search-base-href="/"
 >
 
@@ -1174,9 +1174,10 @@ sync&rsquo;d to the StorageOS node (labels take an eventual consistency
 reconciliation time of ~1min).</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl label node <span style="color:#000">$NODE</span> storageos.com/computeonly<span style="color:#ce5c00;font-weight:bold">=</span><span style="color:#204a87">true</span>
 </code></pre></div><h2 id="storageos-volume-labels">StorageOS Volume labels</h2>
-<p>Volumes do not have any feature labels present by default. WARNING: The caching
-and compression labels can only apply during provision time, they can&rsquo;t be
-changed during execution.</p>
+<blockquote>
+<p><strong>The caching and compression labels can only apply during provision time, they
+can&rsquo;t be changed during execution</strong></p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -1191,19 +1192,19 @@ changed during execution.</p>
 <td align="left">Caching</td>
 <td align="left"><code>storageos.com/nocache</code></td>
 <td align="left">true / false</td>
-<td align="left">Switches off caching.</td>
+<td align="left">Switches off caching. (default: true)</td>
 </tr>
 <tr>
 <td align="left">Compression</td>
 <td align="left"><code>storageos.com/nocompress</code></td>
 <td align="left">true / false</td>
-<td align="left">Switches off compression of data at rest and in transit.</td>
+<td align="left">Switches off compression of data at rest and in transit. (default: true)</td>
 </tr>
 <tr>
 <td align="left">Replication</td>
 <td align="left"><code>storageos.com/replicas</code></td>
 <td align="left">integers [0, 5]</td>
-<td align="left">Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.</td>
+<td align="left">Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. (default: 0)</td>
 </tr>
 </tbody>
 </table>

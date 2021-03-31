@@ -7610,9 +7610,10 @@ sync&amp;rsquo;d to the StorageOS node (labels take an eventual consistency
 reconciliation time of ~1min).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; storageos.com/computeonly&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;storageos-volume-labels&#34;&gt;StorageOS Volume labels&lt;/h2&gt;
-&lt;p&gt;Volumes do not have any feature labels present by default. WARNING: The caching
-and compression labels can only apply during provision time, they can&amp;rsquo;t be
-changed during execution.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;The caching and compression labels can only apply during provision time, they
+can&amp;rsquo;t be changed during execution&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -7627,19 +7628,19 @@ changed during execution.&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;Caching&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocache&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off caching.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off caching. (default: true)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Compression&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocompress&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit. (default: true)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Replication&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/replicas&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;integers [0, 5]&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. (default: 0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;

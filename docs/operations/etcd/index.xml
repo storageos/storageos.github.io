@@ -14,197 +14,302 @@
     
     
     <item>
-      <title>Docs: Migrate Etcd</title>
-      <link>https://docs.storageos.com/docs/operations/etcd/etcd-migration/</link>
+      <title>Docs: Etcd node migration</title>
+      <link>https://docs.storageos.com/docs/operations/etcd/migrate-etcd-cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/operations/etcd/etcd-migration/</guid>
+      <guid>https://docs.storageos.com/docs/operations/etcd/migrate-etcd-cluster/</guid>
       <description>
         
         
-        &lt;p&gt;This procedure aims to replace the current nodes of your Etcd cluster with
-new ones. Migrating Etcd is a delicate operation, so we recommend a careful
-assessment of the steps required before starting.&lt;/p&gt;
-&lt;p&gt;The following procedure is scoped for Etcd clusters that are provisioned
-outside Kubernetes on their own nodes.&lt;/p&gt;
+        &lt;p&gt;This procedure explains how to add a new etcd member for your StorageOS etcd
+cluster while removing one of the current members. This is useful when the
+nodes hosting etcd must be recycled.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Please note that this procedure involves full downtime of StorageOS and
-access to its data&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It is assumed&lt;/strong&gt; that the StorageOS etcd cluster is installed following the
+&lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/#production&#34;&gt;production etcd installation&lt;/a&gt;
+page, where etcd nodes are installed on their own machines.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The following procedure is designed for Etcd clusters that are provisioned
-externally to Kubernetes, with members that are situated on their own nodes.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;It is also assumed&lt;/strong&gt; that etcd members are referenced from Kubernetes using a External
+Service. Example available in the &lt;a href=&#34;https://github.com/storageos/deploy/tree/master/k8s/deploy-storageos/etcd-helpers/etcd-external-svc&#34;&gt;etcd external
+Service&lt;/a&gt;
+example. This service should be referred to in the &lt;code&gt;spec.kvbackend.address&lt;/code&gt;
+section of your StorageOS CustomResource. If that Service is not used, &lt;strong&gt;a full
+restart&lt;/strong&gt; of the StorageOS cluster will be required. The StorageOS
+CustomResource would need to be removed, and amended to reflect the new etcd
+urls created.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&#34;migration&#34;&gt;Migration&lt;/h2&gt;
-&lt;p&gt;To perform Etcd migrations safely, we recommend adding new Etcd nodes to the
-existing Etcd cluster, before editing the StorageOS custom resource
-definition and finally deleting the old Etcd nodes one by one. The full
-procedure is as follows:&lt;/p&gt;
+&lt;h2 id=&#34;preparation&#34;&gt;Preparation&lt;/h2&gt;
+&lt;p&gt;Prepare the installation of etcd on a new node, &lt;strong&gt;making sure that etcd is not
+starting&lt;/strong&gt; on that new node.&lt;/p&gt;
+&lt;p&gt;The steps for preparing an etcd node can be found in the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/#production&#34;&gt;etcd
+prerequisites&lt;/a&gt;
+page.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;Prepare all the nodes that will host etcd. The Etcd provisioning steps can
-be found in the &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;etcd&lt;/a&gt; section of
-the StorageOS prerequisites page.&lt;/p&gt;
-&lt;p&gt;On each new node, edit the &lt;code&gt;/etc/etcd.conf&lt;/code&gt; file to contain the IP
-addresses of all old and new nodes. In the
-&lt;code&gt;/etc/systemd/system/etcd3.service&lt;/code&gt; file, ensure that the
-&lt;code&gt;--initial-cluster&lt;/code&gt; argument includes all old and new nodes. Also ensure
-that the &lt;code&gt;--initial-cluster-state&lt;/code&gt; argument is set to &lt;code&gt;existing&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For example, adding 3 further nodes to an initially 3 node cluster would
-involve populating &lt;code&gt;/etc/etcd.conf&lt;/code&gt; on each of the fourth, fifth and sixth
-nodes with the IP addresses of all 6 nodes intended for the cluster, as
-well as environment variables for the client port and peers port:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# NODE_IP is the IP of the node where this file resides.
-NODE_IP=192.168.152.142
-# Node 1 IP
-NODE1_IP=192.168.195.168
-# Node 2 IP
-NODE2_IP=192.168.202.40
-# Node 3 IP  
-NODE3_IP=192.168.174.117
-# Node 4 IP
-NODE4_IP=192.168.152.142
-# Node 5 IP
-NODE5_IP=192.168.198.252
-# Node 6 IP
-NODE6_IP=192.168.150.122
+&lt;p&gt;Back up etcd&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export ETCDCTL_API=3
+
+$ # Set all your endpoints
+$ export endpoints=&amp;quot;192.168.174.117:2379,192.168.195.168:2379,192.168.174.117:2379&amp;quot;
+
+$ etcdctl --endpoints $endpoints snapshot save /var/tmp/etcd-snapshot.db
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify etcd health&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export ETCDCTL_API=3
+
+$ # Set all your endpoints
+$ export endpoints=&amp;quot;192.168.174.117:2379,192.168.195.168:2379,192.168.174.117:2379&amp;quot;
+$ etcdctl member list --endpoints $endpoints -wtable
++------------------+---------+-----------------------+------------------------------+-----------------------------+------------+
+|        ID        | STATUS  |         NAME          |         PEER ADDRS           |        CLIENT ADDRS         | IS LEARNER |
++------------------+---------+-----------------------+------------------------------+-----------------------------+------------+
+| 7817aa073b059aab | started |  etcd-192.168.195.168 |  http://192.168.195.168:2380 | http://192.168.195.168:2379 |      false |
+| e22cdd20a03e5e73 | started |  etcd-192.168.202.40  |  http://192.168.202.40:2380  | http://192.168.202.40:2379  |      false |
+| e5d0f0e242014d3d | started |  etcd-192.168.174.117 |  http://192.168.174.117:2380 | http://192.168.174.117:2379 |      false |
++------------------+---------+-----------------------+------------------------------+-----------------------------+------------+
+
+$ etcdctl endpoint health --endpoints $endpoints -wtable
++---------------------+--------+------------+-------+
+|      ENDPOINT       | HEALTH |    TOOK    | ERROR |
++---------------------+--------+------------+-------+
+|192.168.174.117:2379 |   true | 5.048177ms |       |
+|192.168.195.168:2379 |   true | 5.926681ms |       |
+|192.168.202.40:2379  |   true | 5.526928ms |       |
++---------------------+--------+------------+-------+
+
+$ etcdctl endpoint status --endpoints $endpoints -wtable
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|      ENDPOINT       |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|192.168.174.117:2379 | e5d0f0e242014d3d |   3.4.9 |  311 kB |     false |      false |         2 |       4281 |               4281 |        |
+|192.168.195.168:2379 | 7817aa073b059aab |   3.4.9 |  315 kB |     false |      false |         2 |       4281 |               4281 |        |
+|192.168.202.40:2379  | e22cdd20a03e5e73 |   3.4.9 |  352 kB |      true |      false |         2 |       4281 |              4281  |        |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;migration&#34;&gt;Migration&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In the following procedure NODE4 is a new member to add to the cluster, while
+NODE1 ought to be removed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Amend etcd configuration to reference the new node (NODE4)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make the following change on all running etcd members and NODE4&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;$ # NODE4_IP is the NEW_NODE_ADDRESS
+$ echo &amp;quot;NODE4_IP=192.168.152.142&amp;quot; &amp;gt;&amp;gt; /etc/etcd.conf
+
+$ # Check the contents of /etc/etcd.conf
+$ cat /etc/etcd.conf
 CLIENT_PORT=2379
 PEERS_PORT=2380
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The executable section of &lt;code&gt;/etc/systemd/system/etcd3.service&lt;/code&gt; on each of
-the new nodes should then be edited to reflect these environment variables.
-For example, the service file for the second new node to be added to an
-initially 3 node cluster would refer to the three old nodes and two new
-nodes. Note that in the &lt;code&gt;--initial-cluster&lt;/code&gt; variable we do not include
-members that have not yet been added to the cluster, apart from the member
-we are currently adding.&lt;/p&gt;
+
+# NODE_IP is the IP of the node where this file resides.
+NODE_IP=192.168.202.40
+
+NODE1_IP=192.168.195.168
+NODE2_IP=192.168.202.40
+NODE3_IP=192.168.174.117
+NODE4_IP=192.168.152.142
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Amend SystemD service file on the new etcd node (NODE4)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The SystemD service file is expected in &lt;code&gt;/etc/systemd/system/etcd3.service&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Change the &lt;code&gt;--initial-cluster-state&lt;/code&gt; to &lt;code&gt;existing&lt;/code&gt; and add the reference to
+NODE4 in the &lt;code&gt;--initial-cluster&lt;/code&gt; variable.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vi /etc/systemd/system/etcd3.service
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The resulting changes would appear as follows:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;...
 
 ExecStart=/usr/local/sbin/etcd3 --name etcd-${NODE_IP} \
-    ...
-    --initial-cluster-state existing \
-    ...
-    --initial-cluster etcd-${NODE1_IP}=http://${NODE1_IP}:${PEERS_PORT},etcd-${NODE2_IP}=http://${NODE2_IP}:${PEERS_PORT},etcd-${NODE3_IP}=http://${NODE3_IP}:${PEERS_PORT},etcd-${NODE4_IP}=http://${NODE4_IP}:${PEERS_PORT},etcd-${NODE5_IP}=http://${NODE5_IP}:${PEERS_PORT}
-
+   ...
+   --initial-cluster-state existing \
+   ...
+   --initial-cluster \
+        etcd-${NODE1_IP}=http://${NODE1_IP}:${PEERS_PORT},\
+        etcd-${NODE2_IP}=http://${NODE2_IP}:${PEERS_PORT},\
+        etcd-${NODE3_IP}=http://${NODE3_IP}:${PEERS_PORT},\
+        etcd-${NODE4_IP}=http://${NODE4_IP}:${PEERS_PORT}
 ...
-                                       
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;At runtime, the value of &lt;code&gt;initial-cluster&lt;/code&gt; will resolve to the following:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot;etcd-192.168.195.168=http://192.168.195.168:2380,etcd-192.168.202.40=http://192.168.202.40:2380,etcd-192.168.174.117=http://192.168.174.117:2380,etcd-192.168.152.1&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note the reference to NODE4 at the end of the &lt;code&gt;--initial-cluster&lt;/code&gt;
+variable&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Make sure etcd is not started on the new member NODE4&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Connect to an Etcd node that already belongs to the cluster, and add one of
-the new nodes to the cluster, using the &lt;code&gt;etcdctl member add --learner&lt;/code&gt;
-command per the &lt;a href=&#34;https://etcd.io/docs/v3.4.0/op-guide/runtime-configuration/#add-a-new-member&#34;&gt;etcd
-documentation&lt;/a&gt;.
-The output includes environment variables with the name of the new member
-and the state and constituents of the cluster now that the new node has
-been added:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;
+&lt;p&gt;Add etcd member as a &lt;code&gt;learner&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Set environment variable for the the new etcd member (NODE4)&lt;/span&gt;
+$ &lt;span style=&#34;color:#000&#34;&gt;NODE4_IP&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;192.168.152.142
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Name of the new member of etcd&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_NEW_MEMBER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-192.168.152.142&amp;#34;&lt;/span&gt;
+$ &lt;span style=&#34;color:#000&#34;&gt;ETCD_NEW_MEMBER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;etcd-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;${&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;NODE4_IP&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;
+$ &lt;span style=&#34;color:#000&#34;&gt;ETCD_NEW_MEMBER_PEER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;http://&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$NODE4_IP&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;:2380&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Peer url for the new member of etcd, including the port&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_NEW_MEMBER_PEER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://192.168.152.142:2380&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add the new member to the cluster&lt;/span&gt;
+$ &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt;
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Client url for the new member of etcd, including the port&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_NEW_MEMBER_CLIENT&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://192.168.195.168:2379&amp;#34;&lt;/span&gt;
+$ etcdctl member add &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;     --learner &lt;span style=&#34;color:#000&#34;&gt;$ETCD_NEW_MEMBER&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;     --peer-urls&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$ETCD_NEW_MEMBER_PEER&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;
 
-&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Add the new member to the cluster&lt;/span&gt; 
-&lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl member add &lt;span style=&#34;color:#000&#34;&gt;$ETCD_NEW_MEMBER&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;
- --peer-urls&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$ETCD_NEW_MEMBER_PEER&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt; --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$ETCD_NEW_MEMBER_CLIENT&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;
-Member 4a5820690b65300c added to
-cluster 97f788d9ca9b3357
-   
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_NAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-192.168.152.142&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-192.168.202.40=http://192.168.202.40:2380,etcd-192.168.174.117=http://192.168.174.117:2380,etcd-192.168.152.142=http://192.168.152.142:2380,etcd-192.168.195.168=http://192.168.195.168:2380&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_ADVERTISE_PEER_URLS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://192.168.152.142:2380&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER_STATE&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;existing&amp;#34;&lt;/span&gt;
+ Member 52e5c9ac117b3df2 added to cluster b4f4ed717ea44b8d
+
+ &lt;span style=&#34;color:#000&#34;&gt;ETCD_NAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-192.168.152.142&amp;#34;&lt;/span&gt;
+ &lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;etcd-192.168.152.142=http://192.168.152.142:2380,etcd-192.168.195.168=http://192.168.195.168:2380,etcd-192.168.202.40=http://192.168.202.40:2380,etcd-192.168.174.117=http://192.168.174.117:2380&amp;#34;&lt;/span&gt;
+ &lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_ADVERTISE_PEER_URLS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;http://192.168.152.142:2380&amp;#34;&lt;/span&gt;
+ &lt;span style=&#34;color:#000&#34;&gt;ETCD_INITIAL_CLUSTER_STATE&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;existing&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Start the Etcd service on the new node:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;systemctl daemon-reload
+&lt;p&gt;Check the etcd members&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export endpoints=&amp;quot;192.168.174.117:2379,192.168.195.168:2379,192.168.174.117:2379&amp;quot;
+
+$ etcdctl member list --endpoints $endpoints -wtable
++------------------+-----------+----------------------+-----------------------------+-----------------------------+------------+
+|        ID        |  STATUS   |         NAME         |         PEER ADDRS          |        CLIENT ADDRS         | IS LEARNER |
++------------------+-----------+----------------------+-----------------------------+-----------------------------+------------+
+| 52e5c9ac117b3df2 | unstarted |                      | http://192.168.152.142:2380 |                             |       true |
+| 7817aa073b059aab |   started | etcd-192.168.195.168 | http://192.168.195.168:2380 | http://192.168.195.168:2379 |      false |
+| e22cdd20a03e5e73 |   started | etcd-192.168.202.40  | http://192.168.202.40:2380  | http://192.168.202.40:2379  |      false |
+| e5d0f0e242014d3d |   started | etcd-192.168.174.117 | http://192.168.174.117:2380 | http://192.168.174.117:2379 |      false |
++------------------+-----------+----------------------+-----------------------------+-----------------------------+------------+
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that the learner is not started yet&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Start etcd on the new node (NODE4)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Make sure that &lt;code&gt;/etc/systemd/system/etcd.service&lt;/code&gt; only have &lt;strong&gt;currently
+active&lt;/strong&gt; nodes specified in the &lt;code&gt;--initial-cluster&lt;/code&gt; flag.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# On the new node (NODE4)&lt;/span&gt;
+
+systemctl daemon-reload
 systemctl &lt;span style=&#34;color:#204a87&#34;&gt;enable&lt;/span&gt; etcd3.service
 systemctl start etcd3.service
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;List the members in the cluster and
-confirm that the new node is present and has started, and has therefore
-successfully been added:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;http://127.0.0.1:2379 member list
-aa9dec86cc9c2d1, started, etcd-192.168.202.40, http://192.168.202.40:2380, http://192.168.202.40:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-48823f29326a24f7, started, etcd-192.168.174.117, http://192.168.174.117:2380, http://192.168.174.117:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-4a5820690b65300c, started, etcd-192.168.152.142, http://192.168.152.142:2380, http://192.168.152.142:2379, &lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
-gwk09ksjs5a6n862, started, etcd-192.168.152.142, http://192.168.152.142:2380, http://192.168.195.168:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Promote the learner to be a full voting member of the cluster with the
-&lt;code&gt;etcdctl member promote &amp;lt;member id&amp;gt;&lt;/code&gt; command.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;As per the &lt;a href=&#34;https://etcd.io/docs/v3.4.0/learning/design-learner/#appendix-learner-implementation-in-v34&#34;&gt;etcd
-documentation&lt;/a&gt;,
-the learner will fail to be promoted if it is not ready.&lt;/p&gt;
+&lt;p&gt;Check the etcd members&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export endpoints=&amp;quot;192.168.174.117:2379,192.168.195.168:2379,192.168.174.117:2379&amp;quot;
+
+$ etcdctl member list --endpoints $endpoints -wtable
++------------------+---------+----------------------+-----------------------------+-----------------------------+------------+
+|        ID        | STATUS  |         NAME         |         PEER ADDRS          |        CLIENT ADDRS         | IS LEARNER |
++------------------+---------+----------------------+-----------------------------+-----------------------------+------------+
+| 52e5c9ac117b3df2 | started | etcd-192.168.152.142 | http://192.168.152.142:2380 | http://192.168.152.142:2379 |       true |
+| 7817aa073b059aab | started | etcd-192.168.195.168 | http://192.168.195.168:2380 | http://192.168.195.168:2379 |      false |
+| e22cdd20a03e5e73 | started | etcd-192.168.202.40  | http://192.168.202.40:2380  | http://192.168.202.40:2379  |      false |
+| e5d0f0e242014d3d | started | etcd-192.168.174.117 | http://192.168.174.117:2380 | http://192.168.174.117:2379 |      false |
++------------------+---------+----------------------+-----------------------------+-----------------------------+------------+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that the learner is started&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Repeat the previous two steps for all the remaining nodes onto which you
-wish to migrate etcd. Per the Etcd documentation, when adding more than one
-member to a cluster, it best practice to configure each member one at a
-time, verifying that each starts successfully before moving on to the next.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Delete the StorageOS Custom Resource per the instructions in the
-&lt;a href=&#34;https://docs.storageos.com/docs/operations/uninstall/#remove-storageos-cluster&#34;&gt;uninstall&lt;/a&gt; operations page.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Although deleting the StorageOSCluster Custom Resource will stop
-StorageOS, the data will be safe. When StorageOS starts again, the
-Volumes will be available.&lt;/p&gt;
+&lt;p&gt;Check that the new learner has the same revision applied as the current
+members&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export ETCDCTL_API=3
+# Added NODE4 in the endpoints variable
+$ export endpoints=&amp;quot;192.168.174.117:2379,192.168.195.168:2379,192.168.174.117:2379,192.168.152.142:2379&amp;quot;
+
+etcdctl endpoint status --endpoints $endpoints -wtable
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|      ENDPOINT       |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+| 192.168.174.117:2379| e5d0f0e242014d3d |   3.4.9 |  352 kB |     false |      false |         2 |      24570 |              24570 |        |
+| 192.168.195.168:2379| 7817aa073b059aab |   3.4.9 |  352 kB |     false |      false |         2 |      24570 |              24570 |        |
+| 192.168.202.40:2379 | e22cdd20a03e5e73 |   3.4.9 |  352 kB |     true  |      false |         2 |      24570 |              24570 |        |
+| 192.168.152.142:2379| 52e5c9ac117b3df2 |   3.4.9 |  467 kB |     false |       true |         2 |      24570 |              24570 |        |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Wait until the cluster has the learner ready, by ensuring that the
+RAFT TERM and RAFT INDEX of the learner node match the rest of the
+cluster.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Connect to one of the newly-added nodes, and use &lt;code&gt;etcdctl&lt;/code&gt; to remove the
-old Etcd nodes 1 by 1:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;http://127.0.0.1:2379 member remove 48823f29326a24f7
-Member 48823f29326a24f7 removed from cluster 97f788d9ca9b3357
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After removing a node, check that Etcd is healthy and quorum has been
-maintained with the following commands:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;export ETCD_ENDPOINTS=&amp;quot;http://192.168.2020.40:2379,http://192.168.174.117.2379,...&amp;quot;
-etcdctl --endpoints $ETCD_ENDPOINTS endpoint health -w table
-etcdctl --endpoints $ETCD_ENDPOINTS endpoint status -w table
+&lt;p&gt;Remove the node that needs to be evicted (NODE1)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Before promoting the learner to a full member, it is best to remove the
+node from the cluster that initially was selected to be decommissioned to
+avoid breaking quorum while having 4 nodes being part of the cluster. For
+more details, check the &lt;a href=&#34;https://etcd.io/docs/v3.4/faq/#should-i-add-a-member-before-removing-an-unhealthy-member&#34;&gt;official etcd
+documentation&lt;/a&gt;
+regarding this topic.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;$ export ETCDCTL_API=3
+
+$ # Select member of id of the node to remove (NODE1)
+$ NODE1_MEMBER_ID=e22cdd20a03e5e73
+
+$ etcdctl member remove $NODE1_MEMBER_ID
+Member e22cdd20a03e5e73 removed from cluster b4f4ed717ea44b8d
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Edit the &lt;code&gt;kvBackend.address&lt;/code&gt; parameter of the StorageOS Custom Resource
-Definition to reflect the locations of the new Etcd nodes, removing the
-references to the old nodes&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Recreate the StorageOS Custom Resource with the newly-edited
-&lt;code&gt;kvBackend.address&lt;/code&gt; parameter&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Perform a &lt;code&gt;member list&lt;/code&gt; again, to confirm that only the new machines are
-still present in the cluster:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ &lt;span style=&#34;color:#000&#34;&gt;ETCDCTL_API&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;3&lt;/span&gt; etcdctl --endpoints&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;http://127.0.0.1:2379 member list
-4a5820690b65300c, started, etcd-192.168.152.142, http://192.168.152.142:2380, http://192.168.152.142:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-b1780933f495adb3, started, etcd-192.168.150.122, http://192.168.150.122:2380, http://192.168.150.122:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
-ee47ff85984afcc0, started, etcd-192.168.198.252, http://192.168.198.252:2380, http://192.168.198.252:2379, &lt;span style=&#34;color:#204a87&#34;&gt;false&lt;/span&gt;
+&lt;p&gt;Promote the learner to a member&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export ETCDCTL_API=3
 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this stage Etcd has been successfully migrated.&lt;/p&gt;
+$ # Select member of id of the node to remove (NODE1)
+$ NODE4_MEMBER_ID=52e5c9ac117b3df2
+
+$ etcdctl member promote $NODE4_MEMBER_ID
+Member 52e5c9ac117b3df2 promoted in cluster b4f4ed717ea44b8d
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;The promotion will fail if the learner is not in sync with the leader
+member.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check the etcd health&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export endpoints=192.168.174.117:2379,192.168.195.168:2379,192.168.152.142:2379
+
+$ etcdctl member list --endpoints $endpoints -wtable
++------------------+---------+---------------------+----------------------------+----------------------------+------------+
+|        ID        | STATUS  |        NAME         |         PEER ADDRS         |        CLIENT ADDRS        | IS LEARNER |
++------------------+---------+---------------------+----------------------------+----------------------------+------------+
+| 52e5c9ac117b3df2 | started |etcd-192.168.152.142 |http://192.168.152.142:2380 |http://192.168.152.142:2379 |      false |
+| 7817aa073b059aab | started |etcd-192.168.195.168 |http://192.168.195.168:2380 |http://192.168.195.168:2379 |      false |
+| e5d0f0e242014d3d | started |etcd-192.168.174.117 |http://192.168.174.117:2380 |http://192.168.174.117:2379 |      false |
++------------------+---------+---------------------+----------------------------+----------------------------+------------+
+
+$ etcdctl endpoint status --endpoints $endpoints -wtable
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|      ENDPOINT       |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX | ERRORS |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+|192.168.174.117:2379 | e5d0f0e242014d3d |   3.4.9 |  352 kB |     false |      false |         3 |      35939 |              35939 |        |
+|192.168.195.168:2379 | 7817aa073b059aab |   3.4.9 |  352 kB |      true |      false |         3 |      35939 |              35939 |        |
+|192.168.152.142:2379 | 52e5c9ac117b3df2 |   3.4.9 |  467 kB |     false |      false |         3 |      35939 |              35939 |        |
++---------------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------+
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that NODE4 is now a full quorum member, while NODE1 is no longer
+part of the cluster&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edit Endpoints referencing the Kubernetes Service&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Remove the reference to NODE1 and add the IP for NODE4&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl edit -n storageos-etcd endpoints/storageos-etcd
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Make amendments in the SystemD configuration files removing any reference to
+NODE1&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It is not required to restart the etcd service, but to keep the service
+file up to date.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;h2 id=&#34;etcd-learners&#34;&gt;Etcd Learners&lt;/h2&gt;
-&lt;p&gt;As of v3.4, Etcd includes the functionality to add a new member as a
-&amp;ldquo;learner&amp;rdquo; (a non-voting member of the cluster). This makes the process of
-adding new members safer, as it allows the new member to complete the
-process of synchronisation before participating in quorum, minimising
-cluster downtime.&lt;/p&gt;
-&lt;p&gt;If you are using an earlier version of etcd, make the following substitutions
-to the above process:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;In step 2, replace the &lt;code&gt;etcdctl member add --learner&lt;/code&gt; command with
-&lt;code&gt;etcdctl member add&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Skip the&lt;code&gt;etcdctl member promote &amp;lt;member id&amp;gt;&lt;/code&gt; command&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Using Etcd learners provides added resilience, so consider upgrading to a
-version of Etcd that supports this as soon as possible.&lt;/p&gt;
 
       </description>
     </item>

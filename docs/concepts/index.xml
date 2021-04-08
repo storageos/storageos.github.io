@@ -441,6 +441,8 @@ blocks in the associated volume. This size is consistent irrespective of data
 compression defined on the volume.&lt;/p&gt;
 &lt;p&gt;To ensure deterministic performance, individual StorageOS volumes must fit on a single
 node.&lt;/p&gt;
+&lt;h2 id=&#34;minimum-volume-size&#34;&gt;Minimum Volume Size&lt;/h2&gt;
+&lt;p&gt;The minimum volume size StorageOS supports is 1 GiB.&lt;/p&gt;
 &lt;h2 id=&#34;volume-resize&#34;&gt;Volume Resize&lt;/h2&gt;
 &lt;p&gt;StorageOS v2.1 supports offline resize of volumes. This means that a volume
 cannot be resized while it is in use. Furthermore, in order for a resize

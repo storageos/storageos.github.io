@@ -48,7 +48,7 @@ discrete functions.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;StorageOS Scheduler&lt;/p&gt;
-&lt;p&gt;Responsible for scheduling applications on the same node as applications volume&lt;/p&gt;
+&lt;p&gt;Responsible for scheduling applications on the same node as applications&amp;rsquo; volumes&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;CSI helper&lt;/p&gt;

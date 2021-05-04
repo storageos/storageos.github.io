@@ -5348,7 +5348,7 @@ installation instructions please see our
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
-&lt;h2 id=&#34;v234---release-2021-03-24&#34;&gt;v2.3.4 - Release 2021-03-24&lt;/h2&gt;
+&lt;h2 id=&#34;v234---released-2021-03-24&#34;&gt;v2.3.4 - Released 2021-03-24&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;controlplane/build: Use Sentry prod-url for release branches (CP-4600).&lt;/li&gt;
 &lt;li&gt;controlplane/csi: Improve CSI handler timeout (CP-4585).&lt;/li&gt;
@@ -5367,7 +5367,7 @@ installation instructions please see our
 &lt;li&gt;k8s: Toleration defaults for helper pods (#311).&lt;/li&gt;
 &lt;li&gt;k8s: Use ubi-minimal base image directly (#307).&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;v233---release-2021-02-12&#34;&gt;v2.3.3 - Release 2021-02-12&lt;/h2&gt;
+&lt;h2 id=&#34;v233---released-2021-02-12&#34;&gt;v2.3.3 - Released 2021-02-12&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Support CSI ListVolumes() API, addressing volume attach problems seen by some
 customers.&lt;/li&gt;

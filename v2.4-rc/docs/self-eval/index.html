@@ -1,0 +1,1967 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.64.1" />
+
+<META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
+
+
+
+<link rel="shortcut icon" href="/favicons/favicon.ico" >
+<link rel="apple-touch-icon" href="/v2.4-rc/favicons/apple-touch-icon-180x180.png" sizes="180x180">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-36x36.png" sizes="36x36">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-48x48.png" sizes="48x48">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-72x72.png" sizes="72x72">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-144x144.png" sizes="144x144">
+<link rel="icon" type="image/png" href="/v2.4-rc/favicons/android-192x192.png" sizes="192x192">
+
+<title>Self Evaluation Guide | </title><meta property="og:title" content="Self Evaluation Guide" />
+<meta property="og:description" content="Step-by-step guide to installing and evaluating StorageOS
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://docs.storageos.com/v2.4-rc/docs/self-eval/" />
+
+<meta itemprop="name" content="Self Evaluation Guide">
+<meta itemprop="description" content="Step-by-step guide to installing and evaluating StorageOS
+">
+
+<meta itemprop="wordCount" content="2945">
+
+
+
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Self Evaluation Guide"/>
+<meta name="twitter:description" content="Step-by-step guide to installing and evaluating StorageOS
+"/>
+
+
+
+<link rel="stylesheet"  href="/css/font-awesome.css?ver=5.4.1" type="text/css" media="all">
+
+
+
+<link rel="preload" href="/v2.4-rc/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
+<link href="/v2.4-rc/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
+
+
+
+<script
+  src="https://unpkg.com/lunr@2.3.8/lunr.min.js"
+  integrity="sha384-vRQ9bDyE0Wnu+lMfm57BlYLO0/XauFuKpVsZPs7KEDwYKktWi5+Kz3MP8++DFlRY"
+  crossorigin="anonymous"></script>
+
+
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"
+  integrity=""
+  crossorigin="anonymous"></script>
+<link href="/css/storageos.css" rel="stylesheet">
+<script> (function(h,o,t,j,a,r){ h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)}; h._hjSettings={hjid:1025326,hjsv:6}; a=o.getElementsByTagName('head')[0]; r=o.createElement('script');r.async=1; r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv; a.appendChild(r); })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); </script>
+<script src="/js/enable-link-tab.js"></script>
+
+
+    <title>Self Evaluation Guide | </title>
+  </head>
+  <body class="td-page">
+    <header>
+      
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="col-2 col-sm-2">
+      <div class="navbar-header">
+        <div class="logo-tag">
+
+          <a class="navbar-brand" href="https://storageos.com">
+  		<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="476.964" height="141.732" viewBox="0 0 476.964 141.732" enable-background="new 0 0 476.964 141.732"><g><g><path fill="#fff" d="M34.74 89.882H3.477v-9.34h31.264c1.538.0 2.704-.355 3.476-1.062.744-.693 1.118-1.655 1.118-2.854.0-1.318-.363-2.293-1.078-2.896-.778-.661-1.959-.996-3.515-.996H16.346c-2.017.0-3.873-.302-5.538-.905-1.681-.627-3.113-1.499-4.277-2.604-1.164-1.099-2.073-2.429-2.708-3.96-.63-1.521-.954-3.196-.954-4.967.0-1.742.293-3.379.884-4.863.592-1.499 1.489-2.828 2.67-3.938 1.181-1.097 2.635-1.957 4.316-2.572 1.657-.604 3.578-.917 5.707-.917h30.002v9.342H16.446c-1.267.0-2.232.312-2.885.928-.63.615-.943 1.487-.943 2.673.0 1.187.3 2.025.961 2.64.656.604 1.602.917 2.805.917h18.321c4.36.0 7.757 1.054 10.085 3.145 2.375 2.102 3.579 5.291 3.579 9.462.0 1.812-.284 3.5-.841 5.021-.562 1.567-1.42 2.941-2.561 4.105-1.169 1.163-2.618 2.081-4.328 2.695C38.975 89.556 36.982 89.882 34.74 89.882z"/></g><g><path fill="#fff" d="M79.764 89.882h-9.486V57.344H55.081v-9.339h39.878v9.339H79.762v32.537L79.764 89.882z"/></g><g><path fill="#fff" d="M129.784 89.882h-9.733c-2.96.0-5.731-.547-8.248-1.653-2.527-1.099-4.742-2.606-6.57-4.51-1.853-1.891-3.306-4.172-4.329-6.755-1.026-2.604-1.544-5.436-1.544-8.422.0-3.028.521-5.849 1.544-8.376 1.033-2.54 2.512-4.73 4.367-6.521 1.864-1.789 4.072-3.198 6.578-4.161 2.509-.984 5.264-1.478 8.201-1.478h9.733c3.043.0 5.878.503 8.422 1.499 2.545.996 4.77 2.415 6.616 4.229 1.846 1.823 3.288 4.015 4.294 6.521 1.01 2.482 1.521 5.278 1.521 8.286.0 3.021-.516 5.853-1.538 8.422-1.039 2.597-2.498 4.877-4.34 6.768-1.84 1.891-4.055 3.411-6.587 4.508C135.634 89.332 132.812 89.882 129.784 89.882zM120.052 57.344c-1.613.0-3.129.28-4.515.854-1.363.57-2.557 1.364-3.521 2.348-.99 1.008-1.772 2.215-2.334 3.624-.563 1.409-.848 2.986-.848 4.688.0 1.687.285 3.274.86 4.729.572 1.442 1.345 2.686 2.323 3.682.988 1.018 2.18 1.835 3.539 2.404 1.356.58 2.873.871 4.497.871h9.733c1.675.0 3.221-.291 4.583-.871 1.385-.569 2.597-1.388 3.596-2.404.982-.996 1.777-2.237 2.35-3.691.568-1.442.853-3.031.853-4.719.0-1.669-.284-3.244-.853-4.677-.561-1.409-1.351-2.63-2.344-3.624-.989-.995-2.198-1.788-3.596-2.372-1.386-.56-2.924-.84-4.589-.84L120.052 57.344z"/></g><path fill="#fff" d="M195.707 77.802c1.812-.727 3.38-1.724 4.652-3.009 1.375-1.366 2.432-2.717 3.15-4.642.643-1.711.994-3.611 1.057-5.692.006-.225.012-.6.012-.835v-.11c0-2.35-.356-4.483-1.068-6.389-.719-1.923-1.774-3.59-3.149-4.965-1.362-1.365-3.044-2.428-5.016-3.154-1.937-.716-4.139-1.085-6.786-1.007H159.05h-.483v41.882h9.706V78.975h16.071l10.03 10.903h13.561L195.707 77.802zM193.617 68.821c-1.039 1.085-2.661 1.645-4.827 1.645h-20.513V57.26h20.53c2.077.0 3.69.517 4.781 1.521 1.079 1.008 1.624 2.64 1.624 4.842C195.213 65.85 194.669 67.702 193.617 68.821z"/><path fill="#fff" d="M243.355 50.3c-.5-.839-1.086-1.499-1.723-1.968-1.441-1.105-3.906-1.12-5.438-.034-.693.516-1.277 1.188-1.75 1.992l-24.148 39.592h10.889l5.967-9.933h23.068l6.008 9.933h11.322L243.355 50.3zM230.384 72.812l8.275-13.757 8.311 13.757H230.384z"/><g><path fill="#fff" d="M314.21 89.882h-25.385c-2.959.0-5.728-.547-8.23-1.653-2.533-1.099-4.738-2.616-6.557-4.497-1.847-1.901-3.3-4.171-4.33-6.768-1.031-2.596-1.549-5.424-1.549-8.422.0-3.041.526-5.849 1.561-8.376 1.023-2.525 2.49-4.73 4.354-6.521 1.861-1.789 4.076-3.198 6.594-4.161 2.506-.984 5.265-1.478 8.185-1.478h22.94v9.342h-22.94c-1.613.0-3.123.291-4.511.851-1.34.56-2.524 1.354-3.53 2.359-.974.993-1.754 2.2-2.317 3.609-.558 1.398-.841 2.979-.841 4.688.0 1.687.283 3.274.847 4.729.573 1.442 1.352 2.686 2.321 3.682 1 1.018 2.19 1.835 3.533 2.416 1.353.567 2.862.872 4.498.872h15.883v-7.817h-18.063v-8.232h27.543v25.377H314.21V89.882z"/></g><g><path fill="#fff" d="M363.412 57.344h-38.285v-9.339h38.285V57.344z"/></g><g><path fill="#fff" d="M363.472 89.882h-38.346V64.504h36.75v8.231h-27.277v7.807h28.875v9.34H363.472z"/></g><g><path fill="#61c202" d="M402.357 89.882h-9.75c-2.961.0-5.725-.547-8.234-1.653-2.514-1.086-4.725-2.606-6.572-4.51-1.857-1.9-3.326-4.183-4.328-6.767-1.02-2.604-1.553-5.436-1.553-8.41.0-3.021.521-5.838 1.553-8.376 1.035-2.54 2.5-4.73 4.355-6.521 1.871-1.789 4.084-3.198 6.584-4.161 2.512-.984 5.271-1.478 8.195-1.478h9.75c3.033.0 5.859.503 8.416 1.499 2.568 1.009 4.799 2.438 6.611 4.238 1.84 1.801 3.285 3.994 4.291 6.497 1.012 2.517 1.523 5.304 1.523 8.3.012 3.009-.516 5.838-1.545 8.422-1.023 2.583-2.48 4.864-4.336 6.768-1.848 1.899-4.064 3.422-6.596 4.508C408.193 89.332 405.38 89.882 402.357 89.882zM392.607 57.344c-1.619.0-3.135.291-4.498.854-1.361.57-2.549 1.364-3.531 2.348-.984.996-1.768 2.215-2.314 3.613-.568 1.397-.857 2.986-.857 4.698.0 1.696.289 3.286.852 4.719.566 1.442 1.35 2.685 2.328 3.691.984 1.018 2.17 1.835 3.535 2.404 1.354.58 2.857.871 4.48.871h9.762c1.652.0 3.197-.291 4.572-.871 1.375-.569 2.596-1.388 3.602-2.404.971-.996 1.766-2.229 2.354-3.691.553-1.453.842-3.042.842-4.719.0-1.656-.289-3.234-.852-4.679-.557-1.422-1.352-2.628-2.34-3.622-1.01-.995-2.209-1.802-3.59-2.358-1.379-.562-2.936-.854-4.588-.854H392.607z"/></g><g><path fill="#61c202" d="M461.541 89.882h-31.258v-9.329h31.258c1.537.0 2.707-.355 3.475-1.071.756-.704 1.125-1.646 1.119-2.854.006-1.342-.346-2.279-1.074-2.906-.775-.649-1.961-.984-3.52-.984H443.15c-2.033.0-3.896-.302-5.539-.905-1.684-.627-3.129-1.499-4.285-2.604-1.158-1.118-2.078-2.438-2.713-3.96-.621-1.53-.934-3.196-.934-4.967.0-1.73.293-3.364.875-4.863.607-1.521 1.51-2.854 2.682-3.949 1.186-1.084 2.635-1.944 4.303-2.549 1.682-.616 3.602-.931 5.715-.931h29.984v9.341h-29.984c-1.27.0-2.25.312-2.885.928-.615.604-.943 1.51-.943 2.673.0 1.188.312 2.025.965 2.641.648.604 1.602.917 2.805.917h18.311c4.377.0 7.771 1.053 10.105 3.144 2.371 2.103 3.559 5.292 3.559 9.462.0 1.789-.271 3.468-.826 5.01-.592 1.601-1.459 2.987-2.588 4.116-1.137 1.163-2.594 2.069-4.312 2.696C465.765 89.567 463.775 89.882 461.541 89.882z"/></g></g></svg><span class="text-uppercase font-weight-bold"></span>
+  	</a>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8 col-sm-8">
+    	<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+    		<ul class="navbar-nav nav">
+                <li>
+    <a class="nav-link" href="#">
+        Product <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://storageos.com/product">Overview</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/features">Features</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/why-storageos">Why StorageOS</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/how-it-works">How it works</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/use-cases">Use cases</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/support">Support</a></li>
+
+    </ul>
+</li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link" href="#">
+        Solutions <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://storageos.com/developers">Developers</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/infrastructure-managers">Infrastructure Managers</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/cloud">Cloud</a></li>
+    </ul>
+</li>
+
+<li class="nav-item">
+    <a class="nav-link" href="#">
+        Docs
+    </a>
+</li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link" href="#">
+        Company <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://storageos.com/company">About us</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/leadership">Leadership</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/careers">Careers</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/news">News</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/events">Events</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/customers">Customers</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/partners">Partners</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/contact">Contact</a></li>
+    </ul>
+</li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link" href="#">
+          Learn <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://storageos.com/blog">Blog</a></li>
+        <li><a class="dropdown-item" href="https://play.storageos.com/main">Play with StorageOS</a></li>
+        <li><a class="dropdown-item" href="https://storageos.com/resources/">Resources</a></li>
+        <li><a class="dropdown-item" href="https://resources.storageos.com/demo-request">Get a demo</a></li>
+    </ul>
+</li>
+
+
+    			
+    			<li class="nav-item dropdown d-none d-lg-block">
+    				<a class="nav-link" href="#">
+		Releases <span class="caret"></span>
+</a>
+<ul class="dropdown-menu">
+	
+	<li><a class="dropdown-item" href="/v1.x">v1.x</a></li>
+	
+	<li><a class="dropdown-item" href="/v2.0">v2.0</a></li>
+	
+	<li><a class="dropdown-item" href="/v2.1">v2.1</a></li>
+	
+	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
+	
+	<li><a class="dropdown-item" href="/">v2.3</a></li>
+	
+	<li><a class="dropdown-item" href="/v2.4-rc">v2.4-rc</a></li>
+	
+</ul>
+
+    			</li>
+    			
+    			
+    		</ul>
+  	</div>
+  </div>
+  	<div class="col-2 col-sm-2 nav-right-items">
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v2.4-rc/offline-search-index.60e8e596bfcf6acfea8d08ce2255ca3de795f3e5445e23495f2a56445898e29bfc31fd9c40047b853285e0529567de62ca258ade53277a4dc0c51d04a587ad1a.json"
+  data-offline-search-base-href="/"
+>
+
+</div>
+  </div>
+
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+
+</nav>
+
+    </header>
+    <div class="body-search">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#td-section-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    
+
+
+<input
+  type="search"
+  class="form-control td-search-input"
+  placeholder="Search this site…"
+  aria-label="Search this site…"
+  autocomplete="off"
+  
+  data-offline-search-index-json-src="/v2.4-rc/offline-search-index.60e8e596bfcf6acfea8d08ce2255ca3de795f3e5445e23495f2a56445898e29bfc31fd9c40047b853285e0529567de62ca258ade53277a4dc0c51d04a587ad1a.json"
+  data-offline-search-base-href="/"
+>
+
+
+  </div>
+    <div class="container-fluid td-outer">
+      <div class="td-main">
+        <div class="row flex-xl-nowrap">
+          <div class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
+            
+
+
+
+
+<div id="td-sidebar-menu" class="td-sidebar__inner">
+  
+  <nav class="collapse td-sidebar-nav pt-2 pl-4" id="td-section-nav">
+    
+    
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/" class="align-left pl-0 pr-2 active td-sidebar-link td-sidebar-link__section">Documentation V2</a>
+  </li>
+  <ul>
+    <li class="collapse show" id="v24-rcdocs">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/introduction/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Introduction</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsintroduction">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsintroductionoverview" href="/v2.4-rc/docs/introduction/overview/">StorageOS V2 Overview</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsintroductionquickstart" href="/v2.4-rc/docs/introduction/quickstart/">Quickstart</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsintroductionplatforms" href="/v2.4-rc/docs/introduction/platforms/">Supported Platforms</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/concepts/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Concepts</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsconcepts">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptscluster-topologies" href="/v2.4-rc/docs/concepts/cluster-topologies/">Cluster Topologies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsclusters" href="/v2.4-rc/docs/concepts/clusters/">Clusters</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptscomponents" href="/v2.4-rc/docs/concepts/components/">Components</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptscompression" href="/v2.4-rc/docs/concepts/compression/">Compression</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsetcd" href="/v2.4-rc/docs/concepts/etcd/">Etcd</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsfencing" href="/v2.4-rc/docs/concepts/fencing/">Fencing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsnamespaces" href="/v2.4-rc/docs/concepts/namespaces/">Namespaces</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsnodes" href="/v2.4-rc/docs/concepts/nodes/">Nodes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptspolicies" href="/v2.4-rc/docs/concepts/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsrwx" href="/v2.4-rc/docs/concepts/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsreplication" href="/v2.4-rc/docs/concepts/replication/">Replication</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsconceptsvolumes" href="/v2.4-rc/docs/concepts/volumes/">Volumes</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/prerequisites/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Prerequisites</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsprerequisites">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitessystemconfiguration" href="/v2.4-rc/docs/prerequisites/systemconfiguration/">System Configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitesfirewalls" href="/v2.4-rc/docs/prerequisites/firewalls/">Ports and Firewall settings</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitesmountpropagation" href="/v2.4-rc/docs/prerequisites/mountpropagation/">Mount Propagation</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitespidlimits" href="/v2.4-rc/docs/prerequisites/pidlimits/">PID Limits</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitesmax-aio" href="/v2.4-rc/docs/prerequisites/max-aio/">Max AIO</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsprerequisitesetcd" href="/v2.4-rc/docs/prerequisites/etcd/">Etcd</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/install/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Install</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsinstall">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsinstallkubernetes" href="/v2.4-rc/docs/install/kubernetes/">Kubernetes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsinstallopenshift" href="/v2.4-rc/docs/install/openshift/">OpenShift</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsinstallrancher" href="/v2.4-rc/docs/install/rancher/">Rancher</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/platforms/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Platforms</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsplatforms">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsplatformsaws-eks" href="/v2.4-rc/docs/platforms/aws-eks/">AWS EKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsplatformsazure-aks" href="/v2.4-rc/docs/platforms/azure-aks/">Azure AKS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsplatformsdockeree" href="/v2.4-rc/docs/platforms/dockeree/">DockerEE</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsplatformsopenshift" href="/v2.4-rc/docs/platforms/openshift/">OpenShift</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsplatformsrancher" href="/v2.4-rc/docs/platforms/rancher/">Rancher</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsbest-practices" href="/v2.4-rc/docs/best-practices/">Best Practices</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/operations/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Operations</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsoperations">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationscluster-id" href="/v2.4-rc/docs/operations/cluster-id/">ClusterID</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsencryption" href="/v2.4-rc/docs/operations/encryption/">Encryption</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/operations/etcd/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Etcd</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsoperationsetcd">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsetcdetcd-migration" href="/v2.4-rc/docs/operations/etcd/etcd-migration/">Migrate Etcd</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsetcdstorageos-secret-info" href="/v2.4-rc/docs/operations/etcd/storageos-secret-info/">mTLS</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsfailure-modes" href="/v2.4-rc/docs/operations/failure-modes/">Failure Modes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsfencing" href="/v2.4-rc/docs/operations/fencing/">Fencing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsfirstpvc" href="/v2.4-rc/docs/operations/firstpvc/">First PVC</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationshealth" href="/v2.4-rc/docs/operations/health/">Health</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsmanaging-host-storage" href="/v2.4-rc/docs/operations/managing-host-storage/">Host Storage</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationslicensing" href="/v2.4-rc/docs/operations/licensing/">Licensing</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsnamespaces" href="/v2.4-rc/docs/operations/namespaces/">Namespaces</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationspolicies" href="/v2.4-rc/docs/operations/policies/">Policies</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsrwx" href="/v2.4-rc/docs/operations/rwx/">ReadWriteMany</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsstorageclasses" href="/v2.4-rc/docs/operations/storageclasses/">StorageClasses</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationstrim" href="/v2.4-rc/docs/operations/trim/">TRIM</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationstroubleshooting" href="/v2.4-rc/docs/operations/troubleshooting/">Troubleshooting</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsuninstall" href="/v2.4-rc/docs/operations/uninstall/">Uninstall StorageOS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsupgrade" href="/v2.4-rc/docs/operations/upgrade/">Upgrade StorageOS</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsusers" href="/v2.4-rc/docs/operations/users/">User Management</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsoperationsresize" href="/v2.4-rc/docs/operations/resize/">Volume Resize</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/usecases/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Use Cases</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsusecases">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasescassandra" href="/v2.4-rc/docs/usecases/cassandra/">Cassandra</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecaseselasticsearch" href="/v2.4-rc/docs/usecases/elasticsearch/">Elasticsearch</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesinfluxdb" href="/v2.4-rc/docs/usecases/influxdb/">InfluxDB</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesjenkins" href="/v2.4-rc/docs/usecases/jenkins/">Jenkins</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecaseskafka" href="/v2.4-rc/docs/usecases/kafka/">Kafka</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecaseskubevirt" href="/v2.4-rc/docs/usecases/kubevirt/">Kubevirt</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesmssql" href="/v2.4-rc/docs/usecases/mssql/">MS SQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesmysql" href="/v2.4-rc/docs/usecases/mysql/">MySQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesnginx" href="/v2.4-rc/docs/usecases/nginx/">Nginx</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasespostgres" href="/v2.4-rc/docs/usecases/postgres/">PostgreSQL</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesprometheus" href="/v2.4-rc/docs/usecases/prometheus/">Prometheus</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesredis" href="/v2.4-rc/docs/usecases/redis/">Redis</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasessidecar-backups" href="/v2.4-rc/docs/usecases/sidecar-backups/">Sidecar Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecasesvelero-backups" href="/v2.4-rc/docs/usecases/velero-backups/">Velero Backups</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsusecaseszookeeper" href="/v2.4-rc/docs/usecases/zookeeper/">Zookeeper</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/reference/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Reference</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsreference">
+      
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/reference/bundles/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Bundles</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsreferencebundles">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencebundlesdiagnostic-bundle" href="/v2.4-rc/docs/reference/bundles/diagnostic-bundle/">Diagnostic bundle</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencebundlessupport_bundle" href="/v2.4-rc/docs/reference/bundles/support_bundle/">Support bundle</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceapi" href="/v2.4-rc/docs/reference/api/">API Reference</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/reference/cli/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">CLI</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsreferencecli">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecliapply" href="/v2.4-rc/docs/reference/cli/apply/">Apply</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecliattach" href="/v2.4-rc/docs/reference/cli/attach/">Attach</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceclicreate" href="/v2.4-rc/docs/reference/cli/create/">Create</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceclidelete" href="/v2.4-rc/docs/reference/cli/delete/">Delete</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceclidescribe" href="/v2.4-rc/docs/reference/cli/describe/">Describe</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceclidetach" href="/v2.4-rc/docs/reference/cli/detach/">Detach Volume</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecliget" href="/v2.4-rc/docs/reference/cli/get/">Get</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceclihelp" href="/v2.4-rc/docs/reference/cli/help/">Help</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecliupdate" href="/v2.4-rc/docs/reference/cli/update/">Update volume</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecliversion" href="/v2.4-rc/docs/reference/cli/version/">Version</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/v2.4-rc/docs/reference/cluster-operator/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Cluster Operator</a>
+  </li>
+  <ul>
+    <li class="collapse " id="v24-rcdocsreferencecluster-operator">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecluster-operatorinstall" href="/v2.4-rc/docs/reference/cluster-operator/install/">Install</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecluster-operatorconfiguration" href="/v2.4-rc/docs/reference/cluster-operator/configuration/">Configuration</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecluster-operatorexamples" href="/v2.4-rc/docs/reference/cluster-operator/examples/">Examples</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecluster-operatorupgrade" href="/v2.4-rc/docs/reference/cluster-operator/upgrade/">Operator upgrade</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencecontributing" href="/v2.4-rc/docs/reference/contributing/">Contributing to the docs</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceencryption" href="/v2.4-rc/docs/reference/encryption/">Encryption</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencegui" href="/v2.4-rc/docs/reference/gui/">GUI</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceinit-container" href="/v2.4-rc/docs/reference/init-container/">Init container</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencekubernetes-object-sync" href="/v2.4-rc/docs/reference/kubernetes-object-sync/">Kubernetes Object Sync</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencelabels" href="/v2.4-rc/docs/reference/labels/">Labels</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencelicence" href="/v2.4-rc/docs/reference/licence/">Licence</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceopen_source_attribution" href="/v2.4-rc/docs/reference/open_source_attribution/">Open Source Attribution</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencerelease_notes" href="/v2.4-rc/docs/reference/release_notes/">Release notes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferenceresource_requests_and_limits" href="/v2.4-rc/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencetelemetry" href="/v2.4-rc/docs/reference/telemetry/">StorageOS Telemetry</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencefilesystems" href="/v2.4-rc/docs/reference/filesystems/">Supported File systems</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocsreferencetolerations" href="/v2.4-rc/docs/reference/tolerations/">Tolerations</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-v24-rcdocssupport" href="/v2.4-rc/docs/support/">Support</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page  active" id="m-v24-rcdocsself-eval" href="/v2.4-rc/docs/self-eval/">Self Evaluation Guide</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
+  </nav>
+</div>
+
+
+
+
+          </div>
+          <div class="d-none d-xl-block col-xl-2 td-toc d-print-none">
+            
+
+
+
+
+
+
+
+
+
+
+
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#support-for-self-evaluations">Support for Self Evaluations</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-nameprerequisitesaprerequisites">Prerequisites</a></li>
+    <li><a href="#a-namequick-installationaquick-installation">Quick Installation</a></li>
+    <li><a href="#a-namestepbystepainstalling-storageos-step-by-step">Installing StorageOS Step By Step</a>
+      <ul>
+        <li><a href="#a-nameinstalletcdainstall-etcd">Install etcd</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-nameinstallstorageosoperatorainstall-storageos-operator">Install StorageOS Operator</a></li>
+    <li><a href="#a-nameinstallstorageosainstall-storageos">Install StorageOS</a></li>
+    <li><a href="#a-namestorageosvolumeaprovision-a-storageos-volume">Provision a StorageOS Volume</a></li>
+    <li><a href="#a-namelicenseclusteralicense-cluster">License cluster</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-namevolumereplicationavolume-replication">Volume Replication</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#a-nameconsiderationsaconsiderations">Considerations</a>
+      <ul>
+        <li><a href="#a-namevolumeplacementalocal-vs-remote-volumes">Local vs. Remote Volumes</a></li>
+        <li><a href="#a-namereplicationathe-effect-of-synchronous-replication">The Effect of Synchronous Replication</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-namesyntheticbenchmarksasynthetic-benchmarks">Synthetic Benchmarks</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-nameapplicationbenchmarksaapplication-benchmarks">Application Benchmarks</a></li>
+  </ul>
+</nav>
+
+
+
+          </div>
+          <main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+            
+  
+
+            <nav aria-label="breadcrumb" class="d-none d-md-block d-print-none">
+	<ol class="breadcrumb spb-1">
+		
+
+
+
+
+
+
+
+<li class="breadcrumb-item" >
+	<a href="https://docs.storageos.com/v2.4-rc/docs/">Documentation V2</a>
+</li>
+
+
+
+
+<li class="breadcrumb-item active" aria-current="page">
+	<a href="https://docs.storageos.com/v2.4-rc/docs/self-eval/">Self Evaluation Guide</a>
+</li>
+
+	</ol>
+</nav	>
+
+            
+<div class="td-content">
+	<h1>Self Evaluation Guide</h1>
+	<div class="lead">Step-by-step guide to installing and evaluating StorageOS</div>
+	<p>Our self-evaluation guide is a step by step recipe for installing and testing
+StorageOS. This guide is divided into three sections:</p>
+<ul>
+<li><strong>Installation</strong> - install StorageOS with a single command</li>
+<li><strong>Feature Testing</strong> - short walkthrough of some of our features</li>
+<li><strong>Benchmarking</strong> - a recipe to benchmark StorageOS on your infrastructure</li>
+</ul>
+<p>For more comprehensive documentation including installation advice for complex
+setups, operational guides, and use-cases, please see our main <a href="https://docs.storageos.com/v2.4-rc/docs/">documentation
+site</a>.</p>
+<h2 id="support-for-self-evaluations">Support for Self Evaluations</h2>
+<p>Should you have questions or require support, there are several ways to get in
+touch with us. The fastest way to get in touch is to <a href="https://slack.storageos.com">join our public Slack
+channel</a>. You can also get in touch via email to
+<a href="mailto:support@storageos.com">info@storageos.com</a>.</p>
+<p>Furthermore you can fill out the form below and we will get in touch.</p>
+<p> </p>
+<script charset="utf-8" type="text/javascript"
+src="//js.hsforms.net/forms/v2.js"></script>
+<script>
+
+hbspt.forms.create({
+
+   portalId: "3402546",
+   formId: "a07fecd3-ce5b-4835-b136-51a94a35632b",
+   sfdcCampaignId: "70158000000BAZzAAO"
+});
+</script>
+<p> </p>
+<h1 id="installation">Installation</h1>
+<p>In this document we detail a simple installation suitable for evaluation
+purposes. The etcd we install uses a 3 node cluster with ephemeral storage, and
+as such is not suitable for production workloads. However, for evaluation
+purposes it should be sufficient. For production deployments, please see our
+main <a href="https://docs.storageos.com/v2.4-rc/docs/prerequisites/etcd/">documentation pages</a>.</p>
+<p>A standard StorageOS installation uses the StorageOS operator, which performs
+most platform-specific configuration for you. The StorageOS operator has been
+certified by <a href="https://storageos.com/red-hat/">Red Hat</a> and is <a href="https://github.com/storageos/cluster-operator">open
+source</a>.</p>
+<p>The basic installation steps are:</p>
+<ul>
+<li>Check prerequisites</li>
+<li>Install an etcd cluster</li>
+<li>Install the <a href="https://docs.storageos.com/v2.4-rc/docs/reference/cluster-operator/">StorageOS Operator</a></li>
+<li>Install StorageOS by applying a CR for the Operator to action</li>
+</ul>
+<h2 id="a-nameprerequisitesaprerequisites"><a name='Prerequisites'></a>Prerequisites</h2>
+<p>While we do not require custom kernel modules or additional userspace tooling,
+StorageOS does have a few basic prerequisites that are met by default by most
+modern distributions:</p>
+<ul>
+<li>At least 1 CPU core, 2GB RAM free.</li>
+<li>A Kubernetes release within the four most recent versions.</li>
+<li>TCP ports 5701-5710 and TCP &amp; UDP 5711 open between all nodes in the cluster.</li>
+<li>A 64bit supported operating system - StorageOS can run without additional
+packages in Debian 9, RancherOS, RHEL7.5,8 and CentOS7,8 and need the package
+linux-image-extra for Ubuntu.</li>
+<li>Mainline kernel modules <code>target_core_mod</code>, <code>tcp_loop</code>, <code>target_core_file</code>,
+<code>target_core_user</code>, <code>configfs</code>, and <code>ui</code>. These are present by default on
+most modern linux distributions, and can be installed with standard package
+managers. See our <a href="https://docs.storageos.com/v2.4-rc/docs/prerequisites/systemconfiguration/">system configuration</a> page for instructions.</li>
+</ul>
+<h2 id="a-namequick-installationaquick-installation"><a name='Quick Installation'></a>Quick Installation</h2>
+<p>For those feeling brave and/or lucky, we have encapsulated the installation
+instructions in this guide into a short bash script. As with similar
+instructions elsewhere on the internet, caution is advised here. The script is
+liberally commented and we recommend that you inspect it in your text editor of
+choice before running.</p>
+<blockquote>
+<p>Run the following command where <code>kubectl</code> is installed and with the context
+set for your Kubernetes cluster</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sL https://storageos.run <span style="color:#000;font-weight:bold">|</span> bash
+</code></pre></div><p>Note that this script deploys a cluster with etcd on transient storage,
+<strong>suitable for evaluation purposes only</strong>. Do not use this cluster for
+production workloads.</p>
+<p>Your new cluster can be used straight away. You can now jump to the
+<a href="https://docs.storageos.com/v2.4-rc/docs/self-eval/#StorageOSVolume">Provision a Volume</a> section below to provision your first volume and license
+the cluster.</p>
+<h2 id="a-namestepbystepainstalling-storageos-step-by-step"><a name='StepByStep'></a>Installing StorageOS Step By Step</h2>
+<p>This section describes the installation steps in some more detail.</p>
+<h3 id="a-nameinstalletcdainstall-etcd"><a name='Installetcd'></a>Install etcd</h3>
+<p>Here we install a 3 node etcd cluster using the CoreOS operator to install on
+ephemeral storage within your Kubernetes cluster. This is suitable for
+evaluation purposes. For production deployment instructions, please see our
+<a href="https://docs.storageos.com/v2.4-rc/docs/prerequisites/etcd/">production etcd</a> page.</p>
+<ol>
+<li>
+<p>Download repo</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/coreos/etcd-operator.git
+</code></pre></div></li>
+<li>
+<p>Configure NS, Role and RoleBinding</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">export</span> <span style="color:#000">ROLE_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd-operator
+$ <span style="color:#204a87">export</span> <span style="color:#000">ROLE_BINDING_NAME</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd-operator
+$ <span style="color:#204a87">export</span> <span style="color:#000">NAMESPACE</span><span style="color:#ce5c00;font-weight:bold">=</span>etcd
+</code></pre></div></li>
+<li>
+<p>Create Namespace</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create namespace <span style="color:#000">$NAMESPACE</span>
+</code></pre></div></li>
+<li>
+<p>Deploy Operator</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./etcd-operator/example/rbac/create_role.sh
+$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: apps/v1
+</span><span style="color:#4e9a06">kind: Deployment
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: etcd-operator
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  selector:
+</span><span style="color:#4e9a06">    matchLabels:
+</span><span style="color:#4e9a06">      app: etcd-operator
+</span><span style="color:#4e9a06">  replicas: 1
+</span><span style="color:#4e9a06">  template:
+</span><span style="color:#4e9a06">    metadata:
+</span><span style="color:#4e9a06">      labels:
+</span><span style="color:#4e9a06">        app: etcd-operator
+</span><span style="color:#4e9a06">    spec:
+</span><span style="color:#4e9a06">      containers:
+</span><span style="color:#4e9a06">      - name: etcd-operator
+</span><span style="color:#4e9a06">        image: quay.io/coreos/etcd-operator:v0.9.4
+</span><span style="color:#4e9a06">        command:
+</span><span style="color:#4e9a06">        - etcd-operator
+</span><span style="color:#4e9a06">        env:
+</span><span style="color:#4e9a06">        - name: MY_POD_NAMESPACE
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.namespace
+</span><span style="color:#4e9a06">        - name: MY_POD_NAME
+</span><span style="color:#4e9a06">          valueFrom:
+</span><span style="color:#4e9a06">            fieldRef:
+</span><span style="color:#4e9a06">              fieldPath: metadata.name
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Create the EtcdCluster resource</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n <span style="color:#000">$NAMESPACE</span> create -f - <span style="color:#4e9a06">&lt;&lt;YAML
+</span><span style="color:#4e9a06">apiVersion: &#34;etcd.database.coreos.com/v1beta2&#34;
+</span><span style="color:#4e9a06">kind: &#34;EtcdCluster&#34;
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06"> name: &#34;storageos-etcd&#34;
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06"> size: 3 # Set to 1 if insufficient nodes
+</span><span style="color:#4e9a06"> version: &#34;3.4.7&#34;
+</span><span style="color:#4e9a06"> pod:
+</span><span style="color:#4e9a06">   etcdEnv:
+</span><span style="color:#4e9a06">   - name: ETCD_QUOTA_BACKEND_BYTES
+</span><span style="color:#4e9a06">     value: &#34;2147483648&#34;  # 2 GB 
+</span><span style="color:#4e9a06">   - name: ETCD_AUTO_COMPACTION_RETENTION
+</span><span style="color:#4e9a06">     value: &#34;1000&#34; # Keep 1000 revisions
+</span><span style="color:#4e9a06">   - name: ETCD_AUTO_COMPACTION_MODE
+</span><span style="color:#4e9a06">     value: &#34;revision&#34; # Set the revision mode
+</span><span style="color:#4e9a06">   resources:
+</span><span style="color:#4e9a06">     requests:
+</span><span style="color:#4e9a06">       cpu: 200m
+</span><span style="color:#4e9a06">       memory: 300Mi
+</span><span style="color:#4e9a06">   securityContext:
+</span><span style="color:#4e9a06">     runAsNonRoot: true
+</span><span style="color:#4e9a06">     runAsUser: 9000
+</span><span style="color:#4e9a06">     fsGroup: 9000
+</span><span style="color:#4e9a06">   tolerations:
+</span><span style="color:#4e9a06">   - operator: &#34;Exists&#34; # add tolerations to match all taints on the master nodes where etcd will be deployed
+</span><span style="color:#4e9a06">   affinity:
+</span><span style="color:#4e9a06">     podAntiAffinity:
+</span><span style="color:#4e9a06">       preferredDuringSchedulingIgnoredDuringExecution:
+</span><span style="color:#4e9a06">       - weight: 100
+</span><span style="color:#4e9a06">         podAffinityTerm:
+</span><span style="color:#4e9a06">           labelSelector:
+</span><span style="color:#4e9a06">             matchExpressions:
+</span><span style="color:#4e9a06">             - key: etcd_cluster
+</span><span style="color:#4e9a06">               operator: In
+</span><span style="color:#4e9a06">               values:
+</span><span style="color:#4e9a06">               - storageos-etcd
+</span><span style="color:#4e9a06">           topologyKey: kubernetes.io/hostname
+</span><span style="color:#4e9a06">YAML</span>
+</code></pre></div></li>
+</ol>
+<p>This creates a 3 node etcd cluster and associated service in Kubernetes. We can
+use the service endpoint when creating the StorageOS cluster.</p>
+<h2 id="a-nameinstallstorageosoperatorainstall-storageos-operator"><a name='InstallStorageOSOperator'></a>Install StorageOS Operator</h2>
+<p>In order to install the StorageOS operator download the requisite yaml
+manifests or apply them with kubectl.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0-rc.1/storageos-operator.yaml
+</code></pre></div><p>You can verify the operator is running using the following command</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -n storageos-operator
+</code></pre></div><p> </p>
+<h2 id="a-nameinstallstorageosainstall-storageos"><a name='InstallStorageOS'></a>Install StorageOS</h2>
+<p>Once the StorageOS operator has been installed a StorageOS cluster can be
+generated by creating a StorageOSCluster resource.</p>
+<p>A StorageOSCluster resource describes the state of the StorageOS cluster that
+is desired and the StorageOS operator will create the desired StorageOS
+cluster. For examples of StorageOSCluster resources please see our examples
+page
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/examples">here</a>.
+For a full list of the configurable <code>spec</code> parameters of the StorageOSCluster
+resource please see
+<a href="https://docs.storageos.com/docs/reference/cluster-operator/configuration">here</a>.</p>
+<ol>
+<li>
+<p>Create a secret defining the API username and password</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$<span style="color:#f8f8f8;text-decoration:underline"> </span>kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>- &lt;&lt;END<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>Secret<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">labels</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">app</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">type</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;kubernetes.io/storageos&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">data</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># echo -n &#39;&lt;secret&gt;&#39; | base64</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">apiPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># CSI Credentials</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiProvisionUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiProvisionPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerPublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerPublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiNodePublishPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerExpandUsername</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">csiControllerExpandPassword</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>c3RvcmFnZW9z<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Create a StorageOSCluster resource</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">$<span style="color:#f8f8f8;text-decoration:underline"> </span>kubectl<span style="color:#f8f8f8;text-decoration:underline"> </span>create<span style="color:#f8f8f8;text-decoration:underline"> </span>-f<span style="color:#f8f8f8;text-decoration:underline"> </span>- &lt;&lt;END<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">apiVersion</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos.com/v1<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">kind</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>StorageOSCluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">metadata</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>example-storageoscluster<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">spec</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># StorageOS Pods are in kube-system by default</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefName</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-api&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">secretRefNamespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-operator&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">k8sDistro</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;upstream&#34;</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree)</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># storageClassName: fast # The storage class creates by the StorageOS operator is configurable</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#204a87;font-weight:bold">kvBackend</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">   </span><span style="color:#204a87;font-weight:bold">address</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;storageos-etcd-client.etcd.svc.cluster.local:2379&#34;</span><span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span>END<span style="color:#f8f8f8;text-decoration:underline">
+</span></code></pre></div></li>
+<li>
+<p>Confirm that the cluster has been created and that StorageOS pods are
+running</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system get pods
+</code></pre></div><p>StorageOS pods enter a ready state after a minimum of 45s has passed.</p>
+</li>
+<li>
+<p>Deploy the StorageOS CLI as a container</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system run <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--image storageos/cli:v2.4.0-rc.1 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--env <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>--command cli                            <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>-- /bin/sh -c <span style="color:#4e9a06">&#34;while true; do sleep 999999; done&#34;</span>
+</code></pre></div></li>
+</ol>
+<h2 id="a-namestorageosvolumeaprovision-a-storageos-volume"><a name='StorageOSVolume'></a>Provision a StorageOS Volume</h2>
+<p>Now that we have a working StorageOS cluster, we can provision a volume to test
+everything is working as expected.</p>
+<ol>
+<li>
+<p>Create a PVC</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: v1
+</span><span style="color:#4e9a06">kind: PersistentVolumeClaim
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: pvc-1
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  storageClassName: &#34;fast&#34;
+</span><span style="color:#4e9a06">  accessModes:
+</span><span style="color:#4e9a06">    - ReadWriteOnce
+</span><span style="color:#4e9a06">  resources:
+</span><span style="color:#4e9a06">    requests:
+</span><span style="color:#4e9a06">      storage: 5Gi
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Verify that the volume was created with the CLI</p>
+<blockquote>
+<p><code>pvc-1</code> should be listed in the CLI output</p>
+</blockquote>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
+</code></pre></div></li>
+<li>
+<p>Create a pod that consumes the PVC</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: v1
+</span><span style="color:#4e9a06">kind: Pod
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06"> name: d1
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06"> containers:
+</span><span style="color:#4e9a06">   - name: debian
+</span><span style="color:#4e9a06">     image: debian:9-slim
+</span><span style="color:#4e9a06">     command: [&#34;/bin/sleep&#34;]
+</span><span style="color:#4e9a06">     args: [ &#34;3600&#34; ]
+</span><span style="color:#4e9a06">     volumeMounts:
+</span><span style="color:#4e9a06">       - mountPath: /mnt
+</span><span style="color:#4e9a06">         name: v1
+</span><span style="color:#4e9a06"> volumes:
+</span><span style="color:#4e9a06">   - name: v1
+</span><span style="color:#4e9a06">     persistentVolumeClaim:
+</span><span style="color:#4e9a06">       claimName: pvc-1
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Check that the pod starts successfully. If the pod starts successfully then
+the StorageOS cluster is working correctly</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pod d1 -w
+</code></pre></div><p>The pod mounts a StorageOS volume under <code>/mnt</code> so any files written there
+will persist beyond the lifetime of the pod. This can be demonstrated using
+the following commands.</p>
+</li>
+<li>
+<p>Execute a shell inside the pod and write some data to a file</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it d1 -- bash
+root@d1:/# <span style="color:#204a87">echo</span> Hello World! &gt; /mnt/hello
+root@d1:/# cat /mnt/hello
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
+<li>
+<p>Delete the pod</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl delete pod d1
+</code></pre></div></li>
+<li>
+<p>Recreate the pod</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: v1
+</span><span style="color:#4e9a06">kind: Pod
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06"> name: d1
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06"> containers:
+</span><span style="color:#4e9a06">   - name: debian
+</span><span style="color:#4e9a06">     image: debian:9-slim
+</span><span style="color:#4e9a06">     command: [&#34;/bin/sleep&#34;]
+</span><span style="color:#4e9a06">     args: [ &#34;3600&#34; ]
+</span><span style="color:#4e9a06">     volumeMounts:
+</span><span style="color:#4e9a06">       - mountPath: /mnt
+</span><span style="color:#4e9a06">         name: v1
+</span><span style="color:#4e9a06"> volumes:
+</span><span style="color:#4e9a06">   - name: v1
+</span><span style="color:#4e9a06">     persistentVolumeClaim:
+</span><span style="color:#4e9a06">       claimName: pvc-1
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Open a shell inside the pod and check the contents of <code>/mnt/hello</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it d1 -- cat /mnt/hello
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="a-namelicenseclusteralicense-cluster"><a name='LicenseCluster'></a>License cluster</h2>
+<p>Newly installed StorageOS clusters must be licensed within 24 hours. Our
+developer license is free, and supports up to 5TiB of provisioned storage.</p>
+<p>You will need access to the StorageOS API on port 5705 of any of your nodes.
+For convenience, it is often easiest to port forward the service using the
+following kubectl incantation (this will block, so a second terminal window may
+be advisable):</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl port-forward -n kube-system svc/storageos <span style="color:#0000cf;font-weight:bold">5705</span>
+</code></pre></div><p>Now follow the instructions on our <a href="https://docs.storageos.com/v2.4-rc/docs/operations/licensing/">operations licensing</a> page to obtain and apply a license.</p>
+<p>Installation of StorageOS is now complete.</p>
+<h1 id="a-namestorageosfeaturesastorageos-features"><a name='StorageOSFeatures'></a>StorageOS Features</h1>
+<p>Now that you have a fully functional StorageOS cluster we will explain
+some of our features that may be of use to you as you complete application and
+synthetic benchmarks.</p>
+<p>StorageOS features are all enabled/disabled by applying labels to volumes.
+These labels can be passed to StorageOS via persistent volume claims (PVCs) or
+can be applied to volumes using the StorageOS CLI or GUI.</p>
+<p>The following is not an exhaustive feature list but outlines features which are
+commonly of use during a self-evaluation.</p>
+<h2 id="a-namevolumereplicationavolume-replication"><a name='VolumeReplication'></a>Volume Replication</h2>
+<p>StorageOS enables synchronous replication of volumes using the
+<code>storageos.com/replicas</code> label.</p>
+<p>The volume that is active is referred to as the master volume. The master
+volume and its replicas are always placed on separate nodes. In fact if a
+replica cannot be placed on a node without a replica of the same volume, the
+volume will fail to be created. For example, in a three node StorageOS cluster
+a volume with 3 replicas cannot be created as the third replica cannot be
+placed on a node that doesn&rsquo;t already contain a replica of the same volume.</p>
+<p>See our <a href="https://docs.storageos.com/docs/concepts/replication">replication
+documentation</a> for more
+information on volume replication.</p>
+<ol>
+<li>
+<p>To test volume replication create the following PersistentVolumeClaim</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: v1
+</span><span style="color:#4e9a06">kind: PersistentVolumeClaim
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06"> name: pvc-replicated
+</span><span style="color:#4e9a06"> labels:
+</span><span style="color:#4e9a06">   storageos.com/replicas: &#34;1&#34;
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06"> storageClassName: &#34;fast&#34;
+</span><span style="color:#4e9a06"> accessModes:
+</span><span style="color:#4e9a06"> - ReadWriteOnce
+</span><span style="color:#4e9a06"> resources:
+</span><span style="color:#4e9a06">   requests:
+</span><span style="color:#4e9a06">     storage: 5Gi
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div><blockquote>
+<p>Note that volume replication is enabled by setting the
+<code>storageos.com/replicas</code> label on the volume.</p>
+</blockquote>
+</li>
+<li>
+<p>Confirm that a replicated volume has been created by using the StorageOS CLI
+or UI</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
+</code></pre></div></li>
+<li>
+<p>Create a pod that uses the PVC</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f - <span style="color:#4e9a06">&lt;&lt;END
+</span><span style="color:#4e9a06">apiVersion: v1
+</span><span style="color:#4e9a06">kind: Pod
+</span><span style="color:#4e9a06">metadata:
+</span><span style="color:#4e9a06">  name: replicated-pod
+</span><span style="color:#4e9a06">spec:
+</span><span style="color:#4e9a06">  containers:
+</span><span style="color:#4e9a06">   - name: debian
+</span><span style="color:#4e9a06">     image: debian:9-slim
+</span><span style="color:#4e9a06">     command: [&#34;/bin/sleep&#34;]
+</span><span style="color:#4e9a06">     args: [ &#34;3600&#34;  ]
+</span><span style="color:#4e9a06">     volumeMounts:
+</span><span style="color:#4e9a06">       - mountPath: /mnt
+</span><span style="color:#4e9a06">         name: v1
+</span><span style="color:#4e9a06">  volumes:
+</span><span style="color:#4e9a06">   - name: v1
+</span><span style="color:#4e9a06">     persistentVolumeClaim:
+</span><span style="color:#4e9a06">       claimName: pvc-replicated
+</span><span style="color:#4e9a06">END</span>
+</code></pre></div></li>
+<li>
+<p>Write data to the volume</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it replicated-pod -- bash
+root@replicated-pod:/# <span style="color:#204a87">echo</span> Hello World! &gt; /mnt/hello
+root@replicated-pod:/# cat /mnt/hello
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
+<li>
+<p>Find the location of the master volume and shutdown the node</p>
+<p>Shutting down a node causes all volumes, with online replicas, on the node
+to be evicted. For replicated volumes this immediately promotes a replica
+to become the new master.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pvc
+NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvc-replicated Bound    pvc-29e2ad6e-8c4e-11e9-8356-027bfbbece86   5Gi        RWO            fast           1m
+
+$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
+NAMESPACE  NAME                                      SIZE     LOCATION              ATTACHED ON   REPLICAS  AGE
+default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">26</span> seconds ago
+
+</code></pre></div></li>
+<li>
+<p>Check the location of the master volume and notice that it is on a new node.
+If the pod that mounted the volume was located on the same node that was
+shutdown then the pod will need to be recreated.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it -n kube-system cli -- storageos get volumes
+NAMESPACE  NAME                                      SIZE     LOCATION               ATTACHED ON   REPLICAS  AGE
+default    pvc-4e796a62-0271-45f9-9908-21d58789a3fe  5.0 GiB  kind-worker2 <span style="color:#ce5c00;font-weight:bold">(</span>online<span style="color:#ce5c00;font-weight:bold">)</span>  kind-worker2  1/1       <span style="color:#0000cf;font-weight:bold">46</span> seconds ago
+</code></pre></div></li>
+<li>
+<p>Check that the data is still accessible to the pod</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it replicated-pod -- bash
+root@replicated-pod:/# cat /mnt/hello
+</code></pre></div><blockquote>
+<p><code>Hello World!</code> should be printed out.</p>
+</blockquote>
+</li>
+</ol>
+<p> </p>
+<h1 id="a-namebenchmarkingabenchmarking"><a name='Benchmarking'></a>Benchmarking</h1>
+<p>Benchmarking storage is a complex topic. Considering the many books and papers
+that have been written about benchmarking, we could write many paragraphs here
+and only begin to scratch the surface.</p>
+<p>Taking this complexity into account we present recipes for both synthetic
+benchmarks using <a href="https://github.com/axboe/fio">FIO</a>, and a sample application
+benchmark to test PostgreSQL using
+<a href="https://www.postgresql.org/docs/current/pgbench.html">pgbench</a>. The approaches
+are complementary - synthetic benchmarks allow us to strictly control the
+parameters of the IO we put through the system in order to stress various
+aspects of it. Application benchmarks allow us to get a sense of the
+performance of the system when running an actual representative workload -
+which of course is the ultimate arbiter of performance.</p>
+<p>Despite the inherent complexity of benchmarking storage there are a few general
+considerations to keep in mind.</p>
+<h2 id="a-nameconsiderationsaconsiderations"><a name='Considerations'></a>Considerations</h2>
+<h3 id="a-namevolumeplacementalocal-vs-remote-volumes"><a name='VolumePlacement'></a>Local vs. Remote Volumes</h3>
+<p>When a workload is placed on the same node as a volume, there is no network
+round trip for IO, and performance is consequently improved. When considering
+the performance of StorageOS it is important to evaluate both local and remote
+volumes; since for certain workloads we want the high performance of a local
+attachment, but we also desire the flexibility of knowing that our less
+performance-sensitive workloads can run from any node in the cluster.</p>
+<h3 id="a-namereplicationathe-effect-of-synchronous-replication"><a name='Replication'></a>The Effect of Synchronous Replication</h3>
+<p>Synchronous replication does not impact the read performance of a volume, but
+it can have a significant impact on the write performance of the volume, since
+all writes must be propagated to replicas before being acked to the
+application. The impact varies in proportion to the inter-node latency. For an
+inter-node latency of 1ms, we have a max ceiling of 1000 write IOPS, and in
+reality a little less than that to allow for processing time on the nodes. This
+is less concerning then it may first appear, since many applications will issue
+multiple writes in parallel (known as increasing the queue depth).</p>
+<h2 id="a-namesyntheticbenchmarksasynthetic-benchmarks"><a name='SyntheticBenchmarks'></a>Synthetic Benchmarks</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Kubernetes cluster with a minimum of 3 nodes and a minimum of
+30 Gb available capacity</li>
+<li>StorageOS CLI running as a pod in the cluster</li>
+</ul>
+<p>Synthetic benchmarks using tools such as FIO are a useful way to begin
+measuring StorageOS performance. While not fully representative of application
+performance, they allow us to reason about the performance of storage devices
+without the added complexity of simulating real world workloads, and provide
+results easily comparable across platforms.</p>
+<p>FIO has a number of parameters that can be adjusted to simulate a variety of
+workloads and configurations. Parameters that are particularly important are:</p>
+<ul>
+<li><strong>Block Size</strong> - the size of the IO units performed.</li>
+<li><strong>Queue Depth</strong> - the amount of concurrent IOs in flight</li>
+<li><strong>IO Pattern</strong> - access can be random across the disk, or sequentially. IO
+subsystems typically perform better with sequential IO, because of the
+effect of read ahead caches, and other factors</li>
+</ul>
+<p>For this self-evaluation we will run a set of tests based on the excellent
+<a href="https://github.com/leeliu/dbench">DBench</a>, which distills the numerous FIO
+options into a series of well-crafted scenarios:</p>
+<ul>
+<li><strong>Random Read/Write IOPS and BW</strong> - these tests measure the IOPS ceiling
+(with a 4k block size) and bandwidth ceiling (with a 128K block size) of the
+volume using a random IO pattern and high queue depth</li>
+<li><strong>Average Latency</strong> - these tests measure the IO latency of the volume under
+favourable conditions using a random access pattern, low queue depth and low
+block size</li>
+<li><strong>Sequential Read/Write</strong> - these tests measure the sequential read/write
+throughput of the volume with a high queue depth and high block size</li>
+<li><strong>Mixed Random Read/Write IOPS</strong> - these tests measure the performance of the
+volume under a 60/40 read/write workload using a random access pattern and
+low blocksize</li>
+</ul>
+<p>For convenience we present a single script to run the scenarios using local and
+remote volumes both with and without a replica. Deploy the FIO tests for the
+four scenarios using the following command:</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sL https://docs.storageos.com/v2.4-rc/sh/deploy-synthetic-benchmarks.sh <span style="color:#000;font-weight:bold">|</span> bash
+</code></pre></div><p>The script will take approximately 20 minutes to complete, and will print the
+results to STDOUT.</p>
+<p>The exact results observed will depend on the particular platform and
+environment, but the following trends should be observable:</p>
+<ul>
+<li>local volumes perform faster than remote volumes</li>
+<li>read performance is independent of the number of replicas</li>
+<li>write performance is dependent on the number of replicas</li>
+</ul>
+<h2 id="a-nameapplicationbenchmarksaapplication-benchmarks"><a name='ApplicationBenchmarks'></a>Application Benchmarks</h2>
+<p>While synthetic benchmarks are useful for examining the behaviour of StorageOS
+with very specific workloads, in order to get a realistic picture of StorageOS
+performance actual applications should be tested.</p>
+<p>Many applications come with test suites which provide standard workloads. For
+best results, test using your application of choice with a representative
+configuration and real world data.</p>
+<p>As an example of benchmarking an application the following steps lay out how to
+benchmark a Postgres database backed by a StorageOS volume.</p>
+<ol>
+<li>
+<p>Start by cloning the StorageOS use cases repository. Note this is the same
+repository that we cloned earlier so if you already have a copy just <code>cd storageos-usecases/pgbench</code>.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git clone https://github.com/storageos/use-cases.git storageos-usecases
+</code></pre></div></li>
+<li>
+<p>Move into the Postgres examples folder</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#204a87">cd</span> storageos-usecases/pgbench
+</code></pre></div></li>
+<li>
+<p>Decide which node you want the pgbench pod and volume to be located on. The
+node needs to be labelled <code>app=postgres</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl label node &lt;NODE&gt; <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>postgres
+</code></pre></div></li>
+<li>
+<p>Then set the <code>storageos.com/hint.master</code> label in
+20-postgres-statefulset.yaml file to match the StorageOS nodeID for the node
+you have chosen before creating all the files. The StorageOS nodeID can be
+obtained using the cli and doing a <code>describe node</code></p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl create -f .
+</code></pre></div></li>
+<li>
+<p>Confirm that Postgres is up and running</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl get pods -w -l <span style="color:#000">app</span><span style="color:#ce5c00;font-weight:bold">=</span>postgres
+</code></pre></div></li>
+<li>
+<p>Use the StorageOS CLI or the GUI to check the master volume location and the
+mount location. They should match</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl -n kube-system <span style="color:#204a87">exec</span> -it cli -- storageos get volumes
+</code></pre></div></li>
+<li>
+<p>Exec into the pgbench container and run pgbench</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ kubectl <span style="color:#204a87">exec</span> -it pgbench -- bash -c <span style="color:#4e9a06">&#39;/opt/cpm/bin/start.sh&#39;</span>
+</code></pre></div></li>
+</ol>
+<p> </p>
+<h1 id="a-nameconclusionaconclusion"><a name='Conclusion'></a>Conclusion</h1>
+<p>After completing these steps you will have benchmark scores for StorageOS.
+Please keep in mind that benchmarks are only part of the story and that there
+is no replacement for testing actual production or production like workloads.</p>
+<p>StorageOS invites you to provide feedback on your self-evaluation to the <a href="https://storageos.slack.com">slack
+channel</a> or by directly emailing us at
+<a href="mailto:info@storageos.com">info@storageos.com</a>]</p>
+
+	
+	
+	<div class="text-muted mt-5 pt-3 border-top"></div>
+</div>
+
+
+          </main>
+        </div>
+      </div>
+
+    </div>
+    
+<footer class="foot row">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="footer-nav-column">
+        <a href="https://storageos.com/" class="custom-logo-link"><img src="https://storageos.com/wp-content/themes/storageOS/images/logo.svg" class="master-logo"></a>
+          <div class="footer-social">
+              <div class="menu-footer-social-container">
+                  <ul id="menu-footer-social" class="menu">
+                    <li id="menu-item-22" class="menu-item menu-item-type-custom menu-item-object-custom social-icon twitter menu-item-22"><a href="https://twitter.com/Storage_OS" data-ps2id-api="true"><i class="icon-2x icon-twitter "></i><span class="fa-hidden">Twitter</span></a></li>
+                    <li id="menu-item-23" class="menu-item menu-item-type-custom menu-item-object-custom social-icon facebook menu-item-23"><a href="https://www.facebook.com/storageos" data-ps2id-api="true"><i class="icon-2x icon-facebook "></i><span class="fa-hidden">Facebook</span></a></li>
+                    <li id="menu-item-24" class="menu-item menu-item-type-custom menu-item-object-custom social-icon linkedin menu-item-24"><a href="https://www.linkedin.com/company/storageos" data-ps2id-api="true"><i class="icon-2x icon-linkedin "></i><span class="fa-hidden">LinkedIn</span></a></li>
+                    <li id="menu-item-3202" class="slack menu-item menu-item-type-custom menu-item-object-custom menu-item-3202"><a href="https://slack.storageos.com/" data-ps2id-api="true">Slack</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-nav-wrap footer-nav-wrap-1">
+            <div class="col-sm-6">
+              <div class="footer-nav-column"><h3 class="widget-title">Product</h3>
+                <div class="menu-footer-product-container">
+                  <ul id="menu-footer-product" class="menu">
+                    <li id="menu-item-3818" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3818"><a href="https://storageos.com/product" data-ps2id-api="true">Overview</a></li>
+                    <li id="menu-item-3817" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3817"><a href="https://storageos.com/features" data-ps2id-api="true">Features</a></li>
+                    <li id="menu-item-3891" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3891"><a href="https://storageos.com/why-storageos" data-ps2id-api="true">Why StorageOS</a></li>
+                    <li id="menu-item-3892" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3892"><a href="https://storageos.com/how-it-works" data-ps2id-api="true">How it works</a></li>
+                    <li id="menu-item-3819" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3819"><a href="https://storageos.com/use-cases" data-ps2id-api="true">Use cases</a></li>
+                    <li id="menu-item-4616" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4616"><a href="https://storageos.com/support" data-ps2id-api="true">Support</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="footer-nav-column"><h3 class="widget-title">Solutions</h3>
+                <div class="menu-footer-solutions-container">
+                  <ul id="menu-footer-solutions" class="menu">
+                    <li id="menu-item-3894" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3894"><a href="https://storageos.com/developers" data-ps2id-api="true">Developers</a></li>
+                    <li id="menu-item-3895" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3895"><a href="https://storageos.com/infrastructure-managers" data-ps2id-api="true">Infrastructure Managers</a></li>
+                    <li id="menu-item-3893" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3893"><a href="https://storageos.com/cloud" data-ps2id-api="true">Cloud</a></li>
+                  </ul>
+                </div>
+
+                <h3 class="widget-title">Docs</h3>
+                <div class="menu-footer-docs-container">
+                  <ul id="menu-footer-docs" class="menu">
+                    <li id="menu-item-3828" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3828"><a href="https://docs.storageos.com/" data-ps2id-api="true">Overview</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-nav-wrap footer-nav-wrap-2">
+            <div class="col-sm-6">
+              <div class="footer-nav-column"><h3 class="widget-title">Company</h3>
+                <div class="menu-footer-company-container">
+                  <ul id="menu-footer-company" class="menu">
+                    <li id="menu-item-3830" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3830"><a href="https://storageos.com/company/#about" data-ps2id-api="true">About Us</a></li>
+                    <li id="menu-item-4123" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4123"><a href="https://storageos.com/leadership" data-ps2id-api="true">Leadership</a></li>
+                    <li id="menu-item-3840" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3840"><a href="https://storageos.com/careers" data-ps2id-api="true">Careers</a></li>
+                    <li id="menu-item-3907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3907"><a href="https://storageos.com/news" data-ps2id-api="true">News</a></li>
+                    <li id="menu-item-3908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3908"><a href="https://storageos.com/events" data-ps2id-api="true">Events</a></li>
+                    <li id="menu-item-4702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4702"><a href="https://storageos.com/customers" data-ps2id-api="true">Customers</a></li>
+                    <li id="menu-item-4617" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4617"><a href="https://storageos.com/partners" data-ps2id-api="true">Partners</a></li>
+                    <li id="menu-item-4124" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4124"><a href="https://storageos.com/contact" data-ps2id-api="true">Contact</a></li>
+                    <li id="menu-item-3924" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3924"><a href="https://storageos.com/privacy" data-ps2id-api="true">Legal</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <div class="footer-nav-column"><h3 class="widget-title">Learn</h3>
+                <div class="menu-footer-learn-container">
+                  <ul id="menu-footer-learn" class="menu">
+                    <li id="menu-item-3835" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3835"><a href="https://storageos.com/blog" data-ps2id-api="true">Blog</a></li>
+                    <li id="menu-item-3837" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3837"><a href="https://play.storageos.com/" data-ps2id-api="true">play.storageos.com</a></li>
+                    <li id="menu-item-3838" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3838"><a href="https://storageos.com/resources" data-ps2id-api="true">Resources</a></li>
+                    <li id="menu-item-3839" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3839"><a href="https://resources.storageos.com/demo-request" data-ps2id-api="true">Get a demo</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+</footer>
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+<script src="/v2.4-rc/js/main.min.07381cb6406f1d15281f85a6dea05a3c2e9460f063c7e8dcc39b41f18db3aad0.js" integrity="sha256-BzgctkBvHRUoH4Wm3qBaPC6UYPBjx&#43;jcw5tB8Y2zqtA=" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript"
+	  id="hs-script-loader"
+	  async
+	  defer
+	  src="//js.hs-scripts.com/3402546.js"></script>
+
+
+
+  </body>
+</html>

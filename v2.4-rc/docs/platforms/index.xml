@@ -1,0 +1,151 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title> – Platforms</title>
+    <link>https://docs.storageos.com/v2.4-rc/docs/platforms/</link>
+    <description>Recent content in Platforms on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	  <atom:link href="https://docs.storageos.com/v2.4-rc/docs/platforms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+      
+        
+      
+    
+    
+    <item>
+      <title>Docs: AWS EKS</title>
+      <link>https://docs.storageos.com/v2.4-rc/docs/platforms/aws-eks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.4-rc/docs/platforms/aws-eks/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS is fully compatible with AWS EKS. To install StorageOS on EKS, please
+follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;An EKS deployment of Kubernetes uses AWS Linux by default with an optimized
+kernel. As the requisite kernel modules are not available for StorageOS to use
+TCMU, FUSE will be used as a fallback. Using FUSE instead of TCMU has
+performance implications.&lt;/p&gt;
+&lt;p&gt;For more details about the OS Distributions check the &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/prerequisites/systemconfiguration/&#34;&gt;System
+Configuration&lt;/a&gt;
+page.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Azure AKS</title>
+      <link>https://docs.storageos.com/v2.4-rc/docs/platforms/azure-aks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.4-rc/docs/platforms/azure-aks/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS is fully compatible with Azure AKS. To install StorageOS on AKS
+please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/install/kubernetes/&#34;&gt;installation instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;An AKS deployment of Kubernetes uses Ubuntu by default with an optimized
+kernel. All versions of Ubuntu with a kernel version later
+than&lt;code&gt;4.15.0-1029-azure&lt;/code&gt; meet the StorageOS prerequisites.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Docker Enterprise Edition</title>
+      <link>https://docs.storageos.com/v2.4-rc/docs/platforms/dockeree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.4-rc/docs/platforms/dockeree/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To install StorageOS on DockerEE, please follow our Kubernetes &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/install/kubernetes/&#34;&gt;installation
+instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;Docker EE and the Universal Control Plane can run on different Linux
+distributions. StorageOS supports RHEL, CentOS, Debian, and selected Ubuntu
+images. For more details, check out the supported OSs in the
+&lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/prerequisites/systemconfiguration/&#34;&gt;prerequisites page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;StorageOS only supports Kubernetes nodes managed by Docker Enterprise Edition,
+not those nodes running Swarm. Mixed nodes (those running Kubernetes and Swarm
+workloads) are not supported. As a consequence, StorageOS volumes can only be
+provisioned on Kubernetes nodes, and only these nodes should be used for
+stateful workloads.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: OpenShift</title>
+      <link>https://docs.storageos.com/v2.4-rc/docs/platforms/openshift/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.4-rc/docs/platforms/openshift/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS V2 supports Openshift v4.&lt;/p&gt;
+&lt;p&gt;OpenShift and StorageOS communicate with each other to perform actions such as
+creation, deletion and mounting of volumes through CSI. The CSI container
+running in the StorageOS Daemonset creates a Linux socket that allows the
+communication between OpenShift and StorageOS&lt;/p&gt;
+&lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
+&lt;p&gt;StorageOS v2 supports OpenShift 4.0, 4.1, 4.2, 4.3, 4.4 and 4.5.&lt;/p&gt;
+&lt;p&gt;To install StorageOS on OpenShift, please follow our &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/install/openshift/&#34;&gt;installation
+instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. Openshift 4 uses the CRI-O container runtime that sets a default PID
+limit of 1024. StorageOS recommends that the limit be raised to 32768.
+Please see our &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/prerequisites/pidlimits&#34;&gt;prerequisites&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;openshift-upgrades&#34;&gt;OpenShift Upgrades&lt;/h2&gt;
+&lt;p&gt;OpenShift provides an upgrade operator that automates the process of
+orchestrator version changes.&lt;/p&gt;
+&lt;p&gt;This procedure can cause StorageOS to malfunction due to sequential node
+restarts not taking the presence of stateful application data into
+consideration. To avoid this issue, make sure all stateful workloads using
+StorageOS Volumes are stopped - usually by scaling StatefulSets to 0. Please
+contact StorageOS support for further advice if required.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OpenShift requires the internal registry to be available during the upgrade,
+however StorageOS volumes may not be available. Therefore using StorageOS
+for the internal registry is &lt;strong&gt;not&lt;/strong&gt; recommended.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;csi-container-storage-interface-note&#34;&gt;CSI (Container Storage Interface) Note&lt;/h2&gt;
+&lt;p&gt;CSI is the standard that enables storage drivers to release on their own
+schedule. This allows storage vendors to upgrade, update, and enhance their
+drivers without the need to update Kubernetes source code, or follow Kubernetes
+release cycles. StorageOS v2 uses CSI to implement communication with the
+OpenShift controlplane.&lt;/p&gt;
+&lt;h2 id=&#34;storageos-persistentvolumeclaims&#34;&gt;StorageOS PersistentVolumeClaims&lt;/h2&gt;
+&lt;p&gt;The user can provide standard PVC definitions and StorageOS will dynamically
+provision them. StorageOS presents volumes to containers with standard POSIX
+mount targets. This enables the Kubelet to mount StorageOS volumes using
+standard linux device files. Checkout &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/prerequisites/systemconfiguration/&#34;&gt;device presentation&lt;/a&gt; for more details.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Rancher</title>
+      <link>https://docs.storageos.com/v2.4-rc/docs/platforms/rancher/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.4-rc/docs/platforms/rancher/</guid>
+      <description>
+        
+        
+        &lt;p&gt;To install StorageOS on Rancher, please follow our &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/install/rancher/&#34;&gt;installation
+instructions&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;StorageOS transparently supports Rancher deployments using CentOS, RHEL or
+Debian and can support other Linux distributions detailed in the &lt;a href=&#34;https://docs.storageos.com/v2.4-rc/docs/prerequisites/systemconfiguration/&#34;&gt;systems
+supported page&lt;/a&gt; if the
+appropriate kernel modules are present.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+  </channel>
+</rss>

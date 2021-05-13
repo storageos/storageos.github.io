@@ -64,28 +64,28 @@ echo
 # Checking and exiting if requirements are not met.
 echo -e "${GREEN}Checking requirements:${NC}"
 
-echo -e "  Checking Kubectl..."
+echo -ne "  Checking Kubectl......................................"
 if ! command -v kubectl &> /dev/null 
-then 
+then
+    echo -ne "${RED}NOK${NC}\n"
     echo -e "${RED}    Kubectl could not be found on this shell.${NC}"
     echo -e "${RED}    Kubectl is used to access Kubernetes clusters and is required.${NC}"
     echo -e "${RED}    Please intall kubectl: https://kubernetes.io/docs/tasks/tools/${NC}"
     exit
 fi 
-echo -e "${GREEN}    Kubectl found!${NC}"
+echo -ne ".${GREEN}OK${NC}\n"
 
-echo -e "  Checking node count (minimum 3)..."
-NODECOUNT=`kubectl get nodes -o name |tee /dev/stderr| wc -l`
+echo -ne "  Checking node count (minimum 3)......................."
+NODECOUNT=`kubectl get nodes -o name | wc -l`
 if [ $NODECOUNT -lt 3 ]
 then 
-    echo -e "${RED}    Current node count is $NODECOUNT.${NC}" 
-    echo -e "${RED}    Required minimum node is 3.${NC}"
+    echo -e "${RED}NOK${NC}\n" 
     exit
 fi 
-echo -e "${GREEN}    Current node count is $NODECOUNT!.${NC}"
+echo -ne ".${GREEN}OK${NC}\n"
 
 echo 
-echo -e "${GREEN}The script will deploy a StorageOS cluster: ${NC}"
+echo -e "${GREEN}The script will deploy a ${NC}STORAGE${GREEN}OS cluster: ${NC}"
 echo -e "${GREEN}  ${NC}STORAGE${GREEN}OS${NC} cluster named ${RED}${STOS_CLUSTERNAME}${GREEN}.${NC}"
 echo -e "${GREEN}  ${NC}STORAGE${GREEN}OS${NC} version ${RED}${STOS_VERSION}${GREEN} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
 echo -e "${GREEN}  ETCD into namespace ${RED}${ETCD_NAMESPACE}${GREEN}.${NC}"
@@ -116,197 +116,226 @@ then
     exit
 fi
 
+# Starting deployment
+echo -e "${GREEN}Starting ${NC}STORAGE${GREEN}OS deployment:${NC}"
+echo -ne "  Is it OpenShift?......................................"
+
 # If running in Openshift, an SCC is needed to start Pods
-if grep -q "openshift" <(kubectl get node --show-labels); then
-    echo -e "${GREEN}OpenShift detected - adding SCC for ${RED}${ETCD_NAMESPACE}${GREEN}${NC}."
+if grep -q "openshift" <(kubectl get node --show-labels); 
+then
+    echo -ne "${GREEN}YES${NC}\n"
+    echo -ne "  OpenShift  - adding SCC for ${RED}${ETCD_NAMESPACE}${GREEN}${NC} ............"
     oc adm policy add-scc-to-user anyuid \
     system:serviceaccount:${ETCD_NAMESPACE}:default
     sleep 5
+    echo -ne "${GREEN}OK${NC}\n"
 fi
+echo -ne ".${GREEN}NO${NC}\n"
 
-# # First, we create an etcd cluster. Our example uses the CoreOS operator to
-# # create a 3 pod cluster using transient storage. This is *unsuitable for
-# # production deployments* but fine for evaluation purposes. The data in the
-# # etcd will not persist outside of a reboot.
-# echo -e "${GREEN}Creating etcd namespace ${ETCD_NAMESPACE}${NC}"
-# kubectl create namespace ${ETCD_NAMESPACE}
+# First, we create an etcd cluster. Our example uses the CoreOS operator to
+# create a 3 pod cluster using transient storage. This is *unsuitable for
+# production deployments* but fine for evaluation purposes. The data in the
+# etcd will not persist outside of a reboot.
 
-# echo -e "${GREEN}Creating etcd ClusterRole and ClusterRoleBinding${NC}"
-# kubectl -n ${ETCD_NAMESPACE} create -f-<<END
-# ---
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: ClusterRoleBinding
-# metadata:
-#   name: etcd-operator
-# roleRef:
-#   apiGroup: rbac.authorization.k8s.io
-#   kind: ClusterRole
-#   name: etcd-operator
-# subjects:
-# - kind: ServiceAccount
-#   name: default
-#   namespace: ${ETCD_NAMESPACE}
-# ---
-# apiVersion: rbac.authorization.k8s.io/v1
-# kind: ClusterRole
-# metadata:
-#   name: etcd-operator
-# rules:
-# - apiGroups:
-#   - etcd.database.coreos.com
-#   resources:
-#   - etcdclusters
-#   - etcdbackups
-#   - etcdrestores
-#   verbs:
-#   - "*"
-# - apiGroups:
-#   - apiextensions.k8s.io
-#   resources:
-#   - customresourcedefinitions
-#   verbs:
-#   - "*"
-# - apiGroups:
-#   - ""
-#   resources:
-#   - pods
-#   - services
-#   - endpoints
-#   - persistentvolumeclaims
-#   - events
-#   verbs:
-#   - "*"
-# - apiGroups:
-#   - apps
-#   resources:
-#   - deployments
-#   verbs:
-#   - "*"
-# # The following permissions can be removed if not using S3 backup and TLS
-# - apiGroups:
-#   - ""
-#   resources:
-#   - secrets
-#   verbs:
-#   - get
-# ---
-# END
+echo -ne "  Creating etcd namespace ${RED}${ETCD_NAMESPACE}${NC}................."
+kubectl create namespace ${ETCD_NAMESPACE} 1> /dev/null
+echo -ne "${GREEN}OK${NC}\n"
 
-# # Create etcd operator Deployment - this will deploy and manage the etcd
-# # instances
-# echo -e "${GREEN}Creating etcd operator Deployment${NC}"
-# kubectl -n ${ETCD_NAMESPACE} create -f-<<END
-# apiVersion: apps/v1
-# kind: Deployment
-# metadata:
-#   name: etcd-operator
-# spec:
-#   replicas: 1
-#   selector:
-#     matchLabels:
-#       name: etcd-operator
-#   template:
-#     metadata:
-#       labels:
-#         name: etcd-operator
-#     spec:
-#       containers:
-#       - name: etcd-operator
-#         image: quay.io/coreos/etcd-operator:v0.9.4
-#         command:
-#         - etcd-operator
-#         env:
-#         - name: MY_POD_NAMESPACE
-#           valueFrom:
-#             fieldRef:
-#               fieldPath: metadata.namespace
-#         - name: MY_POD_NAME
-#           valueFrom:
-#             fieldRef:
-#               fieldPath: metadata.name
-# END
+echo -ne "  Creating etcd ClusterRoleBinding......................"
+kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: etcd-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: etcd-operator
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: ${ETCD_NAMESPACE}
+---
+END
 
+echo -ne ".${GREEN}OK${NC}\n"
+
+
+echo -ne "  Creating etcd ClusterRole............................."
+kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: etcd-operator
+rules:
+- apiGroups:
+  - etcd.database.coreos.com
+  resources:
+  - etcdclusters
+  - etcdbackups
+  - etcdrestores
+  verbs:
+  - "*"
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - "*"
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - services
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  verbs:
+  - "*"
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - "*"
+# The following permissions can be removed if not using S3 backup and TLS
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+---
+END
+
+echo -ne ".${GREEN}OK${NC}\n"
+
+
+# Create etcd operator Deployment - this will deploy and manage the etcd
+# instances
+echo -ne "  Creating etcd operator deployment....................."
+kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: etcd-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: etcd-operator
+  template:
+    metadata:
+      labels:
+        name: etcd-operator
+    spec:
+      containers:
+      - name: etcd-operator
+        image: quay.io/coreos/etcd-operator:v0.9.4
+        command:
+        - etcd-operator
+        env:
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+END
+
+echo -ne ".${GREEN}OK${NC}\n"
+
+# Wait for etcd operator to become ready
+echo -ne "  Waiting on etcd operator to be running................"
 # sleep 5
+phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
+while ! grep -q "Running" <(echo "${phase}"); do
+    sleep 2
+    phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
+done
+echo -ne ".${GREEN}OK${NC}\n"
 
-# # Wait for etcd operator to become ready
-# phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
-# while ! grep -q "Running" <(echo "${phase}"); do
-#     sleep 2
-#     phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
-# done
+# Create etcd CustomResource
+# This will install 3 etcd pods into the cluster using ephemeral storage. It
+# will also create a service endpoint, by which we can refer to the cluster in
+# the installation for StorageOS itself below.
+echo -ne "  Creating etcd cluster in namespace ${RED}${ETCD_NAMESPACE}${NC}....."
+kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
+apiVersion: "etcd.database.coreos.com/v1beta2"
+kind: "EtcdCluster"
+metadata:
+  name: "storageos-etcd"
+spec:
+  size: 3
+  version: "3.4.9"
+  pod:
+    etcdEnv:
+    - name: ETCD_QUOTA_BACKEND_BYTES
+      value: "2589934592"  # ~2 GB
+    - name: ETCD_AUTO_COMPACTION_MODE
+      value: "revision"
+    - name: ETCD_AUTO_COMPACTION_RETENTION
+      value: "1000"
+#  Modify the following requests and limits if required
+#    requests:
+#      cpu: 2
+#      memory: 4G
+#    limits:
+#      cpu: 2
+#      memory: 4G
+    resources:
+      requests:
+        cpu: 200m
+        memory: 300Mi
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 9000
+      fsGroup: 9000
+# The following toleration allows us to run on a master node - modify to taste
+#  Tolerations example
+#    tolerations:
+#    - key: "role"
+#      operator: "Equal"
+#      value: "etcd"
+#      effect: "NoExecute"
+    affinity:
+      podAntiAffinity:
+        preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 100
+          podAffinityTerm:
+            labelSelector:
+              matchExpressions:
+              - key: etcd_cluster
+                operator: In
+                values:
+                - storageos-etcd
+            topologyKey: kubernetes.io/hostname
+END
 
-# # Create etcd CustomResource
-# # This will install 3 etcd pods into the cluster using ephemeral storage. It
-# # will also create a service endpoint, by which we can refer to the cluster in
-# # the installation for StorageOS itself below.
-# echo -e "${GREEN}Creating etcd cluster in namespace ${ETCD_NAMESPACE}${NC}"
-# kubectl -n ${ETCD_NAMESPACE} create -f- <<END
-# apiVersion: "etcd.database.coreos.com/v1beta2"
-# kind: "EtcdCluster"
-# metadata:
-#   name: "storageos-etcd"
-# spec:
-#   size: 3
-#   version: "3.4.9"
-#   pod:
-#     etcdEnv:
-#     - name: ETCD_QUOTA_BACKEND_BYTES
-#       value: "2589934592"  # ~2 GB
-#     - name: ETCD_AUTO_COMPACTION_MODE
-#       value: "revision"
-#     - name: ETCD_AUTO_COMPACTION_RETENTION
-#       value: "1000"
-# #  Modify the following requests and limits if required
-# #    requests:
-# #      cpu: 2
-# #      memory: 4G
-# #    limits:
-# #      cpu: 2
-# #      memory: 4G
-#     resources:
-#       requests:
-#         cpu: 200m
-#         memory: 300Mi
-#     securityContext:
-#       runAsNonRoot: true
-#       runAsUser: 9000
-#       fsGroup: 9000
-# # The following toleration allows us to run on a master node - modify to taste
-# #  Tolerations example
-# #    tolerations:
-# #    - key: "role"
-# #      operator: "Equal"
-# #      value: "etcd"
-# #      effect: "NoExecute"
-#     affinity:
-#       podAntiAffinity:
-#         preferredDuringSchedulingIgnoredDuringExecution:
-#         - weight: 100
-#           podAffinityTerm:
-#             labelSelector:
-#               matchExpressions:
-#               - key: etcd_cluster
-#                 operator: In
-#                 values:
-#                 - storageos-etcd
-#             topologyKey: kubernetes.io/hostname
-# END
+echo -ne ".${GREEN}OK${NC}\n"
 
 
-# # Now that we have an etcd cluster starting, we need to install the StorageOS
-# # operator, which will manage the install of StorageOS itself.
-# echo -e "${GREEN}Installing StorageOS Operator version ${OPERATOR_VERSION}${NC}"
-# kubectl create --filename=https://github.com/storageos/cluster-operator/releases/download/${OPERATOR_VERSION}/storageos-operator.yaml
+# Now that we have an etcd cluster starting, we need to install the StorageOS
+# operator, which will manage the install of StorageOS itself.
+echo -ne "  Creation STORAGE${GREEN}OS${NC} operator deployment ${RED}${OPERATOR_VERSION}${NC}...."
+kubectl create --filename=https://github.com/storageos/cluster-operator/releases/download/${OPERATOR_VERSION}/storageos-operator.yaml 1>/dev/null
 
-# # Wait for the operator to become ready
-# echo -e "${GREEN}Operator installed, waiting for pod to become ready${NC}"
-# phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
-# while ! grep -q "Running" <(echo "${phase}"); do
-#     sleep 2
-#     phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
-# done
+echo -ne ".${GREEN}OK${NC}\n"
 
-# echo -e "${GREEN}StorageOS Operator installed successfully${NC}"
+
+# Wait for the operator to become ready
+echo -ne "  Waiting on STORAGE${GREEN}OS${NC} operator to be running..........."
+phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
+while ! grep -q "Running" <(echo "${phase}"); do
+    sleep 2
+    phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
+done
+echo -ne ".${GREEN}OK${NC}\n"
+
 
 # # The StorageOS secret contains credentials for our API, as well as CSI
 # echo -e "${GREEN}Creating Secret definining the API Username and Password${NC}"

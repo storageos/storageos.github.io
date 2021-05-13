@@ -29,7 +29,7 @@ set -euo pipefail
 # Getting the latest and greatest to deploy as a self-evaluation.
 if ! command -v curl &> /dev/null 
 then
-    OPERATOR_VERSION='v2.3.4'
+    OPERATOR_VERSION='v2.4.0-rc.1'
 else
     OPERATOR_VERSION=`curl --silent "https://api.github.com/repos/storageos/cluster-operator/releases/latest" |awk -F '"' '/tag_name/{print $4}'`
 fi
@@ -58,6 +58,7 @@ NC='\033[0m' # No Color
 
 echo -e "${RED}Welcome to the ${NC}STORAGE${GREEN}OS${RED} self-evaluation installation script.${NC}"
 echo -e "${GREEN}Self-Evaluation guide: https://docs.storageos.com/docs/self-eval${NC}"
+echo -e "   ${RED}This deployment is suitable for testing purposes only.${NC}"
 echo 
 
 # Checking and exiting if requirements are not met.
@@ -85,8 +86,8 @@ echo -e "${GREEN}    Current node count is $NODECOUNT!.${NC}"
 
 echo 
 echo -e "${GREEN}The script will deploy a StorageOS cluster: ${NC}"
-echo -e "${GREEN}  StorageOS cluster named ${RED}${STOS_CLUSTERNAME}${GREEN}.${NC}"
-echo -e "${GREEN}  StorageOS version ${RED}${STOS_VERSION}${GREEN} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
+echo -e "${GREEN}  ${NC}STORAGE${GREEN}OS${NC} cluster named ${RED}${STOS_CLUSTERNAME}${GREEN}.${NC}"
+echo -e "${GREEN}  ${NC}STORAGE${GREEN}OS${NC} version ${RED}${STOS_VERSION}${GREEN} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
 echo -e "${GREEN}  ETCD into namespace ${RED}${ETCD_NAMESPACE}${GREEN}.${NC}"
 echo -e "${GREEN}The installation process will stop on any encountered error.${NC}"
 echo
@@ -107,7 +108,7 @@ then
     echo -e "  -v       ${NC}STORAGE${GREEN}OS${NC} version to deploy."
     echo -e "           Check https://github.com/storageos/cluster-operator/releases"
     echo 
-    echo "Eg: ./deploy-storageos-cluster.sh -e my-etcd -n my-storageos -c demo-cluster -v v2.3.4"
+    echo "Eg: ./deploy-storageos-cluster.sh -e my-etcd -n my-storageos -c demo-cluster -v ${STOS_VERSION}"
     echo "    curl -fsSL https://storageos.run | bash -s -- -e my-etcd -n my-storageos -c demo-cluster -v ${STOS_VERSION}"
     echo
     echo "Issues: <https://github.com/storageos/storageos.github.io>"
@@ -115,17 +116,13 @@ then
     exit
 fi
 
-
-
-
-exit
-
-# # If running in Openshift, an SCC is needed to start Pods
-# if grep -q "openshift" <(kubectl get node --show-labels); then
-#     oc adm policy add-scc-to-user anyuid \
-#     system:serviceaccount:${ETCD_NAMESPACE}:default
-#     sleep 5
-# fi
+# If running in Openshift, an SCC is needed to start Pods
+if grep -q "openshift" <(kubectl get node --show-labels); then
+    echo -e "${GREEN}OpenShift detected - adding SCC for ${RED}${ETCD_NAMESPACE}${GREEN}${NC}."
+    oc adm policy add-scc-to-user anyuid \
+    system:serviceaccount:${ETCD_NAMESPACE}:default
+    sleep 5
+fi
 
 # # First, we create an etcd cluster. Our example uses the CoreOS operator to
 # # create a 3 pod cluster using transient storage. This is *unsuitable for

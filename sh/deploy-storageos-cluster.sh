@@ -1,11 +1,10 @@
 #!/bin/bash
-
 #############################################################################
-# Script Name	 :   deploy-storageos-cluster.sh                                                                                           
-# Description	 :   Install StorageOS Self-Evaluation Cluster                                                                              
-# Args         :                                                                                           
+# Script Name  :   deploy-storageos-cluster.sh                                                                                           
+# Description  :   Install StorageOS Self-Evaluation Cluster                                                                              
+# Args         :   
 # Author       :   StorageOS
-# Issues       :   Issues&PR https://github.com/storageos/storageos.github.io                                            
+# Issues       :   Issues&PR https://github.com/storageos/storageos.github.io
 #############################################################################
 
 set -euo pipefail

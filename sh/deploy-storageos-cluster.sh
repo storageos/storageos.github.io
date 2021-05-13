@@ -93,6 +93,7 @@ echo
 
 # Having the courtesy to check if happy with the basics settings
 read -p "Proceed with these settings? (y/n) " -n 1 -r
+
 echo 
 if [[ ! $REPLY =~ ^[Yy]$ ]]
 then

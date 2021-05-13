@@ -21,7 +21,7 @@ export OPERATOR_VERSION='v2.4.0-rc.1'
 export CLI_VERSION='v2.4.0-rc.1'
 export STOS_VERSION='v2.4.0-rc.1'
 export STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
-export STOS_NAMESPACE='kube-system'
+export STOS_NAMESPACE='storageos-operator'
 export ETCD_NAMESPACE='storageos-etcd'
 export STOS_CLUSTERNAME='self-evaluation'
 

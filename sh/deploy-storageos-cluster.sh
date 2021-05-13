@@ -1,5 +1,13 @@
 #!/bin/bash
 
+#############################################################################
+# Script Name	 :   deploy-storageos-cluster.sh                                                                                           
+# Description	 :   Install StorageOS Self-Evaluation Cluster                                                                              
+# Args         :                                                                                           
+# Author       :   StorageOS
+# Issues       :   Issues&PR https://github.com/storageos/storageos.github.io                                            
+#############################################################################
+
 set -euo pipefail
 
 # StorageOS Self-Evaluation This script will install StorageOS onto a
@@ -17,19 +25,96 @@ set -euo pipefail
 
 # The following variables may be tuned as desired. The defaults should work in
 # most environments.
-export OPERATOR_VERSION='v2.4.0-rc.1'
-export CLI_VERSION='v2.4.0-rc.1'
-export STOS_VERSION='v2.4.0-rc.1'
-export STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
-export STOS_NAMESPACE='storageos-operator'
-export ETCD_NAMESPACE='storageos-etcd'
-export STOS_CLUSTERNAME='self-evaluation'
+
+# Getting the latest and greatest to deploy as a self-evaluation.
+if ! command -v curl &> /dev/null 
+then
+    OPERATOR_VERSION='v2.3.4'
+else
+    OPERATOR_VERSION=`curl --silent "https://api.github.com/repos/storageos/cluster-operator/releases/latest" |awk -F '"' '/tag_name/{print $4}'`
+fi
+STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
+STOS_NAMESPACE='kube-system'
+ETCD_NAMESPACE='storageos-etcd'
+STOS_CLUSTERNAME='self-evaluation'
+while getopts c:n:e:v:l: option
+do
+    case "${option}" in 
+        c) STOS_CLUSTERNAME=${OPTARG};;
+        n) STOS_NAMESPACE=${OPTARG};;
+        e) ETCD_NAMESPACE=${OPTARG};;
+        v) OPERATOR_VERSION=${OPTARG};;
+        l) 
+  esac
+done
+CLI_VERSION=${OPERATOR_VERSION}
+STOS_VERSION=${OPERATOR_VERSION}
+
 
 # Define some colours for later
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+echo -e "${RED}Welcome to the ${NC}STORAGE${GREEN}OS${RED} self-evaluation installation script.${NC}"
+echo -e "${GREEN}Self-Evaluation guide: https://docs.storageos.com/docs/self-eval${NC}"
+echo 
+
+# Checking and exiting if requirements are not met.
+echo -e "${GREEN}Checking requirements:${NC}"
+
+echo -e "  Checking Kubectl..."
+if ! command -v kubectl &> /dev/null 
+then 
+    echo -e "${RED}    Kubectl could not be found on this shell.${NC}"
+    echo -e "${RED}    Kubectl is used to access Kubernetes clusters and is required.${NC}"
+    echo -e "${RED}    Please intall kubectl: https://kubernetes.io/docs/tasks/tools/${NC}"
+    exit
+fi 
+echo -e "${GREEN}    Kubectl found!${NC}"
+
+echo -e "  Checking node count (minimum 3)..."
+NODECOUNT=`kubectl get nodes -o name |tee /dev/stderr| wc -l`
+if [ $NODECOUNT -lt 3 ]
+then 
+    echo -e "${RED}    Current node count is $NODECOUNT.${NC}" 
+    echo -e "${RED}    Required minimum node is 3.${NC}"
+    exit
+fi 
+echo -e "${GREEN}    Current node count is $NODECOUNT!.${NC}"
+
+echo 
+echo -e "${GREEN}The script will deploy a StorageOS cluster: ${NC}"
+echo -e "${GREEN}  StorageOS cluster named ${RED}${STOS_CLUSTERNAME}${GREEN}.${NC}"
+echo -e "${GREEN}  StorageOS version ${RED}${STOS_VERSION}${GREEN} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
+echo -e "${GREEN}  ETCD into namespace ${RED}${ETCD_NAMESPACE}${GREEN}.${NC}"
+echo -e "${GREEN}The installation process will stop on any encountered error.${NC}"
+echo
+
+# Having the courtesy to check if happy with the basics settings
+read -p "Proceed with these settings? (y/n) " -n 1 -r
+echo 
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echo 
+    echo -e "Usage: $0 [OPTION]..."
+    echo -e "${RED}Install a ${NC}STORAGE${GREEN}OS${RED} Self-Evaluation cluster on Kubernetes.${NC}"
+    echo 
+    echo -e "  -c       ${NC}STORAGE${GREEN}OS${NC} cluser name."
+    echo -e "  -n       Kubernetes namespace to install ${NC}STORAGE${GREEN}OS${NC} in."
+    echo -e "  -e       Kubernetes namespace to install ETCD in."
+    echo -e "  -v       ${NC}STORAGE${GREEN}OS${NC} version to deploy."
+    echo -e "           Check https://github.com/storageos/cluster-operator/releases"
+    echo 
+    echo "Example: $0 -e my-etcd -n my-storageos -c demo-cluster -v v2.3.4"
+    echo "Issues: <https://github.com/storageos/storageos.github.io>"
+    echo
+    exit
+fi
+echo "good"
+
+
+exit
 
 # If running in Openshift, an SCC is needed to start Pods
 if grep -q "openshift" <(kubectl get node --show-labels); then
@@ -37,12 +122,6 @@ if grep -q "openshift" <(kubectl get node --show-labels); then
     system:serviceaccount:${ETCD_NAMESPACE}:default
     sleep 5
 fi
-
-echo -e "${GREEN}Welcome to the StorageOS quick installation script.${NC}"
-echo -e "${GREEN}I will install StorageOS version ${STOS_VERSION} into${NC}"
-echo -e "${GREEN}namespace ${STOS_NAMESPACE} now. If I encounter any errors${NC}"
-echo -e "${GREEN}I will stop immediately.${NC}"
-echo
 
 # First, we create an etcd cluster. Our example uses the CoreOS operator to
 # create a 3 pod cluster using transient storage. This is *unsuitable for

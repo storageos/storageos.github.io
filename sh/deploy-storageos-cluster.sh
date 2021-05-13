@@ -55,6 +55,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+echo 
 echo -e "${RED}Welcome to the ${NC}STORAGE${GREEN}OS${RED} self-evaluation installation script.${NC}"
 echo -e "${GREEN}Self-Evaluation guide: https://docs.storageos.com/docs/self-eval${NC}"
 echo -e "   ${RED}This deployment is suitable for testing purposes only.${NC}"
@@ -62,6 +63,18 @@ echo
 
 # Checking and exiting if requirements are not met.
 echo -e "${GREEN}Checking requirements:${NC}"
+
+echo -ne "  Checking for exiting STORAGE${GREEN}OS${NC} cluster................"
+if kubectl get storageoscluster --all-namespaces -o name &>/dev/null;
+then
+    echo -ne "${RED}YES${NC}\n"
+    echo -e "  ${RED}A ${NC}STORAGE${GREEN}OS ${NC}cluster${RED} is already installed on this Kubernetes cluster."
+    echo
+    exit
+    # todo: include a clean-up option from this breaking point
+else 
+    echo -ne ".${GREEN}NO${NC}\n"
+fi
 
 echo -ne "  Checking Kubectl......................................"
 if ! command -v kubectl &> /dev/null 
@@ -439,4 +452,4 @@ echo -e "${GREEN}This cluster has been set up with an etcd based on ephemeral${N
 echo -e "${GREEN}storage. It is suitable for evaluation purposes only - for${NC}"
 echo -e "${GREEN}production usage please see our etcd installation nodes at${NC}"
 echo -e "${GREEN}https://docs.storageos.com/docs/prerequisites/etcd/${NC}"
-
+echo 

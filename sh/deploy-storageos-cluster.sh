@@ -337,64 +337,70 @@ done
 echo -ne ".${GREEN}OK${NC}\n"
 
 
-# # The StorageOS secret contains credentials for our API, as well as CSI
-# echo -e "${GREEN}Creating Secret definining the API Username and Password${NC}"
-# kubectl create -f - <<END
-# apiVersion: v1
-# kind: Secret
-# metadata:
-#  name: "storageos-api"
-#  namespace: "storageos-operator"
-#  labels:
-#    app: "storageos"
-# type: "kubernetes.io/storageos"
-# data:
-#  # echo -n '<secret>' | base64
-#  apiUsername: c3RvcmFnZW9z
-#  apiPassword: c3RvcmFnZW9z
-#  # CSI Credentials
-#  csiProvisionUsername: c3RvcmFnZW9z
-#  csiProvisionPassword: c3RvcmFnZW9z
-#  csiControllerPublishUsername: c3RvcmFnZW9z
-#  csiControllerPublishPassword: c3RvcmFnZW9z
-#  csiNodePublishUsername: c3RvcmFnZW9z
-#  csiNodePublishPassword: c3RvcmFnZW9z
-#  csiControllerExpandUsername: c3RvcmFnZW9z
-#  csiControllerExpandPassword: c3RvcmFnZW9z
-# END
+# The StorageOS secret contains credentials for our API, as well as CSI
+echo -ne "  Creating STORAGE${GREEN}OS${NC} API secret........................."
+kubectl create -f- 1>/dev/null<<END
+apiVersion: v1
+kind: Secret
+metadata:
+ name: "storageos-api"
+ namespace: "storageos-operator"
+ labels:
+   app: "storageos"
+type: "kubernetes.io/storageos"
+data:
+ # echo -n '<secret>' | base64
+ apiUsername: c3RvcmFnZW9z
+ apiPassword: c3RvcmFnZW9z
+ # CSI Credentials
+ csiProvisionUsername: c3RvcmFnZW9z
+ csiProvisionPassword: c3RvcmFnZW9z
+ csiControllerPublishUsername: c3RvcmFnZW9z
+ csiControllerPublishPassword: c3RvcmFnZW9z
+ csiNodePublishUsername: c3RvcmFnZW9z
+ csiNodePublishPassword: c3RvcmFnZW9z
+ csiControllerExpandUsername: c3RvcmFnZW9z
+ csiControllerExpandPassword: c3RvcmFnZW9z
+END
 
-# # Now that we have the operator installed, and a secret defined, it is time to
-# # install StorageOS itself. We default to the kube-system namespace, which
-# # gives us some protection against eviction by the Kubelet under conditions of
-# # contention.
-# # In the StorageOS CR we declare the DNS name for the etcd deployment and
-# # service we created earlier.
-# echo -e "${GREEN}Installing StorageOS Cluster version ${STOS_VERSION}${NC}"
-# kubectl create -f - <<END
-# apiVersion: storageos.com/v1
-# kind: StorageOSCluster
-# metadata:
-#  name: ${STOS_CLUSTERNAME}
-#  namespace: ${STOS_NAMESPACE}
-# spec:
-#  secretRefName: "storageos-api"
-#  secretRefNamespace: "storageos-operator"
-#  k8sDistro: "upstream"  # Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree, openshift)
-#  images:
-#    nodeContainer: "storageos/node:${STOS_VERSION}" # StorageOS version
-#  # storageClassName: fast # The storage class creates by the StorageOS operator is configurable
-#  kvBackend:
-#    address: "storageos-etcd-client.${ETCD_NAMESPACE}.svc:2379"
-# END
+echo -ne ".${GREEN}OK${NC}\n"
 
-# phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
-# while ! grep -q "Running" <(echo "${phase}"); do
-#     echo "Waiting for StorageOS pods to become ready"
-#     sleep 10
-#     phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
-# done
 
-# echo -e "${GREEN}StorageOS Cluster installed successfully${NC}"
+# Now that we have the operator installed, and a secret defined, it is time to
+# install StorageOS itself. We default to the kube-system namespace, which
+# gives us some protection against eviction by the Kubelet under conditions of
+# contention.
+# In the StorageOS CR we declare the DNS name for the etcd deployment and
+# service we created earlier.
+echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster version ${RED}${STOS_VERSION}${NC}........"
+kubectl create -f- 1>/dev/null<<END
+apiVersion: storageos.com/v1
+kind: StorageOSCluster
+metadata:
+ name: ${STOS_CLUSTERNAME}
+ namespace: ${STOS_NAMESPACE}
+spec:
+ secretRefName: "storageos-api"
+ secretRefNamespace: "storageos-operator"
+ k8sDistro: "upstream"  # Set the Kubernetes distribution for your cluster (upstream, eks, aks, gke, rancher, dockeree, openshift)
+ images:
+   nodeContainer: "storageos/node:${STOS_VERSION}" # StorageOS version
+ # storageClassName: fast # The storage class creates by the StorageOS operator is configurable
+ kvBackend:
+   address: "storageos-etcd-client.${ETCD_NAMESPACE}.svc:2379"
+END
+
+echo -ne ".${GREEN}OK${NC}\n"
+
+
+echo -ne "  Waiting on STORAGE${GREEN}OS${NC} pods to be running"
+phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
+while ! grep -q "Running" <(echo "${phase}"); do
+    echo -ne "."
+    sleep 10
+    phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
+done
+echo -ne ".${GREEN}OK${NC}\n"
 
 # # Now that we have a working StorageOS cluster, we can deploy a pod to run the
 # # cli inside the cluster. When we want to access the cli, we can kubectl exec

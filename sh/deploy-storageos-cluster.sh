@@ -26,6 +26,7 @@ set -euo pipefail
 # most environments.
 
 # Getting the latest and greatest to deploy as a self-evaluation.
+# Failing back to a manual entry if cURL not present (I know!).
 if ! command -v curl &> /dev/null 
 then
     OPERATOR_VERSION='v2.4.0-rc.1'
@@ -36,12 +37,11 @@ STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
 STOS_NAMESPACE='kube-system'
 ETCD_NAMESPACE='storageos-etcd'
 STOS_CLUSTERNAME='self-evaluation'
-while getopts c:n:e:v:l: option
+
+while getopts c:v:l: option
 do
     case "${option}" in 
         c) STOS_CLUSTERNAME=${OPTARG};;
-        n) STOS_NAMESPACE=${OPTARG};;
-        e) ETCD_NAMESPACE=${OPTARG};;
         v) OPERATOR_VERSION=${OPTARG};;
         l) 
   esac
@@ -55,6 +55,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+# Welcoming STORAGEOS users :)
 echo 
 echo -e "${RED}Welcome to the ${NC}STORAGE${GREEN}OS${RED} self-evaluation installation script.${NC}"
 echo -e "${GREEN}Self-Evaluation guide: https://docs.storageos.com/docs/self-eval${NC}"
@@ -64,18 +65,7 @@ echo
 # Checking and exiting if requirements are not met.
 echo -e "${GREEN}Checking requirements:${NC}"
 
-echo -ne "  Checking for exiting STORAGE${GREEN}OS${NC} cluster................"
-if kubectl get storageoscluster --all-namespaces -o name &>/dev/null;
-then
-    echo -ne "${RED}YES${NC}\n"
-    echo -e "  ${RED}A ${NC}STORAGE${GREEN}OS ${NC}cluster${RED} is already installed on this Kubernetes cluster."
-    echo
-    exit
-    # todo: include a clean-up option from this breaking point
-else 
-    echo -ne ".${GREEN}NO${NC}\n"
-fi
-
+# Checking if kubectl is present!
 echo -ne "  Checking Kubectl......................................"
 if ! command -v kubectl &> /dev/null 
 then
@@ -87,20 +77,54 @@ then
 fi 
 echo -ne ".${GREEN}OK${NC}\n"
 
+# Checking for the minimum node count (3)
 echo -ne "  Checking node count (minimum 3)......................."
 NODECOUNT=`kubectl get nodes -o name | wc -l`
-if [ $NODECOUNT -lt 3 ]
+if [ ${NODECOUNT} -lt 3 ]
 then 
-    echo -e "${RED}NOK${NC}\n" 
+    echo -ne "${RED}NOK${NC}\n" 
     exit
 fi 
-echo -ne ".${GREEN}OK${NC}\n"
+echo -ne ".${GREEN}OK${NC} (${NODECOUNT})\n"
 
+# Checking for an existing STORAGEOS cluster on the kubernetes target
+echo -ne "  Checking for exiting STORAGE${GREEN}OS${NC} cluster................"
+if kubectl get storageoscluster --all-namespaces -o name &>/dev/null;
+then
+    echo -ne "${RED}YES${NC}\n"
+    echo -e "  ${RED}/!\ ${NC}STORAGE${GREEN}OS ${NC}cluster${RED} already deployed on this Kubernetes cluster."
+    echo
+    exit
+    # todo: include a clean-up option from this breaking point
+else 
+    echo -ne ".${GREEN}NO${NC}\n"
+fi
+
+# Summary of what is on the menu for deployment today
 echo 
 echo -e "${GREEN}The script will deploy a ${NC}STORAGE${GREEN}OS cluster: ${NC}"
 echo -e "  STORAGE${GREEN}OS${NC} cluster named ${RED}${STOS_CLUSTERNAME}${GREEN}.${NC}"
-echo -e "  STORAGE${GREEN}OS${NC} version ${RED}${STOS_VERSION}${GREEN} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
+echo -e "  STORAGE${GREEN}OS${NC} version ${RED}${STOS_VERSION}${NC} into namespace ${RED}${STOS_NAMESPACE}${GREEN}.${NC}"
+
+# RC? Let's have a bit of a warning there
+if [[ ${STOS_VERSION} =~ .*rc.* ]];
+then 
+  echo -e "    ${RED}/!\ ${STOS_VERSION}${NC}: Release Candidate are not intended for production deployment.${NC}" 
+fi
+# not deploying in kube-system - brace yourself!
+if [[ ! "${STOS_NAMESPACE}" == "kube-system" ]];
+then 
+  echo -e "    ${RED}/!\ ${NC}only ${RED}kube-system${NC} namespace namespace for ease of self-evualation.${NC}" 
+  exit
+fi
+
 echo -e "  etcd into namespace ${RED}${ETCD_NAMESPACE}${GREEN}.${NC}"
+# not deploying in storageos-etcd - brace yourself!
+if [[ ! "${ETCD_NAMESPACE}" == "storageos-etcd" ]];
+then 
+  echo -e "    ${RED}/!\ ${NC}only ${RED}storageos-etcd${NC} namespace for ease of self-evualation.${NC}" 
+  exit
+fi
 echo -e "${GREEN}The installation process will stop on any encountered error.${NC}"
 echo
 
@@ -115,15 +139,13 @@ then
     echo -e "${RED}Install a ${NC}STORAGE${GREEN}OS${RED} Self-Evaluation cluster on Kubernetes.${NC}"
     echo 
     echo -e "  -c       ${NC}STORAGE${GREEN}OS${NC} cluser name."
-    echo -e "  -n       Kubernetes namespace to install ${NC}STORAGE${GREEN}OS${NC} in."
-    echo -e "  -e       Kubernetes namespace to install ETCD in."
     echo -e "  -v       ${NC}STORAGE${GREEN}OS${NC} version to deploy."
     echo -e "           Check https://github.com/storageos/cluster-operator/releases"
     echo 
-    echo "Eg: ./deploy-storageos-cluster.sh -e my-etcd -n my-storageos -c demo-cluster -v ${STOS_VERSION}"
-    echo "    curl -fsSL https://storageos.run | bash -s -- -e my-etcd -n my-storageos -c demo-cluster -v ${STOS_VERSION}"
+    echo "Eg: ./deploy-storageos-cluster.sh -c demo-cluster -v ${STOS_VERSION}"
+    echo "    curl -fsSL https://storageos.run | bash -s -- -c demo-cluster -v ${STOS_VERSION}"
     echo
-    echo "Issues: <https://github.com/storageos/storageos.github.io>"
+    echo "Issues: https://github.com/storageos/storageos.github.io"
     echo
     exit
 fi
@@ -136,6 +158,18 @@ echo -ne "  Is it OpenShift?......................................"
 if grep -q "openshift" <(kubectl get node --show-labels); 
 then
     echo -ne "${GREEN}YES${NC}\n"
+
+    # Checking if OCP CLI is present!
+    echo -ne "  Checking OCP CLI......................................"
+    if ! command -v oc &> /dev/null 
+    then
+        echo -ne "${RED}NOK${NC}\n"
+        echo -e "${RED}    OCP CLI (oc) could not be found on this shell.${NC}"
+        echo -e "${RED}    Please intall OCP CLI: https://docs.openshift.com/container-platform/4.7/cli_reference/openshift_cli/getting-started-cli.html/${NC}"
+        exit
+    fi 
+    echo -ne ".${GREEN}OK${NC}\n"
+
     echo -ne "  OpenShift  - adding SCC for ${RED}${ETCD_NAMESPACE}${GREEN}${NC} ............"
     oc adm policy add-scc-to-user anyuid \
     system:serviceaccount:${ETCD_NAMESPACE}:default
@@ -381,6 +415,18 @@ echo -ne ".${GREEN}OK${NC}\n"
 # install StorageOS itself. We default to the kube-system namespace, which
 # gives us some protection against eviction by the Kubelet under conditions of
 # contention.
+
+# interesting? if there is a STOS_NAMESPACE variable to mangle, should we not 
+# offer the capabilities; this is a testing environment, let's have users testing
+# this. 
+# not deploying in kube-system - brace yourself!
+if [[ ! "${STOS_NAMESPACE}" == "kube-system" ]];
+then 
+  echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster namespace ${RED}${STOS_NAMESPACE}${NC}........"
+  kubectl create namespace ${STOS_NAMESPACE} 1>/dev/null
+  echo -ne ".${GREEN}OK${NC}\n"
+fi
+
 # In the StorageOS CR we declare the DNS name for the etcd deployment and
 # service we created earlier.
 echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster version ${RED}${STOS_VERSION}${NC}........"
@@ -410,6 +456,7 @@ while ! grep -q "Running" <(echo "${phase}"); do
     sleep 10
     phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
 done
+
 echo -ne ".${GREEN}OK${NC}\n"
 
 # Now that we have a working StorageOS cluster, we can deploy a pod to run the
@@ -417,7 +464,7 @@ echo -ne ".${GREEN}OK${NC}\n"
 # into this pod.
 echo -ne "  Deploying STORAGE${GREEN}OS${NC} CLI as a pod......................"
 # Deploy the StorageOS CLI as a container
-kubectl -n kube-system run               \
+kubectl -n ${STOS_NAMESPACE} run               \
 --image storageos/cli:${CLI_VERSION}     \
 --restart=Never                          \
 --env STORAGEOS_ENDPOINTS=storageos:5705 \

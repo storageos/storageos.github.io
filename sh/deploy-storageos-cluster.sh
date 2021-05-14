@@ -183,9 +183,9 @@ echo -ne ".${GREEN}NO${NC}\n"
 # production deployments* but fine for evaluation purposes. The data in the
 # etcd will not persist outside of a reboot.
 
-echo -ne "  Creating etcd namespace ${RED}${ETCD_NAMESPACE}${NC}................."
+echo -ne "  Creating etcd namespace................................"
 kubectl create namespace ${ETCD_NAMESPACE} 1> /dev/null
-echo -ne "${GREEN}OK${NC}\n"
+echo -ne "${GREEN}OK${NC} (${RED}${ETCD_NAMESPACE}${NC})\n"
 
 echo -ne "  Creating etcd ClusterRoleBinding......................"
 kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
@@ -309,7 +309,7 @@ echo -ne ".${GREEN}OK${NC}\n"
 # This will install 3 etcd pods into the cluster using ephemeral storage. It
 # will also create a service endpoint, by which we can refer to the cluster in
 # the installation for StorageOS itself below.
-echo -ne "  Creating etcd cluster in namespace ${RED}${ETCD_NAMESPACE}${NC}....."
+echo -ne "  Creating etcd cluster................................."
 kubectl -n ${ETCD_NAMESPACE} create -f- 1>/dev/null<<END
 apiVersion: "etcd.database.coreos.com/v1beta2"
 kind: "EtcdCluster"
@@ -367,10 +367,10 @@ echo -ne ".${GREEN}OK${NC}\n"
 
 # Now that we have an etcd cluster starting, we need to install the StorageOS
 # operator, which will manage the install of StorageOS itself.
-echo -ne "  Creation STORAGE${GREEN}OS${NC} operator deployment ${RED}${OPERATOR_VERSION}${NC}...."
+echo -ne "  Creation STORAGE${GREEN}OS${NC} operator deployment................"
 kubectl create --filename=https://github.com/storageos/cluster-operator/releases/download/${OPERATOR_VERSION}/storageos-operator.yaml 1>/dev/null
 
-echo -ne ".${GREEN}OK${NC}\n"
+echo -ne ".${GREEN}OK${NC} (${RED}${OPERATOR_VERSION}${NC})\n"
 
 
 # Wait for the operator to become ready
@@ -422,14 +422,14 @@ echo -ne ".${GREEN}OK${NC}\n"
 # not deploying in kube-system - brace yourself!
 if [[ ! "${STOS_NAMESPACE}" == "kube-system" ]];
 then 
-  echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster namespace ${RED}${STOS_NAMESPACE}${NC}........"
+  echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster namespace........"
   kubectl create namespace ${STOS_NAMESPACE} 1>/dev/null
-  echo -ne ".${GREEN}OK${NC}\n"
+  echo -ne ".${GREEN}OK${NC} (${RED}${STOS_NAMESPACE}${NC})\n"
 fi
 
 # In the StorageOS CR we declare the DNS name for the etcd deployment and
 # service we created earlier.
-echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster version ${RED}${STOS_VERSION}${NC}........"
+echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster............................"
 kubectl create -f- 1>/dev/null<<END
 apiVersion: storageos.com/v1
 kind: StorageOSCluster
@@ -447,17 +447,30 @@ spec:
    address: "storageos-etcd-client.${ETCD_NAMESPACE}.svc:2379"
 END
 
-echo -ne ".${GREEN}OK${NC}\n"
+echo -ne ".${GREEN}OK${NC} (${RED}${STOS_NAMESPACE}${NC})\n"
 
-echo -ne "  Waiting on STORAGE${GREEN}OS${NC} pods to be running"
-phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
-while ! grep -q "Running" <(echo "${phase}"); do
-    echo -ne "."
-    sleep 10
-    phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
+# echo -ne "  Waiting on STORAGE${GREEN}OS${NC} pods to be running"
+# phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
+# while ! grep -q "Running" <(echo "${phase}"); do
+#     echo -ne "."
+#     sleep 10
+#     phase="$(kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME})"
+# done
+
+# echo -ne ".${GREEN}OK${NC}\n"
+
+sp="/-\|"
+spin() {
+    printf '\b%.1s' "$sp"
+    sp=${sp#?}${sp%???}
+}
+printf "  Waiting on STORAGE${GREEN}OS${NC} pods to be running................"
+until phase=`kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME} |grep -q "Running" 1>/dev/null`; 
+do
+   spin
 done
+echo -ne "${GREEN}OK${NC}\n"
 
-echo -ne ".${GREEN}OK${NC}\n"
 
 # Now that we have a working StorageOS cluster, we can deploy a pod to run the
 # cli inside the cluster. When we want to access the cli, we can kubectl exec

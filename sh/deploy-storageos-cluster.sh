@@ -55,6 +55,16 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+# spin the wheel to avoid nervous breakdown during waiting time
+sp="/-\|"
+spin() {
+    printf '\b%.1s' "$sp"
+    sp=${sp#?}${sp%???}
+}
+endspin() {
+    echo -ne '\b \b'
+}
+
 # Welcoming STORAGEOS users :)
 echo 
 echo -e "${RED}Welcome to the ${NC}STORAGE${GREEN}OS${RED} self-evaluation installation script.${NC}"
@@ -85,7 +95,7 @@ then
     echo -ne "${RED}NOK${NC}\n" 
     exit
 fi 
-echo -ne ".${GREEN}OK${NC} (${NODECOUNT})\n"
+echo -ne ".${GREEN}OK${NC} (${RED}${NODECOUNT}${NC})\n"
 
 # Checking for an existing STORAGEOS cluster on the kubernetes target
 echo -ne "  Checking for exiting STORAGE${GREEN}OS${NC} cluster................"
@@ -296,14 +306,14 @@ END
 echo -ne ".${GREEN}OK${NC}\n"
 
 # Wait for etcd operator to become ready
-echo -ne "  Waiting on etcd operator to be running................"
-# sleep 5
-phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
-while ! grep -q "Running" <(echo "${phase}"); do
-    sleep 2
-    phase="$(kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase)"
+echo -ne "    Waiting on etcd operator to be running..............."
+until phase=`kubectl -n ${ETCD_NAMESPACE} get pod -lname=etcd-operator --no-headers -ocustom-columns=status:.status.phase |grep -q "Running" 1>/dev/null`; 
+do
+   spin
 done
+endspin
 echo -ne ".${GREEN}OK${NC}\n"
+
 
 # Create etcd CustomResource
 # This will install 3 etcd pods into the cluster using ephemeral storage. It
@@ -374,13 +384,21 @@ echo -ne ".${GREEN}OK${NC} (${RED}${OPERATOR_VERSION}${NC})\n"
 
 
 # Wait for the operator to become ready
-echo -ne "  Waiting on STORAGE${GREEN}OS${NC} operator to be running..........."
-phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
-while ! grep -q "Running" <(echo "${phase}"); do
-    sleep 2
-    phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
+echo -ne "    Waiting on STORAGE${GREEN}OS${NC} operator to be running.........."
+# phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
+# while ! grep -q "Running" <(echo "${phase}"); do
+#     sleep 2
+#     phase="$(kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase)"
+# done
+# echo -ne ".${GREEN}OK${NC}\n"
+
+until phase=`kubectl -n storageos-operator get pod -l${STORAGEOS_OPERATOR_LABEL} --no-headers -ocustom-columns=status:.status.phase |grep -q "Running" 1>/dev/null`; 
+do
+   spin
 done
+endspin
 echo -ne ".${GREEN}OK${NC}\n"
+
 
 
 # The StorageOS secret contains credentials for our API, as well as CSI
@@ -431,6 +449,7 @@ fi
 # service we created earlier.
 echo -ne "  Creating STORAGE${GREEN}OS${NC} cluster............................"
 kubectl create -f- 1>/dev/null<<END
+---
 apiVersion: storageos.com/v1
 kind: StorageOSCluster
 metadata:
@@ -459,57 +478,75 @@ echo -ne ".${GREEN}OK${NC} (${RED}${STOS_NAMESPACE}${NC})\n"
 
 # echo -ne ".${GREEN}OK${NC}\n"
 
-sp="/-\|"
-spin() {
-    printf '\b%.1s' "$sp"
-    sp=${sp#?}${sp%???}
-}
-printf "  Waiting on STORAGE${GREEN}OS${NC} pods to be running................"
+
+printf "    Waiting on STORAGE${GREEN}OS${NC} pods to be running.............."
 until phase=`kubectl --namespace=${STOS_NAMESPACE} describe storageoscluster ${STOS_CLUSTERNAME} |grep -q "Running" 1>/dev/null`; 
 do
    spin
 done
-echo -ne "${GREEN}OK${NC}\n"
+endspin
+echo -ne ".${GREEN}OK${NC}\n"
 
 
 # Now that we have a working StorageOS cluster, we can deploy a pod to run the
 # cli inside the cluster. When we want to access the cli, we can kubectl exec
 # into this pod.
 echo -ne "  Deploying STORAGE${GREEN}OS${NC} CLI as a pod......................"
-# Deploy the StorageOS CLI as a container
-kubectl -n ${STOS_NAMESPACE} run               \
---image storageos/cli:${CLI_VERSION}     \
---restart=Never                          \
---env STORAGEOS_ENDPOINTS=storageos:5705 \
---env STORAGEOS_USERNAME=storageos       \
---env STORAGEOS_PASSWORD=storageos       \
---command cli                            \
--- /bin/sh -c "while true; do sleep 999999; done" \
-1>/dev/null
+kubectl create -f- 1>/dev/null<<END
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: cli
+ namespace: ${STOS_NAMESPACE}
+spec:
+ containers:
+  - name: cli
+    image: storageos/cli:${CLI_VERSION}
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do sleep 999999; done" ]
+    env:
+    - name: STORAGEOS_ENDPOINTS
+      value: storageos:5705
+    - name: STORAGEOS_USERNAME
+      value: storageos
+    - name: STORAGEOS_PASSWORD
+      value: storageos
+END
 
 echo -ne ".${GREEN}OK${NC}\n"
 
 
 # Check if StorageOS cli is running
-echo -ne "  Waiting on STORAGE${GREEN}OS${NC} CLI pod to be running............"
-phase="$(kubectl --namespace=${STOS_NAMESPACE} describe pod cli)"
-while ! grep -q "Running" <(echo "${phase}"); do
-    sleep 10
-    phase="$(kubectl --namespace=${STOS_NAMESPACE} describe pod cli)"
+echo -ne "    Waiting on STORAGE${GREEN}OS${NC} CLI pod to be running..........."
+# phase="$(kubectl --namespace=${STOS_NAMESPACE} describe pod cli)"
+# while ! grep -q "Running" <(echo "${phase}"); do
+#     sleep 10
+#     phase="$(kubectl --namespace=${STOS_NAMESPACE} describe pod cli)"
+# done
+# echo -ne ".${GREEN}OK${NC}\n"
+
+until phase=`kubectl --namespace=${STOS_NAMESPACE} describe pod cli |grep -q "Running" 1>/dev/null`; 
+do
+   spin
 done
+endspin
 echo -ne ".${GREEN}OK${NC}\n"
 
 echo 
 echo -e "${GREEN}Your ${NC}STORAGE${GREEN}OS${NC} Cluster ${GREEN}now is up and running!"
 echo
 echo -e "${GREEN}Now would be a good time to deploy your first volume - see${NC}"
-echo -e "${GREEN}https://docs.storageos.com/docs/self-eval/#a-namestorageosvolumeaprovision-a-storageos-volume${NC}"
+echo -e "${GREEN}   https://docs.storageos.com/docs/self-eval/#a-namestorageosvolumeaprovision-a-storageos-volume${NC}"
 echo -e "${GREEN}for an example of how to mount a StorageOS volume in a pod${NC}"
 echo
-echo -e "${GREEN}Don't forget to license your cluster - see https://docs.storageos.com/docs/operations/licensing/${NC}"
+echo -e "${GREEN}Get your Free Forever Developer license - see${NC}"
+echo -e "${GREEN}   https://docs.storageos.com/docs/operations/licensing/${NC}"
+echo -e "${RED}A cluster can run unlicensed for 24 hours. Normal functioning of the cluster"
+echo -e "${RED}can be unlocked by applying for a Free Forever Developer licence.${NC}"
 echo
 echo -e "${GREEN}This cluster has been set up with an etcd based on ephemeral${NC}"
 echo -e "${GREEN}storage. It is suitable for evaluation purposes only - for${NC}"
 echo -e "${GREEN}production usage please see our etcd installation nodes at${NC}"
-echo -e "${GREEN}https://docs.storageos.com/docs/prerequisites/etcd/${NC}"
+echo -e "${GREEN}   https://docs.storageos.com/docs/prerequisites/etcd/${NC}"
 echo 

@@ -188,7 +188,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f9ad796f328329b96b09e0e768e6230670850ba388c2ce6c4c5aff7a9d190b58b55f94869e1f89ed9a0cc17f34480dfa9cb50441b78e27ac2f8896ad91849625.json"
+  data-offline-search-index-json-src="/offline-search-index.0c9e47f86442709bbaa7bf615c22b7c0dfbdb0091be01312855db71dfdbcae3692a0eb27249241b491d885b8a59f0e832c94aac4833d64da2ae0e759d1636bc2.json"
   data-offline-search-base-href="/"
 >
 
@@ -222,7 +222,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.f9ad796f328329b96b09e0e768e6230670850ba388c2ce6c4c5aff7a9d190b58b55f94869e1f89ed9a0cc17f34480dfa9cb50441b78e27ac2f8896ad91849625.json"
+  data-offline-search-index-json-src="/offline-search-index.0c9e47f86442709bbaa7bf615c22b7c0dfbdb0091be01312855db71dfdbcae3692a0eb27249241b491d885b8a59f0e832c94aac4833d64da2ae0e759d1636bc2.json"
   data-offline-search-base-href="/"
 >
 
@@ -1135,13 +1135,18 @@
 	<h2 id="minimum-requirements">Minimum requirements:</h2>
 <p>One machine with the following:</p>
 <ol>
-<li>Minimum two core with 4GB RAM.</li>
-<li>Linux with a 64-bit architecture.</li>
+<li>Minimum two core with 4GB RAM</li>
+<li>Linux with a 64-bit architecture</li>
 <li>Kubernetes 1.15 to 1.20</li>
-<li>Container Runtime Engine: CRI-O, Containerd or Docker 1.10+ with <a href="https://docs.storageos.com/docs/prerequisites/mountpropagation/">mount propagation</a> enabled.</li>
-<li>The necessary ports should be open. See the <a href="https://docs.storageos.com/docs/prerequisites/firewalls/">ports and firewall settings</a>.</li>
+<li>Container Runtime Engine: CRI-O, Containerd or Docker 1.10+ with <a href="https://docs.storageos.com/docs/prerequisites/mountpropagation/">mount
+propagation</a> enabled</li>
+<li>The necessary ports should be open. See the <a href="https://docs.storageos.com/docs/prerequisites/firewalls/">ports and firewall
+settings</a></li>
 <li><a href="https://docs.storageos.com/docs/prerequisites/etcd/">Etcd cluster</a> for StorageOS</li>
-<li>A mechanism for <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">device presentation</a>.</li>
+<li>Some mainline kernel modules for <a href="https://docs.storageos.com/docs/prerequisites/systemconfiguration/">device presentation</a></li>
+<li>A PID cgroup limit of 32768</li>
+<li>The filesystem present at /var/lib/storageos and below should be one of our
+<a href="https://docs.storageos.com/docs/reference/filesystems/">supported backend filesystems</a></li>
 </ol>
 <h2 id="recommended">Recommended:</h2>
 <ol>

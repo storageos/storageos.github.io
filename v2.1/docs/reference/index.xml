@@ -5709,8 +5709,8 @@ helping customers troubleshoot their issues.&lt;/p&gt;
         &lt;h2 id=&#34;host-filesystems&#34;&gt;Host Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS will automatically use &lt;code&gt;/var/lib/storageos&lt;/code&gt; on each host as a base
 directory for storing &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/concepts/volumes#blob-files&#34;&gt;configuration and blob
-files&lt;/a&gt;. Recommended host filesystem types
-are &lt;code&gt;ext4&lt;/code&gt; or &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/support/contactus&#34;&gt;contact
+files&lt;/a&gt;. Supported host filesystem types
+are &lt;code&gt;ext4&lt;/code&gt; and &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/v2.1/docs/support/contactus&#34;&gt;contact
 StorageOS&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;persistent-volume-filesystems&#34;&gt;Persistent Volume Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS provides a block device on which a file system can be created. The

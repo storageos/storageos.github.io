@@ -14,66 +14,47 @@
     
     
     <item>
-      <title>Docs: Architecture</title>
-      <link>https://docs.storageos.com/docs/concepts/architecture/</link>
+      <title>Docs: Cluster Topologies</title>
+      <link>https://docs.storageos.com/docs/concepts/cluster-topologies/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://docs.storageos.com/docs/concepts/architecture/</guid>
+      <guid>https://docs.storageos.com/docs/concepts/cluster-topologies/</guid>
       <description>
         
         
-        &lt;p&gt;StorageOS is a software-defined storage platform for running stateful
-applications in Kubernetes.&lt;/p&gt;
-&lt;p&gt;Fundamentally, StorageOS uses the storage attached to the nodes in the
-StorageOS cluster to create and present virtual volumes into containers. Space
-on the host is consumed from the mount point &lt;code&gt;/var/lib/storageos/data&lt;/code&gt;, so it
-is therefore recommended that disk devices are used exclusively for StorageOS,
-as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;StorageOS is agnostic to the underlying storage and runs equally well on
-bare metal, in virtual machines or on cloud providers.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS architecture&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
-StorageOS&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;storageos-on-kubernetes&#34;&gt;StorageOS on Kubernetes&lt;/h3&gt;
-&lt;p&gt;StorageOS is architected as a series of containers that fulfil separate,
-discrete functions.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;StorageOS Controlplane&lt;/p&gt;
-&lt;p&gt;Responsible for monitoring and maintaining the state of volumes and nodes in the cluster&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;StorageOS Dataplane&lt;/p&gt;
-&lt;p&gt;Responsible for all I/O path related tasks; reading, writing, compression and caching&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;StorageOS Scheduler&lt;/p&gt;
-&lt;p&gt;Responsible for scheduling applications on the same node as applications&amp;rsquo; volumes&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;CSI helper&lt;/p&gt;
-&lt;p&gt;Responsible for registering StorageOS with Kubernetes as a CSI driver&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;StorageOS Operator&lt;/p&gt;
-&lt;p&gt;Responsible for the creation and maintenance of the StorageOS cluster&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;StorageOS is deployed by the StorageOS operator. In Kubernetes, the StorageOS
-Controlplane and Dataplane are deployed in a single pod managed by a daemonset.
-This daemonset runs on every node in the cluster that will consume or present
-storage. The scheduler, CSI helper and Operator run as separate pods and are
-controlled as deployments.&lt;/p&gt;
-&lt;p&gt;StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
-is managed through standard StorageClasses and PersistentVolumeClaims, and
-&lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
-Kubernetes-style labels and selectors, prefixed with &lt;code&gt;storageos.com/&lt;/code&gt;. By
-default, volumes are cached to improve read performance and compressed to
-reduce network traffic.&lt;/p&gt;
-&lt;p&gt;Any pod may mount a StorageOS virtual volume from any node that is also
-running StorageOS, regardless of whether the pod and volume are
-collocated on the same node. Therefore, applications may be started or
-restarted on any node and access volumes transparently.&lt;/p&gt;
+        &lt;p&gt;StorageOS makes it possible for you to organise your cluster in multiple ways,
+depending on your priorities and needs. The approaches below are idealised
+representations of possible StorageOS clusters and can be mixed, modified and
+changed at execution time.&lt;/p&gt;
+&lt;p&gt;StorageOS performs file I/O over the network, which is how we ensure that your
+data is always available throughout your cluster. This also affords the user
+certain possibilities for organising your cluster, as we suggest below.&lt;/p&gt;
+&lt;h2 id=&#34;hyperconverged-model&#34;&gt;Hyperconverged Model&lt;/h2&gt;
+&lt;p&gt;In this topology all nodes can store data and present data. This gives maximum
+flexibility to the StorageOS and Kubernetes schedulers, and maximum choice for
+pod placement. No matter how you deploy your workloads they will be able to
+store and access data on every node.&lt;/p&gt;
+&lt;p&gt;By default we place workloads locally where possible - this means that we
+default to a hybrid of the hyperconverged/high-performance models, maximising
+performance without extra effort.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/hyperconverged.png&#34; alt=&#34;Hyperconverged Model&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;centralised-storage-model&#34;&gt;Centralised Storage Model&lt;/h2&gt;
+&lt;p&gt;In this cluster topology volume data is placed on a particular subset of nodes,
+while the remaining nodes in your cluster are set to &lt;code&gt;computeonly&lt;/code&gt;, allowing
+access to data hosted on other nodes, while consuming no storage themselves.
+This model can be advantageous if, for example, you want to take advantage of
+the hardware characteristics of particular nodes. A centralised storage model
+can also help avoid problems with naive resource allocation, since storage
+nodes and compute workloads can be kept apart.&lt;/p&gt;
+&lt;p&gt;This mode is also very suitable for elastic fleets with burstable workloads. A
+fleet can be expanded with many new machines for computing, while maintaining a
+central data store not impacted by rapid and repeated cluster scaling.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/centralised.png&#34; alt=&#34;Centralised Model&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;high-performance-mode&#34;&gt;High Performance Mode&lt;/h2&gt;
+&lt;p&gt;In this mode we co-locate pods with the volumes they are using in order to take
+advantage of the performance gains from running on the same node, while
+retaining the utility of orchestrators for managing app lifecycle.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/high-performance.png&#34; alt=&#34;High Performance Model&#34;&gt;&lt;/p&gt;
 
       </description>
     </item>
@@ -157,6 +138,94 @@ versions did. You will need to setup an etcd server for StorageOS to use
 prior to installation of StorageOS. Please see our &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/etcd/&#34;&gt;etcd prerequisites&lt;/a&gt; page for more information on how
 to install and configure etcd.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Fencing</title>
+      <link>https://docs.storageos.com/docs/concepts/fencing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/concepts/fencing/</guid>
+      <description>
+        
+        
+        &lt;h2 id=&#34;statefulset-behaviour&#34;&gt;StatefulSet behaviour&lt;/h2&gt;
+&lt;p&gt;In order to understand what StorageOS Fencing for Kubernetes is and when it is
+needed, it is required to first understand the behaviour of StatefulSets.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/&#34;&gt;StatefulSets&lt;/a&gt;
+are the de facto Kubernetes controller to use for stateful applications. The
+StatefulSet controller offers guarantees around pod uniqueness, sticky
+identities and the persistence of PVCs beyond the lifetime of their pods. As
+such, StatefulSets have different characteristics and provide different
+guarantees than Deployments.&lt;/p&gt;
+&lt;p&gt;Deployments guarantee the amount of healthy replicas by reconciling towards the
+deployment desired  state. Attempts to align the number of healthy pods with
+the deployment&amp;rsquo;s desired state happen as fast as possible by aggressively
+initializing and terminating pods. If one pod is terminating, another will be
+automatically scheduled to start even if the first pod is not yet completely
+terminated. Stateless applications benefit from this behaviour as one pod
+executes the same work as any other in the deployment.&lt;/p&gt;
+&lt;p&gt;StatefulSets, on the other hand, guarantee that every pod scheduled has a
+unique identity, which is to say that only a single copy of a pod is running in
+the cluster at any one time. Whenever scheduling decisions are made, the
+StatefulSet controller ensures that only one copy of this pod is running at any
+time. If a pod is deleted, a new pod will not be scheduled until the first pod
+is fully terminated. This is an important guarantee as FileSystems need to be
+unmounted before they can be remounted in a new pod. Any ReadWriteOnce PVC
+defining a device requires this behaviour to ensure the consistency of the data
+and thus the PVC.&lt;/p&gt;
+&lt;p&gt;To protect data integrity, Kubernetes guarantees that there will never be more
+than one instance of a StatefulSet Pod running at a time. It assumes that when
+a node is determined to be offline it may still be running the workload but
+partitioned from the network. Since Kubernetes is unable to
+verify that the Pod has been stopped it errs on the side of caution and does
+not allow a replacement to start on another node.&lt;/p&gt;
+&lt;p&gt;Kubernetes does reschedule pods from some controllers when nodes become
+unavailable. The default behaviour is that when a node becomes unavailable its
+status becomes &amp;ldquo;Unknown&amp;rdquo; and after the &lt;code&gt;pod-eviction-timeout&lt;/code&gt; has passed pods
+are scheduled for deletion. By default, the &lt;code&gt;pod-eviction-timeout&lt;/code&gt; is 300
+seconds.&lt;/p&gt;
+&lt;p&gt;For this reason, Kubernetes requires manual intervention to initiate timely
+failover of a StatefulSet Pod. The StorageOS Fencing Controller gives the
+capability to enable fast failover of workloads when a node goes offline.&lt;/p&gt;
+&lt;p&gt;For more information on the rationale behind the design of StatefulSets please
+see the Kubernetes design proposal for &lt;a href=&#34;https://github.com/kubernetes/community/blob/master/contributors/design-proposals/storage/pod-safety.md&#34;&gt;Pod
+Safety&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;storageos-fencing-controller&#34;&gt;StorageOS Fencing Controller&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The StorageOS Fencing Controller is part of the StorageOS API Manager which
+is deployed in high availability when StorageOS is installed.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;HA for StatefulSet applications can be achieved with the StorageOS Fencing
+feature&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Since StorageOS is able to determine when a node is no longer able to access a
+volume and has protections in place to ensure that a partitioned or formerly
+partitioned node can not continue to write data, it can work with Kubernetes to
+perform safe, fast failovers of Pods, including those running in StatefulSets.&lt;/p&gt;
+&lt;p&gt;When StorageOS detects that a node has gone offline or become partitioned, it
+marks the node offline and performs volume failover operations.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/storageos/api-manager/tree/master/controllers/fencer&#34;&gt;StorageOS Fencing
+Controller&lt;/a&gt;
+watches for these node failures and determines if there are any pods assigned
+to the failed node with the label &lt;code&gt;storageos.com/fenced=true&lt;/code&gt;, and if the pods
+have any PVCs backed by StorageOS volumes.&lt;/p&gt;
+&lt;p&gt;When a Pod has StorageOS volumes and if they are all healthy, the StorageOS
+fencing controller deletes the Pod to allow it to be rescheduled on another
+node. It also deletes the VolumeAtachments for the corresponding volumes so
+that they can be immediately attached to the new node.&lt;/p&gt;
+&lt;p&gt;No changes are made to Pods that have StorageOS volumes that are unhealthy.
+This is usually because a volume was configured to not have any replicas, and the
+node with the single copy of the data is offline. In this case it is better to
+wait for the node to recover.&lt;/p&gt;
+&lt;p&gt;Fencing works with both dynamically provisioned PVCs and PVCs referencing
+pre-provisioned volumes.&lt;/p&gt;
+&lt;p&gt;The fencing feature is opt-in and Pods must have the
+&lt;code&gt;storageos.com/fenced=true&lt;/code&gt; label set, and be using at least one StorageOS
+volume, to enable fast failover.&lt;/p&gt;
+&lt;p&gt;For more information about how to enable pod fencing please see our &lt;a href=&#34;https://docs.storageos.com/docs/operations/fencing/&#34;&gt;Fencing
+Operations&lt;/a&gt; page.&lt;/p&gt;
 
       </description>
     </item>
@@ -368,31 +437,162 @@ a replica and the replica will the smallest difference to the current master
 will be kept.&lt;/p&gt;
 &lt;p&gt;While the replica count is controllable on a per-volume basis, some
 environments may prefer to set &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/#storageos-storageclass-labels&#34;&gt;default labels on the StorageClass&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;number-of-nodes&#34;&gt;Number of nodes&lt;/h3&gt;
-&lt;p&gt;StorageOS replicas are distributed across available nodes. When a node fails,
-a new replica is provisioned and synced as described above. Failure to
-provision a new replica will eventually cause the volume to become read-only.
-StorageOS will re-attempt creation of the replica for 90 seconds. After that
-period, if the old replica is not available and a new replica cannot be
-provisioned, StorageOS cannot guarantee that the data is safe and stored on
-multiple nodes as requested by the user. It will therefore force the volume
-to be set to read-only.&lt;/p&gt;
-&lt;p&gt;To ensure that a new replica can always be created, an additional node should
-be available. To guarantee high availability, clusters using volumes with 1
-replica must have at least 3 storage nodes. When using volumes with 2 replicas,
-at least 4 storage nodes, 3 replicas, 5 nodes, etc.&lt;/p&gt;
-&lt;p&gt;Minimum number of storage nodes = 1 (primary) + N (replicas) + 1&lt;/p&gt;
-&lt;p&gt;For an application to be able to use the volume normally, the volume needs to
-recover from a degraded state. This is achieved by having enough nodes on which
-to place the data, and triggering a remount of the volumes - i.e. deleting the
-Pod mounting the volume once it is in a healthy state.&lt;/p&gt;
-&lt;h3 id=&#34;delta-sync&#34;&gt;Delta Sync&lt;/h3&gt;
+&lt;h2 id=&#34;delta-sync&#34;&gt;Delta Sync&lt;/h2&gt;
 &lt;p&gt;StorageOS implements a delta sync between a volume master and its replicas.
 This means that if a replica for a volume goes offline, that when the replica
 comes back online only the regions with changed blocks need to be synchronized.
 This optimization reduces the time it takes for replicas to catch up, improving
 volume resilience. Additionally, it reduces network and IO bandwidth which can
 reduce costs when running in public clouds.&lt;/p&gt;
+&lt;h2 id=&#34;failure-modes&#34;&gt;Failure Modes&lt;/h2&gt;
+&lt;p&gt;StorageOS failure modes offer different guarantees with regards to a volume&amp;rsquo;s
+mode of operation in the face of replica failure. If the failure mode is not
+specified it defaults to &lt;code&gt;Hard&lt;/code&gt;. Volume failure modes can be dynamically
+updated at run time.&lt;/p&gt;
+&lt;h3 id=&#34;hard&#34;&gt;Hard&lt;/h3&gt;
+&lt;p&gt;Hard failure mode requires that the number of declared replicas matches the
+available number of replicas at all times. If a replica fails StorageOS will
+attempt creation of a new replica for 90 seconds. After 90s if the old replica
+is not available and a new replica cannot be provisioned, StorageOS cannot
+guarantee that the data is stored on the number of multiple nodes requested by
+the user. StorageOS will therefore set the volume to be read-only.&lt;/p&gt;
+&lt;p&gt;If a volume has gone read-only there are two stages to making it read-write
+again. Firstly, sufficient replicas must be provisioned to match the desired
+replica count. Depending on your environment, additional nodes and/or disk
+capacity may be required for this. Secondly, the volume must be remounted -
+necessitating pod deletion/recreation in Kubernetes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: hard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for hard failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When a node fails, a new replica is provisioned and synced as described above.
+To ensure that a new replica can always be created, an additional node should
+be available. To guarantee high availability using &lt;code&gt;storageos.com/failure-mode: hard&lt;/code&gt;, clusters using volumes with 1 replica must have at least 3 storage
+nodes. When using volumes with 2 replicas, at least 4 storage nodes, 3
+replicas, 5 nodes, etc.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + N (replicas) + 1&lt;/p&gt;
+&lt;h3 id=&#34;soft&#34;&gt;Soft&lt;/h3&gt;
+&lt;p&gt;Soft failure mode allows a volume to continue serving I/O even when a replica
+goes offline and a new replica fails to provision. So long as there are not
+less than max(1,  n-1) available replicas where n is the number of replicas for
+the volume.&lt;/p&gt;
+&lt;p&gt;For example, if a volume with 2 replicas loses 1 replica, then I/O would
+continue to be served since 1 replica remaining &amp;gt;= max(1, 1). If a volume with
+1 replica loses 1 replica, then I/O would halt after 90 seconds since 0
+replicas remaining &amp;lt; max(1, 0).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: soft
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for soft failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To ensure that a &lt;code&gt;storageos.com/failure-mode: soft&lt;/code&gt; volume is highly available, clusters using volumes with 1 replica must have at
+least 2 storage nodes. When using volumes with 2 replicas, at least 3 storage
+nodes, 3 replicas, 3 nodes, etc.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + N (replicas)&lt;/p&gt;
+&lt;h3 id=&#34;threshold&#34;&gt;Threshold&lt;/h3&gt;
+&lt;p&gt;Threshold failure mode allows the user to set the minimum required number of
+online replicas for a volume. For example for a volume with 2 replicas, setting
+the threshold to 1 would allow a single replica to be offline, whereas setting
+threshold to 0 would allow 2 replicas to be offline.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;0-5&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for threshold failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The minimum number of nodes for a &lt;code&gt;threshold&lt;/code&gt; volume is determined by the
+threshold that is set.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + T (threshold)&lt;/p&gt;
+&lt;h3 id=&#34;alwayson&#34;&gt;AlwaysOn&lt;/h3&gt;
+&lt;p&gt;AlwaysOn failure mode allows all replicas for a volume to be offline and keeps
+the volume writeable. A volume with failure mode AlwaysOn will continue to
+serve I/O regardless of how many replicas it currently has. This mode should be
+used with caution as it effectively allows for only a single copy of the data
+to be available.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: alwayson
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for AlwaysOn failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;storageos.com/failure-mode: alwayson&lt;/code&gt; volume is highly available albeit at
+the cost of reliability. The minimum node count here is 1 as the loss of all
+replicas will be tolerated.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary)&lt;/p&gt;
+&lt;p&gt;Check the &lt;a href=&#34;https://docs.storageos.com/docs/operations/failure-modes/&#34;&gt;failure modes operations&lt;/a&gt; page to find details about how to use the labels on the Volumes.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: StorageOS Components</title>
+      <link>https://docs.storageos.com/docs/concepts/components/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/concepts/components/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS is a software-defined storage platform for running stateful
+applications in Kubernetes.&lt;/p&gt;
+&lt;p&gt;Fundamentally, StorageOS uses the storage attached to the nodes in the
+StorageOS cluster to create and present virtual volumes into containers. Space
+on the host is consumed from the mount point &lt;code&gt;/var/lib/storageos/data&lt;/code&gt;, so it
+is therefore recommended that disk devices are used exclusively for StorageOS,
+as described in &lt;a href=&#34;https://docs.storageos.com/docs/operations/managing-host-storage/&#34;&gt;Managing Host Storage &lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;StorageOS is agnostic to the underlying storage and runs equally well on
+bare metal, in virtual machines or on cloud providers.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://docs.storageos.com/images/docs/concepts/storageos-cluster.png&#34; alt=&#34;StorageOS cluster components&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Read about &lt;a href=&#34;https://storageos.com/storageos-cloud-native-storage&#34;&gt;the cloud native storage principles behind
+StorageOS&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;storageos-on-kubernetes&#34;&gt;StorageOS on Kubernetes&lt;/h3&gt;
+&lt;p&gt;StorageOS is architected as a series of containers that fulfil separate,
+discrete functions.&lt;/p&gt;
+&lt;p&gt;Links where appropriate have been given to our open-source GitHub repo.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/storageos/cluster-operator&#34;&gt;StorageOS Cluster Operator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Responsible for the creation and maintenance of the StorageOS cluster. This
+operator is primarily responsible for ensuring that all the relevant
+applications are running in your cluster.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;StorageOS Controlplane&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Responsible for monitoring and maintaining the state of volumes and nodes
+in the cluster. The Controlplane and the Dataplane run together in a single
+container, managed by a daemonset. The Controlplane works with etcd to maintain
+state consensus in your cluster.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;StorageOS Dataplane&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Responsible for all I/O path related tasks; reading, writing, compression
+and caching.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;StorageOS Scheduler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Responsible for scheduling applications on the same node as an application&amp;rsquo;s
+volumes. StorageOS uses a custom Kubernetes scheduler to handle pod placement,
+ensuring that volumes are deployed on the same nodes as the relevant workloads
+as often as possible.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/storageos/external-provisioner&#34;&gt;CSI helper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Responsible for registering StorageOS with Kubernetes as a CSI driver. It
+is necessary because the internal persistent volume controller running in
+Kubernetes controller-manager does not have any direct interfaces to CSI
+drivers. It monitors PVC objects created by users and creates/deletes volumes
+for them.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;StorageOS API manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Acts as a middle-man between various APIs. It has all the capabilities of a
+Kubernetes Operator and is also able to communicate with the StorageOS control
+plane API. This application handles typical operator tasks like labelling or
+removing nodes from StorageOS when removed from the Kubernetes. It is
+continually  monitoring the state of the cluster and moving it towards the
+desired state when necessary.&lt;/p&gt;
+&lt;p&gt;StorageOS is deployed by the StorageOS Cluster Operator. In Kubernetes, the
+StorageOS Controlplane and Dataplane are deployed in a single pod managed by a
+daemonset.  This daemonset runs on every node in the cluster that will consume
+or present storage. The Scheduler, CSI helper, Cluster Operator and API Manager
+run as separate pods and are controlled as deployments.&lt;/p&gt;
+&lt;p&gt;StorageOS is designed to feel familiar to Kubernetes and Docker users. Storage
+is managed through standard StorageClasses and PersistentVolumeClaims, and
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/&#34;&gt;features&lt;/a&gt; are controlled by
+Kubernetes-style labels and selectors, prefixed with &lt;code&gt;storageos.com/&lt;/code&gt;. By
+default, volumes are cached to improve read performance and compressed to
+reduce network traffic.&lt;/p&gt;
+&lt;p&gt;Any pod may mount a StorageOS virtual volume from any node that is also
+running StorageOS, regardless of whether the pod and volume are
+collocated on the same node. Therefore, applications may be started or
+restarted on any node and access volumes transparently.&lt;/p&gt;
 
       </description>
     </item>
@@ -414,11 +614,10 @@ the application sees, and a backend presentation, which is the actual on-disk
 format. Depending on the configuration, frontend and backend components may be
 on the same or different hosts.&lt;/p&gt;
 &lt;p&gt;Volumes are formatted using the linux standard ext4 filesystem by default.
-Kubernetes users may change the default filesystem type to ext2, ext3, ext4,
-or xfs by setting the fsType parameter in their StorageClass (see
-&lt;a href=&#34;https://docs.storageos.com/docs/reference/filesystems#persistent-volume-filesystems&#34;&gt;Supported
-Filesystems&lt;/a&gt; for
-more information). Different filesystems may be supported in the future.&lt;/p&gt;
+Kubernetes users may change the default filesystem type to ext2, ext3, ext4, or
+xfs by setting the fsType parameter in their StorageClass (see &lt;a href=&#34;https://docs.storageos.com/docs/reference/filesystems/#persistent-volume-filesystems&#34;&gt;Supported
+Filesystems&lt;/a&gt; for more
+information). Different filesystems may be supported in the future.&lt;/p&gt;
 &lt;p&gt;StorageOS volumes are represented on disk in two parts. Actual volume data is
 written to blob files in &lt;code&gt;/var/lib/storageos/data/dev[\d+]&lt;/code&gt;. Inside these
 directories, each StorageOS block device gets two blob files of the form
@@ -443,6 +642,13 @@ compression defined on the volume.&lt;/p&gt;
 node.&lt;/p&gt;
 &lt;h2 id=&#34;minimum-volume-size&#34;&gt;Minimum Volume Size&lt;/h2&gt;
 &lt;p&gt;The minimum volume size StorageOS supports is 1 GiB.&lt;/p&gt;
+&lt;h2 id=&#34;trim&#34;&gt;TRIM&lt;/h2&gt;
+&lt;p&gt;StorageOS volumes support TRIM/Unmap which allows the space allocated to
+deleted blocks to be reclaimed from the backend blob files that back each
+volume when a TRIM call is made. Support for TRIM is enabled by default for all
+uncompressed volumes, volumes are created without compression enabled by
+default. For more information on how to TRIM a filesystem see &lt;a href=&#34;https://docs.storageos.com/docs/operations/trim/&#34;&gt;TRIM
+operations&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;volume-resize&#34;&gt;Volume Resize&lt;/h2&gt;
 &lt;p&gt;StorageOS v2.1 supports offline resize of volumes. This means that a volume
 cannot be resized while it is in use. Furthermore, in order for a resize
@@ -454,8 +660,13 @@ pod is terminated and the volume is detached from the node. The StorageOS
 controlplane will then attach the volume to the node that holds the master
 deployment and resize the underlying block device and then run resize2fs to
 expand the filesystem.&lt;/p&gt;
-&lt;p&gt;For a walk through of how to resize a volume please see the &lt;a href=&#34;https://docs.storageos.com/docs/operations/resize&#34;&gt;Volume
+&lt;p&gt;For a walk through of how to resize a volume please see the &lt;a href=&#34;https://docs.storageos.com/docs/operations/resize/&#34;&gt;Volume
 Resize&lt;/a&gt; operations page.&lt;/p&gt;
+&lt;h2 id=&#34;volume-encryption&#34;&gt;Volume Encryption&lt;/h2&gt;
+&lt;p&gt;Volumes can be configured on creation to have encryption-at-rest. Data
+is encrypted with XTS-AES and decrypted upon use. Please see
+the &lt;a href=&#34;https://docs.storageos.com/docs/reference/encryption/&#34;&gt;Encryption&lt;/a&gt; reference page for
+more information.&lt;/p&gt;
 
       </description>
     </item>

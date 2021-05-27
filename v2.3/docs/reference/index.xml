@@ -14,6 +14,19 @@
     
     
     <item>
+      <title>Docs: Bundles</title>
+      <link>https://docs.storageos.com/v2.3/docs/reference/bundles/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/v2.3/docs/reference/bundles/</guid>
+      <description>
+        
+        
+        
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: API Reference</title>
       <link>https://docs.storageos.com/v2.3/docs/reference/api/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -55,10 +68,16 @@ window.onload = function() {
 configuration.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# linux/amd64&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_linux_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;
+    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# MacOS&lt;/span&gt;
-curl -sSLo storageos https://github.com/storageos/go-cli/releases/download/v2.3.0/storageos_darwin_amd64 &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
+curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will need to provide the correct credentials to connect to the API. The
 default installation uses the &lt;code&gt;storageos-api&lt;/code&gt; Secret to generate the first
 admin user. By default, it creates a single user with username &lt;code&gt;storageos&lt;/code&gt; and
@@ -66,6 +85,17 @@ password &lt;code&gt;storageos&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_USERNAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos
 &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_PASSWORD&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos
 &lt;span style=&#34;color:#204a87&#34;&gt;export&lt;/span&gt; &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_ENDPOINTS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;10.1.5.249:5705
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;run-cli-as-a-container&#34;&gt;Run CLI as a container&lt;/h3&gt;
+&lt;p&gt;You can run the cli as a container in your Kubernetes cluster. Then exec into
+it to run commands.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --image storageos/cli:v2.3.3 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --restart&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;Never                          &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_ENDPOINTS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos:5705 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_USERNAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_PASSWORD&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --command cli                            &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    -- /bin/sh -c &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;while true; do sleep 100000; done&amp;#34;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;usage&#34;&gt;Usage&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos
 Storage &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; Cloud Native Applications.
@@ -87,21 +117,29 @@ Available Commands:
   detach      Detach a volume from its current location
   get         Fetch basic details &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; resources
   &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt;        Help about any &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt;
+  nfs         Make changes and attach nfs volumes
+  update      Make changes to existing resources
   version     View version information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the StorageOS CLI
 
 Flags:
+      --cache-dir string        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the directory used by the StorageOS CLI to cache data that can be used &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; future commands &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/user/.cache/storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+  -c, --config string           specifies the config file path &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/home/user/.config/storageos/config.yaml&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --endpoints stringArray   &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the list of endpoints which are used when connecting to the StorageOS API &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;http://localhost:5705&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
   -h, --help                    &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; storageos
   -n, --namespace string        specifies the namespace to operate within &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; commands that require one &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --no-auth-cache           disable the CLI&lt;span style=&#34;color:#a40000&#34;&gt;&amp;#39;&lt;/span&gt;s caching of authentication sessions
   -o, --output string           specifies the output format &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;one of &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;[&lt;/span&gt;json yaml text&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;text&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --password string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account password to authenticate with &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
-      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 5s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+      --timeout duration        &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the timeout duration to use &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; execution of the &lt;span style=&#34;color:#204a87&#34;&gt;command&lt;/span&gt; &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default 15s&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names
       --username string         &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; the StorageOS account username to authenticate as &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;default &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
 
 Additional &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; topics:
-  storageos env       View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; configuration settings which can be &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; in the environment
-  storageos exitcodes View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt; codes used by the StorageOS CLI
+  storageos config-file View &lt;span style=&#34;color:#204a87&#34;&gt;help&lt;/span&gt; information &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; using a configuration file
+  storageos env         View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; configuration settings which can be &lt;span style=&#34;color:#204a87&#34;&gt;set&lt;/span&gt; in the environment
+  storageos exitcodes   View documentation &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; the &lt;span style=&#34;color:#204a87&#34;&gt;exit&lt;/span&gt; codes used by the StorageOS CLI
+
+Use &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos [command] --help&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;for&lt;/span&gt; more information about a command.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;formatting-cli-output&#34;&gt;Formatting CLI Output&lt;/h2&gt;
 &lt;p&gt;StorageOS CLI output can be formatted using the &lt;code&gt;--output&lt;/code&gt; option. The strings
 that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsquo;, &amp;lsquo;yaml&amp;rsquo; or &amp;lsquo;text&amp;rsquo;.&lt;/p&gt;
@@ -118,7 +156,7 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;apply&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;code&gt;licence&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Apply licence to cluster.&lt;/td&gt;
+&lt;td&gt;Make changes to existing resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;attach&lt;/code&gt;&lt;/td&gt;
@@ -127,33 +165,43 @@ that are passed to &lt;code&gt;--output&lt;/code&gt; are &amp;lsquo;json&amp;rsq
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;create&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;user, volume&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Create resources such as users or volumes.&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;namespace, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Create resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;delete&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;Delete resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;describe&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;node, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cluster, licence, namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;Show detailed view of resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;detach&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
 &lt;td&gt;Detach volume from a node.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;get&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;cluster, diagnostics, namespace, node, user, volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cluster, diagnostics, namespace, node, policy-group, user, volume&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;List resources.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;help&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;td&gt;Help&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;nfs&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;attach, endpoint, exports&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Make changes to and attach nfs volumes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;update&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;volume&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Make changes to existing resources&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;&lt;code&gt;version&lt;/code&gt;&lt;/td&gt;
@@ -372,9 +420,10 @@ sync&amp;rsquo;d to the StorageOS node (labels take an eventual consistency
 reconciliation time of ~1min).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; storageos.com/computeonly&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;storageos-volume-labels&#34;&gt;StorageOS Volume labels&lt;/h2&gt;
-&lt;p&gt;Volumes do not have any feature labels present by default. WARNING: The caching
-and compression labels can only apply during provision time, they can&amp;rsquo;t be
-changed during execution.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;The caching and compression labels can only apply during provision time, they
+can&amp;rsquo;t be changed during execution&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -389,19 +438,19 @@ changed during execution.&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;Caching&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocache&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off caching.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off caching. (default: true)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Compression&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocompress&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit. (default: true)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Replication&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/replicas&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;integers [0, 5]&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended.&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. (default: 0)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -433,8 +482,7 @@ precedence over the StorageClass parameters.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos-replicated&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;fsType&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;ext4&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;pool&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;default&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/fstype&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;ext4&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Label   &amp;lt;--------&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# CSI driver (recommended) &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
@@ -5292,13 +5340,68 @@ limitations under the License.
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.0&lt;/code&gt;. For
+&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.4&lt;/code&gt;. For
 installation instructions please see our
-&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/reference/cluster-operator/install&#34;&gt;Install&lt;/a&gt; page.&lt;/p&gt;
-&lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.0&lt;/code&gt;, available from
+&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/reference/cluster-operator/install/&#34;&gt;Install&lt;/a&gt; page.&lt;/p&gt;
+&lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.3&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
+&lt;h2 id=&#34;v234---released-2021-03-24&#34;&gt;v2.3.4 - Released 2021-03-24&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;controlplane/build: Use Sentry prod-url for release branches (CP-4600).&lt;/li&gt;
+&lt;li&gt;controlplane/csi: Improve CSI handler timeout (CP-4585).&lt;/li&gt;
+&lt;li&gt;controlplane/dataplane: UUID mapping cleanup on failed volume creation (CP-4588).&lt;/li&gt;
+&lt;li&gt;controlplane/slog: Improve RPC error logging (CP-4616).&lt;/li&gt;
+&lt;li&gt;dataplane: Allocate fewer aio contexts per volume (DP-305)&lt;/li&gt;
+&lt;li&gt;dataplane: Defer fallocate(2) until first write (DP-312).&lt;/li&gt;
+&lt;li&gt;dataplane: Don&amp;rsquo;t fail replica sync if inter-node connection establishment is slow (DP-319, DP-280).&lt;/li&gt;
+&lt;li&gt;dataplane: Improve logging around gRPC context cancellations (DP-315).&lt;/li&gt;
+&lt;li&gt;dataplane: Improve rollback for failed volume creation (DP-308).&lt;/li&gt;
+&lt;li&gt;dataplane: New support tool to cleanup orphaned volume storage (DP-307).&lt;/li&gt;
+&lt;li&gt;dataplane: supctl can reap named volumes (DP-309).&lt;/li&gt;
+&lt;li&gt;k8s: API token reset failures should trigger re-authentication directly (#38).&lt;/li&gt;
+&lt;li&gt;k8s: Increase lint timeout to reduce CI errors (#305).&lt;/li&gt;
+&lt;li&gt;k8s: Remove PriorityClass from helper pods (#312).&lt;/li&gt;
+&lt;li&gt;k8s: Toleration defaults for helper pods (#311).&lt;/li&gt;
+&lt;li&gt;k8s: Use ubi-minimal base image directly (#307).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;v233---released-2021-02-12&#34;&gt;v2.3.3 - Released 2021-02-12&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Support CSI ListVolumes() API, addressing volume attach problems seen by some
+customers.&lt;/li&gt;
+&lt;li&gt;Quality-of-life fixes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;operator: Use CSI attacher v3 for k8s 1.17+.&lt;/li&gt;
+&lt;li&gt;controlplane/csi: ListVolumes support.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;api-manager: Reset api after token refresh error.&lt;/li&gt;
+&lt;li&gt;operator: Set scheduler when PVCs use default StorageClass.&lt;/li&gt;
+&lt;li&gt;operator: Update base container image.&lt;/li&gt;
+&lt;li&gt;controlplane/volumerpc: &amp;ldquo;Got unknown replica state 0&amp;rdquo; discards results.&lt;/li&gt;
+&lt;li&gt;controlplane/healthcheck: Combined sources fires callback in initialisation.&lt;/li&gt;
+&lt;li&gt;controlplane/fsm: Perform state match check before version check.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;v232---released-2020-11-25&#34;&gt;v2.3.2 - Released 2020-11-25&lt;/h2&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;controlplane/rejoin: Failure to delete data causes re-advertise loop.&lt;/li&gt;
+&lt;li&gt;controlplane/rejoin: Handle timeout waiting for progress report.&lt;/li&gt;
+&lt;li&gt;dataplane/log: Change buffering of &lt;code&gt;symmetra&lt;/code&gt; output to prevent stalls.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;v231---released-2020-11-16&#34;&gt;v2.3.1 - Released 2020-11-16&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Allows access to &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes when running containers as a
+non-root user.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;nfs: root squash to uid=0 is now configured on all shared volumes.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;v230---released-2020-10-31&#34;&gt;v2.3.0 - Released 2020-10-31&lt;/h2&gt;
 &lt;p&gt;This release adds production-grade shared file support to v2, previously a
 technology preview in v1.&lt;/p&gt;
@@ -5306,13 +5409,14 @@ technology preview in v1.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;code&gt;v2.3.0&lt;/code&gt; operator is no longer able to run StorageOS v1.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Adds support for &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes.  See
-&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/concepts/rwx&#34;&gt;ReadWriteMany&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Adds &lt;code&gt;api-manager&lt;/code&gt; deployment to support shared volumes.  See
-[https://github.com/storageos/api-manager](api-manager on Github ) for more
+&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/concepts/rwx/&#34;&gt;ReadWriteMany&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Adds &lt;code&gt;api-manager&lt;/code&gt; deployment to support shared volumes.  See &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;the api
+manager&lt;/a&gt; Github repository for more
 information.&lt;/li&gt;
+&lt;li&gt;Kubernetes 1.19 support.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;improved&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;
@@ -5358,9 +5462,10 @@ propagate to all nodes.&lt;/li&gt;
 &lt;li&gt;init: Checks the effective maximum PID limit and warns if less than the
 StorageOS recommended PID limit (32,768).  CRIO-based distributions such as
 Openshift have a much lower default value (1024).  Consult
-&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/prerequisites/pidlimits&#34;&gt;prerequisites&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;a href=&#34;https://docs.storageos.com/v2.3/docs/prerequisites/pidlimits/&#34;&gt;prerequisites&lt;/a&gt; for more
+information.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: Fixes &lt;code&gt;transport endpoint is not connected&lt;/code&gt; on startup after an
 unclean shutdown.&lt;/li&gt;
@@ -5384,7 +5489,7 @@ improvements across the board. Of particular note:&lt;/p&gt;
 look at the &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/self-eval/#Benchmarking&#34;&gt;Benchmarking&lt;/a&gt; section of the self-evaluation guide and consider sharing
 your results. Our PRE engineers are available to discuss in our &lt;a href=&#34;https://storageos.slack.com&#34;&gt;slack
 channel&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Data engine revamp focused on provable consistency and performance. Key
@@ -5399,7 +5504,7 @@ Applications like Kafka will go much faster.&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;On-disk compression is now disabled by default as in most scenarios this
 offers better performance. To enable on-disk compression for a specific
-workload, see &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/concepts/compression&#34;&gt;compression&lt;/a&gt;.&lt;/p&gt;
+workload, see &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/concepts/compression/&#34;&gt;compression&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;improved-1&#34;&gt;Improved&lt;/h3&gt;
@@ -5436,7 +5541,7 @@ This allows the scheduler to work in clusters with custom DNS configuration.&lt;
 &lt;li&gt;operator: Defaults are now set for most CSI configuration options in the
 StorageOSCluster custom resource.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;csi: When unmount request is received for a volume that has already been
 unmounted, return success.&lt;/li&gt;
@@ -5449,12 +5554,11 @@ operations, rather than filling target disk to capacity.&lt;/li&gt;
 after a restart. This resulted in multiple entries in &lt;code&gt;/proc/mounts&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v210---released-2020-06-26&#34;&gt;v2.1.0 - Released 2020-06-26&lt;/h2&gt;
-&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;csi: Volume expansion now supported in offline mode. To expand a volume,
-stop any workloads accessing the volume, then edit the PVC to increase the
-capacity. For more information, see our &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/operations/resize&#34;&gt;Volume
-Resize&lt;/a&gt; operations page and the &lt;a href=&#34;https://kubernetes-csi.github.io/docs/volume-expansion.html&#34;&gt;&lt;code&gt;CSI Volume Expansion&lt;/code&gt;&lt;/a&gt;
+&lt;li&gt;csi: Volume expansion now supported in offline mode. To expand a volume, stop
+any workloads accessing the volume, then edit the PVC to increase the
+capacity. For more information, see our &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/operations/resize/&#34;&gt;Volume Resize&lt;/a&gt; operations page and the &lt;a href=&#34;https://kubernetes-csi.github.io/docs/volume-expansion.html&#34;&gt;&lt;code&gt;CSI Volume Expansion&lt;/code&gt;&lt;/a&gt;
 page.&lt;/li&gt;
 &lt;li&gt;api: Volume configuration including replica count can now be updated while
 the volume is in use. Other updateable fields include labels and
@@ -5480,14 +5584,14 @@ and replica nodes are offline. This allows cleanup of orphaned volumes.&lt;/li&g
 &lt;li&gt;api: When a new node is added to the cluster, its capacity is available to use
 immediately.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: Favicon was missing.&lt;/li&gt;
 &lt;li&gt;ui: Duplicate volumes could be shown on the node details page.&lt;/li&gt;
 &lt;li&gt;operator: During uninstall a ClusterRoleBinding was not removed.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v200---released-2020-05-05&#34;&gt;v2.0.0 - Released 2020-05-05&lt;/h2&gt;
-&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-4&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;operator: StorageOS containers now run in the &lt;code&gt;kube-system&lt;/code&gt; namespace by
 default to allow the &lt;code&gt;system-node-critical&lt;/code&gt; priority class to be set. This
@@ -5535,7 +5639,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.&lt;/li&gt;
 &lt;li&gt;scheduler: return error for namespace/volume not found&lt;/li&gt;
 &lt;li&gt;dataplane: start gRPC threads separately from rest of the supervisor.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: centre licence types.&lt;/li&gt;
 &lt;li&gt;ui: capacity in ui is per namespace.&lt;/li&gt;
@@ -5709,65 +5813,6 @@ DISABLE_ERROR_REPORTING &lt;span style=&#34;color:#8f5902;font-style:italic&#34;
     </item>
     
     <item>
-      <title>Docs: Support bundle</title>
-      <link>https://docs.storageos.com/v2.3/docs/reference/bundle/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://docs.storageos.com/v2.3/docs/reference/bundle/</guid>
-      <description>
-        
-        
-        &lt;p&gt;StorageOS can generate a cluster diagnostic bundle from the GUI or CLI under
-user request. The bundle packages the information needed for the engineering
-team to understand the context of your cluster and begin troubleshooting any
-issues you may be experiencing.&lt;/p&gt;
-&lt;h2 id=&#34;generate-bundle&#34;&gt;Generate Bundle&lt;/h2&gt;
-&lt;h3 id=&#34;cli&#34;&gt;CLI&lt;/h3&gt;
-&lt;p&gt;The &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/reference/cli/&#34;&gt;StorageOS CLI&lt;/a&gt; can generate
-the bundle.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ storageos get diagnostics
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;The file generated is in the form of &lt;code&gt;diagnostics-${TIME_STAMP}.gz&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h3 id=&#34;gui&#34;&gt;GUI&lt;/h3&gt;
-&lt;p&gt;Or you can use the &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/reference/gui/&#34;&gt;StoregeOS GUI&lt;/a&gt;.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Go to section &amp;ldquo;Cluster&amp;rdquo;&lt;/li&gt;
-&lt;li&gt;Press the button &amp;ldquo;DOWNLOAD DIAGNOSTICS&amp;rdquo;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;data-collected-in-the-bundle&#34;&gt;Data collected in the bundle&lt;/h2&gt;
-&lt;p&gt;Most of the data collected in the bundle is regarding the state of the
-StorageOS cluster, however some other information regarding the infrastructure
-is also gathered. The information is used to have a clear view of the cluster
-where StorageOS is running.&lt;/p&gt;
-&lt;p&gt;The bundle incorporates for each node:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;StorageOS Daemonset Pod logs&lt;/li&gt;
-&lt;li&gt;lshw&lt;/li&gt;
-&lt;li&gt;dmesg (kernel logs)&lt;/li&gt;
-&lt;li&gt;StorageOS metadata for the ControlPlane and DataPlane&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;storageos-metadata-collected&#34;&gt;StorageOS metadata collected&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;cluster metadata&lt;/li&gt;
-&lt;li&gt;namespaces metadata&lt;/li&gt;
-&lt;li&gt;nodes metadata&lt;/li&gt;
-&lt;li&gt;volumes metadata&lt;/li&gt;
-&lt;li&gt;capacity stats&lt;/li&gt;
-&lt;li&gt;environment variables&lt;/li&gt;
-&lt;li&gt;health&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;privacy&#34;&gt;Privacy&lt;/h2&gt;
-&lt;p&gt;StorageOS can only obtain the bundle if it is downloaded by the user and given
-to our engineering team, or uploaded for analysis. The data received by
-StorageOS is private and never leaves nor will leave StorageOS Inc.&lt;/p&gt;
-&lt;p&gt;The data contained in the cluster diagnostic bundle has the sole purpose of
-helping customers troubleshoot their issues.&lt;/p&gt;
-
-      </description>
-    </item>
-    
-    <item>
       <title>Docs: Supported File systems</title>
       <link>https://docs.storageos.com/v2.3/docs/reference/filesystems/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -5779,8 +5824,8 @@ helping customers troubleshoot their issues.&lt;/p&gt;
         &lt;h2 id=&#34;host-filesystems&#34;&gt;Host Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS will automatically use &lt;code&gt;/var/lib/storageos&lt;/code&gt; on each host as a base
 directory for storing &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/concepts/volumes#blob-files&#34;&gt;configuration and blob
-files&lt;/a&gt;. Recommended host filesystem types
-are &lt;code&gt;ext4&lt;/code&gt; or &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/support/contactus&#34;&gt;contact
+files&lt;/a&gt;. Supported host filesystem types
+are &lt;code&gt;ext4&lt;/code&gt; and &lt;code&gt;xfs&lt;/code&gt;. If you require a specific filesystem please &lt;a href=&#34;https://docs.storageos.com/v2.3/docs/support/contactus&#34;&gt;contact
 StorageOS&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;persistent-volume-filesystems&#34;&gt;Persistent Volume Filesystems&lt;/h2&gt;
 &lt;p&gt;StorageOS provides a block device on which a file system can be created. The

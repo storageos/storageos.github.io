@@ -19,6 +19,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/scheduler/admission-controller/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/configuration/</loc>
   </url>
   
@@ -131,10 +135,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/docs/concepts/architecture/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/docs/reference/cli/attach/</loc>
   </url>
   
@@ -156,6 +156,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/cluster-operator/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/concepts/cluster-topologies/</loc>
   </url>
   
   <url>
@@ -183,6 +187,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/operations/delete-stos-objects/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/cli/describe/</loc>
   </url>
   
@@ -207,6 +215,14 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/operations/encryption/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/reference/encryption/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/concepts/etcd/</loc>
   </url>
   
@@ -216,6 +232,18 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/operations/etcd/migrate-etcd-cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/failure-modes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/concepts/fencing/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/fencing/</loc>
   </url>
   
   <url>
@@ -259,7 +287,15 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/kubernetes-object-sync/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/usecases/kubevirt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/label-stos-objects/</loc>
   </url>
   
   <url>
@@ -355,6 +391,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/reference/scheduler/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/search/</loc>
   </url>
   
@@ -371,6 +411,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/docs/concepts/components/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/docs/reference/telemetry/</loc>
   </url>
   
@@ -384,6 +428,10 @@
   
   <url>
     <loc>https://docs.storageos.com/docs/reference/tolerations/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/docs/operations/trim/</loc>
   </url>
   
   <url>

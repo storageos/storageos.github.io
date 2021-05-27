@@ -54,6 +54,144 @@ Updated at:       2020-03-25T13:48:46Z &lt;span style=&#34;color:#ce5c00;font-we
     </item>
     
     <item>
+      <title>Docs: Deleting StorageOS Objects</title>
+      <link>https://docs.storageos.com/docs/operations/delete-stos-objects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/delete-stos-objects/</guid>
+      <description>
+        
+        
+        &lt;p&gt;When a Kubernetes object is deleted, StorageOS controllers automatically sync
+this deletion to StorageOS. For example, when a Kubernets node is deleted, this
+will automatically be mirrored in StorageOS, likewise with Namespaces.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Here is a StorageOS node, running on Kubernetes node worker1. A StorageOS
+node is any machine that is running the StorageOS daemonset pod. The node is
+visible below in kubectl.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl describe -n kube-system pod storageos-daemonset-6q4g8
+Name:                 storageos-daemonset-6q4g8
+Namespace:            kube-system
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Node:                 worker1/192.168.152.238
+Start Time:           Thu, 06 May 2021 15:53:34 +0100
+Labels:               app=storageos
+                      app.kubernetes.io/component=storageos-daemonset
+                      app.kubernetes.io/instance=example-storageos
+                      app.kubernetes.io/managed-by=storageos-operator
+                      app.kubernetes.io/name=storageos
+                      app.kubernetes.io/part-of=storageos
+                      controller-revision-hash=f5dcf577d
+                      kind=daemonset
+                      pod-template-generation=1
+                      storageos_cr=example-storageos
+Annotations:          kubectl.kubernetes.io/default-logs-container: storageos
+Status:               Running
+IP:                   192.168.152.238
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The nodes in your cluster can be seen with &lt;code&gt;storageos get nodes&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get nodes
+NAME          HEALTH  AGE        LABELS                              
+worker1       online  1 day ago  beta.kubernetes.io/arch=amd64,      
+                                 beta.kubernetes.io/os=linux,        
+                                 cattle.io/creator=norman,           
+                                 kubernetes.io/arch=amd64,           
+                                 kubernetes.io/hostname=worker1,
+                                 kubernetes.io/os=linux,             
+                                 node-role.kubernetes.io/worker=true
+                                 storageos.com/computeonly=true 
+worker2       online  1 day ago  beta.kubernetes.io/arch=amd64,      
+                                 beta.kubernetes.io/os=linux,        
+                                 cattle.io/creator=norman,           
+                                 kubernetes.io/arch=amd64,           
+                                 kubernetes.io/hostname=worker2,
+                                 kubernetes.io/os=linux,             
+                                 node-role.kubernetes.io/worker=true 
+worker3       online  1 day ago  beta.kubernetes.io/arch=amd64,      
+                                 beta.kubernetes.io/os=linux,        
+                                 cattle.io/creator=norman,           
+                                 kubernetes.io/arch=amd64,           
+                                 kubernetes.io/hostname=worker3,
+                                 kubernetes.io/os=linux,             
+                                 node-role.kubernetes.io/worker=true
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Delete the node.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl delete node worker1
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Verify that the node has been deleted with &lt;code&gt;kubectl get nodes&lt;/code&gt; or
+&lt;code&gt;storageos get nodes&lt;/code&gt;. The node has now disappeared from StorageOS.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos get nodes
+NAME          HEALTH  AGE        LABELS                              
+worker2       online  1 day ago  beta.kubernetes.io/arch=amd64,      
+                                 beta.kubernetes.io/os=linux,        
+                                 cattle.io/creator=norman,           
+                                 kubernetes.io/arch=amd64,           
+                                 kubernetes.io/hostname=worker2,
+                                 kubernetes.io/os=linux,             
+                                 node-role.kubernetes.io/worker=true 
+worker3       online  1 day ago  beta.kubernetes.io/arch=amd64,      
+                                 beta.kubernetes.io/os=linux,        
+                                 cattle.io/creator=norman,           
+                                 kubernetes.io/arch=amd64,           
+                                 kubernetes.io/hostname=worker3,
+                                 kubernetes.io/os=linux,             
+                                 node-role.kubernetes.io/worker=true 
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Encryption</title>
+      <link>https://docs.storageos.com/docs/operations/encryption/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/encryption/</guid>
+      <description>
+        
+        
+        &lt;p&gt;For more detail on encryption at rest in StorageOS, please see &lt;a href=&#34;https://docs.storageos.com/docs/reference/encryption/&#34;&gt;the reference
+page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;enabling-encryption-on-a-volume&#34;&gt;Enabling encryption on a volume&lt;/h2&gt;
+&lt;p&gt;Encrypting a volume is done by simply creating a volume with the
+&lt;code&gt;storageos.com/encryption=true&lt;/code&gt; label set on the volume&amp;rsquo;s PVC.
+&lt;strong&gt;This label is not applicable to be set as a StorageClass parameter&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This label is all that is needed. If it is present, the mutating admission
+webhook that runs as part of the StorageOS API Manager will create the
+encryption key, link it to the PVC and store it in a secret.&lt;/p&gt;
+&lt;p&gt;Encryption is enabled when a volume is provisioned, and it can not be removed
+during during the volume&amp;rsquo;s lifetime.&lt;/p&gt;
+&lt;h2 id=&#34;an-example-encrypted-volume&#34;&gt;An example encrypted volume&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add the label in the PVC definition, for instance:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;encrypted-vol&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/encryption&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Label &amp;lt;-----&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;1G&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Etcd</title>
       <link>https://docs.storageos.com/docs/operations/etcd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -163,6 +301,244 @@ that can help backup etcd data. &lt;strong&gt;A restore of the etcd keyspace fro
 might cause issues&lt;/strong&gt; due to the disparity between the cluster state and its
 metadata in a different point in time. If you need to restore from a backup
 after a failure of etcd, contact the StorageOS support team.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Failure Modes</title>
+      <link>https://docs.storageos.com/docs/operations/failure-modes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/failure-modes/</guid>
+      <description>
+        
+        
+        &lt;p&gt;For more information about replication and failure modes please see our
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/replication/&#34;&gt;Replication concepts page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The failure mode for a specific volume can be set using a label on a PVC or it
+can be set as a parameter on a &lt;a href=&#34;https://docs.storageos.com/docs/operations/storageclasses/&#34;&gt;StorageClass&lt;/a&gt;. The PVC definition takes precedence over
+the StorageClass.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolumeClaim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-vol&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/failure-mode&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;soft&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;- ReadWriteOnce&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;5Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;failure-modes&#34;&gt;Failure Modes&lt;/h2&gt;
+&lt;p&gt;StorageOS failure modes offer different guarantees with regards to a volume&amp;rsquo;s
+mode of operation in the face of replica failure. If the failure mode is not
+specified it defaults to &lt;code&gt;Hard&lt;/code&gt;. Volume failure modes can be dynamically
+updated at run time.&lt;/p&gt;
+&lt;h3 id=&#34;hard&#34;&gt;Hard&lt;/h3&gt;
+&lt;p&gt;Hard failure mode requires that the number of declared replicas matches the
+available number of replicas at all times. If a replica fails StorageOS will
+attempt creation of a new replica for 90 seconds. After 90s if the old replica
+is not available and a new replica cannot be provisioned, StorageOS cannot
+guarantee that the data is stored on the number of multiple nodes requested by
+the user. StorageOS will therefore set the volume to be read-only.&lt;/p&gt;
+&lt;p&gt;If a volume has gone read-only there are two stages to making it read-write
+again. Firstly, sufficient replicas must be provisioned to match the desired
+replica count. Depending on your environment, additional nodes and/or disk
+capacity may be required for this. Secondly, the volume must be remounted -
+necessitating pod deletion/recreation in Kubernetes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: hard
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for hard failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;When a node fails, a new replica is provisioned and synced as described above.
+To ensure that a new replica can always be created, an additional node should
+be available. To guarantee high availability using &lt;code&gt;storageos.com/failure-mode: hard&lt;/code&gt;, clusters using volumes with 1 replica must have at least 3 storage
+nodes. When using volumes with 2 replicas, at least 4 storage nodes, 3
+replicas, 5 nodes, etc.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + N (replicas) + 1&lt;/p&gt;
+&lt;h3 id=&#34;soft&#34;&gt;Soft&lt;/h3&gt;
+&lt;p&gt;Soft failure mode allows a volume to continue serving I/O even when a replica
+goes offline and a new replica fails to provision. So long as there are not
+less than max(1,  n-1) available replicas where n is the number of replicas for
+the volume.&lt;/p&gt;
+&lt;p&gt;For example, if a volume with 2 replicas loses 1 replica, then I/O would
+continue to be served since 1 replica remaining &amp;gt;= max(1, 1). If a volume with
+1 replica loses 1 replica, then I/O would halt after 90 seconds since 0
+replicas remaining &amp;lt; max(1, 0).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: soft
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for soft failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;To ensure that a &lt;code&gt;storageos.com/failure-mode: soft&lt;/code&gt; volume is highly available, clusters using volumes with 1 replica must have at
+least 2 storage nodes. When using volumes with 2 replicas, at least 3 storage
+nodes, 3 replicas, 3 nodes, etc.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + N (replicas)&lt;/p&gt;
+&lt;h3 id=&#34;threshold&#34;&gt;Threshold&lt;/h3&gt;
+&lt;p&gt;Threshold failure mode allows the user to set the minimum required number of
+online replicas for a volume. For example for a volume with 2 replicas, setting
+the threshold to 1 would allow a single replica to be offline, whereas setting
+threshold to 0 would allow 2 replicas to be offline.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;0-5&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for threshold failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The minimum number of nodes for a &lt;code&gt;threshold&lt;/code&gt; volume is determined by the
+threshold that is set.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary) + T (threshold)&lt;/p&gt;
+&lt;h3 id=&#34;alwayson&#34;&gt;AlwaysOn&lt;/h3&gt;
+&lt;p&gt;AlwaysOn failure mode allows all replicas for a volume to be offline and keeps
+the volume writeable. A volume with failure mode AlwaysOn will continue to
+serve I/O regardless of how many replicas it currently has. This mode should be
+used with caution as it effectively allows for only a single copy of the data
+to be available.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;storageos.com/failure-mode: alwayson
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Number of nodes required for AlwaysOn failure mode&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A &lt;code&gt;storageos.com/failure-mode: alwayson&lt;/code&gt; volume is highly available albeit at
+the cost of reliability. The minimum node count here is 1 as the loss of all
+replicas will be tolerated.&lt;/p&gt;
+&lt;p&gt;Minimum number of storage nodes = 1 (primary)&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: Fencing</title>
+      <link>https://docs.storageos.com/docs/operations/fencing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/fencing/</guid>
+      <description>
+        
+        
+        &lt;p&gt;For information regarding the StorageOS Fencing feature please see our
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/fencing/&#34;&gt;fencing concepts page&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;labeling-a-pod-for-fencing&#34;&gt;Labeling a pod for fencing&lt;/h2&gt;
+&lt;p&gt;When StorageOS detects that a node has gone offline or become partitioned, it
+marks the node offline and performs volume failover operations.&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://github.com/storageos/api-manager/tree/master/controllers/fencer&#34;&gt;StorageOS Fencing
+Controller&lt;/a&gt;
+watches for node failures and determines if there are any pods targeted for
+fencing. In order for a pod to be fenced, the following criteria is required.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The pod must have the label &lt;code&gt;storageos.com/fenced=true&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;The pod to be fenced must claim a StorageOS volume&lt;/li&gt;
+&lt;li&gt;The StorageOS volume claimed by the pod needs to be &lt;code&gt;online&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If the node becomes offline and these criteria are met, the pod is deleted and
+rescheduled on another node.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;No changes are made to Pods that have StorageOS volumes that are unhealthy.
+This is typically the case when a volume was configured to not have any
+replicas, and the node with the single copy of the data is offline. In this
+case it is better to wait for the Node to recover.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;statefulset-example-with-fencing-enabled&#34;&gt;StatefulSet example with fencing enabled&lt;/h3&gt;
+&lt;p&gt;The following example shows how a Statefulset can enable fencing to all its
+pods.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Note that the &lt;code&gt;fenced&lt;/code&gt; label is applied only in the
+&lt;code&gt;.spec.template.metadata.label&lt;/code&gt; section, as the label must only be present on
+the Pod, but not on the PVC.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;apps/v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StatefulSet&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;my-statefulset&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;selector&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;matchLabels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;prod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;serviceName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;default&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;app&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;prod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/fenced&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Fencing label&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;containers&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;image&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;debian&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;10&lt;/span&gt;-slim&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;command&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;/bin/sleep&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;args&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;3600&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeMounts&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos-volume&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountPath&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;/mnt&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeClaimTemplates&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- &lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos-volume&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;labels&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;env&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;prod&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;accessModes&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;ReadWriteOnce&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageClassName&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;fast&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;      &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;resources&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;requests&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;          &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storage&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;10Gi&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;fencing-trigger&#34;&gt;Fencing trigger&lt;/h2&gt;
+&lt;p&gt;The StorageOS Fencing Controller checks the StorageOS node health every 5 seconds.
+This is how quickly the fencing controller can react to node failures.&lt;/p&gt;
+&lt;p&gt;Pods assigned to unhealthy nodes will be evaluated immediately on state change,
+and then re-evaluated every hour, though this is configurable. This retry
+allows pods that had unhealthy volumes which have now recovered to eventually
+failover, or pods that were rescheduled on an unhealthy node to be re-evaluated
+for fencing.&lt;/p&gt;
+&lt;h2 id=&#34;fencing-example&#34;&gt;Fencing example&lt;/h2&gt;
+&lt;p&gt;The following example shows how the StorageOS API manager fences a Pod.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Ensure the &lt;code&gt;storageos.com/fenced&lt;/code&gt; label is present&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n mysql get pod --show-labels -owide
+NAME      READY   STATUS    RESTARTS   AGE     IP          NODE             NOMINATED NODE   READINESS GATES   LABELS
+mysql-0   1/1     Running   0          6m33s   10.42.3.7   worker1   &amp;lt;none&amp;gt;           &amp;lt;none&amp;gt;            app=mysql,controller-revision-hash=mysql-799fd74b87,env=prod,statefulset.kubernetes.io/pod-name=mysql-0,storageos.com/fenced=true
+
+$ kubectl -n mysql get pvc --show-labels -owide
+NAME           STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE   VOLUMEMODE   LABELS
+data-mysql-0   Bound    pvc-5d7b23a6-e754-4998-98fd-318b3f9382bb   5Gi        RWO            fast           19m   Filesystem   app=mysql,env=prod,storageos.com/replicas=1
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;Note that the mysql-0 pod has the &lt;code&gt;storageos.com/fenced=true&lt;/code&gt; label.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stop node hosting the &lt;code&gt;mysql-0&lt;/code&gt; pod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@worker1:~# shutdown -h now
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check logs from the StorageOS API Manager&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n kube-system logs storageos-api-manager-68759bbc78-7l5fw
+...
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.413811357Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;nginx-ingress-controller-xbqjf&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;ingress-nginx&amp;quot;}
+
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.417605039Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;storageos-api-manager-68759bbc78-7l5fw&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.417748651Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;coredns-7c5566588d-8g5xq&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.417792281Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;metrics-server-6b55c64f86-cnwtk&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.417883383Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;default-http-backend-67cf578fc4-w8sm4&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;ingress-nginx&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.417975663Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;coredns-autoscaler-65bfc8d47d-ph6pn&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.418024204Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;canal-stzdv&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.418065315Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;storageos-etcd-2hkff82fq2&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;storageos-etcd&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.418092165Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;storageos-daemonset-6zrkk&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;kube-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.418182036Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;skipping pod without storageos.com/fenced=true label set&amp;quot;,&amp;quot;name&amp;quot;:&amp;quot;cattle-node-agent-sjspk&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;cattle-system&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.439513312Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;pod has fenced label set and volume(s) still healthy after node failure, proceeding with fencing&amp;quot;,&amp;quot;pod&amp;quot;:&amp;quot;mysql-0&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;mysql&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.495807296Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;pod deleted&amp;quot;,&amp;quot;pod&amp;quot;:&amp;quot;mysql-0&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;mysql&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.505411162Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;volume attachment deleted&amp;quot;,&amp;quot;pod&amp;quot;:&amp;quot;mysql-0&amp;quot;,&amp;quot;namespace&amp;quot;:&amp;quot;mysql&amp;quot;,&amp;quot;pvc&amp;quot;:&amp;quot;data-mysql-0&amp;quot;,&amp;quot;va&amp;quot;:&amp;quot;csi-c2b44cee5a647e20d77e0e217dfaec07afd592eae57bcccc09b3447de653ae8c&amp;quot;,&amp;quot;node&amp;quot;:&amp;quot;worker1&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.505439792Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;fenced pod&amp;quot;}
+{&amp;quot;level&amp;quot;:&amp;quot;info&amp;quot;,&amp;quot;timestamp&amp;quot;:&amp;quot;2021-04-28T13:06:49.573478266Z&amp;quot;,&amp;quot;msg&amp;quot;:&amp;quot;set scheduler&amp;quot;,&amp;quot;scheduler&amp;quot;:&amp;quot;storageos-scheduler&amp;quot;,&amp;quot;pod&amp;quot;:&amp;quot;mysql/mysql-0&amp;quot;}
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;The StorageOS API Manager detects all the pods that are on the failed
+node, and selects only the ones that meet the fencing criteria as
+described above. In this case only &lt;code&gt;mysql-0&lt;/code&gt; is selected for fencing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Check the pod&amp;rsquo;s new node&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n mysql get pod --show-labels -owide
+NAME      READY   STATUS    RESTARTS   AGE     IP          NODE             NOMINATED NODE   READINESS GATES   LABELS
+mysql-0   1/1     Running   0          6m33s   10.42.3.7   worker2   &amp;lt;none&amp;gt;           &amp;lt;none&amp;gt;            app=mysql,controller-revision-hash=mysql-799fd74b87,env=prod,statefulset.kubernetes.io/pod-name=mysql-0,storageos.com/fenced=true
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;The pod &lt;code&gt;mysql-0&lt;/code&gt; started on a different node successfully.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 
       </description>
     </item>
@@ -506,6 +882,197 @@ Filesystem                  Size  Used Avail Use% Mounted on
     </item>
     
     <item>
+      <title>Docs: Labeling StorageOS Objects</title>
+      <link>https://docs.storageos.com/docs/operations/label-stos-objects/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/label-stos-objects/</guid>
+      <description>
+        
+        
+        &lt;p&gt;For more information regarding the StorageOS Label Sync feature, please see our
+&lt;a href=&#34;https://docs.storageos.com/docs/reference/kubernetes-object-sync/&#34;&gt;Kubernetes Object Sync reference page.&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;label-syncing&#34;&gt;Label Syncing&lt;/h2&gt;
+&lt;p&gt;The StorageOS API Manager handles cases where information from objects in your
+Kubernetes Cluster needs to be synced to your StorageOS cluster.&lt;/p&gt;
+&lt;h2 id=&#34;label-syncing-on-pvcs&#34;&gt;Label Syncing on PVCs&lt;/h2&gt;
+&lt;p&gt;The below guide shows how to apply a label to your PVCs, and how these labels
+sync through to your StorageOS Volumes. This operation is used often - for
+example it is used here to add replicas to a StorageOS Volume.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create a PVC, following the instructions &lt;a href=&#34;https://docs.storageos.com/docs/operations/firstpvc/&#34;&gt;here&lt;/a&gt;. When you create a PVC, StorageOS
+automatically provisions a StorageOS volume for it. An example PVC and
+StorageOS volume can be seen below. Note the labels &lt;code&gt;app=mysql&lt;/code&gt; and &lt;code&gt;env=prod&lt;/code&gt;
+under &lt;code&gt;Labels&lt;/code&gt;in the PVC description and the &lt;code&gt;VolumeAttributes&lt;/code&gt;of the StorageOS
+Volume.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl describe pvc/data-mysql-0
+Name:          data-mysql-0
+Namespace:     default
+StorageClass:  fast
+Status:        Bound
+Volume:        pvc-2e6339f0-96f9-4098-a388-149fd0daa14f
+Labels:        app=mysql
+               env=prod
+Annotations:   pv.kubernetes.io/bind-completed: yes
+               pv.kubernetes.io/bound-by-controller: yes
+               storageos.com/storageclass: 572794ab-2d02-4fec-9aaf-43cd725f498e
+               volume.beta.kubernetes.io/storage-provisioner: csi.storageos.com
+...  
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;$ storageos describe volume pvc-2e6339f0-96f9-4098-a388-149fd0daa14f -oyaml
+id: 286fd3a6-c8f8-480a-b5e1-d16896db0c72
+name: pvc-2e6339f0-96f9-4098-a388-149fd0daa14f
+...
+labels:
+    app: mysql
+    csi.storage.k8s.io/pv/name: pvc-2e6339f0-96f9-4098-a388-149fd0daa14f
+    csi.storage.k8s.io/pvc/name: data-mysql-0
+    csi.storage.k8s.io/pvc/namespace: default
+    env: prod
+    storageos.com/nocompress: &amp;quot;true&amp;quot;
+    storageos.com/replicas: &amp;quot;0&amp;quot;
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now, apply a label to the PVC.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl label pvc data-mysql-0 storageos.com/replicas=3
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;By using the StorageOS CLI, it can be seen that the label applied has
+been synced through to our StorageOS volume and the replicas are all
+present.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos describe volume pvc-2e6339f0-96f9-4098-a388-149fd0daa14f -oyaml
+id: 286fd3a6-c8f8-480a-b5e1-d16896db0c72
+name: pvc-2e6339f0-96f9-4098-a388-149fd0daa14f
+description: &amp;quot;&amp;quot;
+attachedOn: 72b50fa0-d870-4d57-95fc-980cc41ab951
+attachedOnName: worker5
+attachmentType: host
+nfs:
+    exports: []
+    serviceendpoint: &amp;quot;&amp;quot;
+namespaceID: d4eb1a29-39e1-477f-b57c-1c264b797575
+namespaceName: default
+labels:
+    app: mysql
+    csi.storage.k8s.io/pv/name: pvc-2e6339f0-96f9-4098-a388-149fd0daa14f
+    csi.storage.k8s.io/pvc/name: data-mysql-0
+    csi.storage.k8s.io/pvc/namespace: default
+    env: prod
+    storageos.com/nocompress: &amp;quot;true&amp;quot;
+    storageos.com/replicas: &amp;quot;3&amp;quot;
+filesystem: ext4
+sizeBytes: 5368709120
+master:
+    id: 836d8bbc-d356-4ad1-89d2-b1da7f6a4e47
+    nodeID: 72b50fa0-d870-4d57-95fc-980cc41ab951
+    nodeName: worker5
+    health: online
+    promotable: true
+replicas:
+  - id: 46d9ef46-7572-4b23-80c9-097b77c4f7a0
+    nodeID: b812eb26-f59e-4867-824f-152acfa70968
+    nodeName: worker4
+    health: ready
+    promotable: true
+  - id: 7876164b-b2f0-4148-9688-6b154dfa073a
+    nodeID: 52a98f1a-4d33-41e6-891a-6931052c4ba3
+    nodeName: worker1
+    health: ready
+    promotable: true
+  - id: 3987e698-68c9-4e8b-adee-16d0f424a106
+    nodeID: d2b8ca25-4ffb-43ae-90cc-e1bc68be12ee
+    nodeName: worker6
+    health: ready
+    promotable: true
+createdAt: 2021-05-06T14:57:58Z
+updatedAt: 2021-05-06T16:47:26Z
+version: Mzg
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;label-syncing-on-nodes&#34;&gt;Label Syncing on Nodes&lt;/h2&gt;
+&lt;p&gt;Some StorageOS functionality is set by labeling nodes - for example setting a
+node to &amp;ldquo;compute-only&amp;rdquo; mode, as demonstrated here.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Note labels on the node that will be labeled and on the StorageOS node corresponding to that
+Kubernetes node.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl describe node worker1 
+Name:               worker1
+Roles:              worker
+Labels:             beta.kubernetes.io/arch=amd64
+            beta.kubernetes.io/os=linux
+            cattle.io/creator=norman
+            kubernetes.io/arch=amd64
+            kubernetes.io/hostname=worker1
+            kubernetes.io/os=linux
+            node-role.kubernetes.io/worker=true
+Annotations:        csi.volume.kubernetes.io/nodeid: {&amp;quot;csi.storageos.com&amp;quot;:&amp;quot;52a98f1a-4d33-41e6-891a-6931052c4ba3&amp;quot;}
+            flannel.alpha.coreos.com/backend-data: {&amp;quot;VtepMAC&amp;quot;:&amp;quot;06:7b:af:b9:a5:2b&amp;quot;}
+            flannel.alpha.coreos.com/backend-type: vxlan
+            flannel.alpha.coreos.com/kube-subnet-manager: true
+            flannel.alpha.coreos.com/public-ip: 212.71.244.105
+            node.alpha.kubernetes.io/ttl: 0
+            projectcalico.org/IPv4IPIPTunnelAddr: 10.42.2.1
+            rke.cattle.io/external-ip: 212.71.244.105
+            rke.cattle.io/internal-ip: 192.168.152.238
+            volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 06 May 2021 13:28:30 +0100
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code&gt;$ kubectl describe -n kube-system pod storageos-daemonset-6q4g8 
+Name:                 storageos-daemonset-6q4g8
+Namespace:            kube-system
+Priority:             2000001000
+Priority Class Name:  system-node-critical
+Node:                 worker1/192.168.152.238
+Start Time:           Thu, 06 May 2021 15:53:34 +0100
+Labels:               app=storageos
+              app.kubernetes.io/component=storageos-daemonset
+              app.kubernetes.io/instance=example-storageos
+              app.kubernetes.io/managed-by=storageos-operator
+              app.kubernetes.io/name=storageos
+              app.kubernetes.io/part-of=storageos
+              controller-revision-hash=f5dcf577d
+              kind=daemonset
+              pod-template-generation=1
+              storageos_cr=example-storageos
+Annotations:          kubectl.kubernetes.io/default-logs-container: storageos
+Status:               Running
+IP:                   192.168.152.238
+IPs:
+  IP:           192.168.152.238
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now, apply the label to the node.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl label node worker1 storageos.com/computeonly=true
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The label has synced to the node and it has been set to &lt;code&gt;compute-only&lt;/code&gt;
+mode.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ storageos describe node worker1
+ID                                      52a98f1a-4d33-41e6-891a-6931052c4ba3    
+Name                                    worker1                                 
+Health                                  online                                  
+Addresses:                            
+  Data Transfer address                 192.168.152.238:5703                    
+  Gossip address                        192.168.152.238:5711                    
+  Supervisor address                    192.168.152.238:5704                    
+  Clustering address                    192.168.152.238:5710                    
+Labels                                  beta.kubernetes.io/arch=amd64,          
+                    beta.kubernetes.io/os=linux,            
+                    cattle.io/creator=norman,               
+                    kubernetes.io/arch=amd64,               
+                    kubernetes.io/hostname=worker1,         
+                    kubernetes.io/os=linux,                 
+                    node-role.kubernetes.io/worker=true,    
+                    storageos.com/computeonly=true
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Licensing</title>
       <link>https://docs.storageos.com/docs/operations/licensing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -798,6 +1365,131 @@ StorageClass have the same labels.&lt;/p&gt;
 &lt;p&gt;You can also choose to add the label in the PVC definition rather than the
 StorageClass. The PVC definition takes precedence over the SC.&lt;/p&gt;
 
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: TRIM</title>
+      <link>https://docs.storageos.com/docs/operations/trim/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/operations/trim/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS volumes support TRIM/Unmap by default for all uncompressed volumes.
+StorageOS creates uncompressed volumes by default so all of these volumes will
+support TRIM/Unmap calls. TRIM&amp;rsquo;ing a StorageOS volume will release space taken
+up by deleted blocks in the StorageOS volume blob files.&lt;/p&gt;
+&lt;p&gt;TRIM can either be called periodically via &lt;code&gt;fstrim&lt;/code&gt; or continously using the
+&lt;code&gt;-o discard&lt;/code&gt; mount option. StorageOS recommends using periodic discard.&lt;/p&gt;
+&lt;h2 id=&#34;periodic-discard&#34;&gt;Periodic Discard&lt;/h2&gt;
+&lt;p&gt;In order to TRIM a volume you can run &lt;code&gt;fstrim&lt;/code&gt; against the volume filesystem.
+The volume filesystem will be presented at the mount point for the StorageOS
+device.&lt;/p&gt;
+&lt;p&gt;The example below shows the effect of &lt;code&gt;fstrim&lt;/code&gt; on a StorageOS volume mounted on
+&lt;code&gt;/mnt&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# A StorageOS volume with some data written to it.
+$ ls -ls --block-size 1 /var/lib/storageos/data/dev1/vol.211585.*.blob | awk &#39;!/^total/ {total = total + $1}END{print total}&#39;
+8.85838e+09
+
+# A StorageOS volume is mounted on /mnt
+$ df -h /mnt
+Filesystem                                                         Size  Used Avail Use% Mounted on
+/var/lib/storageos/volumes/v.bbfae475-3ce3-4238-bf33-cfe88256d813  4.9G  520M  4.1G  12% /mnt
+
+# Delete a file from the volume, sync all filesystems to ensure data has been written and then fstrim the volume filesystem
+$ rm /mnt/test; sync; fstrim /mnt
+
+# Observe that the space in the blob files, and thus space in the backend filesystem has been reclaimed.
+$ ls -ls --block-size 1 /var/lib/storageos/data/dev1/vol.211585.*.blob | awk &#39;!/^total/ {total = total + $1}END{print total}&#39;
+469700608
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;automating-periodic-discard&#34;&gt;Automating periodic discard&lt;/h3&gt;
+&lt;p&gt;Discard can be automated by running &lt;code&gt;fstrim&lt;/code&gt; against mounted StorageOS volumes.
+When running in Kubernetes the Kubelet is responsible for mounting volumes into
+pods so the mount endpoints for pods are accessible under
+&lt;code&gt;/var/lib/kubelet/pods&lt;/code&gt;. StorageOS volume mounts appear as mounts from
+&lt;code&gt;/var/lib/storageos/volumes/v.${DEPLOYMENT_ID}&lt;/code&gt; on
+&lt;code&gt;/var/lib/kubelet/pods/${POD_UID}/volumes/kubernetes.io~csi/${PV_ID}/mount&lt;/code&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root@unmap:/# mount | awk &#39;/storageos\/volumes\/v.*/&#39;
+/var/lib/storageos/volumes/v.4364e143-865e-45d7-a4a5-e0d964d9e200 on /var/lib/kubelet/pods/29ec4774-71d6-4ba3-b275-f80b47e9f6af/volumes/kubernetes.io~csi/pvc-357a9baa-7b74-49db-8d63-c540b5129ad8/mount type ext4 (rw,relatime,stripe=32)
+/var/lib/storageos/volumes/v.8dc449a4-1fb5-43d8-86d0-e18916a85c18 on /var/lib/kubelet/pods/6bb92a8f-afb5-48c8-837c-56f45e15e5c4/volumes/kubernetes.io~csi/pvc-2d30a2ba-2663-4036-bb1e-e795f226d6f3/mount type ext4 (rw,relatime,stripe=32)
+
+root@unmap:/# mount | awk &#39;/storageos\/volumes\/v.*/ {print $3}&#39;
+/var/lib/kubelet/pods/29ec4774-71d6-4ba3-b275-f80b47e9f6af/volumes/kubernetes.io~csi/pvc-357a9baa-7b74-49db-8d63-c540b5129ad8/mount
+/var/lib/kubelet/pods/6bb92a8f-afb5-48c8-837c-56f45e15e5c4/volumes/kubernetes.io~csi/pvc-2d30a2ba-2663-4036-bb1e-e795f226d6f3/mount
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With this information in mind it is therefore possible to use Kubernetes tools
+to automate periodic discard. The &lt;code&gt;SYS_ADMIN&lt;/code&gt; capability is required to run
+&lt;code&gt;fstrim&lt;/code&gt; and propagation of mounts from the host to the container will allow
+any new StorageOS mounts to be picked up by the unmap pod.&lt;/p&gt;
+&lt;p&gt;The naïve example below shows how a pod could be used to run fstrim against
+StorageOS volumes mounted on the same node that the pod is scheduled on.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Pod
+metadata:
+  name: discard
+spec:
+  containers:
+    - name: fstrim
+...
+      command: [&amp;quot;/bin/bash&amp;quot;]
+      args: [&amp;quot;-c&amp;quot;,&amp;quot;for mount in $(mount | awk &#39;/storageos\\/volumes\\/v.*/ {print $3}&#39;); do if [ -d ${mount}  ]; then fstrim -v ${mount}; fi; sleep 5; done&amp;quot;]
+      securityContext:
+        capabilities:
+          add:
+            - SYS_ADMIN
+      volumeMounts:
+      - mountPath: /var/lib/kubelet
+        mountPropagation: HostToContainer
+        name: kubelet-dir
+  volumes:
+  - hostPath:
+      path: /var/lib/kubelet
+      type: Directory
+    name: kubelet-dir
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Alternatively a cronjob on the node itself could be used to &lt;code&gt;fstrim&lt;/code&gt; mounted
+StorageOS volumes using similar logic.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;N.B. TRIM can be an I/O intensive operation so care should be taken when
+running &lt;code&gt;fstrim&lt;/code&gt; against multiple volumes at once.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;continuous-discard&#34;&gt;Continuous discard&lt;/h2&gt;
+&lt;p&gt;StorageOS volumes can be mounted using the &lt;code&gt;discard&lt;/code&gt; option which will
+automatically send TRIM commands when blocks are removed. Caution should be
+used enabling this option as testing has shown that volumes with a lot of churn
+can experience performance degradation. The pathological case being a volume
+that is continuously filled with small files that are then all deleted,
+repeatedly. The &lt;a href=&#34;https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/managing_file_systems/discarding-unused-blocks_managing-file-systems#types-of-block-discard-operations_discarding-unused-blocks&#34;&gt;RHEL documentation also recommends doing perodic
+discards&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The discard option can be enabled as a StorageClass or PersistentVolume option.
+Enabling &lt;code&gt;discard&lt;/code&gt; as a StorageClass option will result in all volumes
+provisioned with that StorageClass being mounted with &lt;code&gt;discard&lt;/code&gt; whereas setting
+it as a PersistentVolume option sets it on a per volume basis.&lt;/p&gt;
+&lt;p&gt;The StorageClass below would provision xfs volumes with the &lt;code&gt;discard&lt;/code&gt; option
+enabled by default.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storage.k8s.io/v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StorageClass&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos-discard&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;csi.storageos.com&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;allowVolumeExpansion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;true&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/fstype&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;xfs&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountOptions&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- discard&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also edit an existing PersistentVolume to add &lt;code&gt;discard&lt;/code&gt; to
+&lt;code&gt;.spec.mountOptions&lt;/code&gt;, this ensures that the next time the volume is mounted it
+will use &lt;code&gt;-o discard&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;PersistentVolume&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;spec&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;...&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;mountOptions&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;- discard&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;volumeMode&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;Filesystem&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -1264,7 +1956,7 @@ $ kubectl -n &lt;span style=&#34;color:#000&#34;&gt;$NS&lt;/span&gt; delete stor
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;Delete the StorageOS Operator deployment&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.3.4/storageos-operator.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Procedure is finished. StorageOS is now uninstalled.&lt;/strong&gt;&lt;/p&gt;
@@ -1343,7 +2035,7 @@ logs to ensure your environments PID limits are set correctly.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Warning: To reduce downtime, it is recommended to &lt;code&gt;docker pull&lt;/code&gt; the new
-StorageOS container image &lt;code&gt;storageos/node:v2.3.4&lt;/code&gt;
+StorageOS container image &lt;code&gt;storageos/node:v2.4.0&lt;/code&gt;
 on the nodes beforehand so that the cluster spins up faster!&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;ol&gt;
@@ -1368,7 +2060,7 @@ using the command below.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Deploy the new operator.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.4/storageos-operator.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
 &lt;p&gt;Warning: If you have made changes to the CRDs, Service Account or Cluster
 Role, make sure you migrate those changes in the StorageOS operator yaml.&lt;/p&gt;
@@ -1378,7 +2070,7 @@ Role, make sure you migrate those changes in the StorageOS operator yaml.&lt;/p&
 &lt;p&gt;Edit the StorageOSCluster Custom Resource (storageos_cr.yaml) with the new
 node image version.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;images&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nodeContainer&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos/node:v2.3.4&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;    &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;nodeContainer&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;storageos/node:v2.4.0&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you&amp;rsquo;re not using any of the hardcoded container image versions make sure
 to delete them as well and only leave the nodeContainer image as shown
 above.&lt;/p&gt;

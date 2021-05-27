@@ -2924,7 +2924,7 @@ Admission Controller.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Kubernetes allows the use of different schedulers by setting the field
 &lt;code&gt;.spec.schedulerName: storageos-scheduler&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;For instance the Pod manifest utilising the StorageOS scheduler would look as follows:&lt;/p&gt;
+&lt;p&gt;For instance a Pod manifest utilising the StorageOS scheduler would appear as follows:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: v1
 kind: Pod
 metadata:

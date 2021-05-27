@@ -17,9 +17,9 @@ set -euo pipefail
 
 # The following variables may be tuned as desired. The defaults should work in
 # most environments.
-export OPERATOR_VERSION='v2.4.0-rc.1'
-export CLI_VERSION='v2.4.0-rc.1'
-export STOS_VERSION='v2.4.0-rc.1'
+export OPERATOR_VERSION='v2.4.0'
+export CLI_VERSION='v2.4.0'
+export STOS_VERSION='v2.4.0'
 export STORAGEOS_OPERATOR_LABEL='name=storageos-cluster-operator'
 export STOS_NAMESPACE='kube-system'
 export ETCD_NAMESPACE='storageos-etcd'

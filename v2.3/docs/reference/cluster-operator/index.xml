@@ -108,6 +108,11 @@
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.apiManagerContainer&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;StorageOS API Manager container image&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/api-manager:v1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.csiClusterDriverRegistrarContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;CSI Cluster Driver Registrar Container image&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;quay.io/k8scsi/csi-cluster-driver-registrar:v1.0.1&lt;/code&gt;&lt;/td&gt;
@@ -140,7 +145,7 @@
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.initContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;StorageOS init container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:1.0.0&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/init:2.1.0&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.kubeSchedulerContainer&lt;/code&gt;&lt;/td&gt;
@@ -155,7 +160,7 @@
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;images.nodeContainer&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;StorageOS node container image&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:v2.3.0&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos/node:v2.3.4&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;ingress.annotations&lt;/code&gt;&lt;/td&gt;
@@ -251,6 +256,11 @@
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;sharedDir&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;Path to be shared with kubelet container when deployed as a pod&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;/var/lib/kubelet/plugins/kubernetes.io~storageos&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageClassName&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;The name of the default StorageClass created for StorageOS volumes&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;fast&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;tlsEtcdSecretRefName&lt;/code&gt;&lt;/td&gt;
@@ -443,7 +453,7 @@ documentation&lt;/a&gt;.&lt;/p&gt;
         
         &lt;h2 id=&#34;upgrade-storageos-operator-from-yaml-manifest&#34;&gt;Upgrade StorageOS operator from yaml manifest&lt;/h2&gt;
 &lt;p&gt;Upgrade the StorageOS operator using the following yaml manifest.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.0/storageos-operator.yaml
+&lt;pre&gt;&lt;code&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.3.4/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
 &lt;p&gt;When you run the above command StorageOS Operator resources will be updated.
 Since, the Update Strategy of the StorageOS Operator Deployment is set to

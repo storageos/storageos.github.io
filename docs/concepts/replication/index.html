@@ -30,7 +30,7 @@ The basic model for StorageOS replication is of a master volume with distributed
 <meta itemprop="description" content="StorageOS replicates volumes across nodes for data protection and high availability. Synchronous replication ensures strong consistency for applications such as databases and Elasticsearch, incurring one network round trip on writes.
 The basic model for StorageOS replication is of a master volume with distributed replicas. Each volume can be replicated between 0 and 5 times, which are provisioned to 0 to 5 nodes, up to the number of remaining nodes in the cluster.">
 
-<meta itemprop="wordCount" content="650">
+<meta itemprop="wordCount" content="1070">
 
 
 
@@ -171,9 +171,9 @@ The basic model for StorageOS replication is of a master volume with distributed
 	
 	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.3</a></li>
+	<li><a class="dropdown-item" href="/v2.3">v2.3</a></li>
 	
-	<li><a class="dropdown-item" href="/v2.4-rc">v2.4-rc</a></li>
+	<li><a class="dropdown-item" href="/">v2.4</a></li>
 	
 </ul>
 
@@ -193,7 +193,7 @@ The basic model for StorageOS replication is of a master volume with distributed
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4ba50d7c2cee727a20119a1166a6499e7420824dcb30a3f258a9cd3cbd095cbdedb2f42e66ddf8c16ebcf258dff81c3763c29b5831d61303f538e2fdf789e1a0.json"
+  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
   data-offline-search-base-href="/"
 >
 
@@ -227,7 +227,7 @@ The basic model for StorageOS replication is of a master volume with distributed
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4ba50d7c2cee727a20119a1166a6499e7420824dcb30a3f258a9cd3cbd095cbdedb2f42e66ddf8c16ebcf258dff81c3763c29b5831d61303f538e2fdf789e1a0.json"
+  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
   data-offline-search-base-href="/"
 >
 
@@ -323,7 +323,7 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsarchitecture" href="/docs/concepts/architecture/">Architecture</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscluster-topologies" href="/docs/concepts/cluster-topologies/">Cluster Topologies</a>
       
       
       
@@ -342,6 +342,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
       
       
       
@@ -372,6 +378,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page  active" id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscomponents" href="/docs/concepts/components/">StorageOS Components</a>
       
       
       
@@ -576,6 +588,18 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdelete-stos-objects" href="/docs/operations/delete-stos-objects/">Deleting StorageOS Objects</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencryption" href="/docs/operations/encryption/">Encryption</a>
+      
+      
+      
+      
 
 
 
@@ -612,6 +636,18 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfailure-modes" href="/docs/operations/failure-modes/">Failure Modes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -625,6 +661,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmanaging-host-storage" href="/docs/operations/managing-host-storage/">Host Storage</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationslabel-stos-objects" href="/docs/operations/label-stos-objects/">Labeling StorageOS Objects</a>
       
       
       
@@ -655,6 +697,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsstorageclasses" href="/docs/operations/storageclasses/">StorageClasses</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstrim" href="/docs/operations/trim/">TRIM</a>
       
       
       
@@ -1003,6 +1051,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceencryption" href="/docs/reference/encryption/">Encryption</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -1010,6 +1064,12 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceinit-container" href="/docs/reference/init-container/">Init container</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencekubernetes-object-sync" href="/docs/reference/kubernetes-object-sync/">Kubernetes Object Sync</a>
       
       
       
@@ -1040,6 +1100,35 @@ The basic model for StorageOS replication is of a master volume with distributed
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceresource_requests_and_limits" href="/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencescheduler">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
       
       
       
@@ -1104,10 +1193,13 @@ The basic model for StorageOS replication is of a master volume with distributed
 
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#delta-sync">Delta Sync</a></li>
+    <li><a href="#failure-modes">Failure Modes</a>
       <ul>
-        <li><a href="#number-of-nodes">Number of nodes</a></li>
-        <li><a href="#delta-sync">Delta Sync</a></li>
+        <li><a href="#hard">Hard</a></li>
+        <li><a href="#soft">Soft</a></li>
+        <li><a href="#threshold">Threshold</a></li>
+        <li><a href="#alwayson">AlwaysOn</a></li>
       </ul>
     </li>
   </ul>
@@ -1191,31 +1283,76 @@ a replica and the replica will the smallest difference to the current master
 will be kept.</p>
 <p>While the replica count is controllable on a per-volume basis, some
 environments may prefer to set <a href="https://docs.storageos.com/docs/reference/labels/#storageos-storageclass-labels">default labels on the StorageClass</a>.</p>
-<h3 id="number-of-nodes">Number of nodes</h3>
-<p>StorageOS replicas are distributed across available nodes. When a node fails,
-a new replica is provisioned and synced as described above. Failure to
-provision a new replica will eventually cause the volume to become read-only.
-StorageOS will re-attempt creation of the replica for 90 seconds. After that
-period, if the old replica is not available and a new replica cannot be
-provisioned, StorageOS cannot guarantee that the data is safe and stored on
-multiple nodes as requested by the user. It will therefore force the volume
-to be set to read-only.</p>
-<p>To ensure that a new replica can always be created, an additional node should
-be available. To guarantee high availability, clusters using volumes with 1
-replica must have at least 3 storage nodes. When using volumes with 2 replicas,
-at least 4 storage nodes, 3 replicas, 5 nodes, etc.</p>
-<p>Minimum number of storage nodes = 1 (primary) + N (replicas) + 1</p>
-<p>For an application to be able to use the volume normally, the volume needs to
-recover from a degraded state. This is achieved by having enough nodes on which
-to place the data, and triggering a remount of the volumes - i.e. deleting the
-Pod mounting the volume once it is in a healthy state.</p>
-<h3 id="delta-sync">Delta Sync</h3>
+<h2 id="delta-sync">Delta Sync</h2>
 <p>StorageOS implements a delta sync between a volume master and its replicas.
 This means that if a replica for a volume goes offline, that when the replica
 comes back online only the regions with changed blocks need to be synchronized.
 This optimization reduces the time it takes for replicas to catch up, improving
 volume resilience. Additionally, it reduces network and IO bandwidth which can
 reduce costs when running in public clouds.</p>
+<h2 id="failure-modes">Failure Modes</h2>
+<p>StorageOS failure modes offer different guarantees with regards to a volume&rsquo;s
+mode of operation in the face of replica failure. If the failure mode is not
+specified it defaults to <code>Hard</code>. Volume failure modes can be dynamically
+updated at run time.</p>
+<h3 id="hard">Hard</h3>
+<p>Hard failure mode requires that the number of declared replicas matches the
+available number of replicas at all times. If a replica fails StorageOS will
+attempt creation of a new replica for 90 seconds. After 90s if the old replica
+is not available and a new replica cannot be provisioned, StorageOS cannot
+guarantee that the data is stored on the number of multiple nodes requested by
+the user. StorageOS will therefore set the volume to be read-only.</p>
+<p>If a volume has gone read-only there are two stages to making it read-write
+again. Firstly, sufficient replicas must be provisioned to match the desired
+replica count. Depending on your environment, additional nodes and/or disk
+capacity may be required for this. Secondly, the volume must be remounted -
+necessitating pod deletion/recreation in Kubernetes.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos.com/failure-mode: hard
+</code></pre></div><p><strong>Number of nodes required for hard failure mode</strong></p>
+<p>When a node fails, a new replica is provisioned and synced as described above.
+To ensure that a new replica can always be created, an additional node should
+be available. To guarantee high availability using <code>storageos.com/failure-mode: hard</code>, clusters using volumes with 1 replica must have at least 3 storage
+nodes. When using volumes with 2 replicas, at least 4 storage nodes, 3
+replicas, 5 nodes, etc.</p>
+<p>Minimum number of storage nodes = 1 (primary) + N (replicas) + 1</p>
+<h3 id="soft">Soft</h3>
+<p>Soft failure mode allows a volume to continue serving I/O even when a replica
+goes offline and a new replica fails to provision. So long as there are not
+less than max(1,  n-1) available replicas where n is the number of replicas for
+the volume.</p>
+<p>For example, if a volume with 2 replicas loses 1 replica, then I/O would
+continue to be served since 1 replica remaining &gt;= max(1, 1). If a volume with
+1 replica loses 1 replica, then I/O would halt after 90 seconds since 0
+replicas remaining &lt; max(1, 0).</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos.com/failure-mode: soft
+</code></pre></div><p><strong>Number of nodes required for soft failure mode</strong></p>
+<p>To ensure that a <code>storageos.com/failure-mode: soft</code> volume is highly available, clusters using volumes with 1 replica must have at
+least 2 storage nodes. When using volumes with 2 replicas, at least 3 storage
+nodes, 3 replicas, 3 nodes, etc.</p>
+<p>Minimum number of storage nodes = 1 (primary) + N (replicas)</p>
+<h3 id="threshold">Threshold</h3>
+<p>Threshold failure mode allows the user to set the minimum required number of
+online replicas for a volume. For example for a volume with 2 replicas, setting
+the threshold to 1 would allow a single replica to be offline, whereas setting
+threshold to 0 would allow 2 replicas to be offline.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos.com/failure-mode: <span style="color:#ce5c00;font-weight:bold">(</span>0-5<span style="color:#ce5c00;font-weight:bold">)</span>
+</code></pre></div><p><strong>Number of nodes required for threshold failure mode</strong></p>
+<p>The minimum number of nodes for a <code>threshold</code> volume is determined by the
+threshold that is set.</p>
+<p>Minimum number of storage nodes = 1 (primary) + T (threshold)</p>
+<h3 id="alwayson">AlwaysOn</h3>
+<p>AlwaysOn failure mode allows all replicas for a volume to be offline and keeps
+the volume writeable. A volume with failure mode AlwaysOn will continue to
+serve I/O regardless of how many replicas it currently has. This mode should be
+used with caution as it effectively allows for only a single copy of the data
+to be available.</p>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">storageos.com/failure-mode: alwayson
+</code></pre></div><p><strong>Number of nodes required for AlwaysOn failure mode</strong></p>
+<p>A <code>storageos.com/failure-mode: alwayson</code> volume is highly available albeit at
+the cost of reliability. The minimum node count here is 1 as the loss of all
+replicas will be tolerated.</p>
+<p>Minimum number of storage nodes = 1 (primary)</p>
+<p>Check the <a href="https://docs.storageos.com/docs/operations/failure-modes/">failure modes operations</a> page to find details about how to use the labels on the Volumes.</p>
 
 	
 	

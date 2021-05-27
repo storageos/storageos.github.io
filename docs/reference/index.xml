@@ -69,13 +69,13 @@ configuration.&lt;/p&gt;
 &lt;h2 id=&#34;installation&#34;&gt;Installation&lt;/h2&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# linux/amd64&lt;/span&gt;
 curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\ &lt;/span&gt;
-    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_linux_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+    https://github.com/storageos/go-cli/releases/download/v2.4.0/storageos_linux_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 
 &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# MacOS&lt;/span&gt;
 curl -sSLo storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    https://github.com/storageos/go-cli/releases/download/v2.3.3/storageos_darwin_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    https://github.com/storageos/go-cli/releases/download/v2.4.0/storageos_darwin_amd64 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; chmod +x storageos &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo mv storageos /usr/local/bin/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You will need to provide the correct credentials to connect to the API. The
@@ -89,7 +89,7 @@ password &lt;code&gt;storageos&lt;/code&gt;:&lt;/p&gt;
 &lt;p&gt;You can run the cli as a container in your Kubernetes cluster. Then exec into
 it to run commands.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl -n kube-system run &lt;span style=&#34;color:#4e9a06&#34;&gt;\
-&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --image storageos/cli:v2.3.3 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --image storageos/cli:v2.4.0 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --restart&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;Never                          &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_ENDPOINTS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos:5705 &lt;span style=&#34;color:#4e9a06&#34;&gt;\
 &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&lt;/span&gt;    --env &lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_USERNAME&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;storageos       &lt;span style=&#34;color:#4e9a06&#34;&gt;\
@@ -296,6 +296,76 @@ payment.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Docs: Encryption</title>
+      <link>https://docs.storageos.com/docs/reference/encryption/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/encryption/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS supports encryption for data-at-rest and data-in-transit.&lt;/p&gt;
+&lt;p&gt;Data-in-transit is data as it is travelling between nodes. It is encrypted by
+default with mTLS. Data-at-rest is the data stored in your volumes as &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes/&#34;&gt; blob
+files&lt;/a&gt;. Encryption of these blob files
+is optional and can be enabled by adding a label to your volume definitions
+before they&amp;rsquo;re provisioned.&lt;/p&gt;
+&lt;p&gt;For information on how to enable encryption on your volumes, please see our
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/encryption/&#34;&gt;Encryption Operations&lt;/a&gt; page.&lt;/p&gt;
+&lt;h2 id=&#34;how-volumes-are-encrypted&#34;&gt;How volumes are encrypted&lt;/h2&gt;
+&lt;p&gt;Volumes are encrypted using AES-256 in the XTS-AES mode with 512-bit keys, as
+specified by IEEE Standard 1619-2007. There is a non-zero performance impact of
+using encrypted volumes. A 10-25% cost in read/write throughput can be
+expected from XTS-AES, dependent on workload. Thin provisioning still applies
+to encrypted volumes.&lt;/p&gt;
+&lt;h2 id=&#34;encryption-key-generation&#34;&gt;Encryption Key Generation&lt;/h2&gt;
+&lt;p&gt;On PVC creation, &lt;a href=&#34;https://docs.storageos.com/docs/reference/labels/#storageos-volume-labels&#34;&gt;if encryption is enabled&lt;/a&gt;, StorageOS will
+automatically generate up to two keys as Kubernetes secrets. Both keys are
+stored in the same namespace as the PVC.&lt;/p&gt;
+&lt;p&gt;Firstly, if it doesn&amp;rsquo;t already exist, a namespace key is generated. It is
+always named &lt;code&gt;storageos-namespace-key&lt;/code&gt; and only one exists per namespace.&lt;/p&gt;
+&lt;p&gt;Secondly a volume key is created for each encrypted volume. It has a name in
+the format &lt;code&gt;storageos-volume-key-&amp;lt;random-id&amp;gt;&lt;/code&gt;, with no connection to the name
+of the volume. The volume it is associated with can be determined by looking at
+the &lt;code&gt;storageos.com/pvc&lt;/code&gt; label on the secret. The
+&lt;code&gt;storageos.com/encryption-secret-name&lt;/code&gt; and
+&lt;code&gt;storageos.com/encryption-secret-namespace&lt;/code&gt; annotations are added to the PVC by
+an admission controller to map the PVC back to its secret.&lt;/p&gt;
+&lt;p&gt;The encryption key is passed to StorageOS as part of the CSI volume creation
+request and is used to encrypt the volume.&lt;/p&gt;
+&lt;h2 id=&#34;encryption-key-use&#34;&gt;Encryption Key Use&lt;/h2&gt;
+&lt;p&gt;The volume specific secret is needed whenever a volume is attached to a node
+for use by a pod. When this happens, the StorageOS node container&amp;rsquo;s Service
+Account reads the secret and passes it to the StorageOS controlplane.&lt;/p&gt;
+&lt;p&gt;A volume missing its key or with a malformed key will be unable to attach.&lt;/p&gt;
+&lt;p&gt;The key is stored in memory by StorageOS only on the node that the volume is
+being used on. As a result, encryption and decryption are performed where the
+data is consumed, rather than where it is stored.&lt;/p&gt;
+&lt;p&gt;Because of this, the use of encrypted volumes is transparent to the user.
+There is a complete integration between Kubernetes applications and
+StorageOS encryption.&lt;/p&gt;
+&lt;h2 id=&#34;key-management-best-practices&#34;&gt;Key Management Best Practices&lt;/h2&gt;
+&lt;p&gt;StorageOS does not store encryption keys outside of Kubernetes secrets.
+Backups are therefore imperative in case the Kubernetes etcd is lost.
+&lt;strong&gt;StorageOS has no ability to decrypt a volume whose encryption keys have been
+lost.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Secrets in Kubernetes are not encrypted by default, they are stored in the
+Kubernetes etcd in simple Base64 encoding. As StorageOS encryption keys are
+stored as Kubernetes Secrets, this means that anyone with access to a
+Kubernetes etcd installation can read encryption keys and decrypt encrypted
+volumes, unless the cluster has an external secrets store.&lt;/p&gt;
+&lt;p&gt;For better security &lt;a href=&#34;https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/&#34;&gt;secret
+encryption&lt;/a&gt;
+or an access control system such as &lt;a href=&#34;https://www.vaultproject.io&#34;&gt;Vault&lt;/a&gt; should
+be in operation on production-grade or sensitive clusters.&lt;/p&gt;
+&lt;p&gt;Secrets are not garbage-collected by StorageOS. To clean up completely upon
+deletion of a volume it is necessary to also delete that volume&amp;rsquo;s secret. There
+is no benefit to doing this, however.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
       <title>Docs: Graphical user interface (GUI)</title>
       <link>https://docs.storageos.com/docs/reference/gui/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -380,7 +450,79 @@ be used:&lt;/p&gt;
     </item>
     
     <item>
-      <title>Docs: StorageOS Feature labels</title>
+      <title>Docs: Kubernetes Object Sync</title>
+      <link>https://docs.storageos.com/docs/reference/kubernetes-object-sync/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/kubernetes-object-sync/</guid>
+      <description>
+        
+        
+        &lt;p&gt;The below controllers are part of the &lt;a href=&#34;https://docs.storageos.com/docs/concepts/components/&#34;&gt;StorageOS API manager&lt;/a&gt;, and handle a variety of cases where
+information about Kubernetes objects from your cluster needs to be synced to
+your StorageOS cluster.&lt;/p&gt;
+&lt;p&gt;The CSI Driver annotation mentioned below is added to your PVC or Node
+automatically by StorageOS and is not removed. It is set by default in the case
+of a PVC &lt;a href=&#34;https://docs.storageos.com/docs/operations/storageclasses/&#34;&gt;StorageClass&lt;/a&gt; or
+PVC&amp;rsquo;s StorageClassName parameter, or in the case of a node, by the node driver
+registrar.&lt;/p&gt;
+&lt;h2 id=&#34;pvc-label-sync&#34;&gt;PVC Label Sync&lt;/h2&gt;
+&lt;p&gt;The PVC Label Sync Controller applies labels that have been added to your PVCs
+to your &lt;a href=&#34;https://docs.storageos.com/docs/concepts/volumes/&#34;&gt;StorageOS Volume objects&lt;/a&gt;. The
+PVC must have the StorageOS CSI Driver annotation. If there is a label with the
+same key on the PVC and on the StorageClass the PVC label will take precedence.&lt;/p&gt;
+&lt;p&gt;StorageOS dynamically provisions StorageOS Volumes when you create a PVC
+object. Labels are initially applied to your StorageOS Volume object when it is
+created. These come from the labels specified in the PVC manifest as well as
+any default labels specified in the StorageClass.&lt;/p&gt;
+&lt;p&gt;This controller is triggered on any subsequent PVC label update event, so long
+as the CSI Driver annotation is present.&lt;/p&gt;
+&lt;p&gt;If a label sync fails the change will be requeued and retried. A periodic
+resync runs every hour (this is configurable via &lt;code&gt;-pvc-label-resync-interval&lt;/code&gt;
+flag for the &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;API Manager&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;node-label-sync&#34;&gt;Node Label Sync&lt;/h2&gt;
+&lt;p&gt;The Node Label Sync controller ensures that labels applied to your Kubernetes
+nodes are synced through to StorageOS. It is necessary for your &lt;a href=&#34;https://docs.storageos.com/docs/concepts/nodes/&#34;&gt;Node&lt;/a&gt; to have the StorageOS CSI Driver annotation.&lt;/p&gt;
+&lt;p&gt;When labels are applied to your Kubernetes nodes, they do not automatically
+sync to StorageOS, hence this controller is required to automatically apply the
+expected behaviour to your StorageOS cluster.&lt;/p&gt;
+&lt;p&gt;It is triggered on any Kubernetes label update event, so long as the CSI Drive
+annotation is present.&lt;/p&gt;
+&lt;p&gt;If a label sync fails the change will be requeued and retried. A periodic
+resync runs every hour (this is configurable via &lt;code&gt;-node-label-resync-interval&lt;/code&gt;
+flag for the &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;API Manager&lt;/a&gt;).&lt;/p&gt;
+&lt;h2 id=&#34;node-delete&#34;&gt;Node Delete&lt;/h2&gt;
+&lt;p&gt;The Node Delete Controller syncs deletions from your Kubernetes cluster to
+StorageOS.&lt;/p&gt;
+&lt;p&gt;This controller dynamically removes nodes from your StorageOS cluster, being
+triggered when the Kubernetes node is removed.&lt;/p&gt;
+&lt;p&gt;Whenever a node delete event occurs the Node Delete Controller will trigger if
+the node has the StorageOS CSI driver annotation.&lt;/p&gt;
+&lt;p&gt;If the node holds a StorageOS Volume without a replica then it cannot be
+deleted by this controller. The Volume must be deleted first and then the node.
+This is to prevent data loss by accidental deletion of a master volume.&lt;/p&gt;
+&lt;p&gt;A periodic garbage collection runs every hour (this is configurable via
+&lt;code&gt;-node-delete-gc-interval&lt;/code&gt; flag for the &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;API
+Manager&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;namespace-delete&#34;&gt;Namespace Delete&lt;/h2&gt;
+&lt;p&gt;The Namespace Delete Controller is responsible for removing StorageOS
+&lt;a href=&#34;https://docs.storageos.com/docs/concepts/namespaces/&#34;&gt;namespaces&lt;/a&gt; from the StorageOS
+cluster when the corresponding Kubernetes namespace has been removed from
+Kubernetes.&lt;/p&gt;
+&lt;p&gt;The StorageOS controlplane automatically creates a new StorageOS namespace when
+a PVC is created in a Kubernetes namespace. StorageOS does not automatically
+remove namespaces when there are no volumes in them. Instead this controller
+triggers on any Kubernetes namespace deletion event, syncing Kubernetes
+namespace deletion to StorageOS namespace deletion.&lt;/p&gt;
+&lt;p&gt;A periodic garbage collection runs every hour (this is configurable via
+&lt;code&gt;-namespace-delete-gc-interval&lt;/code&gt; flag for the &lt;a href=&#34;https://github.com/storageos/api-manager&#34;&gt;API
+Manager&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: StorageOS Feature Labels</title>
       <link>https://docs.storageos.com/docs/reference/labels/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -389,14 +531,15 @@ be used:&lt;/p&gt;
         
         
         &lt;p&gt;Feature labels are a powerful and flexible way to control storage features.&lt;/p&gt;
-&lt;p&gt;Labels can be applied to various StorageOS artefacts. Applying specific feature
-labels triggers compression, replication and other storage features. No feature
-labels are present by default.&lt;/p&gt;
+&lt;p&gt;Applying specific feature labels triggers compression, replication and other
+storage features. No feature labels are present by default.&lt;/p&gt;
 &lt;h2 id=&#34;storageos-node-labels&#34;&gt;StorageOS Node labels&lt;/h2&gt;
 &lt;p&gt;Nodes do not have any feature labels present by default.  When StorageOS is run
-within Kubernetes, the &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/&#34;&gt;Cluster Operator&lt;/a&gt; syncs any node labels
-set on Kubernetes nodes within StorageOS.  Node labels may also be set with the
-CLI or UI.&lt;/p&gt;
+within Kubernetes, the StorageOS API Manager syncs any Kubernetes node labels
+to the corresponding StorageOS node. The Kubernetes node labels act as the
+&amp;ldquo;source of truth&amp;rdquo;, so labels should be applied to the Kubernetes nodes rather
+than to StorageOS nodes. This is because the Kubernetes node labels overwrite
+the StorageOS node labels on sync.&lt;/p&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -420,9 +563,10 @@ sync&amp;rsquo;d to the StorageOS node (labels take an eventual consistency
 reconciliation time of ~1min).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl label node &lt;span style=&#34;color:#000&#34;&gt;$NODE&lt;/span&gt; storageos.com/computeonly&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;storageos-volume-labels&#34;&gt;StorageOS Volume labels&lt;/h2&gt;
+&lt;p&gt;Volumes do not have any feature labels present by default.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;The caching and compression labels can only apply during provision time, they
-can&amp;rsquo;t be changed during execution&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;WARNING: The encryption, caching and compression labels can only apply
+at provisioning time, they can&amp;rsquo;t be changed during execution.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -438,19 +582,31 @@ can&amp;rsquo;t be changed during execution&lt;/strong&gt;&lt;/p&gt;
 &lt;td align=&#34;left&#34;&gt;Caching&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocache&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off caching. (default: true)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off caching.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Compression&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/nocompress&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit. (default: true)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Switches off compression of data at rest and in transit (compression is not enabled by default to maximise performance).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Encryption&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/encryption&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Encrypts the contents of the volume. For each volume, a key is automatically generated, stored, and linked with the PVC.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Failure Mode&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/failure-mode&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;hard, soft, alwayson or integers [0, 5]&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sets the failure mode for a volume, either explicitly using a failure mode or implicitly using a replica threshold.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&#34;left&#34;&gt;Replication&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/replicas&lt;/code&gt;&lt;/td&gt;
 &lt;td align=&#34;left&#34;&gt;integers [0, 5]&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;Replicates entire volume across nodes. Typically 1 replica is sufficient (2 copies of the data); more than 2 replicas is not recommended. (default: 0)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sets the number of replicas i.e full copies of the data across nodes. Typically 1 or 2 replicas is sufficient (2 or 3 instances of the data); latency implications need to be assesed when using more than 2 replicas.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -477,6 +633,7 @@ can&amp;rsquo;t be changed during execution&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Option 2: Set label in the StorageClass&lt;/p&gt;
 &lt;p&gt;Any PVC using the StorageClass inherits the label. The PVC label takes
 precedence over the StorageClass parameters.&lt;/p&gt;
+&lt;p&gt;The encryption label is not applicable to StorageClasses&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;apiVersion&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storage.k8s.io/v1&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;kind&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;StorageClass&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;metadata&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
@@ -484,16 +641,72 @@ precedence over the StorageClass parameters.&lt;/p&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;parameters&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/fstype&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;ext4&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;storageos.com/replicas&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Label   &amp;lt;--------&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
-&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# CSI driver (recommended) &lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;provisioner&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;storageos&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# CSI driver (recommended)&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Change the NameSpace below if StorageOS doesn&amp;#39;t run in kube-system&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/controller-expand-secret-name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;csi-controller-expand-secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/controller-publish-secret-name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;csi-controller-publish-secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/node-publish-secret-name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;csi-node-publish-secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/provisioner-secret-name&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;csi-provisioner-secret&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/controller-expand-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;   &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/controller-publish-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;  &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/node-publish-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;        &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#204a87;font-weight:bold&#34;&gt;csi.storage.k8s.io/provisioner-secret-namespace&lt;/span&gt;&lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt; &lt;/span&gt;kube-system&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;         &lt;/span&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# NameSpace that runs StorageOS Daemonset&lt;/span&gt;&lt;span style=&#34;color:#f8f8f8;text-decoration:underline&#34;&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Option 3:&lt;/p&gt;
-&lt;p&gt;Once a PVC is created, you can update the Labels in StorageOS both in the
-UI or CLI. Those labels are going to be visible only for StorageOS and will
-not be synced to the Kubernetes resource.&lt;/p&gt;
-&lt;/li&gt;
 &lt;/ul&gt;
-
+&lt;blockquote&gt;
+&lt;p&gt;N.B. The StorageOS API manager periodically syncs labels from Kubernetes PVCs
+to the corresponding StorageOS volume. Therefore changes to StorageOS volume
+labels should be made to the corresponding Kubernetes PVC rather than to the
+StorageOS volume directly.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;storageos-pod-labels&#34;&gt;StorageOS Pod labels&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Feature&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Label&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Values&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Pod fencing&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;storageos.com/fenced&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;true / false&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Targets a pod to be fenced in case of node failure. (default: false)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For a pod to be fenced by StorageOS, a few requirements described in the
+&lt;a href=&#34;https://docs.storageos.com/docs/operations/fencing/&#34;&gt;Fencing Operations&lt;/a&gt; page need to be fulfilled.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl label pod &lt;span style=&#34;color:#000&#34;&gt;$POD&lt;/span&gt; storageos.com/fenced&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#204a87&#34;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It is recommended to define the fenced label in the pod&amp;rsquo;s manifest, i.e in the
+Statefulset definitions. Statefulsets pass labels to their
+VolumeClaimTemplates. You must set the label only at the
+&lt;code&gt;spec.template.metadata.labels&lt;/code&gt;. Otherwise, the StorageOS volumes will fail to
+provision as only special accepted labels can be passed to volumes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: my-statefulset
+spec:
+  selector:
+    matchLabels: &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;lt;----- Note that the matchLabels don&amp;#39;t have the fenced label&lt;/span&gt;
+      env: prod
+  serviceName: my-statefulset-svc
+  replicas: &lt;span style=&#34;color:#0000cf;font-weight:bold&#34;&gt;1&lt;/span&gt;
+  template:
+    metadata:
+      labels:   &lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# &amp;lt;----- Note that the fenced label IS PRESENT&lt;/span&gt;
+        env: prod
+        storageos.com/fenced: &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+    spec:
+      containers:
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       </description>
     </item>
     
@@ -5340,13 +5553,454 @@ limitations under the License.
         
         &lt;p&gt;We recommend always using &amp;ldquo;tagged&amp;rdquo; versions of StorageOS rather than &amp;ldquo;latest&amp;rdquo;,
 and to perform upgrades only after reading the release notes.&lt;/p&gt;
-&lt;p&gt;The latest tagged release is &lt;code&gt;v2.3.4&lt;/code&gt;. For
+&lt;p&gt;The latest tagged release is &lt;code&gt;v2.4.0&lt;/code&gt;. For
 installation instructions please see our
 &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/install/&#34;&gt;Install&lt;/a&gt; page.&lt;/p&gt;
-&lt;p&gt;The latest CLI release is &lt;code&gt;v2.3.3&lt;/code&gt;, available from
+&lt;p&gt;The latest CLI release is &lt;code&gt;v2.4.0&lt;/code&gt;, available from
 &lt;a href=&#34;https://github.com/storageos/go-cli/releases&#34;&gt;Github&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;upgrading&#34;&gt;Upgrading&lt;/h1&gt;
 &lt;p&gt;To upgrade from version 1.x to 2.x, please contact &lt;a href=&#34;https://docs.storageos.com/docs/support/&#34;&gt;support&lt;/a&gt; for assistance.&lt;/p&gt;
+&lt;h2 id=&#34;v240---released-2021-05-27&#34;&gt;v2.4.0 - Released 2021-05-27&lt;/h2&gt;
+&lt;p&gt;This release adds production-grade &lt;a href=&#34;https://docs.storageos.com/docs/reference/encryption/&#34;&gt;encryption at rest &lt;/a&gt; for StorageOS volumes, as well as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/concepts/fencing/&#34;&gt;Fencing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/operations/trim/&#34;&gt;TRIM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/concepts/replication/#failure-modes&#34;&gt;Failure modes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.storageos.com/docs/reference/kubernetes-object-sync/&#34;&gt;Kubernetes object sync&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: v2.4.0 &lt;em&gt;requires&lt;/em&gt; Kubernetes 1.17 or newer.&lt;/p&gt;
+&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Volume encryption-at-rest.&lt;/li&gt;
+&lt;li&gt;Fencing support.&lt;/li&gt;
+&lt;li&gt;Block trim support.&lt;/li&gt;
+&lt;li&gt;Kubernetes label sync.&lt;/li&gt;
+&lt;li&gt;Kubernetes node and namespace delete sync.&lt;/li&gt;
+&lt;li&gt;Failure tolerance threshold support.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/api: Compression is not disabled by default when provisioning volumes via the API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/api: Spec has incorrect response body for partial bundle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/csi: Error incorrectly returned when concurrent namespace creation requests occur.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnostics: GetDiagnostics RPC response does not indicate if node timed out collecting some data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnostics: Invalid character &amp;lsquo;\u0080&amp;rsquo; looking for beginning of value via CLI when a node is down.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnosticutil: Include attachment type in unpacking local volumes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnotics: Node timing out during local diagnostics is missing logs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/healthcheck: Combined sources fires callback in initialisation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/volumerpc: &amp;ldquo;Got unknown replica state 0&amp;rdquo; discards results.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Check blob writes don&amp;rsquo;t exceed internal limit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Checking the return code of InitiatorAddConnection().&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Director signal hander thread is not joined.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Don&amp;rsquo;t block I/O when many retries are in progress.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: gRPC API robustness improvements.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Initiator needs to include the node UUID in Endpoint.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Low-level I/O engines don&amp;rsquo;t propagate IO failures via Wait().&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Log available contextual information where possible.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Ensure BackingStore is not deleted twice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Serialise LIO create/delete operations to avoid kernel bug.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Dataplane shutdown time can exceed 10 seconds.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Fix non-threadsafe access on TCMU device object.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fix: Don&amp;rsquo;t hold lock unecessarily in Rdb::Reap.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: First ip octet should not be 0, 127, 169 or 224.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Keygen should only operate on StorageOS PVCs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add perm to allow VolumeAttachment finalizer removal.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Fix apiManagerContainer tag in v1 deploy CRD.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Fix docker credentials check.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Fix ServiceAccountName in the OLM bundle.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Set webhook service-for label to be unique.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;improved&#34;&gt;Improved&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/api: Make version provided consistent for NFS/Host attach handler.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/attachtracker: Cleanup NFS mounts at shutdown.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/build: Migrate to go modules for dependency management.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/build: Use sentry prod-url if build branch has &amp;ldquo;release&amp;rdquo; prefix.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/cli: Colour for significant feedback.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/cli: Update node must set compute only separately to other labels.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/cli: Warn user that updating labels action can be reverted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/csi: Bound request handlers with timeout similar to HTTP API.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/csi: Remove error obfuscation and clarify log messages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/csi: Stop logging not found.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/dataplane: Remove UUID mappings during failed presentation creation rollback.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/dataplaneevents: Decorate logs with extra event details.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnostics: Asymmetrically encrypt bundles.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnostics: Collect FSM state.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnostics: Support single node bundle collection.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnosticutil: Decorate log entries with well-known field corresponding to node id/name.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnosticutil: Parallelise unpacking of disjoint data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/diagnosticutil: Unpack gathered NFS config data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/fsm: Perform state match check before version check.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/k8s: Use secret store.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/log: Fix race condition writing logs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/log: Handle originator timestamps from dataplane logs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/meta: Error checking code uses Go 1.13 error features.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/rpc: Make CP gRPC calls to the DP configuration endpoints idempotent.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/sentry: Prevent some unnecessary alerts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/slog: Clean up error logging in RPC provision stack.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/states: Add the &amp;ldquo;from&amp;rdquo; state as a log field for state transition msgs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/store/etcd: Decorate lock logs with associated ID fields.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/ui: Warn user that updating labels action will be reverted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/vendor: Bump service repo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;controlplane/volume: Encryption support in kubernetes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fs: Don&amp;rsquo;t return from PresentationCreate RPC until the device is fully created.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fs: Each LUN should have it&amp;rsquo;s own HBA.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/fs: Improve device ready check.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/internals: Improve DP stats implementation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/internals: Major director refactor.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/log: Logs should output originating timestamps.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/log: Move to log3 API exclusively.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/log: Remove log2.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/log: Set log_level and log_filter via the supctl tool.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/rdb: Handle unaligned I/O in RdbPlugin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/rdb: Implement low-level &amp;ldquo;delete block&amp;rdquo; functionality.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/rdb: rocksdb Get() should use an iterator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/story: Support for block unmapping.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/story: Add backuptool binary to export volume data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/story: Volume encryption-at-rest.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/sync: Add retries for failed sync IOs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/sync: VolumeHash performance improvements.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;dataplane/sys: Find and check OS pids.max on startup.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Don&amp;rsquo;t attempt service creation if the owning PVC doesn&amp;rsquo;t exist.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Compare SC and PVC creation time during label sync.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add action to ensure modules tidy &amp;amp; vendored.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add defaults from StorageClass.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add fencing controller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add flag and support for cert validity.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add flags to disable label sync controllers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add namespace delete controller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add node delete controller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add OpenTelemetry tracing with Jaeger backend.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add PVC label sync controller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add PVC mutating controller.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add support for failure-mode label.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Add support for volume encryption.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Allow multiple mutators.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Build and tests should use vendored deps.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Bump controller-runtime to v0.6.4.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Encrypt only provisioned PVCs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Fix tracing example.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Introduce StorageClass to PVC annotation mutator.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Log api reason.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Migrate namespace delete to operator toolkit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Migrate node delete to operator toolkit.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Migrate to kubebuilder v3.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Node label sync.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Node label update must include current reserved labels.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Pass context to api consistently.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Rename leader election config map.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: RFC 3339 and flags to configure level &amp;amp; format.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Run shared volume controller with manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Set initial sync delay.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Set Pod scheduler.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Standardise on ObjectKeys for all API function signatures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: StorageOS API interface and mocks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Update dependencies and go version 1.16.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Update to new external object sync.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Use composite client in admission controllers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/api-manager: Use Object interface.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Changes to the StorageOSCluster CR get applied to StorageOS.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Increase provisioner timeout from 15 to 30s.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Reduce CSI provisioner worker pool.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Set priority class for helper pods.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add pod anti-affinity to api-manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add pvc mutator config.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add rbac for api-manager fencing.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add RBAC for encryption key management.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add RBAC needed for csi-resizer v1.0.0.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add webhook resource migration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Add workflow to push image to RedHat registry.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Bump csi-provisioner to v2.1.1.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Call APIManagerWebhookServiceTest test.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Delete CSI expand secret when cluster is deleted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Docker login to avoid toomanyrequests error.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Move pod scheduler webhook to api-manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: RBAC to allow sync functions move to api-manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Remove pool from StorageClass, not used in v2.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Remove some other v1.14 specific logic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Set the default container for kubectl logs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Update code owners.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Update CSI sidecar images.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;k8s/cluster-operator: Validate minimum Kubernetes version.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;v234---released-2021-03-24&#34;&gt;v2.3.4 - Released 2021-03-24&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;controlplane/build: Use Sentry prod-url for release branches (CP-4600).&lt;/li&gt;
@@ -5372,12 +6026,12 @@ installation instructions please see our
 customers.&lt;/li&gt;
 &lt;li&gt;Quality-of-life fixes.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;new&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;operator: Use CSI attacher v3 for k8s 1.17+.&lt;/li&gt;
 &lt;li&gt;controlplane/csi: ListVolumes support.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;api-manager: Reset api after token refresh error.&lt;/li&gt;
 &lt;li&gt;operator: Set scheduler when PVCs use default StorageClass.&lt;/li&gt;
@@ -5387,7 +6041,7 @@ customers.&lt;/li&gt;
 &lt;li&gt;controlplane/fsm: Perform state match check before version check.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v232---released-2020-11-25&#34;&gt;v2.3.2 - Released 2020-11-25&lt;/h2&gt;
-&lt;h3 id=&#34;fixed-1&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;controlplane/rejoin: Failure to delete data causes re-advertise loop.&lt;/li&gt;
 &lt;li&gt;controlplane/rejoin: Handle timeout waiting for progress report.&lt;/li&gt;
@@ -5398,7 +6052,7 @@ customers.&lt;/li&gt;
 &lt;li&gt;Allows access to &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes when running containers as a
 non-root user.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-2&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;nfs: root squash to uid=0 is now configured on all shared volumes.&lt;/li&gt;
 &lt;/ul&gt;
@@ -5409,7 +6063,7 @@ technology preview in v1.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The &lt;code&gt;v2.3.0&lt;/code&gt; operator is no longer able to run StorageOS v1.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;new-1&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Adds support for &lt;code&gt;ReadWriteMany&lt;/code&gt; shared volumes.  See
 &lt;a href=&#34;https://docs.storageos.com/docs/concepts/rwx/&#34;&gt;ReadWriteMany&lt;/a&gt;.&lt;/li&gt;
@@ -5418,7 +6072,7 @@ manager&lt;/a&gt; Github repository for more
 information.&lt;/li&gt;
 &lt;li&gt;Kubernetes 1.19 support.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;improved&#34;&gt;Improved&lt;/h3&gt;
+&lt;h3 id=&#34;improved-1&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: Reduce replication thread usage by having the replication processes
 share the main thread pool.  This helps ensure that there isn&amp;rsquo;t a spike in
@@ -5465,7 +6119,7 @@ Openshift have a much lower default value (1024).  Consult
 &lt;a href=&#34;https://docs.storageos.com/docs/prerequisites/pidlimits/&#34;&gt;prerequisites&lt;/a&gt; for more
 information.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-3&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: Fixes &lt;code&gt;transport endpoint is not connected&lt;/code&gt; on startup after an
 unclean shutdown.&lt;/li&gt;
@@ -5489,7 +6143,7 @@ improvements across the board. Of particular note:&lt;/p&gt;
 look at the &lt;a href=&#34;https://docs.storageos.com/docs/self-eval/#Benchmarking&#34;&gt;Benchmarking&lt;/a&gt; section of the self-evaluation guide and consider sharing
 your results. Our PRE engineers are available to discuss in our &lt;a href=&#34;https://storageos.slack.com&#34;&gt;slack
 channel&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;new-2&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;Data engine revamp focused on provable consistency and performance. Key
@@ -5507,7 +6161,7 @@ offers better performance. To enable on-disk compression for a specific
 workload, see &lt;a href=&#34;https://docs.storageos.com/docs/concepts/compression/&#34;&gt;compression&lt;/a&gt;.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;improved-1&#34;&gt;Improved&lt;/h3&gt;
+&lt;h3 id=&#34;improved-2&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: The number of I/O threads are now determined by the number of
 processing cores available.  This improves scalability and performance on
@@ -5541,7 +6195,7 @@ This allows the scheduler to work in clusters with custom DNS configuration.&lt;
 &lt;li&gt;operator: Defaults are now set for most CSI configuration options in the
 StorageOSCluster custom resource.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-4&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;csi: When unmount request is received for a volume that has already been
 unmounted, return success.&lt;/li&gt;
@@ -5554,7 +6208,7 @@ operations, rather than filling target disk to capacity.&lt;/li&gt;
 after a restart. This resulted in multiple entries in &lt;code&gt;/proc/mounts&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v210---released-2020-06-26&#34;&gt;v2.1.0 - Released 2020-06-26&lt;/h2&gt;
-&lt;h3 id=&#34;new-3&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-4&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;csi: Volume expansion now supported in offline mode. To expand a volume, stop
 any workloads accessing the volume, then edit the PVC to increase the
@@ -5572,7 +6226,7 @@ failure detection.&lt;/li&gt;
 This helps ensure that the StorageOS node container does not get evicted when
 the node is running low on resources.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;improved-2&#34;&gt;Improved&lt;/h3&gt;
+&lt;h3 id=&#34;improved-3&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;api: Added checks to prevent deletion of a node with active volumes, or if it
 is the master of at least one volume. This helps prevent orphaned volumes.&lt;/li&gt;
@@ -5584,14 +6238,14 @@ and replica nodes are offline. This allows cleanup of orphaned volumes.&lt;/li&g
 &lt;li&gt;api: When a new node is added to the cluster, its capacity is available to use
 immediately.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-5&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: Favicon was missing.&lt;/li&gt;
 &lt;li&gt;ui: Duplicate volumes could be shown on the node details page.&lt;/li&gt;
 &lt;li&gt;operator: During uninstall a ClusterRoleBinding was not removed.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;v200---released-2020-05-05&#34;&gt;v2.0.0 - Released 2020-05-05&lt;/h2&gt;
-&lt;h3 id=&#34;new-4&#34;&gt;New&lt;/h3&gt;
+&lt;h3 id=&#34;new-5&#34;&gt;New&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;operator: StorageOS containers now run in the &lt;code&gt;kube-system&lt;/code&gt; namespace by
 default to allow the &lt;code&gt;system-node-critical&lt;/code&gt; priority class to be set. This
@@ -5618,7 +6272,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.&lt;/li&gt;
 &lt;/li&gt;
 &lt;li&gt;licence: removed the default licence expiry date added for &lt;code&gt;v2.0.0-rc.1&lt;/code&gt;.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;improved-3&#34;&gt;Improved&lt;/h3&gt;
+&lt;h3 id=&#34;improved-4&#34;&gt;Improved&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;dataplane: improved retry behaviour for network I/O.&lt;/li&gt;
 &lt;li&gt;cli: &amp;ldquo;get volumes&amp;rdquo; for all namespaces should be done in parallel.&lt;/li&gt;
@@ -5639,7 +6293,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.&lt;/li&gt;
 &lt;li&gt;scheduler: return error for namespace/volume not found&lt;/li&gt;
 &lt;li&gt;dataplane: start gRPC threads separately from rest of the supervisor.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;fixed-6&#34;&gt;Fixed&lt;/h3&gt;
+&lt;h3 id=&#34;fixed-7&#34;&gt;Fixed&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;ui: centre licence types.&lt;/li&gt;
 &lt;li&gt;ui: capacity in ui is per namespace.&lt;/li&gt;
@@ -5688,6 +6342,74 @@ documentation&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;To add resource requests and reservations to the StorageOS DaemonSet &lt;a href=&#34;https://docs.storageos.com/docs/reference/cluster-operator/examples/#defining-pod-resource-requests-and-reservations&#34;&gt;configure
 them in the StorageOSCluster
 resource&lt;/a&gt;.&lt;/p&gt;
+
+      </description>
+    </item>
+    
+    <item>
+      <title>Docs: StorageOS Scheduler</title>
+      <link>https://docs.storageos.com/docs/reference/scheduler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://docs.storageos.com/docs/reference/scheduler/</guid>
+      <description>
+        
+        
+        &lt;p&gt;StorageOS has the capacity to influence Kubernetes Pod placement decisions to
+ensure that Pods are scheduled on the same nodes as their data. This
+functionality is known as &lt;code&gt;Pod Locality&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;StorageOS grants access to data by presenting, on local or remote nodes, the
+devices used in a Pod&amp;rsquo;s VolumeMounts. However, it is often the case that it is
+required or preferred to place the Pod on the node where the StorageOS Primary
+Volume is located, because IO operations are fastest as a result of minimized
+network traffic and associated latency. Read operations are served locally and
+writes require fewer round trips to the replicas of the volume.&lt;/p&gt;
+&lt;p&gt;StorageOS automatically enables the use of a custom scheduler for any Pod
+using StorageOS Volumes. Checkout the &lt;a href=&#34;https://docs.storageos.com/docs/reference/scheduler/admission-controller/&#34;&gt;Admission Controller reference&lt;/a&gt; for more
+information.&lt;/p&gt;
+&lt;h2 id=&#34;storageos-kubernetes-scheduler&#34;&gt;Storageos Kubernetes Scheduler&lt;/h2&gt;
+&lt;p&gt;StorageOS achieves Pod locality by implementing a Kubernetes scheduler
+extender. The Kubernetes standard scheduler interacts with the StorageOS
+scheduler when placement decisions need to be made.&lt;/p&gt;
+&lt;p&gt;The Kubernetes standard scheduler selects a set of nodes for a placement
+decision based on nodeSelectors, affinity rules, etc. This list of nodes is
+sent to the StorageOS scheduler which sends back the target node where the Pod
+shall be placed.&lt;/p&gt;
+&lt;p&gt;The StorageOS scheduler logic is provided by a Pod in the Namespace where
+StorageOS Pods are running.&lt;/p&gt;
+&lt;h2 id=&#34;scheduling-process&#34;&gt;Scheduling process&lt;/h2&gt;
+&lt;p&gt;When a Pod needs to be scheduled, the scheduler collects information
+about all available nodes and the requirements of the Pod. The collected
+data is then passed through the Filter phase, during which the scheduler predicates
+are applied to the node data to decide if the given nodes are compatible
+with the Pod requirements. The result of the filter consists of a list of nodes
+that are compatible for the given Pod and a list of nodes that aren&amp;rsquo;t
+compatible.&lt;/p&gt;
+&lt;p&gt;The list of compatible nodes is then passed to the Prioritize phase, in which
+the nodes are scored based on attributes such as the state. The result of the
+Prioritize phase is a list of nodes with their respective scores. The more
+favorable nodes get higher scores than less favorable nodes. The list is then
+used by the scheduler to decide the final node to schedule the Pod on.&lt;/p&gt;
+&lt;p&gt;Once a node has been selected, the third phase, Bind, handles the binding
+of the Pod to the Kubernetes apiserver. Once bound, the kubelet on the node
+provisions the Pod.&lt;/p&gt;
+&lt;p&gt;The StorageOS scheduler implement Filter and Prioritization phases and leaves
+binding to the default Kubernetes scheduler.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;    Available         +------------------+                     +------------------+
+  NodeList &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  Filtered NodeList  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;    Scored
+   Information        &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;&amp;amp;&lt;/span&gt; Pod Information  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   NodeList
++--------------------&amp;gt;+      Filter      +--------------------&amp;gt;+    Prioritize    &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;---------------&amp;gt;
+                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Predicates&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;   &lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;(&lt;/span&gt;Priorities&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+                      &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                     &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;                  &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt;
+                      +------------------+                     +------------------+
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;scheduling-rules&#34;&gt;Scheduling Rules&lt;/h2&gt;
+&lt;p&gt;The StorageOS scheduler filters nodes ensuring that the remaining subset
+fulfill the following prerequisites:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The node is running StorageOS&lt;/li&gt;
+&lt;li&gt;The node is healthy&lt;/li&gt;
+&lt;/ul&gt;
 
       </description>
     </item>

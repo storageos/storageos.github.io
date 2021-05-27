@@ -19,10 +19,6 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/systemconfiguration/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/v2.3/docs/reference/cluster-operator/configuration/</loc>
   </url>
   
@@ -31,19 +27,11 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/firewalls/</loc>
-  </url>
-  
-  <url>
     <loc>https://docs.storageos.com/v2.3/docs/introduction/quickstart/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/v2.3/docs/reference/cluster-operator/examples/</loc>
-  </url>
-  
-  <url>
-    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/mountpropagation/</loc>
   </url>
   
   <url>
@@ -59,11 +47,23 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/systemconfiguration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/ipv6/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.3/docs/concepts/</loc>
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/pidlimits/</loc>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/firewalls/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/mountpropagation/</loc>
   </url>
   
   <url>
@@ -75,6 +75,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/pidlimits/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.3/docs/platforms/</loc>
   </url>
   
@@ -83,11 +87,23 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/max-aio/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.3/docs/operations/</loc>
   </url>
   
   <url>
     <loc>https://docs.storageos.com/v2.3/docs/usecases/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/etcd/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.3/docs/reference/bundles/</loc>
   </url>
   
   <url>
@@ -175,6 +191,10 @@
   </url>
   
   <url>
+    <loc>https://docs.storageos.com/v2.3/docs/reference/bundles/diagnostic-bundle/</loc>
+  </url>
+  
+  <url>
     <loc>https://docs.storageos.com/v2.3/docs/platforms/dockeree/</loc>
   </url>
   
@@ -195,7 +215,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.3/docs/prerequisites/etcd/</loc>
+    <loc>https://docs.storageos.com/v2.3/docs/operations/etcd/migrate-etcd-cluster/</loc>
   </url>
   
   <url>
@@ -355,7 +375,7 @@
   </url>
   
   <url>
-    <loc>https://docs.storageos.com/v2.3/docs/reference/bundle/</loc>
+    <loc>https://docs.storageos.com/v2.3/docs/reference/bundles/support_bundle/</loc>
   </url>
   
   <url>
@@ -372,6 +392,10 @@
   
   <url>
     <loc>https://docs.storageos.com/v2.3/docs/operations/uninstall/</loc>
+  </url>
+  
+  <url>
+    <loc>https://docs.storageos.com/v2.3/docs/reference/cli/update/</loc>
   </url>
   
   <url>

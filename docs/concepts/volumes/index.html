@@ -32,7 +32,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default." />
 Conceptually, StorageOS volumes have a frontend presentation, which is what the application sees, and a backend presentation, which is the actual on-disk format. Depending on the configuration, frontend and backend components may be on the same or different hosts.
 Volumes are formatted using the linux standard ext4 filesystem by default.">
 
-<meta itemprop="wordCount" content="492">
+<meta itemprop="wordCount" content="583">
 
 
 
@@ -174,9 +174,9 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 	
 	<li><a class="dropdown-item" href="/v2.2">v2.2</a></li>
 	
-	<li><a class="dropdown-item" href="/">v2.3</a></li>
+	<li><a class="dropdown-item" href="/v2.3">v2.3</a></li>
 	
-	<li><a class="dropdown-item" href="/v2.4-rc">v2.4-rc</a></li>
+	<li><a class="dropdown-item" href="/">v2.4</a></li>
 	
 </ul>
 
@@ -196,7 +196,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4ba50d7c2cee727a20119a1166a6499e7420824dcb30a3f258a9cd3cbd095cbdedb2f42e66ddf8c16ebcf258dff81c3763c29b5831d61303f538e2fdf789e1a0.json"
+  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
   data-offline-search-base-href="/"
 >
 
@@ -230,7 +230,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.4ba50d7c2cee727a20119a1166a6499e7420824dcb30a3f258a9cd3cbd095cbdedb2f42e66ddf8c16ebcf258dff81c3763c29b5831d61303f538e2fdf789e1a0.json"
+  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
   data-offline-search-base-href="/"
 >
 
@@ -326,7 +326,7 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
-      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsarchitecture" href="/docs/concepts/architecture/">Architecture</a>
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscluster-topologies" href="/docs/concepts/cluster-topologies/">Cluster Topologies</a>
       
       
       
@@ -345,6 +345,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsetcd" href="/docs/concepts/etcd/">Etcd</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsfencing" href="/docs/concepts/fencing/">Fencing</a>
       
       
       
@@ -375,6 +381,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptsreplication" href="/docs/concepts/replication/">Replication</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsconceptscomponents" href="/docs/concepts/components/">StorageOS Components</a>
       
       
       
@@ -579,6 +591,18 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsdelete-stos-objects" href="/docs/operations/delete-stos-objects/">Deleting StorageOS Objects</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsencryption" href="/docs/operations/encryption/">Encryption</a>
+      
+      
+      
+      
 
 
 
@@ -615,6 +639,18 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfailure-modes" href="/docs/operations/failure-modes/">Failure Modes</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfencing" href="/docs/operations/fencing/">Fencing</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsfirstpvc" href="/docs/operations/firstpvc/">First PVC</a>
       
       
@@ -628,6 +664,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsmanaging-host-storage" href="/docs/operations/managing-host-storage/">Host Storage</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationslabel-stos-objects" href="/docs/operations/label-stos-objects/">Labeling StorageOS Objects</a>
       
       
       
@@ -658,6 +700,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationsstorageclasses" href="/docs/operations/storageclasses/">StorageClasses</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsoperationstrim" href="/docs/operations/trim/">TRIM</a>
       
       
       
@@ -1006,6 +1054,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceencryption" href="/docs/reference/encryption/">Encryption</a>
+      
+      
+      
+      
+      
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencegui" href="/docs/reference/gui/">GUI</a>
       
       
@@ -1013,6 +1067,12 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceinit-container" href="/docs/reference/init-container/">Init container</a>
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencekubernetes-object-sync" href="/docs/reference/kubernetes-object-sync/">Kubernetes Object Sync</a>
       
       
       
@@ -1043,6 +1103,35 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
       
       
       <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferenceresource_requests_and_limits" href="/docs/reference/resource_requests_and_limits/">Resource Requests and Limits</a>
+      
+      
+      
+      
+
+
+
+
+
+
+<ul class="td-sidebar-nav__section pr-md-3">
+  <li class="td-sidebar-nav__section-title">
+    <a  href="/docs/reference/scheduler/" class="align-left pl-0 pr-2 collapsed td-sidebar-link td-sidebar-link__section">Scheduler</a>
+  </li>
+  <ul>
+    <li class="collapse " id="docsreferencescheduler">
+      
+      
+      
+      
+      
+      
+      <a class="td-sidebar-link td-sidebar-link__page " id="m-docsreferencescheduleradmission-controller" href="/docs/reference/scheduler/admission-controller/">Admission Controller</a>
+      
+      
+    </li>
+  </ul>
+</ul>
+
       
       
       
@@ -1105,6 +1194,15 @@ Volumes are formatted using the linux standard ext4 filesystem by default."/>
 
 
 
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#minimum-volume-size">Minimum Volume Size</a></li>
+    <li><a href="#trim">TRIM</a></li>
+    <li><a href="#volume-resize">Volume Resize</a></li>
+    <li><a href="#volume-encryption">Volume Encryption</a></li>
+  </ul>
+</nav>
+
 
 
           </div>
@@ -1158,11 +1256,10 @@ the application sees, and a backend presentation, which is the actual on-disk
 format. Depending on the configuration, frontend and backend components may be
 on the same or different hosts.</p>
 <p>Volumes are formatted using the linux standard ext4 filesystem by default.
-Kubernetes users may change the default filesystem type to ext2, ext3, ext4,
-or xfs by setting the fsType parameter in their StorageClass (see
-<a href="/docs/reference/filesystems#persistent-volume-filesystems">Supported
-Filesystems</a> for
-more information). Different filesystems may be supported in the future.</p>
+Kubernetes users may change the default filesystem type to ext2, ext3, ext4, or
+xfs by setting the fsType parameter in their StorageClass (see <a href="https://docs.storageos.com/docs/reference/filesystems/#persistent-volume-filesystems">Supported
+Filesystems</a> for more
+information). Different filesystems may be supported in the future.</p>
 <p>StorageOS volumes are represented on disk in two parts. Actual volume data is
 written to blob files in <code>/var/lib/storageos/data/dev[\d+]</code>. Inside these
 directories, each StorageOS block device gets two blob files of the form
@@ -1187,6 +1284,13 @@ compression defined on the volume.</p>
 node.</p>
 <h2 id="minimum-volume-size">Minimum Volume Size</h2>
 <p>The minimum volume size StorageOS supports is 1 GiB.</p>
+<h2 id="trim">TRIM</h2>
+<p>StorageOS volumes support TRIM/Unmap which allows the space allocated to
+deleted blocks to be reclaimed from the backend blob files that back each
+volume when a TRIM call is made. Support for TRIM is enabled by default for all
+uncompressed volumes, volumes are created without compression enabled by
+default. For more information on how to TRIM a filesystem see <a href="https://docs.storageos.com/docs/operations/trim/">TRIM
+operations</a>.</p>
 <h2 id="volume-resize">Volume Resize</h2>
 <p>StorageOS v2.1 supports offline resize of volumes. This means that a volume
 cannot be resized while it is in use. Furthermore, in order for a resize
@@ -1198,8 +1302,13 @@ pod is terminated and the volume is detached from the node. The StorageOS
 controlplane will then attach the volume to the node that holds the master
 deployment and resize the underlying block device and then run resize2fs to
 expand the filesystem.</p>
-<p>For a walk through of how to resize a volume please see the <a href="/docs/operations/resize">Volume
+<p>For a walk through of how to resize a volume please see the <a href="https://docs.storageos.com/docs/operations/resize/">Volume
 Resize</a> operations page.</p>
+<h2 id="volume-encryption">Volume Encryption</h2>
+<p>Volumes can be configured on creation to have encryption-at-rest. Data
+is encrypted with XTS-AES and decrypted upon use. Please see
+the <a href="https://docs.storageos.com/docs/reference/encryption/">Encryption</a> reference page for
+more information.</p>
 
 	
 	

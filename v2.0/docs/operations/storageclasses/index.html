@@ -193,7 +193,7 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.d7aa1ed25a886443c9a46387405a9d097b3953ba2c97a704110d7424f00e7fa31648e8e7ec87fe7eacd29d278ae6d6bd2046dc55173466906baf7db9551d0bb4.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.c71ae75088c2e254b99e69c23807d1013cc0d77c49789a83e9cd648babe645210f9ee4a4508f6405e48b07154ba14413eb7ebc5a2a9538392d7d655e20fe262a.json"
   data-offline-search-base-href="/"
 >
 
@@ -227,7 +227,7 @@ By default the StorageOS Cluster Operator installs the fast StorageClass at boot
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/v2.0/offline-search-index.d7aa1ed25a886443c9a46387405a9d097b3953ba2c97a704110d7424f00e7fa31648e8e7ec87fe7eacd29d278ae6d6bd2046dc55173466906baf7db9551d0bb4.json"
+  data-offline-search-index-json-src="/v2.0/offline-search-index.c71ae75088c2e254b99e69c23807d1013cc0d77c49789a83e9cd648babe645210f9ee4a4508f6405e48b07154ba14413eb7ebc5a2a9538392d7d655e20fe262a.json"
   data-offline-search-base-href="/"
 >
 
@@ -1056,7 +1056,6 @@ Resource.</p>
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>csi.storageos.com<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/fstype</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Change the Namespace below if StorageOS doesn&#39;t run in kube-system</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/node-publish-secret-namespace</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>kube-system<span style="color:#f8f8f8;text-decoration:underline">       </span><span style="color:#8f5902;font-style:italic"># Namespace that runs StorageOS Daemonset</span><span style="color:#f8f8f8;text-decoration:underline">
@@ -1081,8 +1080,7 @@ the <code>00-basic</code> directory.</p>
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">name</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>storageos-replicated<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">provisioner</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>csi.storageos.com<span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Provisioner when using CSI</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#204a87;font-weight:bold">parameters</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">fsType</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
-</span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">pool</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>default<span style="color:#f8f8f8;text-decoration:underline">
+</span><span style="color:#f8f8f8;text-decoration:underline"></span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">csi.storage.k8s.io/fstype</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span>ext4<span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#204a87;font-weight:bold">storageos.com/replicas</span><span style="color:#000;font-weight:bold">:</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#4e9a06">&#34;1&#34;</span><span style="color:#f8f8f8;text-decoration:underline"> </span><span style="color:#8f5902;font-style:italic"># Enforces 1 replica for the Volume</span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">
 </span><span style="color:#f8f8f8;text-decoration:underline">  </span><span style="color:#8f5902;font-style:italic"># Change the Namespace below if StorageOS doesn&#39;t run in kube-system</span><span style="color:#f8f8f8;text-decoration:underline">

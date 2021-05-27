@@ -1653,7 +1653,6 @@ parameters:
   adminSecretNamespace: storageos
   description: Kubernetes volume
   fsType: ext4
-  pool: default
 provisioner: kubernetes.io/storageos
 reclaimPolicy: Delete
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;

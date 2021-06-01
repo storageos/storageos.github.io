@@ -28,7 +28,7 @@
 <meta itemprop="name" content="Upgrade StorageOS">
 <meta itemprop="description" content="Procedure to upgrade a StorageOS v2 Cluster">
 
-<meta itemprop="wordCount" content="333">
+<meta itemprop="wordCount" content="370">
 
 
 
@@ -190,7 +190,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
+  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
   data-offline-search-base-href="/"
 >
 
@@ -224,7 +224,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.b0af11b30caa17d4efdf0aeaa41c8d66ae4c6a3cba904797eb86e72acd6ff5382898c37a81c5fceef594b4c92646e618fa5f82693ebb23e1580c5b3686a2f49f.json"
+  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
   data-offline-search-base-href="/"
 >
 
@@ -1271,9 +1271,14 @@ using the command below.</p>
 </code></pre></div></li>
 <li>
 <p>Deploy the new operator.</p>
-<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># Do not apply the yaml resources. It requires a deletion and posterior creation</span>
+kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
+
+<span style="color:#8f5902;font-style:italic"># Wait until the resources are deleted</span>
+kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
 </code></pre></div><blockquote>
-<p>Warning: If you have made changes to the CRDs, Service Account or Cluster
+<p>Do not run a <code>kubectl apply</code>. A delete and create are needed
+Warning: If you have made changes to the CRDs, Service Account or Cluster
 Role, make sure you migrate those changes in the StorageOS operator yaml.</p>
 </blockquote>
 </li>

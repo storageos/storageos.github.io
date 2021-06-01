@@ -2060,9 +2060,14 @@ using the command below.&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Deploy the new operator.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;kubectl apply -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Do not apply the yaml resources. It requires a deletion and posterior creation&lt;/span&gt;
+kubectl delete -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
+
+&lt;span style=&#34;color:#8f5902;font-style:italic&#34;&gt;# Wait until the resources are deleted&lt;/span&gt;
+kubectl create -f https://github.com/storageos/cluster-operator/releases/download/v2.4.0/storageos-operator.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;Warning: If you have made changes to the CRDs, Service Account or Cluster
+&lt;p&gt;Do not run a &lt;code&gt;kubectl apply&lt;/code&gt;. A delete and create are needed
+Warning: If you have made changes to the CRDs, Service Account or Cluster
 Role, make sure you migrate those changes in the StorageOS operator yaml.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;/li&gt;

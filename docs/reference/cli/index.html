@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -37,8 +37,8 @@
 
 
 
-<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" as="style">
+<link href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -185,7 +185,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
+  data-offline-search-index-json-src="/offline-search-index.eb34ad827070b98724c67477a251ef45731c8d8e924b398f38d470263b91ad4e38b6f837d50e85eba4f3cd5279c5fbceba71ab87379dacc92dfc48e3a277fd25.json"
   data-offline-search-base-href="/"
 >
 
@@ -219,7 +219,7 @@
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
+  data-offline-search-index-json-src="/offline-search-index.eb34ad827070b98724c67477a251ef45731c8d8e924b398f38d470263b91ad4e38b6f837d50e85eba4f3cd5279c5fbceba71ab87379dacc92dfc48e3a277fd25.json"
   data-offline-search-base-href="/"
 >
 
@@ -1187,6 +1187,7 @@
   <ul>
     <li><a href="#installation">Installation</a>
       <ul>
+        <li><a href="#run-the-cli-as-a-deployment-in-your-cluster">Run the CLI as a deployment in your cluster</a></li>
         <li><a href="#run-cli-as-a-container">Run CLI as a container</a></li>
       </ul>
     </li>
@@ -1243,16 +1244,19 @@
 	
 	<p>The <code>storageos</code> command line interface (CLI) is used to manage cluster-wide
 configuration.</p>
+<p>It is highly recommended to install the CLI, since it can be used to generate a
+lot of useful information about your StorageOS cluster and significantly speed
+up resolution times for support issues.</p>
 <h2 id="installation">Installation</h2>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#8f5902;font-style:italic"># linux/amd64</span>
 curl -sSLo storageos <span style="color:#4e9a06">\ </span>
-    https://github.com/storageos/go-cli/releases/download/v2.4.0/storageos_linux_amd64 <span style="color:#4e9a06">\
+    https://github.com/storageos/go-cli/releases/download/v2.4.1/storageos_linux_amd64 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 
 <span style="color:#8f5902;font-style:italic"># MacOS</span>
 curl -sSLo storageos <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    https://github.com/storageos/go-cli/releases/download/v2.4.0/storageos_darwin_amd64 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    https://github.com/storageos/go-cli/releases/download/v2.4.1/storageos_darwin_amd64 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> chmod +x storageos <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    <span style="color:#ce5c00;font-weight:bold">&amp;&amp;</span> sudo mv storageos /usr/local/bin/
 </code></pre></div><p>You will need to provide the correct credentials to connect to the API. The
@@ -1262,11 +1266,56 @@ password <code>storageos</code>:</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos
 <span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_PASSWORD</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos
 <span style="color:#204a87">export</span> <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>10.1.5.249:5705
-</code></pre></div><h3 id="run-cli-as-a-container">Run CLI as a container</h3>
-<p>You can run the cli as a container in your Kubernetes cluster. Then exec into
-it to run commands.</p>
+</code></pre></div><h3 id="run-the-cli-as-a-deployment-in-your-cluster">Run the CLI as a deployment in your cluster</h3>
+<p>This is a preferred installation method, since our support bundle generation
+software can automatically detect a deployment called &ldquo;cli&rdquo; and warn you if you
+do not have the CLI installed. You can run CLI commands with <code>kubectl exec</code> on
+your cli container.</p>
+<p><code>kubectl apply -f</code> the below YAML manifest to install.</p>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cli
+  namespace: kube-system
+  labels:
+    app: storageos-cli
+    kind: storageos
+    app.kubernetes.io/part-of: storageos
+    app.kubernetes.io/component: storageos-cli
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: storageos-cli
+  template:
+    metadata:
+      name: storageos-cli
+      labels:
+        app: storageos-cli
+    spec:
+      containers:
+      - image: storageos/cli:v2.4.1
+        command:
+          - &quot;/bin/sh&quot;
+          - &quot;-c&quot;
+          - &quot;while true; do sleep 3600; done&quot;
+        imagePullPolicy: IfNotPresent
+        name: cli
+        ports:
+        - containerPort: 5705
+        env:
+        - name: STORAGEOS_USERNAME
+          value: storageos
+        - name: STORAGEOS_PASSWORD
+          value: storageos
+        - name: STORAGEOS_ENDPOINTS
+          value: storageos:5705
+      restartPolicy: Always
+</code></pre><h3 id="run-cli-as-a-container">Run CLI as a container</h3>
+<p>You can also run the cli as a container in your Kubernetes cluster. Then exec
+into it to run commands.</p>
 <div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl -n kube-system run <span style="color:#4e9a06">\
-</span><span style="color:#4e9a06"></span>    --image storageos/cli:v2.4.0 <span style="color:#4e9a06">\
+</span><span style="color:#4e9a06"></span>    --image storageos/cli:v2.4.1 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --restart<span style="color:#ce5c00;font-weight:bold">=</span>Never                          <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_ENDPOINTS</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos:5705 <span style="color:#4e9a06">\
 </span><span style="color:#4e9a06"></span>    --env <span style="color:#000">STORAGEOS_USERNAME</span><span style="color:#ce5c00;font-weight:bold">=</span>storageos       <span style="color:#4e9a06">\
@@ -1301,11 +1350,11 @@ Available Commands:
 Flags:
       --cache-dir string        <span style="color:#204a87">set</span> the directory used by the StorageOS CLI to cache data that can be used <span style="color:#204a87;font-weight:bold">for</span> future commands <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/home/user/.cache/storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
   -c, --config string           specifies the config file path <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;/home/user/.config/storageos/config.yaml&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
-      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span>
+      --endpoints stringArray   <span style="color:#204a87">set</span> the list of endpoints which are used when connecting to the StorageOS API <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#ce5c00;font-weight:bold">[</span>http://localhost:5705<span style="color:#ce5c00;font-weight:bold">])</span>
   -h, --help                    <span style="color:#204a87">help</span> <span style="color:#204a87;font-weight:bold">for</span> storageos
   -n, --namespace string        specifies the namespace to operate within <span style="color:#204a87;font-weight:bold">for</span> commands that require one <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;default&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --no-auth-cache           disable the CLI<span style="color:#a40000">&#39;</span>s caching of authentication sessions
-  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">]</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
+  -o, --output string           specifies the output format <span style="color:#ce5c00;font-weight:bold">(</span>one of <span style="color:#ce5c00;font-weight:bold">[</span>json yaml text<span style="color:#ce5c00;font-weight:bold">])</span> <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;text&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --password string         <span style="color:#204a87">set</span> the StorageOS account password to authenticate with <span style="color:#ce5c00;font-weight:bold">(</span>default <span style="color:#4e9a06">&#34;storageos&#34;</span><span style="color:#ce5c00;font-weight:bold">)</span>
       --timeout duration        <span style="color:#204a87">set</span> the timeout duration to use <span style="color:#204a87;font-weight:bold">for</span> execution of the <span style="color:#204a87">command</span> <span style="color:#ce5c00;font-weight:bold">(</span>default 15s<span style="color:#ce5c00;font-weight:bold">)</span>
       --use-ids                 specify existing StorageOS resources by their unique identifiers instead of by their names

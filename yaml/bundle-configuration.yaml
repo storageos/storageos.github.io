@@ -28,6 +28,29 @@ spec:
         - "date"
         - "+%Y-%m-%dT%H:%M:%SZ"
         timeout: 90s
+    - exec:
+        name: "diagnostics-collector-out"
+        namespace: kube-system
+        selector:
+          - app=storageos-cli
+        command:
+          - '/bin/sh' 
+          - '-c'
+          - ' 
+            rm -rf /tmp/diagnostics;
+            mkdir -p /tmp/diagnostics;
+            nodes=$(storageos get nodes | cut -d" " -f1 | grep -v "NAME\|^$");
+            for node in $nodes; do
+              storageos get diagnostics --target $node --output-file /tmp/diagnostics/diagnostics-$node-$(date +%F-%T);
+            done;
+            '
+        timeout: 90s
+    - copy:
+        name: "diagnostic-bundles"
+        namespace: kube-system
+        selector:
+          - app=storageos-cli
+        containerPath: /tmp/diagnostics
     - run:
         name: "network-checks"
         collectorName: "netcat"
@@ -62,7 +85,8 @@ spec:
           parallel -j2 nc -vunz ::: $(echo $NODES_PRIVATE_IPS| sed \"s/,/ /g\" ) \
                               ::: 5711;
           "
-        timeout: 90s
+
+      timeout: 90s
     - exec:
         name: "backend-disks"
         collectorName: "lsblk"
@@ -197,3 +221,13 @@ spec:
         command: ["du"]
         args: ["-b", "-a", "/var/lib/storageos/data"]
         timeout: 90s
+  analyzers:
+    - deploymentStatus:
+        name: storageos-cli
+        namespace: kube-system
+        outcomes:
+          - fail:
+              when: "< 1"
+              message: The CLI has no replicas.
+          - pass:
+              message: The CLI is installed.

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="Hugo 0.64.1" />
+<meta name="generator" content="Hugo 0.68.3" />
 
 <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
 
@@ -22,31 +22,31 @@
 
 <title>Release notes | </title><meta property="og:title" content="Release notes" />
 <meta property="og:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.4.0. For installation instructions please see our Install page.
-The latest CLI release is v2.4.0, available from Github.
+The latest tagged release is v2.4.1. For installation instructions please see our Install page.
+The latest CLI release is v2.4.1, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at rest  for StorageOS volumes, as well as:" />
+v2.4.1 - Released 2021-06-30 New  Cluster-wide log level configuration via Custom Resource.  Fixed   controlplane: improve error message during failed --label argument parsing." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://docs.storageos.com/docs/reference/release_notes/" />
 
 <meta itemprop="name" content="Release notes">
 <meta itemprop="description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.4.0. For installation instructions please see our Install page.
-The latest CLI release is v2.4.0, available from Github.
+The latest tagged release is v2.4.1. For installation instructions please see our Install page.
+The latest CLI release is v2.4.1, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at rest  for StorageOS volumes, as well as:">
+v2.4.1 - Released 2021-06-30 New  Cluster-wide log level configuration via Custom Resource.  Fixed   controlplane: improve error message during failed --label argument parsing.">
 
-<meta itemprop="wordCount" content="2969">
+<meta itemprop="wordCount" content="3031">
 
 
 
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Release notes"/>
 <meta name="twitter:description" content="We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;, and to perform upgrades only after reading the release notes.
-The latest tagged release is v2.4.0. For installation instructions please see our Install page.
-The latest CLI release is v2.4.0, available from Github.
+The latest tagged release is v2.4.1. For installation instructions please see our Install page.
+The latest CLI release is v2.4.1, available from Github.
 Upgrading To upgrade from version 1.x to 2.x, please contact support for assistance.
-v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at rest  for StorageOS volumes, as well as:"/>
+v2.4.1 - Released 2021-06-30 New  Cluster-wide log level configuration via Custom Resource.  Fixed   controlplane: improve error message during failed --label argument parsing."/>
 
 
 
@@ -54,8 +54,8 @@ v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at re
 
 
 
-<link rel="preload" href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" as="style">
-<link href="/scss/main.min.f438d2b9796945cd1ecf249ee847e52b86c90b71a65473dd7df133307855c9d3.css" rel="stylesheet" integrity="">
+<link rel="preload" href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" as="style">
+<link href="/scss/main.min.86c98209296966c1ced1d4f321e29aca9ff43d89583a951f9e6062e8da38e67a.css" rel="stylesheet" integrity="">
 
 
 <script
@@ -202,7 +202,7 @@ v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at re
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
+  data-offline-search-index-json-src="/offline-search-index.eb34ad827070b98724c67477a251ef45731c8d8e924b398f38d470263b91ad4e38b6f837d50e85eba4f3cd5279c5fbceba71ab87379dacc92dfc48e3a277fd25.json"
   data-offline-search-base-href="/"
 >
 
@@ -236,7 +236,7 @@ v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at re
   aria-label="Search this site…"
   autocomplete="off"
   
-  data-offline-search-index-json-src="/offline-search-index.aca96da804a44f636d8b6a35c211043b556a6bfea119d4e6cc505605911bc3220ea46fc747583577755163c86c4ced89cf26b6c346219e63cb77f13c5476d676.json"
+  data-offline-search-index-json-src="/offline-search-index.eb34ad827070b98724c67477a251ef45731c8d8e924b398f38d470263b91ad4e38b6f837d50e85eba4f3cd5279c5fbceba71ab87379dacc92dfc48e3a277fd25.json"
   data-offline-search-base-href="/"
 >
 
@@ -1202,57 +1202,63 @@ v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at re
 
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#v240---released-2021-05-27">v2.4.0 - Released 2021-05-27</a>
+    <li><a href="#v241---released-2021-06-30">v2.4.1 - Released 2021-06-30</a>
       <ul>
         <li><a href="#new">New</a></li>
         <li><a href="#fixed">Fixed</a></li>
+      </ul>
+    </li>
+    <li><a href="#v240---released-2021-05-27">v2.4.0 - Released 2021-05-27</a>
+      <ul>
+        <li><a href="#new-1">New</a></li>
+        <li><a href="#fixed-1">Fixed</a></li>
         <li><a href="#improved">Improved</a></li>
       </ul>
     </li>
     <li><a href="#v234---released-2021-03-24">v2.3.4 - Released 2021-03-24</a></li>
     <li><a href="#v233---released-2021-02-12">v2.3.3 - Released 2021-02-12</a>
       <ul>
-        <li><a href="#new-1">New</a></li>
-        <li><a href="#fixed-1">Fixed</a></li>
+        <li><a href="#new-2">New</a></li>
+        <li><a href="#fixed-2">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v232---released-2020-11-25">v2.3.2 - Released 2020-11-25</a>
       <ul>
-        <li><a href="#fixed-2">Fixed</a></li>
+        <li><a href="#fixed-3">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v231---released-2020-11-16">v2.3.1 - Released 2020-11-16</a>
       <ul>
-        <li><a href="#fixed-3">Fixed</a></li>
+        <li><a href="#fixed-4">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v230---released-2020-10-31">v2.3.0 - Released 2020-10-31</a>
       <ul>
         <li><a href="#breaking">Breaking</a></li>
-        <li><a href="#new-2">New</a></li>
+        <li><a href="#new-3">New</a></li>
         <li><a href="#improved-1">Improved</a></li>
-        <li><a href="#fixed-4">Fixed</a></li>
+        <li><a href="#fixed-5">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v220---released-2020-08-18">v2.2.0 - Released 2020-08-18</a>
       <ul>
-        <li><a href="#new-3">New</a></li>
+        <li><a href="#new-4">New</a></li>
         <li><a href="#improved-2">Improved</a></li>
-        <li><a href="#fixed-5">Fixed</a></li>
+        <li><a href="#fixed-6">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v210---released-2020-06-26">v2.1.0 - Released 2020-06-26</a>
       <ul>
-        <li><a href="#new-4">New</a></li>
+        <li><a href="#new-5">New</a></li>
         <li><a href="#improved-3">Improved</a></li>
-        <li><a href="#fixed-6">Fixed</a></li>
+        <li><a href="#fixed-7">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v200---released-2020-05-05">v2.0.0 - Released 2020-05-05</a>
       <ul>
-        <li><a href="#new-5">New</a></li>
+        <li><a href="#new-6">New</a></li>
         <li><a href="#improved-4">Improved</a></li>
-        <li><a href="#fixed-7">Fixed</a></li>
+        <li><a href="#fixed-8">Fixed</a></li>
       </ul>
     </li>
     <li><a href="#v200-rc1---released-2020-03-31">v2.0.0-rc.1 - Released 2020-03-31</a></li>
@@ -1306,13 +1312,39 @@ v2.4.0 - Released 2021-05-27 This release adds production-grade encryption at re
 	
 	<p>We recommend always using &ldquo;tagged&rdquo; versions of StorageOS rather than &ldquo;latest&rdquo;,
 and to perform upgrades only after reading the release notes.</p>
-<p>The latest tagged release is <code>v2.4.0</code>. For
+<p>The latest tagged release is <code>v2.4.1</code>. For
 installation instructions please see our
 <a href="https://docs.storageos.com/docs/reference/cluster-operator/install/">Install</a> page.</p>
-<p>The latest CLI release is <code>v2.4.0</code>, available from
+<p>The latest CLI release is <code>v2.4.1</code>, available from
 <a href="https://github.com/storageos/go-cli/releases">Github</a>.</p>
 <h1 id="upgrading">Upgrading</h1>
 <p>To upgrade from version 1.x to 2.x, please contact <a href="https://docs.storageos.com/docs/support/">support</a> for assistance.</p>
+<h2 id="v241---released-2021-06-30">v2.4.1 - Released 2021-06-30</h2>
+<h3 id="new">New</h3>
+<ul>
+<li>Cluster-wide log level configuration via Custom Resource.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>
+<p>controlplane: improve error message during failed <code>--label</code> argument parsing.</p>
+</li>
+<li>
+<p>controlplane: Double-check the OS performs the NFS mount as directed, and unmount on error.</p>
+</li>
+<li>
+<p>controlplane: Improved FSM and sync CC logging.</p>
+</li>
+<li>
+<p>dataplane: Log message quality, quantity and visibility improvements.</p>
+</li>
+<li>
+<p>dataplane: Volume backup tool error reporting improvements.</p>
+</li>
+<li>
+<p>k8s: Pod scheduler fixes.</p>
+</li>
+</ul>
 <h2 id="v240---released-2021-05-27">v2.4.0 - Released 2021-05-27</h2>
 <p>This release adds production-grade <a href="https://docs.storageos.com/docs/reference/encryption/">encryption at rest </a> for StorageOS volumes, as well as:</p>
 <ul>
@@ -1322,7 +1354,7 @@ installation instructions please see our
 <li><a href="https://docs.storageos.com/docs/reference/kubernetes-object-sync/">Kubernetes object sync</a></li>
 </ul>
 <p>Note: v2.4.0 <em>requires</em> Kubernetes 1.17 or newer.</p>
-<h3 id="new">New</h3>
+<h3 id="new-1">New</h3>
 <ul>
 <li>Volume encryption-at-rest.</li>
 <li>Fencing support.</li>
@@ -1331,7 +1363,7 @@ installation instructions please see our
 <li>Kubernetes node and namespace delete sync.</li>
 <li>Failure tolerance threshold support.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed-1">Fixed</h3>
 <ul>
 <li>
 <p>controlplane/api: Compression is not disabled by default when provisioning volumes via the API.</p>
@@ -1779,12 +1811,12 @@ installation instructions please see our
 customers.</li>
 <li>Quality-of-life fixes.</li>
 </ul>
-<h3 id="new-1">New</h3>
+<h3 id="new-2">New</h3>
 <ul>
 <li>operator: Use CSI attacher v3 for k8s 1.17+.</li>
 <li>controlplane/csi: ListVolumes support.</li>
 </ul>
-<h3 id="fixed-1">Fixed</h3>
+<h3 id="fixed-2">Fixed</h3>
 <ul>
 <li>api-manager: Reset api after token refresh error.</li>
 <li>operator: Set scheduler when PVCs use default StorageClass.</li>
@@ -1794,7 +1826,7 @@ customers.</li>
 <li>controlplane/fsm: Perform state match check before version check.</li>
 </ul>
 <h2 id="v232---released-2020-11-25">v2.3.2 - Released 2020-11-25</h2>
-<h3 id="fixed-2">Fixed</h3>
+<h3 id="fixed-3">Fixed</h3>
 <ul>
 <li>controlplane/rejoin: Failure to delete data causes re-advertise loop.</li>
 <li>controlplane/rejoin: Handle timeout waiting for progress report.</li>
@@ -1805,7 +1837,7 @@ customers.</li>
 <li>Allows access to <code>ReadWriteMany</code> shared volumes when running containers as a
 non-root user.</li>
 </ul>
-<h3 id="fixed-3">Fixed</h3>
+<h3 id="fixed-4">Fixed</h3>
 <ul>
 <li>nfs: root squash to uid=0 is now configured on all shared volumes.</li>
 </ul>
@@ -1816,7 +1848,7 @@ technology preview in v1.</p>
 <ul>
 <li>The <code>v2.3.0</code> operator is no longer able to run StorageOS v1.</li>
 </ul>
-<h3 id="new-2">New</h3>
+<h3 id="new-3">New</h3>
 <ul>
 <li>Adds support for <code>ReadWriteMany</code> shared volumes.  See
 <a href="https://docs.storageos.com/docs/concepts/rwx/">ReadWriteMany</a>.</li>
@@ -1872,7 +1904,7 @@ Openshift have a much lower default value (1024).  Consult
 <a href="https://docs.storageos.com/docs/prerequisites/pidlimits/">prerequisites</a> for more
 information.</li>
 </ul>
-<h3 id="fixed-4">Fixed</h3>
+<h3 id="fixed-5">Fixed</h3>
 <ul>
 <li>dataplane: Fixes <code>transport endpoint is not connected</code> on startup after an
 unclean shutdown.</li>
@@ -1896,7 +1928,7 @@ improvements across the board. Of particular note:</p>
 look at the <a href="https://docs.storageos.com/docs/self-eval/#Benchmarking">Benchmarking</a> section of the self-evaluation guide and consider sharing
 your results. Our PRE engineers are available to discuss in our <a href="https://storageos.slack.com">slack
 channel</a>.</p>
-<h3 id="new-3">New</h3>
+<h3 id="new-4">New</h3>
 <ul>
 <li>
 <p>Data engine revamp focused on provable consistency and performance. Key
@@ -1948,7 +1980,7 @@ This allows the scheduler to work in clusters with custom DNS configuration.</li
 <li>operator: Defaults are now set for most CSI configuration options in the
 StorageOSCluster custom resource.</li>
 </ul>
-<h3 id="fixed-5">Fixed</h3>
+<h3 id="fixed-6">Fixed</h3>
 <ul>
 <li>csi: When unmount request is received for a volume that has already been
 unmounted, return success.</li>
@@ -1961,7 +1993,7 @@ operations, rather than filling target disk to capacity.</li>
 after a restart. This resulted in multiple entries in <code>/proc/mounts</code>.</li>
 </ul>
 <h2 id="v210---released-2020-06-26">v2.1.0 - Released 2020-06-26</h2>
-<h3 id="new-4">New</h3>
+<h3 id="new-5">New</h3>
 <ul>
 <li>csi: Volume expansion now supported in offline mode. To expand a volume, stop
 any workloads accessing the volume, then edit the PVC to increase the
@@ -1991,14 +2023,14 @@ and replica nodes are offline. This allows cleanup of orphaned volumes.</li>
 <li>api: When a new node is added to the cluster, its capacity is available to use
 immediately.</li>
 </ul>
-<h3 id="fixed-6">Fixed</h3>
+<h3 id="fixed-7">Fixed</h3>
 <ul>
 <li>ui: Favicon was missing.</li>
 <li>ui: Duplicate volumes could be shown on the node details page.</li>
 <li>operator: During uninstall a ClusterRoleBinding was not removed.</li>
 </ul>
 <h2 id="v200---released-2020-05-05">v2.0.0 - Released 2020-05-05</h2>
-<h3 id="new-5">New</h3>
+<h3 id="new-6">New</h3>
 <ul>
 <li>operator: StorageOS containers now run in the <code>kube-system</code> namespace by
 default to allow the <code>system-node-critical</code> priority class to be set. This
@@ -2046,7 +2078,7 @@ that the CSI endpoint can be seen on systems with SELinux enabled.</li>
 <li>scheduler: return error for namespace/volume not found</li>
 <li>dataplane: start gRPC threads separately from rest of the supervisor.</li>
 </ul>
-<h3 id="fixed-7">Fixed</h3>
+<h3 id="fixed-8">Fixed</h3>
 <ul>
 <li>ui: centre licence types.</li>
 <li>ui: capacity in ui is per namespace.</li>

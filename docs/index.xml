@@ -4165,20 +4165,6 @@ site&lt;/a&gt;.&lt;/p&gt;
 touch with us. The fastest way to get in touch is to &lt;a href=&#34;https://slack.storageos.com&#34;&gt;join our public Slack
 channel&lt;/a&gt;. You can also get in touch via email to
 &lt;a href=&#34;mailto:support@storageos.com&#34;&gt;info@storageos.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Furthermore you can fill out the form below and we will get in touch.&lt;/p&gt;
-&lt;h2 id=&#34;get-started-now&#34;&gt;Get Started Now&lt;/h2&gt;
-&lt;script charset=&#34;utf-8&#34; type=&#34;text/javascript&#34;
-src=&#34;//js.hsforms.net/forms/v2.js&#34;&gt;&lt;/script&gt;
-&lt;script&gt;
-
-hbspt.forms.create({
-
-   portalId: &#34;3402546&#34;,
-   formId: &#34;a07fecd3-ce5b-4835-b136-51a94a35632b&#34;,
-   sfdcCampaignId: &#34;70158000000BAZzAAO&#34;
-});
-&lt;/script&gt;
-&lt;p&gt; &lt;/p&gt;
 &lt;h1 id=&#34;installation&#34;&gt;Installation&lt;/h1&gt;
 &lt;p&gt;In this document we detail a simple installation suitable for evaluation
 purposes. The etcd we install uses a 3 node cluster with ephemeral storage, and

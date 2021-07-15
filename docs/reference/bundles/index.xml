@@ -120,7 +120,7 @@ is publicly available.&lt;/p&gt;
 installed StorageOS in a different namespace please replace the namespace in
 the storage bundle config as below.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#000&#34;&gt;STORAGEOS_NS&lt;/span&gt;&lt;span style=&#34;color:#ce5c00;font-weight:bold&#34;&gt;=&lt;/span&gt;my-namespace
-curl -s https://docs.storageos.com/yaml/bundle-configuration.yaml &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; sed &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;s/kube-system/&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$STORAGEOS_NS&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/g&amp;#34;&lt;/span&gt; &amp;gt; /tmp/storageos-kubectl-config.yaml
+curl -s https://docs.storageos.com/yaml/bundle-configuration.yaml &lt;span style=&#34;color:#000;font-weight:bold&#34;&gt;|&lt;/span&gt; sed &lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;s/kube-system/&lt;/span&gt;&lt;span style=&#34;color:#000&#34;&gt;$STORAGEOS_NS&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;/g&lt;/span&gt;&lt;span style=&#34;color:#4e9a06&#34;&gt;&amp;#34;&lt;/span&gt; &amp;gt; /tmp/storageos-kubectl-config.yaml
 kubectl storageos bundle /tmp/storageos-kubectl-config.yaml
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Please note&lt;/strong&gt; that if you have a custom selector for your worker nodes you
 should update the bundle-configuration.yaml under
